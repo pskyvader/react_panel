@@ -7,6 +7,6 @@ def parse_get(query_string):
     for k, u in get.items():
         if len(u) == 1:
             get[k] = u[0]
-    get = app.format_array(get)
-    get = app.parse_values(get)
+    get = format_array(get)
+    get = parse_values(get)
     return get
