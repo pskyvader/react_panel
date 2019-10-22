@@ -115,7 +115,8 @@ class app:
                 response = {"error": 404}
 
         if "headers" not in response:
-            response["headers"] = [("Content-Type", "text/html charset=utf-8")]
+            # response["headers"] = [("Content-Type", "text/html charset=utf-8")]
+            response["headers"] = [("Content-Type", "application/json; charset=utf-8")]
 
         if "error" in response:
             if response["error"] == 301:
