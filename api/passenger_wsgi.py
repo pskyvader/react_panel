@@ -26,6 +26,9 @@ def application2(environ, start_response):
             ret = b""
 
 
+    
+    main_data["headers"].append(("Access-Control-Allow-Origin", "*"))
+
     start_response(main_data["status"], main_data["headers"])
     if "is_file" in main_data and main_data["is_file"]:
         f = open(main_data["file"], "rb")
