@@ -3,9 +3,7 @@ import { CssBaseline, withStyles, } from '@material-ui/core';
 import Header from './components/Header';
 import Home from './pages/Home';
 
-const API = 'https://hn.algolia.com/api/v1/search?query=';
-const DEFAULT_QUERY = 'redux';
-
+const API = 'http://localhost:8080';
 
 const styles = theme => ({
   main: {
