@@ -10,6 +10,7 @@ class header(base):
     data = {"logo": "", "url_exit": ""}
     def index(self):
         return self.get()
+        
     def get(self):
         logo = logo_model.getById(3)
         portada = image.portada(logo["foto"])
