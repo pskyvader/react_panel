@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+const API = 'http://localhost:8080/admin/';
 class Logo extends Component {
     resource = 'logo'
     constructor(props) {
