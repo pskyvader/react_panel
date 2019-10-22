@@ -6,6 +6,7 @@ class base:
             options=set(params[1:])
         else:
             options=()
+        print(options)
         if method=='GET':
             if len(params)>0:
                 return self.get(params[0],options)
