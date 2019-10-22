@@ -8,11 +8,7 @@ from gzip import compress
 
 sys.path.insert(0, os.path.dirname(__file__))
 
-
 def application2(environ, start_response):
-    # from datetime import datetime
-    # init_time = datetime.now()
-
     app_web = app(os.path.dirname(__file__))
     main_data = app_web.init(environ)
     ret = main_data["response_body"]
@@ -30,8 +26,24 @@ def application2(environ, start_response):
 
 
     start_response(main_data["status"], main_data["headers"])
-    return [ret]
+    if "is_file" in main_data and main_data["is_file"]:
+        f = open(main_data["file"], "rb")
+        if "wsgi.file_wrapper" in environ:
+            return environ["wsgi.file_wrapper"](f, 1024)
+        else:
+            return file_wrapper(f, 1024)
+    else:
+        return [ret]
 
+
+def file_wrapper(fileobj, block_size=1024):
+    try:
+        data = fileobj.read(block_size)
+        while data:
+            yield data
+            data = fileobj.read(block_size)
+    finally:
+        fileobj.close()
 
 
 class LoggingMiddleware:
