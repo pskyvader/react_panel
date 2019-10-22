@@ -7,21 +7,21 @@ def init(method,params):
 
 class logo(base):
     @classmethod
-    def get(cls,id=0,**params):
+    def get(cls,id=0,options):
         if id==0:
             data=cls.model.getAll()
         else:
             data=cls.model.getById(id)
         return {'body':data}
     @classmethod
-    def post(cls,id,**params):
+    def post(cls,id,options):
         return {'body':{}}
         
     @classmethod
-    def put(cls,id,**params):
+    def put(cls,id,options):
         return {'body':{}}
     @classmethod
-    def delete(cls,id,**params):
+    def delete(cls,id,options):
         return {'body':{}}
 
 
