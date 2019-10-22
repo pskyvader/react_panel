@@ -41,10 +41,10 @@ class app:
         app.environ = environ
         data_return = {}
         app.get = parse_get(app.environ["QUERY_STRING"])
-        app.post = self.parse_post()
+        app.post = parse_post()
         app.session = app.environ["beaker.session"]
-        app.client_ip = self.parse_ip(app.environ)
-        url = self.parse_url(environ["PATH_INFO"])
+        app.client_ip =parse_ip(app.environ)
+        url =parse_url(environ["PATH_INFO"])
 
         config = self.get_config()
         app.title = config["title"]
