@@ -2,6 +2,7 @@ from core.functions import functions
 from core.app import app
 from core.image import image
 from app.models.logo import logo as logo_model
+import json
 
 
 class header:
@@ -45,4 +46,5 @@ class header:
         self.data["url_exit"] = functions.generar_url(["logout"], False)
         self.data["date"] = functions.current_time()
         ret["body"].append(("header", self.data))
+        ret["body"] = json.dumps(ret["body"], ensure_ascii=False)
         return ret

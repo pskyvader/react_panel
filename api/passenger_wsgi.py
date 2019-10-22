@@ -15,7 +15,7 @@ def application2(environ, start_response):
     app_web = app(os.path.dirname(__file__))
     main_data = app_web.init(environ)
     ret = main_data["response_body"]
-
+    
     if isinstance(ret, str):
         if ret != "":
             ret = bytes(ret, "utf-8")
@@ -27,7 +27,6 @@ def application2(environ, start_response):
         else:
             ret = b""
 
-    print(ret)
 
     start_response(main_data["status"], main_data["headers"])
     # if main_data['status']=='200 OK':
