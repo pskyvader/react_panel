@@ -1,34 +1,34 @@
-def init(self,method,params):
+def init(method,params):
     if len(params)>1:
         options=set(params[1:])
     else:
         options=()
     if method=='GET':
         if len(params)>0:
-            return self.get(params[0],options)
+            return get(params[0],options)
         else:
-            return self.get() 
+            return get()
     elif len(params)>0:
         if method=='POST':
-            return self.post(params[0],options)
+            return post(params[0],options)
         elif method=='PUT':
-            return self.put(params[0],options)
+            return put(params[0],options)
         elif method=='DELETE':
-            return self.delete(params[0],options)
+            return delete(params[0],options)
     else:
         return {'error':404,'method':method,'params':params}
                 
 
-def get(self,id=0,**params):
+def get(id=0,**params):
     return {}
 
-def post(self,id,**params):
+def post(id,**params):
     return {}
     
     
-def put(self,id,**params):
+def put(id,**params):
     return {}
     
-def delete(self,id,**params):
+def delete(id,**params):
     return {}
     

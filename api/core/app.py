@@ -106,7 +106,7 @@ class app:
             my_file = Path(app.root + controller + ".py")
             if my_file.is_file():
                 current_module = importlib.import_module(controller.replace("/", "."))
-                response = current_module.init(current_module,app.method,url[1:])
+                response = current_module.init(app.method,url[1:])
             else:
                 response = {"error": 404}
 
