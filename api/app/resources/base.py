@@ -4,7 +4,7 @@ class base:
     def init(cls,method,params,model):
         cls.model=model
         if len(params)>1:
-            options=set(params[1:])
+            options=tuple(params[1:])
         else:
             options=None
         if method=='GET':
