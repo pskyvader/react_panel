@@ -119,7 +119,7 @@ class app:
             response["headers"] = [("Content-Type", "application/json; charset=utf-8")]
 
         if "error" in response:
-            response['body']=response
+            response['body']=response.copy()
             
         data_return["status"] = "200 OK"
 
