@@ -3,7 +3,7 @@ import React from 'react';
 const static_folder='public/images'
 function Image(props) {
     var image=props.image;
-    console.log(image);
+    console.log(image[0],props.image[0]);
     var static_image=static_folder+image['folder']+image.parent+image.subfolder+image.url;
     return (
         <img className="" src={static_image} alt={props.title} />
