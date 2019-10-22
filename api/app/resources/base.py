@@ -4,9 +4,9 @@ class base:
     def init(cls,method,params,model):
         cls.model=model
         if len(params)>1:
-            options=set(params[1:])
+            options=params[1:]
         else:
-            options=()
+            options=[]
         if method=='GET':
             if len(params)>0:
                 return cls.get(params[0],options)
