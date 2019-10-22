@@ -44,9 +44,9 @@ class app:
         app.post = parse_post(app.environ)
         app.session = app.environ["beaker.session"]
         app.client_ip =parse_ip(app.environ)
-        url =parse_url(environ["PATH_INFO"],app.get_config())
-
         config = self.get_config()
+        url =parse_url(environ["PATH_INFO"],config)
+
         app.title = config["title"]
         app.prefix_site = functions.url_amigable(app.title)
 
