@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const API = 'http://localhost:8080/admin/';
 class Logo extends Component {
-    resource = 'logo'
+    resource = 'logo/'
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +16,8 @@ class Logo extends Component {
 
     get_logo() {
         if (this.state.logo===''){
-            fetch(API + this.resource)
+            id=2
+            fetch(API + this.resource+id)
             .then(response => response.json())
             .then(data => {
                 this.setState({ logo: data.img })
