@@ -119,9 +119,33 @@ class app:
             response["headers"] = [("Content-Type", "application/json; charset=utf-8")]
 
         if "error" in response:
-            response['body']=response.copy()
-            
-        data_return["status"] = "200 OK"
+            if response["error"] == 301:
+                data_return["status"] = "200 OK"
+                response["body"] = {'error':response['error'],'location':response['redirect'],'status':"301 Moved Permanently"}
+            else:
+                data_return["status"] = "404 Not Found"
+                if config["debug"]:
+                    error_file = str(my_file)
+                else:
+                    error_file = ""
+
+                controller = app.controller_dir + "error"
+                my_file = Path(app.root + controller + ".py")
+                if my_file.is_file():
+                    current_module = importlib.import_module(
+                        controller.replace("/", ".")
+                    )
+                    current_module = getattr(current_module, "error")
+                    current_module = current_module()
+                    response_error = current_module.init(["index", error_file])
+                    # response_error = current_module.index(str(error_file))
+                    response["body"] = response_error["body"]
+                else:
+                    response["body"] = (
+                        "<html><body>No encontrado " + error_file + "</body></html>"
+                    )
+        else:
+            data_return["status"] = "200 OK"
 
         if "is_file" in response:
             data_return["is_file"] = response["is_file"]
