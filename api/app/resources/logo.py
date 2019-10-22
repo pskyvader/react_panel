@@ -1,4 +1,5 @@
 def init(self,params):
+    print(self,params)
     if len(params)==0:
         return self.get(0)
     else:
