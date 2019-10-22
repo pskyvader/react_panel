@@ -6,7 +6,7 @@ def init(method,params):
 
 class logo(base):
     def get(self,id=0,**params):
-        return {'body':{'asdf'}}
+        return {'body':{'asdf':'sfd'}}
 
     def post(self,id,**params):
         return {'body':{}}
