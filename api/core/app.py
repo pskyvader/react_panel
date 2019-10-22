@@ -7,14 +7,14 @@ import importlib
 
 class app:
     config = {}
-    app_dir = "app/"
+    app_dir = "api/app/"
     controller_dir = app_dir + "controllers/"
     title = ""
     prefix_site = ""
     url = {}
     front = True
     path = ""
-    root = "api"
+    root = ""
     environ = {}
     get = {}
     root_url = ""
