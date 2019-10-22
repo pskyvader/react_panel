@@ -20,8 +20,9 @@ class Logo extends Component {
             fetch(API + this.resource+id)
             .then(response => response.json())
             .then(data => {
+                var img=data.foto;
                 this.setState({ logo: data.img })
-                console.log(data);
+                console.log(img);
             });
         }
     }
