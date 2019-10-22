@@ -7,7 +7,7 @@ function Image(props) {
         var image=props.image[0];
         var static_image=static_folder+image.folder+image.parent+image.subfolder+image.url;
     }else{
-        var static_image='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=';
+        static_image='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=';
     }
     return (
         <img className="" src={static_image} alt={props.title} />
