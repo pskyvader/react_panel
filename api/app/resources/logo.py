@@ -1,5 +1,5 @@
 from .base import base
-from app.models.logo import logo_model
+from app.models.logo import logo as logo_model
 
 def init(method,params):
     l=logo()
