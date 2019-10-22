@@ -10,6 +10,7 @@ class Logo extends Component {
             logo: "",
             title: ""
         };
+        this.get_logo();
     }
     componentDidMount() {
         this.get_logo();
