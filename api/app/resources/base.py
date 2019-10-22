@@ -5,7 +5,7 @@ class base:
         if len(params)>1:
             options=tuple(params[1:])
         else:
-            options=None
+            options=()
         if method=='GET':
             if len(params)>0:
                 return self.get(params[0],*options)
