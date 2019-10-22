@@ -159,7 +159,7 @@ def format_array(var_original: dict):
                             "error de formato, formato aceptado: a[b][c][d]=valor"
                         )
                         break
-                aux[final_key] = app.format_array(aux[final_key])
+                aux[final_key] = format_array(aux[final_key])
             else:
                 aux[final_key] = i
             del var[k]
@@ -168,7 +168,7 @@ def format_array(var_original: dict):
             aux[final_key] = i
             del var[k]
 
-    var = app.merge(var, aux)
+    var = merge(var, aux)
     if len(var) == 1:
         key, value = next(iter(var.items()))
         if isinstance(key, int) and key == 0:
