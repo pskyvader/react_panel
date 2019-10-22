@@ -8,7 +8,7 @@ import importlib
 
 class app:
     config = {}
-    app_dir = "app/"
+    app_dir = "api/app/"
     controller_dir = app_dir + "controllers/"
     view_dir = app_dir + "views/"
     title = ""
