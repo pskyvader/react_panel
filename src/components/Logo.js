@@ -21,8 +21,8 @@ class Logo extends Component {
             .then(response => response.json())
             .then(data => {
                 var img=data.foto;
+                console.log(img);
                 this.setState({ logo: data.img })
-                console.log(data);
             });
         }
     }
