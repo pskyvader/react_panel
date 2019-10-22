@@ -1,24 +1,23 @@
 class base:
     model=None
-    @classmethod
-    def init(cls,method,params,model):
-        cls.model=model
+    def init(self,method,params,model):
+        self.model=model
         if len(params)>1:
             options=tuple(params[1:])
         else:
             options=None
         if method=='GET':
             if len(params)>0:
-                return cls.get(params[0],*options)
+                return self.get(params[0],*options)
             else:
-                return cls.get()
+                return self.get()
         elif len(params)>0:
             if method=='POST':
-                return cls.post(params[0],*options)
+                return self.post(params[0],*options)
             elif method=='PUT':
-                return cls.put(params[0],*options)
+                return self.put(params[0],*options)
             elif method=='DELETE':
-                return cls.delete(params[0],*options)
+                return self.delete(params[0],*options)
         else:
             return {'error':404,'method':method,'params':params}
 
