@@ -25,7 +25,6 @@ class app:
 
     def __init__(self, root):
         import locale
-
         try:
             locale.setlocale(locale.LC_ALL, "es_CL.UTF-8")
         except:
@@ -33,7 +32,6 @@ class app:
         app.root = root + "/"
 
     def init(self, environ):
-        from .cache import cache
         from .functions import functions
         from .database import database
 
@@ -89,26 +87,13 @@ class app:
             app.path = app.url["admin"]
             app.controller_dir = ( app.app_dir + "controllers/" + "back/themes/" + config["theme_back"] + "/" )
 
-        file_cache = cache.get_cache()
-        if file_cache != "":
-            response = {
-                "file": file_cache,
-                "is_file": True,
-                "body": "",
-                "headers": [
-                    ("Content-Type", "text/html charset=utf-8"),
-                    ("Accept-encoding", "gzip,deflate"),
-                    ("Content-Encoding", "gzip"),
-                ],
-            }
+        resource = app.resource_dir + url[0]
+        my_file = Path(app.root + resource + ".py")
+        if my_file.is_file():
+            current_module = importlib.import_module(resource.replace("/", "."))
+            response = current_module.init(app.method,url[1:])
         else:
-            resource = app.resource_dir + url[0]
-            my_file = Path(app.root + resource + ".py")
-            if my_file.is_file():
-                current_module = importlib.import_module(resource.replace("/", "."))
-                response = current_module.init(app.method,url[1:])
-            else:
-                response = {"error": 404}
+            response = {"error": 404}
 
         if "headers" not in response:
             # response["headers"] = [("Content-Type", "text/html charset=utf-8")]
@@ -129,15 +114,14 @@ class app:
                 if config["debug"]:
                     if 'params' in response:
                         response["body"]["params"]= response["params"]
-                    response["body"]["file"] = str(my_file)
-        data_return["status"] = "200 OK"
-        
-        data_return["response_body"] = response["body"]
+                    response["body"]["endpoint"] = str(my_file)
 
+        data_return["status"] = "200 OK"
+        data_return["response_body"] = response["body"]
         data_return["headers"] = response["headers"]
         for cookie in functions.cookies:
             data_return["headers"].append(("Set-Cookie", cookie))
-            
+
         database.close()
         return data_return
 
