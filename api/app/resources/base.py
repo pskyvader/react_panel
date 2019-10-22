@@ -1,5 +1,7 @@
 class base:
-    def init(self,method,params):
+    model=None
+    def init(self,method,params,model):
+        self.model=model
         if len(params)>1:
             options=set(params[1:])
         else:
