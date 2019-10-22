@@ -25,8 +25,6 @@ def application2(environ, start_response):
         else:
             ret = b""
 
-
-    
     main_data["headers"].append(("Access-Control-Allow-Origin", "*"))
 
     start_response(main_data["status"], main_data["headers"])
