@@ -44,7 +44,7 @@ class app:
         app.post = parse_post(app.environ)
         app.session = app.environ["beaker.session"]
         app.client_ip =parse_ip(app.environ)
-        url =self.parse_url(environ["PATH_INFO"])
+        url =self.parse_url(environ["PATH_INFO"],app.get_config())
 
         config = self.get_config()
         app.title = config["title"]
@@ -179,62 +179,6 @@ class app:
         # print('despues de render', (datetime.now()-init_time).total_seconds()*1000)
         database.close()
         return data_return
-
-    @staticmethod
-    def parse_url(url):
-        from app.models.seo import seo as seo_model
-        from .cache import cache
-
-        config = app.get_config()
-        url = url.lstrip("/")
-
-        if url != "":
-            url = " ".join(url.split("/")).split()
-        else:
-            url = []
-
-        cache.url_cache = url.copy()
-
-        if len(url) > 0:
-            if url[0] == "manifest.js":
-                url[0] = "manifest"
-            elif url[0] == "sw.js":
-                url[0] = "sw"
-            elif (
-                url[0] == "log.json" or url[0] == "icon.txt" or url[0] == "sitemap.xml" or url[0] == "log.html"
-            ):
-                url = ["static_file"] + url
-            elif url[0] == "favicon.ico":
-                url[0] = "favicon"
-            elif url[0] == config["admin"]:
-                if len(url) > 1:
-                    if url[1] == "manifest.js":
-                        url[1] = "manifest"
-                    elif url[1] == "sw.js":
-                        url[1] = "sw"
-                    elif (
-                        url[1] == "log.json"
-                        or url[1] == "icon.txt"
-                        or url[1] == "sitemap.xml"
-                    ):
-                        url_tmp = [url[0]]
-                        del url[0]
-                        url = url_tmp + ["static_file"] + url
-                    elif url[1] == "favicon.ico":
-                        url[1] = "favicon"
-            else:
-                seo = seo_model.getAll({"url": url[0]}, {"limit": 1})
-                if len(seo) == 1:
-                    url[0] = seo[0]["modulo_front"]
-                    app.idseo = seo[0][0]
-        else:
-            url = [""]
-            seo = seo_model.getById(1)
-            if len(seo) > 0:
-                url[0] = seo["modulo_front"]
-                app.idseo = seo[0]
-
-        return url
 
 
 
