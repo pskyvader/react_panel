@@ -37,10 +37,8 @@ class app:
         from .functions import functions
         from .database import database
 
-        # from datetime import datetime
-        # init_time = datetime.now()
-
         app.environ = environ
+        print(app.environ["REQUEST_METHOD"])
         data_return = {}
         app.get = parse_get(app.environ["QUERY_STRING"])
         app.post = parse_post(app.environ)
