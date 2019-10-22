@@ -166,6 +166,7 @@ class app:
         # init_time=datetime.now()
 
         if isinstance(response["body"], list):
+            data_return["response_body"] = response["body"]
             cache.save_cache()
         else:
             data_return["response_body"] = response["body"]
