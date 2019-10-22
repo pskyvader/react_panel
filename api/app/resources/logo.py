@@ -1,9 +1,9 @@
 from .base import base
-from app.models.logo import logo
+from app.models.logo import logo_model
 
 def init(method,params):
     l=logo()
-    return l.init(method,params,logo)
+    return l.init(method,params,logo_model)
 
 class logo(base):
     def get(self,id=0,**params):
