@@ -15,7 +15,7 @@ def init(self,params):
             elif params[1]=='delete':
                 return self.delete(params[0],params[2:])
             else:
-                return {'error':404,'params':params[1:]}
+                return {'error':404,'params':params}
                 
 
 def get(self,id=0,**params):
