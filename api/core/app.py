@@ -113,7 +113,7 @@ class app:
                 #current_module = current_module()
                 del url[0]
                 # returns {'body':[],'headers':str} or {'error':int,...'redirect':str}
-                response = current_module.init(url.copy())
+                response = current_module.init(current_module,url.copy())
             else:
                 response = {"error": 404}
 
