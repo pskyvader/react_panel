@@ -7,7 +7,7 @@ import importlib
 
 class app:
     config = {}
-    app_dir = "api/app/"
+    app_dir = "app/"
     controller_dir = app_dir + "controllers/"
     title = ""
     prefix_site = ""
