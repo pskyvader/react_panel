@@ -20,16 +20,16 @@ def init(method,params):
                 
 
 def get(id=0,**params):
-    return {'response':{}}
+    return {'body':{}}
 
 def post(id,**params):
-    return {'response':{}}
+    return {'body':{}}
     
     
 def put(id,**params):
-    return {'response':{}}
+    return {'body':{}}
     
 def delete(id,**params):
-    return {'response':{}}
+    return {'body':{}}
 
 
