@@ -6,16 +6,22 @@ class Logo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            logo:""
+            logo: ""
         };
+        this.get_logo();
     }
     componentDidMount() {
+        this.get_logo();
+    }
+
+    get_logo() {
         fetch(API + this.resource)
             .then(response => response.json())
             .then(data => {
                 this.setState({ logo: data.img })
                 console.log(data);
-            } );
+            });
+
     }
 
     render() {
