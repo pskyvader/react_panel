@@ -6,7 +6,7 @@ class base:
         if len(params)>1:
             options=set(params[1:])
         else:
-            options=()
+            options=None
         if method=='GET':
             if len(params)>0:
                 return cls.get(params[0],options)
