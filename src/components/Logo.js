@@ -22,13 +22,12 @@ class Logo extends Component {
             fetch(API + this.resource + id)
                 .then(response => response.json())
                 .then(data => {
-                    this.setState({ logo: data.foto, title: data.titulo })
+                    this.setState({ logo: data.foto, title: data.titulo });
                 });
         }
     }
 
     render() {
-        this.get_logo();
         return (
             <Image image={this.state.logo} alt={this.state.title} />
         )
