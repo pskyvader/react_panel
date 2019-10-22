@@ -48,7 +48,6 @@ def parse_url(url,config):
         if len(seo) > 0:
             url[0] = seo["modulo_front"]
             app.idseo = seo[0]
-
     return url
 
 
