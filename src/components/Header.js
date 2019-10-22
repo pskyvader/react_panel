@@ -5,7 +5,7 @@ import {
     Typography,
     withStyles
 } from '@material-ui/core';
-import Logo from 'components/Logo';
+import Logo;
 
 // import Login from './Login';
 
