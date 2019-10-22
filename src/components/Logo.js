@@ -12,7 +12,9 @@ class Logo extends Component {
     componentDidMount() {
         fetch(API + this.resource)
             .then(response => response.json())
-            .then(data => this.setState({ logo: data.img }));
+            .then(data => {
+                this.setState({ logo: data.img })
+            } );
     }
 
     render() {
