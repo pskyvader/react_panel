@@ -20,7 +20,7 @@ class base:
             return {'error':404,'method':method,'params':params}
                 
     def get(self,id=0,**params):
-        return {'body':{}}
+        return {'body':{'asd'}}
 
     def post(self,id,**params):
         return {'body':{}}
