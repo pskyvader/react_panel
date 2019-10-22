@@ -108,7 +108,7 @@ class app:
             my_file = Path(app.root + controller + ".py")
             if my_file.is_file():
                 current_module = importlib.import_module(controller.replace("/", "."))
-                #current_module = getattr(current_module, url[0])
+                current_module = getattr(current_module, url[0])
                 current_module = current_module()
                 del url[0]
                 # returns {'body':[],'headers':str} or {'error':int,...'redirect':str}
