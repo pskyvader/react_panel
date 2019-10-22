@@ -6,12 +6,11 @@ def init(method,params):
     return l.init(method,params,logo_model)
 
 class logo(base):
-    @classmethod
-    def get(cls,id=0,*options):
+    def get(self,id=0,*options):
         if id==0:
-            data=cls.model.getAll()
+            data=self.model.getAll()
         else:
-            data=cls.model.getById(id)
+            data=self.model.getById(id)
         return {'body':data}
     @classmethod
     def post(cls,id,*options):
