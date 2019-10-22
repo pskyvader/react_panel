@@ -17,4 +17,4 @@ class header(base):
         self.data["logo_min"] = image.generar_url(portada, "panel_min")
         self.data["url_exit"] = functions.generar_url(["logout"], False)
         self.data["date"] = functions.current_time()
-        return self.data
+        return {"body":self.data}
