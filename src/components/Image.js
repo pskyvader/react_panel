@@ -3,7 +3,7 @@ import { object } from 'prop-types';
 
 const static_folder='public/images'
 function Image(props) {
-    if (typeof(props.image)!=object){
+    if (typeof(props.image)==object){
         var image=props.image[0];
         var static_image=static_folder+image.folder+image.parent+image.subfolder+image.url;
     }else{
