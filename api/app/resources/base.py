@@ -21,15 +21,3 @@ class base:
         else:
             return {'error':404,'method':method,'params':params}
                 
-    def get(self,id=0,**params):
-        return {'body':{}}
-
-    def post(self,id,**params):
-        return {'body':{}}
-        
-        
-    def put(self,id,**params):
-        return {'body':{}}
-        
-    def delete(self,id,**params):
-        return {'body':{}}
