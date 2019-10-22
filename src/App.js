@@ -3,7 +3,6 @@ import { CssBaseline, withStyles, } from '@material-ui/core';
 import Header from './components/Header';
 import Home from './pages/Home';
 
-const API = 'http://localhost:8080/admin/';
 
 const styles = theme => ({
   main: {
