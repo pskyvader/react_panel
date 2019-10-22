@@ -1,4 +1,3 @@
-@staticmethod
 def parse_get(query_string):
     from cgi import parse_qs
 
