@@ -1,28 +1,20 @@
-def init(self, var: list):
-    from inspect import signature
-    import inspect
-
-    if len(var) == 0:
-        var = ['index']
-
-    if hasattr(self, var[0]) and callable(getattr(self, var[0])):
-        fun = var[0]
-        del var[0]
-        method = getattr(self, fun)
-        sig = signature(method)
-        params = sig.parameters
-        if 'self' in params:
-            if 'var' in params:
-                ret = method(self, var=var)
-            else:
-                ret = method(self)
-        else:
-            if 'var' in params:
-                ret = method(var=var)
-            else:
-                ret = method()
+def init(method,params):
+    if len(params)>1:
+        options=set(params[1:])
     else:
-        ret = {
-            'error': 404
-        }
-    return ret
+        options=()
+    if method=='GET':
+        if len(params)>0:
+            return get(params[0],options)
+        else:
+            return get()
+    elif len(params)>0:
+        if method=='POST':
+            return post(params[0],options)
+        elif method=='PUT':
+            return put(params[0],options)
+        elif method=='DELETE':
+            return delete(params[0],options)
+    else:
+        return {'error':404,'method':method,'params':params}
+                
