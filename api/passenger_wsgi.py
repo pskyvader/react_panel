@@ -27,6 +27,8 @@ def application2(environ, start_response):
         else:
             ret = b""
 
+    print(ret)
+
     start_response(main_data["status"], main_data["headers"])
     # if main_data['status']=='200 OK':
     # print(environ['PATH_INFO'],'total', (datetime.now()-init_time).total_seconds()*1000)
