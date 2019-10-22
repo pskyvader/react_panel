@@ -15,9 +15,8 @@ class Logo extends Component {
             .then(data => this.setState({ img: data.img }));
     }
     render() {
-        const { img } = this.state;
         return (
-            <img src="img" alt="" />
+            <img src="{this.state}" alt="" />
         )
     }
 }
