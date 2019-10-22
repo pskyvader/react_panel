@@ -1,10 +1,9 @@
 import React from 'react';
 
 function Image(props) {
-    console.log(props.image);
-    console.log(props.title);
+    image=props.image;
     return (
-        <img className="" src={props.image} alt={props.title} />
+        <img className="" src={image} alt={props.title} />
     );
 }
 export default Image;
