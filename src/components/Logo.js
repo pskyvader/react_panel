@@ -22,7 +22,7 @@ class Logo extends Component {
             .then(data => {
                 var img=data.foto;
                 this.setState({ logo: data.img })
-                console.log(img);
+                console.log(data);
             });
         }
     }
