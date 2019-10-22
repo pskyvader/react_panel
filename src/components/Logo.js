@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 class Logo extends Component {
     resource = 'logo'
     constructor(props) {
