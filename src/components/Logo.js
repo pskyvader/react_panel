@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Image from './Image';
 
 const API = 'http://localhost:8080/admin/';
 class Logo extends Component {
@@ -20,16 +21,14 @@ class Logo extends Component {
             fetch(API + this.resource+id)
             .then(response => response.json())
             .then(data => {
-                var img=data.foto;
-                console.log(img);
-                this.setState({ logo: data.img })
+                this.setState({ logo: data.foto ,title:data.titulo})
             });
         }
     }
 
     render() {
         return (
-            <img src="{this.state.logo}" alt="" />
+            <Image image="{this.state.logo}" alt="{this.state.title}"/>
         )
     }
 }
