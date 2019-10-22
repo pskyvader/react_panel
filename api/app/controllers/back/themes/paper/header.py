@@ -1,10 +1,11 @@
 from core.functions import functions
 from core.app import app
+from .base import base
 from core.image import image
 from app.models.logo import logo as logo_model
 
 
-class header:
+class header(base):
     data = {'logo': '', 'url_exit': '', }
 
     def get(self):
