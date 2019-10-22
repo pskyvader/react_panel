@@ -1,6 +1,6 @@
 def init(self,params):
     if len(params)==0:
-        return self.get()
+        return self.get(0)
     else:
         if len(params)==1:
             return self.get(params[0])
