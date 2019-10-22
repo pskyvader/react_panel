@@ -117,46 +117,8 @@ class app:
         if "headers" not in response:
             # response["headers"] = [("Content-Type", "text/html charset=utf-8")]
             response["headers"] = [("Content-Type", "application/json; charset=utf-8")]
-
-        if "error" in response:
-            if response["error"] == 301:
-                if config["debug"]:
-                    data_return["status"] = "200 OK"
-                    response["body"] = (
-                        '<html><body>redirige <a href="'
-                        + response["redirect"]
-                        + '">'
-                        + response["redirect"]
-                        + "</a></body></html>"
-                    )
-                else:
-                    data_return["status"] = "301 Moved Permanently"
-                    response["headers"] = [("Location", response["redirect"])]
-                    response["body"] = ""
-            else:
-                data_return["status"] = "404 Not Found"
-                if config["debug"]:
-                    error_file = str(my_file)
-                else:
-                    error_file = ""
-
-                controller = app.controller_dir + "error"
-                my_file = Path(app.root + controller + ".py")
-                if my_file.is_file():
-                    current_module = importlib.import_module(
-                        controller.replace("/", ".")
-                    )
-                    current_module = getattr(current_module, "error")
-                    current_module = current_module()
-                    response_error = current_module.init(["index", error_file])
-                    # response_error = current_module.index(str(error_file))
-                    response["body"] = response_error["body"]
-                else:
-                    response["body"] = (
-                        "<html><body>No encontrado " + error_file + "</body></html>"
-                    )
-        else:
-            data_return["status"] = "200 OK"
+            
+        data_return["status"] = "200 OK"
 
         if "is_file" in response:
             data_return["is_file"] = response["is_file"]
