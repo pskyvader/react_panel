@@ -29,7 +29,7 @@ class Logo extends Component {
 
     render() {
         return (
-            <Image image="{this.state.logo}" alt="{this.state.title}" />
+            <Image image={this.state.logo} alt={this.state.title} />
         )
     }
 }
