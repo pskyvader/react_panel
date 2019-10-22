@@ -102,10 +102,10 @@ class app:
                 ],
             }
         else:
-            controller = app.resource_dir + url[0]
-            my_file = Path(app.root + controller + ".py")
+            resource = app.resource_dir + url[0]
+            my_file = Path(app.root + resource + ".py")
             if my_file.is_file():
-                current_module = importlib.import_module(controller.replace("/", "."))
+                current_module = importlib.import_module(resource.replace("/", "."))
                 response = current_module.init(app.method,url[1:])
             else:
                 response = {"error": 404}
@@ -131,21 +131,8 @@ class app:
                         response["body"]["params"]= response["params"]
                     response["body"]["file"] = str(my_file)
         data_return["status"] = "200 OK"
-
-        if "is_file" in response:
-            data_return["is_file"] = response["is_file"]
-        if "file" in response:
-            data_return["file"] = response["file"]
-
-        # if data_return['status']=='200 OK':
-        # print('antes de render', (datetime.now()-init_time).total_seconds()*1000)
-        # init_time=datetime.now()
-
-        if isinstance(response["body"], list):
-            data_return["response_body"] = response["body"]
-            cache.save_cache()
-        else:
-            data_return["response_body"] = response["body"]
+        
+        data_return["response_body"] = response["body"]
 
         data_return["headers"] = response["headers"]
         for cookie in functions.cookies:
