@@ -15,13 +15,14 @@ class Logo extends Component {
     }
 
     get_logo() {
-        fetch(API + this.resource)
+        if (this.state.logo===''){
+            fetch(API + this.resource)
             .then(response => response.json())
             .then(data => {
                 this.setState({ logo: data.img })
                 console.log(data);
             });
-
+        }
     }
 
     render() {
