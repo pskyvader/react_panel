@@ -13,24 +13,24 @@ def parse_get(query_string):
 
 
 
-def parse_post():
+def parse_post(environ):
     from cgi import FieldStorage
     from io import BytesIO
 
     post = {}
-    if app.environ["REQUEST_METHOD"] == "POST":
-        post_env = app.environ.copy()
+    if environ["REQUEST_METHOD"] == "POST":
+        post_env = environ.copy()
         post_env["QUERY_STRING"] = ""
-        post_env["CONTENT_LENGTH"] = int(app.environ.get("CONTENT_LENGTH", 0))
+        post_env["CONTENT_LENGTH"] = int(environ.get("CONTENT_LENGTH", 0))
         buffer = post_env["wsgi.input"].read(post_env["CONTENT_LENGTH"])
         p = FieldStorage(
             fp=BytesIO(buffer), environ=post_env, keep_blank_values=True
         )
         if p.list != None:
-            post = app.post_field(p)
+            post = post_field(p)
 
-    post = app.format_array(post)
-    post = app.parse_values(post)
+    post = format_array(post)
+    post = parse_values(post)
     return post
 
 def post_field(p):
