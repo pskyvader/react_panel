@@ -6,21 +6,22 @@ def init(method,params):
     return l.init(method,params,logo_model)
 
 class logo(base):
-    def get(self,id=0,**params):
+    @classmethod
+    def get(cls,id=0,**params):
         if id==0:
-            data=self.model.getAll()
+            data=cls.model.getAll()
         else:
-            data=self.model.getById(id)
+            data=cls.model.getById(id)
         return {'body':data}
-
-    def post(self,id,**params):
+    @classmethod
+    def post(cls,id,**params):
         return {'body':{}}
         
-        
-    def put(self,id,**params):
+    @classmethod
+    def put(cls,id,**params):
         return {'body':{}}
-        
-    def delete(self,id,**params):
+    @classmethod
+    def delete(cls,id,**params):
         return {'body':{}}
 
 
