@@ -6,7 +6,7 @@ import {
     withStyles
 } from '@material-ui/core';
 
-import Login from './Login';
+// import Login from './Login';
 
 const styles = {
     flex: {
