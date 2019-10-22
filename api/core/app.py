@@ -14,7 +14,7 @@ class app:
     url = {}
     front = True
     path = ""
-    root = ""
+    root = "api"
     environ = {}
     get = {}
     root_url = ""
