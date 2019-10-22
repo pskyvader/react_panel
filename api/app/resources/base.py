@@ -8,7 +8,6 @@ class base:
             options=()
         if method=='GET':
             if len(params)>0:
-                print(params[0],options)
                 return self.get(params[0],options)
             else:
                 return self.get()
