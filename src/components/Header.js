@@ -20,7 +20,7 @@ const Header = ({ classes }) => (
                 Panel v3.0
       </Typography>
             <div className={classes.flex} />
-            <Login />
+            {/* <Login /> */}
         </Toolbar>
     </AppBar>
 );
