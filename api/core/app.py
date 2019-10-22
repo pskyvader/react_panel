@@ -38,8 +38,8 @@ class app:
         from .database import database
 
         app.environ = environ
-        print(app.environ["REQUEST_METHOD"])
         data_return = {}
+        app.method=app.environ["REQUEST_METHOD"]
         app.get = parse_get(app.environ["QUERY_STRING"])
         app.post = parse_post(app.environ)
         app.session = app.environ["beaker.session"]
@@ -106,7 +106,7 @@ class app:
             my_file = Path(app.root + controller + ".py")
             if my_file.is_file():
                 current_module = importlib.import_module(controller.replace("/", "."))
-                response = current_module.init(current_module,url[1:])
+                response = current_module.init(current_module,app.method,url[1:])
             else:
                 response = {"error": 404}
 
