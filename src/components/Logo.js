@@ -28,6 +28,7 @@ class Logo extends Component {
     }
 
     render() {
+        get_logo();
         return (
             <Image image={this.state.logo} title={this.state.title} />
         )
