@@ -40,7 +40,7 @@ class app:
 
         app.environ = environ
         data_return = {}
-        app.get = self.parse_get(app.environ["QUERY_STRING"])
+        app.get = parse_get(app.environ["QUERY_STRING"])
         app.post = self.parse_post()
         app.session = app.environ["beaker.session"]
         app.client_ip = self.parse_ip(app.environ)
