@@ -8,7 +8,7 @@ class socket:
     #host = "ws://socket.mysitio.cl:8000/ws"
     #url = "http://socket.mysitio.cl/"
 
-    host=(app.url["base"]+"ws").replace('http','ws').replace('8080','8001')
+    host=(app.url["base"]+"ws").replace('http','ws').replace('8080','8001').replace('80','8001')
     intento = False
 
     @staticmethod
