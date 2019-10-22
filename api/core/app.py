@@ -137,8 +137,7 @@ class app:
         data_return["headers"] = response["headers"]
         for cookie in functions.cookies:
             data_return["headers"].append(("Set-Cookie", cookie))
-        # if data_return['status']=='200 OK':
-        # print('despues de render', (datetime.now()-init_time).total_seconds()*1000)
+            
         database.close()
         return data_return
 
