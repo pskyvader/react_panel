@@ -66,7 +66,7 @@ class LoggingMiddleware:
 
 session_opts = {
     "session.type": "file",
-    "session.data_dir": "./session_data",
+    "session.data_dir": "./api/session_data",
     "session.auto": True,
 }
 
