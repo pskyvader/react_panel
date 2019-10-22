@@ -2,7 +2,7 @@ import React from 'react';
 import {
     AppBar,
     Toolbar,
-    Typography, 
+    Typography,
     withStyles
 } from '@material-ui/core';
 import Logo from './components/Logo';
@@ -15,8 +15,8 @@ const styles = {
     },
 };
 const Header = ({ classes }) => (
-    <Logo/>
     <AppBar position="static">
+        <Logo />
         <Toolbar>
             <Typography variant="title" color="inherit">
                 Panel v3.0
