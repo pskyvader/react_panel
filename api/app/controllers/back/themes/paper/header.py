@@ -44,5 +44,5 @@ class header:
         self.data["logo_min"] = image.generar_url(portada, "panel_min")
         self.data["url_exit"] = functions.generar_url(["logout"], False)
         self.data["date"] = functions.current_time()
-        ret["body"] = json.dumps(self.data, ensure_ascii=False)
-        return ret
+        respuesta = json.dumps(self.data, ensure_ascii=False)
+        return respuesta
