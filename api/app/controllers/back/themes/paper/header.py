@@ -7,7 +7,7 @@ from app.models.logo import logo as logo_model
 class header:
     data = {'logo': '', 'url_exit': '', }
 
-    def normal(self):
+    def get(self):
         ret = {'body': []}
         if 'ajax' not in app.post:
             logo = logo_model.getById(3)
