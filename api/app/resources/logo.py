@@ -1,21 +1,15 @@
 def init(self,method,params):
-    print(self,method,params)
-    if len(params)==0:
-        return self.get(0)
+    if method=='GET':
+        return self.get(params[0],params[1:])
+    elif len(params)>0:
+        if method=='POST':
+            return self.post(params[0],params[1:])
+        elif method=='PUT':
+            return self.put(params[0],params[1:])
+        elif method=='DELETE':
+            return self.delete(params[0],params[1:])
     else:
-        if len(params)==1:
-            return self.get(params[0])
-        else:
-            if params[1]=='get':
-                return self.get(params[0],params[2:])
-            elif params[1]=='post':
-                return self.post(params[0],params[2:])
-            elif params[1]=='put':
-                return self.put(params[0],params[2:])
-            elif params[1]=='delete':
-                return self.delete(params[0],params[2:])
-            else:
-                return {'error':404,'params':params}
+        return {'error':404,'method':method,'params':params}
                 
 
 def get(self,id=0,**params):
