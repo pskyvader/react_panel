@@ -9,7 +9,7 @@ class base:
             options=()
         if method=='GET':
             if len(params)>0:
-                return cls.get(params[0])
+                return cls.get(params[0],options)
             else:
                 return cls.get()
         elif len(params)>0:
