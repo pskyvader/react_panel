@@ -10,6 +10,7 @@ class app:
     config = {}
     app_dir = "app/"
     controller_dir = app_dir + "controllers/"
+    resource_dir = app_dir + "resources/"
     title = ""
     prefix_site = ""
     url = {}
@@ -85,18 +86,10 @@ class app:
         app.url["admin_sub"] = subdirectorio + config["admin"] + "/"
 
         if app.front:
-            app.controller_dir = (
-                app.app_dir + "controllers/front/themes/" + config["theme"] + "/"
-            )
+            app.controller_dir = ( app.app_dir + "controllers/front/themes/" + config["theme"] + "/" )
         else:
             app.path = app.url["admin"]
-            app.controller_dir = (
-                app.app_dir
-                + "controllers/"
-                + "back/themes/"
-                + config["theme_back"]
-                + "/"
-            )
+            app.controller_dir = ( app.app_dir + "controllers/" + "back/themes/" + config["theme_back"] + "/" )
 
         file_cache = cache.get_cache()
         if file_cache != "":
