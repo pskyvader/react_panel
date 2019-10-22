@@ -16,7 +16,7 @@ class Logo extends Component {
 
     get_logo() {
         if (this.state.logo===''){
-            id=2
+            const id=2;
             fetch(API + this.resource+id)
             .then(response => response.json())
             .then(data => {
