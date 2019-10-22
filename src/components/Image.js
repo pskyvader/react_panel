@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+
 function Image(props) {
     return (
-      <img className="Avatar"
-        src={props.user.avatarUrl}
-        alt={props.user.name}
-      />
+        <img className="Avatar"
+            src={props.user.avatarUrl}
+            alt={props.user.name}
+        />
     );
-  }
+}
+export default Image;
