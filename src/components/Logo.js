@@ -7,7 +7,8 @@ class Logo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            logo: ""
+            logo: "",
+            title: ""
         };
         this.get_logo();
     }
@@ -16,19 +17,19 @@ class Logo extends Component {
     }
 
     get_logo() {
-        if (this.state.logo===''){
-            const id=2;
-            fetch(API + this.resource+id)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ logo: data.foto ,title:data.titulo})
-            });
+        if (this.state.logo === '') {
+            const id = 2;
+            fetch(API + this.resource + id)
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({ logo: data.foto, title: data.titulo })
+                });
         }
     }
 
     render() {
         return (
-            <Image image="{this.state.logo}" alt="{this.state.title}"/>
+            <Image image="{this.state.logo}" alt="{this.state.title}" />
         )
     }
 }
