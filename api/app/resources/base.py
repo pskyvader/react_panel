@@ -20,4 +20,3 @@ class base:
                 return self.delete(params[0],options)
         else:
             return {'error':404,'method':method,'params':params}
-                
