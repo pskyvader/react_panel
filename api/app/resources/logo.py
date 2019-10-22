@@ -7,8 +7,11 @@ def init(method,params):
 
 class logo(base):
     def get(self,id=0,**params):
-
-        return {'body':{'asdf':'sfd'}}
+        if id==0:
+            data=self.model.getAll()
+        else:
+            data=self.model.getById(id)
+        return {'body':data}
 
     def post(self,id,**params):
         return {'body':{}}
