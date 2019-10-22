@@ -21,6 +21,7 @@ class base:
                 return cls.delete(params[0],options)
         else:
             return {'error':404,'method':method,'params':params}
+            
     @classmethod 
     def get(cls,id=0,**params):
         return {'body':{}}
