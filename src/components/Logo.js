@@ -14,7 +14,9 @@ class Logo extends Component {
             .then(response => response.json())
             .then(data => this.setState({ img: data.img }));
     }
+
     render() {
+        console.log(this.state);
         return (
             <img src="{this.state}" alt="" />
         )
