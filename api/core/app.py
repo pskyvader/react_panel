@@ -87,11 +87,9 @@ class app:
 
         if app.front:
             app.controller_dir = ( app.app_dir + "controllers/front/themes/" + config["theme"] + "/" )
-            app.resource_dir = ( app.app_dir + "resources/front/" )
         else:
             app.path = app.url["admin"]
             app.controller_dir = ( app.app_dir + "controllers/" + "back/themes/" + config["theme_back"] + "/" )
-            app.resource_dir = ( app.app_dir + "resources/back/" )
 
         file_cache = cache.get_cache()
         if file_cache != "":
