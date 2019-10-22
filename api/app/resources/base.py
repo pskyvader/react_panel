@@ -21,16 +21,14 @@ class base:
         else:
             return {'error':404,'method':method,'params':params}
 
-    @classmethod 
-    def get(cls,id=0,*params):
-        return {'body':{}}
-    @classmethod
-    def post(cls,id,*params):
+    def get(self,id=0,*params):
         return {'body':{}}
         
-    @classmethod
-    def put(cls,id,*params):
+    def post(self,id,*params):
         return {'body':{}}
-    @classmethod
-    def delete(cls,id,*params):
+        
+    def put(self,id,*params):
+        return {'body':{}}
+        
+    def delete(self,id,*params):
         return {'body':{}}
