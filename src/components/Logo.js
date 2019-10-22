@@ -10,11 +10,11 @@ class Logo extends Component {
             logo: "",
             title: ""
         };
-        this.get_logo();
     }
     componentDidMount() {
         this.get_logo();
     }
+    
 
     get_logo() {
         if (this.state.logo === '') {
@@ -28,6 +28,7 @@ class Logo extends Component {
     }
 
     render() {
+        this.get_logo();
         return (
             <Image image={this.state.logo} alt={this.state.title} />
         )
