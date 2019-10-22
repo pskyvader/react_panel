@@ -36,7 +36,6 @@ class header:
         return ret
 
     def get(self):
-        ret = {"body": []}
         logo = logo_model.getById(3)
         portada = image.portada(logo["foto"])
         self.data["logo_max"] = image.generar_url(portada, "panel_max")
@@ -45,6 +44,5 @@ class header:
         self.data["logo_min"] = image.generar_url(portada, "panel_min")
         self.data["url_exit"] = functions.generar_url(["logout"], False)
         self.data["date"] = functions.current_time()
-        ret["body"].append(("header", self.data))
-        ret["body"] = json.dumps(ret["body"], ensure_ascii=False)
+        ret["body"] = json.dumps(self.data, ensure_ascii=False)
         return ret
