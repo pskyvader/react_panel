@@ -7,6 +7,7 @@ def init(method,params):
 
 class logo(base):
     def get(self,id=0,**params):
+        print(self)
         if id==0:
             data=self.model.getAll()
         else:
