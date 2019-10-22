@@ -24,6 +24,7 @@ class app:
 
     def __init__(self, root):
         import locale
+
         try:
             locale.setlocale(locale.LC_ALL, "es_CL.UTF-8")
         except:
@@ -43,20 +44,20 @@ class app:
         app.get = parse_get(app.environ["QUERY_STRING"])
         app.post = parse_post(app.environ)
         app.session = app.environ["beaker.session"]
-        app.client_ip =parse_ip(app.environ)
+        app.client_ip = parse_ip(app.environ)
         config = self.get_config()
-        url =parse_url(environ["PATH_INFO"],config)
+        url = parse_url(environ["PATH_INFO"], config)
 
         app.title = config["title"]
         app.prefix_site = functions.url_amigable(app.title)
 
-        #app.root_url = environ["SERVER_NAME"].replace("www.", "")
+        # app.root_url = environ["SERVER_NAME"].replace("www.", "")
         app.root_url = environ["HTTP_HOST"].replace("www.", "")
         subdirectorio = config["dir"]
         https = "https://" if config["https"] else "http://"
         www = "www." if config["www"] else ""
         port = environ["SERVER_PORT"]
-        if port != '80' and port not in app.root_url:
+        if port != "80" and port not in app.root_url:
             app.root_url += ":" + port
 
         app.path = https + www + app.root_url + "/"
@@ -84,10 +85,18 @@ class app:
         app.url["admin_sub"] = subdirectorio + config["admin"] + "/"
 
         if app.front:
-            app.controller_dir = ( app.app_dir + "controllers/front/themes/" + config["theme"] + "/" )
+            app.controller_dir = (
+                app.app_dir + "controllers/front/themes/" + config["theme"] + "/"
+            )
         else:
             app.path = app.url["admin"]
-            app.controller_dir = ( app.app_dir + "controllers/" + "back/themes/" + config["theme_back"] + "/" )
+            app.controller_dir = (
+                app.app_dir
+                + "controllers/"
+                + "back/themes/"
+                + config["theme_back"]
+                + "/"
+            )
 
         file_cache = cache.get_cache()
         if file_cache != "":
@@ -120,32 +129,19 @@ class app:
 
         if "error" in response:
             if response["error"] == 301:
-                data_return["status"] = "200 OK"
-                response["body"] = {'error':response['error'],'location':response['redirect'],'status':"301 Moved Permanently"}
+                response["body"] = {
+                    "error": response["error"],
+                    "location": response["redirect"],
+                    "status": "301 Moved Permanently",
+                }
             else:
-                data_return["status"] = "404 Not Found"
+                response["body"] = {
+                    "error": response["error"],
+                    "status": "404 Not Found",
+                }
                 if config["debug"]:
-                    error_file = str(my_file)
-                else:
-                    error_file = ""
-
-                controller = app.controller_dir + "error"
-                my_file = Path(app.root + controller + ".py")
-                if my_file.is_file():
-                    current_module = importlib.import_module(
-                        controller.replace("/", ".")
-                    )
-                    current_module = getattr(current_module, "error")
-                    current_module = current_module()
-                    response_error = current_module.init(["index", error_file])
-                    # response_error = current_module.index(str(error_file))
-                    response["body"] = response_error["body"]
-                else:
-                    response["body"] = (
-                        "<html><body>No encontrado " + error_file + "</body></html>"
-                    )
-        else:
-            data_return["status"] = "200 OK"
+                    response["body"]["file"] = str(my_file)
+        data_return["status"] = "200 OK"
 
         if "is_file" in response:
             data_return["is_file"] = response["is_file"]
@@ -169,8 +165,6 @@ class app:
         # print('despues de render', (datetime.now()-init_time).total_seconds()*1000)
         database.close()
         return data_return
-
-
 
     @staticmethod
     def get_config():
