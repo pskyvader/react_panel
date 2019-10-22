@@ -1,6 +1,5 @@
 import sys
 import os
-from .view import view
 import json
 from pathlib import Path
 import importlib
@@ -10,7 +9,6 @@ class app:
     config = {}
     app_dir = "api/app/"
     controller_dir = app_dir + "controllers/"
-    view_dir = app_dir + "views/"
     title = ""
     prefix_site = ""
     url = {}
@@ -86,13 +84,10 @@ class app:
 
         if app.front:
             app.controller_dir = ( app.app_dir + "controllers/front/themes/" + config["theme"] + "/" )
-            app.view_dir = app.app_dir + "views/front/themes/" + config["theme"] + "/"
         else:
             app.path = app.url["admin"]
             app.controller_dir = ( app.app_dir + "controllers/" + "back/themes/" + config["theme_back"] + "/" )
-            app.view_dir = ( app.app_dir + "views/" + "back/themes/" + config["theme_back"] + "/" )
 
-        view.set_theme(app.root + app.view_dir)
         file_cache = cache.get_cache()
         if file_cache != "":
             response = {
@@ -171,7 +166,6 @@ class app:
         # init_time=datetime.now()
 
         if isinstance(response["body"], list):
-            data_return["response_body"] = view.render(response["body"])
             cache.save_cache()
         else:
             data_return["response_body"] = response["body"]
