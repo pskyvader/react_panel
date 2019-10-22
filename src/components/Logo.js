@@ -6,18 +6,18 @@ class Logo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          data: null,
+            logo=''
         };
     }
     componentDidMount() {
         fetch(API + this.resource)
             .then(response => response.json())
-            .then(data => this.setState({ img: data.img })).then(console.log(response));
+            .then(data => this.setState({ img: data.img }));
     }
 
     render() {
         return (
-            <img src="{this.state.img}" alt="" />
+            <img src="{this.state.logo}" alt="" />
         )
     }
 }
