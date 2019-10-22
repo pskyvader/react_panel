@@ -13,6 +13,8 @@ def init(self,params):
                 return self.put(params[0],params[:2])
             elif params[1]=='delete':
                 return self.delete(params[0],params[:2])
+            else:
+                return {'error':404}
                 
 
 def get(self,id=0,**params):
