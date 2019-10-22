@@ -129,8 +129,8 @@ class app:
                     "status": "404 Not Found",
                 }
                 if config["debug"]:
-                    if 'method' in response:
-                        response["body"]["method"]= response["method"]
+                    if 'params' in response:
+                        response["body"]["params"]= response["params"]
                     response["body"]["file"] = str(my_file)
         data_return["status"] = "200 OK"
 
