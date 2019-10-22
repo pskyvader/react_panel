@@ -5,6 +5,7 @@ import {
     Typography, 
     withStyles
 } from '@material-ui/core';
+import Logo from './components/Logo';
 
 // import Login from './Login';
 
@@ -14,6 +15,7 @@ const styles = {
     },
 };
 const Header = ({ classes }) => (
+    <Logo/>
     <AppBar position="static">
         <Toolbar>
             <Typography variant="title" color="inherit">
