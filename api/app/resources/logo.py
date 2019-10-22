@@ -1,8 +1,8 @@
 from .base import base
 
 def init(method,params):
-    l=logo(method,params)
-    return l.init()
+    l=logo()
+    return l.init(method,params)
 
 class logo(base):
     def get(self,id=0,**params):
