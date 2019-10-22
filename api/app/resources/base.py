@@ -3,14 +3,13 @@ class base:
     @classmethod
     def init(cls,method,params,model):
         cls.model=model
-        print(cls.model)
         if len(params)>1:
             options=set(params[1:])
         else:
             options=()
         if method=='GET':
             if len(params)>0:
-                return cls.get(params[0],options)
+                return cls.get(params[0])
             else:
                 return cls.get()
         elif len(params)>0:
