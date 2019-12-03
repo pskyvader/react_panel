@@ -22,7 +22,7 @@ class logo(base):
                 recortes=image.get_recortes('logo')
                 url=[]
                 for recorte in recortes:
-                    url.append(image.generar_url(portada, recorte))
+                    url.append(image.generar_url(portada, recorte['tag']))
                 data['foto']=url
                 
 

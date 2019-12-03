@@ -445,7 +445,6 @@ class image:
                 name.pop()
 
         name = functions.url_amigable(''.join(name))
-        print(name,tag,extension)
         if '' != tag:
             return name + '-' + tag + extension
         else:
