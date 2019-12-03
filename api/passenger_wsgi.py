@@ -19,9 +19,10 @@ def application2(environ, start_response):
 
     if isinstance(ret, str):
         if ret != "":
-            ret = compress(bytes(ret, "utf-8"))
-            main_data["headers"].append(("Accept-encoding", "gzip,deflate"))
-            main_data["headers"].append(("Content-Encoding", "gzip"))
+            ret = bytes(ret, "utf-8")
+            #ret = compress(bytes(ret, "utf-8"))
+            #main_data["headers"].append(("Accept-encoding", "gzip,deflate"))
+            #main_data["headers"].append(("Content-Encoding", "gzip"))
         else:
             ret = b""
 
