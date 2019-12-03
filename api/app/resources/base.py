@@ -1,5 +1,6 @@
 class base:
     model=None
+    @classmethod
     def init(self,method,params,model):
         self.model=model
         if len(params)>1:
