@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Image from './Image';
+var buildUrl = require('build-url');
 
-const API = 'http://localhost:8080/';
+const API = 'http://localhost:8080';
 class Logo extends Component {
-    resource = 'logo/'
     constructor(props) {
         super(props);
         this.state = {
@@ -14,11 +14,19 @@ class Logo extends Component {
     componentDidMount() {
         this.get_logo();
     }
-    
+
 
     get_logo() {
         if (this.state.logo === '') {
+            const resource = 'logo'
             const id = 2;
+            const sub = 'portada';
+            const url=buildUrl(API,
+                {
+                    path: { resource, id, sub }
+                }
+            );
+            console.log(url);
             fetch(API + this.resource + id)
                 .then(response => response.json())
                 .then(data => {
