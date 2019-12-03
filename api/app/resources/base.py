@@ -28,6 +28,7 @@ class base:
 
     @classmethod
     def get(cls, id=0, *options):
+        print(id,options)
         if id == 0:
             data = cls.model.getAll()
             print(data)
