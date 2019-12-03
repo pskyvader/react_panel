@@ -16,7 +16,7 @@ class logo(base):
         else:
             data = cls.model.getById(id)
             if 'foto' in data:
-                data['foto']=cls.process_image(data['foto'],options)
+                data['foto']=process_image(data['foto'],options)
         return {"body": data}
 
     def process_image(self,images,options):
