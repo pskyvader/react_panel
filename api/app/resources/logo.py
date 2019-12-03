@@ -20,6 +20,7 @@ class logo(base):
         return {"body": data}
     @classmethod
     def process_image(cls,images,options):
+        print(cls.model)
         recortes=image.get_recortes(cls.model)
         recortes=[x for x['tag'] in recortes]
 
