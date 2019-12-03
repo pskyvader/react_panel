@@ -16,7 +16,7 @@ const styles = {
 };
 const Header = ({ classes }) => (
     <AppBar position="static">
-        <Logo />
+        <Logo id='2' size='sitio' />
         <Toolbar>
             <Typography variant="title" color="inherit">
                 Panel v3.0
