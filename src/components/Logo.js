@@ -7,13 +7,12 @@ class Logo extends Component {
     resource ='logo';
     sub='portada';
     constructor(props) {
-        console.log(props);
+        this.id=props.id;
+        this.size=props.size;
         super(props);
         this.state = {
             logo: "",
             title: "",
-            id=props.id,
-            size=props.size
         };
     }
     componentDidMount() {
