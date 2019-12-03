@@ -4,7 +4,6 @@ from core.image import image
 
 
 def init(method, params):
-    print(params)
     l = logo()
     return l.init(method, params, logo_model)
 
@@ -16,8 +15,8 @@ class logo(base):
             data = cls.model.getAll()
         else:
             data = cls.model.getById(id)
-        print('asdf',options)
         if "portada" in options:
+            print('asdf',options)
             portada = image.portada(data['foto'])
             image.generar_url(portada, "favicon")
 
