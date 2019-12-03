@@ -2,9 +2,9 @@ import React from 'react';
 
 const static_folder = 'images'
 function Image(props) {
+    console.log(props.image);
     if (typeof (props.image) == 'object') {
         var image = props.image;
-        console.log(image);
         if (image.length === 1) {
             var static_image = [static_folder, image[0]].join("/");
         } else {
