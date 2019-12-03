@@ -22,7 +22,7 @@ class logo(base):
     def process_image(cls,images,options):
         recortes=image.get_recortes(cls.model.__name__)
         print(recortes)
-        recortes=[x for x['tag'] in recortes]
+        recortes=[x['tag'] for x in recortes]
 
         url_list=[]
         if "portada" in options:
