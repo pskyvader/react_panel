@@ -7,9 +7,9 @@ class Logo extends Component {
     resource ='logo';
     sub='portada';
     constructor(props) {
+        super(props);
         this.id=props.id;
         this.size=props.size;
-        super(props);
         this.state = {
             logo: "",
             title: "",
@@ -22,9 +22,7 @@ class Logo extends Component {
 
     get_logo() {
         if (this.state.logo === '') {
-            const id = this.state.id;
-            const size = this.state.size;
-            fetch(Url(API,resource, id, sub,size ))
+            fetch(Url(API,this.resource, this.id, this.sub,this.size ))
                 .then(response => response.json())
                 .then(data => {
                     this.setState({ logo: data.foto, title: data.titulo });
