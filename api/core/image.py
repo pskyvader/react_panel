@@ -624,10 +624,10 @@ class image:
         url = (
             folder + "/" + subfolder + image.nombre_archivo(file["url"], tag, extension)
         )
-        print(image.get_upload_dir(), url)
         time = functions.fecha_archivo(image.get_upload_dir() + url, True)
         if time != False:
-            archivo = image.get_upload_url() + url + "?time=" + str(time)
+            #archivo = image.get_upload_url() + url + "?time=" + str(time)
+            archivo = url + "?time=" + str(time)
         else:
             archivo = ""
         return archivo
