@@ -31,7 +31,7 @@ class base:
         if id == 0:
             data = cls.model.getAll()
 
-            if 0 in data and 'foto' in data[0]:
+            if len(data)>0 and 'foto' in data[0]:
                 for d in data:
                     d['foto']=cls.process_image(d['foto'],options)
         else:
