@@ -4,10 +4,11 @@ const static_folder = 'images'
 function Image(props) {
     if (typeof (props.image) == 'object') {
         var image = props.image;
+        console.log(image);
         if (image.length === 1) {
             var static_image = [static_folder, image[0]].join("/");
         } else {
-            var multiple_images= Image_multiple(props.image, props.title);
+            var multiple_images= Image_multiple(image, props.title);
             console.log(multiple_images);
         }
     } else {
