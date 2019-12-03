@@ -11,12 +11,12 @@ def init(method, params):
 class logo(base):
     @classmethod
     def get(cls, id=0, *options):
+        print(options)
         if id == 0:
             data = cls.model.getAll()
         else:
             data = cls.model.getById(id)
         if "portada" in options:
-            print(options)
             portada = image.portada(data['foto'])
             image.generar_url(portada, "favicon")
 
