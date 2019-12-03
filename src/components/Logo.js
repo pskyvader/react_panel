@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Image from './Image';
-import url from './Url';
+import Url from './Url';
 
 const API = 'http://localhost:8080';
 class Logo extends Component {
@@ -21,11 +21,7 @@ class Logo extends Component {
             const resource = 'logo'
             const id = 2;
             const sub = 'portada';
-            const url=buildUrl(API,
-                {
-                    path: { resource, id, sub }
-                }
-            );
+            const url=Url(API,resource, id, sub );
             console.log(url);
             fetch(API + this.resource + id)
                 .then(response => response.json())
