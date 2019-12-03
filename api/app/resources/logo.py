@@ -15,7 +15,7 @@ class logo(base):
             data = cls.model.getAll()
         else:
             data = cls.model.getById(id)
-        print('asdf')
+        print('asdf',options)
         if "portada" in options:
             portada = image.portada(data['foto'])
             image.generar_url(portada, "favicon")
