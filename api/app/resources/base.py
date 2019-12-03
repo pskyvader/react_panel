@@ -28,13 +28,11 @@ class base:
 
     @classmethod
     def get(cls, id=0, *options):
-        print(options)
         if id == 0:
             data = cls.model.getAll()
-
             if len(data)>0 and 'foto' in data[0]:
-                for d in data:
-                    d['foto']=cls.process_image(d['foto'],options)
+                for k,d in data:
+                    data[k]['foto']=cls.process_image(d['foto'],options)
         else:
             data = cls.model.getById(id)
             if 'foto' in data:
