@@ -31,9 +31,9 @@ class base:
         if id == 0:
             data = cls.model.getAll()
             if len(data)>0 and 'foto' in data[0]:
-                print('asdf')
                 for d in data:
                     d['foto']=cls.process_image(d['foto'],options)
+                    print(d['foto'])
         else:
             data = cls.model.getById(id)
             if 'foto' in data:
