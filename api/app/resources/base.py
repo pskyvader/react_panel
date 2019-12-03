@@ -30,11 +30,9 @@ class base:
     def get(cls, id=0, *options):
         if id == 0:
             data = cls.model.getAll()
-            print(data)
             if len(data)>0 and 'foto' in data[0]:
-                for k,d in data:
-                    print(k,d)
-                    data[k]['foto']=cls.process_image(d['foto'],options)
+                for d in data:
+                    d['foto']=cls.process_image(d['foto'],options)
         else:
             data = cls.model.getById(id)
             if 'foto' in data:
