@@ -15,7 +15,7 @@ def application2(environ, start_response):
     ret = main_data["response_body"]
 
     if not isinstance(ret,str):
-        ret=json.dumps(ret, indent=5)
+        ret=json.dumps(ret, indent=10)
 
     if isinstance(ret, str):
         if ret != "":
