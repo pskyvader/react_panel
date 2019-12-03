@@ -21,9 +21,7 @@ class Logo extends Component {
             const resource = 'logo'
             const id = 2;
             const sub = 'portada';
-            const url=Url(API,resource, id, sub );
-            console.log(url);
-            fetch(API + this.resource + id)
+            fetch(Url(API,resource, id, sub ))
                 .then(response => response.json())
                 .then(data => {
                     this.setState({ logo: data.foto, title: data.titulo });
