@@ -1,3 +1,5 @@
+from core.image import image
+
 class base:
     model=None
     @classmethod
@@ -35,9 +37,8 @@ class base:
         return {'body':{}}
 
         
-    @classmethod
-    def process_image(cls,images,options):
-        recortes=image.get_recortes(cls.model.__name__)
+    def process_image(self,images,options):
+        recortes=image.get_recortes(self.model.__name__)
         recortes=[x['tag'] for x in recortes]
 
         url_list=[]
