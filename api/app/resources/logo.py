@@ -15,13 +15,16 @@ class logo(base):
             data = cls.model.getAll()
         else:
             data = cls.model.getById(id)
-        if "portada" in options:
-            options=list(options)
-            options.remove('portada')
-            portada = image.portada(data['foto'])
-            data['foto']=portada
-            
-            image.generar_url(portada, "favicon")
+            if "portada" in options:
+                options=list(options)
+                options.remove('portada')
+                portada = image.portada(data['foto'])
+                recortes=image.get_recortes('logo')
+                url=[]
+                for recorte in recortes:
+                    url.append(image.generar_url(portada, recorte))
+                data['foto']=url
+                
 
         return {"body": data}
 
