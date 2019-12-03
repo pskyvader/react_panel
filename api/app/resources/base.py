@@ -24,8 +24,17 @@ class base:
         else:
             return {'error':404,'method':method,'params':params}
 
-    def get(self,id=0,*params):
-        return {'body':{}}
+
+
+    @classmethod
+    def get(cls, id=0, *options):
+        if id == 0:
+            data = cls.model.getAll()
+        else:
+            data = cls.model.getById(id)
+            if 'foto' in data:
+                data['foto']=cls.process_image(data['foto'],options)
+        return {"body": data}
         
     def post(self,id,*params):
         return {'body':{}}
@@ -35,6 +44,8 @@ class base:
         
     def delete(self,id,*params):
         return {'body':{}}
+
+
 
         
     @classmethod
