@@ -17,7 +17,7 @@ class logo(base):
             data = cls.model.getById(id)
         print(options)
         if "portada" in options:
-            data = image.portada(data)
+            data = image.portada(data['foto'])
         return {"body": data}
 
     @classmethod
