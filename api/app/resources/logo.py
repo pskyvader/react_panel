@@ -14,6 +14,7 @@ class logo(base):
             data = self.model.getAll()
         else:
             data = self.model.getById(id)
+        print(options)
         if "portada" in options:
             data = image.portada(data)
         return {"body": data}
