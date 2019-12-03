@@ -565,11 +565,11 @@ class image:
     @staticmethod
     def get_upload_dir():
         if ('' == image.upload_dir):
-            image.upload_dir = app.get_dir(True) + 'uploads/img/'
+            image.upload_dir = app.get_dir(True) + 'public/images/'
         return image.upload_dir
 
     @staticmethod
     def get_upload_url():
         if ('' == image.upload_url):
-            image.upload_url = app.get_url(True) + 'uploads/img/'
+            image.upload_url = app.get_url(True) + 'public/images/'
         return image.upload_url
