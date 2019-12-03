@@ -18,13 +18,13 @@ function Image(props) {
 }
 
 function Image_multiple(images, title) {
-    return (
-        images.forEach(i => {
-            var static_image = [static_folder, i].join("/");
-            <img className="" src={static_image} alt={title} />
-        }
-        )
-    );
+    var image_list = [];
+    images.forEach(i => { 
+        var static_image = [static_folder, i].join("/"); 
+        image_list.push(<img className="" src={static_image} alt={title} />); 
+    });
+
+    return image_list;
 }
 
 
