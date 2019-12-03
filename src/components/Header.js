@@ -16,9 +16,9 @@ const styles = {
 };
 const Header = ({ classes }) => (
     <AppBar position="static">
-        <Logo id='2' size='sitio' />
         <Toolbar>
             <Typography variant="title" color="inherit">
+                <Logo id='2' size='sitio' />
                 Panel v3.0
       </Typography>
             <div className={classes.flex} />
