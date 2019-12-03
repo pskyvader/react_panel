@@ -16,6 +16,7 @@ class logo(base):
         else:
             data = cls.model.getById(id)
         if "portada" in options:
+            options=list(options)
             options.remove('portada')
             print('asdf',options)
             portada = image.portada(data['foto'])
