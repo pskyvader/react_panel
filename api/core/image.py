@@ -621,8 +621,10 @@ class image:
             if file["subfolder"] != "":
                 subfolder += file["subfolder"] + "/"
 
-        url =  folder + "/" + subfolder + image.nombre_archivo(file["url"], tag, extension) 
-        print(image.get_upload_dir() , url)
+        url = (
+            folder + "/" + subfolder + image.nombre_archivo(file["url"], tag, extension)
+        )
+        print(image.get_upload_dir(), url)
         time = functions.fecha_archivo(image.get_upload_dir() + url, True)
         if time != False:
             archivo = image.get_upload_url() + url + "?time=" + str(time)
@@ -740,11 +742,11 @@ class image:
     @staticmethod
     def get_upload_dir():
         if "" == image.upload_dir:
-            image.upload_dir = app.get_dir(True) + "public/images/"
+            image.upload_dir = app.get_dir(True) + "../" + "public/images/"
         return image.upload_dir
 
     @staticmethod
     def get_upload_url():
         if "" == image.upload_url:
-            image.upload_url = app.get_url(True) + "public/images/"
+            image.upload_url = app.get_url(True) + "../" + "public/images/"
         return image.upload_url
