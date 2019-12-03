@@ -23,7 +23,7 @@ function Image_multiple(images, title) {
             var static_image = [static_folder, i].join("/");
             <img className="" src={static_image} alt={title} />
         }
-        );
+        )
     );
 }
 
