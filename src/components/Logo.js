@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Image from './Image';
-var buildUrl = require('build-url');
+import url from './Url';
 
 const API = 'http://localhost:8080';
 class Logo extends Component {
