@@ -4,6 +4,7 @@ from core.image import image
 
 
 def init(method, params):
+    print(params)
     l = logo()
     return l.init(method, params, logo_model)
 
