@@ -3,6 +3,7 @@ import React from 'react';
 const static_folder='images'
 function Image(props) {
     if (typeof(props.image)=='object'){
+        console.log(props.image);
         var image=props.image[0];
         var static_image=[static_folder,image.folder,image.parent,image.subfolder,image.url].join("/");
     }else{
