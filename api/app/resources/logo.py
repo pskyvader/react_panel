@@ -9,11 +9,12 @@ def init(method, params):
 
 
 class logo(base):
-    def get(self, id=0, *options):
+    @classmethod
+    def get(cls, id=0, *options):
         if id == 0:
-            data = self.model.getAll()
+            data = cls.model.getAll()
         else:
-            data = self.model.getById(id)
+            data = cls.model.getById(id)
         print(options)
         if "portada" in options:
             data = image.portada(data)
