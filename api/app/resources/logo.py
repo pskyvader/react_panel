@@ -15,18 +15,32 @@ class logo(base):
             data = cls.model.getAll()
         else:
             data = cls.model.getById(id)
-            if "portada" in options:
-                options=list(options)
-                options.remove('portada')
-                portada = image.portada(data['foto'])
-                recortes=image.get_recortes('logo')
-                url=[]
-                for recorte in recortes:
-                    url.append(image.generar_url(portada, recorte['tag']))
-                data['foto']=url
-                
-
+            if 'foto' in data:
+                data['foto']=cls.process_image(data['foto'],options)
         return {"body": data}
+
+    def process_image(self,images,options):
+        recortes=image.get_recortes(self.model)
+        recortes=[x for x['tag'] in recortes]
+
+        url_list=[]
+        if "portada" in options:
+            portada = image.portada(images)
+            if len(options)>1:
+                if options[1] in recortes:
+                    url_list=[image.generar_url(portada, options[1])]
+            else:
+                for recorte in recortes:
+                    url_list.append(image.generar_url(portada, recorte))
+        elif len(options)>0:
+            if options[1] in recortes:
+                for i in images:
+                    url_list.append(image.generar_url(i, options[1]))
+        else:
+            for i in images:
+                for recorte in recortes:
+                    url_list.append(image.generar_url(i, recorte))
+        return url_list
 
     @classmethod
     def post(cls, id, *options):
