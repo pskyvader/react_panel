@@ -7,7 +7,8 @@ function Image(props) {
         if (image.length === 1) {
             var static_image = [static_folder, image[0]].join("/");
         } else {
-            return Image_multiple(props.image, props.title);
+            var multiple_images= Image_multiple(props.image, props.title);
+            console.log(multiple_images);
         }
     } else {
         static_image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=';
