@@ -9,6 +9,7 @@ def init(method, params):
 
 
 class logo(base):
+    model=None
     @classmethod
     def get(cls, id=0, *options):
         if id == 0:
