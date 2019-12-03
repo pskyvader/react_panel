@@ -18,8 +18,9 @@ class logo(base):
         if "portada" in options:
             options=list(options)
             options.remove('portada')
-            print('asdf',options)
             portada = image.portada(data['foto'])
+            data['foto']=portada
+            
             image.generar_url(portada, "favicon")
 
         return {"body": data}
