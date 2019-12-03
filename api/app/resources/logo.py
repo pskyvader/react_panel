@@ -1,6 +1,5 @@
 from .base import base
 from app.models.logo import logo as logo_model
-from core.image import image
 
 
 def init(method, params):
