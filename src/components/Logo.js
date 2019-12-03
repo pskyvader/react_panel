@@ -4,11 +4,15 @@ import Url from './Url';
 
 const API = 'http://localhost:8080';
 class Logo extends Component {
+    resource ='logo';
+    sub='portada';
     constructor(props) {
         super(props);
         this.state = {
             logo: "",
-            title: ""
+            title: "",
+            id=props.id,
+            size=props.size
         };
     }
     componentDidMount() {
@@ -18,10 +22,9 @@ class Logo extends Component {
 
     get_logo() {
         if (this.state.logo === '') {
-            const resource = 'logo'
-            const id = 2;
-            const sub = 'portada';
-            fetch(Url(API,resource, id, sub ))
+            const id = this.state.id;
+            const size = this.state.size;
+            fetch(Url(API,resource, id, sub,size ))
                 .then(response => response.json())
                 .then(data => {
                     this.setState({ logo: data.foto, title: data.titulo });
