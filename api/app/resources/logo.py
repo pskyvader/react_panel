@@ -8,3 +8,4 @@ def init(method, params):
 
 
 class logo(base):
+    pass
