@@ -21,7 +21,6 @@ class logo(base):
     @classmethod
     def process_image(cls,images,options):
         recortes=image.get_recortes(cls.model.__name__)
-        print(recortes)
         recortes=[x['tag'] for x in recortes]
 
         url_list=[]
