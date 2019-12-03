@@ -32,6 +32,7 @@ class base:
             data = cls.model.getAll()
             if len(data)>0 and 'foto' in data[0]:
                 for k,d in data:
+                    print(k,d)
                     data[k]['foto']=cls.process_image(d['foto'],options)
         else:
             data = cls.model.getById(id)
