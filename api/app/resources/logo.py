@@ -18,9 +18,9 @@ class logo(base):
             if 'foto' in data:
                 data['foto']=cls.process_image(data['foto'],options)
         return {"body": data}
-
-    def process_image(self,images,options):
-        recortes=image.get_recortes(self.model)
+    @classmethod
+    def process_image(cls,images,options):
+        recortes=image.get_recortes(cls.model)
         recortes=[x for x['tag'] in recortes]
 
         url_list=[]
