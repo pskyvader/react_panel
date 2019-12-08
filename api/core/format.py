@@ -2,6 +2,7 @@ def parse_url(url,config):
     from app.models.seo import seo as seo_model
     from .cache import cache
     url = url.lstrip("/")
+    idseo=0
 
     if url != "":
         url = " ".join(url.split("/")).split()
@@ -41,18 +42,18 @@ def parse_url(url,config):
             seo = seo_model.getAll({"url": url[0]}, {"limit": 1})
             if len(seo) == 1:
                 url[0] = seo[0]["modulo_front"]
-                app.idseo = seo[0][0]
+                idseo = seo[0][0]
     else:
         url = [""]
         seo = seo_model.getById(1)
         if len(seo) > 0:
             url[0] = seo["modulo_front"]
-            app.idseo = seo[0]
-    return url
+            idseo = seo[0]
+    return url,idseo
 
 
 def parse_get(query_string):
-    from cgi import parse_qs
+    from urllib.parse import parse_qs
 
     get = dict(parse_qs(query_string))
     if "url" in get:

@@ -43,7 +43,7 @@ class app:
         app.session = app.environ["beaker.session"]
         app.client_ip = parse_ip(app.environ)
         config = self.get_config()
-        url = parse_url(environ["PATH_INFO"], config)
+        url,app.idseo = parse_url(environ["PATH_INFO"], config)
 
         app.title = config["title"]
         app.prefix_site = functions.url_amigable(app.title)
