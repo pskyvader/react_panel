@@ -10,7 +10,7 @@ class Logo extends Component {
         this.id = props.id;
         this.size = props.size;
         this.state = {
-            logo: "",
+            foto: "",
             title: "",
         };
     }
@@ -20,18 +20,18 @@ class Logo extends Component {
 
 
     get_logo() {
-        if (this.state.logo === '') {
+        if (this.state.foto === '') {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
-                    this.setState({ logo: data.foto, title: data.titulo });
+                    this.setState({ foto: data.foto, title: data.titulo });
                 });
         }
     }
 
     render() {
         return (
-            <Image image={this.state.logo} title={this.state.title} />
+            <Image image={this.state.foto} title={this.state.title} />
         )
     }
 }
