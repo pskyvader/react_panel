@@ -26,6 +26,8 @@ class Logo extends Component {
                 .then(data => {
                     this.setState({ foto: data.foto, title: data.titulo });
                 });
+        }else{
+            console.log('asdf');
         }
     }
 
