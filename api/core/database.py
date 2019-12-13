@@ -73,9 +73,8 @@ class database:
             #self._connection.commit()
             if return_query:
                 rows = cursor.fetchall()
-                print(rows)
-                rows=list(rows)
                 for r in rows:
+                    print(r,r.items())
                     for k, v in r.items():
                         if isinstance(v, datetime):
                             r[k] = v.strftime("%Y-%m-%d %H:%M:%S")
