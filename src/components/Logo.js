@@ -35,6 +35,8 @@ class Logo extends Component {
             return (
                 <Image image={this.state.foto} title={this.state.title} />
             )
+        }else{
+            return null;
         }
     }
 }
