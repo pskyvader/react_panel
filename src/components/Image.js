@@ -22,10 +22,10 @@ function Image_multiple(images, title) {
     return image_list;
 }
 
-function single_image(image, title) {
+function single_image(image, title,id='') {
     if (typeof (image) == 'object'){
         image = Object.values(image)[0];
-        var id=Object.keys(image)[0];
+        id=Object.keys(image)[0];
         image = [static_folder, image].join("/");
     }
     return <img className="" src={image} alt={title} key={id.toString()}/>
