@@ -58,7 +58,7 @@ class database:
         elif not self._connection.is_connected():
             self.conect()
 
-        cursor = self._connection.cursor()
+        cursor = self._connection.cursor(dictionary=True)
         return cursor
 
     def consulta(self, sql, return_query, delete_cache=True):
