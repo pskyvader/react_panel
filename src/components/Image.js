@@ -10,7 +10,7 @@ function Image(props) {
             return Image_multiple(image, props.title);
         }
     } else {
-        return (single_image('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=', props.title,0));
+        return (single_image('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=', props.title));
     }
 }
 
@@ -22,7 +22,7 @@ function Image_multiple(images, title) {
     return image_list;
 }
 
-function single_image(image, title,id) {
+function single_image(image, title,id=0) {
     image = Object.values(image)[0];
     var static_image = [static_folder, image].join("/");
     return <img className="" src={static_image} alt={title} id={id} />
