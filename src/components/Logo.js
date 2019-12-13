@@ -25,8 +25,7 @@ class Logo extends Component {
                 .then(data => {
                     this.foto=data.foto;
                     this.title= data.titulo;
-                });
-            this.setState();
+                }).then(this.render());
         }
     }
 
