@@ -78,8 +78,6 @@ class database:
                             r[k] = v.strftime("%Y-%m-%d %H:%M:%S")
                     for k, v in enumerate(list(r.values())):
                         r[k] = v
-                
-                print(sql,rows,'\n\n\n')
             else:
                 self._connection.commit()
                 self.last_insert_id = cursor.lastrowid
