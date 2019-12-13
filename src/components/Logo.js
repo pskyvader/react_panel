@@ -15,9 +15,12 @@ class Logo extends Component {
             title: "",
         };
     }
+    componentDidMount() {
+        this.get_logo();
+    }
 
 
-    get_logo() {
+    function get_logo() {
         if (this.state.logo === '') {
             fetch(Url(API, this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
