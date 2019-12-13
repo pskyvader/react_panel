@@ -70,6 +70,7 @@ class image:
     ]
     upload_dir = ""
     upload_url = ""
+    recortes_cache={}
 
     @staticmethod
     def upload_tmp(modulo):
@@ -235,6 +236,9 @@ class image:
 
     @staticmethod
     def get_recortes(modulo):
+        if modulo in recortes_cache:
+            return recortes_cache[modulo]
+
         moduloconfiguracion = moduloconfiguracion_model.getByModulo(modulo)
         var = {"idmoduloconfiguracion": moduloconfiguracion[0]}
         if "tipo" in app.get:
@@ -285,7 +289,8 @@ class image:
                     recorte["calidad"] = 0
 
                 recortes.append(recorte)
-
+        
+        recortes_cache[modulo]=recortes
         return recortes
 
     @staticmethod
