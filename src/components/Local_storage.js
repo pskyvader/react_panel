@@ -1,7 +1,6 @@
 class Local_storage {
     static get(key, default_value = null, expiration_time = 1) {
         var value = JSON.parse(localStorage.getItem(key));
-        console.log(value);
         if (value == null) {
             this.set(key, default_value, expiration_time);
         } else {
