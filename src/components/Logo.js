@@ -20,6 +20,7 @@ class Logo extends Component {
 
 
     get_logo() {
+        console.log('asdf');
         if (this.state.foto === '') {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
