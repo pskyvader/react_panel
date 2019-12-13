@@ -79,7 +79,7 @@ class database:
                     for k, v in enumerate(list(r.values())):
                         r[k] = v
                 
-                print(sql,rows)
+                print(sql,rows,'\n\n\n')
             else:
                 self._connection.commit()
                 self.last_insert_id = cursor.lastrowid
