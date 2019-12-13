@@ -73,7 +73,7 @@ class database:
             if return_query:
                 rows = cursor.fetchall()
                 for r in rows:
-                    print(r)
+                    print(r,type(r))
                     for k, v in r:
                         if isinstance(v, datetime):
                             r[k] = v.strftime("%Y-%m-%d %H:%M:%S")
