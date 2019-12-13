@@ -13,7 +13,7 @@ class Local_storage {
     }
     set(key, value, expiration_time = 1) {
         if (value != null) {
-            var expiration_time = Date.now() + expiration_time * 24 * 60 * 60 * 1000;
+            expiration_time = Date.now() + expiration_time * 24 * 60 * 60 * 1000;
             localStorage.setItem(key, JSON.stringify({
                 data: value,
                 expiration_time: expiration_time
