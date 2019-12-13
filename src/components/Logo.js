@@ -9,8 +9,8 @@ class Logo extends Component {
         foto: "",
         title: "",
     };
-    foto: "",
-    title: "",
+    foto: "";
+    title: "";
     constructor(props) {
         super(props);
         this.id = props.id;
