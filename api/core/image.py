@@ -236,9 +236,9 @@ class image:
 
     @staticmethod
     def get_recortes(modulo):
-        if modulo in recortes_cache:
-            print('cache',modulo,recortes_cache)
-            return recortes_cache[modulo]
+        if modulo in image.recortes_cache:
+            print('cache',modulo,image.recortes_cache)
+            return image.recortes_cache[modulo]
 
         moduloconfiguracion = moduloconfiguracion_model.getByModulo(modulo)
         var = {"idmoduloconfiguracion": moduloconfiguracion[0]}
@@ -291,7 +291,7 @@ class image:
 
                 recortes.append(recorte)
         
-        recortes_cache[modulo]=recortes
+        image.recortes_cache[modulo]=recortes
         return recortes
 
     @staticmethod
