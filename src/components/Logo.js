@@ -40,7 +40,7 @@ class Logo extends Component {
                 <Image image={this.state.foto} title={this.state.title} />
             )
         }else{
-            console.log(this,this.state.foto,typeof(this.state.foto));
+            console.log(this,this.state.foto);
             return null;
         }
     }
