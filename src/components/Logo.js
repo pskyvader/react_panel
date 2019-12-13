@@ -9,6 +9,7 @@ class Logo extends Component {
         super(props);
         this.id = props.id;
         this.size = props.size;
+        console.log('construct');
     }
     componentDidMount() {
         console.log('mount');
