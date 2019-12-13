@@ -28,7 +28,6 @@ function single_image(image, title,id='') {
         image = image[id];
         image = [static_folder, image].join("/");
     }
-    console.log('render',image,title);
     return <img className="" src={image} alt={title} key={id.toString()}/>
 }
 
