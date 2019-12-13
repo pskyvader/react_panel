@@ -5,8 +5,8 @@ function Image(props) {
     if (typeof (props.image) == 'object') {
         var image = props.image;
         if (image.length === 1) {
-            console.log(image[0],Object.values(image[0])[0]);
-            var static_image = [static_folder, image[0]].join("/");
+            image=Object.values(image[0])[0];
+            var static_image = [static_folder, image].join("/");
         } else {
             return Image_multiple(image, props.title);
         }
