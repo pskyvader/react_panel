@@ -16,7 +16,7 @@ class Logo extends Component {
 
 
     get_logo() {
-        if (this.state.foto === '') {
+        if (this.state || this.state.foto === '') {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
