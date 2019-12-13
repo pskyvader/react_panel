@@ -9,8 +9,6 @@ class Logo extends Component {
         foto: "",
         title: "",
     };
-    foto= "";
-    title= "";
     constructor(props) {
         super(props);
         this.id = props.id;
@@ -25,24 +23,24 @@ class Logo extends Component {
         if (this.foto === '') {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
-                // .then(data => {
-                //     this.setState({ foto: data.foto, title: data.titulo });
-                // });
                 .then(data => {
-                    this.foto=data.foto;
-                    this.title= data.titulo;
+                    this.setState({ foto: data.foto, title: data.titulo });
                 });
+                // .then(data => {
+                //     this.foto=data.foto;
+                //     this.title= data.titulo;
+                // });
         }
     }
 
     render() {
-        if (typeof(this.foto) === 'object') {
-            console.log(this,this.foto,'ok');
+        if (typeof(this.state.foto) !== '') {
+            console.log(this,this.state.foto,'ok');
             return (
-                <Image image={this.foto} title={this.title} />
+                <Image image={this.state.foto} title={this.state.title} />
             )
         }else{
-            console.log(this,this.foto,typeof(this.foto));
+            console.log(this,this.state.foto,typeof(this.state.foto));
             return null;
         }
     }
