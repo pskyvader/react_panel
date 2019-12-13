@@ -69,7 +69,7 @@ class base:
         elif len(options)>0:
             if options[0] in recortes:
                 for i in images:
-                    url_list.append({recorte:image.generar_url(i, options[1])})
+                    url_list.append({options[0]:image.generar_url(i, options[1])})
         else:
             for i in images:
                 for recorte in recortes:
