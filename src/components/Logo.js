@@ -9,6 +9,8 @@ class Logo extends Component {
         foto: "",
         title: "",
     };
+    foto: "",
+    title: "",
     constructor(props) {
         super(props);
         this.id = props.id;
@@ -20,20 +22,23 @@ class Logo extends Component {
 
 
     get_logo() {
-        if (this.state.foto === '') {
+        if (this.foto === '') {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
+                // .then(data => {
+                //     this.setState({ foto: data.foto, title: data.titulo });
+                // });
                 .then(data => {
-                    this.setState({ foto: data.foto, title: data.titulo });
+                    this.foto=data.foto;
+                    this.title= data.titulo;
                 });
         }
     }
 
     render() {
-        console.log('render',this.state.foto);
-        if (this.state.foto !== '') {
+        if (this.foto !== '') {
             return (
-                <Image image={this.state.foto} title={this.state.title} />
+                <Image image={this.foto} title={this.title} />
             )
         }else{
             return null;
