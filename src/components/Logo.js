@@ -6,32 +6,28 @@ const API = process.env.REACT_APP_API_URL;
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
+    logo = '';
+    title = '';
     constructor(props) {
         super(props);
         this.id = props.id;
         this.size = props.size;
-        this.state = {
-            logo: "",
-            title: "",
-        };
     }
     componentDidMount() {
         if (this.state.logo === '') {
             fetch(Url(API, this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
-                    this.setState({ logo: data.foto, title: data.titulo });
+                    this.logo = data.foto;
+                    this.title = data.titulo;
                 });
         }
 
     }
 
-
-
-
     render() {
         return (
-            <Image image={this.state.logo} title={this.state.title} />
+            <Image image={this.logo} title={this.title} />
         )
     }
 }
