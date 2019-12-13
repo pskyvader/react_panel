@@ -16,7 +16,7 @@ function Image(props) {
 
 function Image_multiple(images, title) {
     var image_list = [];
-    images.forEach(i => {
+    images.forEach(function (k,i) {
         image_list.push(single_image(i, title));
     });
     return image_list;
