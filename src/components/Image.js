@@ -4,7 +4,7 @@ const static_folder = 'images'
 function Image(props) {
     if (typeof (props.image) == 'object') {
         var image = props.image;
-        if (image.length === 0) {
+        if (image.length === 1) {
             return single_image(image[0], props.title);
         } else {
             return Image_multiple(image, props.title);
@@ -25,7 +25,7 @@ function Image_multiple(images, title) {
 function single_image(image, title,id=0) {
     image = Object.values(image)[0];
     var static_image = [static_folder, image].join("/");
-    return <img className="" src={static_image} alt={title} id={id} key={id.toString()}/>
+    return <img className="" src={static_image} alt={title} id={id}/>
 }
 
 
