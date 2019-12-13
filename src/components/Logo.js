@@ -1,6 +1,4 @@
-import React, {
-    Component
-} from 'react';
+import React, { Component } from 'react';
 import Image from './Image';
 import Url from './Url';
 
@@ -22,10 +20,7 @@ class Logo extends Component {
             fetch(Url(API, this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
-                    this.setState({
-                        logo: data.foto,
-                        title: data.titulo
-                    });
+                    this.setState({ logo: data.foto, title: data.titulo });
                 });
         }
 
@@ -35,14 +30,8 @@ class Logo extends Component {
 
 
     render() {
-        return ( <
-            Image image = {
-                this.state.logo
-            }
-            title = {
-                this.state.title
-            }
-            />
+        return (
+            <Image image={this.state.logo} title={this.state.title} />
         )
     }
 }
