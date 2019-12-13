@@ -22,8 +22,8 @@ class Logo extends Component {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
-                    this.foto= data.foto;
-                    this.title= data.titulo;
+                    Logo.foto= data.foto;
+                    Logo.title= data.titulo;
                 });
         }
     }
