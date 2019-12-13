@@ -2,7 +2,7 @@ import React from 'react';
 
 const static_folder = 'images'
 function Image(props) {
-    console.log(props);
+    console.log("render",props);
     if (typeof (props.image) == 'object') {
         var image = props.image;
         if (image.length === 1) {
