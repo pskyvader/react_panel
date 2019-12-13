@@ -291,7 +291,8 @@ class image:
 
                 recortes.append(recorte)
         
-        image.recortes_cache[modulo]=recortes
+        image.recortes_cache[modulo]= \
+            recortes
         return recortes
 
     @staticmethod
