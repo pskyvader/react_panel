@@ -25,9 +25,18 @@ class database:
             self._dbName = config["database"]
             self._prefix = config["prefix"] + "_"
             self.conect()
+        except mysql.connector.Error as e:
+            if e.errno == mysql.connector.errorcode.ER_ACCESS_DENIED_ERROR:
+                print("Something is wrong with your user name or password")
+            elif e.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
+                print("Database does not exist")
+            else:
+                self._errors = ( "Error DB connection " + self._dbHost + "," + self._dbUser + "," + self._dbPassword + "," + self._dbName )
+                print(self._errors,e)
         except Exception as e:
             self._errors = ( "Error DB connection " + self._dbHost + "," + self._dbUser + "," + self._dbPassword + "," + self._dbName )
             print(self._errors,e)
+
 
     def conect(self):
         # self._connection = pymysql.connect( self._dbHost, self._dbUser, self._dbPassword, self._dbName, charset="utf8mb4", cursorclass=pymysql.cursors.DictCursor, )
