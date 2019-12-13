@@ -5,10 +5,6 @@ import Url from './Url';
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
-    state = {
-        foto: "",
-        title: "",
-    };
     constructor(props) {
         super(props);
         this.id = props.id;
