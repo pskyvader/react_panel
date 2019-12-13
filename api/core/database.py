@@ -63,8 +63,6 @@ class database:
         from .cache import cache
         from datetime import datetime
 
-        print(sql)
-
         rows = None
         try:
             cursor = self.prepare()
