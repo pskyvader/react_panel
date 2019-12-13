@@ -73,6 +73,7 @@ class database:
             #self._connection.commit()
             if return_query:
                 rows = list(cursor.fetchall())
+                print(rows)
                 for r in rows:
                     for k, v in r.items():
                         if isinstance(v, datetime):
