@@ -4,7 +4,7 @@ const static_folder = 'images'
 function Image(props) {
     if (typeof (props.image) == 'object') {
         var image = props.image;
-        if (image.length === 1) {
+        if (image.length === 0) {
             image=Object.values(image[0])[0];
             var static_image = [static_folder, image].join("/");
         } else {
