@@ -1,5 +1,4 @@
 from .app import app
-#import pymysql
 import mysql.connector
 
 
@@ -39,7 +38,6 @@ class database:
 
 
     def conect(self):
-        # self._connection = pymysql.connect( self._dbHost, self._dbUser, self._dbPassword, self._dbName, charset="utf8mb4", cursorclass=pymysql.cursors.DictCursor, )
         self._connection = mysql.connector.connect(
             host=self._dbHost, user=self._dbUser, password=self._dbPassword,database=self._dbName,auth_plugin='mysql_native_password',charset="utf8mb4"
         )
