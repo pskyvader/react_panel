@@ -26,11 +26,9 @@ function single_image(image, title) {
     if (typeof (image) == 'object'){
         image = Object.values(image)[0];
         var id=Object.keys(image)[0];
-        var static_image = [static_folder, image].join("/");
-    }else{
-        var static_image = image;
+        image = [static_folder, image].join("/");
     }
-    return <img className="" src={static_image} alt={title} key={id.toString()}/>
+    return <img className="" src={image} alt={title} key={id.toString()}/>
 }
 
 
