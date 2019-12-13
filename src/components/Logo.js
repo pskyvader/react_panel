@@ -26,6 +26,7 @@ class Logo extends Component {
                     this.foto=data.foto;
                     this.title= data.titulo;
                 });
+            this.render();
         }
     }
 
