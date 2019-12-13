@@ -237,6 +237,7 @@ class image:
     @staticmethod
     def get_recortes(modulo):
         if modulo in recortes_cache:
+            print('cache',modulo,recortes_cache)
             return recortes_cache[modulo]
 
         moduloconfiguracion = moduloconfiguracion_model.getByModulo(modulo)
