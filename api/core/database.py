@@ -25,9 +25,9 @@ class database:
             self._dbName = config["database"]
             self._prefix = config["prefix"] + "_"
             self.conect()
-        except:
+        except Exception as e:
             self._errors = ( "Error DB connection " + self._dbHost + "," + self._dbUser + "," + self._dbPassword + "," + self._dbName )
-            print(self._errors)
+            print(self._errors,e)
 
     def conect(self):
         # self._connection = pymysql.connect( self._dbHost, self._dbUser, self._dbPassword, self._dbName, charset="utf8mb4", cursorclass=pymysql.cursors.DictCursor, )
