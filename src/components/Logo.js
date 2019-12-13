@@ -6,6 +6,7 @@ class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
     foto='';
+    title='';
     constructor(props) {
         super(props);
         this.id = props.id;
