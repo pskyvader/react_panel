@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Image from './Image';
 import Url from './Url';
 
+const API = process.env.REACT_APP_API_URL;
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
