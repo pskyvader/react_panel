@@ -5,8 +5,6 @@ import Url from './Url';
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
-    foto='';
-    title='';
     constructor(props) {
         super(props);
         this.id = props.id;
@@ -18,21 +16,19 @@ class Logo extends Component {
 
 
     get_logo() {
-        if (this.foto === '') {
+        if (this.state.foto === '') {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
-                    this.foto= data.foto;
-                    this.title= data.titulo;
+                    this.setState({ foto: data.foto, title: data.titulo });
                 });
-            this.render();
         }
     }
 
     render() {
-        console.log('render',this.foto,this.title,this);
+        console.log('render');
         return (
-            <Image image={this.foto} title={this.title} />
+            <Image image={this.state.foto} title={this.state.title} />
         )
     }
 }
