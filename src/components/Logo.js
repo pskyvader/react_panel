@@ -14,7 +14,6 @@ class Logo extends Component {
         this.size = props.size;
     }
     componentDidMount() {
-        console.log('asdf',this);
         if (this.foto === '') {
             fetch(Url(API, this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
