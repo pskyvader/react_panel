@@ -10,7 +10,6 @@ class Logo extends Component {
         super(props);
         this.id = props.id;
         this.size = props.size;
-        this.setState({ foto: "", title: "" });
     }
     componentDidMount() {
         this.get_logo();
