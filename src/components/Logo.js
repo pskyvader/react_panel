@@ -5,12 +5,6 @@ import Url from './Url';
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
-    constructor(props) {
-        super(props);
-        this.id = props.id;
-        this.size = props.size;
-        console.log('construct');
-    }
     componentDidMount() {
         console.log('mount');
         this.get_logo();
