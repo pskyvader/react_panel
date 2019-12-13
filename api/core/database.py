@@ -74,8 +74,8 @@ class database:
             if return_query:
                 rows = cursor.fetchall()
                 for r in rows:
-                    print(r)
-                    for k, v in r.items():
+                    for k, v in r:
+                        print(k,v)
                         if isinstance(v, datetime):
                             r[k] = v.strftime("%Y-%m-%d %H:%M:%S")
                     for k, v in enumerate(list(r.values())):
