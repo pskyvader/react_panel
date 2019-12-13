@@ -70,7 +70,6 @@ class database:
             cursor = self.prepare()
             self._connection.ping(reconnect=True)
             cursor.execute(sql)
-            self._connection.commit()
             if return_query:
                 rows = cursor.fetchall()
                 for r in rows:
@@ -80,6 +79,7 @@ class database:
                     for k, v in enumerate(list(r.values())):
                         r[k] = v
             else:
+                self._connection.commit()
                 self.last_insert_id = cursor.lastrowid
                 if delete_cache:
                     cache.delete_cache()
