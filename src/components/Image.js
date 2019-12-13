@@ -24,8 +24,8 @@ function Image_multiple(images, title) {
 
 function single_image(image, title,id='') {
     if (typeof (image) == 'object'){
-        image = Object.values(image)[0];
         id=Object.keys(image)[0];
+        image = image[id];
         image = [static_folder, image].join("/");
     }
     return <img className="" src={image} alt={title} key={id.toString()}/>
