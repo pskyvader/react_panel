@@ -31,12 +31,16 @@ class base:
         if id == 0:
             data = cls.model.getAll()
             if len(data)>0 and 'foto' in data[0]:
+                recortes=image.get_recortes(cls.model.__name__)
+                recortes=[x['tag'] for x in recortes]
                 for d in data:
-                    d['foto']=cls.process_image(d['foto'],options)
+                    d['foto']=cls.process_image(d['foto'],options,recortes)
         else:
             data = cls.model.getById(id)
             if 'foto' in data:
-                data['foto']=cls.process_image(data['foto'],options)
+                recortes=image.get_recortes(cls.model.__name__)
+                recortes=[x['tag'] for x in recortes]
+                data['foto']=cls.process_image(data['foto'],options,recortes)
         return {"body": data}
         
     def post(self,id,*params):
@@ -52,10 +56,7 @@ class base:
 
         
     @classmethod
-    def process_image(cls,images,options):
-        recortes=image.get_recortes(cls.model.__name__)
-        recortes=[x['tag'] for x in recortes]
-
+    def process_image(cls,images,options,recortes):
         url_list=[]
         if "portada" in options:
             portada = image.portada(images)
