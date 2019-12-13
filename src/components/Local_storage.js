@@ -6,7 +6,9 @@ class Local_storage {
         } else {
             if (value.expiration_time < Date.now()) {
                 this.set(key, default_value, expiration_time);
-            } else return value.data;
+            } else {
+                return value.data;
+            }
         }
 
         return default_value;
