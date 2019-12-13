@@ -72,8 +72,9 @@ class database:
             cursor.execute(sql)
             #self._connection.commit()
             if return_query:
-                rows = list(cursor.fetchall())
+                rows = cursor.fetchall()
                 print(rows)
+                rows=list(rows)
                 for r in rows:
                     for k, v in r.items():
                         if isinstance(v, datetime):
