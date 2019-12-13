@@ -25,7 +25,7 @@ function Image_multiple(images, title) {
 function single_image(image, title,id=0) {
     image = Object.values(image)[0];
     var static_image = [static_folder, image].join("/");
-    return <img className="" src={static_image} alt={title} id={id}/>
+    return <img className="" src={static_image} alt={title} key={id.toString()}/>
 }
 
 
