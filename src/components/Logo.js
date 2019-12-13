@@ -5,11 +5,14 @@ import Url from './Url';
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
-    state={foto:'',title:''};
     constructor(props) {
         super(props);
         this.id = props.id;
         this.size = props.size;
+        this.state = {
+            foto: '', 
+            title: '' 
+        };
     }
     componentDidMount() {
         this.get_logo();
@@ -32,7 +35,7 @@ class Logo extends Component {
             return (
                 <Image image={this.state.foto} title={this.state.title} />
             )
-        }else{
+        } else {
             return null;
         }
     }
