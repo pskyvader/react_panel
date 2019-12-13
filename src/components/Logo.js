@@ -9,10 +9,8 @@ class Logo extends Component {
         super(props);
         this.id = props.id;
         this.size = props.size;
-        this.state = {
-            foto: '', 
-            title: '' 
-        };
+        this.url = Url(this.resource, this.id, this.sub, this.size);
+        this.state = localStorage.getItem(this.url) || { foto: '', title: '' };
     }
     componentDidMount() {
         this.get_logo();
@@ -25,6 +23,7 @@ class Logo extends Component {
                 .then(response => response.json())
                 .then(data => {
                     this.setState({ foto: data.foto, title: data.titulo });
+                    localStorage.setItem(this.url,this.state);
                 });
         }
     }
