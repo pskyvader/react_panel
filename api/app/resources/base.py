@@ -66,7 +66,7 @@ class base:
             else:
                 for recorte in recortes:
                     url_list.append({recorte:image.generar_url(portada, recorte)})
-        elif len(options)>0:
+        elif len(options)>1:
             if options[1] in recortes:
                 for i in images:
                     url_list.append({recorte:image.generar_url(i, options[1])})
