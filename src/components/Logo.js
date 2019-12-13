@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Image from './Image';
 import Url from './Url';
+import Local_storage from './Local_storage';
 
 class Logo extends Component {
     resource = 'logo';
@@ -10,7 +11,7 @@ class Logo extends Component {
         this.id = props.id;
         this.size = props.size;
         this.url = Url(this.resource, this.id, this.sub, this.size);
-        this.state = JSON.parse(localStorage.getItem(this.url)) || { foto: '', title: '' };
+        this.state = Local_storage.get(this.url, { foto: '', title: '' });
     }
     componentDidMount() {
         this.get_logo();
@@ -23,7 +24,7 @@ class Logo extends Component {
                 .then(response => response.json())
                 .then(data => {
                     this.setState({ foto: data.foto, title: data.titulo });
-                    localStorage.setItem(this.url,JSON.stringify(this.state));
+                    Local_storage.get(this.url, this.state);
                 });
         }
     }
