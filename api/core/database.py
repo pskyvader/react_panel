@@ -1,5 +1,5 @@
 from .app import app
-import pymysql
+#import pymysql
 import mysql.connector
 
 
