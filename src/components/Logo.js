@@ -6,7 +6,7 @@ const API = process.env.REACT_APP_API_URL;
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
-    logo = '';
+    foto = '';
     title = '';
     constructor(props) {
         super(props);
@@ -15,22 +15,22 @@ class Logo extends Component {
     }
     componentDidMount() {
         console.log('asdf',this);
-        if (this.logo === '') {
+        if (this.foto === '') {
             fetch(Url(API, this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
-                    this.logo = data.foto;
+                    this.foto = data.foto;
                     this.title = data.titulo;
                 });
         }else{
-            console.log(this.logo);
+            console.log(this.foto);
         }
 
     }
 
     render() {
         return (
-            <Image image={this.logo} title={this.title} />
+            <Image image={this.foto} title={this.title} />
         )
     }
 }
