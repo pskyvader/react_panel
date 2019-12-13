@@ -35,9 +35,11 @@ class Logo extends Component {
     render() {
         if (this.foto !== '') {
             console.log('render',this,this.foto,this.title,'OK');
-            return (
+            var ret= (
                 <Image image={this.foto} title={this.title} />
             )
+            console.log(ret);
+            return ret;
         }else{
             console.log('render',this,this.foto,this.title);
             return null;
