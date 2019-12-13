@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Image from './Image';
 import Url from './Url';
 
-const API = 'http://localhost:8080';
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
