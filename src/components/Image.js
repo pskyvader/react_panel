@@ -17,15 +17,15 @@ function Image(props) {
 function Image_multiple(images, title) {
     var image_list = [];
     images.forEach(i => {
-        image_list.push(single_image(i, title));
+        image_list.push(single_image(i, title, id));
     });
     return image_list;
 }
 
-function single_image(image, title) {
+function single_image(image, title,id) {
     image = Object.values(image)[0];
     var static_image = [static_folder, image].join("/");
-    return <img className="" src={static_image} alt={title} />
+    return <img className="" src={static_image} alt={title} id={id} />
 }
 
 
