@@ -72,6 +72,7 @@ class database:
             cursor.execute(sql)
             if return_query:
                 rows = cursor.fetchall()
+                print(rows)
                 for r in rows:
                     for k, v in r:
                         if isinstance(v, datetime):
