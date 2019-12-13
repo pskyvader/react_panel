@@ -1,5 +1,5 @@
 class Local_storage {
-    get(key, default_value = null, expiration_time = 1) {
+    static get(key, default_value = null, expiration_time = 1) {
         var value = JSON.parse(localStorage.getItem(key));
         if (value == null) {
             this.set(key, default_value, expiration_time);
@@ -11,7 +11,7 @@ class Local_storage {
 
         return default_value;
     }
-    set(key, value, expiration_time = 1) {
+    static set(key, value, expiration_time = 1) {
         if (value != null) {
             expiration_time = Date.now() + expiration_time * 24 * 60 * 60 * 1000;
             localStorage.setItem(key, JSON.stringify({
