@@ -5,6 +5,10 @@ import Url from './Url';
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
+    state = {
+        foto: "",
+        title: "",
+    };
     constructor(props) {
         super(props);
         this.id = props.id;
@@ -16,7 +20,7 @@ class Logo extends Component {
 
 
     get_logo() {
-        if (this.foto === '') {
+        if (this.state.foto === '') {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
@@ -30,13 +34,13 @@ class Logo extends Component {
     }
 
     render() {
-        if (this.state && this.state.foto !== '') {
+        if (this.state.foto !== '') {
             console.log(this,this.state.foto,'ok');
             return (
                 <Image image={this.state.foto} title={this.state.title} />
             )
         }else{
-            console.log(this,this.state);
+            console.log(this,this.state.foto);
             return null;
         }
     }
