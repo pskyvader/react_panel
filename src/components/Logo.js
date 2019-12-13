@@ -10,7 +10,6 @@ class Logo extends Component {
         this.id = props.id;
         this.size = props.size;
         this.url = Url(this.resource, this.id, this.sub, this.size);
-        console.log(JSON.parse(localStorage.getItem(this.url)));
         this.state = JSON.parse(localStorage.getItem(this.url)) || { foto: '', title: '' };
     }
     componentDidMount() {
