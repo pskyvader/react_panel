@@ -21,6 +21,8 @@ class Logo extends Component {
                     this.logo = data.foto;
                     this.title = data.titulo;
                 });
+        }else{
+            console.log(this.logo);
         }
 
     }
