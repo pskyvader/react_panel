@@ -11,6 +11,7 @@ class Logo extends Component {
         this.size = props.size;
     }
     componentDidMount() {
+        console.log('mount');
         this.get_logo();
     }
 
