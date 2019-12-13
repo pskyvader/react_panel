@@ -23,20 +23,23 @@ class Logo extends Component {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
-                    this.foto=data.foto;
-                    this.title= data.titulo;
-                }).then(this.setState({quantity: 2}));
+                    this.setState({ foto: data.foto, title: data.titulo });
+                });
+                // .then(data => {
+                //     this.foto=data.foto;
+                //     this.title= data.titulo;
+                // });
         }
     }
 
     render() {
-        if (this.foto !== '') {
-            console.log(this,this.foto,'ok');
+        if (this.state && this.state.foto !== '') {
+            console.log(this,this.state.foto,'ok');
             return (
-                <Image image={this.foto} title={this.title} />
+                <Image image={this.state.foto} title={this.state.title} />
             )
         }else{
-            console.log(this,this.foto);
+            console.log(this);
             return null;
         }
     }
