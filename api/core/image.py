@@ -235,12 +235,12 @@ class image:
         return respuesta
 
     @staticmethod
-    def get_recortes(modulo):
-        if modulo in image.recortes_cache:
-            print('cache',modulo,image.recortes_cache)
-            return image.recortes_cache[modulo]
+    def get_recortes(modulo_name):
+        if modulo_name in image.recortes_cache:
+            print('cache',modulo_name,image.recortes_cache)
+            return image.recortes_cache[modulo_name]
 
-        moduloconfiguracion = moduloconfiguracion_model.getByModulo(modulo)
+        moduloconfiguracion = moduloconfiguracion_model.getByModulo(modulo_name)
         var = {"idmoduloconfiguracion": moduloconfiguracion[0]}
         if "tipo" in app.get:
             var["tipo"] = app.get["tipo"]
@@ -290,8 +290,7 @@ class image:
                     recorte["calidad"] = 0
 
                 recortes.append(recorte)
-        print(image.recortes_cache,type(image.recortes_cache ))
-        image.recortes_cache[modulo]=recortes
+        image.recortes_cache[modulo_name]=recortes
         return recortes
 
     @staticmethod
