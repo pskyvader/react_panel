@@ -5,12 +5,11 @@ import Url from './Url';
 class Logo extends Component {
     resource = 'logo';
     sub = 'portada';
-    foto='';
-    title='';
     constructor(props) {
         super(props);
         this.id = props.id;
         this.size = props.size;
+        console.log('construct');
     }
     componentDidMount() {
         console.log('mount');
@@ -19,7 +18,7 @@ class Logo extends Component {
 
 
     get_logo() {
-        if (this.foto === '') {
+        if (!this.state || this.state.foto === '') {
             fetch(Url(this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
                 .then(data => {
