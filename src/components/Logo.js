@@ -36,12 +36,13 @@ class Logo extends Component {
     }
 
     render() {
-        console.log(this,this.foto);
         if (this.foto !== '') {
+            console.log(this,this.foto,'ok');
             return (
                 <Image image={this.foto} title={this.title} />
             )
         }else{
+            console.log(this,this.foto);
             return null;
         }
     }
