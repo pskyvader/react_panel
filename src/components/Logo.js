@@ -26,12 +26,11 @@ class Logo extends Component {
                 .then(data => {
                     this.setState({ foto: data.foto, title: data.titulo });
                 });
-        }else{
-            console.log('asdf');
         }
     }
 
     render() {
+        console.log('render');
         return (
             <Image image={this.state.foto} title={this.state.title} />
         )
