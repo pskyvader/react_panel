@@ -55,8 +55,8 @@ class database:
     def prepare(self):
         if self._connection is None:
             self._instance = database()
-        #elif not self._connection.open:
-        #    self.conect()
+        elif not self._connection.is_connected():
+            self.conect()
 
         cursor = self._connection.cursor()
         return cursor
@@ -70,7 +70,7 @@ class database:
             cursor = self.prepare()
             self._connection.ping(reconnect=True)
             cursor.execute(sql)
-            self._connection.commit()
+            #self._connection.commit()
             if return_query:
                 rows = list(cursor.fetchall())
                 for r in rows:
