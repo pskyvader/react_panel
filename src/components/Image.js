@@ -5,7 +5,7 @@ function Image(props) {
     console.log('render',props);
     if (typeof (props.image) == 'object') {
         var image = props.image;
-        if (image.length === 0) {
+        if (image.length === 1) {
             return single_image(image[0], props.title);
         } else {
             return Image_multiple(image, props.title);
