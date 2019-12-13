@@ -4,8 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const API = React.createContext('http://localhost:8080');
-
 ReactDOM.render(
     <BrowserRouter>
         <App />
