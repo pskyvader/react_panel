@@ -28,18 +28,17 @@ class Logo extends Component {
                     this.foto=data.foto;
                     this.title= data.titulo;
                     this.render();
+                    this.setState({ foto: data.foto, title: data.titulo });
                 });
         }
     }
 
     render() {
         if (this.foto !== '') {
-            console.log('render',this,this.foto,this.title,'OK');
-            var ret= (
+            console.log('render',this,this.foto,this.title);
+            return (
                 <Image image={this.foto} title={this.title} />
             )
-            console.log(ret);
-            return ret;
         }else{
             console.log('render',this,this.foto,this.title);
             return null;
