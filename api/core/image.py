@@ -290,7 +290,7 @@ class image:
                     recorte["calidad"] = 0
 
                 recortes.append(recorte)
-        print(image.recortes_cache[modulo],type(image.recortes_cache[modulo]))
+        print(image.recortes_cache,type(image.recortes_cache ))
         image.recortes_cache[modulo]=recortes
         return recortes
 
