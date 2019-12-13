@@ -55,8 +55,8 @@ class database:
     def prepare(self):
         if self._connection is None:
             self._instance = database()
-        elif not self._connection.open:
-            self.conect()
+        #elif not self._connection.open:
+        #    self.conect()
 
         cursor = self._connection.cursor()
         return cursor
