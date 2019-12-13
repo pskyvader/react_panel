@@ -20,8 +20,8 @@ function Image(props) {
 
 function Image_multiple(images, title) {
     var image_list = [];
-    console.log(images);
     images.forEach(i => {
+        console.log(i);
         var static_image = [static_folder, i].join("/");
         image_list.push(<img className="" src={static_image} alt={title} />);
     });
