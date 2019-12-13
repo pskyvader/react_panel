@@ -14,7 +14,7 @@ class Logo extends Component {
         this.size = props.size;
     }
     componentDidMount() {
-        console.log('asdf',this);
+        console.log('asdf',this.foto);
         if (this.foto === '') {
             fetch(Url(API, this.resource, this.id, this.sub, this.size))
                 .then(response => response.json())
@@ -25,7 +25,7 @@ class Logo extends Component {
         }else{
             console.log(this.foto);
         }
-
+        this.render();
     }
 
     render() {
