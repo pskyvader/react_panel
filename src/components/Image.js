@@ -19,16 +19,13 @@ function Image_multiple(images, title) {
     images.forEach(i => {
         image_list.push(single_image(i, title));
     });
-    images.forEach(i => {
-        image_list.push(single_image(i, title));
-    });
     return image_list;
 }
 
 function single_image(image, title,id=0) {
     image = Object.values(image)[0];
     var static_image = [static_folder, image].join("/");
-    return <img className="" src={static_image} alt={title} id={id} />
+    return <img className="" src={static_image} alt={title} id={id} key={id.toString()}/>
 }
 
 
