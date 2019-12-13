@@ -14,9 +14,6 @@ class Logo extends Component {
         this.id = props.id;
         this.size = props.size;
     }
-    componentDidMount() {
-        this.get_logo();
-    }
 
 
     get_logo() {
@@ -30,7 +27,6 @@ class Logo extends Component {
     }
 
     render() {
-        console.log('render',this.state.foto);
         return (
             <Image image={this.state.foto} title={this.state.title} />
         )
