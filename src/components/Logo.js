@@ -24,7 +24,7 @@ class Logo extends Component {
                 .then(response => response.json())
                 .then(data => {
                     this.setState({ foto: data.foto, title: data.titulo });
-                    Local_storage.get(this.url, this.state);
+                    Local_storage.set(this.url, this.state);
                 });
         }
     }
