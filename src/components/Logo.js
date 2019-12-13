@@ -29,7 +29,7 @@ class Logo extends Component {
     }
 
     render() {
-        console.log('render',this.foto,this.title,this);
+        console.log('render',Logo.foto,this.title,this);
         return (
             <Image image={this.foto} title={this.title} />
         )
