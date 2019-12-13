@@ -9,10 +9,8 @@ class Logo extends Component {
         super(props);
         this.id = props.id;
         this.size = props.size;
-        console.log('construct');
     }
     componentDidMount() {
-        console.log('mount');
         this.get_logo();
     }
 
@@ -33,12 +31,10 @@ class Logo extends Component {
 
     render() {
         if (this.state && this.state.foto !== '') {
-            console.log(this,this.state.foto,'ok');
             return (
                 <Image image={this.state.foto} title={this.state.title} />
             )
         }else{
-            console.log(this);
             return null;
         }
     }
