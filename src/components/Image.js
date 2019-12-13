@@ -19,6 +19,9 @@ function Image_multiple(images, title) {
     images.forEach(i => {
         image_list.push(single_image(i, title));
     });
+    images.forEach(i => {
+        image_list.push(single_image(i, title));
+    });
     return image_list;
 }
 
