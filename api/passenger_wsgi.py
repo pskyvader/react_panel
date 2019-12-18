@@ -1,5 +1,9 @@
 import sys
 import os
+
+sys.path.insert(0, os.path.dirname(__file__))
+sys.path.append('python-library')
+
 from core.app import app
 from beaker.middleware import SessionMiddleware
 import json
@@ -7,7 +11,6 @@ import pprint
 from gzip import compress
 
 
-sys.path.insert(0, os.path.dirname(__file__))
 
 def application2(environ, start_response):
     app_web = app(os.path.dirname(__file__))
