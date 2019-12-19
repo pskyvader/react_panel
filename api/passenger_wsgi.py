@@ -9,13 +9,20 @@ from beaker.middleware import SessionMiddleware
 import json
 import pprint
 from gzip import compress
+import core.graphql_app
 
 
 
 def application2(environ, start_response):
-    app_web = app(os.path.dirname(__file__))
-    main_data = app_web.init(environ)
+    if environ["PATH_INFO"]=='/':
+        main_data=core.graphql_app.init(environ)
+    else:
+        app_web = app(os.path.dirname(__file__))
+        main_data = app_web.init(environ)
+
+
     ret = main_data["response_body"]
+    print(ret)
 
     if not isinstance(ret,str):
         ret=json.dumps(ret, indent=4)
@@ -28,9 +35,12 @@ def application2(environ, start_response):
         else:
             ret = b""
 
+    main_data["headers"].append(("Access-Control-Allow-Headers", "*"))
     main_data["headers"].append(("Access-Control-Allow-Origin", "*"))
+    
 
     start_response(main_data["status"], main_data["headers"])
+
     if "is_file" in main_data and main_data["is_file"]:
         f = open(main_data["file"], "rb")
         if "wsgi.file_wrapper" in environ:

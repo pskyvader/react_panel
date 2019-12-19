@@ -17,7 +17,7 @@ const styles = {
 const Header = ({ classes }) => (
     <AppBar position="static">
         <Toolbar>
-            <Typography variant="title" color="inherit">
+            <Typography variant="h4" color="inherit">
                 <Logo id='2' size='panel_min' />
                 Panel v3.0
       </Typography>

@@ -3,7 +3,27 @@ import Image from './Image';
 import Url from './Url';
 import Local_storage from './Local_storage';
 
-class Logo extends Component {
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+
+
+function Logo(props) {
+    const GET_LOGO = gql`
+            {
+                logo
+            }
+            `;
+    
+    const { loading, error, data } = useQuery(GET_LOGO);
+    if (loading) return '...';
+    if (error) return '...';
+    console.log(data);
+    return <Image image={data.foto} title={data.title} />;
+}
+
+
+
+class Logo2 extends Component {
     resource = 'logo';
     sub = 'portada';
     constructor(props) {
@@ -12,6 +32,12 @@ class Logo extends Component {
         this.size = props.size;
         this.url = Url(this.resource, this.id, this.sub, this.size);
         this.state = Local_storage.get(this.url, { foto: '', title: '' });
+
+        this.GET_LOGO = gql`
+            {
+                logo
+            }
+            `;
     }
     componentDidMount() {
         this.get_logo();
@@ -20,7 +46,7 @@ class Logo extends Component {
 
     get_logo() {
         if (this.state.foto === '') {
-            fetch(Url(this.resource, this.id, this.sub, this.size))
+            fetch(this.url)
                 .then(response => response.json())
                 .then(data => {
                     this.setState({ foto: data.foto, title: data.titulo });
@@ -39,4 +65,5 @@ class Logo extends Component {
         }
     }
 }
+
 export default Logo;
