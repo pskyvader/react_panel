@@ -4,6 +4,7 @@ folder=os.path.dirname(__file__)+'\\'
 file_str=folder+'bdd.json'
 
 with open(file_str,'r') as file1:
+    print(file1)
     tables=json.loads(file1)
     for t in tables:
         with open(folder+t['tablename']+'.json','w') as table:
