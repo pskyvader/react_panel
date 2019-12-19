@@ -9,13 +9,13 @@ from beaker.middleware import SessionMiddleware
 import json
 import pprint
 from gzip import compress
-import core.graphql_app
+import graphql.graphql_app
 
 
 
 def application2(environ, start_response):
     if environ["PATH_INFO"]=='/':
-        main_data=core.graphql_app.init(environ)
+        main_data=graphql.graphql_app.init(environ)
     else:
         app_web = app(os.path.dirname(__file__))
         main_data = app_web.init(environ)
