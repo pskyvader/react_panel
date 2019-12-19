@@ -1,1 +1,15 @@
-{"tablename": "configuracion", "idname": "idconfiguracion", "fields": [{"titulo": "variable", "tipo": "char(255)"}, {"titulo": "valor", "tipo": "longtext"}], "truncate": 0}
+{
+    "tablename": "configuracion",
+    "idname": "idconfiguracion",
+    "fields": [
+        {
+            "titulo": "variable",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "valor",
+            "tipo": "longtext"
+        }
+    ],
+    "truncate": 0
+}

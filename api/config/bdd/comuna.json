@@ -1,1 +1,27 @@
-{"tablename": "comuna", "idname": "idcomuna", "fields": [{"titulo": "idregion", "tipo": "int(11)"}, {"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "precio", "tipo": "int(11)"}, {"titulo": "orden", "tipo": "int(11)"}, {"titulo": "estado", "tipo": "tinyint(1)"}], "truncate": 1}
+{
+    "tablename": "comuna",
+    "idname": "idcomuna",
+    "fields": [
+        {
+            "titulo": "idregion",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "titulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "precio",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "orden",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "estado",
+            "tipo": "tinyint(1)"
+        }
+    ],
+    "truncate": 1
+}
