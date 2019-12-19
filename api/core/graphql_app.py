@@ -26,3 +26,4 @@ class Query(ObjectType):
     def resolve_logo(self, args, context, info):
         print(self,args,context,info)
         return f"asdf"
+
