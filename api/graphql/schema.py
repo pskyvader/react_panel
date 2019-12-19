@@ -1,6 +1,6 @@
 import graphene
 
-class Character(graphene.Interface):
+class Logo(graphene.Interface):
     id = graphene.ID()
     name = graphene.String()
     friends = graphene.List(lambda: Character)
