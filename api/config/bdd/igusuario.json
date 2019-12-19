@@ -1,0 +1,1 @@
+{"tablename": "igusuario", "idname": "idigusuario", "fields": [{"titulo": "usuario", "tipo": "char(255)"}, {"titulo": "password", "tipo": "char(255)"}, {"titulo": "estado", "tipo": "tinyint(1)"}], "truncate": 1}

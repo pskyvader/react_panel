@@ -1,0 +1,1 @@
+{"tablename": "pedidoestado", "idname": "idpedidoestado", "fields": [{"titulo": "tipo", "tipo": "int(11)"}, {"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "resumen", "tipo": "longtext"}, {"titulo": "color", "tipo": "char(255)"}, {"titulo": "orden", "tipo": "int(11)"}, {"titulo": "estado", "tipo": "tinyint(1)"}], "truncate": 1}

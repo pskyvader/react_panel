@@ -1,0 +1,1 @@
+{"tablename": "log", "idname": "idlog", "fields": [{"titulo": "administrador", "tipo": "char(255)"}, {"titulo": "tabla", "tipo": "char(255)"}, {"titulo": "accion", "tipo": "char(255)"}, {"titulo": "fecha", "tipo": "datetime"}], "truncate": 1}

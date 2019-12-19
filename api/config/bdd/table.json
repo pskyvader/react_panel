@@ -1,0 +1,1 @@
+{"tablename": "table", "idname": "idtable", "fields": [{"titulo": "tablename", "tipo": "char(255)"}, {"titulo": "idname", "tipo": "char(255)"}, {"titulo": "fields", "tipo": "longtext"}, {"titulo": "truncate", "tipo": "tinyint(1)"}], "truncate": 0}

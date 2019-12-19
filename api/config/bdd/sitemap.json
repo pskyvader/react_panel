@@ -1,0 +1,1 @@
+{"tablename": "sitemap", "idname": "idsitemap", "fields": [{"titulo": "idpadre", "tipo": "int(11)"}, {"titulo": "url", "tipo": "char(255)"}, {"titulo": "depth", "tipo": "int(11)"}, {"titulo": "valid", "tipo": "char(255)"}, {"titulo": "ready", "tipo": "tinyint(1)"}], "truncate": 1}
