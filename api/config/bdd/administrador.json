@@ -1,1 +1,27 @@
-{"tablename": "administrador", "idname": "idadministrador", "fields": [{"titulo": "tipo", "tipo": "int(11)"}, {"titulo": "email", "tipo": "char(255)"}, {"titulo": "pass", "tipo": "char(255)"}, {"titulo": "nombre", "tipo": "char(255)"}, {"titulo": "foto", "tipo": "longtext"}, {"titulo": "estado", "tipo": "tinyint(1)"}, {"titulo": "cookie", "tipo": "char(255)"}], "truncate": 0}
+{
+    "tablename": "administrador",
+    "idname": "idadministrador",
+    "fields": [{
+        "titulo": "tipo",
+        "tipo": "int(11)"
+    }, {
+        "titulo": "email",
+        "tipo": "char(255)"
+    }, {
+        "titulo": "pass",
+        "tipo": "char(255)"
+    }, {
+        "titulo": "nombre",
+        "tipo": "char(255)"
+    }, {
+        "titulo": "foto",
+        "tipo": "longtext"
+    }, {
+        "titulo": "estado",
+        "tipo": "tinyint(1)"
+    }, {
+        "titulo": "cookie",
+        "tipo": "char(255)"
+    }],
+    "truncate": 0
+}
