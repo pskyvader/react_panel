@@ -83,7 +83,7 @@ class database:
                     cache.delete_cache()
 
             cursor.close()
-        except pymysql.InternalError as error:
+        except mysql.connector.Error as error:
             code, message = error.args
             self._connection.rollback()
             raise RuntimeError("error DB query: ", code, message, sql)
