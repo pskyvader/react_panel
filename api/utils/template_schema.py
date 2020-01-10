@@ -4,7 +4,8 @@ import graphene
 from ..models import TABLENAME_model
 from ..resolver import resolve
 
-# __REPLACE
+# __REPLACE__
+
 class TABLENAME_schema(SQLAlchemyObjectType):
     class Meta:
         model = TABLENAME_model
@@ -25,4 +26,4 @@ def resolve_all_TABLENAME( args, info, **kwargs):
 all_TABLENAME = SQLAlchemyConnectionField(TABLENAME_schema,EXTRA_FIELDS)
 TABLENAME = graphene.Field(TABLENAME_schema,idTABLENAME=graphene.Int(),EXTRA_FIELDS)
 
-# __REPLACE
+# __REPLACE__
