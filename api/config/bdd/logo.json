@@ -1,1 +1,19 @@
-{"tablename": "logo", "idname": "idlogo", "fields": [{"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "foto", "tipo": "longtext"}, {"titulo": "orden", "tipo": "int(11)"}], "truncate": 0}
+{
+    "tablename": "logo",
+    "idname": "idlogo",
+    "fields": [
+        {
+            "titulo": "titulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "foto",
+            "tipo": "json"
+        },
+        {
+            "titulo": "orden",
+            "tipo": "int(11)"
+        }
+    ],
+    "truncate": 0
+}

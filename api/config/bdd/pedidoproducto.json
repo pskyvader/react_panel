@@ -1,1 +1,51 @@
-{"tablename": "pedidoproducto", "idname": "idpedidoproducto", "fields": [{"titulo": "idpedido", "tipo": "int(11)"}, {"titulo": "idpedidodireccion", "tipo": "int(11)"}, {"titulo": "idproducto", "tipo": "int(11)"}, {"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "foto", "tipo": "char(255)"}, {"titulo": "mensaje", "tipo": "longtext"}, {"titulo": "idproductoatributo", "tipo": "int(11)"}, {"titulo": "titulo_atributo", "tipo": "char(255)"}, {"titulo": "precio", "tipo": "int(11)"}, {"titulo": "cantidad", "tipo": "int(11)"}, {"titulo": "total", "tipo": "int(11)"}], "truncate": 1}
+{
+    "tablename": "pedidoproducto",
+    "idname": "idpedidoproducto",
+    "fields": [
+        {
+            "titulo": "idpedido",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "idpedidodireccion",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "idproducto",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "titulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "foto",
+            "tipo": "json"
+        },
+        {
+            "titulo": "mensaje",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "idproductoatributo",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "titulo_atributo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "precio",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "cantidad",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "total",
+            "tipo": "int(11)"
+        }
+    ],
+    "truncate": 1
+}

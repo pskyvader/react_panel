@@ -1,1 +1,23 @@
-{"tablename": "profile", "idname": "idprofile", "fields": [{"titulo": "tipo", "tipo": "int(11)"}, {"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "orden", "tipo": "int(11)"}, {"titulo": "estado", "tipo": "tinyint(1)"}], "truncate": 0}
+{
+    "tablename": "profile",
+    "idname": "idprofile",
+    "fields": [
+        {
+            "titulo": "tipo",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "titulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "orden",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "estado",
+            "tipo": "tinyint(1)"
+        }
+    ],
+    "truncate": 0
+}

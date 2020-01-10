@@ -1,1 +1,39 @@
-{"tablename": "texto", "idname": "idtexto", "fields": [{"titulo": "tipo", "tipo": "char(255)"}, {"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "descripcion", "tipo": "longtext"}, {"titulo": "texto", "tipo": "char(255)"}, {"titulo": "mapa", "tipo": "longtext"}, {"titulo": "orden", "tipo": "int(11)"}, {"titulo": "estado", "tipo": "tinyint(1)"}], "truncate": 1}
+{
+    "tablename": "texto",
+    "idname": "idtexto",
+    "fields": [
+        {
+            "titulo": "tipo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "titulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "url",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "descripcion",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "texto",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "mapa",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "orden",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "estado",
+            "tipo": "tinyint(1)"
+        }
+    ],
+    "truncate": 1
+}

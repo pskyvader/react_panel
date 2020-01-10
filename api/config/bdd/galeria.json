@@ -20,7 +20,7 @@
         },
         {
             "titulo": "foto",
-            "tipo": "longtext"
+            "tipo": "json"
         },
         {
             "titulo": "resumen",

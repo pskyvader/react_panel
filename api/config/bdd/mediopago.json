@@ -1,1 +1,27 @@
-{"tablename": "mediopago", "idname": "idmediopago", "fields": [{"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "resumen", "tipo": "longtext"}, {"titulo": "descripcion", "tipo": "longtext"}, {"titulo": "orden", "tipo": "int(11)"}, {"titulo": "estado", "tipo": "tinyint(1)"}], "truncate": 1}
+{
+    "tablename": "mediopago",
+    "idname": "idmediopago",
+    "fields": [
+        {
+            "titulo": "titulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "resumen",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "descripcion",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "orden",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "estado",
+            "tipo": "tinyint(1)"
+        }
+    ],
+    "truncate": 1
+}

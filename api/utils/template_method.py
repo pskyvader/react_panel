@@ -1,0 +1,4 @@
+all_TABLENAME = TABLENAME_method.all_TABLENAME
+    resolve_all_TABLENAME = TABLENAME_method.resolve_all_TABLENAME
+    TABLENAME = TABLENAME_method.TABLENAME
+    resolve_TABLENAME = TABLENAME_method.resolve_TABLENAME

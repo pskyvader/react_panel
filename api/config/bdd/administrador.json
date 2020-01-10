@@ -10,7 +10,7 @@
             "tipo": "char(255)"
         },
         {
-            "titulo": "pass",
+            "titulo": "password",
             "tipo": "char(255)"
         },
         {
@@ -19,7 +19,7 @@
         },
         {
             "titulo": "foto",
-            "tipo": "longtext"
+            "tipo": "json"
         },
         {
             "titulo": "estado",

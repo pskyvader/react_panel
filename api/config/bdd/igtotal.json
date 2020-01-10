@@ -1,1 +1,19 @@
-{"tablename": "igtotal", "idname": "idigtotal", "fields": [{"titulo": "tag", "tipo": "char(255)"}, {"titulo": "fecha", "tipo": "datetime"}, {"titulo": "cantidad", "tipo": "int(11)"}], "truncate": 1}
+{
+    "tablename": "igtotal",
+    "idname": "idigtotal",
+    "fields": [
+        {
+            "titulo": "tag",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "fecha",
+            "tipo": "datetime"
+        },
+        {
+            "titulo": "cantidad",
+            "tipo": "int(11)"
+        }
+    ],
+    "truncate": 1
+}

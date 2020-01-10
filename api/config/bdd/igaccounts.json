@@ -1,1 +1,75 @@
-{"tablename": "igaccounts", "idname": "idigaccounts", "fields": [{"titulo": "pk", "tipo": "char(255)"}, {"titulo": "username", "tipo": "char(255)"}, {"titulo": "full_name", "tipo": "char(255)"}, {"titulo": "profile_pic_url", "tipo": "char(255)"}, {"titulo": "biography", "tipo": "longtext"}, {"titulo": "follower_count", "tipo": "int(11)"}, {"titulo": "following_count", "tipo": "int(11)"}, {"titulo": "has_anonymous_profile_picture", "tipo": "tinyint(1)"}, {"titulo": "is_private", "tipo": "tinyint(1)"}, {"titulo": "is_business", "tipo": "tinyint(1)"}, {"titulo": "is_verified", "tipo": "tinyint(1)"}, {"titulo": "media_count", "tipo": "int(11)"}, {"titulo": "fecha", "tipo": "datetime"}, {"titulo": "following", "tipo": "tinyint(1)"}, {"titulo": "follower", "tipo": "tinyint(1)"}, {"titulo": "favorito", "tipo": "tinyint(1)"}, {"titulo": "hashtag", "tipo": "char(255)"}], "truncate": 1}
+{
+    "tablename": "igaccounts",
+    "idname": "idigaccounts",
+    "fields": [
+        {
+            "titulo": "pk",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "username",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "full_name",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "profile_pic_url",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "biography",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "follower_count",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "following_count",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "has_anonymous_profile_picture",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "is_private",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "is_business",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "is_verified",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "media_count",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "fecha",
+            "tipo": "datetime"
+        },
+        {
+            "titulo": "following",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "follower",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "favorito",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "hashtag",
+            "tipo": "char(255)"
+        }
+    ],
+    "truncate": 1
+}

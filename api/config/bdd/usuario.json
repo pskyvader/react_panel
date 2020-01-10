@@ -1,1 +1,39 @@
-{"tablename": "usuario", "idname": "idusuario", "fields": [{"titulo": "tipo", "tipo": "int(11)"}, {"titulo": "nombre", "tipo": "char(255)"}, {"titulo": "telefono", "tipo": "char(255)"}, {"titulo": "email", "tipo": "char(255)"}, {"titulo": "pass", "tipo": "char(255)"}, {"titulo": "foto", "tipo": "longtext"}, {"titulo": "estado", "tipo": "tinyint(1)"}, {"titulo": "cookie", "tipo": "char(255)"}], "truncate": 1}
+{
+    "tablename": "usuario",
+    "idname": "idusuario",
+    "fields": [
+        {
+            "titulo": "tipo",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "nombre",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "telefono",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "email",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "password",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "foto",
+            "tipo": "json"
+        },
+        {
+            "titulo": "estado",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "cookie",
+            "tipo": "char(255)"
+        }
+    ],
+    "truncate": 1
+}

@@ -1,1 +1,43 @@
-{"tablename": "ighashtag", "idname": "idighashtag", "fields": [{"tipo": "char(255)", "titulo": "hashtag"}, {"tipo": "int(11)", "titulo": "following"}, {"tipo": "int(11)", "titulo": "follower"}, {"tipo": "int(11)", "titulo": "removed"}, {"tipo": "int(11)", "titulo": "eficiencia"}, {"tipo": "int(11)", "titulo": "eficiencia2"}, {"tipo": "int(11)", "titulo": "total"}, {"tipo": "int(11)", "titulo": "orden"}, {"tipo": "tinyint(1)", "titulo": "estado"}], "truncate": 1}
+{
+    "tablename": "ighashtag",
+    "idname": "idighashtag",
+    "fields": [
+        {
+            "tipo": "char(255)",
+            "titulo": "hashtag"
+        },
+        {
+            "tipo": "int(11)",
+            "titulo": "following"
+        },
+        {
+            "tipo": "int(11)",
+            "titulo": "follower"
+        },
+        {
+            "tipo": "int(11)",
+            "titulo": "removed"
+        },
+        {
+            "tipo": "int(11)",
+            "titulo": "eficiencia"
+        },
+        {
+            "tipo": "int(11)",
+            "titulo": "eficiencia2"
+        },
+        {
+            "tipo": "int(11)",
+            "titulo": "total"
+        },
+        {
+            "tipo": "int(11)",
+            "titulo": "orden"
+        },
+        {
+            "tipo": "tinyint(1)",
+            "titulo": "estado"
+        }
+    ],
+    "truncate": 1
+}

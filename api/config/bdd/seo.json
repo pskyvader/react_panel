@@ -1,1 +1,67 @@
-{"tablename": "seo", "idname": "idseo", "fields": [{"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "url", "tipo": "char(255)"}, {"titulo": "foto", "tipo": "longtext"}, {"titulo": "banner", "tipo": "longtext"}, {"titulo": "modulo_front", "tipo": "char(255)"}, {"titulo": "modulo_back", "tipo": "char(255)"}, {"titulo": "tipo_modulo", "tipo": "int(11)"}, {"titulo": "link_menu", "tipo": "char(255)"}, {"titulo": "keywords", "tipo": "char(255)"}, {"titulo": "metadescripcion", "tipo": "longtext"}, {"titulo": "orden", "tipo": "int(11)"}, {"titulo": "menu", "tipo": "tinyint(1)"}, {"titulo": "submenu", "tipo": "tinyint(1)"}, {"titulo": "estado", "tipo": "tinyint(1)"}], "truncate": 1}
+{
+    "tablename": "seo",
+    "idname": "idseo",
+    "fields": [
+        {
+            "titulo": "titulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "url",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "subtitulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "foto",
+            "tipo": "json"
+        },
+        {
+            "titulo": "banner",
+            "tipo": "json"
+        },
+        {
+            "titulo": "modulo_front",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "modulo_back",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "tipo_modulo",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "link_menu",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "keywords",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "metadescripcion",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "orden",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "menu",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "submenu",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "estado",
+            "tipo": "tinyint(1)"
+        }
+    ],
+    "truncate": 1
+}

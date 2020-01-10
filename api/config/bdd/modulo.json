@@ -1,1 +1,51 @@
-{"tablename": "modulo", "idname": "idmodulo", "fields": [{"titulo": "idmoduloconfiguracion", "tipo": "int(11)"}, {"titulo": "tipo", "tipo": "int(11)"}, {"titulo": "titulo", "tipo": "char(255)"}, {"titulo": "menu", "tipo": "longtext"}, {"titulo": "mostrar", "tipo": "longtext"}, {"titulo": "detalle", "tipo": "longtext"}, {"titulo": "recortes", "tipo": "longtext"}, {"titulo": "orden", "tipo": "int(11)"}, {"titulo": "estado", "tipo": "longtext"}, {"titulo": "aside", "tipo": "tinyint(1)"}, {"titulo": "hijos", "tipo": "tinyint(1)"}], "truncate": 0}
+{
+    "tablename": "modulo",
+    "idname": "idmodulo",
+    "fields": [
+        {
+            "titulo": "idmoduloconfiguracion",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "tipo",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "titulo",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "menu",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "mostrar",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "detalle",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "recortes",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "orden",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "estado",
+            "tipo": "longtext"
+        },
+        {
+            "titulo": "aside",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "hijos",
+            "tipo": "tinyint(1)"
+        }
+    ],
+    "truncate": 0
+}

@@ -9,22 +9,31 @@ from beaker.middleware import SessionMiddleware
 import json
 import pprint
 from gzip import compress
-import graphql.graphql_app
+from graph_ql import graphql_app
+from graph_ql.database import init_db
 
+
+# import datetime
+
+
+init_db()
 
 
 def application2(environ, start_response):
     if environ["PATH_INFO"]=='/':
-        main_data=graphql.graphql_app.init(environ)
+        # a = datetime.datetime.now()
+        main_data=graphql_app.init(environ)
+        # b = datetime.datetime.now()
+        # c = b - a
+        # print(c.total_seconds())
     else:
         app_web = app(os.path.dirname(__file__))
         main_data = app_web.init(environ)
 
 
     ret = main_data["response_body"]
-    print(ret)
 
-    if not isinstance(ret,str):
+    if isinstance(ret,dict):
         ret=json.dumps(ret, indent=4)
 
     if isinstance(ret, str):

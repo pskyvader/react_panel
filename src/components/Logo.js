@@ -9,16 +9,21 @@ import { gql } from 'apollo-boost';
 
 function Logo(props) {
     const GET_LOGO = gql`
-            {
-                logo
-            }
-            `;
-    
-    const { loading, error, data } = useQuery(GET_LOGO);
+    query get_logo($idlogo: Int!) {
+        logo(idlogo: $idlogo) {
+            titulo
+            foto
+        }
+    }
+    `;
+
+    const variables={ variables: { idlogo: props.id}, }
+
+    const { loading, error, data } = useQuery(GET_LOGO, variables);
     if (loading) return '...';
-    if (error) return '...';
+    if (error) return 'Error';
     console.log(data);
-    return <Image image={data.foto} title={data.title} />;
+    return <Image image={data.foto} title={data.titulo} />;
 }
 
 
