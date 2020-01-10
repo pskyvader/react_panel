@@ -168,12 +168,13 @@ class Query(graphene.ObjectType):
     
     
 class Mutation(graphene.ObjectType):
+    pass
 # __MUTATION__
 
-    createPerson = schema_people.CreatePerson.Field()
-    updatePerson = schema_people.UpdatePerson.Field()
-    createPlanet = schema_planet.CreatePlanet.Field()
-    updatePlanet = schema_planet.UpdatePlanet.Field()
+    # createPerson = schema_people.CreatePerson.Field()
+    # updatePerson = schema_people.UpdatePerson.Field()
+    # createPlanet = schema_planet.CreatePlanet.Field()
+    # updatePlanet = schema_planet.UpdatePlanet.Field()
     
 # __MUTATION__
     
