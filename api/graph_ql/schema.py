@@ -8,176 +8,272 @@ class Query(graphene.ObjectType):
     node = relay.Node.Field()
 # __QUERY__
     
-    all_administrador = administrador_method.all_administrador
-    resolve_all_administrador = administrador_method.resolve_all_administrador
-    administrador = administrador_method.administrador
-    resolve_administrador = administrador_method.resolve_administrador
+    all_administrador = administrador_schema.all_administrador
+    resolve_all_administrador = administrador_schema.resolve_all_administrador
+    administrador = administrador_schema.administrador
+    resolve_administrador = administrador_schema.resolve_administrador
     
-    all_banner = banner_method.all_banner
-    resolve_all_banner = banner_method.resolve_all_banner
-    banner = banner_method.banner
-    resolve_banner = banner_method.resolve_banner
+    all_banner = banner_schema.all_banner
+    resolve_all_banner = banner_schema.resolve_all_banner
+    banner = banner_schema.banner
+    resolve_banner = banner_schema.resolve_banner
     
-    all_comuna = comuna_method.all_comuna
-    resolve_all_comuna = comuna_method.resolve_all_comuna
-    comuna = comuna_method.comuna
-    resolve_comuna = comuna_method.resolve_comuna
+    all_comuna = comuna_schema.all_comuna
+    resolve_all_comuna = comuna_schema.resolve_all_comuna
+    comuna = comuna_schema.comuna
+    resolve_comuna = comuna_schema.resolve_comuna
     
-    all_configuracion = configuracion_method.all_configuracion
-    resolve_all_configuracion = configuracion_method.resolve_all_configuracion
-    configuracion = configuracion_method.configuracion
-    resolve_configuracion = configuracion_method.resolve_configuracion
+    all_configuracion = configuracion_schema.all_configuracion
+    resolve_all_configuracion = configuracion_schema.resolve_all_configuracion
+    configuracion = configuracion_schema.configuracion
+    resolve_configuracion = configuracion_schema.resolve_configuracion
     
-    all_direccion = direccion_method.all_direccion
-    resolve_all_direccion = direccion_method.resolve_all_direccion
-    direccion = direccion_method.direccion
-    resolve_direccion = direccion_method.resolve_direccion
+    all_direccion = direccion_schema.all_direccion
+    resolve_all_direccion = direccion_schema.resolve_all_direccion
+    direccion = direccion_schema.direccion
+    resolve_direccion = direccion_schema.resolve_direccion
     
-    all_galeria = galeria_method.all_galeria
-    resolve_all_galeria = galeria_method.resolve_all_galeria
-    galeria = galeria_method.galeria
-    resolve_galeria = galeria_method.resolve_galeria
+    all_galeria = galeria_schema.all_galeria
+    resolve_all_galeria = galeria_schema.resolve_all_galeria
+    galeria = galeria_schema.galeria
+    resolve_galeria = galeria_schema.resolve_galeria
     
-    all_igaccounts = igaccounts_method.all_igaccounts
-    resolve_all_igaccounts = igaccounts_method.resolve_all_igaccounts
-    igaccounts = igaccounts_method.igaccounts
-    resolve_igaccounts = igaccounts_method.resolve_igaccounts
+    all_igaccounts = igaccounts_schema.all_igaccounts
+    resolve_all_igaccounts = igaccounts_schema.resolve_all_igaccounts
+    igaccounts = igaccounts_schema.igaccounts
+    resolve_igaccounts = igaccounts_schema.resolve_igaccounts
     
-    all_ighashtag = ighashtag_method.all_ighashtag
-    resolve_all_ighashtag = ighashtag_method.resolve_all_ighashtag
-    ighashtag = ighashtag_method.ighashtag
-    resolve_ighashtag = ighashtag_method.resolve_ighashtag
+    all_ighashtag = ighashtag_schema.all_ighashtag
+    resolve_all_ighashtag = ighashtag_schema.resolve_all_ighashtag
+    ighashtag = ighashtag_schema.ighashtag
+    resolve_ighashtag = ighashtag_schema.resolve_ighashtag
     
-    all_igtotal = igtotal_method.all_igtotal
-    resolve_all_igtotal = igtotal_method.resolve_all_igtotal
-    igtotal = igtotal_method.igtotal
-    resolve_igtotal = igtotal_method.resolve_igtotal
+    all_igtotal = igtotal_schema.all_igtotal
+    resolve_all_igtotal = igtotal_schema.resolve_all_igtotal
+    igtotal = igtotal_schema.igtotal
+    resolve_igtotal = igtotal_schema.resolve_igtotal
     
-    all_igusuario = igusuario_method.all_igusuario
-    resolve_all_igusuario = igusuario_method.resolve_all_igusuario
-    igusuario = igusuario_method.igusuario
-    resolve_igusuario = igusuario_method.resolve_igusuario
+    all_igusuario = igusuario_schema.all_igusuario
+    resolve_all_igusuario = igusuario_schema.resolve_all_igusuario
+    igusuario = igusuario_schema.igusuario
+    resolve_igusuario = igusuario_schema.resolve_igusuario
     
-    all_log = log_method.all_log
-    resolve_all_log = log_method.resolve_all_log
-    log = log_method.log
-    resolve_log = log_method.resolve_log
+    all_log = log_schema.all_log
+    resolve_all_log = log_schema.resolve_all_log
+    log = log_schema.log
+    resolve_log = log_schema.resolve_log
     
-    all_logo = logo_method.all_logo
-    resolve_all_logo = logo_method.resolve_all_logo
-    logo = logo_method.logo
-    resolve_logo = logo_method.resolve_logo
+    all_logo = logo_schema.all_logo
+    resolve_all_logo = logo_schema.resolve_all_logo
+    logo = logo_schema.logo
+    resolve_logo = logo_schema.resolve_logo
     
-    all_mediopago = mediopago_method.all_mediopago
-    resolve_all_mediopago = mediopago_method.resolve_all_mediopago
-    mediopago = mediopago_method.mediopago
-    resolve_mediopago = mediopago_method.resolve_mediopago
+    all_mediopago = mediopago_schema.all_mediopago
+    resolve_all_mediopago = mediopago_schema.resolve_all_mediopago
+    mediopago = mediopago_schema.mediopago
+    resolve_mediopago = mediopago_schema.resolve_mediopago
     
-    all_modulo = modulo_method.all_modulo
-    resolve_all_modulo = modulo_method.resolve_all_modulo
-    modulo = modulo_method.modulo
-    resolve_modulo = modulo_method.resolve_modulo
+    all_modulo = modulo_schema.all_modulo
+    resolve_all_modulo = modulo_schema.resolve_all_modulo
+    modulo = modulo_schema.modulo
+    resolve_modulo = modulo_schema.resolve_modulo
     
-    all_moduloconfiguracion = moduloconfiguracion_method.all_moduloconfiguracion
-    resolve_all_moduloconfiguracion = moduloconfiguracion_method.resolve_all_moduloconfiguracion
-    moduloconfiguracion = moduloconfiguracion_method.moduloconfiguracion
-    resolve_moduloconfiguracion = moduloconfiguracion_method.resolve_moduloconfiguracion
+    all_moduloconfiguracion = moduloconfiguracion_schema.all_moduloconfiguracion
+    resolve_all_moduloconfiguracion = moduloconfiguracion_schema.resolve_all_moduloconfiguracion
+    moduloconfiguracion = moduloconfiguracion_schema.moduloconfiguracion
+    resolve_moduloconfiguracion = moduloconfiguracion_schema.resolve_moduloconfiguracion
     
-    all_pedido = pedido_method.all_pedido
-    resolve_all_pedido = pedido_method.resolve_all_pedido
-    pedido = pedido_method.pedido
-    resolve_pedido = pedido_method.resolve_pedido
+    all_pedido = pedido_schema.all_pedido
+    resolve_all_pedido = pedido_schema.resolve_all_pedido
+    pedido = pedido_schema.pedido
+    resolve_pedido = pedido_schema.resolve_pedido
     
-    all_pedidodireccion = pedidodireccion_method.all_pedidodireccion
-    resolve_all_pedidodireccion = pedidodireccion_method.resolve_all_pedidodireccion
-    pedidodireccion = pedidodireccion_method.pedidodireccion
-    resolve_pedidodireccion = pedidodireccion_method.resolve_pedidodireccion
+    all_pedidodireccion = pedidodireccion_schema.all_pedidodireccion
+    resolve_all_pedidodireccion = pedidodireccion_schema.resolve_all_pedidodireccion
+    pedidodireccion = pedidodireccion_schema.pedidodireccion
+    resolve_pedidodireccion = pedidodireccion_schema.resolve_pedidodireccion
     
-    all_pedidoestado = pedidoestado_method.all_pedidoestado
-    resolve_all_pedidoestado = pedidoestado_method.resolve_all_pedidoestado
-    pedidoestado = pedidoestado_method.pedidoestado
-    resolve_pedidoestado = pedidoestado_method.resolve_pedidoestado
+    all_pedidoestado = pedidoestado_schema.all_pedidoestado
+    resolve_all_pedidoestado = pedidoestado_schema.resolve_all_pedidoestado
+    pedidoestado = pedidoestado_schema.pedidoestado
+    resolve_pedidoestado = pedidoestado_schema.resolve_pedidoestado
     
-    all_pedidoproducto = pedidoproducto_method.all_pedidoproducto
-    resolve_all_pedidoproducto = pedidoproducto_method.resolve_all_pedidoproducto
-    pedidoproducto = pedidoproducto_method.pedidoproducto
-    resolve_pedidoproducto = pedidoproducto_method.resolve_pedidoproducto
+    all_pedidoproducto = pedidoproducto_schema.all_pedidoproducto
+    resolve_all_pedidoproducto = pedidoproducto_schema.resolve_all_pedidoproducto
+    pedidoproducto = pedidoproducto_schema.pedidoproducto
+    resolve_pedidoproducto = pedidoproducto_schema.resolve_pedidoproducto
     
-    all_producto = producto_method.all_producto
-    resolve_all_producto = producto_method.resolve_all_producto
-    producto = producto_method.producto
-    resolve_producto = producto_method.resolve_producto
+    all_producto = producto_schema.all_producto
+    resolve_all_producto = producto_schema.resolve_all_producto
+    producto = producto_schema.producto
+    resolve_producto = producto_schema.resolve_producto
     
-    all_productocategoria = productocategoria_method.all_productocategoria
-    resolve_all_productocategoria = productocategoria_method.resolve_all_productocategoria
-    productocategoria = productocategoria_method.productocategoria
-    resolve_productocategoria = productocategoria_method.resolve_productocategoria
+    all_productocategoria = productocategoria_schema.all_productocategoria
+    resolve_all_productocategoria = productocategoria_schema.resolve_all_productocategoria
+    productocategoria = productocategoria_schema.productocategoria
+    resolve_productocategoria = productocategoria_schema.resolve_productocategoria
     
-    all_profile = profile_method.all_profile
-    resolve_all_profile = profile_method.resolve_all_profile
-    profile = profile_method.profile
-    resolve_profile = profile_method.resolve_profile
+    all_profile = profile_schema.all_profile
+    resolve_all_profile = profile_schema.resolve_all_profile
+    profile = profile_schema.profile
+    resolve_profile = profile_schema.resolve_profile
     
-    all_region = region_method.all_region
-    resolve_all_region = region_method.resolve_all_region
-    region = region_method.region
-    resolve_region = region_method.resolve_region
+    all_region = region_schema.all_region
+    resolve_all_region = region_schema.resolve_all_region
+    region = region_schema.region
+    resolve_region = region_schema.resolve_region
     
-    all_seccion = seccion_method.all_seccion
-    resolve_all_seccion = seccion_method.resolve_all_seccion
-    seccion = seccion_method.seccion
-    resolve_seccion = seccion_method.resolve_seccion
+    all_seccion = seccion_schema.all_seccion
+    resolve_all_seccion = seccion_schema.resolve_all_seccion
+    seccion = seccion_schema.seccion
+    resolve_seccion = seccion_schema.resolve_seccion
     
-    all_seccioncategoria = seccioncategoria_method.all_seccioncategoria
-    resolve_all_seccioncategoria = seccioncategoria_method.resolve_all_seccioncategoria
-    seccioncategoria = seccioncategoria_method.seccioncategoria
-    resolve_seccioncategoria = seccioncategoria_method.resolve_seccioncategoria
+    all_seccioncategoria = seccioncategoria_schema.all_seccioncategoria
+    resolve_all_seccioncategoria = seccioncategoria_schema.resolve_all_seccioncategoria
+    seccioncategoria = seccioncategoria_schema.seccioncategoria
+    resolve_seccioncategoria = seccioncategoria_schema.resolve_seccioncategoria
     
-    all_seo = seo_method.all_seo
-    resolve_all_seo = seo_method.resolve_all_seo
-    seo = seo_method.seo
-    resolve_seo = seo_method.resolve_seo
+    all_seo = seo_schema.all_seo
+    resolve_all_seo = seo_schema.resolve_all_seo
+    seo = seo_schema.seo
+    resolve_seo = seo_schema.resolve_seo
     
-    all_sitemap = sitemap_method.all_sitemap
-    resolve_all_sitemap = sitemap_method.resolve_all_sitemap
-    sitemap = sitemap_method.sitemap
-    resolve_sitemap = sitemap_method.resolve_sitemap
+    all_sitemap = sitemap_schema.all_sitemap
+    resolve_all_sitemap = sitemap_schema.resolve_all_sitemap
+    sitemap = sitemap_schema.sitemap
+    resolve_sitemap = sitemap_schema.resolve_sitemap
     
-    all_table = table_method.all_table
-    resolve_all_table = table_method.resolve_all_table
-    table = table_method.table
-    resolve_table = table_method.resolve_table
+    all_table = table_schema.all_table
+    resolve_all_table = table_schema.resolve_all_table
+    table = table_schema.table
+    resolve_table = table_schema.resolve_table
     
-    all_texto = texto_method.all_texto
-    resolve_all_texto = texto_method.resolve_all_texto
-    texto = texto_method.texto
-    resolve_texto = texto_method.resolve_texto
+    all_texto = texto_schema.all_texto
+    resolve_all_texto = texto_schema.resolve_all_texto
+    texto = texto_schema.texto
+    resolve_texto = texto_schema.resolve_texto
     
-    all_usuario = usuario_method.all_usuario
-    resolve_all_usuario = usuario_method.resolve_all_usuario
-    usuario = usuario_method.usuario
-    resolve_usuario = usuario_method.resolve_usuario
+    all_usuario = usuario_schema.all_usuario
+    resolve_all_usuario = usuario_schema.resolve_all_usuario
+    usuario = usuario_schema.usuario
+    resolve_usuario = usuario_schema.resolve_usuario
     
-    all_usuariodireccion = usuariodireccion_method.all_usuariodireccion
-    resolve_all_usuariodireccion = usuariodireccion_method.resolve_all_usuariodireccion
-    usuariodireccion = usuariodireccion_method.usuariodireccion
-    resolve_usuariodireccion = usuariodireccion_method.resolve_usuariodireccion
+    all_usuariodireccion = usuariodireccion_schema.all_usuariodireccion
+    resolve_all_usuariodireccion = usuariodireccion_schema.resolve_all_usuariodireccion
+    usuariodireccion = usuariodireccion_schema.usuariodireccion
+    resolve_usuariodireccion = usuariodireccion_schema.resolve_usuariodireccion
     
 # __QUERY__
     
     
     
     
+    
+    
+    
+    
 class Mutation(graphene.ObjectType):
-    pass
-# __MUTATION__
 
-    # createPerson = schema_people.CreatePerson.Field()
-    # updatePerson = schema_people.UpdatePerson.Field()
-    # createPlanet = schema_planet.CreatePlanet.Field()
-    # updatePlanet = schema_planet.UpdatePlanet.Field()
+# __MUTATION__
+    
+    create_administrador = administrador_schema.create_administrador.Field()
+    update_administrador = administrador_schema.update_administrador.Field()
+    
+    create_banner = banner_schema.create_banner.Field()
+    update_banner = banner_schema.update_banner.Field()
+    
+    create_comuna = comuna_schema.create_comuna.Field()
+    update_comuna = comuna_schema.update_comuna.Field()
+    
+    create_configuracion = configuracion_schema.create_configuracion.Field()
+    update_configuracion = configuracion_schema.update_configuracion.Field()
+    
+    create_direccion = direccion_schema.create_direccion.Field()
+    update_direccion = direccion_schema.update_direccion.Field()
+    
+    create_galeria = galeria_schema.create_galeria.Field()
+    update_galeria = galeria_schema.update_galeria.Field()
+    
+    create_igaccounts = igaccounts_schema.create_igaccounts.Field()
+    update_igaccounts = igaccounts_schema.update_igaccounts.Field()
+    
+    create_ighashtag = ighashtag_schema.create_ighashtag.Field()
+    update_ighashtag = ighashtag_schema.update_ighashtag.Field()
+    
+    create_igtotal = igtotal_schema.create_igtotal.Field()
+    update_igtotal = igtotal_schema.update_igtotal.Field()
+    
+    create_igusuario = igusuario_schema.create_igusuario.Field()
+    update_igusuario = igusuario_schema.update_igusuario.Field()
+    
+    create_log = log_schema.create_log.Field()
+    update_log = log_schema.update_log.Field()
+    
+    create_logo = logo_schema.create_logo.Field()
+    update_logo = logo_schema.update_logo.Field()
+    
+    create_mediopago = mediopago_schema.create_mediopago.Field()
+    update_mediopago = mediopago_schema.update_mediopago.Field()
+    
+    create_modulo = modulo_schema.create_modulo.Field()
+    update_modulo = modulo_schema.update_modulo.Field()
+    
+    create_moduloconfiguracion = moduloconfiguracion_schema.create_moduloconfiguracion.Field()
+    update_moduloconfiguracion = moduloconfiguracion_schema.update_moduloconfiguracion.Field()
+    
+    create_pedido = pedido_schema.create_pedido.Field()
+    update_pedido = pedido_schema.update_pedido.Field()
+    
+    create_pedidodireccion = pedidodireccion_schema.create_pedidodireccion.Field()
+    update_pedidodireccion = pedidodireccion_schema.update_pedidodireccion.Field()
+    
+    create_pedidoestado = pedidoestado_schema.create_pedidoestado.Field()
+    update_pedidoestado = pedidoestado_schema.update_pedidoestado.Field()
+    
+    create_pedidoproducto = pedidoproducto_schema.create_pedidoproducto.Field()
+    update_pedidoproducto = pedidoproducto_schema.update_pedidoproducto.Field()
+    
+    create_producto = producto_schema.create_producto.Field()
+    update_producto = producto_schema.update_producto.Field()
+    
+    create_productocategoria = productocategoria_schema.create_productocategoria.Field()
+    update_productocategoria = productocategoria_schema.update_productocategoria.Field()
+    
+    create_profile = profile_schema.create_profile.Field()
+    update_profile = profile_schema.update_profile.Field()
+    
+    create_region = region_schema.create_region.Field()
+    update_region = region_schema.update_region.Field()
+    
+    create_seccion = seccion_schema.create_seccion.Field()
+    update_seccion = seccion_schema.update_seccion.Field()
+    
+    create_seccioncategoria = seccioncategoria_schema.create_seccioncategoria.Field()
+    update_seccioncategoria = seccioncategoria_schema.update_seccioncategoria.Field()
+    
+    create_seo = seo_schema.create_seo.Field()
+    update_seo = seo_schema.update_seo.Field()
+    
+    create_sitemap = sitemap_schema.create_sitemap.Field()
+    update_sitemap = sitemap_schema.update_sitemap.Field()
+    
+    create_table = table_schema.create_table.Field()
+    update_table = table_schema.update_table.Field()
+    
+    create_texto = texto_schema.create_texto.Field()
+    update_texto = texto_schema.update_texto.Field()
+    
+    create_usuario = usuario_schema.create_usuario.Field()
+    update_usuario = usuario_schema.update_usuario.Field()
+    
+    create_usuariodireccion = usuariodireccion_schema.create_usuariodireccion.Field()
+    update_usuariodireccion = usuariodireccion_schema.update_usuariodireccion.Field()
     
 # __MUTATION__
+    
+    
+    
+    
     
     
 
@@ -193,8 +289,12 @@ class Mutation(graphene.ObjectType):
 
 # __TYPES__
     
-schema = graphene.Schema(query=Query, types=[administrador_method.administrador_schema,banner_method.banner_schema,comuna_method.comuna_schema,configuracion_method.configuracion_schema,direccion_method.direccion_schema,galeria_method.galeria_schema,igaccounts_method.igaccounts_schema,ighashtag_method.ighashtag_schema,igtotal_method.igtotal_schema,igusuario_method.igusuario_schema,log_method.log_schema,logo_method.logo_schema,mediopago_method.mediopago_schema,modulo_method.modulo_schema,moduloconfiguracion_method.moduloconfiguracion_schema,pedido_method.pedido_schema,pedidodireccion_method.pedidodireccion_schema,pedidoestado_method.pedidoestado_schema,pedidoproducto_method.pedidoproducto_schema,producto_method.producto_schema,productocategoria_method.productocategoria_schema,profile_method.profile_schema,region_method.region_schema,seccion_method.seccion_schema,seccioncategoria_method.seccioncategoria_schema,seo_method.seo_schema,sitemap_method.sitemap_schema,table_method.table_schema,texto_method.texto_schema,usuario_method.usuario_schema,usuariodireccion_method.usuariodireccion_schema,])
+schema = graphene.Schema(query=Query,mutation=Mutation, types=[administrador_schema.administrador_schema,banner_schema.banner_schema,comuna_schema.comuna_schema,configuracion_schema.configuracion_schema,direccion_schema.direccion_schema,galeria_schema.galeria_schema,igaccounts_schema.igaccounts_schema,ighashtag_schema.ighashtag_schema,igtotal_schema.igtotal_schema,igusuario_schema.igusuario_schema,log_schema.log_schema,logo_schema.logo_schema,mediopago_schema.mediopago_schema,modulo_schema.modulo_schema,moduloconfiguracion_schema.moduloconfiguracion_schema,pedido_schema.pedido_schema,pedidodireccion_schema.pedidodireccion_schema,pedidoestado_schema.pedidoestado_schema,pedidoproducto_schema.pedidoproducto_schema,producto_schema.producto_schema,productocategoria_schema.productocategoria_schema,profile_schema.profile_schema,region_schema.region_schema,seccion_schema.seccion_schema,seccioncategoria_schema.seccioncategoria_schema,seo_schema.seo_schema,sitemap_schema.sitemap_schema,table_schema.table_schema,texto_schema.texto_schema,usuario_schema.usuario_schema,usuariodireccion_schema.usuariodireccion_schema,])
 # __TYPES__
+    
+    
+    
+    
     
     
     

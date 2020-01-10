@@ -34,7 +34,7 @@ TABLENAME = graphene.Field(TABLENAME_schema,idTABLENAME=graphene.Int(),EXTRA_FIE
 # Create a generic class to mutualize description of TABLENAME _attributes for both queries and mutations
 class TABLENAME_attribute:
     # name = graphene.String(description="Name of the TABLENAME.")
-    EXTRA_FIELDS
+    EXTRA_FIELDS_BREAK_LINE
 
 
 
@@ -58,12 +58,12 @@ class create_TABLENAME(graphene.Mutation):
 
 class update_TABLENAME_input(graphene.InputObjectType, TABLENAME_attribute):
     """Arguments to update a TABLENAME."""
-    id = graphene.ID(required=True, description="Global Id of the TABLENAME.")
+    idTABLENAME = graphene.ID(required=True, description="Global Id of the TABLENAME.")
 
 
 class update_TABLENAME(graphene.Mutation):
     """Update a TABLENAME."""
-    TABLENAME = graphene.Field(lambda: TABLENAME, description="TABLENAME updated by this mutation.")
+    TABLENAME = graphene.Field(lambda: TABLENAME_schema, description="TABLENAME updated by this mutation.")
 
     class Arguments:
         input = update_TABLENAME_input(required=True)

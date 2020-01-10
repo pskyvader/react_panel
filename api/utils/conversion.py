@@ -129,16 +129,26 @@ def json_to_schema(force=False):
         for field in fields:
             if field["tipo"] != "json":
                 fields_str += (
+                    field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + "\n    "
+                )
+        template = template.replace("EXTRA_FIELDS_BREAK_LINE", fields_str[:-1])
+
+        
+        fields_str = ""
+        for field in fields:
+            if field["tipo"] != "json":
+                fields_str += (
                     field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ","
                 )
-
         template = template.replace("EXTRA_FIELDS", fields_str[:-1])
+
+
         fields_str = ""
         for field in fields:
             fields_str += "'" + field["titulo"] + "',"
         template = template.replace("ONLY_FIELDS", fields_str[:-1])
 
-        schema_file = join(schemas_dir, f + "_method.py")
+        schema_file = join(schemas_dir, f + "_schema.py")
         if not force and isfile(schema_file):
             print("El archivo ", schema_file, " Existe, saltando...")
         else:
@@ -184,12 +194,12 @@ def json_to_mutation():
 
 def json_to_types():
     json_files = file_list(bdd_dir)
-    template = "schema = graphene.Schema(query=Query, types=[TYPES])"
+    template = "schema = graphene.Schema(query=Query,mutation=Mutation, types=[TYPES])"
     type_classes = ""
     type_str = ""
     for f in json_files:
         f = f.replace(".json", "")
-        type_str += f + "_method." + f + "_schema,"
+        type_str += f + "_schema." + f + "_schema,"
 
     type_classes = template.replace("TYPES", type_str)
 
@@ -207,7 +217,7 @@ def json_to_init():
     type_str = ""
     for f in json_files:
         f = f.replace(".json", "")
-        type_str +='"'+ f + '_method",'
+        type_str +='"'+ f + '_schema",'
 
     type_classes = template.replace("INIT", type_str[:-1])
 
