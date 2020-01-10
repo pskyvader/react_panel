@@ -1,3 +1,5 @@
+from .database import db_session
+
 def input_to_dictionary(input_variable,id_key):
     """Method to convert Graphene input_variables into dictionary"""
     dictionary = {}
@@ -8,9 +10,18 @@ def input_to_dictionary(input_variable,id_key):
         dictionary[key] = input_variable[key]
     return dictionary
 
-def mutation_create(table_model):
-    data = utils.input_to_dictionary(input)
+def mutation_create(table_model,id_key):
+    data = utils.input_to_dictionary(input,id_key)
     table = table_model(**data)
     db_session.add(table)
     db_session.commit()
+    return table
+
+
+def mutation_update(table_model,id_key):
+    data = utils.input_to_dictionary(input,id_key)
+    table = db_session.query(table_model).filter_by(id=data['id'])
+    table.update(data)
+    db_session.commit()
+    table = db_session.query(table_model).filter_by(id=data['id']).first()
     return table

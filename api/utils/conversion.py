@@ -150,7 +150,7 @@ def json_to_schema(force=False):
 
 def json_to_query():
     json_files = file_list(bdd_dir)
-    template = get_file(join(current_dir, "template_method.py"))
+    template = get_file(join(current_dir, "template_query.py"))
 
     method_classes = ""
     for f in json_files:
@@ -162,6 +162,24 @@ def json_to_query():
         print("metodos creados correctamente!")
     else:
         print("Error al crear los metodos!")
+
+
+
+def json_to_mutation():
+    json_files = file_list(bdd_dir)
+    template = get_file(join(current_dir, "template_mutation.py"))
+
+    method_classes = ""
+    for f in json_files:
+        f = f.replace(".json", "")
+        method_classes += "\n    " + (template.replace("TABLENAME", f)) + "\n    "
+
+    method_file = join(current_dir, "..", "graph_ql", "schema.py")
+    if replace_in_file(method_file, "# __MUTATION__", method_classes + "\n"):
+        print("metodos creados correctamente!")
+    else:
+        print("Error al crear los metodos!")
+
 
 
 def json_to_types():
@@ -256,5 +274,6 @@ def create_file(file_name, content,force=False):
 json_to_model()
 json_to_schema(force=True)
 json_to_query()
+json_to_mutation()
 json_to_types()
 json_to_init()
