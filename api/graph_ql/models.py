@@ -23,7 +23,7 @@ class administrador_model(Base):
     password=Column(String(255))
     nombre=Column(String(255))
     foto=Column(JSON)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     cookie=Column(String(255))
     
 class banner_model(Base):
@@ -38,7 +38,7 @@ class banner_model(Base):
     link=Column(String(255))
     foto=Column(JSON)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class comuna_model(Base):
     __tablename__ = "seo_comuna"
@@ -47,7 +47,7 @@ class comuna_model(Base):
     titulo=Column(String(255))
     precio=Column(Integer)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class configuracion_model(Base):
     __tablename__ = "seo_configuracion"
@@ -85,7 +85,7 @@ class galeria_model(Base):
     keywords=Column(String(255))
     metadescripcion=Column(Text)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class igaccounts_model(Base):
     __tablename__ = "seo_igaccounts"
@@ -97,15 +97,15 @@ class igaccounts_model(Base):
     biography=Column(Text)
     follower_count=Column(Integer)
     following_count=Column(Integer)
-    has_anonymous_profile_picture=Column(Boolean, nullable=False)
-    is_private=Column(Boolean, nullable=False)
-    is_business=Column(Boolean, nullable=False)
-    is_verified=Column(Boolean, nullable=False)
+    has_anonymous_profile_picture=Column(Boolean, nullable=False, default=False)
+    is_private=Column(Boolean, nullable=False, default=False)
+    is_business=Column(Boolean, nullable=False, default=False)
+    is_verified=Column(Boolean, nullable=False, default=False)
     media_count=Column(Integer)
     fecha=Column(DateTime)
-    following=Column(Boolean, nullable=False)
-    follower=Column(Boolean, nullable=False)
-    favorito=Column(Boolean, nullable=False)
+    following=Column(Boolean, nullable=False, default=False)
+    follower=Column(Boolean, nullable=False, default=False)
+    favorito=Column(Boolean, nullable=False, default=False)
     hashtag=Column(String(255))
     
 class ighashtag_model(Base):
@@ -119,7 +119,7 @@ class ighashtag_model(Base):
     eficiencia2=Column(Integer)
     total=Column(Integer)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class igtotal_model(Base):
     __tablename__ = "seo_igtotal"
@@ -133,7 +133,7 @@ class igusuario_model(Base):
     idigusuario = Column(Integer, primary_key=True, nullable=False)
     usuario=Column(String(255))
     password=Column(String(255))
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class log_model(Base):
     __tablename__ = "seo_log"
@@ -157,7 +157,7 @@ class mediopago_model(Base):
     resumen=Column(Text)
     descripcion=Column(Text)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class modulo_model(Base):
     __tablename__ = "seo_modulo"
@@ -171,8 +171,8 @@ class modulo_model(Base):
     recortes=Column(Text)
     orden=Column(Integer)
     estado=Column(Text)
-    aside=Column(Boolean, nullable=False)
-    hijos=Column(Boolean, nullable=False)
+    aside=Column(Boolean, nullable=False, default=False)
+    hijos=Column(Boolean, nullable=False, default=False)
     
 class moduloconfiguracion_model(Base):
     __tablename__ = "seo_moduloconfiguracion"
@@ -185,9 +185,9 @@ class moduloconfiguracion_model(Base):
     mostrar=Column(Text)
     detalle=Column(Text)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
-    aside=Column(Boolean, nullable=False)
-    tipos=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
+    aside=Column(Boolean, nullable=False, default=False)
+    tipos=Column(Boolean, nullable=False, default=False)
     
 class pedido_model(Base):
     __tablename__ = "seo_pedido"
@@ -205,7 +205,7 @@ class pedido_model(Base):
     total_original=Column(Integer)
     total=Column(Integer)
     comentarios=Column(Text)
-    pedido_manual=Column(Boolean, nullable=False)
+    pedido_manual=Column(Boolean, nullable=False, default=False)
     
 class pedidodireccion_model(Base):
     __tablename__ = "seo_pedidodireccion"
@@ -229,7 +229,7 @@ class pedidoestado_model(Base):
     resumen=Column(Text)
     color=Column(String(255))
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class pedidoproducto_model(Base):
     __tablename__ = "seo_pedidoproducto"
@@ -266,8 +266,8 @@ class producto_model(Base):
     keywords=Column(String(255))
     metadescripcion=Column(Text)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
-    destacado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
+    destacado=Column(Boolean, nullable=False, default=False)
     
 class productocategoria_model(Base):
     __tablename__ = "seo_productocategoria"
@@ -284,8 +284,8 @@ class productocategoria_model(Base):
     keywords=Column(String(255))
     metadescripcion=Column(Text)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
-    destacado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
+    destacado=Column(Boolean, nullable=False, default=False)
     
 class profile_model(Base):
     __tablename__ = "seo_profile"
@@ -293,7 +293,7 @@ class profile_model(Base):
     tipo=Column(Integer)
     titulo=Column(String(255))
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class region_model(Base):
     __tablename__ = "seo_region"
@@ -301,7 +301,7 @@ class region_model(Base):
     titulo=Column(String(255))
     precio=Column(Integer)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class seccion_model(Base):
     __tablename__ = "seo_seccion"
@@ -318,8 +318,8 @@ class seccion_model(Base):
     keywords=Column(String(255))
     metadescripcion=Column(Text)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
-    destacado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
+    destacado=Column(Boolean, nullable=False, default=False)
     
 class seccioncategoria_model(Base):
     __tablename__ = "seo_seccioncategoria"
@@ -334,8 +334,8 @@ class seccioncategoria_model(Base):
     keywords=Column(String(255))
     metadescripcion=Column(Text)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
-    destacado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
+    destacado=Column(Boolean, nullable=False, default=False)
     
 class seo_model(Base):
     __tablename__ = "seo_seo"
@@ -352,9 +352,9 @@ class seo_model(Base):
     keywords=Column(String(255))
     metadescripcion=Column(Text)
     orden=Column(Integer)
-    menu=Column(Boolean, nullable=False)
-    submenu=Column(Boolean, nullable=False)
-    estado=Column(Boolean, nullable=False)
+    menu=Column(Boolean, nullable=False, default=False)
+    submenu=Column(Boolean, nullable=False, default=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class sitemap_model(Base):
     __tablename__ = "seo_sitemap"
@@ -363,7 +363,7 @@ class sitemap_model(Base):
     url=Column(String(255))
     depth=Column(Integer)
     valid=Column(String(255))
-    ready=Column(Boolean, nullable=False)
+    ready=Column(Boolean, nullable=False, default=False)
     
 class table_model(Base):
     __tablename__ = "seo_table"
@@ -371,7 +371,7 @@ class table_model(Base):
     tablename=Column(String(255))
     idname=Column(String(255))
     fields=Column(Text)
-    truncate=Column(Boolean, nullable=False)
+    truncate=Column(Boolean, nullable=False, default=False)
     
 class texto_model(Base):
     __tablename__ = "seo_texto"
@@ -383,7 +383,7 @@ class texto_model(Base):
     texto=Column(String(255))
     mapa=Column(Text)
     orden=Column(Integer)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     
 class usuario_model(Base):
     __tablename__ = "seo_usuario"
@@ -394,7 +394,7 @@ class usuario_model(Base):
     email=Column(String(255))
     password=Column(String(255))
     foto=Column(JSON)
-    estado=Column(Boolean, nullable=False)
+    estado=Column(Boolean, nullable=False, default=False)
     cookie=Column(String(255))
     
 class usuariodireccion_model(Base):
@@ -417,6 +417,7 @@ class usuariodireccion_model(Base):
     
 
 # __MODELS__
+    
     
     
     

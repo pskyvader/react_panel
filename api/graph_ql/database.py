@@ -14,8 +14,8 @@ if len(config) == 0:
         config = json.load(f)
 
 # connection_string="mysql+mysqlconnector://{}:{}@{}/{}".format(config["user"],config["password"],config["host"],config["database"])
-# connection_string="mysql://{}:{}@{}/{}".format(config["user"],config["password"],config["host"],config["database"])
-connection_string='sqlite:///database.sqlite3'
+connection_string="mysql://{}:{}@{}/{}".format(config["user"],config["password"],config["host"],config["database"])
+# connection_string='sqlite:///database.sqlite3'
 
 
 

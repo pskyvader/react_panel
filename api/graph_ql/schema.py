@@ -174,6 +174,7 @@ class Query(graphene.ObjectType):
     
     
     
+    
 class Mutation(graphene.ObjectType):
 
 # __MUTATION__
@@ -280,6 +281,7 @@ class Mutation(graphene.ObjectType):
     
     
     
+    
 
     
     
@@ -295,6 +297,7 @@ class Mutation(graphene.ObjectType):
     
 schema = graphene.Schema(query=Query,mutation=Mutation, types=[administrador_schema.administrador_schema,banner_schema.banner_schema,comuna_schema.comuna_schema,configuracion_schema.configuracion_schema,direccion_schema.direccion_schema,galeria_schema.galeria_schema,igaccounts_schema.igaccounts_schema,ighashtag_schema.ighashtag_schema,igtotal_schema.igtotal_schema,igusuario_schema.igusuario_schema,log_schema.log_schema,logo_schema.logo_schema,mediopago_schema.mediopago_schema,modulo_schema.modulo_schema,moduloconfiguracion_schema.moduloconfiguracion_schema,pedido_schema.pedido_schema,pedidodireccion_schema.pedidodireccion_schema,pedidoestado_schema.pedidoestado_schema,pedidoproducto_schema.pedidoproducto_schema,producto_schema.producto_schema,productocategoria_schema.productocategoria_schema,profile_schema.profile_schema,region_schema.region_schema,seccion_schema.seccion_schema,seccioncategoria_schema.seccioncategoria_schema,seo_schema.seo_schema,sitemap_schema.sitemap_schema,table_schema.table_schema,texto_schema.texto_schema,usuario_schema.usuario_schema,usuariodireccion_schema.usuariodireccion_schema,])
 # __TYPES__
+    
     
     
     
