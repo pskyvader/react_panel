@@ -20,5 +20,5 @@ def upgrade():
     pass
 
 
-    # op.alter_column('seo_administrador','pass', new_column_name='password', nullable=True)
-    # op.alter_column('seo_usuario','pass', new_column_name='password', nullable=True)
+    # op.alter_column('seo_administrador','pass', new_column_name='password', nullable=True,existing_type=mysql.CHAR(length=255))
+    # op.alter_column('seo_usuario','pass', new_column_name='password', nullable=True,existing_type=mysql.CHAR(length=255))
