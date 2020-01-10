@@ -14,12 +14,11 @@ if len(config) == 0:
         config = json.load(f)
 
 # connection_string="mysql+mysqlconnector://{}:{}@{}/{}".format(config["user"],config["password"],config["host"],config["database"])
-connection_string="mysql://{}:{}@{}/{}".format(config["user"],config["password"],config["host"],config["database"])
+connection_string="mysql://{}:{}@{}/{}?charset=utf8mb4".format(config["user"],config["password"],config["host"],config["database"])
 # connection_string='sqlite:///database.sqlite3'
 
-
-
-engine = create_engine(connection_string, convert_unicode=True, echo=False)
+# engine = create_engine(connection_string, convert_unicode=True, echo=False)
+engine = create_engine(connection_string, , echo=False)
 db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
 Base = declarative_base()
 Base.query = db_session.query_property()
