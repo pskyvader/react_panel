@@ -169,21 +169,21 @@ for (let i = 0; i < 200; i += 1) {
 
 
 export default function List(props) {
-        
+
     const GET_LIST = gql(`
-    query get_list($table: String!) {
+    query get_list{
         $table(first:100){
             edges{
                 node{
-                    full_name
+                    $fields
                 }
             }
         }
     }
-    `,{table:'all'+props.table});
+    `.replace('$table','all' + props.table).replace('$fields',props.fields) );
 
 
-    const variables={ variables: { table: 'all'+props.table}, }
+    const variables = { variables: { table: 'all' + props.table }, }
     const { loading, error, data } = useQuery(GET_LIST, variables);
     if (loading) return '...';
     if (error) return 'Error';
