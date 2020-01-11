@@ -13,7 +13,7 @@ from graph_ql import graphql_app
 from graph_ql.database import init_db
 
 
-# import datetime
+import datetime
 
 
 init_db()
@@ -21,11 +21,11 @@ init_db()
 
 def application2(environ, start_response):
     if environ["PATH_INFO"]=='/':
-        # a = datetime.datetime.now()
+        a = datetime.datetime.now()
         main_data=graphql_app.init(environ)
-        # b = datetime.datetime.now()
-        # c = b - a
-        # print(c.total_seconds())
+        b = datetime.datetime.now()
+        c = b - a
+        print(c.total_seconds())
     else:
         app_web = app(os.path.dirname(__file__))
         main_data = app_web.init(environ)
