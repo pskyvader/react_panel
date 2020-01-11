@@ -50,12 +50,12 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
     return (
 
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{ minheight: 500 }}>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         {columns.map(column => (
-                            <TableCell align="right" key={column.dataKey}>{column.label}</TableCell>
+                            <TableCell align="left" key={column.dataKey}>{column.label}</TableCell>
                         ))}
                     </TableRow>
                 </TableHead>
@@ -72,7 +72,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
                                 {({ onItemsRendered, ref }) => (
                                     <FixedSizeList
-                                        height={height}
+                                        height={450}
                                         width={width}
                                         itemCount={itemCount}
                                         itemSize={120}
