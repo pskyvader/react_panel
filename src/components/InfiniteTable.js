@@ -3,17 +3,27 @@ import { FixedSizeList } from 'react-window';
 import InfiniteLoader from "react-window-infinite-loader";
 
 const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
-  const Row = ({ index, style }) => (
-     {/* define the row component using items[index] */}
-  );
+    const isItemLoaded = index => !hasNextPage || index < items.length;
+
+    const Item = ({ index, style }) => {
+        let content;
+        if (!isItemLoaded(index)) {
+          content = "Loading...";
+        } else {
+          content = items[index].username;
+        }
+    
+        return <div style={style}>{content}</div>;
+      };
 
   const itemCount = hasNextPage ? items.length + 1 : items.length;
 
   return (
     <InfiniteLoader
-      isItemLoaded={index => index < items.length}
+      isItemLoaded={isItemLoaded}
       itemCount={itemCount}
       loadMoreItems={loadMore}
+
     >
       {({ onItemsRendered, ref }) => (
         <FixedSizeList
@@ -24,7 +34,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
           onItemsRendered={onItemsRendered}
           ref={ref}
         >
-          {Row}
+          {Item}
         </FixedSizeList>
       )}
   </InfiniteLoader>
