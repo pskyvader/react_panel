@@ -1,5 +1,5 @@
 import React from 'react';
-import { FixedSizeList } from 'react-window';
+import { VariableSizeList } from 'react-window';
 import InfiniteLoader from "react-window-infinite-loader";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -27,11 +27,10 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
             content = "Loading...";
         } else {
             content = items[index].username;
-
             content = <TableRow key={items[index][0]}>
-                {Object.keys(items[index]).map(column => (
+                {Object.values(items[index]).map(column => (
                     <TableCell component="th" scope="row">
-                        {column}
+                        {column.toString()}
                     </TableCell>
                 ))}
             </TableRow>
@@ -41,7 +40,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
 
 
-        return <div style={style}>{content}</div>;
+        return content;
     };
 
     const itemCount = hasNextPage ? items.length + 1 : items.length;
@@ -68,16 +67,17 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                     >
 
                         {({ onItemsRendered, ref }) => (
-                            <FixedSizeList
+                            <VariableSizeList
                                 height={500}
                                 width={500}
                                 itemCount={itemCount}
+                                estimatedItemSize={120}
                                 itemSize={120}
                                 onItemsRendered={onItemsRendered}
                                 ref={ref}
                             >
                                 {Item}
-                            </FixedSizeList>
+                            </VariableSizeList>
                         )}
 
                     </InfiniteLoader>
