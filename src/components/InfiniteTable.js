@@ -2,7 +2,7 @@ import React from 'react';
 import { FixedSizeList } from 'react-window';
 import InfiniteLoader from "react-window-infinite-loader";
 
-const ListComponent = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
+const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
   const Row = ({ index, style }) => (
      {/* define the row component using items[index] */}
   );
@@ -31,4 +31,4 @@ const ListComponent = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
   )
 };
 
-export default ListComponent;
+export default InfiniteTable;
