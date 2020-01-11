@@ -104,10 +104,11 @@ function List(props) {
     const table_query = 'all' + props.table;
     const GET_LIST = gql(`
     query get_list($first:Int!,$after:String){
-        pageInfo{
-            hasNextPage
-        }
         $table(first:$first,after:$after){
+            pageInfo{
+                endCursor
+                hasNextPage
+            }
             edges{
                 node{
                     $fields

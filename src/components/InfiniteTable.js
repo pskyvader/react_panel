@@ -1,6 +1,7 @@
 import React from 'react';
 import { FixedSizeList } from 'react-window';
 import InfiniteLoader from "react-window-infinite-loader";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
     const isItemLoaded = index => !hasNextPage || index < items.length;
@@ -9,11 +10,12 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
         let content;
         if (!isItemLoaded(index)) {
           content = "Loading...";
+          return CircularProgress;
         } else {
           content = items[index].username;
+          return <div style={style}>{content}</div>;
         }
     
-        return <div style={style}>{content}</div>;
       };
 
   const itemCount = hasNextPage ? items.length + 1 : items.length;

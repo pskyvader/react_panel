@@ -6,21 +6,16 @@ function Resolve(props) {
     const { data, loading, fetchMore } = useQuery(props.query, {variables:props.vars, notifyOnNetworkStatusChange: true });
 
 
-    if (loading && (!data || !data[table])){
-        console.log('vacia',data);
-    return { loading, items: [] };
-    }else{
-        console.log('no vacia',data,loading);
-
-    }
+    if (loading && (!data || !data[table])) return { loading, items: [] };
+    
         
 
     const loadMore = () => {
-        props.vars['variables']['after'] = data[table].pageInfo.endCursor
+        props.vars['after'] = data[table].pageInfo.endCursor
         return fetchMore({
             query: props.query,
             notifyOnNetworkStatusChange: true,
-            variables: props.vars['variables'],
+            variables: props.vars,
             updateQuery: (previousResult, { fetchMoreResult }) => {
                 const newEdges = fetchMoreResult[table].edges;
                 const pageInfo = fetchMoreResult[table].pageInfo;
