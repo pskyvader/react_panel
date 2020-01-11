@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Paper from '@material-ui/core/Paper';
 import { AutoSizer, Column, Table } from 'react-virtualized';
 
@@ -198,18 +199,21 @@ export default function List(props) {
     // const variables = { variables: { table: table }, }
     // const { loading, error, data } = useQuery(GET_LIST, variables);
     const { loading, error, data } = useQuery(GET_LIST);
-    if (loading) return 'Loading Data...';
+    if (loading) return <LinearProgress />;
     if (error) return 'Error';
     //console.log(data[table]);
 
-    const rows = [];
+    var rows = [];
 
     data[table]['edges'].forEach(element => {
-        const e = element['node'];
-        e = element.map(function(e) { return e.toString(); })
+        var e = element['node'];
+        for (var key in e) {
+            if (e.hasOwnProperty(key)) {
+                e[key] = e[key].toString();
+            }
+        }
         rows.push(e);
     });
-    console.log(rows);
 
     return (
         <Paper style={{ height: 400, width: '100%' }}>
