@@ -1,24 +1,36 @@
 import React from 'react';
 import { FixedSizeList } from 'react-window';
+import Table from '@material-ui/core/Table';
 import InfiniteLoader from "react-window-infinite-loader";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import TableContainer from '@material-ui/core/TableContainer';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
 
-const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
+
+const useStyles = makeStyles({
+    table: {
+      minWidth: 650,
+    },
+  });
+
+
+const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage,columns}) => {
     const isItemLoaded = index => !hasNextPage || index < items.length;
 
     const Item = ({ index, style }) => {
         let content;
         if (!isItemLoaded(index)) {
           content = "Loading...";
-          return CircularProgress;
         } else {
           content = items[index].username;
-          return <div style={style}>{content}</div>;
         }
     
+        return <div style={style}>{content}</div>;
       };
 
   const itemCount = hasNextPage ? items.length + 1 : items.length;
+
+  const classes = useStyles();
 
   return (
     <InfiniteLoader
@@ -27,6 +39,18 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
       loadMoreItems={loadMore}
 
     >
+
+<TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+          {columns.map(column => (
+              <TableCell align="right">{column.label}</TableCell>
+          ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+            
       {({ onItemsRendered, ref }) => (
         <FixedSizeList
           height={500}
@@ -39,6 +63,10 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage }) => {
           {Item}
         </FixedSizeList>
       )}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
   </InfiniteLoader>
   )
 };

@@ -117,6 +117,18 @@ function List(props) {
         }
     }
     `.replace('$table', table_query).replace('$fields', props.fields));
+    
+    const columns = [];
+    props.fields.forEach(element => {
+        columns.push(
+            {
+                width: 500,
+                label: element,
+                dataKey: element,
+            }
+        );
+    });
+
 
     const { items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
 
@@ -126,6 +138,7 @@ function List(props) {
             moreItemsLoading={loading}
             loadMore={loadMore}
             hasNextPage={hasNextPage}
+            columns={columns}
         />
     );
 }

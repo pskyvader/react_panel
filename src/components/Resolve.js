@@ -8,8 +8,6 @@ function Resolve(props) {
 
     if (loading && (!data || !data[table])) return { loading, items: [] };
     
-        
-
     const loadMore = () => {
         props.vars['after'] = data[table].pageInfo.endCursor
         return fetchMore({
@@ -26,17 +24,12 @@ function Resolve(props) {
                     edges: [...previousResult[table].edges, ...newEdges],
                     pageInfo,
                 };
-
-                console.log(newquery , previousResult);
                 
 
                 return newEdges.length ? newquery : previousResult;
             },
         });
     };
-
-    console.log(data);
-
     return {
         items: data[table].edges.map(({ node }) => node),
         hasNextPage: data[table].pageInfo.hasNextPage,
