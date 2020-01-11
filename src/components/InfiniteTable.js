@@ -1,5 +1,5 @@
 import React from 'react';
-import { VariableSizeList } from 'react-window';
+import { FixedSizeList } from 'react-window';
 import InfiniteLoader from "react-window-infinite-loader";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -67,17 +67,18 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                     >
 
                         {({ onItemsRendered, ref }) => (
-                            <VariableSizeList
+                            <FixedSizeList
                                 height={500}
                                 width={500}
                                 itemCount={itemCount}
-                                estimatedItemSize={120}
                                 itemSize={120}
                                 onItemsRendered={onItemsRendered}
                                 ref={ref}
                             >
+
+
                                 {Item}
-                            </VariableSizeList>
+                            </FixedSizeList>
                         )}
 
                     </InfiniteLoader>
