@@ -1,20 +1,22 @@
-import React,{ PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Paper from '@material-ui/core/Paper';
 
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import InfiniteTable from './InfiniteTable';
+import Resolve from './Resolve';
 
-export default class List extends PureComponent {
+
+class List2 extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             items: [],
             moreItemsLoading: false,
             hasNextPage: true,
-            after:'',
-            first:10
+            after: '',
+            first: 10
         };
 
         this.loadMore = this.loadMore.bind(this);
@@ -50,14 +52,14 @@ export default class List extends PureComponent {
 
     loadMore() {
         this.setState({ isNextPageLoading: true }, () => {
-            var vars={variables:{first:this.state.first,after:this.state.after}}
-            const { loading, error, data } = useQuery(this.GET_LIST,vars);
+            var vars = { variables: { first: this.state.first, after: this.state.after }, notifyOnNetworkStatusChange: true }
+            const { loading, error, data } = useQuery(this.GET_LIST, vars);
             if (loading) return <LinearProgress />;
             if (error) return 'Error';
             //console.log(data[table]);
-    
+
             var rows = [];
-    
+
             data[this.table]['edges'].forEach(element => {
                 var e = element['node'];
                 for (var key in e) {
@@ -74,7 +76,7 @@ export default class List extends PureComponent {
                 items: [...state.items].concat(
                     rows
                 )
-              }));
+            }));
 
         });
     }
@@ -93,4 +95,37 @@ export default class List extends PureComponent {
         );
     }
 
+
+
 }
+
+function List(props) {
+    const vars = { first: 10, after: '' }
+    const table_query = 'all' + props.table;
+    const GET_LIST = gql(`
+    query get_list($first:Int!,$after:String){
+        pageInfo{
+            hasNextPage
+        }
+        $table(first:$first,after:$after){
+            edges{
+                node{
+                    $fields
+                }
+            }
+        }
+    }
+    `.replace('$table', table_query).replace('$fields', props.fields));
+
+    const { items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
+
+    return (
+        <InfiniteTable
+            items={items}
+            moreItemsLoading={loading}
+            loadMore={loadMore}
+            hasNextPage={hasNextPage}
+        />
+    );
+}
+export default List;

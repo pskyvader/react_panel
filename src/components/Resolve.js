@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 
 function Resolve(props) {
     const table = props.table;
-    const { data, loading, fetchMore } = useQuery(props.query, props.variables);
+    const { data, loading, fetchMore } = useQuery(props.query, {variables:props.vars, notifyOnNetworkStatusChange: true });
 
     if (loading && !data[table]) return { loading, table: [] };
 
@@ -30,7 +30,7 @@ function Resolve(props) {
     };
 
     return {
-        persons: data[table].edges.map(({ node }) => node),
+        items: data[table].edges.map(({ node }) => node),
         hasNextPage: data[table].pageInfo.hasNextPage,
         loading,
         loadMore,
