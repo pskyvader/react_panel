@@ -5,7 +5,15 @@ function Resolve(props) {
     const table = props.table;
     const { data, loading, fetchMore } = useQuery(props.query, {variables:props.vars, notifyOnNetworkStatusChange: true });
 
-    if (loading && !data[table]) return { loading, table: [] };
+
+    if (loading && (!data || !data[table])){
+        console.log('vacia',data);
+    return { loading, items: [] };
+    }else{
+        console.log('no vacia',data,loading);
+
+    }
+        
 
     const loadMore = () => {
         props.vars['variables']['after'] = data[table].pageInfo.endCursor
@@ -24,10 +32,15 @@ function Resolve(props) {
                     pageInfo,
                 };
 
+                console.log(newquery , previousResult);
+                
+
                 return newEdges.length ? newquery : previousResult;
             },
         });
     };
+
+    console.log(data);
 
     return {
         items: data[table].edges.map(({ node }) => node),

@@ -13,6 +13,7 @@ def init(environ):
     status_code=200
     if environ["REQUEST_METHOD"] == "POST":
         data  = parse_body(environ)
+        print(data)
         execution_results, params = run_http_query( schema, 'post', data)
         result, status_code = encode_execution_results( execution_results, format_error=default_format_error,is_batch=False, encode=json_encode)
         result=json.loads(result)
