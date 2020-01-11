@@ -169,7 +169,7 @@ const VirtualizedTable = withStyles(styles)(MuiVirtualizedTable);
 
 
 export default function List(props) {
-    const table='all' + props.table;
+    const table = 'all' + props.table;
 
     const GET_LIST = gql(`
     query get_list{
@@ -181,61 +181,42 @@ export default function List(props) {
             }
         }
     }
-    `.replace('$table',table).replace('$fields',props.fields) );
+    `.replace('$table', table).replace('$fields', props.fields));
 
 
+    const columns = [];
+    props.fields.forEach(element => {
+        columns.push(
+            {
+                width: 500,
+                label: element,
+                dataKey: element,
+            }
+        );
+    });
 
     // const variables = { variables: { table: table }, }
     // const { loading, error, data } = useQuery(GET_LIST, variables);
     const { loading, error, data } = useQuery(GET_LIST);
-    if (loading) return '...';
+    if (loading) return 'Loading Data...';
     if (error) return 'Error';
     //console.log(data[table]);
 
     const rows = [];
-    
+
     data[table]['edges'].forEach(element => {
         const e = element['node'];
+        e = element.map(function(e) { return e.toString(); })
         rows.push(e);
     });
-
+    console.log(rows);
 
     return (
         <Paper style={{ height: 400, width: '100%' }}>
             <VirtualizedTable
                 rowCount={rows.length}
                 rowGetter={({ index }) => rows[index]}
-                columns={[
-                    {
-                        width: 500,
-                        label: 'Dessert',
-                        dataKey: 'dessert',
-                    },
-                    {
-                        width: 500,
-                        label: 'Calories\u00A0(g)',
-                        dataKey: 'calories',
-                        numeric: true,
-                    },
-                    {
-                        width: 500,
-                        label: 'Fat\u00A0(g)',
-                        dataKey: 'fat',
-                        numeric: true,
-                    },
-                    {
-                        width: 500,
-                        label: 'Carbs\u00A0(g)',
-                        dataKey: 'carbs',
-                        numeric: true,
-                    },
-                    {
-                        width: 500,
-                        label: 'Protein\u00A0(g)',
-                        dataKey: 'protein',
-                        numeric: true,
-                    },
-                ]}
+                columns={columns}
             />
         </Paper>
     );
