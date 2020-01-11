@@ -6,6 +6,11 @@ import TableCell from '@material-ui/core/TableCell';
 import Paper from '@material-ui/core/Paper';
 import { AutoSizer, Column, Table } from 'react-virtualized';
 
+
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+
+
 const styles = theme => ({
     flexContainer: {
         display: 'flex',
@@ -161,8 +166,29 @@ for (let i = 0; i < 200; i += 1) {
     rows.push(createData(i, ...randomSelection));
 }
 
+
+
 export default function List(props) {
-    console.log(props);
+        
+    const GET_LIST = gql(`
+    query get_list($table: String!) {
+        $table(first:100){
+            edges{
+                node{
+                    full_name
+                }
+            }
+        }
+    }
+    `,{table:'all'+props.table});
+
+
+    const variables={ variables: { table: 'all'+props.table}, }
+    const { loading, error, data } = useQuery(GET_LIST, variables);
+    if (loading) return '...';
+    if (error) return 'Error';
+    console.log(data);
+
     return (
         <Paper style={{ height: 400, width: '100%' }}>
             <VirtualizedTable
