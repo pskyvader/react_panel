@@ -10,7 +10,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import AutoSizer from 'react-virtualized-auto-sizer';
 import VirtualizedTable from './VirtualizedTable';
 
 const useStyles = makeStyles({
@@ -45,20 +44,20 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
     };
 
     const itemCount = hasNextPage ? items.length + 1 : items.length;
-    if (hasNextPage){
-        items.push({});
-    }
+
+    console.log(items.length);
+
 
     return (
         <InfiniteLoader
             isItemLoaded={isItemLoaded}
             itemCount={itemCount}
             loadMoreItems={loadMore}
+            loader={<div className="loader"> Loading... </div>}
 
         >
 
             {({ onRowsRendered, registerChild }) => (
-
                 <Paper style={{ height: 400, width: '100%' }}>
                     <VirtualizedTable
                         rowCount={itemCount}
@@ -67,14 +66,9 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                         ref={registerChild}
                         onRowsRendered={onRowsRendered}
                     />
-
                 </Paper>
-
             )}
-
         </InfiniteLoader>
-
-
 
     )
 };
