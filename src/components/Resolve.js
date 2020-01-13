@@ -25,7 +25,6 @@ function Resolve(props) {
                     pageInfo,
                 };
                 
-
                 return newEdges.length ? newquery : previousResult;
             },
         });
