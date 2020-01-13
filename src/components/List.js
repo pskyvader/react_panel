@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { gql } from 'apollo-boost';
-import InfiniteTable from './InfiniteTable';
+import InfiniteTable2 from './InfiniteTable2';
 import Resolve from './Resolve';
 
 
@@ -38,12 +38,15 @@ function List(props) {
     const { items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
 
     return (
-        <InfiniteTable
+        <InfiniteTable2
             items={items}
             moreItemsLoading={loading}
             loadMore={loadMore}
             hasNextPage={hasNextPage}
             columns={columns}
+
+            rowHeight={100}
+            rowCount={500}
         />
     );
 }
