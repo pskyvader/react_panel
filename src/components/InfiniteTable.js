@@ -61,6 +61,8 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                         rowCount={items.length}
                         rowGetter={({ index }) => items[index]}
                         columns={columns}
+                        ref={ref}
+                        onRowsRendered={onItemsRendered}
                     />
 
                 </Paper>

@@ -31,6 +31,7 @@ class MuiInfiniteTable extends React.PureComponent {
 
         this.state = {
             loadedData: props.items
+
         }
     }
     getRowClassName = ({ index }) => {
@@ -78,6 +79,7 @@ class MuiInfiniteTable extends React.PureComponent {
 
     componentDidMount() {
         this.setState({ rowHeight: this.props.rowHeight });
+        this.props.resolve(this.props.query_variables);
     }
 
     render() {

@@ -39,7 +39,7 @@ function List(props) {
     const { items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
     
     return (
-        <InfiniteTable2
+        <InfiniteTable
             items={items}
             moreItemsLoading={loading}
             loadMore={loadMore}
