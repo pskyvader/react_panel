@@ -8,14 +8,15 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
     const itemCount = hasNextPage ? items.length + 1 : items.length;
 
     const onScroll=({ clientHeight, scrollHeight, scrollTop })=>{
-        if(scrollTop>=(scrollHeight-clientHeight)*0.7){
-            if (!moreItemsLoading){
+        console.log('scroll',clientHeight, scrollHeight, scrollTop);
+        if(scrollTop>=(scrollHeight-clientHeight)*0.7  || clientHeight<0){
+            console.log('mayor');
+            if (!moreItemsLoading && hasNextPage){
+                console.log('loading');
                 loadMore();
             }
         }
     };
-
-    console.log(items.length);
 
 
 
@@ -27,7 +28,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         >
 
             {({ onRowsRendered, registerChild }) => (
-                <Paper style={{ height: 400, width: '100%' }}>
+                <Paper style={{ height: 700, width: '100%' }}>
                     <VirtualizedTable
                         rowCount={items.length}
                         rowGetter={({ index }) => items[index]}
