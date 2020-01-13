@@ -12,6 +12,9 @@ import Paper from '@material-ui/core/Paper';
 
 import AutoSizer from 'react-virtualized-auto-sizer';
 
+import VirtualizedTable from './VirtualizedTable';
+
+
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
@@ -46,53 +49,21 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
     const itemCount = hasNextPage ? items.length + 1 : items.length;
 
-    const classes = useStyles();
-
     return (
+        <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={itemCount}
+            loadMoreItems={loadMore}
 
-        <TableContainer component={Paper} style={{ minHeight: 500 }}>
-            <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        {columns.map(column => (
-                            <TableCell align="left" key={column.dataKey}>{column.label}</TableCell>
-                        ))}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
+        >
 
-                    <AutoSizer>
-                        {({ height, width }) => (
-                            <InfiniteLoader
-                                isItemLoaded={isItemLoaded}
-                                itemCount={itemCount}
-                                loadMoreItems={loadMore}
+            {({ onItemsRendered, ref }) => (
+                    <Paper style={{ height: 400, width: '100%' }}>
+                    </Paper>
+    
+            )}
 
-                            >
-
-                                {({ onItemsRendered, ref }) => (
-                                    <FixedSizeList
-                                        height={450}
-                                        width={width}
-                                        itemCount={itemCount}
-                                        itemSize={120}
-                                        onItemsRendered={onItemsRendered}
-                                        ref={ref}
-                                    >
-
-
-                                        {Item}
-                                    </FixedSizeList>
-                                )}
-
-                            </InfiniteLoader>
-                        )}
-                    </AutoSizer>
-
-                </TableBody>
-            </Table>
-        </TableContainer>
-
+        </InfiniteLoader>
 
 
 
