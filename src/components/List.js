@@ -35,16 +35,22 @@ function List(props) {
     });
 
 
-    const { items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
+    const {error, items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
 
-    return (
-        <InfiniteTable
-            items={items}
-            moreItemsLoading={loading}
-            loadMore={loadMore}
-            hasNextPage={hasNextPage}
-            columns={columns}
-        />
-    );
+    if (error){
+    return (<div>Error {error}</div>)
+    }else{
+
+        return (
+            <InfiniteTable
+                items={items}
+                moreItemsLoading={loading}
+                loadMore={loadMore}
+                hasNextPage={hasNextPage}
+                columns={columns}
+            />
+        );
+    }
+
 }
 export default List;

@@ -3,9 +3,8 @@ import { useQuery } from '@apollo/react-hooks';
 
 function Resolve(props) {
     const table = props.table;
-    const { data, loading, fetchMore } = useQuery(props.query, {variables:props.vars, notifyOnNetworkStatusChange: true });
-
-
+    const { data, loading,error, fetchMore } = useQuery(props.query, {variables:props.vars, notifyOnNetworkStatusChange: true });
+    if (error) return {error:error};
     if (loading && (!data || !data[table])) return { loading, items: [] };
     
     const loadMore = () => {

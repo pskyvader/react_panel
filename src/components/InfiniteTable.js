@@ -26,6 +26,9 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         let content;
         if (!isItemLoaded(index)) {
             content = "Loading...";
+            if(moreItemsLoading){
+                content+=" Loading ...";
+            }
         } else {
             content = items[index].username;
             content = <TableRow key={items[index][0]}>
@@ -50,7 +53,9 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
     return (
 
-        <TableContainer component={Paper} style={{ minheight: 500 }}>
+        <AutoSizer>
+        {({ height, width }) => (
+        <TableContainer component={Paper} >
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -61,8 +66,6 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                 </TableHead>
                 <TableBody>
 
-                    <AutoSizer>
-                        {({ height, width }) => (
                             <InfiniteLoader
                                 isItemLoaded={isItemLoaded}
                                 itemCount={itemCount}
@@ -73,7 +76,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                                 {({ onItemsRendered, ref }) => (
                                     <FixedSizeList
                                         height={450}
-                                        width={width}
+                                        width={200}
                                         itemCount={itemCount}
                                         itemSize={120}
                                         onItemsRendered={onItemsRendered}
@@ -86,13 +89,13 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                                 )}
 
                             </InfiniteLoader>
-                        )}
-                    </AutoSizer>
+                        
 
                 </TableBody>
             </Table>
         </TableContainer>
-
+        )}
+        </AutoSizer>
 
 
 
