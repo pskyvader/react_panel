@@ -1,9 +1,6 @@
 import React from 'react';
 import InfiniteLoader from "react-window-infinite-loader";
 import Paper from '@material-ui/core/Paper';
-import LinearProgress from '@material-ui/core/LinearProgress';
-
-
 import VirtualizedTable from './VirtualizedTable';
 
 const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns }) => {
@@ -25,8 +22,6 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
             isItemLoaded={isItemLoaded}
             itemCount={itemCount}
             loadMoreItems={loadMore}
-            loader={<LinearProgress />}
-
         >
 
             {({ onRowsRendered, registerChild }) => (
@@ -38,11 +33,12 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                         ref={registerChild}
                         onRowsRendered={onRowsRendered}
                         onScroll={onScroll}
+                        loading={moreItemsLoading}
+
                     />
                 </Paper>
             )}
         </InfiniteLoader>
-
     )
 };
 

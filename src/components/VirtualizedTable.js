@@ -58,6 +58,7 @@ class MuiVirtualizedTable extends React.PureComponent {
 
     render() {
         const { classes, columns, rowHeight, headerHeight, ...tableProps } = this.props;
+        console.log(tableProps.loading);
         return (
             <AutoSizer>
                 {({ height, width }) => (
