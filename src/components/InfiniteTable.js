@@ -29,11 +29,11 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
             content = "Loading...";
         } else {
             content = items[index].username;
-            var key=Object.values(items[index])[0];
+            var key = Object.values(items[index])[0];
 
-            content = <TableRow key={key}>
-                {Object.values(items[index]).map(column => (
-                    <TableCell key={key+column.toString()} component="th" scope="row">
+            content = <TableRow >
+                {Object.values(items[index]).map((column, k) => (
+                    <TableCell key={key + k} component="th" scope="row">
                         {column.toString()}
                     </TableCell>
                 ))}
@@ -68,6 +68,12 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
                         {Item}
                     </FixedSizeList>
+                    
+                    <VirtualizedTable
+                        rowCount={items.length}
+                        rowGetter={onItemsRendered}
+                        columns={columns}
+                    />
 
                 </Paper>
 
