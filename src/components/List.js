@@ -1,12 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { gql } from 'apollo-boost';
 import InfiniteTable from './InfiniteTable';
-import InfiniteTable2 from './InfiniteTable2';
 import Resolve from './Resolve';
 
 
 function List(props) {
-    const vars = { first: 100, after: '' }
+    const vars = { first: 10, after: '' }
     const table_query = 'all' + props.table;
     const GET_LIST = gql(`
     query get_list($first:Int!,$after:String){

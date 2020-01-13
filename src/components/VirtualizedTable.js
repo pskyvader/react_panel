@@ -35,7 +35,7 @@ class MuiVirtualizedTable extends React.PureComponent {
                 style={{ height: rowHeight }}
                 align={(columnIndex != null && columns[columnIndex].numeric) || false ? 'right' : 'left'}
             >
-                {cellData}
+                {cellData.toString()}
             </TableCell>
         );
     };
