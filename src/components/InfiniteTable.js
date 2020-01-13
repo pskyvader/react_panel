@@ -2,7 +2,7 @@ import React from 'react';
 import { FixedSizeList } from 'react-window';
 import InfiniteLoader from "react-window-infinite-loader";
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
+// import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -10,13 +10,73 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import AutoSizer from 'react-virtualized-auto-sizer';
+import { AutoSizer, Column, Table } from 'react-virtualized';
 
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
     },
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const cellRenderer = ({ cellData, columnIndex }) => {
+    const { columns, classes, rowHeight, onRowClick } = this.props;
+    return (
+        <TableCell
+            component="div"
+            className={clsx(classes.tableCell, classes.flexContainer, { [classes.noClick]: onRowClick == null, })}
+            variant="body"
+            style={{ height: rowHeight }}
+            align={(columnIndex != null && columns[columnIndex].numeric) || false ? 'right' : 'left'}
+        >
+            {cellData}
+        </TableCell>
+    );
+};
+
+const headerRenderer = ({ label, columnIndex }) => {
+    const { headerHeight, columns, classes } = this.props;
+
+    return (
+        <TableCell
+            component="div"
+            className={clsx(classes.tableCell, classes.flexContainer, classes.noClick)}
+            variant="head"
+            style={{ height: headerHeight }}
+            align={columns[columnIndex].numeric || false ? 'right' : 'left'}
+        >
+            <span>{label}</span>
+        </TableCell>
+    );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns }) => {
@@ -50,6 +110,76 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
     const itemCount = hasNextPage ? items.length + 1 : items.length;
 
     const classes = useStyles();
+
+    const rowHeight=400;
+    const headerHeight=20;
+    const tableProps=null;
+
+    return (
+        <AutoSizer>
+            {({ height, width }) => (
+                <Table height={height} width={width} rowHeight={rowHeight} gridStyle={{ direction: 'inherit', }} headerHeight={headerHeight} className={classes.table} {...tableProps}  >
+                    
+                    
+
+                    <InfiniteLoader
+                                isItemLoaded={isItemLoaded}
+                                itemCount={itemCount}
+                                loadMoreItems={loadMore}
+
+                            >
+
+
+                    
+                    {columns.map(({ dataKey, ...other }, index) => {
+                        return (
+                            <Column
+                                key={dataKey}
+                                headerRenderer={headerProps =>
+                                    this.headerRenderer({
+                                        ...headerProps,
+                                        columnIndex: index,
+                                    })
+                                }
+                                className={classes.flexContainer}
+                                cellRenderer={this.cellRenderer}
+                                dataKey={dataKey}
+                                {...other}
+                            />
+                        );
+                    })}
+
+
+                                {({ onItemsRendered, ref }) => (
+                                    <FixedSizeList
+                                        height={450}
+                                        width={200}
+                                        itemCount={itemCount}
+                                        itemSize={120}
+                                        onItemsRendered={onItemsRendered}
+                                        ref={ref}
+                                    >
+
+
+                                        {Item}
+                                    </FixedSizeList>
+                                )}
+
+                            </InfiniteLoader>
+
+
+
+
+
+                </Table>
+            )}
+        </AutoSizer>
+    );
+
+
+
+
+
 
     return (
 
@@ -96,9 +226,6 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         </TableContainer>
         )}
         </AutoSizer>
-
-
-
     )
 };
 
