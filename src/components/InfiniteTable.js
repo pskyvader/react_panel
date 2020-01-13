@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import AutoSizer from 'react-virtualized-auto-sizer';
+import VirtualizedTable from './VirtualizedTable';
 
 const useStyles = makeStyles({
     table: {
@@ -28,18 +29,17 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
             content = "Loading...";
         } else {
             content = items[index].username;
-            content = <TableRow key={items[index][0]}>
+            var key=Object.values(items[index])[0];
+
+            content = <TableRow key={key}>
                 {Object.values(items[index]).map(column => (
-                    <TableCell component="th" scope="row">
+                    <TableCell key={key+column.toString()} component="th" scope="row">
                         {column.toString()}
                     </TableCell>
                 ))}
             </TableRow>
 
         }
-
-
-
 
         return <div style={style}>{content}</div>;
     };
@@ -55,27 +55,22 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         >
 
             {({ onItemsRendered, ref }) => (
-                <FixedSizeList
-                    height={450}
-                    width={width}
-                    itemCount={itemCount}
-                    itemSize={120}
-                    onItemsRendered={onItemsRendered}
-                    ref={ref}
-                >
-
-
-                    {Item}
-                </FixedSizeList>
 
                 <Paper style={{ height: 400, width: '100%' }}>
-                    <VirtualizedTable
-                        rowCount={itemCount}
-                        rowGetter={({ index }) => items[index]}
-                        columns={columns}
-                    />
+                    <FixedSizeList
+                        height={400}
+                        itemCount={itemCount}
+                        itemSize={120}
+                        onItemsRendered={onItemsRendered}
+                        ref={ref}
+                    >
+
+
+                        {Item}
+                    </FixedSizeList>
+
                 </Paper>
-    
+
             )}
 
         </InfiniteLoader>
