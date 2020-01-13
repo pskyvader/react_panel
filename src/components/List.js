@@ -44,6 +44,7 @@ function List(props) {
             loadMore={loadMore}
             hasNextPage={hasNextPage}
             columns={columns}
+            height={700}
         />
     );
 }

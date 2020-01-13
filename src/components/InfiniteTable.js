@@ -7,17 +7,13 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
     const isItemLoaded = index => !hasNextPage || index < items.length;
     const itemCount = hasNextPage ? items.length + 1 : items.length;
 
-    const onScroll=({ clientHeight, scrollHeight, scrollTop })=>{
-        console.log('scroll',clientHeight, scrollHeight, scrollTop);
-        if(scrollTop>=(scrollHeight-clientHeight)*0.7  || clientHeight<0){
-            console.log('mayor');
-            if (!moreItemsLoading && hasNextPage){
-                console.log('loading');
+    const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+        if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
+            if (!moreItemsLoading && hasNextPage) {
                 loadMore();
             }
         }
     };
-
 
 
     return (
