@@ -9,6 +9,7 @@ function Resolve(props) {
     if (loading && (!data || !data[table])) return { loading, items: [] };
     
     const loadMore = () => {
+        console.log('load more');
         props.vars['after'] = data[table].pageInfo.endCursor
         return fetchMore({
             query: props.query,
@@ -24,6 +25,7 @@ function Resolve(props) {
                     edges: [...previousResult[table].edges, ...newEdges],
                     pageInfo,
                 };
+                console.log('new query',newquery);
                 
                 return newEdges.length ? newquery : previousResult;
             },

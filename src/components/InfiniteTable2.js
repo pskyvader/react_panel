@@ -28,7 +28,6 @@ class MuiInfiniteTable extends React.PureComponent {
     }
     constructor(props) {
         super(props);
-        console.log(props);
 
         this.state = {
             loadedData: props.items
@@ -73,13 +72,12 @@ class MuiInfiniteTable extends React.PureComponent {
         this.setState({ loadedData: this.props.items });
     }
 
-    isItemLoaded = index => !this.props.hasNextPage || !!this.state.loadedData[index];
+    isItemLoaded = (index) => !this.props.hasNextPage || !!this.state.loadedData[index];
     itemCount = this.props.hasNextPage ? this.state.loadedData.length + 1 : this.state.loadedData.length;
+
 
     componentDidMount() {
         this.setState({ rowHeight: this.props.rowHeight });
-        this.loadMoreRows();
-        this.loadMoreRows({startIndex: 0,stopIndex: 1})
     }
 
     render() {
