@@ -45,6 +45,13 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
     const itemCount = hasNextPage ? items.length + 1 : items.length;
 
+    const onScroll=({ clientHeight, scrollHeight, scrollTop })=>{
+        console.log(clientHeight,scrollHeight,scrollTop ,scrollHeight-clientHeight);
+        if(scrollTop>=(scrollHeight-clientHeight)*0.9){
+            console.log(scrollHeight,'Cargar',moreItemsLoading);
+        }
+    };
+
     console.log(items.length);
 
 
@@ -60,11 +67,12 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
             {({ onRowsRendered, registerChild }) => (
                 <Paper style={{ height: 400, width: '100%' }}>
                     <VirtualizedTable
-                        rowCount={itemCount}
+                        rowCount={items.length}
                         rowGetter={({ index }) => items[index]}
                         columns={columns}
                         ref={registerChild}
                         onRowsRendered={onRowsRendered}
+                        onScroll={onScroll}
                     />
                 </Paper>
             )}
