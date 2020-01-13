@@ -2,16 +2,33 @@ import React from 'react';
 import InfiniteLoader from "react-window-infinite-loader";
 import TableCell from '@material-ui/core/TableCell';
 import Paper from '@material-ui/core/Paper';
-import classNames from 'clsx';
 import { AutoSizer, Column, Table } from 'react-virtualized';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 
-class InfiniteTable {
+
+
+const styles = theme => ({
+    flexContainer: { display: 'flex', alignItems: 'center', boxSizing: 'border-box', },
+    table: { '& .ReactVirtualized__Table__headerRow': { flip: false, paddingRight: theme.direction === 'rtl' ? '0px !important' : undefined, }, },
+    tableRow: { cursor: 'pointer', },
+    tableRowHover: { '&:hover': { backgroundColor: theme.palette.grey[200], }, },
+    tableCell: { flex: 1, },
+    noClick: { cursor: 'initial', },
+});
+
+
+
+class MuiInfiniteTable extends React.PureComponent {
+    static defaultProps = { headerHeight: 48, rowHeight: 48, };
     state = {
         rowHeight: 0,
         loadedData: [],
     }
     constructor(props) {
+        super(props);
         this.id = props.id;
 
         this.state = {
@@ -20,7 +37,7 @@ class InfiniteTable {
     }
     getRowClassName = ({ index }) => {
         const { classes, rowClassName, onRowClick } = this.props;
-        return classNames(classes.tableRow, classes.tableRowHover, classes.flexContainer, rowClassName)
+        return clsx(classes.tableRow, classes.tableRowHover, classes.flexContainer, rowClassName)
     }
 
     cellRenderer = ({ cellData, columnIndex = null, rowIndex }) => {
@@ -29,7 +46,7 @@ class InfiniteTable {
             <TableCell
                 component="div"
                 variant="body"
-                className={classNames(classes.tableCell, classes.flexContainer)}
+                className={clsx(classes.tableCell, classes.flexContainer)}
                 style={{ height: this.state.rowHeight }}
             >
                 {cellData.toString()}
@@ -43,7 +60,7 @@ class InfiniteTable {
         return (
             <TableCell
                 component="div"
-                className={classNames(classes.tableCell, classes.flexContainer)}
+                className={clsx(classes.tableCell, classes.flexContainer)}
                 variant="head"
             >
                 {dataKey.toUpperCase()}
@@ -97,7 +114,7 @@ class InfiniteTable {
                                         label={col.label}
                                         dataKey={col.dataKey}
                                         headerRenderer={this.headerRenderer}
-                                        className={classNames(classes.flexContainer)}
+                                        className={clsx(classes.flexContainer)}
                                         cellRenderer={this.cellRenderer}
                                         width={col.width}
                                     />
@@ -118,5 +135,18 @@ class InfiniteTable {
     }
 
 };
+
+
+
+MuiInfiniteTable.propTypes = {
+    classes: PropTypes.object.isRequired,
+    columns: PropTypes.arrayOf( PropTypes.shape({ dataKey: PropTypes.string.isRequired, label: PropTypes.string.isRequired, numeric: PropTypes.bool, width: PropTypes.number.isRequired, }), ).isRequired,
+    headerHeight: PropTypes.number,
+    onRowClick: PropTypes.func,
+    rowHeight: PropTypes.number,
+};
+
+const InfiniteTable = withStyles(styles)(MuiInfiniteTable);
+
 
 export default InfiniteTable;
