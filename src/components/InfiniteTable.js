@@ -12,9 +12,6 @@ import Paper from '@material-ui/core/Paper';
 
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-import VirtualizedTable from './VirtualizedTable';
-
-
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
@@ -58,13 +55,26 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         >
 
             {({ onItemsRendered, ref }) => (
-                    <Paper style={{ height: 400, width: '100%' }}>
-                        <VirtualizedTable
-                            rowCount={itemCount}
-                            rowGetter={({ index }) => items[index]}
-                            columns={columns}
-                        />
-                    </Paper>
+                <FixedSizeList
+                    height={450}
+                    width={width}
+                    itemCount={itemCount}
+                    itemSize={120}
+                    onItemsRendered={onItemsRendered}
+                    ref={ref}
+                >
+
+
+                    {Item}
+                </FixedSizeList>
+
+                <Paper style={{ height: 400, width: '100%' }}>
+                    <VirtualizedTable
+                        rowCount={itemCount}
+                        rowGetter={({ index }) => items[index]}
+                        columns={columns}
+                    />
+                </Paper>
     
             )}
 
