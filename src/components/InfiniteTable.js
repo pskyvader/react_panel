@@ -3,7 +3,7 @@ import InfiniteLoader from "react-window-infinite-loader";
 import Paper from '@material-ui/core/Paper';
 import VirtualizedTable from './VirtualizedTable';
 
-const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns }) => {
+const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns,height }) => {
     const isItemLoaded = index => !hasNextPage || index < items.length;
     const itemCount = hasNextPage ? items.length + 1 : items.length;
 
@@ -15,6 +15,12 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         }
     };
 
+    const  max_height=()=>{
+        if(items.length*48<=height){
+            return (items.length)*48;
+        }else return height;
+    }
+
 
     return (
         <InfiniteLoader
@@ -24,7 +30,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         >
 
             {({ onRowsRendered, registerChild }) => (
-                <Paper style={{ height: 700, width: '100%' }}>
+                <Paper style={{ height: max_height(), width: '100%' }}>
                     <VirtualizedTable
                         rowCount={items.length}
                         rowGetter={({ index }) => items[index]}
