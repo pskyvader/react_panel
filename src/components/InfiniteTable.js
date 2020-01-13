@@ -50,7 +50,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
     return (
 
-        <TableContainer component={Paper} style={{ minheight: 500 }}>
+        <TableContainer component={Paper} style={{ minHeight: 500 }}>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
