@@ -8,7 +8,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
     const itemCount = hasNextPage ? items.length + 1 : items.length;
 
     const onScroll=({ clientHeight, scrollHeight, scrollTop })=>{
-        if(scrollTop>=(scrollHeight-clientHeight)*0.9){
+        if(scrollTop>=(scrollHeight-clientHeight)*0.7){
             if (!moreItemsLoading){
                 loadMore();
             }

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import { AutoSizer, Column, Table } from 'react-virtualized';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 const styles = theme => ({
@@ -55,11 +56,15 @@ class MuiVirtualizedTable extends React.PureComponent {
             </TableCell>
         );
     };
+    render_progress=()=>{
+        return this.props.loading?<LinearProgress/>:<div></div> 
+    }
 
     render() {
         const { classes, columns, rowHeight, headerHeight, ...tableProps } = this.props;
-        console.log(tableProps.loading);
         return (
+            <Fragment>
+            {this.render_progress()}
             <AutoSizer>
                 {({ height, width }) => (
                     <Table height={height} width={width} rowHeight={rowHeight} gridStyle={{ direction: 'inherit', }} headerHeight={headerHeight} className={classes.table} {...tableProps} rowClassName={this.getRowClassName} >
@@ -83,6 +88,7 @@ class MuiVirtualizedTable extends React.PureComponent {
                     </Table>
                 )}
             </AutoSizer>
+            </Fragment>
         );
     }
 }
