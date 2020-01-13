@@ -24,12 +24,11 @@ const styles = theme => ({
 class MuiInfiniteTable extends React.PureComponent {
     static defaultProps = { headerHeight: 48, rowHeight: 48, };
     state = {
-        rowHeight: 0,
         loadedData: [],
     }
     constructor(props) {
         super(props);
-        this.id = props.id;
+        console.log(props);
 
         this.state = {
             loadedData: props.items
@@ -70,8 +69,7 @@ class MuiInfiniteTable extends React.PureComponent {
 
 
     loadMoreRows = () => {
-        const { items, loading, loadMore, hasNextPage } = this.props.loadMore();
-        this.setState({ loadedData: items });
+        this.setState({ loadedData: this.props.items });
     }
 
     isItemLoaded = index => !this.props.hasNextPage || !!this.state.loadedData[index];
@@ -88,41 +86,43 @@ class MuiInfiniteTable extends React.PureComponent {
             <InfiniteLoader
                 isItemLoaded={this.isItemLoaded}
                 itemCount={this.itemCount}
-                loadMoreItems={this.loadMoreRows}
+                loadMoreItems={this.props.loadMore}
             >
 
                 {({ onRowsRendered, registerChild }) => (
                     <Paper style={{ height: 400, width: '100%' }}>
+                        <AutoSizer>
+                            {({ height, width }) => (
+                                <Table
+                                    ref={registerChild}
+                                    className={classes.table}
+                                    rowHeight={rowHeight}
+                                    rowCount={this.state.loadedData.length}
+                                    height={width}
+                                    width={height}
+                                    headerHeight={40}
+                                    rowGetter={({ index }) => this.state.loadedData[index]}
+                                    onRowsRendered={onRowsRendered}
+                                    rowClassName={this.getRowClassName}
+                                >
 
-                        <Table
-                            ref={registerChild}
-                            className={classes.table}
-                            rowHeight={this.state.rowHeight}
-                            rowCount={this.state.loadedData.length}
-                            width={400}
-                            height={'100%'}
-                            headerHeight={40}
-                            rowGetter={({ index }) => this.state.loadedData[index]}
-                            onRowsRendered={onRowsRendered}
-                            rowClassName={this.getRowClassName}
-                        >
+                                    {this.props.columns.map((col) => {
+                                        return (
+                                            <Column
+                                                key={col.dataKey}
+                                                label={col.label}
+                                                dataKey={col.dataKey}
+                                                headerRenderer={this.headerRenderer}
+                                                className={clsx(classes.flexContainer)}
+                                                cellRenderer={this.cellRenderer}
+                                                width={col.width}
+                                            />
+                                        )
+                                    })}
 
-                            {this.props.columns.map((col) => {
-                                return (
-                                    <Column
-                                        key={col.dataKey}
-                                        label={col.label}
-                                        dataKey={col.dataKey}
-                                        headerRenderer={this.headerRenderer}
-                                        className={clsx(classes.flexContainer)}
-                                        cellRenderer={this.cellRenderer}
-                                        width={col.width}
-                                    />
-                                )
-                            })}
-
-                        </Table>
-
+                                </Table>
+                            )}
+                        </AutoSizer>
                     </Paper>
 
                 )}
@@ -140,7 +140,7 @@ class MuiInfiniteTable extends React.PureComponent {
 
 MuiInfiniteTable.propTypes = {
     classes: PropTypes.object.isRequired,
-    columns: PropTypes.arrayOf( PropTypes.shape({ dataKey: PropTypes.string.isRequired, label: PropTypes.string.isRequired, numeric: PropTypes.bool, width: PropTypes.number.isRequired, }), ).isRequired,
+    columns: PropTypes.arrayOf(PropTypes.shape({ dataKey: PropTypes.string.isRequired, label: PropTypes.string.isRequired, numeric: PropTypes.bool, width: PropTypes.number.isRequired, })).isRequired,
     headerHeight: PropTypes.number,
     onRowClick: PropTypes.func,
     rowHeight: PropTypes.number,
