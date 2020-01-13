@@ -15,6 +15,8 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         }
     };
 
+    console.log(items.length);
+
 
 
     return (

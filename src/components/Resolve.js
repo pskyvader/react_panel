@@ -3,17 +3,21 @@ import { useQuery } from '@apollo/react-hooks';
 
 function Resolve(props) {
     const table = props.table;
-    const { data, loading, fetchMore } = useQuery(props.query, {variables:props.vars, notifyOnNetworkStatusChange: true });
+    var vars=props.vars;
+    const { data, loading, fetchMore } = useQuery(props.query, {variables:vars, notifyOnNetworkStatusChange: true });
 
 
     if (loading && (!data || !data[table])) return { loading, items: [] };
+    var items=data[table].edges.map(({ node }) => node);
+
     
     const loadMore = () => {
-        props.vars['after'] = data[table].pageInfo.endCursor
+        vars['after'] = data[table].pageInfo.endCursor;
+        vars['first'] = items.length*10;
         return fetchMore({
             query: props.query,
             notifyOnNetworkStatusChange: true,
-            variables: props.vars,
+            variables: vars,
             updateQuery: (previousResult, { fetchMoreResult }) => {
                 const newEdges = fetchMoreResult[table].edges;
                 const pageInfo = fetchMoreResult[table].pageInfo;
@@ -29,8 +33,9 @@ function Resolve(props) {
             },
         });
     };
+
     return {
-        items: data[table].edges.map(({ node }) => node),
+        items: items,
         hasNextPage: data[table].pageInfo.hasNextPage,
         loading,
         loadMore,
