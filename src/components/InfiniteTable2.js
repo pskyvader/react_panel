@@ -13,65 +13,47 @@ import Paper from '@material-ui/core/Paper';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import VirtualizedTable from './VirtualizedTable';
 
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
-    },
-});
-
-
-const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns }) => {
-    const isItemLoaded = index => !hasNextPage || index < items.length;
-
-    const Item = ({ index, style }) => {
-        let content;
-        if (!isItemLoaded(index)) {
-            content = "Loading...";
-        } else {
-            content = items[index].username;
-            var key = Object.values(items[index])[0];
-
-            content = <TableRow >
-                {Object.values(items[index]).map((column, k) => (
-                    <TableCell key={key + k} component="th" scope="row">
-                        {column.toString()}
-                    </TableCell>
-                ))}
-            </TableRow>
-
+class InfiniteTable {
+    constructor(props) {
+        super(props);
+        this.id = props.id;
+        this.state = {
+            loadedData: props.items
         }
+    }
 
-        return <div style={style}>{content}</div>;
-    };
+    loadMoreRows = ({ startIndex, stopIndex }) => {
+        const { items, loading, loadMore, hasNextPage } = this.props.loadMore();
+        this.setState({ loadedData: items });
+    }
 
-    const itemCount = hasNextPage ? items.length + 1 : items.length;
+    isItemLoaded = index => !this.props.hasNextPage || !!this.state.loadedData[index];
+    itemCount = this.props.hasNextPage ? this.state.loadedData.length + 1 : this.state.loadedData.length;
 
-    return (
-        <InfiniteLoader
-            isItemLoaded={isItemLoaded}
-            itemCount={itemCount}
-            loadMoreItems={loadMore}
+    render() {
 
-        >
+        return (
+            <InfiniteLoader 
+            isItemLoaded={this.isItemLoaded} 
+            itemCount={this.itemCount} 
+            loadMoreItems={this.loadMoreRows} 
+            >
 
-            {({ onItemsRendered, ref }) => (
+                {({ onItemsRendered, ref }) => (
+                    <Paper style={{ height: 400, width: '100%' }}>
+                        
 
-                <Paper style={{ height: 400, width: '100%' }}>
-                    <VirtualizedTable
-                        rowCount={items.length}
-                        rowGetter={({ index }) => items[index]}
-                        columns={columns}
-                    />
+                    </Paper>
 
-                </Paper>
+                )}
 
-            )}
-
-        </InfiniteLoader>
-
+            </InfiniteLoader >
 
 
-    )
+
+        )
+    }
+
 };
 
 export default InfiniteTable;
