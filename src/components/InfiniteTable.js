@@ -59,6 +59,11 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
             {({ onItemsRendered, ref }) => (
                     <Paper style={{ height: 400, width: '100%' }}>
+                        <VirtualizedTable
+                            rowCount={itemCount}
+                            rowGetter={({ index }) => items[index]}
+                            columns={columns}
+                        />
                     </Paper>
     
             )}
