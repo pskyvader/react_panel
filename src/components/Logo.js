@@ -5,6 +5,7 @@ import Local_storage from './Local_storage';
 
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import ErrorLink from './ErrorLink';
 
 
 function Logo(props) {
@@ -21,7 +22,7 @@ function Logo(props) {
 
     const { loading, error, data } = useQuery(GET_LOGO, variables);
     if (loading) return '...';
-    if (error) return 'Error';
+    if (error) return ErrorLink(error);
     console.log(data);
     return <Image image={data.foto} title={data.titulo} />;
 }
