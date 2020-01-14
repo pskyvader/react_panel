@@ -13,7 +13,7 @@ const ErrorLink = ({ graphQLErrors, networkError }) => {
   }
     
   if (networkError) {
-    error_message=<pre>[Network error]:{networkError} </pre>;
+    error_message=<pre>[Network error]:{` ${networkError}`} </pre>;
   }
 
   return error_message;
@@ -23,8 +23,7 @@ const ErrorLink = ({ graphQLErrors, networkError }) => {
 function Resolve(props) {
     const table = props.table;
     const { data, loading, fetchMore,error } = useQuery(props.query, { variables: props.vars, notifyOnNetworkStatusChange: true });
-
-    if (ErrorLink(error)!=null) return {error:ErrorLink(error)};
+    if (error && ErrorLink(error)!=null) return {error:ErrorLink(error)};
 
     if (loading && (!data || !data[table])) return { loading, items: [] };
     var items = data[table].edges.map(({ node }) => node);
