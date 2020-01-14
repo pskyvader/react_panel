@@ -1,6 +1,6 @@
 import React from 'react';
-import { FixedSizeList } from 'react-window';
 import InfiniteLoader from "react-window-infinite-loader";
+<<<<<<< HEAD
 import { makeStyles } from '@material-ui/core/styles';
 // import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,8 +8,12 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+=======
+>>>>>>> 5da314366bbdac8a5834421f99c737a2a0039823
 import Paper from '@material-ui/core/Paper';
+import VirtualizedTable from './VirtualizedTable';
 
+<<<<<<< HEAD
 import { AutoSizer, Column, Table } from 'react-virtualized';
 
 const useStyles = makeStyles({
@@ -80,8 +84,13 @@ const headerRenderer = ({ label, columnIndex }) => {
 
 
 const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns }) => {
+=======
+const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns,height }) => {
+>>>>>>> 5da314366bbdac8a5834421f99c737a2a0039823
     const isItemLoaded = index => !hasNextPage || index < items.length;
+    const itemCount = hasNextPage ? items.length + 1 : items.length;
 
+<<<<<<< HEAD
     const Item = ({ index, style }) => {
         let content;
         if (!isItemLoaded(index)) {
@@ -99,17 +108,22 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
                 ))}
             </TableRow>
 
+=======
+    const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+        if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
+            if (!moreItemsLoading && hasNextPage) {
+                loadMore();
+            }
+>>>>>>> 5da314366bbdac8a5834421f99c737a2a0039823
         }
-
-
-
-
-        return <div style={style}>{content}</div>;
     };
 
-    const itemCount = hasNextPage ? items.length + 1 : items.length;
+    const  max_height=()=>{
+        if(items.length*48<=height){
+            return (items.length)*48;
+        }else return height;
+    }
 
-    const classes = useStyles();
 
     const rowHeight=400;
     const headerHeight=20;
@@ -182,6 +196,7 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
 
 
     return (
+<<<<<<< HEAD
 
         <AutoSizer>
         {({ height, width }) => (
@@ -226,6 +241,29 @@ const InfiniteTable = ({ items, moreItemsLoading, loadMore, hasNextPage, columns
         </TableContainer>
         )}
         </AutoSizer>
+=======
+        <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={itemCount}
+            loadMoreItems={loadMore}
+        >
+
+            {({ onRowsRendered, registerChild }) => (
+                <Paper style={{ height: max_height(), width: '100%' }}>
+                    <VirtualizedTable
+                        rowCount={items.length}
+                        rowGetter={({ index }) => items[index]}
+                        columns={columns}
+                        ref={registerChild}
+                        onRowsRendered={onRowsRendered}
+                        onScroll={onScroll}
+                        loading={moreItemsLoading}
+
+                    />
+                </Paper>
+            )}
+        </InfiniteLoader>
+>>>>>>> 5da314366bbdac8a5834421f99c737a2a0039823
     )
 };
 

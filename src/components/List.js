@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { gql } from 'apollo-boost';
 import InfiniteTable from './InfiniteTable';
 import Resolve from './Resolve';
@@ -35,22 +35,17 @@ function List(props) {
     });
 
 
-    const {error, items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
-
-    if (error){
-    return (<div>Error {error}</div>)
-    }else{
-
-        return (
-            <InfiniteTable
-                items={items}
-                moreItemsLoading={loading}
-                loadMore={loadMore}
-                hasNextPage={hasNextPage}
-                columns={columns}
-            />
-        );
-    }
-
+    const { items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
+    
+    return (
+        <InfiniteTable
+            items={items}
+            moreItemsLoading={loading}
+            loadMore={loadMore}
+            hasNextPage={hasNextPage}
+            columns={columns}
+            height={700}
+        />
+    );
 }
 export default List;
