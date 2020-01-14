@@ -35,8 +35,11 @@ function List(props) {
     });
 
 
-    const { items, loading, loadMore, hasNextPage } = Resolve({query: GET_LIST,table:table_query,vars:vars});
-    
+    const { items, loading, loadMore, hasNextPage,error } = Resolve({query: GET_LIST,table:table_query,vars:vars});
+    if (error){
+        console.log(error);
+        return error;
+    }
     return (
         <InfiniteTable
             items={items}
