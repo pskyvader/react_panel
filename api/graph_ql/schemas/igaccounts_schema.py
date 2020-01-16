@@ -20,6 +20,7 @@ def resolve_igaccounts( args, info,idigaccounts, **kwargs ):
 
 def resolve_all_igaccounts( args, info, **kwargs):
     query= resolve(args,info,igaccounts_schema,igaccounts_model,**kwargs)
+    print('QUERY',query)
     return query
 
 
