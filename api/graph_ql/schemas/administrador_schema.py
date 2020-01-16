@@ -20,7 +20,6 @@ def resolve_administrador( args, info,idadministrador, **kwargs ):
 
 def resolve_all_administrador( args, info, **kwargs):
     query= resolve(args,info,administrador_schema,administrador_model,**kwargs)
-    query.order_by
     return query
 
 

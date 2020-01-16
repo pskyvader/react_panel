@@ -1,3 +1,4 @@
+from sqlalchemy import text
 
 cache_models={}
 
@@ -9,6 +10,12 @@ def resolve(args, info, table_schema, table_model, **kwargs):
         filter_value = kwargs.get(c, None)
         if filter_value != None:
             query = query.filter( filter_column == filter_value)
+            
+    sort_value = kwargs.get('sort', None)
+    if sort_value!=None:
+        print('sort',sort_value)
+        query = query.order_by( text(sort_value) )
+
     return query
 
 def get_model(table_model):
