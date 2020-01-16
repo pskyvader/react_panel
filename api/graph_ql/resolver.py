@@ -13,8 +13,11 @@ def resolve(args, info, table_schema, table_model, **kwargs):
             
     sort_value = kwargs.get('sort', None)
     if sort_value!=None:
-        print('sort',sort_value)
-        query = query.order_by( text(sort_value) )
+        value,pos=sort_value.split(" ")
+        if value in model and pos.lower() in ['asc','desc']:
+            query = query.order_by( getattr(model[value],pos.lower())() )
+        else:
+            raise SyntaxWarning('Invalid Sort field',sort_value)
 
     return query
 
