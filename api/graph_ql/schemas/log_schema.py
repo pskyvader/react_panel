@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import log_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -55,7 +55,7 @@ class create_log(graphene.Mutation):
         input = create_log_input(required=True)
 
     def mutate(self, info, input):
-        log=mutation_create(log_model,idlog)
+        log=mutation_create(log_model,input,'idlog')
 
         return create_log(log=log)
 
@@ -73,5 +73,5 @@ class update_log(graphene.Mutation):
         input = update_log_input(required=True)
 
     def mutate(self, info, input):
-        log=mutation_update(log_model,idlog)
+        log=mutation_update(log_model,input,'idlog')
         return update_log(log=log)

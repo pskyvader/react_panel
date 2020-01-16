@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import usuario_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -57,7 +57,7 @@ class create_usuario(graphene.Mutation):
         input = create_usuario_input(required=True)
 
     def mutate(self, info, input):
-        usuario=mutation_create(usuario_model,idusuario)
+        usuario=mutation_create(usuario_model,input,'idusuario')
 
         return create_usuario(usuario=usuario)
 
@@ -75,5 +75,5 @@ class update_usuario(graphene.Mutation):
         input = update_usuario_input(required=True)
 
     def mutate(self, info, input):
-        usuario=mutation_update(usuario_model,idusuario)
+        usuario=mutation_update(usuario_model,input,'idusuario')
         return update_usuario(usuario=usuario)

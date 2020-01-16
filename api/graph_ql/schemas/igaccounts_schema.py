@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import igaccounts_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -20,7 +20,6 @@ def resolve_igaccounts( args, info,idigaccounts, **kwargs ):
 
 def resolve_all_igaccounts( args, info, **kwargs):
     query= resolve(args,info,igaccounts_schema,igaccounts_model,**kwargs)
-    print('QUERY',query)
     return query
 
 
@@ -69,7 +68,7 @@ class create_igaccounts(graphene.Mutation):
         input = create_igaccounts_input(required=True)
 
     def mutate(self, info, input):
-        igaccounts=mutation_create(igaccounts_model,idigaccounts)
+        igaccounts=mutation_create(igaccounts_model,input,'idigaccounts')
 
         return create_igaccounts(igaccounts=igaccounts)
 
@@ -87,5 +86,5 @@ class update_igaccounts(graphene.Mutation):
         input = update_igaccounts_input(required=True)
 
     def mutate(self, info, input):
-        igaccounts=mutation_update(igaccounts_model,idigaccounts)
+        igaccounts=mutation_update(igaccounts_model,input,'idigaccounts')
         return update_igaccounts(igaccounts=igaccounts)

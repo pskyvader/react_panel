@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import seo_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -64,7 +64,7 @@ class create_seo(graphene.Mutation):
         input = create_seo_input(required=True)
 
     def mutate(self, info, input):
-        seo=mutation_create(seo_model,idseo)
+        seo=mutation_create(seo_model,input,'idseo')
 
         return create_seo(seo=seo)
 
@@ -82,5 +82,5 @@ class update_seo(graphene.Mutation):
         input = update_seo_input(required=True)
 
     def mutate(self, info, input):
-        seo=mutation_update(seo_model,idseo)
+        seo=mutation_update(seo_model,input,'idseo')
         return update_seo(seo=seo)

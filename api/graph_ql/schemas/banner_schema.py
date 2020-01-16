@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import banner_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -60,7 +60,7 @@ class create_banner(graphene.Mutation):
         input = create_banner_input(required=True)
 
     def mutate(self, info, input):
-        banner=mutation_create(banner_model,idbanner)
+        banner=mutation_create(banner_model,input,'idbanner')
 
         return create_banner(banner=banner)
 
@@ -78,5 +78,5 @@ class update_banner(graphene.Mutation):
         input = update_banner_input(required=True)
 
     def mutate(self, info, input):
-        banner=mutation_update(banner_model,idbanner)
+        banner=mutation_update(banner_model,input,'idbanner')
         return update_banner(banner=banner)

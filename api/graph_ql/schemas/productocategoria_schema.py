@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import productocategoria_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -64,7 +64,7 @@ class create_productocategoria(graphene.Mutation):
         input = create_productocategoria_input(required=True)
 
     def mutate(self, info, input):
-        productocategoria=mutation_create(productocategoria_model,idproductocategoria)
+        productocategoria=mutation_create(productocategoria_model,input,'idproductocategoria')
 
         return create_productocategoria(productocategoria=productocategoria)
 
@@ -82,5 +82,5 @@ class update_productocategoria(graphene.Mutation):
         input = update_productocategoria_input(required=True)
 
     def mutate(self, info, input):
-        productocategoria=mutation_update(productocategoria_model,idproductocategoria)
+        productocategoria=mutation_update(productocategoria_model,input,'idproductocategoria')
         return update_productocategoria(productocategoria=productocategoria)

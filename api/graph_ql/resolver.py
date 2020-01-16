@@ -19,6 +19,4 @@ def get_model(table_model):
         for c in columns:
             filter_column=getattr(table_model,c)
             cache_models[name][c]=filter_column
-    else:
-        print('already',name)
     return cache_models[name]

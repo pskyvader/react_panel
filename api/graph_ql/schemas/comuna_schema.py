@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import comuna_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -56,7 +56,7 @@ class create_comuna(graphene.Mutation):
         input = create_comuna_input(required=True)
 
     def mutate(self, info, input):
-        comuna=mutation_create(comuna_model,idcomuna)
+        comuna=mutation_create(comuna_model,input,'idcomuna')
 
         return create_comuna(comuna=comuna)
 
@@ -74,5 +74,5 @@ class update_comuna(graphene.Mutation):
         input = update_comuna_input(required=True)
 
     def mutate(self, info, input):
-        comuna=mutation_update(comuna_model,idcomuna)
+        comuna=mutation_update(comuna_model,input,'idcomuna')
         return update_comuna(comuna=comuna)

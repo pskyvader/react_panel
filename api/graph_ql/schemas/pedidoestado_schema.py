@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import pedidoestado_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -57,7 +57,7 @@ class create_pedidoestado(graphene.Mutation):
         input = create_pedidoestado_input(required=True)
 
     def mutate(self, info, input):
-        pedidoestado=mutation_create(pedidoestado_model,idpedidoestado)
+        pedidoestado=mutation_create(pedidoestado_model,input,'idpedidoestado')
 
         return create_pedidoestado(pedidoestado=pedidoestado)
 
@@ -75,5 +75,5 @@ class update_pedidoestado(graphene.Mutation):
         input = update_pedidoestado_input(required=True)
 
     def mutate(self, info, input):
-        pedidoestado=mutation_update(pedidoestado_model,idpedidoestado)
+        pedidoestado=mutation_update(pedidoestado_model,input,'idpedidoestado')
         return update_pedidoestado(pedidoestado=pedidoestado)

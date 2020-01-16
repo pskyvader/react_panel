@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import seccioncategoria_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -62,7 +62,7 @@ class create_seccioncategoria(graphene.Mutation):
         input = create_seccioncategoria_input(required=True)
 
     def mutate(self, info, input):
-        seccioncategoria=mutation_create(seccioncategoria_model,idseccioncategoria)
+        seccioncategoria=mutation_create(seccioncategoria_model,input,'idseccioncategoria')
 
         return create_seccioncategoria(seccioncategoria=seccioncategoria)
 
@@ -80,5 +80,5 @@ class update_seccioncategoria(graphene.Mutation):
         input = update_seccioncategoria_input(required=True)
 
     def mutate(self, info, input):
-        seccioncategoria=mutation_update(seccioncategoria_model,idseccioncategoria)
+        seccioncategoria=mutation_update(seccioncategoria_model,input,'idseccioncategoria')
         return update_seccioncategoria(seccioncategoria=seccioncategoria)

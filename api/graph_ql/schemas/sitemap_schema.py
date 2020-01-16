@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import sitemap_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -56,7 +56,7 @@ class create_sitemap(graphene.Mutation):
         input = create_sitemap_input(required=True)
 
     def mutate(self, info, input):
-        sitemap=mutation_create(sitemap_model,idsitemap)
+        sitemap=mutation_create(sitemap_model,input,'idsitemap')
 
         return create_sitemap(sitemap=sitemap)
 
@@ -74,5 +74,5 @@ class update_sitemap(graphene.Mutation):
         input = update_sitemap_input(required=True)
 
     def mutate(self, info, input):
-        sitemap=mutation_update(sitemap_model,idsitemap)
+        sitemap=mutation_update(sitemap_model,input,'idsitemap')
         return update_sitemap(sitemap=sitemap)

@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import texto_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -59,7 +59,7 @@ class create_texto(graphene.Mutation):
         input = create_texto_input(required=True)
 
     def mutate(self, info, input):
-        texto=mutation_create(texto_model,idtexto)
+        texto=mutation_create(texto_model,input,'idtexto')
 
         return create_texto(texto=texto)
 
@@ -77,5 +77,5 @@ class update_texto(graphene.Mutation):
         input = update_texto_input(required=True)
 
     def mutate(self, info, input):
-        texto=mutation_update(texto_model,idtexto)
+        texto=mutation_update(texto_model,input,'idtexto')
         return update_texto(texto=texto)

@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import configuracion_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -53,7 +53,7 @@ class create_configuracion(graphene.Mutation):
         input = create_configuracion_input(required=True)
 
     def mutate(self, info, input):
-        configuracion=mutation_create(configuracion_model,idconfiguracion)
+        configuracion=mutation_create(configuracion_model,input,'idconfiguracion')
 
         return create_configuracion(configuracion=configuracion)
 
@@ -71,5 +71,5 @@ class update_configuracion(graphene.Mutation):
         input = update_configuracion_input(required=True)
 
     def mutate(self, info, input):
-        configuracion=mutation_update(configuracion_model,idconfiguracion)
+        configuracion=mutation_update(configuracion_model,input,'idconfiguracion')
         return update_configuracion(configuracion=configuracion)

@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import administrador_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -56,7 +56,7 @@ class create_administrador(graphene.Mutation):
         input = create_administrador_input(required=True)
 
     def mutate(self, info, input):
-        administrador=mutation_create(administrador_model,'idadministrador')
+        administrador=mutation_create(administrador_model,input,'idadministrador')
 
         return create_administrador(administrador=administrador)
 
@@ -74,5 +74,5 @@ class update_administrador(graphene.Mutation):
         input = update_administrador_input(required=True)
 
     def mutate(self, info, input):
-        administrador=mutation_update(administrador_model,idadministrador)
+        administrador=mutation_update(administrador_model,input,'idadministrador')
         return update_administrador(administrador=administrador)

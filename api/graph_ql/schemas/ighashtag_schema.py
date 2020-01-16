@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import ighashtag_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -60,7 +60,7 @@ class create_ighashtag(graphene.Mutation):
         input = create_ighashtag_input(required=True)
 
     def mutate(self, info, input):
-        ighashtag=mutation_create(ighashtag_model,idighashtag)
+        ighashtag=mutation_create(ighashtag_model,input,'idighashtag')
 
         return create_ighashtag(ighashtag=ighashtag)
 
@@ -78,5 +78,5 @@ class update_ighashtag(graphene.Mutation):
         input = update_ighashtag_input(required=True)
 
     def mutate(self, info, input):
-        ighashtag=mutation_update(ighashtag_model,idighashtag)
+        ighashtag=mutation_update(ighashtag_model,input,'idighashtag')
         return update_ighashtag(ighashtag=ighashtag)

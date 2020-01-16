@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import galeria_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -60,7 +60,7 @@ class create_galeria(graphene.Mutation):
         input = create_galeria_input(required=True)
 
     def mutate(self, info, input):
-        galeria=mutation_create(galeria_model,idgaleria)
+        galeria=mutation_create(galeria_model,input,'idgaleria')
 
         return create_galeria(galeria=galeria)
 
@@ -78,5 +78,5 @@ class update_galeria(graphene.Mutation):
         input = update_galeria_input(required=True)
 
     def mutate(self, info, input):
-        galeria=mutation_update(galeria_model,idgaleria)
+        galeria=mutation_update(galeria_model,input,'idgaleria')
         return update_galeria(galeria=galeria)

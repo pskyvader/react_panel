@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import modulo_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -62,7 +62,7 @@ class create_modulo(graphene.Mutation):
         input = create_modulo_input(required=True)
 
     def mutate(self, info, input):
-        modulo=mutation_create(modulo_model,idmodulo)
+        modulo=mutation_create(modulo_model,input,'idmodulo')
 
         return create_modulo(modulo=modulo)
 
@@ -80,5 +80,5 @@ class update_modulo(graphene.Mutation):
         input = update_modulo_input(required=True)
 
     def mutate(self, info, input):
-        modulo=mutation_update(modulo_model,idmodulo)
+        modulo=mutation_update(modulo_model,input,'idmodulo')
         return update_modulo(modulo=modulo)

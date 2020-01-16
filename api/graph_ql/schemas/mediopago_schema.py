@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import mediopago_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -56,7 +56,7 @@ class create_mediopago(graphene.Mutation):
         input = create_mediopago_input(required=True)
 
     def mutate(self, info, input):
-        mediopago=mutation_create(mediopago_model,idmediopago)
+        mediopago=mutation_create(mediopago_model,input,'idmediopago')
 
         return create_mediopago(mediopago=mediopago)
 
@@ -74,5 +74,5 @@ class update_mediopago(graphene.Mutation):
         input = update_mediopago_input(required=True)
 
     def mutate(self, info, input):
-        mediopago=mutation_update(mediopago_model,idmediopago)
+        mediopago=mutation_update(mediopago_model,input,'idmediopago')
         return update_mediopago(mediopago=mediopago)

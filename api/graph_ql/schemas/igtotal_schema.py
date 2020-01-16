@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import igtotal_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -54,7 +54,7 @@ class create_igtotal(graphene.Mutation):
         input = create_igtotal_input(required=True)
 
     def mutate(self, info, input):
-        igtotal=mutation_create(igtotal_model,idigtotal)
+        igtotal=mutation_create(igtotal_model,input,'idigtotal')
 
         return create_igtotal(igtotal=igtotal)
 
@@ -72,5 +72,5 @@ class update_igtotal(graphene.Mutation):
         input = update_igtotal_input(required=True)
 
     def mutate(self, info, input):
-        igtotal=mutation_update(igtotal_model,idigtotal)
+        igtotal=mutation_update(igtotal_model,input,'idigtotal')
         return update_igtotal(igtotal=igtotal)

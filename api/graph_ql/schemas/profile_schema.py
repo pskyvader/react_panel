@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import profile_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -55,7 +55,7 @@ class create_profile(graphene.Mutation):
         input = create_profile_input(required=True)
 
     def mutate(self, info, input):
-        profile=mutation_create(profile_model,idprofile)
+        profile=mutation_create(profile_model,input,'idprofile')
 
         return create_profile(profile=profile)
 
@@ -73,5 +73,5 @@ class update_profile(graphene.Mutation):
         input = update_profile_input(required=True)
 
     def mutate(self, info, input):
-        profile=mutation_update(profile_model,idprofile)
+        profile=mutation_update(profile_model,input,'idprofile')
         return update_profile(profile=profile)

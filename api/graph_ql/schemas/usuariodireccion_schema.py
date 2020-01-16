@@ -3,7 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType,SQLAlchemyConnectionField
 import graphene
 from ..models import usuariodireccion_model
 from ..resolver import resolve
-from ..mutator import mutation_create
+from ..mutator import mutation_create,mutation_update
 
 # __REPLACE__
 
@@ -65,7 +65,7 @@ class create_usuariodireccion(graphene.Mutation):
         input = create_usuariodireccion_input(required=True)
 
     def mutate(self, info, input):
-        usuariodireccion=mutation_create(usuariodireccion_model,idusuariodireccion)
+        usuariodireccion=mutation_create(usuariodireccion_model,input,'idusuariodireccion')
 
         return create_usuariodireccion(usuariodireccion=usuariodireccion)
 
@@ -83,5 +83,5 @@ class update_usuariodireccion(graphene.Mutation):
         input = update_usuariodireccion_input(required=True)
 
     def mutate(self, info, input):
-        usuariodireccion=mutation_update(usuariodireccion_model,idusuariodireccion)
+        usuariodireccion=mutation_update(usuariodireccion_model,input,'idusuariodireccion')
         return update_usuariodireccion(usuariodireccion=usuariodireccion)
