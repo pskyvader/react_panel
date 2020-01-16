@@ -5,14 +5,11 @@ from ..models import producto_model
 from ..resolver import resolve
 from ..mutator import mutation_create,mutation_update
 
-# __REPLACE__
-
 class producto_schema(SQLAlchemyObjectType):
     class Meta:
         model = producto_model
         interfaces = (graphene.relay.Node, )
         only_fields=['idproducto','idproductocategoria','tipo','titulo','url','foto','archivo','codigo','precio','descuento','descuento_fecha','stock','ventas','resumen','descripcion','keywords','metadescripcion','orden','estado','destacado']
-
 
 def resolve_producto( args, info,idproducto, **kwargs ):
     query= resolve(args,info,producto_schema,producto_model,idproducto=idproducto,**kwargs)
@@ -22,14 +19,8 @@ def resolve_all_producto( args, info, **kwargs):
     query= resolve(args,info,producto_schema,producto_model,**kwargs)
     return query
 
-
-
-all_producto = SQLAlchemyConnectionField(producto_schema,idproductocategoria=graphene.String(),tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),codigo=graphene.String(),precio=graphene.Int(),descuento=graphene.Int(),descuento_fecha=graphene.String(),stock=graphene.Int(),ventas=graphene.Int(),resumen=graphene.String(),descripcion=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean(),destacado=graphene.Boolean())
+all_producto = SQLAlchemyConnectionField(producto_schema,sort=graphene.String(),idproductocategoria=graphene.String(),tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),codigo=graphene.String(),precio=graphene.Int(),descuento=graphene.Int(),descuento_fecha=graphene.String(),stock=graphene.Int(),ventas=graphene.Int(),resumen=graphene.String(),descripcion=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean(),destacado=graphene.Boolean())
 producto = graphene.Field(producto_schema,idproducto=graphene.Int(),idproductocategoria=graphene.String(),tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),codigo=graphene.String(),precio=graphene.Int(),descuento=graphene.Int(),descuento_fecha=graphene.String(),stock=graphene.Int(),ventas=graphene.Int(),resumen=graphene.String(),descripcion=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean(),destacado=graphene.Boolean())
-
-# __REPLACE__
-
-
 
 # Create a generic class to mutualize description of producto _attributes for both queries and mutations
 class producto_attribute:
@@ -53,12 +44,9 @@ class producto_attribute:
     destacado=graphene.Boolean()
    
 
-
-
 class create_producto_input(graphene.InputObjectType, producto_attribute):
     """Arguments to create a producto."""
     pass
-
 
 class create_producto(graphene.Mutation):
     """Mutation to create a producto."""
@@ -69,14 +57,11 @@ class create_producto(graphene.Mutation):
 
     def mutate(self, info, input):
         producto=mutation_create(producto_model,input,'idproducto')
-
         return create_producto(producto=producto)
-
 
 class update_producto_input(graphene.InputObjectType, producto_attribute):
     """Arguments to update a producto."""
     idproducto = graphene.ID(required=True, description="Global Id of the producto.")
-
 
 class update_producto(graphene.Mutation):
     """Update a producto."""

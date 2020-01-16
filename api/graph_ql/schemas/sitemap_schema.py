@@ -5,14 +5,11 @@ from ..models import sitemap_model
 from ..resolver import resolve
 from ..mutator import mutation_create,mutation_update
 
-# __REPLACE__
-
 class sitemap_schema(SQLAlchemyObjectType):
     class Meta:
         model = sitemap_model
         interfaces = (graphene.relay.Node, )
         only_fields=['idsitemap','idpadre','url','depth','valid','ready']
-
 
 def resolve_sitemap( args, info,idsitemap, **kwargs ):
     query= resolve(args,info,sitemap_schema,sitemap_model,idsitemap=idsitemap,**kwargs)
@@ -22,14 +19,8 @@ def resolve_all_sitemap( args, info, **kwargs):
     query= resolve(args,info,sitemap_schema,sitemap_model,**kwargs)
     return query
 
-
-
-all_sitemap = SQLAlchemyConnectionField(sitemap_schema,idpadre=graphene.Int(),url=graphene.String(),depth=graphene.Int(),valid=graphene.String(),ready=graphene.Boolean())
+all_sitemap = SQLAlchemyConnectionField(sitemap_schema,sort=graphene.String(),idpadre=graphene.Int(),url=graphene.String(),depth=graphene.Int(),valid=graphene.String(),ready=graphene.Boolean())
 sitemap = graphene.Field(sitemap_schema,idsitemap=graphene.Int(),idpadre=graphene.Int(),url=graphene.String(),depth=graphene.Int(),valid=graphene.String(),ready=graphene.Boolean())
-
-# __REPLACE__
-
-
 
 # Create a generic class to mutualize description of sitemap _attributes for both queries and mutations
 class sitemap_attribute:
@@ -41,12 +32,9 @@ class sitemap_attribute:
     ready=graphene.Boolean()
    
 
-
-
 class create_sitemap_input(graphene.InputObjectType, sitemap_attribute):
     """Arguments to create a sitemap."""
     pass
-
 
 class create_sitemap(graphene.Mutation):
     """Mutation to create a sitemap."""
@@ -57,14 +45,11 @@ class create_sitemap(graphene.Mutation):
 
     def mutate(self, info, input):
         sitemap=mutation_create(sitemap_model,input,'idsitemap')
-
         return create_sitemap(sitemap=sitemap)
-
 
 class update_sitemap_input(graphene.InputObjectType, sitemap_attribute):
     """Arguments to update a sitemap."""
     idsitemap = graphene.ID(required=True, description="Global Id of the sitemap.")
-
 
 class update_sitemap(graphene.Mutation):
     """Update a sitemap."""

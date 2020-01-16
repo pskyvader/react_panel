@@ -5,14 +5,11 @@ from ..models import productocategoria_model
 from ..resolver import resolve
 from ..mutator import mutation_create,mutation_update
 
-# __REPLACE__
-
 class productocategoria_schema(SQLAlchemyObjectType):
     class Meta:
         model = productocategoria_model
         interfaces = (graphene.relay.Node, )
         only_fields=['idproductocategoria','idpadre','tipo','titulo','url','foto','descuento','descuento_fecha','resumen','descripcion','keywords','metadescripcion','orden','estado','destacado']
-
 
 def resolve_productocategoria( args, info,idproductocategoria, **kwargs ):
     query= resolve(args,info,productocategoria_schema,productocategoria_model,idproductocategoria=idproductocategoria,**kwargs)
@@ -22,14 +19,8 @@ def resolve_all_productocategoria( args, info, **kwargs):
     query= resolve(args,info,productocategoria_schema,productocategoria_model,**kwargs)
     return query
 
-
-
-all_productocategoria = SQLAlchemyConnectionField(productocategoria_schema,idpadre=graphene.String(),tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),descuento=graphene.Int(),descuento_fecha=graphene.String(),resumen=graphene.String(),descripcion=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean(),destacado=graphene.Boolean())
+all_productocategoria = SQLAlchemyConnectionField(productocategoria_schema,sort=graphene.String(),idpadre=graphene.String(),tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),descuento=graphene.Int(),descuento_fecha=graphene.String(),resumen=graphene.String(),descripcion=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean(),destacado=graphene.Boolean())
 productocategoria = graphene.Field(productocategoria_schema,idproductocategoria=graphene.Int(),idpadre=graphene.String(),tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),descuento=graphene.Int(),descuento_fecha=graphene.String(),resumen=graphene.String(),descripcion=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean(),destacado=graphene.Boolean())
-
-# __REPLACE__
-
-
 
 # Create a generic class to mutualize description of productocategoria _attributes for both queries and mutations
 class productocategoria_attribute:
@@ -49,12 +40,9 @@ class productocategoria_attribute:
     destacado=graphene.Boolean()
    
 
-
-
 class create_productocategoria_input(graphene.InputObjectType, productocategoria_attribute):
     """Arguments to create a productocategoria."""
     pass
-
 
 class create_productocategoria(graphene.Mutation):
     """Mutation to create a productocategoria."""
@@ -65,14 +53,11 @@ class create_productocategoria(graphene.Mutation):
 
     def mutate(self, info, input):
         productocategoria=mutation_create(productocategoria_model,input,'idproductocategoria')
-
         return create_productocategoria(productocategoria=productocategoria)
-
 
 class update_productocategoria_input(graphene.InputObjectType, productocategoria_attribute):
     """Arguments to update a productocategoria."""
     idproductocategoria = graphene.ID(required=True, description="Global Id of the productocategoria.")
-
 
 class update_productocategoria(graphene.Mutation):
     """Update a productocategoria."""

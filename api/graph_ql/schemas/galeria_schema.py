@@ -5,14 +5,11 @@ from ..models import galeria_model
 from ..resolver import resolve
 from ..mutator import mutation_create,mutation_update
 
-# __REPLACE__
-
 class galeria_schema(SQLAlchemyObjectType):
     class Meta:
         model = galeria_model
         interfaces = (graphene.relay.Node, )
         only_fields=['idgaleria','tipo','titulo','url','subtitulo','foto','resumen','keywords','metadescripcion','orden','estado']
-
 
 def resolve_galeria( args, info,idgaleria, **kwargs ):
     query= resolve(args,info,galeria_schema,galeria_model,idgaleria=idgaleria,**kwargs)
@@ -22,14 +19,8 @@ def resolve_all_galeria( args, info, **kwargs):
     query= resolve(args,info,galeria_schema,galeria_model,**kwargs)
     return query
 
-
-
-all_galeria = SQLAlchemyConnectionField(galeria_schema,tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),subtitulo=graphene.String(),resumen=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean())
+all_galeria = SQLAlchemyConnectionField(galeria_schema,sort=graphene.String(),tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),subtitulo=graphene.String(),resumen=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean())
 galeria = graphene.Field(galeria_schema,idgaleria=graphene.Int(),tipo=graphene.Int(),titulo=graphene.String(),url=graphene.String(),subtitulo=graphene.String(),resumen=graphene.String(),keywords=graphene.String(),metadescripcion=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean())
-
-# __REPLACE__
-
-
 
 # Create a generic class to mutualize description of galeria _attributes for both queries and mutations
 class galeria_attribute:
@@ -45,12 +36,9 @@ class galeria_attribute:
     estado=graphene.Boolean()
    
 
-
-
 class create_galeria_input(graphene.InputObjectType, galeria_attribute):
     """Arguments to create a galeria."""
     pass
-
 
 class create_galeria(graphene.Mutation):
     """Mutation to create a galeria."""
@@ -61,14 +49,11 @@ class create_galeria(graphene.Mutation):
 
     def mutate(self, info, input):
         galeria=mutation_create(galeria_model,input,'idgaleria')
-
         return create_galeria(galeria=galeria)
-
 
 class update_galeria_input(graphene.InputObjectType, galeria_attribute):
     """Arguments to update a galeria."""
     idgaleria = graphene.ID(required=True, description="Global Id of the galeria.")
-
 
 class update_galeria(graphene.Mutation):
     """Update a galeria."""

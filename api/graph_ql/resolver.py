@@ -1,5 +1,3 @@
-from sqlalchemy import text
-
 cache_models={}
 
 
@@ -14,10 +12,13 @@ def resolve(args, info, table_schema, table_model, **kwargs):
     sort_value = kwargs.get('sort', None)
     if sort_value!=None:
         value,pos=sort_value.split(" ")
-        if value in model and pos.lower() in ['asc','desc']:
-            query = query.order_by( getattr(model[value],pos.lower())() )
+        if value in model:
+            if pos.lower() in ['asc','desc']:
+                query = query.order_by( getattr(model[value],pos.lower())() )
+            else:
+                raise NameError('Invalid sort',pos)
         else:
-            raise SyntaxWarning('Invalid Sort field',sort_value)
+            raise NameError('Field not found',value)
 
     return query
 

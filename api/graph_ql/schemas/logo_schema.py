@@ -5,14 +5,11 @@ from ..models import logo_model
 from ..resolver import resolve
 from ..mutator import mutation_create,mutation_update
 
-# __REPLACE__
-
 class logo_schema(SQLAlchemyObjectType):
     class Meta:
         model = logo_model
         interfaces = (graphene.relay.Node, )
         only_fields=['idlogo','titulo','foto','orden']
-
 
 def resolve_logo( args, info,idlogo, **kwargs ):
     query= resolve(args,info,logo_schema,logo_model,idlogo=idlogo,**kwargs)
@@ -22,14 +19,8 @@ def resolve_all_logo( args, info, **kwargs):
     query= resolve(args,info,logo_schema,logo_model,**kwargs)
     return query
 
-
-
-all_logo = SQLAlchemyConnectionField(logo_schema,titulo=graphene.String(),orden=graphene.Int())
+all_logo = SQLAlchemyConnectionField(logo_schema,sort=graphene.String(),titulo=graphene.String(),orden=graphene.Int())
 logo = graphene.Field(logo_schema,idlogo=graphene.Int(),titulo=graphene.String(),orden=graphene.Int())
-
-# __REPLACE__
-
-
 
 # Create a generic class to mutualize description of logo _attributes for both queries and mutations
 class logo_attribute:
@@ -38,12 +29,9 @@ class logo_attribute:
     orden=graphene.Int()
    
 
-
-
 class create_logo_input(graphene.InputObjectType, logo_attribute):
     """Arguments to create a logo."""
     pass
-
 
 class create_logo(graphene.Mutation):
     """Mutation to create a logo."""
@@ -54,14 +42,11 @@ class create_logo(graphene.Mutation):
 
     def mutate(self, info, input):
         logo=mutation_create(logo_model,input,'idlogo')
-
         return create_logo(logo=logo)
-
 
 class update_logo_input(graphene.InputObjectType, logo_attribute):
     """Arguments to update a logo."""
     idlogo = graphene.ID(required=True, description="Global Id of the logo.")
-
 
 class update_logo(graphene.Mutation):
     """Update a logo."""

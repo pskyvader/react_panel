@@ -5,14 +5,11 @@ from ..models import texto_model
 from ..resolver import resolve
 from ..mutator import mutation_create,mutation_update
 
-# __REPLACE__
-
 class texto_schema(SQLAlchemyObjectType):
     class Meta:
         model = texto_model
         interfaces = (graphene.relay.Node, )
         only_fields=['idtexto','tipo','titulo','url','descripcion','texto','mapa','orden','estado']
-
 
 def resolve_texto( args, info,idtexto, **kwargs ):
     query= resolve(args,info,texto_schema,texto_model,idtexto=idtexto,**kwargs)
@@ -22,14 +19,8 @@ def resolve_all_texto( args, info, **kwargs):
     query= resolve(args,info,texto_schema,texto_model,**kwargs)
     return query
 
-
-
-all_texto = SQLAlchemyConnectionField(texto_schema,tipo=graphene.String(),titulo=graphene.String(),url=graphene.String(),descripcion=graphene.String(),texto=graphene.String(),mapa=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean())
+all_texto = SQLAlchemyConnectionField(texto_schema,sort=graphene.String(),tipo=graphene.String(),titulo=graphene.String(),url=graphene.String(),descripcion=graphene.String(),texto=graphene.String(),mapa=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean())
 texto = graphene.Field(texto_schema,idtexto=graphene.Int(),tipo=graphene.String(),titulo=graphene.String(),url=graphene.String(),descripcion=graphene.String(),texto=graphene.String(),mapa=graphene.String(),orden=graphene.Int(),estado=graphene.Boolean())
-
-# __REPLACE__
-
-
 
 # Create a generic class to mutualize description of texto _attributes for both queries and mutations
 class texto_attribute:
@@ -44,12 +35,9 @@ class texto_attribute:
     estado=graphene.Boolean()
    
 
-
-
 class create_texto_input(graphene.InputObjectType, texto_attribute):
     """Arguments to create a texto."""
     pass
-
 
 class create_texto(graphene.Mutation):
     """Mutation to create a texto."""
@@ -60,14 +48,11 @@ class create_texto(graphene.Mutation):
 
     def mutate(self, info, input):
         texto=mutation_create(texto_model,input,'idtexto')
-
         return create_texto(texto=texto)
-
 
 class update_texto_input(graphene.InputObjectType, texto_attribute):
     """Arguments to update a texto."""
     idtexto = graphene.ID(required=True, description="Global Id of the texto.")
-
 
 class update_texto(graphene.Mutation):
     """Update a texto."""

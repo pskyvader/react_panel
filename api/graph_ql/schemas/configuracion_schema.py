@@ -5,14 +5,11 @@ from ..models import configuracion_model
 from ..resolver import resolve
 from ..mutator import mutation_create,mutation_update
 
-# __REPLACE__
-
 class configuracion_schema(SQLAlchemyObjectType):
     class Meta:
         model = configuracion_model
         interfaces = (graphene.relay.Node, )
         only_fields=['idconfiguracion','variable','valor']
-
 
 def resolve_configuracion( args, info,idconfiguracion, **kwargs ):
     query= resolve(args,info,configuracion_schema,configuracion_model,idconfiguracion=idconfiguracion,**kwargs)
@@ -22,14 +19,8 @@ def resolve_all_configuracion( args, info, **kwargs):
     query= resolve(args,info,configuracion_schema,configuracion_model,**kwargs)
     return query
 
-
-
-all_configuracion = SQLAlchemyConnectionField(configuracion_schema,variable=graphene.String(),valor=graphene.String())
+all_configuracion = SQLAlchemyConnectionField(configuracion_schema,sort=graphene.String(),variable=graphene.String(),valor=graphene.String())
 configuracion = graphene.Field(configuracion_schema,idconfiguracion=graphene.Int(),variable=graphene.String(),valor=graphene.String())
-
-# __REPLACE__
-
-
 
 # Create a generic class to mutualize description of configuracion _attributes for both queries and mutations
 class configuracion_attribute:
@@ -38,12 +29,9 @@ class configuracion_attribute:
     valor=graphene.String()
    
 
-
-
 class create_configuracion_input(graphene.InputObjectType, configuracion_attribute):
     """Arguments to create a configuracion."""
     pass
-
 
 class create_configuracion(graphene.Mutation):
     """Mutation to create a configuracion."""
@@ -54,14 +42,11 @@ class create_configuracion(graphene.Mutation):
 
     def mutate(self, info, input):
         configuracion=mutation_create(configuracion_model,input,'idconfiguracion')
-
         return create_configuracion(configuracion=configuracion)
-
 
 class update_configuracion_input(graphene.InputObjectType, configuracion_attribute):
     """Arguments to update a configuracion."""
     idconfiguracion = graphene.ID(required=True, description="Global Id of the configuracion.")
-
 
 class update_configuracion(graphene.Mutation):
     """Update a configuracion."""

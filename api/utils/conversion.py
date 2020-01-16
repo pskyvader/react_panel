@@ -281,9 +281,9 @@ def create_file(file_name, content,force=False):
 
 
 # bdd_to_folder()
-json_to_model()
+# json_to_model()
 json_to_schema(force=True)
-json_to_query()
-json_to_mutation()
-json_to_types()
-json_to_init()
+# json_to_query()
+# json_to_mutation()
+# json_to_types()
+# json_to_init()
