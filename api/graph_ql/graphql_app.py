@@ -12,8 +12,11 @@ def init(environ):
     data = {}
     status_code=200
     if environ["REQUEST_METHOD"] == "POST":
+        print('parse')
         data  = parse_body(environ)
+        print('run query')
         execution_results, params = run_http_query( schema, 'post', data)
+        print('encode results')
         result, status_code = encode_execution_results( execution_results, format_error=default_format_error,is_batch=False, encode=json_encode)
         result=json.loads(result)
         
@@ -21,6 +24,7 @@ def init(environ):
             data = {"data": result['data']}
         else:
             data = {'errors':[format_error(e) for e in result['errors']]}
+        print('fin')
 
     data_return["status"] = '{} {}'.format(status_code, http.client.responses[status_code])
     data_return["response_body"] = data
@@ -31,7 +35,6 @@ def init(environ):
         status_code=getattr(e, 'status_code', 500)
         data_return["status"] =  '{} {}'.format(status_code, http.client.responses[status_code])
         data_return["response_body"] = {'errors':[error_message]}
-        data_return["headers"] = []
 
     return data_return
 
