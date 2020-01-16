@@ -20,8 +20,9 @@ def mutation_create(table_model,input,id_key):
 
 def mutation_update(table_model,input,id_key):
     data = input_to_dictionary(input,id_key)
-    table = db_session.query(table_model).filter_by(id=data[id_key])
+    filter_id=getattr(table_model,id_key)
+    table = db_session.query(table_model).filter(filter_id==data[id_key])
     table.update(data)
     db_session.commit()
-    table = db_session.query(table_model).filter_by(id=data[id_key]).first()
+    table = db_session.query(table_model).filter(filter_id==data[id_key]).first()
     return table

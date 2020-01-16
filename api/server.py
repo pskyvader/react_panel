@@ -1,8 +1,8 @@
 from wsgiref.simple_server import make_server
 import passenger_wsgi
 
-port=8080
-srv = make_server('', port, passenger_wsgi.application)
+port = 8080
+srv = make_server("", port, passenger_wsgi.application)
 print("En port {}... ctrl-c to quit server.".format(port))
 
 try:
