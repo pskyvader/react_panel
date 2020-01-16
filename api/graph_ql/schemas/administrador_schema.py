@@ -24,7 +24,7 @@ def resolve_all_administrador( args, info, **kwargs):
 
 
 
-all_administrador = SQLAlchemyConnectionField(administrador_schema,sort=None,tipo=graphene.Int(),email=graphene.String(),nombre=graphene.String(),estado=graphene.Boolean(),cookie=graphene.String())
+all_administrador = SQLAlchemyConnectionField(administrador_schema,sort=graphene.String(),tipo=graphene.Int(),email=graphene.String(),nombre=graphene.String(),estado=graphene.Boolean(),cookie=graphene.String())
 administrador = graphene.Field(administrador_schema,idadministrador=graphene.Int(),tipo=graphene.Int(),email=graphene.String(),nombre=graphene.String(),estado=graphene.Boolean(),cookie=graphene.String())
 
 # __REPLACE__
