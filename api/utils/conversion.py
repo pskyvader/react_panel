@@ -102,11 +102,11 @@ def json_to_model():
     json_files = file_list(bdd_dir)
     model_classes = ""
     for f in json_files:
-        model_classes += json_to_class(f, return_class=True)+"\n"
+        model_classes += json_to_class(f, return_class=True) + "\n"
 
     model_file = join(current_dir, "..", "graph_ql", "models.py")
 
-    if replace_in_file(model_file, "# __MODELS__", "\n"+model_classes+ "\n"):
+    if replace_in_file(model_file, "# __MODELS__", "\n" + model_classes + "\n"):
         print("Modelos creados correctamente!")
     else:
         print("Error al crear los modelos!")
@@ -122,37 +122,31 @@ def json_to_schema(force=False):
 
         f = f.replace(".json", "")
         template = template.replace("TABLENAME", f)
-        fields = [
-            field for field in table["fields"] if field["titulo"] not in black_list
-        ]
+
         fields_str = ""
-        for field in fields:
+        fields_read_only = ""
+        fields_black_list = ""
+
+        for field in table["fields"]:
             if field["tipo"] != "json":
-                fields_str += (
-                    field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + "\n    "
-                )
-        template = template.replace("EXTRA_FIELDS_BREAK_LINE", fields_str[:-1])
+                if field["titulo"] not in black_list:
+                    fields_str += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
+                else:
+                    fields_black_list += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
+            else:
+                fields_read_only += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
 
-        
-        fields_str = ""
-        for field in fields:
-            if field["tipo"] != "json":
-                fields_str += (
-                    field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ","
-                )
-        template = template.replace("EXTRA_FIELDS", fields_str[:-1])
-
-
-        fields_str = ""
-        for field in fields:
-            fields_str += "'" + field["titulo"] + "',"
-        template = template.replace("ONLY_FIELDS", fields_str[:-1])
+        template = template.replace("EXTRA_FIELDS", fields_str.rstrip()[:-1])
+        template = template.replace("READ_ONLY_FIELDS", fields_read_only.rstrip()[:-1])
+        template = template.replace(
+            "BLACK_LIST_FIELDS", fields_black_list.rstrip()[:-1]
+        )
 
         schema_file = join(schemas_dir, f + "_schema.py")
         if not force and isfile(schema_file):
             print("El archivo ", schema_file, " Existe, saltando...")
         else:
-            if create_file(schema_file, template,force):
+            if create_file(schema_file, template, force):
                 print("schema creado correctamente!", schema_file)
             else:
                 print("Error al crear el schema!", schema_file)
@@ -174,7 +168,6 @@ def json_to_query():
         print("Error al crear los metodos!")
 
 
-
 def json_to_mutation():
     json_files = file_list(bdd_dir)
     template = get_file(join(current_dir, "template_mutation.py"))
@@ -189,7 +182,6 @@ def json_to_mutation():
         print("metodos creados correctamente!")
     else:
         print("Error al crear los metodos!")
-
 
 
 def json_to_types():
@@ -212,24 +204,20 @@ def json_to_types():
 
 def json_to_init():
     json_files = file_list(bdd_dir)
-    template = '__all__ = [INIT]'
+    template = "__all__ = [INIT]"
     type_classes = ""
     type_str = ""
     for f in json_files:
         f = f.replace(".json", "")
-        type_str +='"'+ f + '_schema",'
+        type_str += '"' + f + '_schema",'
 
     type_classes = template.replace("INIT", type_str[:-1])
 
-    init_file = join(current_dir, "..", "graph_ql", "schemas",'__init__.py')
+    init_file = join(current_dir, "..", "graph_ql", "schemas", "__init__.py")
     if replace_in_file(init_file, "# __INIT__", "\n" + type_classes + "\n"):
         print("Init creados correctamente!")
     else:
         print("Error al crear los Init!")
-
-
-
-
 
 
 def get_file(file_name):
@@ -270,7 +258,7 @@ def replace_in_file(file_name, tag, content):
     return False
 
 
-def create_file(file_name, content,force=False):
+def create_file(file_name, content, force=False):
     if isfile(file_name) and not force:
         raise FileExistsError(file_name + " Already exists")
     else:
@@ -284,6 +272,6 @@ def create_file(file_name, content,force=False):
 # json_to_model()
 json_to_schema(force=True)
 # json_to_query()
-# json_to_mutation()
+json_to_mutation()
 # json_to_types()
 # json_to_init()
