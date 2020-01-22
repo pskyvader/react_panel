@@ -1,7 +1,7 @@
 from .database import db_session,encript
 from graphql_relay.node.node import from_global_id
 
-def input_to_dictionary(input_variable,id_key):
+def input_to_dictionary(input_variable):
     """Method to convert Graphene input_variables into dictionary"""
     dictionary = {}
     for key in input_variable:
@@ -15,16 +15,20 @@ def input_to_dictionary(input_variable,id_key):
     return dictionary
     
 
-def mutation_create(table_model,input,id_key):
-    data = input_to_dictionary(input,id_key)
+def mutation_create(table_model,input,id_key,info):
+    data = input_to_dictionary(input)
+    if info.contex.FILES!=None:
+        data=process_file(data,id_key,info.contex.FILES)
     table = table_model(**data)
     db_session.add(table)
     db_session.commit()
     return table
 
 
-def mutation_update(table_model,input,id_key):
-    data = input_to_dictionary(input,id_key)
+def mutation_update(table_model,input,id_key,info):
+    data = input_to_dictionary(input)
+    if info.contex.FILES!=None:
+        data=process_file(data,id_key,info.contex.FILES)
     filter_id=getattr(table_model,id_key)
     table = db_session.query(table_model).filter(filter_id==data[id_key])
     table.update(data)
@@ -34,7 +38,7 @@ def mutation_update(table_model,input,id_key):
 
 
 def mutation_delete(table_model,input,id_key):
-    data = input_to_dictionary(input,id_key)
+    data = input_to_dictionary(input)
     filter_id=getattr(table_model,id_key)
     table = db_session.query(table_model).filter(filter_id==data[id_key]).first()
     if table!=None:
@@ -43,3 +47,9 @@ def mutation_delete(table_model,input,id_key):
         return (True,'Delete correctly')
     else:
         return (False,id_key+' '+ data[id_key] +" Doesn't exists")
+
+
+def process_file(data,id_key,files):
+    for f in files:
+        print(f)
+    return data
