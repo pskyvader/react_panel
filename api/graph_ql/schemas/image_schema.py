@@ -45,8 +45,8 @@ def resolve_all_image(args, info, **kwargs):
     return query
 
 
-all_image = SQLAlchemyConnectionField(image_schema, sort=graphene.String(), **attribute)
-image = graphene.Field(image_schema, idimage=graphene.Int(), **attribute)
+all_image = SQLAlchemyConnectionField(image_schema, sort=graphene.String(), size=graphene.InputObjectType(), **attribute)
+image = graphene.Field(image_schema, idimage=graphene.Int(), size=graphene.InputObjectType(), **attribute)
 
 # Create a generic class to mutualize description of image _attributes for both queries and mutations
 class image_attribute:

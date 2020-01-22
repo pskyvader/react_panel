@@ -19,6 +19,10 @@ def resolve(args, info, table_schema, table_model, **kwargs):
                 raise NameError('Invalid sort',pos)
         else:
             raise NameError('Field not found',value)
+    
+    size_value = kwargs.get('size', None)
+    if size_value!=None:
+        print(size_value)
 
     return query
 
