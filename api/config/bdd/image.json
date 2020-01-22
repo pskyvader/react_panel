@@ -3,7 +3,7 @@
     "idname": "idimage",
     "fields": [
         {
-            "titulo": "table",
+            "titulo": "table_name",
             "tipo": "char(255)"
         },
         {

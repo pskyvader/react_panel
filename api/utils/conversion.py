@@ -217,4 +217,4 @@ def create_file(file_name, content, force=False):
 
 bdd_to_folder()
 json_to_model()
-json_to_schema(force=False)
+json_to_schema(force=True)

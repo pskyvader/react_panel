@@ -149,7 +149,7 @@ class igusuario_model(Base):
 class image_model(Base):
     __tablename__ = "seo_image"
     idimage = Column(Integer, primary_key=True, nullable=False)
-    table = Column(String(255))
+    table_name = Column(String(255))
     idparent = Column(Integer)
     name = Column(String(255))
     extension = Column(String(255))
@@ -460,6 +460,7 @@ class usuariodireccion_model(Base):
     
 
 # __MODELS__
+    
     
     
     

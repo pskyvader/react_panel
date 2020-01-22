@@ -6,7 +6,7 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 
 attribute = dict(
-    table=graphene.String(),
+    table_name=graphene.String(),
     idparent=graphene.Int(),
     name=graphene.String(),
     extension=graphene.String(),
