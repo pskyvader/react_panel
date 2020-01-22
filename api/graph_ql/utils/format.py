@@ -1,21 +1,12 @@
-def parse_post(environ, buffer=None):
+def parse_post(environ, buffer):
     from cgi import FieldStorage
     from io import BytesIO
 
     post = {}
-    if environ["REQUEST_METHOD"] == "POST":
-        post_env = environ.copy()
-        post_env["QUERY_STRING"] = ""
-        post_env["CONTENT_LENGTH"] = int(environ.get("CONTENT_LENGTH", 0))
+    p = FieldStorage(fp=BytesIO(buffer), environ=environ, keep_blank_values=True)
+    if p.list != None:
+        post = post_field(p)
 
-        if buffer is None:
-            buffer = post_env["wsgi.input"].read(post_env["CONTENT_LENGTH"])
-        p = FieldStorage(fp=BytesIO(buffer), environ=environ, keep_blank_values=True)
-        if p.list != None:
-            post = post_field(p)
-
-    # post = format_array(post)
-    # post = parse_values(post)
     return post
 
 
