@@ -4,8 +4,6 @@ from ..models import administrador_model
 from ..resolver import resolve
 from ..mutator import mutation_create,mutation_update,mutation_delete
 
-
-
 attribute=dict(
     tipo=graphene.Int(),
     email=graphene.String(),
@@ -25,7 +23,7 @@ class administrador_schema(SQLAlchemyObjectType):
     class Meta:
         model = administrador_model
         interfaces = (graphene.relay.Node, )
-        only_fields=['idadministrador']+list(attribute.keys())+list(read_only_attribute.keys())
+        only_fields=['idadministrador']+list(attribute.keys()+read_only_attribute.keys())
 
 def resolve_administrador( args, info,idadministrador, **kwargs ):
     query= resolve(args,info,administrador_schema,administrador_model,idadministrador=idadministrador,**kwargs)
@@ -44,6 +42,7 @@ class administrador_attribute:
     pass
 for name, value in {**attribute , **read_only_attribute,**black_list_attribute}.items():
     setattr(administrador_attribute, name, value)
+
 
 class create_administrador_input(graphene.InputObjectType, administrador_attribute):
     """Arguments to create a administrador."""
