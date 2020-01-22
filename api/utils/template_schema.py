@@ -69,7 +69,7 @@ class create_TABLENAME(graphene.Mutation):
         input = create_TABLENAME_input(required=True)
 
     def mutate(self, info, input):
-        TABLENAME = mutation_create(TABLENAME_model, input, "idTABLENAME")
+        TABLENAME = mutation_create(TABLENAME_model, input, "idTABLENAME",info)
         return create_TABLENAME(TABLENAME=TABLENAME)
 
 
@@ -90,7 +90,7 @@ class update_TABLENAME(graphene.Mutation):
         input = update_TABLENAME_input(required=True)
 
     def mutate(self, info, input):
-        TABLENAME = mutation_update(TABLENAME_model, input, "idTABLENAME")
+        TABLENAME = mutation_update(TABLENAME_model, input, "idTABLENAME",info)
         return update_TABLENAME(TABLENAME=TABLENAME)
 
 

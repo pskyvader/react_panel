@@ -21,7 +21,9 @@ def init(environ):
     status_code = 200
     if environ["REQUEST_METHOD"] == "POST":
         data = parse_body(environ)
-        context=object()
+        class C:
+            FILES=None
+        context= C()
         if 'file' in data:
             setattr(context,'FILES',data['file'])
         execution_results, params = run_http_query( schema, "post", data, context=context)

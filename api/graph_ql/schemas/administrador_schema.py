@@ -73,12 +73,6 @@ class create_administrador(graphene.Mutation):
         input = create_administrador_input(required=True)
 
     def mutate(self, info, input):
-        import inspect
-        # variables = [i for i in dir(info.context)]
-        # print(variables)
-        for i in inspect.getmembers(info.context.FILES):
-            print(i)
-
         administrador = mutation_create(administrador_model, input, "idadministrador")
         return create_administrador(administrador=administrador)
 
