@@ -5,6 +5,7 @@ from graphql_server import (HttpQueryError, default_format_error, encode_executi
 from urllib.parse import parse_qsl
 import http.client
 import json
+from core.format import parse_post
 
 
 def init(environ):
@@ -52,6 +53,10 @@ def parse_body(environ):
         return load_json_body(body.decode('utf8'))
     if content_type[0] == 'application/x-www-form-urlencoded':
         return dict(parse_qsl(body.decode('utf8')))
+    if content_type[0] == 'multipart/form-data':
+        post=parse_post(environ)
+        print(post)
+        return post
     else:
         raise HttpQueryError(
             400,
