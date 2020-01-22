@@ -26,6 +26,8 @@ class profile_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idprofile"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_profile(args, info, idprofile, **kwargs):
@@ -40,10 +42,8 @@ def resolve_all_profile(args, info, **kwargs):
     return query
 
 
-all_profile = SQLAlchemyConnectionField(
-    profile_schema, sort=graphene.String(), **attribute
-)
-profile = graphene.Field(profile_schema, idprofile=graphene.Int(), **attribute)
+all_profile = SQLAlchemyConnectionField( profile_schema, sort=graphene.String() , **attribute )
+profile = graphene.Field(profile_schema, idprofile=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of profile _attributes for both queries and mutations
 class profile_attribute:

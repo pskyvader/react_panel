@@ -33,6 +33,8 @@ class moduloconfiguracion_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idmoduloconfiguracion"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_moduloconfiguracion(args, info, idmoduloconfiguracion, **kwargs):
@@ -47,10 +49,8 @@ def resolve_all_moduloconfiguracion(args, info, **kwargs):
     return query
 
 
-all_moduloconfiguracion = SQLAlchemyConnectionField(
-    moduloconfiguracion_schema, sort=graphene.String(), **attribute
-)
-moduloconfiguracion = graphene.Field(moduloconfiguracion_schema, idmoduloconfiguracion=graphene.Int(), **attribute)
+all_moduloconfiguracion = SQLAlchemyConnectionField( moduloconfiguracion_schema, sort=graphene.String() , **attribute )
+moduloconfiguracion = graphene.Field(moduloconfiguracion_schema, idmoduloconfiguracion=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of moduloconfiguracion _attributes for both queries and mutations
 class moduloconfiguracion_attribute:

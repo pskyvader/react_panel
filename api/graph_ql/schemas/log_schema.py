@@ -26,6 +26,8 @@ class log_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idlog"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_log(args, info, idlog, **kwargs):
@@ -40,10 +42,8 @@ def resolve_all_log(args, info, **kwargs):
     return query
 
 
-all_log = SQLAlchemyConnectionField(
-    log_schema, sort=graphene.String(), **attribute
-)
-log = graphene.Field(log_schema, idlog=graphene.Int(), **attribute)
+all_log = SQLAlchemyConnectionField( log_schema, sort=graphene.String() , **attribute )
+log = graphene.Field(log_schema, idlog=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of log _attributes for both queries and mutations
 class log_attribute:

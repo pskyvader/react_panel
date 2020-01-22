@@ -27,6 +27,8 @@ class administrador_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idadministrador"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_administrador(args, info, idadministrador, **kwargs):
@@ -41,10 +43,8 @@ def resolve_all_administrador(args, info, **kwargs):
     return query
 
 
-all_administrador = SQLAlchemyConnectionField(
-    administrador_schema, sort=graphene.String(), **attribute
-)
-administrador = graphene.Field(administrador_schema, idadministrador=graphene.Int(), **attribute)
+all_administrador = SQLAlchemyConnectionField( administrador_schema, sort=graphene.String() , **attribute )
+administrador = graphene.Field(administrador_schema, idadministrador=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of administrador _attributes for both queries and mutations
 class administrador_attribute:

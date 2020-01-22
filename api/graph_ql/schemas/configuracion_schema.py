@@ -24,6 +24,8 @@ class configuracion_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idconfiguracion"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_configuracion(args, info, idconfiguracion, **kwargs):
@@ -38,10 +40,8 @@ def resolve_all_configuracion(args, info, **kwargs):
     return query
 
 
-all_configuracion = SQLAlchemyConnectionField(
-    configuracion_schema, sort=graphene.String(), **attribute
-)
-configuracion = graphene.Field(configuracion_schema, idconfiguracion=graphene.Int(), **attribute)
+all_configuracion = SQLAlchemyConnectionField( configuracion_schema, sort=graphene.String() , **attribute )
+configuracion = graphene.Field(configuracion_schema, idconfiguracion=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of configuracion _attributes for both queries and mutations
 class configuracion_attribute:

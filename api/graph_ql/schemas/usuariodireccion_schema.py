@@ -36,6 +36,8 @@ class usuariodireccion_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idusuariodireccion"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_usuariodireccion(args, info, idusuariodireccion, **kwargs):
@@ -50,10 +52,8 @@ def resolve_all_usuariodireccion(args, info, **kwargs):
     return query
 
 
-all_usuariodireccion = SQLAlchemyConnectionField(
-    usuariodireccion_schema, sort=graphene.String(), **attribute
-)
-usuariodireccion = graphene.Field(usuariodireccion_schema, idusuariodireccion=graphene.Int(), **attribute)
+all_usuariodireccion = SQLAlchemyConnectionField( usuariodireccion_schema, sort=graphene.String() , **attribute )
+usuariodireccion = graphene.Field(usuariodireccion_schema, idusuariodireccion=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of usuariodireccion _attributes for both queries and mutations
 class usuariodireccion_attribute:

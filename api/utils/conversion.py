@@ -157,6 +157,19 @@ def json_to_schema(force=False):
             "BLACK_LIST_FIELDS", fields_black_list.rstrip()[:-1]
         )
 
+        extra_query=""
+        extra_schema=""
+
+        if f=='image':
+            extra_schema = get_file(join(current_dir, "url_schema.py"))
+            extra_query=", width=graphene.String(), height=graphene.String()"
+
+
+        
+        template = template.replace("EXTRA_QUERY", extra_query)
+        template = template.replace("EXTRA_SCHEMA", extra_schema)
+
+
         schema_file = join(schemas_dir, f + "_schema.py")
         if not force and isfile(schema_file):
             print("El archivo ", schema_file, " Existe, saltando...")

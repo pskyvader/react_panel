@@ -35,6 +35,8 @@ class seccion_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idseccion"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_seccion(args, info, idseccion, **kwargs):
@@ -49,10 +51,8 @@ def resolve_all_seccion(args, info, **kwargs):
     return query
 
 
-all_seccion = SQLAlchemyConnectionField(
-    seccion_schema, sort=graphene.String(), **attribute
-)
-seccion = graphene.Field(seccion_schema, idseccion=graphene.Int(), **attribute)
+all_seccion = SQLAlchemyConnectionField( seccion_schema, sort=graphene.String() , **attribute )
+seccion = graphene.Field(seccion_schema, idseccion=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of seccion _attributes for both queries and mutations
 class seccion_attribute:

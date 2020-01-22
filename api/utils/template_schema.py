@@ -23,6 +23,8 @@ class TABLENAME_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idTABLENAME"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    EXTRA_SCHEMA
 
 
 def resolve_TABLENAME(args, info, idTABLENAME, **kwargs):
@@ -37,10 +39,8 @@ def resolve_all_TABLENAME(args, info, **kwargs):
     return query
 
 
-all_TABLENAME = SQLAlchemyConnectionField(
-    TABLENAME_schema, sort=graphene.String(), **attribute
-)
-TABLENAME = graphene.Field(TABLENAME_schema, idTABLENAME=graphene.Int(), **attribute)
+all_TABLENAME = SQLAlchemyConnectionField( TABLENAME_schema, sort=graphene.String() EXTRA_QUERY, **attribute )
+TABLENAME = graphene.Field(TABLENAME_schema, idTABLENAME=graphene.Int() EXTRA_QUERY, **attribute)
 
 # Create a generic class to mutualize description of TABLENAME _attributes for both queries and mutations
 class TABLENAME_attribute:

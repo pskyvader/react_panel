@@ -31,6 +31,8 @@ class ighashtag_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idighashtag"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_ighashtag(args, info, idighashtag, **kwargs):
@@ -45,10 +47,8 @@ def resolve_all_ighashtag(args, info, **kwargs):
     return query
 
 
-all_ighashtag = SQLAlchemyConnectionField(
-    ighashtag_schema, sort=graphene.String(), **attribute
-)
-ighashtag = graphene.Field(ighashtag_schema, idighashtag=graphene.Int(), **attribute)
+all_ighashtag = SQLAlchemyConnectionField( ighashtag_schema, sort=graphene.String() , **attribute )
+ighashtag = graphene.Field(ighashtag_schema, idighashtag=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of ighashtag _attributes for both queries and mutations
 class ighashtag_attribute:

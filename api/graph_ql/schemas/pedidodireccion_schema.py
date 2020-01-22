@@ -32,6 +32,8 @@ class pedidodireccion_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idpedidodireccion"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_pedidodireccion(args, info, idpedidodireccion, **kwargs):
@@ -46,10 +48,8 @@ def resolve_all_pedidodireccion(args, info, **kwargs):
     return query
 
 
-all_pedidodireccion = SQLAlchemyConnectionField(
-    pedidodireccion_schema, sort=graphene.String(), **attribute
-)
-pedidodireccion = graphene.Field(pedidodireccion_schema, idpedidodireccion=graphene.Int(), **attribute)
+all_pedidodireccion = SQLAlchemyConnectionField( pedidodireccion_schema, sort=graphene.String() , **attribute )
+pedidodireccion = graphene.Field(pedidodireccion_schema, idpedidodireccion=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of pedidodireccion _attributes for both queries and mutations
 class pedidodireccion_attribute:

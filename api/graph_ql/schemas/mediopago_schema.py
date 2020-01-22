@@ -27,6 +27,8 @@ class mediopago_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idmediopago"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_mediopago(args, info, idmediopago, **kwargs):
@@ -41,10 +43,8 @@ def resolve_all_mediopago(args, info, **kwargs):
     return query
 
 
-all_mediopago = SQLAlchemyConnectionField(
-    mediopago_schema, sort=graphene.String(), **attribute
-)
-mediopago = graphene.Field(mediopago_schema, idmediopago=graphene.Int(), **attribute)
+all_mediopago = SQLAlchemyConnectionField( mediopago_schema, sort=graphene.String() , **attribute )
+mediopago = graphene.Field(mediopago_schema, idmediopago=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of mediopago _attributes for both queries and mutations
 class mediopago_attribute:

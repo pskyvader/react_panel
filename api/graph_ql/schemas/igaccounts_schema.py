@@ -39,6 +39,8 @@ class igaccounts_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idigaccounts"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_igaccounts(args, info, idigaccounts, **kwargs):
@@ -53,10 +55,8 @@ def resolve_all_igaccounts(args, info, **kwargs):
     return query
 
 
-all_igaccounts = SQLAlchemyConnectionField(
-    igaccounts_schema, sort=graphene.String(), **attribute
-)
-igaccounts = graphene.Field(igaccounts_schema, idigaccounts=graphene.Int(), **attribute)
+all_igaccounts = SQLAlchemyConnectionField( igaccounts_schema, sort=graphene.String() , **attribute )
+igaccounts = graphene.Field(igaccounts_schema, idigaccounts=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of igaccounts _attributes for both queries and mutations
 class igaccounts_attribute:

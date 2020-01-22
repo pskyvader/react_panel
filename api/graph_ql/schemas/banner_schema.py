@@ -31,6 +31,8 @@ class banner_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idbanner"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_banner(args, info, idbanner, **kwargs):
@@ -45,10 +47,8 @@ def resolve_all_banner(args, info, **kwargs):
     return query
 
 
-all_banner = SQLAlchemyConnectionField(
-    banner_schema, sort=graphene.String(), **attribute
-)
-banner = graphene.Field(banner_schema, idbanner=graphene.Int(), **attribute)
+all_banner = SQLAlchemyConnectionField( banner_schema, sort=graphene.String() , **attribute )
+banner = graphene.Field(banner_schema, idbanner=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of banner _attributes for both queries and mutations
 class banner_attribute:

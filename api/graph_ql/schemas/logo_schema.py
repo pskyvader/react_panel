@@ -24,6 +24,8 @@ class logo_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idlogo"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_logo(args, info, idlogo, **kwargs):
@@ -38,10 +40,8 @@ def resolve_all_logo(args, info, **kwargs):
     return query
 
 
-all_logo = SQLAlchemyConnectionField(
-    logo_schema, sort=graphene.String(), **attribute
-)
-logo = graphene.Field(logo_schema, idlogo=graphene.Int(), **attribute)
+all_logo = SQLAlchemyConnectionField( logo_schema, sort=graphene.String() , **attribute )
+logo = graphene.Field(logo_schema, idlogo=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of logo _attributes for both queries and mutations
 class logo_attribute:

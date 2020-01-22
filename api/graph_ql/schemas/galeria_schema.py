@@ -31,6 +31,8 @@ class galeria_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idgaleria"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_galeria(args, info, idgaleria, **kwargs):
@@ -45,10 +47,8 @@ def resolve_all_galeria(args, info, **kwargs):
     return query
 
 
-all_galeria = SQLAlchemyConnectionField(
-    galeria_schema, sort=graphene.String(), **attribute
-)
-galeria = graphene.Field(galeria_schema, idgaleria=graphene.Int(), **attribute)
+all_galeria = SQLAlchemyConnectionField( galeria_schema, sort=graphene.String() , **attribute )
+galeria = graphene.Field(galeria_schema, idgaleria=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of galeria _attributes for both queries and mutations
 class galeria_attribute:

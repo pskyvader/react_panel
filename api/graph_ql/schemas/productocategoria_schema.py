@@ -35,6 +35,8 @@ class productocategoria_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idproductocategoria"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_productocategoria(args, info, idproductocategoria, **kwargs):
@@ -49,10 +51,8 @@ def resolve_all_productocategoria(args, info, **kwargs):
     return query
 
 
-all_productocategoria = SQLAlchemyConnectionField(
-    productocategoria_schema, sort=graphene.String(), **attribute
-)
-productocategoria = graphene.Field(productocategoria_schema, idproductocategoria=graphene.Int(), **attribute)
+all_productocategoria = SQLAlchemyConnectionField( productocategoria_schema, sort=graphene.String() , **attribute )
+productocategoria = graphene.Field(productocategoria_schema, idproductocategoria=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of productocategoria _attributes for both queries and mutations
 class productocategoria_attribute:

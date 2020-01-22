@@ -28,6 +28,8 @@ class usuario_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idusuario"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_usuario(args, info, idusuario, **kwargs):
@@ -42,10 +44,8 @@ def resolve_all_usuario(args, info, **kwargs):
     return query
 
 
-all_usuario = SQLAlchemyConnectionField(
-    usuario_schema, sort=graphene.String(), **attribute
-)
-usuario = graphene.Field(usuario_schema, idusuario=graphene.Int(), **attribute)
+all_usuario = SQLAlchemyConnectionField( usuario_schema, sort=graphene.String() , **attribute )
+usuario = graphene.Field(usuario_schema, idusuario=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of usuario _attributes for both queries and mutations
 class usuario_attribute:

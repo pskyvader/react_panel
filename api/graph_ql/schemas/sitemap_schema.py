@@ -27,6 +27,8 @@ class sitemap_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idsitemap"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_sitemap(args, info, idsitemap, **kwargs):
@@ -41,10 +43,8 @@ def resolve_all_sitemap(args, info, **kwargs):
     return query
 
 
-all_sitemap = SQLAlchemyConnectionField(
-    sitemap_schema, sort=graphene.String(), **attribute
-)
-sitemap = graphene.Field(sitemap_schema, idsitemap=graphene.Int(), **attribute)
+all_sitemap = SQLAlchemyConnectionField( sitemap_schema, sort=graphene.String() , **attribute )
+sitemap = graphene.Field(sitemap_schema, idsitemap=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of sitemap _attributes for both queries and mutations
 class sitemap_attribute:

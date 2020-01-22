@@ -26,6 +26,8 @@ class region_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idregion"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_region(args, info, idregion, **kwargs):
@@ -40,10 +42,8 @@ def resolve_all_region(args, info, **kwargs):
     return query
 
 
-all_region = SQLAlchemyConnectionField(
-    region_schema, sort=graphene.String(), **attribute
-)
-region = graphene.Field(region_schema, idregion=graphene.Int(), **attribute)
+all_region = SQLAlchemyConnectionField( region_schema, sort=graphene.String() , **attribute )
+region = graphene.Field(region_schema, idregion=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of region _attributes for both queries and mutations
 class region_attribute:

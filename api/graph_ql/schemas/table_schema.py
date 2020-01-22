@@ -26,6 +26,8 @@ class table_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idtable"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_table(args, info, idtable, **kwargs):
@@ -40,10 +42,8 @@ def resolve_all_table(args, info, **kwargs):
     return query
 
 
-all_table = SQLAlchemyConnectionField(
-    table_schema, sort=graphene.String(), **attribute
-)
-table = graphene.Field(table_schema, idtable=graphene.Int(), **attribute)
+all_table = SQLAlchemyConnectionField( table_schema, sort=graphene.String() , **attribute )
+table = graphene.Field(table_schema, idtable=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of table _attributes for both queries and mutations
 class table_attribute:

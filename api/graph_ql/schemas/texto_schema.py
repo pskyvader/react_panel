@@ -30,6 +30,8 @@ class texto_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idtexto"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_texto(args, info, idtexto, **kwargs):
@@ -44,10 +46,8 @@ def resolve_all_texto(args, info, **kwargs):
     return query
 
 
-all_texto = SQLAlchemyConnectionField(
-    texto_schema, sort=graphene.String(), **attribute
-)
-texto = graphene.Field(texto_schema, idtexto=graphene.Int(), **attribute)
+all_texto = SQLAlchemyConnectionField( texto_schema, sort=graphene.String() , **attribute )
+texto = graphene.Field(texto_schema, idtexto=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of texto _attributes for both queries and mutations
 class texto_attribute:

@@ -28,6 +28,8 @@ class pedidoestado_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idpedidoestado"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_pedidoestado(args, info, idpedidoestado, **kwargs):
@@ -42,10 +44,8 @@ def resolve_all_pedidoestado(args, info, **kwargs):
     return query
 
 
-all_pedidoestado = SQLAlchemyConnectionField(
-    pedidoestado_schema, sort=graphene.String(), **attribute
-)
-pedidoestado = graphene.Field(pedidoestado_schema, idpedidoestado=graphene.Int(), **attribute)
+all_pedidoestado = SQLAlchemyConnectionField( pedidoestado_schema, sort=graphene.String() , **attribute )
+pedidoestado = graphene.Field(pedidoestado_schema, idpedidoestado=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of pedidoestado _attributes for both queries and mutations
 class pedidoestado_attribute:

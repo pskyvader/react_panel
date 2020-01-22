@@ -25,6 +25,8 @@ class igtotal_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idigtotal"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_igtotal(args, info, idigtotal, **kwargs):
@@ -39,10 +41,8 @@ def resolve_all_igtotal(args, info, **kwargs):
     return query
 
 
-all_igtotal = SQLAlchemyConnectionField(
-    igtotal_schema, sort=graphene.String(), **attribute
-)
-igtotal = graphene.Field(igtotal_schema, idigtotal=graphene.Int(), **attribute)
+all_igtotal = SQLAlchemyConnectionField( igtotal_schema, sort=graphene.String() , **attribute )
+igtotal = graphene.Field(igtotal_schema, idigtotal=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of igtotal _attributes for both queries and mutations
 class igtotal_attribute:

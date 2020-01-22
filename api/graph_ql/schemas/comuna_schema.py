@@ -27,6 +27,8 @@ class comuna_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idcomuna"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_comuna(args, info, idcomuna, **kwargs):
@@ -41,10 +43,8 @@ def resolve_all_comuna(args, info, **kwargs):
     return query
 
 
-all_comuna = SQLAlchemyConnectionField(
-    comuna_schema, sort=graphene.String(), **attribute
-)
-comuna = graphene.Field(comuna_schema, idcomuna=graphene.Int(), **attribute)
+all_comuna = SQLAlchemyConnectionField( comuna_schema, sort=graphene.String() , **attribute )
+comuna = graphene.Field(comuna_schema, idcomuna=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of comuna _attributes for both queries and mutations
 class comuna_attribute:

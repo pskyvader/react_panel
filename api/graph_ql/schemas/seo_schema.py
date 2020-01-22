@@ -36,6 +36,8 @@ class seo_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idseo"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
 
 
 def resolve_seo(args, info, idseo, **kwargs):
@@ -50,10 +52,8 @@ def resolve_all_seo(args, info, **kwargs):
     return query
 
 
-all_seo = SQLAlchemyConnectionField(
-    seo_schema, sort=graphene.String(), **attribute
-)
-seo = graphene.Field(seo_schema, idseo=graphene.Int(), **attribute)
+all_seo = SQLAlchemyConnectionField( seo_schema, sort=graphene.String() , **attribute )
+seo = graphene.Field(seo_schema, idseo=graphene.Int() , **attribute)
 
 # Create a generic class to mutualize description of seo _attributes for both queries and mutations
 class seo_attribute:
