@@ -1,0 +1,31 @@
+{
+    "tablename": "image",
+    "idname": "idimage",
+    "fields": [
+        {
+            "titulo": "table",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "idparent",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "extension",
+            "tipo": "char(255)"
+        },
+        {
+            "titulo": "orden",
+            "tipo": "int(11)"
+        },
+        {
+            "titulo": "estado",
+            "tipo": "tinyint(1)"
+        },
+        {
+            "titulo": "portada",
+            "tipo": "tinyint(1)"
+        }
+    ],
+    "truncate": 1
+}

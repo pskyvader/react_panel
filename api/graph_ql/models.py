@@ -146,6 +146,17 @@ class igusuario_model(Base):
     estado = Column(Boolean, nullable=False, default=False)
     
 
+class image_model(Base):
+    __tablename__ = "seo_image"
+    idimage = Column(Integer, primary_key=True, nullable=False)
+    table = Column(String(255))
+    idparent = Column(Integer)
+    extension = Column(String(255))
+    orden = Column(Integer)
+    estado = Column(Boolean, nullable=False, default=False)
+    portada = Column(Boolean, nullable=False, default=False)
+    
+
 class log_model(Base):
     __tablename__ = "seo_log"
     idlog = Column(Integer, primary_key=True, nullable=False)
@@ -448,6 +459,7 @@ class usuariodireccion_model(Base):
     
 
 # __MODELS__
+    
     
     
     
