@@ -12,14 +12,10 @@ attribute = dict(
     extension=graphene.String(),
     orden=graphene.Int(),
     estado=graphene.Boolean(),
-    portada=graphene.Boolean()
-    )
-read_only_attribute = dict(
-    
-    )
-black_list_attribute = dict(
-    
-    )
+    portada=graphene.Boolean(),
+)
+read_only_attribute = dict()
+black_list_attribute = dict()
 
 
 class image_schema(SQLAlchemyObjectType):
@@ -30,11 +26,17 @@ class image_schema(SQLAlchemyObjectType):
             ["idimage"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
 
+    url = graphene.String()
+
+    def resolve_url(parent, info):
+        if parent.table_name != None and parent.idparent != None:
+            return f"{parent.table_name}/{parent.idparent}/{parent.idimage}/{parent.name}{parent.extension}"
+        else:
+            return f"tmp/{parent.idimage}/{parent.name}{parent.extension}"
+
 
 def resolve_image(args, info, idimage, **kwargs):
-    query = resolve(
-        args, info, image_schema, image_model, idimage=idimage, **kwargs
-    )
+    query = resolve(args, info, image_schema, image_model, idimage=idimage, **kwargs)
     return query.first()
 
 
@@ -43,9 +45,7 @@ def resolve_all_image(args, info, **kwargs):
     return query
 
 
-all_image = SQLAlchemyConnectionField(
-    image_schema, sort=graphene.String(), **attribute
-)
+all_image = SQLAlchemyConnectionField(image_schema, sort=graphene.String(), **attribute)
 image = graphene.Field(image_schema, idimage=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of image _attributes for both queries and mutations
@@ -67,15 +67,13 @@ class create_image_input(graphene.InputObjectType, image_attribute):
 class create_image(graphene.Mutation):
     """Mutation to create a image."""
 
-    image = graphene.Field(
-        image_schema, description="image created by this mutation."
-    )
+    image = graphene.Field(image_schema, description="image created by this mutation.")
 
     class Arguments:
         input = create_image_input(required=True)
 
     def mutate(self, info, input):
-        image = mutation_create(image_model, input, "idimage",info)
+        image = mutation_create(image_model, input, "idimage", info)
         return create_image(image=image)
 
 
@@ -88,15 +86,13 @@ class update_image_input(graphene.InputObjectType, image_attribute):
 class update_image(graphene.Mutation):
     """Update a image."""
 
-    image = graphene.Field(
-        image_schema, description="image updated by this mutation."
-    )
+    image = graphene.Field(image_schema, description="image updated by this mutation.")
 
     class Arguments:
         input = update_image_input(required=True)
 
     def mutate(self, info, input):
-        image = mutation_update(image_model, input, "idimage",info)
+        image = mutation_update(image_model, input, "idimage", info)
         return update_image(image=image)
 
 
