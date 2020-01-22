@@ -67,7 +67,7 @@ def parse_get(query_string):
 
 
 
-def parse_post(environ):
+def parse_post(environ,buffer=None):
     from cgi import FieldStorage
     from io import BytesIO
 
@@ -76,7 +76,9 @@ def parse_post(environ):
         post_env = environ.copy()
         post_env["QUERY_STRING"] = ""
         post_env["CONTENT_LENGTH"] = int(environ.get("CONTENT_LENGTH", 0))
-        buffer = post_env["wsgi.input"].read(post_env["CONTENT_LENGTH"])
+        
+        if buffer is None:
+            buffer = post_env["wsgi.input"].read(post_env["CONTENT_LENGTH"])
         p = FieldStorage(
             fp=BytesIO(buffer), environ=post_env, keep_blank_values=True
         )
@@ -185,23 +187,23 @@ def parse_values(var: dict):
                 except:
                     pass
             elif isinstance(i, dict) or isinstance(i, list):
-                i = app.parse_values(i)
+                i = parse_values(i)
     elif isinstance(var_copy, dict):
         for k, i in var_copy.items():
             if isinstance(i, str):
                 try:
                     aux_var = json.loads(i)
                     if isinstance(aux_var, dict) or isinstance(aux_var, list):
-                        var_copy[k] = app.parse_values(aux_var)
+                        var_copy[k] = parse_values(aux_var)
                 except:
                     pass
             elif isinstance(i, dict) or isinstance(i, list):
-                var_copy[k] = app.parse_values(i)
+                var_copy[k] = parse_values(i)
     elif isinstance(var_copy, str):
         try:
             aux_var = json.loads(var_copy)
             if isinstance(aux_var, dict) or isinstance(aux_var, list):
-                var_copy = app.parse_values(aux_var)
+                var_copy = parse_values(aux_var)
         except:
             pass
 
