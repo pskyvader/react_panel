@@ -11,6 +11,10 @@
             "tipo": "int(11)"
         },
         {
+            "titulo": "name",
+            "tipo": "char(255)"
+        },
+        {
             "titulo": "extension",
             "tipo": "char(255)"
         },
