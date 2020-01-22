@@ -52,7 +52,7 @@ def mutation_delete(table_model,input,id_key):
 
 
 def process_file(data,id_key,files):
-    if id_key=='idfoto':
+    if id_key=='idimage':
         for f in files:
             archivo = image.upload(f, "tmp")
             

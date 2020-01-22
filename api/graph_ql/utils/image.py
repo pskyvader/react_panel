@@ -2,10 +2,14 @@ from pathlib import Path
 from os import makedirs
 from os import rename
 
+from os.path import join, dirname
+import sys
+
+current_dir = dirname(__file__)
 
 types = [ "image/webp", "image/bmp", "image/gif", "image/pjpeg", "image/jpeg", "image/svg+xml", "image/png" ]
 extensions = [ ".webp", ".bmp", ".ico", ".gif", ".jpeg", ".jpg", ".svg", ".xml", ".png"]
-upload_dir = ""
+upload_dir = oin(current_dir, "..", "..", "..","public","images")
 upload_url = ""
 recortes_cache={}
 
@@ -15,25 +19,25 @@ def upload_tmp(modulo):
     respuesta = {"exito": False, "mensaje": ""}
     if "file" in app.post:
         files = app.post["file"]
-        recortes = image.get_recortes(modulo)
+        recortes = get_recortes(modulo)
         archivos = []
 
         file_ary = files
         for files in file_ary:
-            archivo = image.upload(files, "tmp")
+            archivo = upload(files, "tmp")
             respuesta["exito"] = archivo["exito"]
             if not archivo["exito"]:
                 respuesta["mensaje"] = archivo["mensaje"]
                 break
             else:
-                recorte = image.recortes_foto(archivo, recortes)
+                recorte = recortes_foto(archivo, recortes)
                 if not recorte["exito"]:
                     respuesta["mensaje"] = recorte["mensaje"]
                     break
                 else:
-                    name = image.nombre_archivo(archivo["name"], "thumb")
+                    name = nombre_archivo(archivo["name"], "thumb")
                     archivo["url"] = (
-                        image.get_upload_url() + archivo["folder"] + "/" + name
+                        get_upload_url() + archivo["folder"] + "/" + name
                     )
                     respuesta["mensaje"] += archivo["original_name"] + " <br/>"
                     archivos.append(archivo)
@@ -49,16 +53,16 @@ def regenerar(file_original):
     from glob import glob
     from os import remove
 
-    recortes = image.get_recortes(file["folder"])
+    recortes = get_recortes(file["folder"])
     file["name"] = file["url"]
     file["folder"] = (
         file["folder"] + "/" + str(file["parent"]) + "/" + str(file["subfolder"])
     )
     for fl in glob(
-        image.get_upload_dir() + file["folder"] + "/" + str(file["id"]) + "-*.*"
+        get_upload_dir() + file["folder"] + "/" + str(file["id"]) + "-*.*"
     ):
         remove(fl)
-    respuesta = image.recortes_foto(file, recortes)
+    respuesta = recortes_foto(file, recortes)
     return respuesta
 
 @staticmethod
@@ -66,11 +70,11 @@ def move(file_move, folder, subfolder, name_final, folder_tmp="tmp"):
     """mover archivo (normalmente) desde la carpeta temporal a la definitiva"""
     from os.path import splitext
 
-    recortes = image.get_recortes(folder)
-    folder_tmp = image.get_upload_dir() + folder_tmp
+    recortes = get_recortes(folder)
+    folder_tmp = get_upload_dir() + folder_tmp
     base_folder = folder
     folder = (
-        image.get_upload_dir()
+        get_upload_dir()
         + base_folder
         + "/"
         + str(name_final)
@@ -83,37 +87,37 @@ def move(file_move, folder, subfolder, name_final, folder_tmp="tmp"):
     name, extension = splitext(file_move["tmp"])
     file_move["url"] = file_move["id"] + extension
 
-    image.delete(base_folder, file_move, str(name_final), subfolder)
+    delete(base_folder, file_move, str(name_final), subfolder)
 
     rename(folder_tmp + "/" + file_move["tmp"], folder + "/" + file_move["url"])
 
     for recorte in recortes:
         final_file = (
-            folder + "/" + image.nombre_archivo(file_move["url"], recorte["tag"])
+            folder + "/" + nombre_archivo(file_move["url"], recorte["tag"])
         )
 
         rename(
             folder_tmp
             + "/"
-            + image.nombre_archivo(file_move["tmp"], recorte["tag"]),
+            + nombre_archivo(file_move["tmp"], recorte["tag"]),
             final_file,
         )
 
         my_file = Path(
             folder_tmp
             + "/"
-            + image.nombre_archivo(file_move["tmp"], recorte["tag"], "webp")
+            + nombre_archivo(file_move["tmp"], recorte["tag"], "webp")
         )
         if not my_file.is_dir():
             final_file = (
                 folder
                 + "/"
-                + image.nombre_archivo(file_move["url"], recorte["tag"], "webp")
+                + nombre_archivo(file_move["url"], recorte["tag"], "webp")
             )
             rename(
                 folder_tmp
                 + "/"
-                + image.nombre_archivo(file_move["tmp"], recorte["tag"], "webp"),
+                + nombre_archivo(file_move["tmp"], recorte["tag"], "webp"),
                 final_file,
             )
 
@@ -142,10 +146,10 @@ def copy(
         "subfolder": subfolder,
         "tmp": "",
     }
-    original = image.generar_dir(original_file, tag)
+    original = generar_dir(original_file, tag)
 
     if original != "":
-        base_folder = image.get_upload_dir() + folder
+        base_folder = get_upload_dir() + folder
         folder = base_folder
         if parent_final != "":
             folder += "/" + str(parent_final)
@@ -170,8 +174,8 @@ def copy(
 
 @staticmethod
 def get_recortes(modulo_name):
-    if modulo_name in image.recortes_cache:
-        return image.recortes_cache[modulo_name]
+    if modulo_name in recortes_cache:
+        return recortes_cache[modulo_name]
 
     moduloconfiguracion = moduloconfiguracion_model.getByModulo(modulo_name)
     var = {"idmoduloconfiguracion": moduloconfiguracion[0]}
@@ -223,7 +227,7 @@ def get_recortes(modulo_name):
                 recorte["calidad"] = 0
 
             recortes.append(recorte)
-    image.recortes_cache[modulo_name]=recortes
+    recortes_cache[modulo_name]=recortes
     return recortes
 
 @staticmethod
@@ -234,8 +238,8 @@ def upload(file, folder_upload="tmp", name_final=""):
     import os
     import tempfile
 
-    folder = image.get_upload_dir()
-    respuesta = image.validate(file)
+    folder = get_upload_dir()
+    respuesta = validate(file)
     if respuesta["exito"]:
         if "" == name_final:
             name_final = uuid.uuid4().hex
@@ -292,7 +296,7 @@ def recortes_foto(archivo, recortes_foto):
     from PIL import Image
 
     respuesta = {"exito": False}
-    ruta = image.get_upload_dir() + archivo["folder"]
+    ruta = get_upload_dir() + archivo["folder"]
     foto = archivo["name"]
     ruta_imagen = ruta + "/" + foto
     my_file = Path(ruta_imagen)
@@ -300,7 +304,7 @@ def recortes_foto(archivo, recortes_foto):
         respuesta["mensaje"] = "Archivo " + ruta_imagen + " no existe"
         return respuesta
 
-    im = Image.open(ruta_imagen)
+    im = open(ruta_imagen)
     ancho, alto = im.size
 
     ancho_maximo = 0
@@ -327,7 +331,7 @@ def recortes_foto(archivo, recortes_foto):
         # ancho proporcional segun mayor alto valido
         ancho_final = int(round((ancho / alto) * alto_valido))
         if ancho_final >= ancho_valido:
-            respuesta = image.recortar_foto(
+            respuesta = recortar_foto(
                 {
                     "tag": "recorte_previo",
                     "ancho": None,
@@ -338,7 +342,7 @@ def recortes_foto(archivo, recortes_foto):
                 archivo,
             )
         else:
-            respuesta = image.recortar_foto(
+            respuesta = recortar_foto(
                 {
                     "tag": "recorte_previo",
                     "ancho": ancho_valido,
@@ -353,7 +357,7 @@ def recortes_foto(archivo, recortes_foto):
             return respuesta
 
         archivo_recorte = archivo.copy()
-        archivo_recorte["name"] = image.nombre_archivo(
+        archivo_recorte["name"] = nombre_archivo(
             archivo_recorte["name"], "recorte_previo"
         )
         for recorte in recortes_foto:
@@ -363,16 +367,16 @@ def recortes_foto(archivo, recortes_foto):
                 and recorte["alto"] != None
                 and recorte["alto"] <= alto_valido
             ):
-                respuesta = image.recortar_foto(recorte, archivo_recorte)
+                respuesta = recortar_foto(recorte, archivo_recorte)
             else:
-                respuesta = image.recortar_foto(recorte, archivo)
+                respuesta = recortar_foto(recorte, archivo)
 
             if not respuesta["exito"]:
                 return respuesta
 
     else:
         for recorte in recortes_foto:
-            respuesta = image.recortar_foto(recorte, archivo)
+            respuesta = recortar_foto(recorte, archivo)
             if not respuesta["exito"]:
                 return respuesta
 
@@ -433,7 +437,7 @@ def recortar_foto(recorte, datos):
     respuesta = {"exito": False, "mensaje": ""}
     ancho_maximo = recorte["ancho"]
     alto_maximo = recorte["alto"]
-    ruta = image.get_upload_dir() + datos["folder"] + "/"
+    ruta = get_upload_dir() + datos["folder"] + "/"
     foto = datos["name"]
     etiqueta = recorte["tag"]
     tipo = recorte["tipo"]
@@ -444,7 +448,7 @@ def recortar_foto(recorte, datos):
         respuesta["mensaje"] = "Archivo " + ruta_imagen + " no existe"
         return respuesta
 
-    im = Image.open(ruta_imagen)
+    im = open(ruta_imagen)
     ancho, alto = im.size
     imagen_tipo = im.format.lower()
 
@@ -454,7 +458,7 @@ def recortar_foto(recorte, datos):
     if None == alto_maximo or 0 == alto_maximo:
         alto_maximo = int(round(ancho_maximo / proporcion_imagen))
 
-    x, y, miniatura_ancho, miniatura_alto = image.proporcion_foto(
+    x, y, miniatura_ancho, miniatura_alto = proporcion_foto(
         ancho_maximo, alto_maximo, ancho, alto, tipo
     )
 
@@ -463,47 +467,47 @@ def recortar_foto(recorte, datos):
     else:
         im = im.convert("RGB")
 
-    foto_recorte = image.nombre_archivo(foto, etiqueta, "", True)
-    foto_webp = image.nombre_archivo(foto, etiqueta, "webp", True)
+    foto_recorte = nombre_archivo(foto, etiqueta, "", True)
+    foto_webp = nombre_archivo(foto, etiqueta, "webp", True)
 
     if tipo == "recortar":
         box = (x, y, ancho_maximo + x, alto_maximo + y)
-        im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
+        im = im.resize((miniatura_ancho, miniatura_alto), ANTIALIAS)
         new_im = im.crop(box)
     elif "rellenar" == tipo:
         if "png" == imagen_tipo:
-            new_im = Image.new(
+            new_im = new(
                 "RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0)
             )
         else:
-            new_im = Image.new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
+            new_im = new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
         box = (x, y)
-        im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
+        im = im.resize((miniatura_ancho, miniatura_alto), ANTIALIAS)
         new_im.paste(im, (box))
     else:
         if ancho >= miniatura_ancho or alto >= miniatura_alto:
             if "png" == imagen_tipo:
-                new_im = Image.new(
+                new_im = new(
                     "RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0)
                 )
             else:
-                new_im = Image.new(
+                new_im = new(
                     "RGB", (ancho_maximo, alto_maximo), (255, 255, 255)
                 )
             box = (x, y)
-            im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
+            im = im.resize((miniatura_ancho, miniatura_alto), ANTIALIAS)
             new_im.paste(im, (box))
         else:
             if "png" == imagen_tipo:
-                new_im = Image.new(
+                new_im = new(
                     "RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0)
                 )
             else:
-                new_im = Image.new(
+                new_im = new(
                     "RGB", (ancho_maximo, alto_maximo), (255, 255, 255)
                 )
 
-            # im=im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
+            # im=im.resize((miniatura_ancho, miniatura_alto), ANTIALIAS)
             # box = (x, y, ancho_maximo+x, alto_maximo+y)
             box = (x, y)
             new_im.paste(im, (box))
@@ -560,11 +564,11 @@ def generar_url(file, tag="thumb", extension="", folder="", subfolder=""):
             subfolder += file["subfolder"] + "/"
 
     url = (
-        folder + "/" + subfolder + image.nombre_archivo(file["url"], tag, extension)
+        folder + "/" + subfolder + nombre_archivo(file["url"], tag, extension)
     )
-    time = functions.fecha_archivo(image.get_upload_dir() + url, True)
+    time = functions.fecha_archivo(get_upload_dir() + url, True)
     if time != False:
-        #archivo = image.get_upload_url() + url + "?time=" + str(time)
+        #archivo = get_upload_url() + url + "?time=" + str(time)
         archivo = url + "?time=" + str(time)
     else:
         archivo = ""
@@ -585,9 +589,9 @@ def generar_dir(file, tag="thumb", extension="", folder="", subfolder=""):
         folder
         + "/"
         + subfolder
-        + (image.nombre_archivo(file["url"], tag, extension))
+        + (nombre_archivo(file["url"], tag, extension))
     )
-    archivo = image.get_upload_dir() + url
+    archivo = get_upload_dir() + url
     my_file = Path(archivo)
     if not my_file.is_file():
         archivo = ""
@@ -611,48 +615,48 @@ def delete(folder, file="", subfolder="", sub=""):
     import shutil
 
     if "" == file and "" != subfolder:
-        url = image.get_upload_dir() + folder + "/" + str(subfolder) + "/"
+        url = get_upload_dir() + folder + "/" + str(subfolder) + "/"
         if "" != sub:
             url += sub + "/"
         my_file = Path(url)
         if my_file.is_dir():
             shutil.rmtree(url)
     elif "" == file and "" == subfolder:
-        url = image.get_upload_dir() + folder + "/"
+        url = get_upload_dir() + folder + "/"
         my_file = Path(url)
         if my_file.is_dir():
             shutil.rmtree(url)
     else:
-        recortes = image.get_recortes(folder)
+        recortes = get_recortes(folder)
         if "" != subfolder:
             subfolder += "/"
         if "" != sub:
             sub += "/"
-        url = image.get_upload_dir() + folder + "/" + subfolder + sub + file["url"]
+        url = get_upload_dir() + folder + "/" + subfolder + sub + file["url"]
         my_file = Path(url)
         if my_file.is_file():
             my_file.unlink()
 
         for recorte in recortes:
             url = (
-                image.get_upload_dir()
+                get_upload_dir()
                 + folder
                 + "/"
                 + subfolder
                 + sub
-                + image.nombre_archivo(file["url"], recorte["tag"])
+                + nombre_archivo(file["url"], recorte["tag"])
             )
             my_file = Path(url)
             if my_file.is_file():
                 my_file.unlink()
 
             url = (
-                image.get_upload_dir()
+                get_upload_dir()
                 + folder
                 + "/"
                 + subfolder
                 + sub
-                + image.nombre_archivo(file["url"], recorte["tag"], "webp")
+                + nombre_archivo(file["url"], recorte["tag"], "webp")
             )
 
             my_file = Path(url)
@@ -668,7 +672,7 @@ def delete_temp():
     now = functions.current_time("", False)
     horas = 1
 
-    carpeta = image.get_upload_dir() + "tmp/"  # ruta actual
+    carpeta = get_upload_dir() + "tmp/"  # ruta actual
     # obtenemos un archivo y luego otro sucesivamente
     for archivo in listdir(carpeta):
         my_file = Path(carpeta + archivo)
@@ -679,12 +683,12 @@ def delete_temp():
 
 @staticmethod
 def get_upload_dir():
-    if "" == image.upload_dir:
-        image.upload_dir = app.get_dir(True) + "../" + "public/images/"
-    return image.upload_dir
+    if "" == upload_dir:
+        upload_dir= "../" + "public/images/"
+    return upload_dir
 
 @staticmethod
 def get_upload_url():
-    if "" == image.upload_url:
-        image.upload_url = app.get_url(True) + "../" + "public/images/"
-    return image.upload_url
+    if "" == upload_url:
+        upload_url = app.get_url(True) + "../" + "public/images/"
+    return upload_url
