@@ -91,7 +91,7 @@ def parse_post(environ,buffer=None):
 
 def post_field(p):
     from cgi import MiniFieldStorage, FieldStorage
-    from urllib import parse
+    from html import escape
 
     from .functions import functions
 
@@ -106,8 +106,7 @@ def post_field(p):
                 if not "file" in post:
                     post["file"] = []
                 tmpfile = p[key].file.read()
-                print(p[key].filename)
-                name = parse(p[key].filename)
+                name = escape(p[key].filename)
                 mime = functions.get_content_type_by_filename(name)
                 if mime == None:
                     mime = "text/plain"
