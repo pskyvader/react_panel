@@ -3,7 +3,7 @@ import graphene
 from ..models import image_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-
+from graphql.execution.base import collect_fields
 
 attribute = dict(
     table_name=graphene.String(),
@@ -27,19 +27,33 @@ class image_schema(SQLAlchemyObjectType):
     url = graphene.String()
 
     def resolve_url(parent, info):
-        import inspect
-        variables = [i for i in dir(parent)]
-        for target_list in variables:
-            print(target_list)
-        for property,value in vars(parent).items():
-            print(property,value)
-
+        fields = collect_fields(info.context, info.parent_type, info.field_asts[0], {}, set())
+        print(fields)
 
         if parent.table_name != None and parent.idparent != None:
             return f"{parent.table_name}/{parent.idparent}/{parent.idimage}/{parent.name}{parent.extension}"
         else:
             return f"tmp/{parent.idimage}/{parent.name}{parent.extension}"
 
+
+
+def get_fields(info):
+    prev_fragment_names = set()
+    params = collections.defaultdict(list)
+    params = collect_fields(info.context,
+                            info.parent_type,
+                            info.field_asts[0].selection_set,
+                            params,
+                            prev_fragment_names)
+
+    for fragment_name in prev_fragment_names:
+        params = collect_fields(info.context,
+                                info.parent_type,
+                                info.fragments[fragment_name].selection_set,
+                                params,
+                                prev_fragment_names)
+
+    return set(params.keys())
 
 def resolve_image(args, info, idimage, **kwargs):
     query = resolve(args, info, image_schema, image_model, idimage=idimage, **kwargs)
