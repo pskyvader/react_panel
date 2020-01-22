@@ -73,7 +73,7 @@ class create_sitemap(graphene.Mutation):
         input = create_sitemap_input(required=True)
 
     def mutate(self, info, input):
-        sitemap = mutation_create(sitemap_model, input, "idsitemap")
+        sitemap = mutation_create(sitemap_model, input, "idsitemap",info)
         return create_sitemap(sitemap=sitemap)
 
 
@@ -94,7 +94,7 @@ class update_sitemap(graphene.Mutation):
         input = update_sitemap_input(required=True)
 
     def mutate(self, info, input):
-        sitemap = mutation_update(sitemap_model, input, "idsitemap")
+        sitemap = mutation_update(sitemap_model, input, "idsitemap",info)
         return update_sitemap(sitemap=sitemap)
 
 

@@ -81,7 +81,7 @@ class create_productocategoria(graphene.Mutation):
         input = create_productocategoria_input(required=True)
 
     def mutate(self, info, input):
-        productocategoria = mutation_create(productocategoria_model, input, "idproductocategoria")
+        productocategoria = mutation_create(productocategoria_model, input, "idproductocategoria",info)
         return create_productocategoria(productocategoria=productocategoria)
 
 
@@ -102,7 +102,7 @@ class update_productocategoria(graphene.Mutation):
         input = update_productocategoria_input(required=True)
 
     def mutate(self, info, input):
-        productocategoria = mutation_update(productocategoria_model, input, "idproductocategoria")
+        productocategoria = mutation_update(productocategoria_model, input, "idproductocategoria",info)
         return update_productocategoria(productocategoria=productocategoria)
 
 

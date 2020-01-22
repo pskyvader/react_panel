@@ -76,7 +76,7 @@ class create_texto(graphene.Mutation):
         input = create_texto_input(required=True)
 
     def mutate(self, info, input):
-        texto = mutation_create(texto_model, input, "idtexto")
+        texto = mutation_create(texto_model, input, "idtexto",info)
         return create_texto(texto=texto)
 
 
@@ -97,7 +97,7 @@ class update_texto(graphene.Mutation):
         input = update_texto_input(required=True)
 
     def mutate(self, info, input):
-        texto = mutation_update(texto_model, input, "idtexto")
+        texto = mutation_update(texto_model, input, "idtexto",info)
         return update_texto(texto=texto)
 
 

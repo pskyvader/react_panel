@@ -74,7 +74,7 @@ class create_usuario(graphene.Mutation):
         input = create_usuario_input(required=True)
 
     def mutate(self, info, input):
-        usuario = mutation_create(usuario_model, input, "idusuario")
+        usuario = mutation_create(usuario_model, input, "idusuario",info)
         return create_usuario(usuario=usuario)
 
 
@@ -95,7 +95,7 @@ class update_usuario(graphene.Mutation):
         input = update_usuario_input(required=True)
 
     def mutate(self, info, input):
-        usuario = mutation_update(usuario_model, input, "idusuario")
+        usuario = mutation_update(usuario_model, input, "idusuario",info)
         return update_usuario(usuario=usuario)
 
 

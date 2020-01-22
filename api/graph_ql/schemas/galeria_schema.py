@@ -77,7 +77,7 @@ class create_galeria(graphene.Mutation):
         input = create_galeria_input(required=True)
 
     def mutate(self, info, input):
-        galeria = mutation_create(galeria_model, input, "idgaleria")
+        galeria = mutation_create(galeria_model, input, "idgaleria",info)
         return create_galeria(galeria=galeria)
 
 
@@ -98,7 +98,7 @@ class update_galeria(graphene.Mutation):
         input = update_galeria_input(required=True)
 
     def mutate(self, info, input):
-        galeria = mutation_update(galeria_model, input, "idgaleria")
+        galeria = mutation_update(galeria_model, input, "idgaleria",info)
         return update_galeria(galeria=galeria)
 
 

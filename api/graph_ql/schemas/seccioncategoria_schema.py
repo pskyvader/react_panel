@@ -79,7 +79,7 @@ class create_seccioncategoria(graphene.Mutation):
         input = create_seccioncategoria_input(required=True)
 
     def mutate(self, info, input):
-        seccioncategoria = mutation_create(seccioncategoria_model, input, "idseccioncategoria")
+        seccioncategoria = mutation_create(seccioncategoria_model, input, "idseccioncategoria",info)
         return create_seccioncategoria(seccioncategoria=seccioncategoria)
 
 
@@ -100,7 +100,7 @@ class update_seccioncategoria(graphene.Mutation):
         input = update_seccioncategoria_input(required=True)
 
     def mutate(self, info, input):
-        seccioncategoria = mutation_update(seccioncategoria_model, input, "idseccioncategoria")
+        seccioncategoria = mutation_update(seccioncategoria_model, input, "idseccioncategoria",info)
         return update_seccioncategoria(seccioncategoria=seccioncategoria)
 
 

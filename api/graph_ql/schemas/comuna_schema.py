@@ -73,7 +73,7 @@ class create_comuna(graphene.Mutation):
         input = create_comuna_input(required=True)
 
     def mutate(self, info, input):
-        comuna = mutation_create(comuna_model, input, "idcomuna")
+        comuna = mutation_create(comuna_model, input, "idcomuna",info)
         return create_comuna(comuna=comuna)
 
 
@@ -94,7 +94,7 @@ class update_comuna(graphene.Mutation):
         input = update_comuna_input(required=True)
 
     def mutate(self, info, input):
-        comuna = mutation_update(comuna_model, input, "idcomuna")
+        comuna = mutation_update(comuna_model, input, "idcomuna",info)
         return update_comuna(comuna=comuna)
 
 

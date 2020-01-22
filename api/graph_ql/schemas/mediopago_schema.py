@@ -73,7 +73,7 @@ class create_mediopago(graphene.Mutation):
         input = create_mediopago_input(required=True)
 
     def mutate(self, info, input):
-        mediopago = mutation_create(mediopago_model, input, "idmediopago")
+        mediopago = mutation_create(mediopago_model, input, "idmediopago",info)
         return create_mediopago(mediopago=mediopago)
 
 
@@ -94,7 +94,7 @@ class update_mediopago(graphene.Mutation):
         input = update_mediopago_input(required=True)
 
     def mutate(self, info, input):
-        mediopago = mutation_update(mediopago_model, input, "idmediopago")
+        mediopago = mutation_update(mediopago_model, input, "idmediopago",info)
         return update_mediopago(mediopago=mediopago)
 
 

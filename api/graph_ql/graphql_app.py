@@ -12,7 +12,7 @@ from graphql_server import (
 from urllib.parse import parse_qsl
 import http.client
 import json
-from core.format import parse_post
+from .utils.format import parse_post
 
 
 def init(environ):

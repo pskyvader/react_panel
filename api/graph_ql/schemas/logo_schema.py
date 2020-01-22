@@ -70,7 +70,7 @@ class create_logo(graphene.Mutation):
         input = create_logo_input(required=True)
 
     def mutate(self, info, input):
-        logo = mutation_create(logo_model, input, "idlogo")
+        logo = mutation_create(logo_model, input, "idlogo",info)
         return create_logo(logo=logo)
 
 
@@ -91,7 +91,7 @@ class update_logo(graphene.Mutation):
         input = update_logo_input(required=True)
 
     def mutate(self, info, input):
-        logo = mutation_update(logo_model, input, "idlogo")
+        logo = mutation_update(logo_model, input, "idlogo",info)
         return update_logo(logo=logo)
 
 

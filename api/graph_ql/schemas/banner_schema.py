@@ -77,7 +77,7 @@ class create_banner(graphene.Mutation):
         input = create_banner_input(required=True)
 
     def mutate(self, info, input):
-        banner = mutation_create(banner_model, input, "idbanner")
+        banner = mutation_create(banner_model, input, "idbanner",info)
         return create_banner(banner=banner)
 
 
@@ -98,7 +98,7 @@ class update_banner(graphene.Mutation):
         input = update_banner_input(required=True)
 
     def mutate(self, info, input):
-        banner = mutation_update(banner_model, input, "idbanner")
+        banner = mutation_update(banner_model, input, "idbanner",info)
         return update_banner(banner=banner)
 
 

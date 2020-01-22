@@ -82,7 +82,7 @@ class create_direccion(graphene.Mutation):
         input = create_direccion_input(required=True)
 
     def mutate(self, info, input):
-        direccion = mutation_create(direccion_model, input, "iddireccion")
+        direccion = mutation_create(direccion_model, input, "iddireccion",info)
         return create_direccion(direccion=direccion)
 
 
@@ -103,7 +103,7 @@ class update_direccion(graphene.Mutation):
         input = update_direccion_input(required=True)
 
     def mutate(self, info, input):
-        direccion = mutation_update(direccion_model, input, "iddireccion")
+        direccion = mutation_update(direccion_model, input, "iddireccion",info)
         return update_direccion(direccion=direccion)
 
 

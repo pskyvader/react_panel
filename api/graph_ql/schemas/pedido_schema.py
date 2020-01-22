@@ -82,7 +82,7 @@ class create_pedido(graphene.Mutation):
         input = create_pedido_input(required=True)
 
     def mutate(self, info, input):
-        pedido = mutation_create(pedido_model, input, "idpedido")
+        pedido = mutation_create(pedido_model, input, "idpedido",info)
         return create_pedido(pedido=pedido)
 
 
@@ -103,7 +103,7 @@ class update_pedido(graphene.Mutation):
         input = update_pedido_input(required=True)
 
     def mutate(self, info, input):
-        pedido = mutation_update(pedido_model, input, "idpedido")
+        pedido = mutation_update(pedido_model, input, "idpedido",info)
         return update_pedido(pedido=pedido)
 
 

@@ -79,7 +79,7 @@ class create_moduloconfiguracion(graphene.Mutation):
         input = create_moduloconfiguracion_input(required=True)
 
     def mutate(self, info, input):
-        moduloconfiguracion = mutation_create(moduloconfiguracion_model, input, "idmoduloconfiguracion")
+        moduloconfiguracion = mutation_create(moduloconfiguracion_model, input, "idmoduloconfiguracion",info)
         return create_moduloconfiguracion(moduloconfiguracion=moduloconfiguracion)
 
 
@@ -100,7 +100,7 @@ class update_moduloconfiguracion(graphene.Mutation):
         input = update_moduloconfiguracion_input(required=True)
 
     def mutate(self, info, input):
-        moduloconfiguracion = mutation_update(moduloconfiguracion_model, input, "idmoduloconfiguracion")
+        moduloconfiguracion = mutation_update(moduloconfiguracion_model, input, "idmoduloconfiguracion",info)
         return update_moduloconfiguracion(moduloconfiguracion=moduloconfiguracion)
 
 

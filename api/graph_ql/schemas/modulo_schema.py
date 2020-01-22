@@ -79,7 +79,7 @@ class create_modulo(graphene.Mutation):
         input = create_modulo_input(required=True)
 
     def mutate(self, info, input):
-        modulo = mutation_create(modulo_model, input, "idmodulo")
+        modulo = mutation_create(modulo_model, input, "idmodulo",info)
         return create_modulo(modulo=modulo)
 
 
@@ -100,7 +100,7 @@ class update_modulo(graphene.Mutation):
         input = update_modulo_input(required=True)
 
     def mutate(self, info, input):
-        modulo = mutation_update(modulo_model, input, "idmodulo")
+        modulo = mutation_update(modulo_model, input, "idmodulo",info)
         return update_modulo(modulo=modulo)
 
 

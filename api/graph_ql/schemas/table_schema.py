@@ -72,7 +72,7 @@ class create_table(graphene.Mutation):
         input = create_table_input(required=True)
 
     def mutate(self, info, input):
-        table = mutation_create(table_model, input, "idtable")
+        table = mutation_create(table_model, input, "idtable",info)
         return create_table(table=table)
 
 
@@ -93,7 +93,7 @@ class update_table(graphene.Mutation):
         input = update_table_input(required=True)
 
     def mutate(self, info, input):
-        table = mutation_update(table_model, input, "idtable")
+        table = mutation_update(table_model, input, "idtable",info)
         return update_table(table=table)
 
 

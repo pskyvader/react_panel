@@ -86,7 +86,7 @@ class create_producto(graphene.Mutation):
         input = create_producto_input(required=True)
 
     def mutate(self, info, input):
-        producto = mutation_create(producto_model, input, "idproducto")
+        producto = mutation_create(producto_model, input, "idproducto",info)
         return create_producto(producto=producto)
 
 
@@ -107,7 +107,7 @@ class update_producto(graphene.Mutation):
         input = update_producto_input(required=True)
 
     def mutate(self, info, input):
-        producto = mutation_update(producto_model, input, "idproducto")
+        producto = mutation_update(producto_model, input, "idproducto",info)
         return update_producto(producto=producto)
 
 

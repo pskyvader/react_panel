@@ -74,7 +74,7 @@ class create_pedidoestado(graphene.Mutation):
         input = create_pedidoestado_input(required=True)
 
     def mutate(self, info, input):
-        pedidoestado = mutation_create(pedidoestado_model, input, "idpedidoestado")
+        pedidoestado = mutation_create(pedidoestado_model, input, "idpedidoestado",info)
         return create_pedidoestado(pedidoestado=pedidoestado)
 
 
@@ -95,7 +95,7 @@ class update_pedidoestado(graphene.Mutation):
         input = update_pedidoestado_input(required=True)
 
     def mutate(self, info, input):
-        pedidoestado = mutation_update(pedidoestado_model, input, "idpedidoestado")
+        pedidoestado = mutation_update(pedidoestado_model, input, "idpedidoestado",info)
         return update_pedidoestado(pedidoestado=pedidoestado)
 
 

@@ -72,7 +72,7 @@ class create_region(graphene.Mutation):
         input = create_region_input(required=True)
 
     def mutate(self, info, input):
-        region = mutation_create(region_model, input, "idregion")
+        region = mutation_create(region_model, input, "idregion",info)
         return create_region(region=region)
 
 
@@ -93,7 +93,7 @@ class update_region(graphene.Mutation):
         input = update_region_input(required=True)
 
     def mutate(self, info, input):
-        region = mutation_update(region_model, input, "idregion")
+        region = mutation_update(region_model, input, "idregion",info)
         return update_region(region=region)
 
 

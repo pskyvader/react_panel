@@ -78,7 +78,7 @@ class create_pedidodireccion(graphene.Mutation):
         input = create_pedidodireccion_input(required=True)
 
     def mutate(self, info, input):
-        pedidodireccion = mutation_create(pedidodireccion_model, input, "idpedidodireccion")
+        pedidodireccion = mutation_create(pedidodireccion_model, input, "idpedidodireccion",info)
         return create_pedidodireccion(pedidodireccion=pedidodireccion)
 
 
@@ -99,7 +99,7 @@ class update_pedidodireccion(graphene.Mutation):
         input = update_pedidodireccion_input(required=True)
 
     def mutate(self, info, input):
-        pedidodireccion = mutation_update(pedidodireccion_model, input, "idpedidodireccion")
+        pedidodireccion = mutation_update(pedidodireccion_model, input, "idpedidodireccion",info)
         return update_pedidodireccion(pedidodireccion=pedidodireccion)
 
 

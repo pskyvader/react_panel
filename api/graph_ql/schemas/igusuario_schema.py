@@ -70,7 +70,7 @@ class create_igusuario(graphene.Mutation):
         input = create_igusuario_input(required=True)
 
     def mutate(self, info, input):
-        igusuario = mutation_create(igusuario_model, input, "idigusuario")
+        igusuario = mutation_create(igusuario_model, input, "idigusuario",info)
         return create_igusuario(igusuario=igusuario)
 
 
@@ -91,7 +91,7 @@ class update_igusuario(graphene.Mutation):
         input = update_igusuario_input(required=True)
 
     def mutate(self, info, input):
-        igusuario = mutation_update(igusuario_model, input, "idigusuario")
+        igusuario = mutation_update(igusuario_model, input, "idigusuario",info)
         return update_igusuario(igusuario=igusuario)
 
 

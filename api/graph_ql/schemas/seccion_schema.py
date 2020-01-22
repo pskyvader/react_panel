@@ -81,7 +81,7 @@ class create_seccion(graphene.Mutation):
         input = create_seccion_input(required=True)
 
     def mutate(self, info, input):
-        seccion = mutation_create(seccion_model, input, "idseccion")
+        seccion = mutation_create(seccion_model, input, "idseccion",info)
         return create_seccion(seccion=seccion)
 
 
@@ -102,7 +102,7 @@ class update_seccion(graphene.Mutation):
         input = update_seccion_input(required=True)
 
     def mutate(self, info, input):
-        seccion = mutation_update(seccion_model, input, "idseccion")
+        seccion = mutation_update(seccion_model, input, "idseccion",info)
         return update_seccion(seccion=seccion)
 
 

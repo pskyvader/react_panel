@@ -82,7 +82,7 @@ class create_seo(graphene.Mutation):
         input = create_seo_input(required=True)
 
     def mutate(self, info, input):
-        seo = mutation_create(seo_model, input, "idseo")
+        seo = mutation_create(seo_model, input, "idseo",info)
         return create_seo(seo=seo)
 
 
@@ -103,7 +103,7 @@ class update_seo(graphene.Mutation):
         input = update_seo_input(required=True)
 
     def mutate(self, info, input):
-        seo = mutation_update(seo_model, input, "idseo")
+        seo = mutation_update(seo_model, input, "idseo",info)
         return update_seo(seo=seo)
 
 

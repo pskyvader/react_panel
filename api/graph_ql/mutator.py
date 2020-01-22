@@ -17,8 +17,8 @@ def input_to_dictionary(input_variable):
 
 def mutation_create(table_model,input,id_key,info):
     data = input_to_dictionary(input)
-    if info.contex.FILES!=None:
-        data=process_file(data,id_key,info.contex.FILES)
+    if info.context.FILES!=None:
+        data=process_file(data,id_key,info.context.FILES)
     table = table_model(**data)
     db_session.add(table)
     db_session.commit()
@@ -27,8 +27,8 @@ def mutation_create(table_model,input,id_key,info):
 
 def mutation_update(table_model,input,id_key,info):
     data = input_to_dictionary(input)
-    if info.contex.FILES!=None:
-        data=process_file(data,id_key,info.contex.FILES)
+    if info.context.FILES!=None:
+        data=process_file(data,id_key,info.context.FILES)
     filter_id=getattr(table_model,id_key)
     table = db_session.query(table_model).filter(filter_id==data[id_key])
     table.update(data)

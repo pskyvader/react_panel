@@ -73,7 +73,7 @@ class create_administrador(graphene.Mutation):
         input = create_administrador_input(required=True)
 
     def mutate(self, info, input):
-        administrador = mutation_create(administrador_model, input, "idadministrador")
+        administrador = mutation_create(administrador_model, input, "idadministrador",info)
         return create_administrador(administrador=administrador)
 
 
@@ -94,7 +94,7 @@ class update_administrador(graphene.Mutation):
         input = update_administrador_input(required=True)
 
     def mutate(self, info, input):
-        administrador = mutation_update(administrador_model, input, "idadministrador")
+        administrador = mutation_update(administrador_model, input, "idadministrador",info)
         return update_administrador(administrador=administrador)
 
 

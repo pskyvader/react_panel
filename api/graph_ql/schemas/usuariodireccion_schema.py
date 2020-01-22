@@ -82,7 +82,7 @@ class create_usuariodireccion(graphene.Mutation):
         input = create_usuariodireccion_input(required=True)
 
     def mutate(self, info, input):
-        usuariodireccion = mutation_create(usuariodireccion_model, input, "idusuariodireccion")
+        usuariodireccion = mutation_create(usuariodireccion_model, input, "idusuariodireccion",info)
         return create_usuariodireccion(usuariodireccion=usuariodireccion)
 
 
@@ -103,7 +103,7 @@ class update_usuariodireccion(graphene.Mutation):
         input = update_usuariodireccion_input(required=True)
 
     def mutate(self, info, input):
-        usuariodireccion = mutation_update(usuariodireccion_model, input, "idusuariodireccion")
+        usuariodireccion = mutation_update(usuariodireccion_model, input, "idusuariodireccion",info)
         return update_usuariodireccion(usuariodireccion=usuariodireccion)
 
 

@@ -72,7 +72,7 @@ class create_log(graphene.Mutation):
         input = create_log_input(required=True)
 
     def mutate(self, info, input):
-        log = mutation_create(log_model, input, "idlog")
+        log = mutation_create(log_model, input, "idlog",info)
         return create_log(log=log)
 
 
@@ -93,7 +93,7 @@ class update_log(graphene.Mutation):
         input = update_log_input(required=True)
 
     def mutate(self, info, input):
-        log = mutation_update(log_model, input, "idlog")
+        log = mutation_update(log_model, input, "idlog",info)
         return update_log(log=log)
 
 

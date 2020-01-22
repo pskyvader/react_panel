@@ -77,7 +77,7 @@ class create_ighashtag(graphene.Mutation):
         input = create_ighashtag_input(required=True)
 
     def mutate(self, info, input):
-        ighashtag = mutation_create(ighashtag_model, input, "idighashtag")
+        ighashtag = mutation_create(ighashtag_model, input, "idighashtag",info)
         return create_ighashtag(ighashtag=ighashtag)
 
 
@@ -98,7 +98,7 @@ class update_ighashtag(graphene.Mutation):
         input = update_ighashtag_input(required=True)
 
     def mutate(self, info, input):
-        ighashtag = mutation_update(ighashtag_model, input, "idighashtag")
+        ighashtag = mutation_update(ighashtag_model, input, "idighashtag",info)
         return update_ighashtag(ighashtag=ighashtag)
 
 

@@ -85,7 +85,7 @@ class create_igaccounts(graphene.Mutation):
         input = create_igaccounts_input(required=True)
 
     def mutate(self, info, input):
-        igaccounts = mutation_create(igaccounts_model, input, "idigaccounts")
+        igaccounts = mutation_create(igaccounts_model, input, "idigaccounts",info)
         return create_igaccounts(igaccounts=igaccounts)
 
 
@@ -106,7 +106,7 @@ class update_igaccounts(graphene.Mutation):
         input = update_igaccounts_input(required=True)
 
     def mutate(self, info, input):
-        igaccounts = mutation_update(igaccounts_model, input, "idigaccounts")
+        igaccounts = mutation_update(igaccounts_model, input, "idigaccounts",info)
         return update_igaccounts(igaccounts=igaccounts)
 
 

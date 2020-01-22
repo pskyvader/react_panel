@@ -71,7 +71,7 @@ class create_igtotal(graphene.Mutation):
         input = create_igtotal_input(required=True)
 
     def mutate(self, info, input):
-        igtotal = mutation_create(igtotal_model, input, "idigtotal")
+        igtotal = mutation_create(igtotal_model, input, "idigtotal",info)
         return create_igtotal(igtotal=igtotal)
 
 
@@ -92,7 +92,7 @@ class update_igtotal(graphene.Mutation):
         input = update_igtotal_input(required=True)
 
     def mutate(self, info, input):
-        igtotal = mutation_update(igtotal_model, input, "idigtotal")
+        igtotal = mutation_update(igtotal_model, input, "idigtotal",info)
         return update_igtotal(igtotal=igtotal)
 
 

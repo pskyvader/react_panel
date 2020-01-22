@@ -72,7 +72,7 @@ class create_profile(graphene.Mutation):
         input = create_profile_input(required=True)
 
     def mutate(self, info, input):
-        profile = mutation_create(profile_model, input, "idprofile")
+        profile = mutation_create(profile_model, input, "idprofile",info)
         return create_profile(profile=profile)
 
 
@@ -93,7 +93,7 @@ class update_profile(graphene.Mutation):
         input = update_profile_input(required=True)
 
     def mutate(self, info, input):
-        profile = mutation_update(profile_model, input, "idprofile")
+        profile = mutation_update(profile_model, input, "idprofile",info)
         return update_profile(profile=profile)
 
 
