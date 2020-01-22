@@ -1,7 +1,6 @@
 from .database import db_session,encript
 from graphql_relay.node.node import from_global_id
 
-from .utils import image
 
 def input_to_dictionary(input_variable):
     """Method to convert Graphene input_variables into dictionary"""
@@ -52,8 +51,15 @@ def mutation_delete(table_model,input,id_key):
 
 
 def process_file(data,id_key,files):
+    from .utils import image
+    from os.path import join
     if id_key=='idimage':
         for f in files:
-            archivo = image.upload(f, "tmp")
+            folder="tmp"
+            name=""
+            if 'table' in data and 'idparent' in data:
+                folder=join(data['table'],data['idparent'])
+                name="original"
+            archivo = image.upload(f, folder,name)
             
     return data
