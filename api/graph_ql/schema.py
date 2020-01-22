@@ -5,13 +5,23 @@ from graphene_sqlalchemy import SQLAlchemyConnectionField
 
 
 import sys, inspect
-clsmembers = inspect.getmembers(sys.modules['graph_ql.schemas'],lambda member: print(member.__name__))
+clsmembers = inspect.getmembers(sys.modules['graph_ql.schemas'])
 
+schema_list=[]
 for cl in clsmembers:
-    print(cl,'\n\n')
+    if 'schema' in cl[0]:
+        schema_list.append(cl)
 
 
 class Query(graphene.ObjectType):
+    node = relay.Node.Field()
+
+
+for property, value in vars(schema_list[0][1]).iteritems():
+    print (property, ": ", value)
+
+
+class Query2(graphene.ObjectType):
     node = relay.Node.Field()
 # __QUERY__
     
