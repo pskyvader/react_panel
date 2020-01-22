@@ -22,9 +22,7 @@ class image_schema(SQLAlchemyObjectType):
     class Meta:
         model = image_model
         interfaces = (graphene.relay.Node,)
-        only_fields = (
-            ["idimage"] + list(attribute.keys()) + list(read_only_attribute.keys())
-        )
+        only_fields = ( ["idimage"] + list(attribute.keys()) + list(read_only_attribute.keys()) )
 
     url = graphene.String()
 
