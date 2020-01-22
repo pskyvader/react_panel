@@ -16,12 +16,16 @@ for cl in clsmembers:
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
 
+for property, value in vars(Query).items():
+    print( property, value)
+
+
+
 for title,sc in schema_list:
     title=title[:-7]
     for property, value in vars(sc).items():
         if property==title:
-            print(title,value)
-            setattr(Query, title, value)
+            setattr(Query, property, value)
         elif property=='resolve_'+title:
             setattr(Query, 'resolve_'+title, value)
         elif property=='all_'+title:
@@ -30,6 +34,15 @@ for title,sc in schema_list:
             setattr(Query, 'resolve_all_'+title, value)
         
 
+print('QUERY----------------------')
+for property, value in vars(Query).items():
+    print( property, value)
+
+
+print('QUERY----------------------')
+
+
+print('QUERY2----------------------')
 
 class Query2(graphene.ObjectType):
     node = relay.Node.Field()
@@ -195,10 +208,13 @@ class Query2(graphene.ObjectType):
     
     
     
+for property, value in vars(Query2).items():
+    print( property, value)
     
     
     
     
+print('QUERY2----------------------')
     
     
     
