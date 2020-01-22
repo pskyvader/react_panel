@@ -90,7 +90,7 @@ def json_to_class(tablename, return_class=True):
 
     fields = ""
     for field in table["fields"]:
-        str_field = field["titulo"] + "=" + types[field["tipo"]]["alchemy_type"]
+        str_field = field["titulo"] + " = " + types[field["tipo"]]["alchemy_type"]
         fields += str_field + "\n    "
 
     template = template.replace("FIELDS", fields)
@@ -130,11 +130,26 @@ def json_to_schema(force=False):
         for field in table["fields"]:
             if field["tipo"] != "json":
                 if field["titulo"] not in black_list:
-                    fields_str += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
+                    fields_str += (
+                        field["titulo"]
+                        + "="
+                        + types[field["tipo"]]["graphene_type"]
+                        + ",\n    "
+                    )
                 else:
-                    fields_black_list += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
+                    fields_black_list += (
+                        field["titulo"]
+                        + "="
+                        + types[field["tipo"]]["graphene_type"]
+                        + ",\n    "
+                    )
             else:
-                fields_read_only += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
+                fields_read_only += (
+                    field["titulo"]
+                    + "="
+                    + types[field["tipo"]]["graphene_type"]
+                    + ",\n    "
+                )
 
         template = template.replace("EXTRA_FIELDS", fields_str.rstrip()[:-1])
         template = template.replace("READ_ONLY_FIELDS", fields_read_only.rstrip()[:-1])
@@ -150,58 +165,6 @@ def json_to_schema(force=False):
                 print("schema creado correctamente!", schema_file)
             else:
                 print("Error al crear el schema!", schema_file)
-
-
-def json_to_query():
-    json_files = file_list(bdd_dir)
-    template = get_file(join(current_dir, "template_query.py"))
-
-    method_classes = ""
-    for f in json_files:
-        f = f.replace(".json", "")
-        method_classes += "\n    " + (template.replace("TABLENAME", f)) + "\n    "
-
-    method_file = join(current_dir, "..", "graph_ql", "schema.py")
-    if replace_in_file(method_file, "# __QUERY__", method_classes + "\n"):
-        print("metodos creados correctamente!")
-    else:
-        print("Error al crear los metodos!")
-
-
-def json_to_mutation():
-    json_files = file_list(bdd_dir)
-    template = get_file(join(current_dir, "template_mutation.py"))
-
-    method_classes = ""
-    for f in json_files:
-        f = f.replace(".json", "")
-        method_classes += "\n    " + (template.replace("TABLENAME", f)) + "\n    "
-
-    method_file = join(current_dir, "..", "graph_ql", "schema.py")
-    if replace_in_file(method_file, "# __MUTATION__", method_classes + "\n"):
-        print("metodos creados correctamente!")
-    else:
-        print("Error al crear los metodos!")
-
-@DeprecationWarning
-def json_to_types():
-    json_files = file_list(bdd_dir)
-    template = "schema = graphene.Schema(query=Query,mutation=Mutation, types=[TYPES])"
-    type_classes = ""
-    type_str = ""
-    for f in json_files:
-        f = f.replace(".json", "")
-        type_str += f + "_schema." + f + "_schema,"
-
-    type_classes = template.replace("TYPES", type_str)
-
-    type_file = join(current_dir, "..", "graph_ql", "schema.py")
-    if replace_in_file(type_file, "# __TYPES__", "\n" + type_classes + "\n"):
-        print("types creados correctamente!")
-    else:
-        print("Error al crear los types!")
-
-
 
 
 def get_file(file_name):
@@ -252,9 +215,6 @@ def create_file(file_name, content, force=False):
     return False
 
 
-# bdd_to_folder()
-# json_to_model()
+bdd_to_folder()
+json_to_model()
 json_to_schema(force=True)
-# json_to_query()
-json_to_mutation()
-# json_to_types()

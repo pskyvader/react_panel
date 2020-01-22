@@ -22,11 +22,11 @@ class attributes_mutation:
 
 types = []
 
-# add schemas properties to query and mutation
+# add schemas properties to query, mutation and types
 for title, sc in schema_list:
     title = title[:-7]
     for property, value in vars(sc).items():
-        if property in [ title, "resolve_" + title, "all_" + title, "resolve_all_" + title, ]:
+        if property in [ title, "resolve_" + title, "all_" + title, "resolve_all_" + title ]:
             setattr(attributes_query, property, value)
         elif property in ["create_" + title, "update_" + title, "delete_" + title]:
             setattr(attributes_mutation, property, value.Field())
