@@ -20,9 +20,10 @@ def resolve(args, info, table_schema, table_model, **kwargs):
         else:
             raise NameError('Field not found',value)
     
-    size_value = kwargs.get('size', None)
-    if size_value!=None:
-        print(size_value)
+    width = kwargs.get('width', None)
+    height = kwargs.get('height', None)
+    if width!=None or height!=None:
+        print(width,height,table_model)
 
     return query
 
