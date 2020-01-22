@@ -55,7 +55,6 @@ def parse_body(environ):
         return dict(parse_qsl(body.decode('utf8')))
     if content_type[0] == 'multipart/form-data':
         post=parse_post(environ,body)
-        print(post)
         return post
     else:
         raise HttpQueryError(
