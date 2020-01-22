@@ -16,7 +16,11 @@ def post_field(p):
     post = {}
     try:
         for key in p.keys():
-            if ( isinstance(p[key], FieldStorage) and p[key].file and p[key].filename != None ):
+            if (
+                isinstance(p[key], FieldStorage)
+                and p[key].file
+                and p[key].filename != None
+            ):
                 if not "file" in post:
                     post["file"] = []
                 tmpfile = p[key].file.read()
@@ -25,7 +29,9 @@ def post_field(p):
                 if mime == None:
                     mime = "text/plain"
                 post["file"].append({"name": name, "type": mime, "tmp_name": tmpfile})
-            elif isinstance(p[key], MiniFieldStorage) or isinstance( p[key], FieldStorage ):
+            elif isinstance(p[key], MiniFieldStorage) or isinstance(
+                p[key], FieldStorage
+            ):
                 post[key] = p[key].value
             elif isinstance(p[key], list):
                 tmp_list = []
@@ -47,20 +53,20 @@ def get_content_type_by_filename(file_name):
 
     mime_type = ""
     mime_map = {
-        "js": "application/javascript"
-        "xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        "xltx": "application/vnd.openxmlformats-officedocument.spreadsheetml.template"
-        "potx": "application/vnd.openxmlformats-officedocument.presentationml.template"
-        "ppsx": "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
-        "pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-        "sldx": "application/vnd.openxmlformats-officedocument.presentationml.slide"
-        "docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        "dotx": "application/vnd.openxmlformats-officedocument.wordprocessingml.template"
-        "xlam": "application/vnd.ms-excel.addin.macroEnabled.12"
-        "xlsb": "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
-        "apk": "application/vnd.android.package-archive"
+        "js": "application/javascript",
+        "xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "xltx": "application/vnd.openxmlformats-officedocument.spreadsheetml.template",
+        "potx": "application/vnd.openxmlformats-officedocument.presentationml.template",
+        "ppsx": "application/vnd.openxmlformats-officedocument.presentationml.slideshow",
+        "pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "sldx": "application/vnd.openxmlformats-officedocument.presentationml.slide",
+        "docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "dotx": "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+        "xlam": "application/vnd.ms-excel.addin.macroEnabled.12",
+        "xlsb": "application/vnd.ms-excel.sheet.binary.macroEnabled.12",
+        "apk": "application/vnd.android.package-archive",
     }
-    
+
     try:
         suffix = ""
         name = basename(file_name)
@@ -77,3 +83,37 @@ def get_content_type_by_filename(file_name):
     if not mime_type:
         mime_type = "application/octet-stream"
     return mime_type
+
+
+def url_amigable(url=""):
+    url = replaceMultiple(url, ["á", "à", "â", "ã", "ª", "ä"], "a")
+    url = replaceMultiple(url, ["Á", "À", "Â", "Ã", "Ä"], "A")
+    url = replaceMultiple(url, ["Í", "Ì", "Î", "Ï"], "I")
+    url = replaceMultiple(url, ["í", "ì", "î", "ï"], "i")
+    url = replaceMultiple(url, ["é", "è", "ê", "ë"], "e")
+    url = replaceMultiple(url, ["É", "È", "Ê", "Ë"], "E")
+    url = replaceMultiple(url, ["ó", "ò", "ô", "õ", "ö"], "o")
+    url = replaceMultiple(url, ["Ó", "Ò", "Ô", "Õ", "Ö"], "O")
+    url = replaceMultiple(url, ["ú", "ù", "û", "ü"], "u")
+    url = replaceMultiple(url, ["Ú", "Ù", "Û", "Ü"], "U")
+    url = replaceMultiple(
+        url, ["[", "^", "´", "`", "¨", "~", "]", " ", "/", "°", "º"], "-"
+    )
+    url = url.replace("ç", "c")
+    url = url.replace("Ç", "C")
+    url = url.replace("ñ", "n")
+    url = url.replace("Ñ", "N")
+    url = url.replace("Ý", "Y")
+    url = url.replace("ý", "y")
+    url = url.lower()
+    return url
+
+
+def replaceMultiple(mainString, toBeReplaces, newString):
+    # Iterate over the strings to be replaced
+    for elem in toBeReplaces:
+        # Check if string is in the main string
+        if elem in mainString:
+            # Replace the string
+            mainString = mainString.replace(elem, newString)
+    return mainString

@@ -1,9 +1,10 @@
 from pathlib import Path
 from os import makedirs
 from os import rename
-
 from os.path import join, dirname
 import sys
+
+from .format import url_amigable
 
 current_dir = dirname(__file__)
 
@@ -14,7 +15,7 @@ upload_url = ""
 recortes_cache = {}
 
 
-@staticmethod
+
 def upload_tmp(modulo):
     """Subir a carpeta temporal, durante la creacion de la seccion. al guardar el archivo se mueve a la carpeta definitiva"""
     respuesta = {"exito": False, "mensaje": ""}
@@ -46,7 +47,7 @@ def upload_tmp(modulo):
     return respuesta
 
 
-@staticmethod
+
 def regenerar(file_original):
     """regenerar imagenes ya guardadas"""
     file = file_original.copy()
@@ -58,21 +59,21 @@ def regenerar(file_original):
     file["folder"] = (
         file["folder"] + "/" + str(file["parent"]) + "/" + str(file["subfolder"])
     )
-    for fl in glob(get_upload_dir() + file["folder"] + "/" + str(file["id"]) + "-*.*"):
+    for fl in glob(upload_dir + file["folder"] + "/" + str(file["id"]) + "-*.*"):
         remove(fl)
     respuesta = recortes_foto(file, recortes)
     return respuesta
 
 
-@staticmethod
+
 def move(file_move, folder, subfolder, name_final, folder_tmp="tmp"):
     """mover archivo (normalmente) desde la carpeta temporal a la definitiva"""
     from os.path import splitext
 
     recortes = get_recortes(folder)
-    folder_tmp = get_upload_dir() + folder_tmp
+    folder_tmp = upload_dir + folder_tmp
     base_folder = folder
-    folder = get_upload_dir() + base_folder + "/" + str(name_final) + "/" + subfolder
+    folder = upload_dir + base_folder + "/" + str(name_final) + "/" + subfolder
 
     makedirs(folder, exist_ok=True)
 
@@ -110,7 +111,7 @@ def move(file_move, folder, subfolder, name_final, folder_tmp="tmp"):
     return file_move
 
 
-@staticmethod
+
 def copy(original_file, name_final, folder, subfolder="", parent_final="", tag="thumb"):
     """Copia un archivo y retorna la informacion del archivo nuevo """
     import os
@@ -132,7 +133,7 @@ def copy(original_file, name_final, folder, subfolder="", parent_final="", tag="
     original = generar_dir(original_file, tag)
 
     if original != "":
-        base_folder = get_upload_dir() + folder
+        base_folder = upload_dir + folder
         folder = base_folder
         if parent_final != "":
             folder += "/" + str(parent_final)
@@ -156,7 +157,7 @@ def copy(original_file, name_final, folder, subfolder="", parent_final="", tag="
     return respuesta
 
 
-@staticmethod
+
 def get_recortes(modulo_name):
     if modulo_name in recortes_cache:
         return recortes_cache[modulo_name]
@@ -215,7 +216,7 @@ def get_recortes(modulo_name):
     return recortes
 
 
-@staticmethod
+
 def upload(file, folder_upload="tmp", name_final=""):
     """subir archivo"""
     import uuid
@@ -223,14 +224,14 @@ def upload(file, folder_upload="tmp", name_final=""):
     import os
     import tempfile
 
-    folder = get_upload_dir()
+    folder = upload_dir
     respuesta = validate(file)
     if respuesta["exito"]:
         if "" == name_final:
             name_final = uuid.uuid4().hex
         else:
             name_final, extension = os.path.splitext(name_final)
-            name_final = functions.url_amigable("".join(name_final))
+            name_final = url_amigable("".join(name_final))
 
         name, extension = os.path.splitext(file["name"])
         extension = extension.lower()
@@ -239,7 +240,7 @@ def upload(file, folder_upload="tmp", name_final=""):
         folder=join(folder,folder_upload)
         makedirs(folder, exist_ok=True)
 
-        with open(folder + "/" + name_final + extension, "wb") as output_file:
+        with open(join(folder,name_final + extension), "wb") as output_file:
             output_file.write(file["tmp_name"])
 
         if not respuesta["exito"]:
@@ -257,8 +258,7 @@ def upload(file, folder_upload="tmp", name_final=""):
     return respuesta
 
 
-@classmethod
-def validate(cls, file):
+def validate(file):
     from os.path import splitext
 
     name, extension = splitext(file["name"])
@@ -266,22 +266,22 @@ def validate(cls, file):
     respuesta = {"exito": False, "mensaje": "Error: formato no valido"}
     if "error" in file and 0 != file["error"]:
         respuesta["mensaje"] = "Error al subir archivo: " + file["error"]
-    elif file["type"] not in cls.types:
+    elif file["type"] not in types:
         respuesta["mensaje"] += ". Extension: " + file["type"]
-    elif extension not in cls.extensions:
+    elif extension not in extensions:
         respuesta["mensaje"] += ".<br/> Extension de archivo: " + extension
     else:
         respuesta["exito"] = True
     return respuesta
 
 
-@staticmethod
+
 def recortes_foto(archivo, recortes_foto):
     """Genera recortes de las fotos"""
     from PIL import Image
 
     respuesta = {"exito": False}
-    ruta = get_upload_dir() + archivo["folder"]
+    ruta = upload_dir + archivo["folder"]
     foto = archivo["name"]
     ruta_imagen = ruta + "/" + foto
     my_file = Path(ruta_imagen)
@@ -368,7 +368,7 @@ def recortes_foto(archivo, recortes_foto):
     return respuesta
 
 
-@staticmethod
+
 def proporcion_foto(ancho_maximo, alto_maximo, ancho, alto, tipo):
     """Obtener proporciones de foto final"""
     proporcion_imagen = ancho / alto
@@ -416,7 +416,7 @@ def proporcion_foto(ancho_maximo, alto_maximo, ancho, alto, tipo):
     )
 
 
-@staticmethod
+
 def recortar_foto(recorte, datos):
     """Recorta una foto"""
     from PIL import Image
@@ -424,7 +424,7 @@ def recortar_foto(recorte, datos):
     respuesta = {"exito": False, "mensaje": ""}
     ancho_maximo = recorte["ancho"]
     alto_maximo = recorte["alto"]
-    ruta = get_upload_dir() + datos["folder"] + "/"
+    ruta = upload_dir + datos["folder"] + "/"
     foto = datos["name"]
     etiqueta = recorte["tag"]
     tipo = recorte["tipo"]
@@ -505,7 +505,7 @@ def recortar_foto(recorte, datos):
     return respuesta
 
 
-@staticmethod
+
 def nombre_archivo(file, tag="", extension="", remove=False):
     from os.path import splitext
 
@@ -520,14 +520,14 @@ def nombre_archivo(file, tag="", extension="", remove=False):
         if len(name) > 1:
             name.pop()
 
-    name = functions.url_amigable("".join(name))
+    name = url_amigable("".join(name))
     if "" != tag:
         return name + "-" + tag + extension
     else:
         return name + extension
 
 
-@staticmethod
+
 def generar_url(file, tag="thumb", extension="", folder="", subfolder=""):
     if len(file) == 0:
         return ""
@@ -543,7 +543,7 @@ def generar_url(file, tag="thumb", extension="", folder="", subfolder=""):
             subfolder += file["subfolder"] + "/"
 
     url = folder + "/" + subfolder + nombre_archivo(file["url"], tag, extension)
-    time = functions.fecha_archivo(get_upload_dir() + url, True)
+    time = fecha_archivo(upload_dir + url, True)
     if time != False:
         # archivo = get_upload_url() + url + "?time=" + str(time)
         archivo = url + "?time=" + str(time)
@@ -552,7 +552,7 @@ def generar_url(file, tag="thumb", extension="", folder="", subfolder=""):
     return archivo
 
 
-@staticmethod
+
 def generar_dir(file, tag="thumb", extension="", folder="", subfolder=""):
     if "" == folder:
         folder = file["folder"]
@@ -564,14 +564,14 @@ def generar_dir(file, tag="thumb", extension="", folder="", subfolder=""):
             subfolder += file["subfolder"] + "/"
 
     url = folder + "/" + subfolder + (nombre_archivo(file["url"], tag, extension))
-    archivo = get_upload_dir() + url
+    archivo = upload_dir + url
     my_file = Path(archivo)
     if not my_file.is_file():
         archivo = ""
     return archivo
 
 
-@staticmethod
+
 def portada(fotos):
     portada = {}
     if len(fotos) > 0:
@@ -585,19 +585,19 @@ def portada(fotos):
     return portada
 
 
-@staticmethod
+
 def delete(folder, file="", subfolder="", sub=""):
     import shutil
 
     if "" == file and "" != subfolder:
-        url = get_upload_dir() + folder + "/" + str(subfolder) + "/"
+        url = upload_dir + folder + "/" + str(subfolder) + "/"
         if "" != sub:
             url += sub + "/"
         my_file = Path(url)
         if my_file.is_dir():
             shutil.rmtree(url)
     elif "" == file and "" == subfolder:
-        url = get_upload_dir() + folder + "/"
+        url = upload_dir + folder + "/"
         my_file = Path(url)
         if my_file.is_dir():
             shutil.rmtree(url)
@@ -607,14 +607,14 @@ def delete(folder, file="", subfolder="", sub=""):
             subfolder += "/"
         if "" != sub:
             sub += "/"
-        url = get_upload_dir() + folder + "/" + subfolder + sub + file["url"]
+        url = upload_dir + folder + "/" + subfolder + sub + file["url"]
         my_file = Path(url)
         if my_file.is_file():
             my_file.unlink()
 
         for recorte in recortes:
             url = (
-                get_upload_dir()
+                upload_dir
                 + folder
                 + "/"
                 + subfolder
@@ -626,7 +626,7 @@ def delete(folder, file="", subfolder="", sub=""):
                 my_file.unlink()
 
             url = (
-                get_upload_dir()
+                upload_dir
                 + folder
                 + "/"
                 + subfolder
@@ -640,15 +640,15 @@ def delete(folder, file="", subfolder="", sub=""):
                 my_file.unlink()
 
 
-@staticmethod
+
 def delete_temp():
     from os import listdir
     from os.path import getmtime
 
-    now = functions.current_time("", False)
+    now = current_time("", False)
     horas = 1
 
-    carpeta = get_upload_dir() + "tmp/"  # ruta actual
+    carpeta = upload_dir + "tmp/"  # ruta actual
     # obtenemos un archivo y luego otro sucesivamente
     for archivo in listdir(carpeta):
         my_file = Path(carpeta + archivo)
@@ -658,14 +658,7 @@ def delete_temp():
                 my_file.unlink()
 
 
-@staticmethod
-def get_upload_dir():
-    if "" == upload_dir:
-        upload_dir = "../" + "public/images/"
-    return upload_dir
 
-
-@staticmethod
 def get_upload_url():
     if "" == upload_url:
         upload_url = app.get_url(True) + "../" + "public/images/"

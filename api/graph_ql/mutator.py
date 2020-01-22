@@ -58,8 +58,9 @@ def process_file(data,id_key,files):
             folder="tmp"
             name=""
             if 'table' in data and 'idparent' in data:
-                folder=join(data['table'],data['idparent'])
+                folder=join(data['table'],str(data['idparent']))
                 name="original"
             archivo = image.upload(f, folder,name)
+            print(archivo)
             
     return data
