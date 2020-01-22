@@ -27,33 +27,13 @@ class image_schema(SQLAlchemyObjectType):
     url = graphene.String()
 
     def resolve_url(parent, info):
-        fields = collect_fields(info.context, info.parent_type, info.field_asts[0], {}, set())
-        print(fields)
+        print(info.operation.get('height'))
 
         if parent.table_name != None and parent.idparent != None:
             return f"{parent.table_name}/{parent.idparent}/{parent.idimage}/{parent.name}{parent.extension}"
         else:
             return f"tmp/{parent.idimage}/{parent.name}{parent.extension}"
-
-
-
-def get_fields(info):
-    prev_fragment_names = set()
-    params = collections.defaultdict(list)
-    params = collect_fields(info.context,
-                            info.parent_type,
-                            info.field_asts[0].selection_set,
-                            params,
-                            prev_fragment_names)
-
-    for fragment_name in prev_fragment_names:
-        params = collect_fields(info.context,
-                                info.parent_type,
-                                info.fragments[fragment_name].selection_set,
-                                params,
-                                prev_fragment_names)
-
-    return set(params.keys())
+            
 
 def resolve_image(args, info, idimage, **kwargs):
     query = resolve(args, info, image_schema, image_model, idimage=idimage, **kwargs)
