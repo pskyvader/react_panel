@@ -251,7 +251,8 @@ def upload(file, folder_upload="tmp", name_final=""):
                 + folder
             )
         else:
-            respuesta["name"] = name_final + extension
+            respuesta["extension"] = extension
+            respuesta["name"] = name_final
             respuesta["folder"] = folder_upload
             respuesta["original_name"] = file["name"]
             respuesta["mensaje"] = "Imagen " + file["name"] + " Subida correctamente"
