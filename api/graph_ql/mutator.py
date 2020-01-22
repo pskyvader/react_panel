@@ -21,12 +21,11 @@ def mutation_create(table_model,input,id_key,info):
     table = table_model(**data)
     db_session.add(table)
     db_session.commit()
-
     if info.context.FILES!=None:
         data=process_file(data,id_key,info.context.FILES)
         if data!=None:
             filter_id=getattr(table_model,id_key)
-            table = db_session.query(table_model).filter(filter_id==table[id_key])
+            table = db_session.query(table_model).filter(filter_id==getattr(table,id_key))
             table.update(data)
     return table
 

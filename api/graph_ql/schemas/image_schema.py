@@ -8,6 +8,7 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 attribute = dict(
     table=graphene.String(),
     idparent=graphene.Int(),
+    name=graphene.String(),
     extension=graphene.String(),
     orden=graphene.Int(),
     estado=graphene.Boolean(),

@@ -151,6 +151,7 @@ class image_model(Base):
     idimage = Column(Integer, primary_key=True, nullable=False)
     table = Column(String(255))
     idparent = Column(Integer)
+    name = Column(String(255))
     extension = Column(String(255))
     orden = Column(Integer)
     estado = Column(Boolean, nullable=False, default=False)
@@ -459,6 +460,8 @@ class usuariodireccion_model(Base):
     
 
 # __MODELS__
+    
+    
     
     
     
