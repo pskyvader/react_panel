@@ -5,10 +5,11 @@ from graphene_sqlalchemy import SQLAlchemyConnectionField
 
 
 import sys, inspect
-clsmembers = inspect.getmembers(sys.modules[__name__], inspect.isclass)
-print(clsmembers)
+clsmembers = inspect.getmembers(sys.modules['graph_ql.schemas'],lambda member: print(member.__name__))
 
-print(sys.modules)
+for cl in clsmembers:
+    print(cl,'\n\n')
+
 
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
