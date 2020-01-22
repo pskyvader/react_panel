@@ -21,14 +21,11 @@ def init(environ):
     status_code = 200
     if environ["REQUEST_METHOD"] == "POST":
         data = parse_body(environ)
-        print(data['file'])
-        execution_results, params = run_http_query( schema, "post", data, query_data=None, batch_enabled=True, catch=True )
-        result, status_code = encode_execution_results(
-            execution_results,
-            format_error=default_format_error,
-            is_batch=False,
-            encode=json_encode,
-        )
+        context=object()
+        if 'file' in data:
+            setattr(context,'FILES',data['file'])
+        execution_results, params = run_http_query( schema, "post", data, context=context)
+        result, status_code = encode_execution_results( execution_results, format_error=default_format_error, is_batch=False, encode=json_encode, )
         result = json.loads(result)
 
         if "data" in result and "errors" not in result:
