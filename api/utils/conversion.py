@@ -183,7 +183,7 @@ def json_to_mutation():
     else:
         print("Error al crear los metodos!")
 
-
+@DeprecationWarning
 def json_to_types():
     json_files = file_list(bdd_dir)
     template = "schema = graphene.Schema(query=Query,mutation=Mutation, types=[TYPES])"
@@ -202,22 +202,6 @@ def json_to_types():
         print("Error al crear los types!")
 
 
-def json_to_init():
-    json_files = file_list(bdd_dir)
-    template = "__all__ = [INIT]"
-    type_classes = ""
-    type_str = ""
-    for f in json_files:
-        f = f.replace(".json", "")
-        type_str += '"' + f + '_schema",'
-
-    type_classes = template.replace("INIT", type_str[:-1])
-
-    init_file = join(current_dir, "..", "graph_ql", "schemas", "__init__.py")
-    if replace_in_file(init_file, "# __INIT__", "\n" + type_classes + "\n"):
-        print("Init creados correctamente!")
-    else:
-        print("Error al crear los Init!")
 
 
 def get_file(file_name):
@@ -274,4 +258,3 @@ json_to_schema(force=True)
 # json_to_query()
 json_to_mutation()
 # json_to_types()
-# json_to_init()
