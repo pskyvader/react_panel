@@ -4,6 +4,12 @@ from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
 
 
+import sys, inspect
+clsmembers = inspect.getmembers(sys.modules[__name__], inspect.isclass)
+print(clsmembers)
+
+print(sys.modules)
+
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
 # __QUERY__
