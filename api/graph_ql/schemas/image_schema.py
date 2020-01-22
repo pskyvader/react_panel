@@ -26,7 +26,8 @@ class image_schema(SQLAlchemyObjectType):
 
     url = graphene.String()
 
-    def resolve_url(parent, info):
+    def resolve_url(parent, info,*args, **kwargs):
+        print(parent,info,args,kwargs)
         if parent.table_name != None and parent.idparent != None:
             return f"{parent.table_name}/{parent.idparent}/{parent.idimage}/{parent.name}{parent.extension}"
         else:
