@@ -11,58 +11,6 @@ current_dir = dirname(__file__)
 types = [ "image/webp", "image/bmp", "image/gif", "image/pjpeg", "image/jpeg", "image/svg+xml", "image/png", ]
 extensions = [".webp", ".bmp", ".ico", ".gif", ".jpeg", ".jpg", ".svg", ".xml", ".png"]
 upload_dir = join(current_dir, "..", "..", "..", "public", "images")
-upload_url = ""
-recortes_cache = {}
-
-
-
-def upload_tmp(modulo):
-    """Subir a carpeta temporal, durante la creacion de la seccion. al guardar el archivo se mueve a la carpeta definitiva"""
-    respuesta = {"exito": False, "mensaje": ""}
-    if "file" in app.post:
-        files = app.post["file"]
-        recortes = get_recortes(modulo)
-        archivos = []
-
-        file_ary = files
-        for files in file_ary:
-            archivo = upload(files, "tmp")
-            respuesta["exito"] = archivo["exito"]
-            if not archivo["exito"]:
-                respuesta["mensaje"] = archivo["mensaje"]
-                break
-            else:
-                recorte = recortes_foto(archivo, recortes)
-                if not recorte["exito"]:
-                    respuesta["mensaje"] = recorte["mensaje"]
-                    break
-                else:
-                    name = nombre_archivo(archivo["name"], "thumb")
-                    archivo["url"] = get_upload_url() + archivo["folder"] + "/" + name
-                    respuesta["mensaje"] += archivo["original_name"] + " <br/>"
-                    archivos.append(archivo)
-        respuesta["archivos"] = archivos
-    else:
-        respuesta["mensaje"] = "No se encuentran archivos a subir"
-    return respuesta
-
-
-
-def regenerar(file_original):
-    """regenerar imagenes ya guardadas"""
-    file = file_original.copy()
-    from glob import glob
-    from os import remove
-
-    recortes = get_recortes(file["folder"])
-    file["name"] = file["url"]
-    file["folder"] = (
-        file["folder"] + "/" + str(file["parent"]) + "/" + str(file["subfolder"])
-    )
-    for fl in glob(upload_dir + file["folder"] + "/" + str(file["id"]) + "-*.*"):
-        remove(fl)
-    respuesta = recortes_foto(file, recortes)
-    return respuesta
 
 
 
@@ -157,63 +105,6 @@ def copy(original_file, name_final, folder, subfolder="", parent_final="", tag="
     return respuesta
 
 
-
-def get_recortes(modulo_name):
-    if modulo_name in recortes_cache:
-        return recortes_cache[modulo_name]
-
-    moduloconfiguracion = moduloconfiguracion_model.getByModulo(modulo_name)
-    var = {"idmoduloconfiguracion": moduloconfiguracion[0]}
-    if "tipo" in app.get:
-        var["tipo"] = app.get["tipo"]
-
-    modulo = modulo_model.getAll(var, {"limit": 1})
-    recortes = []
-    recortes.append(
-        {
-            "tag": "thumb",
-            "titulo": "Thumb",
-            "ancho": 200,
-            "alto": 200,
-            "calidad": 90,
-            "tipo": "centrar",
-        }
-    )
-    recortes.append(
-        {
-            "tag": "zoom",
-            "titulo": "Zoom",
-            "ancho": 600,
-            "alto": 600,
-            "calidad": 90,
-            "tipo": "centrar",
-        }
-    )
-    recortes.append(
-        {
-            "tag": "color",
-            "titulo": "Color",
-            "ancho": 30,
-            "alto": None,
-            "calidad": 99,
-            "tipo": "recortar",
-        }
-    )
-
-    if len(modulo) > 0 and "recortes" in modulo[0]:
-        for recorte in modulo[0]["recortes"]:
-            recorte["ancho"] = int(recorte["ancho"])
-            recorte["alto"] = int(recorte["alto"])
-            recorte["calidad"] = int(recorte["calidad"])
-            if recorte["calidad"] > 100:
-                recorte["calidad"] = 100
-
-            if recorte["calidad"] < 0:
-                recorte["calidad"] = 0
-
-            recortes.append(recorte)
-    recortes_cache[modulo_name] = recortes
-    return recortes
 
 
 
@@ -529,31 +420,6 @@ def nombre_archivo(file, tag="", extension="", remove=False):
 
 
 
-def generar_url(file, tag="thumb", extension="", folder="", subfolder=""):
-    if len(file) == 0:
-        return ""
-
-    if "" == folder:
-        folder = file["folder"]
-
-    if "" != subfolder:
-        subfolder += "/"
-    elif file["parent"] != "":
-        subfolder = str(file["parent"]) + "/"
-        if file["subfolder"] != "":
-            subfolder += file["subfolder"] + "/"
-
-    url = folder + "/" + subfolder + nombre_archivo(file["url"], tag, extension)
-    time = fecha_archivo(upload_dir + url, True)
-    if time != False:
-        # archivo = get_upload_url() + url + "?time=" + str(time)
-        archivo = url + "?time=" + str(time)
-    else:
-        archivo = ""
-    return archivo
-
-
-
 def generar_dir(file, tag="thumb", extension="", folder="", subfolder=""):
     if "" == folder:
         folder = file["folder"]
@@ -659,8 +525,3 @@ def delete_temp():
                 my_file.unlink()
 
 
-
-def get_upload_url():
-    if "" == upload_url:
-        upload_url = app.get_url(True) + "../" + "public/images/"
-    return upload_url

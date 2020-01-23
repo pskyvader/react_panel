@@ -27,9 +27,14 @@ def mutation_create(table_model,input,id_key,info):
         if data!=None:
             filter_id=getattr(table_model,id_key)
             table = db_session.query(table_model).filter(filter_id==data[id_key])
-            table.update(data)
-            db_session.commit()
-            table = db_session.query(table_model).filter(filter_id==data[id_key]).first()
+            if 'exito' in data and not data['exito']:
+                db_session.delete(table.first())
+                db_session.commit()
+                raise Exception(data['mensaje'])
+            else:
+                table.update(data)
+                db_session.commit()
+                table = db_session.query(table_model).filter(filter_id==data[id_key]).first()
     return table
 
 
@@ -37,7 +42,9 @@ def mutation_update(table_model,input,id_key,info):
     data = input_to_dictionary(input)
     if info.context.FILES!=None:
         data=process_file(data,id_key,info.context.FILES)
-        
+        if 'exito' in data and not data['exito']:
+            raise Exception(data['mensaje'])
+
     filter_id=getattr(table_model,id_key)
     table = db_session.query(table_model).filter(filter_id==data[id_key])
     table.update(data)
@@ -68,8 +75,11 @@ def process_file(data,id_key,files):
         if 'table_name' in data and 'idparent' in data and 'idimage' in data:
             folder=join(data['table_name'],str(data['idparent']),str(data['idimage']))
             name="original"
-        archivo = image.upload(f, folder,name)
-        data['name']=archivo['name']
-        data['extension']=archivo['extension']
-        return data
+        respuesta = image.upload(f, folder,name)
+        if respuesta['exito']:
+            data['name']=respuesta['name']
+            data['extension']=respuesta['extension']
+            return data
+        else:
+            return respuesta
     return None

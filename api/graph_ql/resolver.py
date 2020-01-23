@@ -19,12 +19,6 @@ def resolve(args, info, table_schema, table_model, **kwargs):
                 raise NameError('Invalid sort',pos)
         else:
             raise NameError('Field not found',value)
-    
-    width = kwargs.get('width', None)
-    height = kwargs.get('height', None)
-    if width!=None or height!=None:
-        print(width,height,table_model.__table__.name)
-
     return query
 
 def get_model(table_model):
@@ -36,5 +30,3 @@ def get_model(table_model):
             filter_column=getattr(table_model,c)
             cache_models[name][c]=filter_column
     return cache_models[name]
-
-
