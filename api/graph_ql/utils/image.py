@@ -142,7 +142,7 @@ def upload(file, folder_upload="tmp", name_final=""):
                 + folder
             )
         else:
-            respuesta["extension"] = extension
+            respuesta["extension"] = extension.replace('.', '')
             respuesta["name"] = name_final
             respuesta["folder"] = folder_upload
             respuesta["original_name"] = file["name"]

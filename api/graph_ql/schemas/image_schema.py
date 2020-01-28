@@ -58,9 +58,9 @@ class image_schema(SQLAlchemyObjectType):
             
             print('comprobar recorte de imagen',width,heigth,extension)
 
-            return f"{parent.table_name}/{parent.idparent}/{parent.idimage}/{parent.name}{parent.extension}"
+            return f"{parent.table_name}/{parent.idparent}/{parent.idimage}/{parent.name}.{parent.extension}"
         else:
-            return f"tmp/{parent.idimage}/{parent.name}{parent.extension}"
+            return f"tmp/{parent.idimage}/{parent.name}.{parent.extension}"
             
 
 
