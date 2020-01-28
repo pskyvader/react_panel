@@ -63,6 +63,8 @@ def mutation_delete(table_model, input, id_key):
     filter_id = getattr(table_model, id_key)
     table = db_session.query(table_model).filter(filter_id == data[id_key]).first()
     if table != None:
+        if id_key == "idimage":
+            print("delete image", id_key, data[id_key])
         db_session.delete(table)
         db_session.commit()
         return (True, "Delete correctly")
@@ -90,4 +92,7 @@ def process_file(data, id_key, files):
             return data
         else:
             return respuesta
+    elif len(files) > 1:
+        raise Exception("You can only parse 1 file at the time")
+
     return None
