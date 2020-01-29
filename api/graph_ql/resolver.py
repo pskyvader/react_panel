@@ -38,6 +38,7 @@ class Url(graphene.ObjectType):
     tag=graphene.String()
     url=graphene.String()
     def __init__(self, image_origin, recorte):
+        print(image_origin.table_name,image_origin.idparent,image_origin.name,image_origin.extension)
         from .utils.image import recortar_foto
         if image_origin.table_name != None and image_origin.idparent != None:
             if recorte['width'] != None or recorte['height'] != None:

@@ -2,7 +2,6 @@
     url = graphene.List(Url)
 
     def resolve_url(parent, info):
-        from graph_ql.utils import image
         recorte={'width':None,'height':None,'format':None,'regenerate':None}
         for argument in info.operation.selection_set.selections[0].arguments:
             if argument.name.value in recorte:

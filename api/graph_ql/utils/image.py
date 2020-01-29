@@ -320,9 +320,7 @@ def recortar_foto(recorte, datos):
     etiqueta = recorte["tag"]
     tipo = recorte.get("tipo", "rellenar")
 
-    print(upload_dir,ruta,foto)
-
-    ruta_imagen = join(upload_dir,ruta, foto)
+    ruta_imagen = join(upload_dir,ruta, foto+'.'+datos.extension)
     if not isfile(ruta_imagen):
         respuesta["mensaje"] = "Archivo " + ruta_imagen + " no existe"
         return respuesta
