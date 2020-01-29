@@ -1,3 +1,4 @@
+import graphene
 cache_models = {}
 
 
@@ -33,35 +34,36 @@ def get_model(table_model):
     return cache_models[name]
 
 
-def Url(image_origin, recorte):
-    from .utils.image import recortar_foto
-    if image_origin.table_name != None and image_origin.idparent != None:
-        if recorte['width'] != None or recorte['height'] != None:
-            if recorte['width'] == None:
-                recorte['width'] = 0
-            if recorte['height'] == None:
-                recorte['height'] = 0
-            recorte['tag']=f"{recorte['width']}x{recorte['height']}"
-        else:
-            recorte['tag']='original'
-        if recorte['format'] != None:
-            recorte["format"] = recorte['format']
-        else:
-            recorte["format"] = ""
+class Url(graphene.ObjectType):
+    foto=graphene.ObjectType()
+    def __init__(self, image_origin, recorte):
+        from .utils.image import recortar_foto
+        if image_origin.table_name != None and image_origin.idparent != None:
+            if recorte['width'] != None or recorte['height'] != None:
+                if recorte['width'] == None:
+                    recorte['width'] = 0
+                if recorte['height'] == None:
+                    recorte['height'] = 0
+                recorte['tag']=f"{recorte['width']}x{recorte['height']}"
+            else:
+                recorte['tag']='original'
+            if recorte['format'] != None:
+                recorte["format"] = recorte['format']
+            else:
+                recorte["format"] = ""
 
-        recorte["folder"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/"
+            recorte["folder"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/"
 
-        response=recortar_foto(recorte, image_origin)
-        if response['exito']!=True:
-            raise Exception(response['mensaje'])
+            response=recortar_foto(recorte, image_origin)
+            if response['exito']!=True:
+                raise Exception(response['mensaje'])
+            else:
+                self.foto = {
+                    "tag": recorte['tag'],
+                    "url": response["url"],
+                }
         else:
-            foto = {
-                "tag": recorte['tag'],
-                "url": response["url"],
+            self.foto = {
+                "tag": "tmp",
+                "url": f"tmp/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}",
             }
-    else:
-        foto = {
-            "tag": "tmp",
-            "url": f"tmp/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}",
-        }
-    return foto
