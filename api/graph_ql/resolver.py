@@ -33,17 +33,28 @@ def get_model(table_model):
     return cache_models[name]
 
 
-def Url(image, recorte):
-    if image.table_name != None and image.idparent != None:
+def Url(image_origin, recorte):
+    from .utils import image
+
+    if image_origin.table_name != None and image_origin.idparent != None:
         if width != None or heigth != None:
             if width == None:
                 width = 0
             if heigth == None:
                 heigth = 0
-            image.name = f"{width}x{heigth}"
+            image_origin.name = f"{width}x{heigth}"
         if extension != None:
-            image.extension = extension
+            image_origin.extension = extension
 
-        return f"{image.table_name}/{image.idparent}/{image.idimage}/{image.name}.{image.extension}"
+        recortar_foto(recorte, datos)
+
+        foto = {
+            "tag": image_origin.name,
+            "url": f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}",
+        }
     else:
-        return f"tmp/{image.idimage}/{image.name}.{image.extension}"
+        foto = {
+            "tag": "tmp",
+            "url": f"tmp/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}",
+        }
+    return foto
