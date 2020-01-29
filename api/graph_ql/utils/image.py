@@ -309,7 +309,8 @@ def proporcion_foto(ancho_maximo, alto_maximo, ancho, alto, tipo):
 
 def recortar_foto(recorte, datos):
     """Recorta una foto"""
-    from PIL import Image
+    # from PIL import Image
+    import PIL
 
     respuesta = {"exito": False, "mensaje": ""}
     ancho_maximo = recorte["width"]
@@ -317,7 +318,9 @@ def recortar_foto(recorte, datos):
     ruta = recorte["folder"]
     foto = datos.name
     etiqueta = recorte["tag"]
-    tipo = recorte["tipo"] or "rellenar"
+    tipo = recorte.get("tipo", "rellenar")
+
+    print(upload_dir,ruta,foto)
 
     ruta_imagen = join(upload_dir,ruta, foto)
     if not isfile(ruta_imagen):
