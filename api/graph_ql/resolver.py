@@ -35,7 +35,6 @@ def get_model(table_model):
 
 def Url(image_origin, recorte):
     from .utils import image
-
     if image_origin.table_name != None and image_origin.idparent != None:
         if width != None or heigth != None:
             if width == None:
@@ -43,15 +42,17 @@ def Url(image_origin, recorte):
             if heigth == None:
                 heigth = 0
             image_origin.name = f"{width}x{heigth}"
+            recorte['tag']=image_origin.name
         if extension != None:
             image_origin.extension = extension
 
-        recortar_foto(recorte, datos)
+        recorte["url"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}"
 
         foto = {
-            "tag": image_origin.name,
-            "url": f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}",
+            "tag": recorte['tag'],
+            "url": recorte["url"],
         }
+        image.recortar_foto(recorte, datos)
     else:
         foto = {
             "tag": "tmp",

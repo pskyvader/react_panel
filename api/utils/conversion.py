@@ -162,7 +162,7 @@ def json_to_schema(force=False):
 
         if f=='image':
             extra_schema = get_file(join(current_dir, "url_schema.py"))
-            extra_query=", width=graphene.String(), height=graphene.String()"
+            extra_query=", width=graphene.String(), height=graphene.String(), extension=graphene.String(), regenerate=graphene.Boolean()"
 
 
         
