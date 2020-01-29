@@ -35,7 +35,8 @@ def get_model(table_model):
 
 
 class Url(graphene.ObjectType):
-    foto=graphene.ObjectType()
+    tag=graphene.String()
+    url=graphene.String()
     def __init__(self, image_origin, recorte):
         from .utils.image import recortar_foto
         if image_origin.table_name != None and image_origin.idparent != None:
@@ -58,12 +59,8 @@ class Url(graphene.ObjectType):
             if response['exito']!=True:
                 raise Exception(response['mensaje'])
             else:
-                self.foto = {
-                    "tag": recorte['tag'],
-                    "url": response["url"],
-                }
+                self.tag= recorte['tag'],
+                self.url=response["url"],
         else:
-            self.foto = {
-                "tag": "tmp",
-                "url": f"tmp/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}",
-            }
+            self.tag= "tmp"
+            self.url=f"tmp/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}"
