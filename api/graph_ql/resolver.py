@@ -34,30 +34,31 @@ def get_model(table_model):
 
 
 def Url(image_origin, recorte):
-    from .utils import image
+    from .utils.image import recortar_foto
     if image_origin.table_name != None and image_origin.idparent != None:
-        if width != None or heigth != None:
-            if width == None:
-                width = 0
-            if heigth == None:
-                heigth = 0
-            recorte['tag']=f"{width}x{heigth}"
+        if recorte['width'] != None or recorte['height'] != None:
+            if recorte['width'] == None:
+                recorte['width'] = 0
+            if recorte['height'] == None:
+                recorte['height'] = 0
+            recorte['tag']=f"{recorte['width']}x{recorte['height']}"
         else:
             recorte['tag']='original'
-        if extension != None:
-            recorte["extension"] = extension
+        if recorte['format'] != None:
+            recorte["format"] = recorte['format']
         else:
-            recorte["extension"] = ""
+            recorte["format"] = ""
 
         recorte["folder"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/"
 
-        foto = {
-            "tag": recorte['tag'],
-            "url": recorte["folder"]+recorte['tag']+'.'+recorte["extension"],
-        }
-        response=image.recortar_foto(recorte, image_origin)
+        response=recortar_foto(recorte, image_origin)
         if response['exito']!=True:
             raise Exception(response['mensaje'])
+        else:
+            foto = {
+                "tag": recorte['tag'],
+                "url": response["url"],
+            }
     else:
         foto = {
             "tag": "tmp",

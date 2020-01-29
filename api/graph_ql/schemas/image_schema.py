@@ -1,7 +1,7 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import image_model
-from ..resolver import resolve
+from ..resolver import resolve,Url
 from ..mutator import mutation_create, mutation_update, mutation_delete
 
 
@@ -29,18 +29,18 @@ class image_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idimage"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
-
+    
+    
     url = graphene.List(Url)
 
     def resolve_url(parent, info):
         from graph_ql.utils import image
-        recorte={'width':None,'height':None,'extension':None,'regenerate':None}
+        recorte={'width':None,'height':None,'format':None,'regenerate':None}
         for argument in info.operation.selection_set.selections[0].arguments:
             if argument.name.value in recorte:
                 recorte[argument.name.value]=argument.value.value
 
         return [Url(parent,recorte)]
-            
 
 
 def resolve_image(args, info, idimage, **kwargs):
@@ -55,8 +55,8 @@ def resolve_all_image(args, info, **kwargs):
     return query
 
 
-all_image = SQLAlchemyConnectionField( image_schema, sort=graphene.String() , width=graphene.String(), height=graphene.String(), **attribute )
-image = graphene.Field(image_schema, idimage=graphene.Int() , width=graphene.String(), height=graphene.String(), **attribute)
+all_image = SQLAlchemyConnectionField( image_schema, sort=graphene.String() , width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean(), **attribute )
+image = graphene.Field(image_schema, idimage=graphene.Int() , width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean(), **attribute)
 
 # Create a generic class to mutualize description of image _attributes for both queries and mutations
 class image_attribute:

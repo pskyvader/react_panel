@@ -1,7 +1,7 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import log_model
-from ..resolver import resolve
+from ..resolver import resolve,Url
 from ..mutator import mutation_create, mutation_update, mutation_delete
 
 

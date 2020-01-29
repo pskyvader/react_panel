@@ -1,5 +1,4 @@
-from os import makedirs
-from os import rename
+from os import makedirs,rename,remove
 from os.path import join, dirname,isfile
 import sys
 
@@ -320,12 +319,13 @@ def recortar_foto(recorte, datos):
     etiqueta = recorte["tag"]
     tipo = recorte["tipo"] or "rellenar"
 
-    ruta_imagen = ruta + foto
+    ruta_imagen = join(upload_dir,ruta, foto)
     if not isfile(ruta_imagen):
         respuesta["mensaje"] = "Archivo " + ruta_imagen + " no existe"
         return respuesta
 
-    foto_recorte = ruta + nombre_archivo(foto, etiqueta, recorte['extension'], True)
+    url=join(ruta, nombre_archivo(foto, etiqueta, recorte['extension'], True))
+    foto_recorte =join(upload_dir, url)
     if not recorte['regenerate'] and isfile(foto_recorte):
         respuesta["mensaje"] = "Archivo " + foto_recorte + " ya existe"
         respuesta['exito']=True
@@ -378,24 +378,17 @@ def recortar_foto(recorte, datos):
             else:
                 new_im = new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
 
-            # im=im.resize((miniatura_ancho, miniatura_alto), ANTIALIAS)
-            # box = (x, y, ancho_maximo+x, alto_maximo+y)
             box = (x, y)
             new_im.paste(im, (box))
+    
+    if isfile(foto_recorte):
+        remove(foto_recorte)
+        
+    new_im.save(foto_recorte)
 
-    my_file = Path(ruta + foto_recorte)
-    if my_file.is_file():
-        my_file.unlink()
-    my_file = Path(ruta + foto_webp)
-    if my_file.is_file():
-        my_file.unlink()
-
-    new_im.save(ruta + foto_recorte)
-    # if "png" != imagen_tipo:
-    new_im.save(ruta + foto_webp)
 
     respuesta["exito"] = True
-
+    respuesta["url"] = url
     return respuesta
 
 
@@ -417,7 +410,7 @@ def nombre_archivo(file, tag="", extension="", remove=False):
     name = url_amigable("".join(name))
     if "" != tag:
         # return name + "-" + tag + extension
-        return name + "-" + tag + extension
+        return tag + extension
     else:
         return name + extension
 
