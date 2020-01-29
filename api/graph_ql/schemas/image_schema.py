@@ -29,12 +29,10 @@ class image_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idimage"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
-    
-    
-    url = graphene.String()
+
+    url = graphene.List(Url)
 
     def resolve_url(parent, info):
-        from graph_ql.utils import image
         width=None
         heigth=None
         extension=None
@@ -45,22 +43,9 @@ class image_schema(SQLAlchemyObjectType):
                 heigth=argument.value.value
             elif argument.name.value=='extension':
                 extension=argument.value.value
-
-        if parent.table_name != None and parent.idparent != None:
-            if width!=None or heigth!=None:
-                if width==None:
-                    width=0
-                if heigth==None:
-                    heigth=0
-                parent.name=f"{width}x{heigth}"
-            if extension!=None:
-                parent.extension=extension
-            
-            print('comprobar recorte de imagen',width,heigth,extension)
-
-            return f"{parent.table_name}/{parent.idparent}/{parent.idimage}/{parent.name}.{parent.extension}"
-        else:
-            return f"tmp/{parent.idimage}/{parent.name}.{parent.extension}"
+                
+        recorte={'width':width,'height':heigth,'extension':extension}
+        return [Url(parent,recorte)]
             
 
 

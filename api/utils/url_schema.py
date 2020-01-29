@@ -13,7 +13,6 @@
                 heigth=argument.value.value
             elif argument.name.value=='extension':
                 extension=argument.value.value
-
-
+                
         recorte={'width':width,'height':heigth,'extension':extension}
         return [Url(parent,recorte)]
