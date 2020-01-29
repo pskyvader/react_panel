@@ -312,8 +312,8 @@ def recortar_foto(recorte, datos):
     from PIL import Image
 
     respuesta = {"exito": False, "mensaje": ""}
-    ancho_maximo = recorte["width"]
-    alto_maximo = recorte["height"]
+    ancho_maximo = int(recorte["width"])
+    alto_maximo = int(recorte["height"])
     ruta = recorte["folder"]
     foto = datos.name
     etiqueta = recorte["tag"]
@@ -333,7 +333,7 @@ def recortar_foto(recorte, datos):
         respuesta['url']=url
         return respuesta
 
-    im = open(ruta_imagen)
+    im = Image.open(ruta_imagen)
     ancho, alto = im.size
     imagen_tipo = im.format.lower()
 
@@ -354,30 +354,30 @@ def recortar_foto(recorte, datos):
 
     if tipo == "recortar":
         box = (x, y, ancho_maximo + x, alto_maximo + y)
-        im = im.resize((miniatura_ancho, miniatura_alto), ANTIALIAS)
+        im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
         new_im = im.crop(box)
     elif "rellenar" == tipo:
         if "png" == imagen_tipo:
-            new_im = new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
+            new_im = Image.new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
         else:
-            new_im = new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
+            new_im = Image.new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
         box = (x, y)
-        im = im.resize((miniatura_ancho, miniatura_alto), ANTIALIAS)
+        im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
         new_im.paste(im, (box))
     else:
         if ancho >= miniatura_ancho or alto >= miniatura_alto:
             if "png" == imagen_tipo:
-                new_im = new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
+                new_im = Image.new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
             else:
-                new_im = new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
+                new_im = Image.new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
             box = (x, y)
-            im = im.resize((miniatura_ancho, miniatura_alto), ANTIALIAS)
+            im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
             new_im.paste(im, (box))
         else:
             if "png" == imagen_tipo:
-                new_im = new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
+                new_im = Image.new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
             else:
-                new_im = new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
+                new_im = Image.new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
 
             box = (x, y)
             new_im.paste(im, (box))
