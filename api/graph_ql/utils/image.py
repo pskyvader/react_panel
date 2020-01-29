@@ -309,7 +309,7 @@ def proporcion_foto(ancho_maximo, alto_maximo, ancho, alto, tipo):
 
 def recortar_foto(recorte, datos):
     """Recorta una foto"""
-    # from PIL import Image
+    from PIL import Image
     import PIL
 
     respuesta = {"exito": False, "mensaje": ""}
@@ -331,9 +331,10 @@ def recortar_foto(recorte, datos):
     if not recorte['regenerate'] and isfile(foto_recorte):
         respuesta["mensaje"] = "Archivo " + foto_recorte + " ya existe"
         respuesta['exito']=True
+        respuesta['url']=url
         return respuesta
 
-    im = open(ruta_imagen)
+    im = PIL.Image.open(ruta_imagen)
     ancho, alto = im.size
     imagen_tipo = im.format.lower()
 

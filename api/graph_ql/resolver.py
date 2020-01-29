@@ -59,8 +59,8 @@ class Url(graphene.ObjectType):
             if not response['exito']:
                 raise Exception(response['mensaje'])
             else:
-                self.tag= recorte['tag'],
-                self.url=response["url"],
+                self.tag=recorte['tag']
+                self.url=response["url"]
         else:
             self.tag= "tmp"
             self.url=f"tmp/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}"
