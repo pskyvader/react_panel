@@ -38,7 +38,6 @@ class Url(graphene.ObjectType):
     tag=graphene.String()
     url=graphene.String()
     def __init__(self, image_origin, recorte):
-        print(image_origin.table_name,image_origin.idparent,image_origin.name,image_origin.extension)
         from .utils.image import recortar_foto
         if image_origin.table_name != None and image_origin.idparent != None:
             if recorte['width'] != None or recorte['height'] != None:
@@ -49,15 +48,15 @@ class Url(graphene.ObjectType):
                 recorte['tag']=f"{recorte['width']}x{recorte['height']}"
             else:
                 recorte['tag']='original'
-            if recorte['format'] != None:
-                recorte["format"] = recorte['format']
-            else:
-                recorte["format"] = ""
+            
+
+            if recorte['format'] == None:
+                recorte["format"] = image_origin.extension
 
             recorte["folder"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/"
 
             response=recortar_foto(recorte, image_origin)
-            if response['exito']!=True:
+            if not response['exito']:
                 raise Exception(response['mensaje'])
             else:
                 self.tag= recorte['tag'],

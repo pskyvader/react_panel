@@ -325,13 +325,13 @@ def recortar_foto(recorte, datos):
         respuesta["mensaje"] = "Archivo " + ruta_imagen + " no existe"
         return respuesta
 
-    url=join(ruta, nombre_archivo(foto, etiqueta, recorte['extension'], True))
+
+    url=join(ruta, nombre_archivo(foto, etiqueta, recorte['format'], True))
     foto_recorte =join(upload_dir, url)
     if not recorte['regenerate'] and isfile(foto_recorte):
         respuesta["mensaje"] = "Archivo " + foto_recorte + " ya existe"
         respuesta['exito']=True
-        return True
-
+        return respuesta
 
     im = open(ruta_imagen)
     ancho, alto = im.size
