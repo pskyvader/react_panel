@@ -46,6 +46,8 @@ def Url(image_origin, recorte):
             recorte['tag']='original'
         if extension != None:
             recorte["extension"] = extension
+        else:
+            recorte["extension"] = ""
 
         recorte["folder"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/"
 
@@ -53,7 +55,9 @@ def Url(image_origin, recorte):
             "tag": recorte['tag'],
             "url": recorte["folder"]+recorte['tag']+'.'+recorte["extension"],
         }
-        image.recortar_foto(recorte, image_origin)
+        response=image.recortar_foto(recorte, image_origin)
+        if response['exito']!=True:
+            raise Exception(response['mensaje'])
     else:
         foto = {
             "tag": "tmp",
