@@ -41,18 +41,19 @@ def Url(image_origin, recorte):
                 width = 0
             if heigth == None:
                 heigth = 0
-            image_origin.name = f"{width}x{heigth}"
-            recorte['tag']=image_origin.name
+            recorte['tag']=f"{width}x{heigth}"
+        else:
+            recorte['tag']='original'
         if extension != None:
-            image_origin.extension = extension
+            recorte["extension"] = extension
 
-        recorte["url"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}"
+        recorte["folder"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/"
 
         foto = {
             "tag": recorte['tag'],
-            "url": recorte["url"],
+            "url": recorte["folder"]+recorte['tag']+'.'+recorte["extension"],
         }
-        image.recortar_foto(recorte, datos)
+        image.recortar_foto(recorte, image_origin)
     else:
         foto = {
             "tag": "tmp",
