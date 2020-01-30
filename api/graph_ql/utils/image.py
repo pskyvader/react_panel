@@ -339,8 +339,12 @@ def recortar_foto(recorte, datos):
 
     proporcion_imagen = ancho / alto
     if None == ancho_maximo or 0 == ancho_maximo:
-        ancho_maximo = int(round(alto_maximo * proporcion_imagen))
-    if None == alto_maximo or 0 == alto_maximo:
+        if None == alto_maximo or 0 == alto_maximo:
+            alto_maximo=alto
+            ancho_maximo=ancho
+        else:
+            ancho_maximo = int(round(alto_maximo * proporcion_imagen))
+    elif None == alto_maximo or 0 == alto_maximo:
         alto_maximo = int(round(ancho_maximo / proporcion_imagen))
 
     x, y, miniatura_ancho, miniatura_alto = proporcion_foto(
