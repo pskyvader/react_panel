@@ -34,7 +34,6 @@ class image_schema(SQLAlchemyObjectType):
     url = graphene.List(Url)
 
     def resolve_url(parent, info):
-        from graph_ql.utils import image
         recorte={'width':None,'height':None,'format':None,'regenerate':False}
         for argument in info.operation.selection_set.selections[0].arguments:
             if argument.name.value in recorte:

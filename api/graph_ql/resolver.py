@@ -47,6 +47,8 @@ class Url(graphene.ObjectType):
                     recorte['height'] = 0
                 recorte['tag']=f"{recorte['width']}x{recorte['height']}"
             else:
+                recorte['width'] = 0
+                recorte['height'] = 0
                 recorte['tag']='original'
             
 
