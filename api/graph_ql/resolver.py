@@ -1,4 +1,8 @@
 import graphene
+from .utils.image import recortar_foto
+from os.path import join
+from urllib.request import pathname2url
+
 cache_models = {}
 
 
@@ -35,34 +39,42 @@ def get_model(table_model):
 
 
 class Url(graphene.ObjectType):
-    tag=graphene.String()
-    url=graphene.String()
-    def __init__(self, image_origin, recorte):
-        from .utils.image import recortar_foto
-        if image_origin.table_name != None and image_origin.idparent != None:
-            if recorte['width'] != None or recorte['height'] != None:
-                if recorte['width'] == None:
-                    recorte['width'] = 0
-                if recorte['height'] == None:
-                    recorte['height'] = 0
-                recorte['tag']=f"{recorte['width']}x{recorte['height']}"
-            else:
-                recorte['width'] = 0
-                recorte['height'] = 0
-                recorte['tag']='original'
-            
+    tag = graphene.String()
+    url = graphene.String()
 
-            if recorte['format'] == None:
+    def __init__(self, image_origin, recorte):
+
+        if image_origin.table_name != None and image_origin.idparent != None:
+            size_filter=(None,0,"","0")
+            
+            if recorte["width"] not in size_filter or recorte["height"] not in size_filter:
+                if recorte["width"] in size_filter:
+                    recorte["width"] = 0
+                if recorte["height"] in size_filter:
+                    recorte["height"] = 0
+
+                recorte["tag"] = f"{recorte['width']}x{recorte['height']}"
+            else:
+                recorte["width"] = 0
+                recorte["height"] = 0
+                recorte["tag"] = image_origin.name
+
+            if recorte["format"] == None:
                 recorte["format"] = image_origin.extension
 
-            recorte["folder"]= f"{image_origin.table_name}/{image_origin.idparent}/{image_origin.idimage}/"
+            recorte["folder"] = join( image_origin.table_name, str(image_origin.idparent), str(image_origin.idimage) )
 
-            response=recortar_foto(recorte, image_origin)
-            if not response['exito']:
-                raise Exception(response['mensaje'])
+            response = recortar_foto(recorte, image_origin)
+            if not response["exito"]:
+                raise Exception(response["mensaje"])
             else:
-                self.tag=recorte['tag']
-                self.url=response["url"]
+                self.tag = recorte["tag"]
+                self.url = response["url"]
         else:
-            self.tag= "tmp"
-            self.url=f"tmp/{image_origin.idimage}/{image_origin.name}.{image_origin.extension}"
+            self.tag = "tmp"
+            self.url = join( "tmp", str(image_origin.idimage), image_origin.name + "." + image_origin.extension, )
+
+
+        self.url=pathname2url(self.url)
+
+

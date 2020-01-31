@@ -1,3 +1,5 @@
+from graph_ql.database import config
+
 def parse_post(environ, buffer):
     from cgi import FieldStorage
     from io import BytesIO
@@ -117,3 +119,25 @@ def replaceMultiple(mainString, toBeReplaces, newString):
             # Replace the string
             mainString = mainString.replace(elem, newString)
     return mainString
+
+
+def current_time(formato:str="%Y-%m-%d %H:%M:%S", as_string:bool=True):
+        """ fecha actual en zona horaria santiago, formato opcional
+        :type formato:str:
+        :param formato:str:
+    
+        :type as_string:bool:
+        :param as_string:bool:
+    
+        :raises:
+    
+        :rtype: datetime.timestamp() or str
+        """
+
+        import datetime
+        import pytz
+        fecha = datetime.datetime.now(pytz.timezone(config["timezone"]))
+        if as_string:
+            return fecha.strftime(formato)
+        else:
+            return fecha.timestamp()

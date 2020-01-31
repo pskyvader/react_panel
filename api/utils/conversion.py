@@ -3,9 +3,8 @@ from os.path import join, dirname, isfile
 import sys
 
 current_dir = dirname(__file__)
-
 sys.path.append(join(current_dir, ".."))
-sys.path.append(join(current_dir, "..", "python-library"))
+
 
 config_file = join(current_dir, "..", "config", "config.json")
 config = {}

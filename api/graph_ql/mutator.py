@@ -1,4 +1,6 @@
 from .database import db_session, encript
+from .utils.image import delete, delete_temp,upload
+from os.path import join
 
 # from graphql_relay.node.node import from_global_id
 
@@ -64,7 +66,11 @@ def mutation_delete(table_model, input, id_key):
     table = db_session.query(table_model).filter(filter_id == data[id_key]).first()
     if table != None:
         if id_key == "idimage":
-            print("delete image", id_key, data[id_key])
+            if table.table_name != None and table.idparent != None:
+                folder = join(table.table_name, str(table.idparent), str(table.idimage))
+            else:
+                folder = join("tmp", str(table.idimage), table.name + "." + table.extension)
+            print(delete( folder, keep_original=False, original_file=table.name + "." + table.extension, ))
         db_session.delete(table)
         db_session.commit()
         return (True, "Delete correctly")
@@ -73,8 +79,6 @@ def mutation_delete(table_model, input, id_key):
 
 
 def process_file(data, id_key, files):
-    from .utils import image
-    from os.path import join
 
     if id_key == "idimage" and len(files) == 1:
         f = files[0]
@@ -85,7 +89,8 @@ def process_file(data, id_key, files):
                 data["table_name"], str(data["idparent"]), str(data["idimage"])
             )
             name = "original"
-        respuesta = image.upload(f, folder, name)
+        respuesta = upload(f, folder, name)
+        delete_temp()
         if respuesta["exito"]:
             data["name"] = respuesta["name"]
             data["extension"] = respuesta["extension"]

@@ -28,5 +28,6 @@
     "email_user": "",
     "email_pass": "",
     "main_email": "contacto@instagram.mysitio.cl",
-    "email_from": "noreply@instagram.mysitio.cl"
+    "email_from": "noreply@instagram.mysitio.cl",
+    "timezone":"America/Chicago"
 }

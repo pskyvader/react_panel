@@ -1,15 +1,22 @@
-from os import makedirs,rename,remove
-from os.path import join, dirname,isfile
+from os import makedirs, rename, remove, listdir
+from os.path import join, dirname, isfile,isdir, getmtime
 import sys
 
-from .format import url_amigable
+from .format import url_amigable,current_time
 
 current_dir = dirname(__file__)
 
-types = [ "image/webp", "image/bmp", "image/gif", "image/pjpeg", "image/jpeg", "image/svg+xml", "image/png", ]
+types = [
+    "image/webp",
+    "image/bmp",
+    "image/gif",
+    "image/pjpeg",
+    "image/jpeg",
+    "image/svg+xml",
+    "image/png",
+]
 extensions = [".webp", ".bmp", ".ico", ".gif", ".jpeg", ".jpg", ".svg", ".xml", ".png"]
 upload_dir = join(current_dir, "..", "..", "..", "public", "images")
-
 
 
 def move(file_move, folder, subfolder, name_final, folder_tmp="tmp"):
@@ -57,7 +64,6 @@ def move(file_move, folder, subfolder, name_final, folder_tmp="tmp"):
     return file_move
 
 
-
 def copy(original_file, name_final, folder, subfolder="", parent_final="", tag="thumb"):
     """Copia un archivo y retorna la informacion del archivo nuevo """
     import os
@@ -103,9 +109,6 @@ def copy(original_file, name_final, folder, subfolder="", parent_final="", tag="
     return respuesta
 
 
-
-
-
 def upload(file, folder_upload="tmp", name_final=""):
     """subir archivo"""
     import uuid
@@ -126,10 +129,10 @@ def upload(file, folder_upload="tmp", name_final=""):
         extension = extension.lower()
 
         makedirs(folder, exist_ok=True)
-        folder=join(folder,folder_upload)
+        folder = join(folder, folder_upload)
         makedirs(folder, exist_ok=True)
 
-        with open(join(folder,name_final + extension), "wb") as output_file:
+        with open(join(folder, name_final + extension), "wb") as output_file:
             output_file.write(file["tmp_name"])
 
         if not respuesta["exito"]:
@@ -140,7 +143,7 @@ def upload(file, folder_upload="tmp", name_final=""):
                 + folder
             )
         else:
-            respuesta["extension"] = extension.replace('.', '')
+            respuesta["extension"] = extension.replace(".", "")
             respuesta["name"] = name_final
             respuesta["folder"] = folder_upload
             respuesta["original_name"] = file["name"]
@@ -163,7 +166,6 @@ def validate(file):
     else:
         respuesta["exito"] = True
     return respuesta
-
 
 
 def recortes_foto(archivo, recortes_foto):
@@ -258,7 +260,6 @@ def recortes_foto(archivo, recortes_foto):
     return respuesta
 
 
-
 def proporcion_foto(ancho_maximo, alto_maximo, ancho, alto, tipo):
     """Obtener proporciones de foto final"""
     proporcion_imagen = ancho / alto
@@ -307,44 +308,74 @@ def proporcion_foto(ancho_maximo, alto_maximo, ancho, alto, tipo):
 
 
 
+class cache_image():
+    cache=[]
+    cache_obj=None
+    def exists_url(self,url):
+        if url in self.cache:
+            return True
+        elif isfile(url):
+            self.cache.append(url)
+            return True
+        return False
+    
+    @staticmethod
+    def exists(url):
+        if cache_image.cache_obj==None:
+            cache_image.cache_obj=cache_image()
+        return cache_image.cache_obj.exists_url(url)
+
+    @staticmethod
+    def empty(url=None):
+        if cache_image.cache_obj==None:
+            cache_image.cache_obj=cache_image()
+
+        if url!=None:
+            cache_image.cache_obj.cache.remove(url)
+            remove(url)
+        else:
+            cache_image.cache_obj.cache=[]
+
 def recortar_foto(recorte, datos):
     """Recorta una foto"""
     from PIL import Image
 
     respuesta = {"exito": False, "mensaje": ""}
-    ancho_maximo = int(recorte["width"])
-    alto_maximo = int(recorte["height"])
+    ancho_maximo = ( int(recorte["width"]) if recorte["width"] != None else 0 )
+    alto_maximo = ( int(recorte["height"]) if recorte["height"] != None else 0 )
     ruta = recorte["folder"]
     foto = datos.name
-    etiqueta = recorte["tag"]
+    etiqueta = recorte["tag"] if ancho_maximo!=0 or alto_maximo!=0 else ""
     tipo = recorte.get("tipo", "rellenar")
 
-    ruta_imagen = join(upload_dir,ruta, foto+'.'+datos.extension)
-    if not isfile(ruta_imagen):
+    ruta_imagen = join(ruta, foto + "." + datos.extension)
+
+
+    if not cache_image.exists(join(upload_dir, ruta_imagen)):
         respuesta["mensaje"] = "Archivo " + ruta_imagen + " no existe"
         return respuesta
 
-
-    url=join(ruta, nombre_archivo(foto, etiqueta, recorte['format'], True))
-    foto_recorte =join(upload_dir, url)
-    if not recorte['regenerate'] and isfile(foto_recorte):
-        respuesta["mensaje"] = "Archivo " + foto_recorte + " ya existe"
-        respuesta['exito']=True
-        respuesta['url']=url
+    url = join(ruta, nombre_archivo(foto + "." + datos.extension, etiqueta, recorte["format"]))
+    foto_recorte = join(upload_dir, url)
+    if not recorte["regenerate"] and cache_image.exists(foto_recorte):
+        respuesta["mensaje"] = "Archivo " + url + " ya existe"
+        respuesta["exito"] = True
+        respuesta["url"] = url
         return respuesta
+        
 
-    im = Image.open(ruta_imagen)
+    im = Image.open(join(upload_dir, ruta_imagen))
     ancho, alto = im.size
     imagen_tipo = im.format.lower()
 
     proporcion_imagen = ancho / alto
-    if None == ancho_maximo or 0 == ancho_maximo:
-        if None == alto_maximo or 0 == alto_maximo:
-            alto_maximo=alto
-            ancho_maximo=ancho
+    if  0 == ancho_maximo:
+        if 0 == alto_maximo:
+            alto_maximo = alto
+            ancho_maximo = ancho
         else:
             ancho_maximo = int(round(alto_maximo * proporcion_imagen))
-    elif None == alto_maximo or 0 == alto_maximo:
+    elif 0 == alto_maximo:
         alto_maximo = int(round(ancho_maximo / proporcion_imagen))
 
     x, y, miniatura_ancho, miniatura_alto = proporcion_foto(
@@ -360,65 +391,42 @@ def recortar_foto(recorte, datos):
         box = (x, y, ancho_maximo + x, alto_maximo + y)
         im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
         new_im = im.crop(box)
-    elif "rellenar" == tipo:
-        if "png" == imagen_tipo:
+    else:
+        if "png" == recorte["format"] or "webp" == recorte["format"]:
             new_im = Image.new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
         else:
             new_im = Image.new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
-        box = (x, y)
-        im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
-        new_im.paste(im, (box))
-    else:
-        if ancho >= miniatura_ancho or alto >= miniatura_alto:
-            if "png" == imagen_tipo:
-                new_im = Image.new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
-            else:
-                new_im = Image.new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
+
+        if "rellenar" == tipo:
             box = (x, y)
             im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
             new_im.paste(im, (box))
-        else:
-            if "png" == imagen_tipo:
-                new_im = Image.new("RGBA", (ancho_maximo, alto_maximo), (255, 255, 255, 0))
+        else: # Centrar
+            if ancho >= miniatura_ancho or alto >= miniatura_alto:
+                box = (x, y)
+                im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
+                new_im.paste(im, (box))
             else:
-                new_im = Image.new("RGB", (ancho_maximo, alto_maximo), (255, 255, 255))
+                box = (x, y)
+                new_im.paste(im, (box))
 
-            box = (x, y)
-            new_im.paste(im, (box))
-    
-    if isfile(foto_recorte):
-        remove(foto_recorte)
-        
+    if cache_image.exists(foto_recorte):
+        cache_image.empty(foto_recorte)
+
     new_im.save(foto_recorte)
-
 
     respuesta["exito"] = True
     respuesta["url"] = url
     return respuesta
 
 
-
-def nombre_archivo(file, tag="", extension="", remove=False):
+def nombre_archivo(file, tag="", extension=""):
     from os.path import splitext
 
     name, ext = splitext(file)
-    if "" == extension:
-        extension = ext
-    else:
-        extension = "." + extension
-
-    if remove:
-        name = ("".join(name)).split("-")
-        if len(name) > 1:
-            name.pop()
-
+    extension = ext if "" == extension else "." + extension
     name = url_amigable("".join(name))
-    if "" != tag:
-        # return name + "-" + tag + extension
-        return tag + extension
-    else:
-        return name + extension
-
+    return (tag if tag != "" else name) + extension
 
 
 def generar_dir(file, tag="thumb", extension="", folder="", subfolder=""):
@@ -439,90 +447,46 @@ def generar_dir(file, tag="thumb", extension="", folder="", subfolder=""):
     return archivo
 
 
-
-def portada(fotos):
-    portada = {}
-    if len(fotos) > 0:
-        portada = fotos[0]
-        for f in fotos:
-            if (isinstance(f["portada"], str) and "true" == f["portada"]) or (
-                isinstance(f["portada"], bool) and f["portada"]
-            ):
-                portada = f
-                break
-    return portada
-
-
-
-def delete(folder, file="", subfolder="", sub=""):
+def delete(folder, keep_original,original_file=None):
     import shutil
 
-    if "" == file and "" != subfolder:
-        url = upload_dir + folder + "/" + str(subfolder) + "/"
-        if "" != sub:
-            url += sub + "/"
-        my_file = Path(url)
-        if my_file.is_dir():
-            shutil.rmtree(url)
-    elif "" == file and "" == subfolder:
-        url = upload_dir + folder + "/"
-        my_file = Path(url)
-        if my_file.is_dir():
-            shutil.rmtree(url)
+    directory = join(upload_dir, folder)
+    if keep_original:
+        if original_file==None:
+            raise FileNotFoundError("You must provide a valid original file name")
+        original_found=False
+        for file in listdir(directory):
+            file = join(directory, file)
+            if cache_image.exists(file):
+                if original_file in file:
+                    original_found=True
+                else:
+                    cache_image.empty(file)
+            if isdir(file):
+                shutil.rmtree(file)
+                cache_image.empty()
+        if original_found:
+            return "All directory files but original deleted"
+        else:
+            return "All directory files deleted. Original not found"
     else:
-        recortes = get_recortes(folder)
-        if "" != subfolder:
-            subfolder += "/"
-        if "" != sub:
-            sub += "/"
-        url = upload_dir + folder + "/" + subfolder + sub + file["url"]
-        my_file = Path(url)
-        if my_file.is_file():
-            my_file.unlink()
-
-        for recorte in recortes:
-            url = (
-                upload_dir
-                + folder
-                + "/"
-                + subfolder
-                + sub
-                + nombre_archivo(file["url"], recorte["tag"])
-            )
-            my_file = Path(url)
-            if my_file.is_file():
-                my_file.unlink()
-
-            url = (
-                upload_dir
-                + folder
-                + "/"
-                + subfolder
-                + sub
-                + nombre_archivo(file["url"], recorte["tag"], "webp")
-            )
-
-            my_file = Path(url)
-            if my_file.is_file():
-
-                my_file.unlink()
+        if isdir(directory):
+            shutil.rmtree(directory)
+            cache_image.empty()
+            return "Directory deleted"
+        else:
+            return directory+" Not a directory"
 
 
 
 def delete_temp():
-    from os import listdir
-    from os.path import getmtime
-
     now = current_time("", False)
     horas = 1
-
-    carpeta = upload_dir + "tmp/"  # ruta actual
+    carpeta = join(upload_dir , "tmp")  # ruta actual
     # obtenemos un archivo y luego otro sucesivamente
     for archivo in listdir(carpeta):
-        my_file = Path(carpeta + archivo)
-        if my_file.is_file():  # verificamos si es o no un archivo
-            # si el archivo fue creado hace más de horas, borrar
-            if (now - getmtime(carpeta + archivo)) / 3600 > horas:
-                my_file.unlink()
-
+        file = join(carpeta + archivo)
+        if cache_image.exists(file):
+            if (now - getmtime(file)) / 3600 > horas:
+                cache_image.empty(file)
 

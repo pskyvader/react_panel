@@ -2,10 +2,9 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(__file__))
-sys.path.append('python-library')
 
 from core.app import app
-from beaker.middleware import SessionMiddleware
+# from beaker.middleware import SessionMiddleware
 import json
 import pprint
 from gzip import compress
@@ -16,7 +15,7 @@ from graph_ql.database import init_db
 import datetime
 
 
-init_db()
+# init_db()
 
 
 def application2(environ, start_response):
@@ -88,12 +87,15 @@ class LoggingMiddleware:
         return self.__application(environ, _start_response)
 
 
-session_opts = {
-    "session.type": "file",
-    "session.data_dir": "./api/session_data",
-    "session.auto": True,
-}
-
 app2 = LoggingMiddleware(application2)
-application = SessionMiddleware(app2, session_opts)
+application=app2
+
+# session_opts = {
+#     "session.type": "file",
+#     "session.data_dir": "./api/session_data",
+#     "session.auto": True,
+# }
+
+# application = SessionMiddleware(app2, session_opts)
+
 
