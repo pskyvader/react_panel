@@ -17,6 +17,7 @@ function Logo(props) {
         }
     }
     `;
+    console.log(GET_LOGO);
 
     const variables={ variables: { idlogo: props.id}, }
 
