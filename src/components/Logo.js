@@ -15,12 +15,9 @@ function Logo(props) {
             titulo
             foto
         }
-    }
-    `;
-    console.log(GET_LOGO);
+    }`;
 
-    const variables={ variables: { idlogo: props.id}, }
-
+    const variables = { variables: { idlogo: props.id }, }
     const { loading, error, data } = useQuery(GET_LOGO, variables);
     if (loading) return '...';
     if (error) return ErrorLink(error);

@@ -24,7 +24,7 @@ def application2(environ, start_response):
         main_data=graphql_app.init(environ)
         b = datetime.datetime.now()
         c = b - a
-        print(c.total_seconds())
+        # print(c.total_seconds(),'\n')
     else:
         app_web = app(os.path.dirname(__file__))
         main_data = app_web.init(environ)
