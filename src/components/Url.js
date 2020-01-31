@@ -4,4 +4,5 @@ function Url(...args) {
     var final_url = args.join('/');
     return API + '/' + final_url;
 }
+
 export default Url;
