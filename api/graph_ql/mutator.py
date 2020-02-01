@@ -79,7 +79,6 @@ def mutation_delete(table_model, input, id_key):
 
 
 def process_file(data, id_key, files):
-
     if id_key == "idimage" and len(files) == 1:
         f = files[0]
         folder = "tmp"
