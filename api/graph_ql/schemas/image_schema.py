@@ -7,6 +7,7 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 attribute = dict(
     table_name=graphene.String(),
+    field_name=graphene.String(),
     idparent=graphene.Int(),
     name=graphene.String(),
     extension=graphene.String(),
@@ -34,7 +35,7 @@ class image_schema(SQLAlchemyObjectType):
     url = graphene.List(Url)
 
     def resolve_url(parent, info):
-        recorte={'width':None,'height':None,'format':None,'regenerate':False}
+        recorte={'width':None,'height':None,'format':None,'regenerate':None}
         for argument in info.operation.selection_set.selections[0].arguments:
             if argument.name.value in recorte:
                 recorte[argument.name.value]=argument.value.value

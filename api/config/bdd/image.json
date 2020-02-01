@@ -7,6 +7,10 @@
             "tipo": "char(255)"
         },
         {
+            "titulo": "field_name",
+            "tipo": "char(255)"
+        },
+        {
             "titulo": "idparent",
             "tipo": "int(11)"
         },

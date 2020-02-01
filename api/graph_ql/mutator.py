@@ -67,7 +67,7 @@ def mutation_delete(table_model, input, id_key):
     if table != None:
         if id_key == "idimage":
             if table.table_name != None and table.idparent != None:
-                folder = join(table.table_name, str(table.idparent), str(table.idimage))
+                folder = join(table.table_name, str(table.idparent), str(table.field_name), str(table.idimage))
             else:
                 folder = join("tmp", str(table.idimage), table.name + "." + table.extension)
             print(delete( folder, keep_original=False, original_file=table.name + "." + table.extension, ))
@@ -84,9 +84,9 @@ def process_file(data, id_key, files):
         f = files[0]
         folder = "tmp"
         name = ""
-        if "table_name" in data and "idparent" in data and "idimage" in data:
+        if "table_name" in data and "idparent" in data and "field_name" in data and "idimage" in data:
             folder = join(
-                data["table_name"], str(data["idparent"]), str(data["idimage"])
+                data["table_name"], str(data["idparent"]), str(data["field_name"]), str(data["idimage"])
             )
             name = "original"
         respuesta = upload(f, folder, name)

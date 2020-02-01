@@ -62,7 +62,7 @@ class Url(graphene.ObjectType):
             if recorte["format"] == None:
                 recorte["format"] = image_origin.extension
 
-            recorte["folder"] = join( image_origin.table_name, str(image_origin.idparent), str(image_origin.idimage) )
+            recorte["folder"] = join( image_origin.table_name, str(image_origin.idparent), str(image_origin.field_name), str(image_origin.idimage) )
 
             response = recortar_foto(recorte, image_origin)
             if not response["exito"]:

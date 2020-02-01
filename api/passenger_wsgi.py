@@ -15,7 +15,7 @@ from graph_ql.database import init_db
 import datetime
 
 
-# init_db()
+init_db()
 
 
 def application2(environ, start_response):
