@@ -74,6 +74,20 @@ class pedidoproducto_model(Base):
     total = Column(Integer)
     
 
+    
+class image_model(Base):
+    __tablename__ = "seo_image"
+    idimage = Column(Integer, primary_key=True, nullable=False)
+    table_name = Column(String(255))
+    field_name = Column(String(255))
+    # idparent = Column(Integer)
+    idparent = Column(Integer, ForeignKey('seo_administrador.idadministrador'))
+    name = Column(String(255))
+    extension = Column(String(255))
+    orden = Column(Integer)
+    estado = Column(Boolean, nullable=False, default=False)
+    portada = Column(Boolean, nullable=False, default=False)
+
 class administrador_model(Base):
     __tablename__ = "seo_administrador"
     idadministrador = Column(Integer, primary_key=True, nullable=False)
@@ -245,17 +259,6 @@ class productocategoria_model(Base):
     destacado = Column(Boolean, nullable=False, default=False)
     
 
-class image_model(Base):
-    __tablename__ = "seo_image"
-    idimage = Column(Integer, primary_key=True, nullable=False)
-    table_name = Column(String(255))
-    field_name = Column(String(255))
-    idparent = Column(Integer)
-    name = Column(String(255))
-    extension = Column(String(255))
-    orden = Column(Integer)
-    estado = Column(Boolean, nullable=False, default=False)
-    portada = Column(Boolean, nullable=False, default=False)
     
 
 class producto_model(Base):
