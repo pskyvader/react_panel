@@ -3,7 +3,7 @@ from .utils.image import recortar_foto
 from os.path import join
 from urllib.request import pathname2url
 
-class url_schema(graphene.ObjectType):
+class url_object(graphene.ObjectType):
     tag = graphene.String()
     url = graphene.String()
 
@@ -58,4 +58,4 @@ def resolve_url(parent, info,width=None,height=None,format=None,regenerate=False
     return Url(parent, recorte)
 
 
-url = graphene.Field(url_schema,width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean())
+url = graphene.Field(url_object,width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean())

@@ -158,7 +158,7 @@ def json_to_schema(force=False):
 
         extra_schema=""
         if f=='image':
-            extra_schema = "url=url_schema.url\n    resolve_url=url_schema.resolve_url"
+            extra_schema = "url=url_object.url\n    resolve_url=url_object.resolve_url"
         template = template.replace("EXTRA_SCHEMA", extra_schema)
 
 

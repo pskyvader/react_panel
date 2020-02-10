@@ -3,7 +3,7 @@ import graphene
 from ..models import image_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-from .. import url_schema
+from .. import url_object
 
 
 attribute = dict(
@@ -32,8 +32,8 @@ class image_schema(SQLAlchemyObjectType):
             ["idimage"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
     
-    url=url_schema.url
-    resolve_url=url_schema.resolve_url
+    url=url_object.url
+    resolve_url=url_object.resolve_url
 
 
 def resolve_image(args, info, idimage, **kwargs):
