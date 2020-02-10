@@ -43,7 +43,7 @@ class Url(graphene.ObjectType):
     url = graphene.String()
 
     def __init__(self, image_origin, recorte):
-        if image_origin.table_name != None and image_origin.idparent != None:
+        if image_origin.table_name != None and image_origin.idparent != None and image_origin.field_name!=None:
             size_filter=(None,0,"","0")
             
             if recorte["width"] not in size_filter or recorte["height"] not in size_filter:
