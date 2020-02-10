@@ -46,11 +46,9 @@ types = {
         "graphene_type": "graphene.types.datetime.DateTime()",
         "alchemy_type": "Column(DateTime)",
     },
-    "json": {
-        "text": "Campo JSON (archivos o imagenes)",
-        "value": "json",
-        "graphene_type": "graphene.JSONString()",
-        "alchemy_type": "Column(JSON)",
+    "image": {
+        "text": "Campo imagenes",
+        "value": "image"
     },
     "id": {
         "text": "Campo primario",
