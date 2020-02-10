@@ -36,6 +36,8 @@ class image_schema(SQLAlchemyObjectType):
 
     def resolve_url(parent, info):
         recorte={'width':None,'height':None,'format':None,'regenerate':None}
+        print(info.operation.selection_set.selections[0].arguments)
+        print(parent.operation.selection_set.selections[0].arguments)
         for argument in info.operation.selection_set.selections[0].arguments:
             if argument.name.value in recorte:
                 recorte[argument.name.value]=argument.value.value
