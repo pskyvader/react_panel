@@ -32,11 +32,11 @@ class image_schema(SQLAlchemyObjectType):
         )
     
     
-    url = graphene.List(Url,*args, **kwargs)
+    url = graphene.Field(Url,width=graphene.String())
 
     def resolve_url(parent, info,*args, **kwargs):
         import inspect
-        # print(inspect.getmembers(info, lambda a:not(inspect.isroutine(a))))
+        print(inspect.getmembers(parent, lambda a:not(inspect.isroutine(a))))
 
         print(args,kwargs)
 
@@ -49,7 +49,7 @@ class image_schema(SQLAlchemyObjectType):
             if argument.name.value in recorte:
                 recorte[argument.name.value]=argument.value.value
 
-        return [Url(parent,recorte)]
+        return Url(parent,recorte)
 
 
 def resolve_image(args, info, idimage, **kwargs):
