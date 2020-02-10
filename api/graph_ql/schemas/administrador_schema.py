@@ -31,7 +31,8 @@ class administrador_schema(SQLAlchemyObjectType):
         )
     
     foto=image_schema.all_image
-    def resolve_foto(parent,info, **kwargs)
+
+    def resolve_foto(parent,info, **kwargs):
         return image_schema.resolve_all_image(parent,info,table_name='administrador',idparent=parent.idadministrador,field_name='foto',**kwargs)
     
     

@@ -55,7 +55,7 @@ class url_object(graphene.ObjectType):
 
 def resolve_url(parent, info,width=None,height=None,format=None,regenerate=False):
     recorte = {"width": width, "height": height, "format": format, "regenerate": regenerate}
-    return Url(parent, recorte)
+    return url_object(parent, recorte)
 
 
 url = graphene.Field(url_object,width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean())
