@@ -3,15 +3,14 @@ import graphene
 from ..models import logo_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-from .. import url_object
-
+from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     titulo=graphene.String(),
     orden=graphene.Int()
     )
 read_only_attribute = dict(
-    foto=graphene.JSONString()
+    
     )
 black_list_attribute = dict(
     
@@ -27,6 +26,10 @@ class logo_schema(SQLAlchemyObjectType):
         )
     
     
+    foto=all_image
+    def resolve_foto(parent,info, **kwargs):
+        return resolve_all_image(parent,info,table_name='logo',idparent=parent.idlogo,field_name='foto',**kwargs)
+
 
 
 def resolve_logo(args, info, idlogo, **kwargs):

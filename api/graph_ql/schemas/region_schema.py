@@ -3,7 +3,6 @@ import graphene
 from ..models import region_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-from .. import url_object
 
 
 attribute = dict(

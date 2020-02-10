@@ -20,11 +20,12 @@ init_db()
 
 def application2(environ, start_response):
     if environ["PATH_INFO"]=='/':
+        print('START')
         a = datetime.datetime.now()
         main_data=graphql_app.init(environ)
         b = datetime.datetime.now()
         c = b - a
-        print(c.total_seconds(),'\n')
+        print('END',c.total_seconds(),' seconds')
     else:
         app_web = app(os.path.dirname(__file__))
         main_data = app_web.init(environ)

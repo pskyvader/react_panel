@@ -3,8 +3,7 @@ import graphene
 from ..models import pedidoproducto_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-from .. import url_object
-
+from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     idpedido=graphene.Int(),
@@ -19,7 +18,7 @@ attribute = dict(
     total=graphene.Int()
     )
 read_only_attribute = dict(
-    foto=graphene.JSONString()
+    
     )
 black_list_attribute = dict(
     
@@ -35,6 +34,10 @@ class pedidoproducto_schema(SQLAlchemyObjectType):
         )
     
     
+    foto=all_image
+    def resolve_foto(parent,info, **kwargs):
+        return resolve_all_image(parent,info,table_name='pedidoproducto',idparent=parent.idpedidoproducto,field_name='foto',**kwargs)
+
 
 
 def resolve_pedidoproducto(args, info, idpedidoproducto, **kwargs):

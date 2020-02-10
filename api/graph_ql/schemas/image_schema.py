@@ -3,8 +3,7 @@ import graphene
 from ..models import image_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-from graph_ql import url_object
-
+from .. import url_object
 
 attribute = dict(
     table_name=graphene.String(),
@@ -17,7 +16,7 @@ attribute = dict(
     portada=graphene.Boolean()
     )
 read_only_attribute = dict(
-        
+    
     )
 black_list_attribute = dict(
     

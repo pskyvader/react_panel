@@ -3,8 +3,7 @@ import graphene
 from ..models import seo_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-from .. import url_object
-
+from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     titulo=graphene.String(),
@@ -22,8 +21,7 @@ attribute = dict(
     estado=graphene.Boolean()
     )
 read_only_attribute = dict(
-    foto=graphene.JSONString(),
-    banner=graphene.JSONString()
+    
     )
 black_list_attribute = dict(
     
@@ -39,6 +37,14 @@ class seo_schema(SQLAlchemyObjectType):
         )
     
     
+    foto=all_image
+    def resolve_foto(parent,info, **kwargs):
+        return resolve_all_image(parent,info,table_name='seo',idparent=parent.idseo,field_name='foto',**kwargs)
+
+    banner=all_image
+    def resolve_banner(parent,info, **kwargs):
+        return resolve_all_image(parent,info,table_name='seo',idparent=parent.idseo,field_name='banner',**kwargs)
+
 
 
 def resolve_seo(args, info, idseo, **kwargs):

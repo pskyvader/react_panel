@@ -3,8 +3,7 @@ import graphene
 from ..models import usuario_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-from .. import url_object
-
+from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     tipo=graphene.Int(),
@@ -15,7 +14,7 @@ attribute = dict(
     cookie=graphene.String()
     )
 read_only_attribute = dict(
-    foto=graphene.JSONString()
+    
     )
 black_list_attribute = dict(
     password=graphene.String()
@@ -31,6 +30,10 @@ class usuario_schema(SQLAlchemyObjectType):
         )
     
     
+    foto=all_image
+    def resolve_foto(parent,info, **kwargs):
+        return resolve_all_image(parent,info,table_name='usuario',idparent=parent.idusuario,field_name='foto',**kwargs)
+
 
 
 def resolve_usuario(args, info, idusuario, **kwargs):
