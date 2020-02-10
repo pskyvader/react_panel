@@ -35,9 +35,14 @@ class image_schema(SQLAlchemyObjectType):
     url = graphene.List(Url)
 
     def resolve_url(parent, info):
+        import inspect
+        # print(inspect.getmembers(info, lambda a:not(inspect.isroutine(a))))
+
+        print(info.operation.selection_set.selections[0])
         recorte={'width':None,'height':None,'format':None,'regenerate':None}
+        
+
         print(info.operation.selection_set.selections[0].arguments)
-        print(parent.operation.selection_set.selections[0].arguments)
         for argument in info.operation.selection_set.selections[0].arguments:
             if argument.name.value in recorte:
                 recorte[argument.name.value]=argument.value.value
