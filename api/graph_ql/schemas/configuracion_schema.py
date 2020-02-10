@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import configuracion_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -40,8 +41,8 @@ def resolve_all_configuracion(args, info, **kwargs):
     return query
 
 
-all_configuracion = SQLAlchemyConnectionField( configuracion_schema, sort=graphene.String() , **attribute )
-configuracion = graphene.Field(configuracion_schema, idconfiguracion=graphene.Int() , **attribute)
+all_configuracion = SQLAlchemyConnectionField( configuracion_schema, sort=graphene.String(), **attribute )
+configuracion = graphene.Field(configuracion_schema, idconfiguracion=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of configuracion _attributes for both queries and mutations
 class configuracion_attribute:

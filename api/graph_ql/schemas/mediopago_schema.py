@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import mediopago_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -43,8 +44,8 @@ def resolve_all_mediopago(args, info, **kwargs):
     return query
 
 
-all_mediopago = SQLAlchemyConnectionField( mediopago_schema, sort=graphene.String() , **attribute )
-mediopago = graphene.Field(mediopago_schema, idmediopago=graphene.Int() , **attribute)
+all_mediopago = SQLAlchemyConnectionField( mediopago_schema, sort=graphene.String(), **attribute )
+mediopago = graphene.Field(mediopago_schema, idmediopago=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of mediopago _attributes for both queries and mutations
 class mediopago_attribute:

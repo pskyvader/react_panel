@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import image_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -31,25 +32,8 @@ class image_schema(SQLAlchemyObjectType):
             ["idimage"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
     
-    
-    url = graphene.Field(Url,width=graphene.String())
-
-    def resolve_url(parent, info,*args, **kwargs):
-        import inspect
-        print(inspect.getmembers(parent, lambda a:not(inspect.isroutine(a))))
-
-        print(args,kwargs)
-
-        print(info.operation.selection_set.selections[0])
-        recorte={'width':None,'height':None,'format':None,'regenerate':None}
-        
-
-        print(info.operation.selection_set.selections[0].arguments)
-        for argument in info.operation.selection_set.selections[0].arguments:
-            if argument.name.value in recorte:
-                recorte[argument.name.value]=argument.value.value
-
-        return Url(parent,recorte)
+    url=url_schema.url
+    resolve_url=url_schema.resolve_url
 
 
 def resolve_image(args, info, idimage, **kwargs):
@@ -64,8 +48,8 @@ def resolve_all_image(args, info, **kwargs):
     return query
 
 
-all_image = SQLAlchemyConnectionField( image_schema, sort=graphene.String() , width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean(), **attribute )
-image = graphene.Field(image_schema, idimage=graphene.Int() , width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean(), **attribute)
+all_image = SQLAlchemyConnectionField( image_schema, sort=graphene.String(), **attribute )
+image = graphene.Field(image_schema, idimage=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of image _attributes for both queries and mutations
 class image_attribute:

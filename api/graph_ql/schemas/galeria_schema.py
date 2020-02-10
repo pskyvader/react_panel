@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import galeria_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -47,8 +48,8 @@ def resolve_all_galeria(args, info, **kwargs):
     return query
 
 
-all_galeria = SQLAlchemyConnectionField( galeria_schema, sort=graphene.String() , **attribute )
-galeria = graphene.Field(galeria_schema, idgaleria=graphene.Int() , **attribute)
+all_galeria = SQLAlchemyConnectionField( galeria_schema, sort=graphene.String(), **attribute )
+galeria = graphene.Field(galeria_schema, idgaleria=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of galeria _attributes for both queries and mutations
 class galeria_attribute:

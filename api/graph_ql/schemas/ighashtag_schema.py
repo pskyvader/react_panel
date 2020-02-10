@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import ighashtag_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -47,8 +48,8 @@ def resolve_all_ighashtag(args, info, **kwargs):
     return query
 
 
-all_ighashtag = SQLAlchemyConnectionField( ighashtag_schema, sort=graphene.String() , **attribute )
-ighashtag = graphene.Field(ighashtag_schema, idighashtag=graphene.Int() , **attribute)
+all_ighashtag = SQLAlchemyConnectionField( ighashtag_schema, sort=graphene.String(), **attribute )
+ighashtag = graphene.Field(ighashtag_schema, idighashtag=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of ighashtag _attributes for both queries and mutations
 class ighashtag_attribute:

@@ -1,10 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import administrador_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-
-from . import image_schema
+from .. import url_schema
 
 
 attribute = dict(
@@ -15,7 +14,7 @@ attribute = dict(
     cookie=graphene.String()
     )
 read_only_attribute = dict(
-    # foto=graphene.JSONString()
+    foto=graphene.JSONString()
     )
 black_list_attribute = dict(
     password=graphene.String()
@@ -29,13 +28,6 @@ class administrador_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idadministrador"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
-    
-    foto = image_schema.all_image
-
-    def resolve_foto(parent, info, **kwargs):
-        return image_schema.resolve_all_image(parent, info, table_name='administrador',idparent=parent.idadministrador,field_name='foto', **kwargs)
-
-
     
     
 
@@ -52,8 +44,8 @@ def resolve_all_administrador(args, info, **kwargs):
     return query
 
 
-all_administrador = SQLAlchemyConnectionField( administrador_schema, sort=graphene.String(),format=graphene.String() , **attribute )
-administrador = graphene.Field(administrador_schema, idadministrador=graphene.Int() , **attribute)
+all_administrador = SQLAlchemyConnectionField( administrador_schema, sort=graphene.String(), **attribute )
+administrador = graphene.Field(administrador_schema, idadministrador=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of administrador _attributes for both queries and mutations
 class administrador_attribute:

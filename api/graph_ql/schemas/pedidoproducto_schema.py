@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import pedidoproducto_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -48,8 +49,8 @@ def resolve_all_pedidoproducto(args, info, **kwargs):
     return query
 
 
-all_pedidoproducto = SQLAlchemyConnectionField( pedidoproducto_schema, sort=graphene.String() , **attribute )
-pedidoproducto = graphene.Field(pedidoproducto_schema, idpedidoproducto=graphene.Int() , **attribute)
+all_pedidoproducto = SQLAlchemyConnectionField( pedidoproducto_schema, sort=graphene.String(), **attribute )
+pedidoproducto = graphene.Field(pedidoproducto_schema, idpedidoproducto=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of pedidoproducto _attributes for both queries and mutations
 class pedidoproducto_attribute:

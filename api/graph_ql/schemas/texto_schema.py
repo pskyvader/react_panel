@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import texto_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -46,8 +47,8 @@ def resolve_all_texto(args, info, **kwargs):
     return query
 
 
-all_texto = SQLAlchemyConnectionField( texto_schema, sort=graphene.String() , **attribute )
-texto = graphene.Field(texto_schema, idtexto=graphene.Int() , **attribute)
+all_texto = SQLAlchemyConnectionField( texto_schema, sort=graphene.String(), **attribute )
+texto = graphene.Field(texto_schema, idtexto=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of texto _attributes for both queries and mutations
 class texto_attribute:

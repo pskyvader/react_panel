@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import banner_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -47,8 +48,8 @@ def resolve_all_banner(args, info, **kwargs):
     return query
 
 
-all_banner = SQLAlchemyConnectionField( banner_schema, sort=graphene.String() , **attribute )
-banner = graphene.Field(banner_schema, idbanner=graphene.Int() , **attribute)
+all_banner = SQLAlchemyConnectionField( banner_schema, sort=graphene.String(), **attribute )
+banner = graphene.Field(banner_schema, idbanner=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of banner _attributes for both queries and mutations
 class banner_attribute:

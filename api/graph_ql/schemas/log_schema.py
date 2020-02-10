@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import log_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -42,8 +43,8 @@ def resolve_all_log(args, info, **kwargs):
     return query
 
 
-all_log = SQLAlchemyConnectionField( log_schema, sort=graphene.String() , **attribute )
-log = graphene.Field(log_schema, idlog=graphene.Int() , **attribute)
+all_log = SQLAlchemyConnectionField( log_schema, sort=graphene.String(), **attribute )
+log = graphene.Field(log_schema, idlog=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of log _attributes for both queries and mutations
 class log_attribute:

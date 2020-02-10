@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import sitemap_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -43,8 +44,8 @@ def resolve_all_sitemap(args, info, **kwargs):
     return query
 
 
-all_sitemap = SQLAlchemyConnectionField( sitemap_schema, sort=graphene.String() , **attribute )
-sitemap = graphene.Field(sitemap_schema, idsitemap=graphene.Int() , **attribute)
+all_sitemap = SQLAlchemyConnectionField( sitemap_schema, sort=graphene.String(), **attribute )
+sitemap = graphene.Field(sitemap_schema, idsitemap=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of sitemap _attributes for both queries and mutations
 class sitemap_attribute:

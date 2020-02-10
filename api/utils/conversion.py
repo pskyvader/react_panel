@@ -156,16 +156,9 @@ def json_to_schema(force=False):
             "BLACK_LIST_FIELDS", fields_black_list.rstrip()[:-1]
         )
 
-        extra_query=""
         extra_schema=""
-
         if f=='image':
-            extra_schema = get_file(join(current_dir, "url_schema.py"))
-            extra_query=", width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean()"
-
-
-        
-        template = template.replace("EXTRA_QUERY", extra_query)
+            extra_schema = "url=url_schema.url\n    resolve_url=url_schema.resolve_url"
         template = template.replace("EXTRA_SCHEMA", extra_schema)
 
 

@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import profile_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -42,8 +43,8 @@ def resolve_all_profile(args, info, **kwargs):
     return query
 
 
-all_profile = SQLAlchemyConnectionField( profile_schema, sort=graphene.String() , **attribute )
-profile = graphene.Field(profile_schema, idprofile=graphene.Int() , **attribute)
+all_profile = SQLAlchemyConnectionField( profile_schema, sort=graphene.String(), **attribute )
+profile = graphene.Field(profile_schema, idprofile=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of profile _attributes for both queries and mutations
 class profile_attribute:

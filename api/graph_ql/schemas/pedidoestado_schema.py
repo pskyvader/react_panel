@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import pedidoestado_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -44,8 +45,8 @@ def resolve_all_pedidoestado(args, info, **kwargs):
     return query
 
 
-all_pedidoestado = SQLAlchemyConnectionField( pedidoestado_schema, sort=graphene.String() , **attribute )
-pedidoestado = graphene.Field(pedidoestado_schema, idpedidoestado=graphene.Int() , **attribute)
+all_pedidoestado = SQLAlchemyConnectionField( pedidoestado_schema, sort=graphene.String(), **attribute )
+pedidoestado = graphene.Field(pedidoestado_schema, idpedidoestado=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of pedidoestado _attributes for both queries and mutations
 class pedidoestado_attribute:

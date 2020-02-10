@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import igusuario_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -40,8 +41,8 @@ def resolve_all_igusuario(args, info, **kwargs):
     return query
 
 
-all_igusuario = SQLAlchemyConnectionField( igusuario_schema, sort=graphene.String() , **attribute )
-igusuario = graphene.Field(igusuario_schema, idigusuario=graphene.Int() , **attribute)
+all_igusuario = SQLAlchemyConnectionField( igusuario_schema, sort=graphene.String(), **attribute )
+igusuario = graphene.Field(igusuario_schema, idigusuario=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of igusuario _attributes for both queries and mutations
 class igusuario_attribute:

@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import logo_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -40,8 +41,8 @@ def resolve_all_logo(args, info, **kwargs):
     return query
 
 
-all_logo = SQLAlchemyConnectionField( logo_schema, sort=graphene.String() , **attribute )
-logo = graphene.Field(logo_schema, idlogo=graphene.Int() , **attribute)
+all_logo = SQLAlchemyConnectionField( logo_schema, sort=graphene.String(), **attribute )
+logo = graphene.Field(logo_schema, idlogo=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of logo _attributes for both queries and mutations
 class logo_attribute:

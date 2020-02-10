@@ -1,8 +1,9 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 import graphene
 from ..models import TABLENAME_model
-from ..resolver import resolve,Url
+from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
+from .. import url_schema
 
 
 attribute = dict(
@@ -39,8 +40,8 @@ def resolve_all_TABLENAME(args, info, **kwargs):
     return query
 
 
-all_TABLENAME = SQLAlchemyConnectionField( TABLENAME_schema, sort=graphene.String() EXTRA_QUERY, **attribute )
-TABLENAME = graphene.Field(TABLENAME_schema, idTABLENAME=graphene.Int() EXTRA_QUERY, **attribute)
+all_TABLENAME = SQLAlchemyConnectionField( TABLENAME_schema, sort=graphene.String(), **attribute )
+TABLENAME = graphene.Field(TABLENAME_schema, idTABLENAME=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of TABLENAME _attributes for both queries and mutations
 class TABLENAME_attribute:
