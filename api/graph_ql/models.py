@@ -80,8 +80,8 @@ class image_model(Base):
     idimage = Column(Integer, primary_key=True, nullable=False)
     table_name = Column(String(255))
     field_name = Column(String(255))
-    # idparent = Column(Integer)
-    idparent = Column(Integer, ForeignKey('seo_administrador.idadministrador'))
+    idparent = Column(Integer)
+    # idparent = Column(Integer, ForeignKey('user.id'))
     name = Column(String(255))
     extension = Column(String(255))
     orden = Column(Integer)
@@ -99,10 +99,10 @@ class administrador_model(Base):
     estado = Column(Boolean, nullable=False, default=False)
     cookie = Column(String(255))
 
-    foto = relationship("image_model",
-        primaryjoin="and_(image_model.table_name=='administrador', "
-        "image_model.field_name=='foto',"
-        "image_model.idparent==administrador_model.idadministrador)")
+    # foto = relationship("image_model",
+    #     primaryjoin="and_(image_model.table_name=='administrador', "
+    #     "image_model.field_name=='foto',"
+    #     "image_model.idparent==administrador_model.idadministrador)")
     
 
 class ighashtag_model(Base):
