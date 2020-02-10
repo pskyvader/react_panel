@@ -20,7 +20,7 @@ init_db()
 
 def application2(environ, start_response):
     if environ["PATH_INFO"]=='/':
-        print('START')
+        print('\nSTART')
         a = datetime.datetime.now()
         main_data=graphql_app.init(environ)
         b = datetime.datetime.now()
