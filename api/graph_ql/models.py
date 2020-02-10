@@ -81,9 +81,14 @@ class administrador_model(Base):
     email = Column(String(255))
     password = Column(String(255))
     nombre = Column(String(255))
-    foto = Column(JSON)
+    # foto = Column(JSON)
     estado = Column(Boolean, nullable=False, default=False)
     cookie = Column(String(255))
+
+    foto = relationship("seo_image",
+        primaryjoin="and_(seo_image.table_name=='administrador', "
+        "seo_image.field_name=='foto',"
+        "seo_image.idparent==seo_administrador.idadministrador)")
     
 
 class ighashtag_model(Base):
