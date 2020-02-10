@@ -1,10 +1,3 @@
 
-    url = graphene.List(Url)
-
-    def resolve_url(parent, info):
-        recorte={'width':None,'height':None,'format':None,'regenerate':None}
-        for argument in info.operation.selection_set.selections[0].arguments:
-            if argument.name.value in recorte:
-                recorte[argument.name.value]=argument.value.value
-
-        return [Url(parent,recorte)]
+    url = graphene.List(Url,width=graphene.String(), height=graphene.String(), format=graphene.String(), regenerate=graphene.Boolean())
+    resolve_url=resolve_url_field
