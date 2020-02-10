@@ -24,7 +24,7 @@
         },
         {
             "titulo": "foto",
-            "tipo": "json"
+            "tipo": "image"
         },
         {
             "titulo": "archivo",

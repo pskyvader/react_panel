@@ -8,7 +8,7 @@
         },
         {
             "titulo": "foto",
-            "tipo": "json"
+            "tipo": "image"
         },
         {
             "titulo": "orden",

@@ -4,7 +4,7 @@ from ..models import administrador_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
 from .. import url_object
-from . import image_schema
+from .image_schema import all_image,resolve_all_image
 
 
 attribute = dict(
@@ -30,10 +30,10 @@ class administrador_schema(SQLAlchemyObjectType):
             ["idadministrador"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
     
-    foto=image_schema.all_image
+    foto=all_image
 
     def resolve_foto(parent,info, **kwargs):
-        return image_schema.resolve_all_image(parent,info,table_name='administrador',idparent=parent.idadministrador,field_name='foto',**kwargs)
+        return resolve_all_image(parent,info,table_name='administrador',idparent=parent.idadministrador,field_name='foto',**kwargs)
     
     
 
