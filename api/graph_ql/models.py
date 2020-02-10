@@ -85,10 +85,10 @@ class administrador_model(Base):
     estado = Column(Boolean, nullable=False, default=False)
     cookie = Column(String(255))
 
-    foto = relationship("seo_image",
-        primaryjoin="and_(seo_image.table_name=='administrador', "
-        "seo_image.field_name=='foto',"
-        "seo_image.idparent==seo_administrador.idadministrador)")
+    foto = relationship("image_model",
+        primaryjoin="and_(image_model.table_name=='administrador', "
+        "image_model.field_name=='foto',"
+        "image_model.idparent==administrador_model.idadministrador)")
     
 
 class ighashtag_model(Base):
