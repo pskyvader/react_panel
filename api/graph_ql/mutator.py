@@ -97,6 +97,6 @@ def process_file(data, id_key, files):
         else:
             return respuesta
     elif len(files) > 1:
-        raise Exception("You can only parse 1 file at the time")
+        raise Exception("You can only parse 1 file at the time, and only in image table")
 
     return None
