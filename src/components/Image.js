@@ -3,7 +3,8 @@ import React from 'react';
 const static_folder = 'images'
 function Image(props) {
     if (typeof (props.image) == 'object') {
-        var image = props.image;
+        var image = props.image.edges;
+        console.log(image[0].node);
         if (image.length === 1) {
             return single_image(image[0], props.title);
         } else {

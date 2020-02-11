@@ -30,8 +30,7 @@ function Logo(props) {
     const { loading, error, data } = useQuery(GET_LOGO, variables);
     if (loading) return '...';
     if (error) return ErrorLink(error);
-    console.log(data);
-    return <Image image={data.foto} title={data.titulo} />;
+    return <Image image={data.logo.foto} title={data.logo.titulo} />;
 }
 
 
