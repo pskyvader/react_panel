@@ -1,8 +1,8 @@
 from os import makedirs, rename, remove, listdir
-from os.path import join, dirname, isfile,isdir, getmtime
+from os.path import join, dirname, isfile, isdir, getmtime
 import sys
 
-from .format import url_amigable,current_time
+from .format import url_amigable, current_time
 
 current_dir = dirname(__file__)
 
@@ -307,69 +307,76 @@ def proporcion_foto(ancho_maximo, alto_maximo, ancho, alto, tipo):
     )
 
 
+class cache_image:
+    cache = []
+    cache_obj = None
 
-class cache_image():
-    cache=[]
-    cache_obj=None
-    def exists_url(self,url):
+    def exists_url(self, url):
         if url in self.cache:
             return True
         elif isfile(url):
             self.cache.append(url)
             return True
         return False
-    
+
     @staticmethod
     def exists(url):
-        if cache_image.cache_obj==None:
-            cache_image.cache_obj=cache_image()
+        if cache_image.cache_obj == None:
+            cache_image.cache_obj = cache_image()
         return cache_image.cache_obj.exists_url(url)
 
     @staticmethod
     def empty(url=None):
-        if cache_image.cache_obj==None:
-            cache_image.cache_obj=cache_image()
+        if cache_image.cache_obj == None:
+            cache_image.cache_obj = cache_image()
 
-        if url!=None:
+        if url != None:
             cache_image.cache_obj.cache.remove(url)
             remove(url)
         else:
-            cache_image.cache_obj.cache=[]
+            cache_image.cache_obj.cache = []
+
 
 def recortar_foto(recorte, datos):
     """Recorta una foto"""
     from PIL import Image
 
     respuesta = {"exito": False, "mensaje": ""}
-    ancho_maximo = ( int(recorte["width"]) if recorte["width"] != None else 0 )
-    alto_maximo = ( int(recorte["height"]) if recorte["height"] != None else 0 )
+
+    if "." + recorte["format"] not in extensions:
+        respuesta["mensaje"] = "Extension no valida: " + recorte["format"]
+        respuesta["exito"] = False
+        return respuesta
+
+    ancho_maximo = int(recorte["width"]) if recorte["width"] != None else 0
+    alto_maximo = int(recorte["height"]) if recorte["height"] != None else 0
     ruta = recorte["folder"]
     foto = datos.name
-    etiqueta = recorte["tag"] if ancho_maximo!=0 or alto_maximo!=0 else ""
+    etiqueta = recorte["tag"] if ancho_maximo != 0 or alto_maximo != 0 else ""
     tipo = recorte.get("tipo", "rellenar")
 
     ruta_imagen = join(ruta, foto + "." + datos.extension)
-
 
     if not cache_image.exists(join(upload_dir, ruta_imagen)):
         respuesta["mensaje"] = "Archivo " + ruta_imagen + " no existe"
         return respuesta
 
-    url = join(ruta, nombre_archivo(foto + "." + datos.extension, etiqueta, recorte["format"]))
+    url = join(
+        ruta, nombre_archivo(foto + "." + datos.extension, etiqueta, recorte["format"])
+    )
     foto_recorte = join(upload_dir, url)
     if not recorte["regenerate"] and cache_image.exists(foto_recorte):
         respuesta["mensaje"] = "Archivo " + url + " ya existe"
         respuesta["exito"] = True
         respuesta["url"] = url
         return respuesta
-        
 
     im = Image.open(join(upload_dir, ruta_imagen))
     ancho, alto = im.size
     imagen_tipo = im.format.lower()
 
     proporcion_imagen = ancho / alto
-    if  0 == ancho_maximo:
+    if 0 == ancho_maximo:
         if 0 == alto_maximo:
             alto_maximo = alto
             ancho_maximo = ancho
@@ -401,7 +408,7 @@ def recortar_foto(recorte, datos):
             box = (x, y)
             im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
             new_im.paste(im, (box))
-        else: # Centrar
+        else:  # Centrar
             if ancho >= miniatura_ancho or alto >= miniatura_alto:
                 box = (x, y)
                 im = im.resize((miniatura_ancho, miniatura_alto), Image.ANTIALIAS)
@@ -447,19 +454,19 @@ def generar_dir(file, tag="thumb", extension="", folder="", subfolder=""):
     return archivo
 
 
-def delete(folder, keep_original,original_file=None):
+def delete(folder, keep_original, original_file=None):
     import shutil
 
     directory = join(upload_dir, folder)
     if keep_original:
-        if original_file==None:
+        if original_file == None:
             raise FileNotFoundError("You must provide a valid original file name")
-        original_found=False
+        original_found = False
         for file in listdir(directory):
             file = join(directory, file)
             if cache_image.exists(file):
                 if original_file in file:
-                    original_found=True
+                    original_found = True
                 else:
                     cache_image.empty(file)
             if isdir(file):
@@ -475,14 +482,13 @@ def delete(folder, keep_original,original_file=None):
             cache_image.empty()
             return "Directory deleted"
         else:
-            return directory+" Not a directory"
-
+            return directory + " Not a directory"
 
 
 def delete_temp():
     now = current_time("", False)
     horas = 1
-    carpeta = join(upload_dir , "tmp")  # ruta actual
+    carpeta = join(upload_dir, "tmp")  # ruta actual
     # obtenemos un archivo y luego otro sucesivamente
     for archivo in listdir(carpeta):
         file = join(carpeta + archivo)
