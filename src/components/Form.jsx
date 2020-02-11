@@ -6,7 +6,6 @@ const useStyles = makeStyles(theme => ({
     root: {
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
-            width: 200,
         },
     },
 }));
@@ -15,10 +14,10 @@ export default function ValidationTextFields() {
     const classes = useStyles();
 
     return (
-        <form className={classes.root} noValidate autoComplete="off">
+        <form className={classes.root} noValidate autoComplete="off" fullWidth>
             <div>
-                <TextField error id="standard-error" label="Error" defaultValue="Hello World" />
                 <TextField
+                fullWidth
                     error
                     id="standard-error-helper-text"
                     label="Error"
@@ -29,13 +28,6 @@ export default function ValidationTextFields() {
             <div>
                 <TextField
                     error
-                    id="filled-error"
-                    label="Error"
-                    defaultValue="Hello World"
-                    variant="filled"
-                />
-                <TextField
-                    error
                     id="filled-error-helper-text"
                     label="Error"
                     defaultValue="Hello World"
@@ -44,13 +36,6 @@ export default function ValidationTextFields() {
                 />
             </div>
             <div>
-                <TextField
-                    error
-                    id="outlined-error"
-                    label="Error"
-                    defaultValue="Hello World"
-                    variant="outlined"
-                />
                 <TextField
                     error
                     id="outlined-error-helper-text"
