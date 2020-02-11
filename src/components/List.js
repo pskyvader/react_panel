@@ -2,6 +2,7 @@ import React from 'react';
 import { gql } from 'apollo-boost';
 import InfiniteTable from './InfiniteTable';
 import Resolve from './Resolve';
+import Container from '@material-ui/core/Container';
 
 
 function List(props) {
@@ -40,6 +41,8 @@ function List(props) {
         return error;
     }
     return (
+        
+        <Container fixed>
         <InfiniteTable
             items={items}
             moreItemsLoading={loading}
@@ -48,6 +51,7 @@ function List(props) {
             columns={columns}
             height={700}
         />
+        </Container>
     );
 }
 export default List;

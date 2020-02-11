@@ -2,12 +2,14 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Input from '@material-ui/core/Input';
 
 const useStyles = makeStyles(theme => ({
     root: {
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
         },
+        flexGrow: 1,
     },
 }));
 
@@ -17,8 +19,10 @@ export default function ValidationTextFields() {
     return (
         <Container maxWidth="lg">
         <form className={classes.root} noValidate autoComplete="off">
-            <div>
+  <Input defaultValue="Hello world" inputProps={{ 'aria-label': 'description' }} />
+            
                 <TextField
+                margin="dense"
                 fullWidth
                     error
                     id="standard-error-helper-text"
@@ -26,7 +30,6 @@ export default function ValidationTextFields() {
                     defaultValue="Hello World"
                     helperText="Incorrect entry."
                 />
-            </div>
             <div>
                 <TextField
                     error
