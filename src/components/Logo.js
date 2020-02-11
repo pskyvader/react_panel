@@ -27,8 +27,6 @@ function Logo_cache(props, cache, url_cache) {
     }`;
 
     const variables = { variables: { idlogo: props.id, width: props.width, height: props.height }, };
-
-
     const { loading, error, data } = useQuery(GET_LOGO, variables);
     if (loading) return <Image />;
     if (error) return ErrorLink(error);
