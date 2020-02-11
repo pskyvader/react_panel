@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -14,7 +15,8 @@ export default function ValidationTextFields() {
     const classes = useStyles();
 
     return (
-        <form className={classes.root} noValidate autoComplete="off" width="75%">
+        <Container maxWidth="lg">
+        <form className={classes.root} noValidate autoComplete="off">
             <div>
                 <TextField
                 fullWidth
@@ -46,5 +48,6 @@ export default function ValidationTextFields() {
                 />
             </div>
         </form>
+        </Container>
     );
 }
