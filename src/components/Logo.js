@@ -10,13 +10,13 @@ import ErrorLink from './ErrorLink';
 
 function Logo(props) {
     const GET_LOGO = gql`
-    query get_logo($idlogo: Int!) {
+    query get_logo($idlogo: Int!,$width:String) {
         logo(idlogo: $idlogo) {
             titulo
             foto(portada:true){
                 edges{
                     node{
-                        url{
+                        url(width:$width){
                             tag
                             url
                         }
@@ -26,7 +26,7 @@ function Logo(props) {
         }
     }`;
 
-    const variables = { variables: { idlogo: props.id }, }
+    const variables = { variables: { idlogo: props.id,width:props.width }, }
     const { loading, error, data } = useQuery(GET_LOGO, variables);
     if (loading) return '...';
     if (error) return ErrorLink(error);

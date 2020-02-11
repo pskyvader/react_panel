@@ -18,7 +18,7 @@ const Header = ({ classes }) => (
     <AppBar position="static">
         <Toolbar>
             <Typography variant="h4" color="inherit">
-                <Logo id='1' />
+                <Logo id='1' width="200" />
                 Panel v3.0
       </Typography>
             <div className={classes.flex} />
