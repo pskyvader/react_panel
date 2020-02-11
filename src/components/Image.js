@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image as image_lib} from 'material-ui-image';
 
 const static_folder = 'images'
 function Image(props) {
@@ -27,7 +28,9 @@ function single_image(image, title,id='') {
         id=image.node.idimage;
         image = [static_folder, image.node.url.url].join("/");
     }
-    return <img className="" src={image} alt={title} key={id.toString()}/>
+
+    return <image_lib src={image} alt={title} key={id.toString()} />
+    return <img className="" src={image} />
 }
 
 
