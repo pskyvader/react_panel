@@ -14,7 +14,7 @@ export default function ValidationTextFields() {
     const classes = useStyles();
 
     return (
-        <form className={classes.root} noValidate autoComplete="off" fullWidth>
+        <form className={classes.root} noValidate autoComplete="off">
             <div>
                 <TextField
                 fullWidth
