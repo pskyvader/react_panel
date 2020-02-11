@@ -30,7 +30,7 @@ export default function ValidationTextFields() {
     return (
         <Container maxWidth="lg">
             <form className={classes.root} noValidate autoComplete="off">
-                <FormControl fullWidth className={classes.margin}>
+                <FormControl fullWidth className={classes.margin} >
                     <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
                     <Input
                         id="standard-adornment-amount"
