@@ -40,7 +40,7 @@ class app:
         app.method=app.environ["REQUEST_METHOD"]
         app.get = parse_get(app.environ["QUERY_STRING"])
         app.post = parse_post(app.environ)
-        app.session = app.environ["beaker.session"]
+        # app.session = app.environ["beaker.session"]
         app.client_ip = parse_ip(app.environ)
         config = self.get_config()
         url,app.idseo = parse_url(environ["PATH_INFO"], config)

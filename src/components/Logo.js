@@ -13,7 +13,16 @@ function Logo(props) {
     query get_logo($idlogo: Int!) {
         logo(idlogo: $idlogo) {
             titulo
-            foto
+            foto(portada:true){
+                edges{
+                    node{
+                        url{
+                            tag
+                            url
+                        }
+                    }
+                }
+            }
         }
     }`;
 
