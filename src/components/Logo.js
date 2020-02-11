@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Image from './Image';
-import Url from './Url';
 import Local_storage from './Local_storage';
 
 import { useQuery } from '@apollo/react-hooks';
@@ -8,7 +7,7 @@ import { gql } from 'apollo-boost';
 import ErrorLink from './ErrorLink';
 
 
-function Logo(props) {
+function Logo_cache(props, cache, url_cache) {
     const GET_LOGO = gql`
     query get_logo($idlogo: Int!,$width:String,$height:String) {
         logo(idlogo: $idlogo) {
@@ -29,14 +28,7 @@ function Logo(props) {
 
     const variables = { variables: { idlogo: props.id, width: props.width, height: props.height }, };
 
-    const url_cache = 'get_logo_id_' + props.id + '_width_' + props.width + '_height_' + props.height;
-    const cache = { image: '', title: '' };
-    cache = Local_storage.get(url_cache, cache);
 
-    if (cache['image'] != '' && cache['title'] != '') {
-        return <Image image={cache['image']} title={cache['title']} />;
-    }
-    
     const { loading, error, data } = useQuery(GET_LOGO, variables);
     if (loading) return <Image />;
     if (error) return ErrorLink(error);
@@ -47,52 +39,18 @@ function Logo(props) {
     return <Image image={cache['image']} title={cache['title']} />;
 }
 
+function Logo(props) {
+    const url_cache = 'get_logo_id_' + props.id + '_width_' + props.width + '_height_' + props.height;
+    var cache = Local_storage.get(url_cache, { image: '', title: '' });
 
-
-
-
-
-class Logo2 extends Component {
-    resource = 'logo';
-    sub = 'portada';
-    constructor(props) {
-        super(props);
-        this.id = props.id;
-        this.size = props.size;
-        this.url = Url(this.resource, this.id, this.sub, this.size);
-        this.state = Local_storage.get(this.url, { foto: '', title: '' });
-
-        this.GET_LOGO = gql`
-            {
-                logo
-            }
-            `;
+    if (cache['image'] !== '' && cache['title'] !== '') {
+        return <Image image={cache['image']} title={cache['title']} />;
     }
-    componentDidMount() {
-        this.get_logo();
-    }
-
-
-    get_logo() {
-        if (this.state.foto === '') {
-            fetch(this.url)
-                .then(response => response.json())
-                .then(data => {
-                    this.setState({ foto: data.foto, title: data.titulo });
-                    Local_storage.set(this.url, this.state);
-                });
-        }
-    }
-
-    render() {
-        if (this.state.foto !== '') {
-            return (
-                <Image image={this.state.foto} title={this.state.title} />
-            )
-        } else {
-            return null;
-        }
+    else {
+        return Logo_cache(props, cache, url_cache);
     }
 }
+
+
 
 export default Logo;
