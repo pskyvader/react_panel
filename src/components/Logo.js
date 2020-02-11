@@ -29,7 +29,7 @@ function Logo(props) {
 
     const variables = { variables: { idlogo: props.id, width: props.width, height: props.height }, }
     const { loading, error, data } = useQuery(GET_LOGO, variables);
-    if (loading) return '...';
+    if (loading) return <Image/>;
     if (error) return ErrorLink(error);
     return <Image image={data.logo.foto} title={data.logo.titulo} />;
 }

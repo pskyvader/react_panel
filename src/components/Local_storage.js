@@ -1,4 +1,5 @@
 class Local_storage {
+    // 1 day default 
     static get(key, default_value = null, expiration_time = 1) {
         var value = JSON.parse(localStorage.getItem(key));
         if (value == null) {
