@@ -33,17 +33,22 @@ function Logo(props) {
     const cache = { image: '', title: '' };
     cache = Local_storage.get(url_cache, cache);
 
-    if (cache['image'] == '' || cache['title'] == '') {
-        const { loading, error, data } = useQuery(GET_LOGO, variables);
-        if (loading) return <Image />;
-        if (error) return ErrorLink(error);
-        cache['image'] = data.logo.foto;
-        cache['title'] = data.logo.titulo;
-        Local_storage.set(url_cache, cache);
+    if (cache['image'] != '' && cache['title'] != '') {
+        return <Image image={cache['image']} title={cache['title']} />;
     }
+    
+    const { loading, error, data } = useQuery(GET_LOGO, variables);
+    if (loading) return <Image />;
+    if (error) return ErrorLink(error);
+    cache['image'] = data.logo.foto;
+    cache['title'] = data.logo.titulo;
+    Local_storage.set(url_cache, cache);
 
     return <Image image={cache['image']} title={cache['title']} />;
 }
+
+
+
 
 
 
