@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image as image_lib} from 'material-ui-image';
+import ImageLib from 'material-ui-image';
 
 const static_folder = 'images'
 function Image(props) {
@@ -29,7 +29,7 @@ function single_image(image, title,id='') {
         image = [static_folder, image.node.url.url].join("/");
     }
 
-    return <image_lib src={image} alt={title} key={id.toString()} />
+    return <ImageLib src={image} alt={title} key={id.toString()} color="" aspectRatio={(10/4)}/>
     return <img className="" src={image} />
 }
 
