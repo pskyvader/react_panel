@@ -29,7 +29,7 @@ function single_image(image, title,id='') {
         image = [static_folder, image.node.url.url].join("/");
     }
 
-    return <div> <ImageLib src={image} alt={title} key={id.toString()} color="" aspectRatio={(10/4)}/></div>
+    return <ImageLib src={image} alt={title} key={id.toString()} color=""/>
     return <img className="" src={image} />
 }
 
