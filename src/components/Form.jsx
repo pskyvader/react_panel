@@ -3,13 +3,24 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Input from '@material-ui/core/Input';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-        },
-        flexGrow: 1,
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    margin: {
+        margin: theme.spacing(1),
+    },
+    withoutLabel: {
+        marginTop: theme.spacing(3),
+    },
+    textField: {
+        width: 200,
     },
 }));
 
@@ -18,39 +29,37 @@ export default function ValidationTextFields() {
 
     return (
         <Container maxWidth="lg">
-        <form className={classes.root} noValidate autoComplete="off">
-  <Input defaultValue="Hello world" inputProps={{ 'aria-label': 'description' }} />
-            
+            <form className={classes.root} noValidate autoComplete="off">
+                <FormControl fullWidth className={classes.margin}>
+                    <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+                    <Input
+                        id="standard-adornment-amount"
+                        value={123}
+                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                    />
+                </FormControl>
+
+                <FormControl fullWidth className={classes.margin} variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-amount"
+                        value={123}
+                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                        labelWidth={60}
+                    />
+                </FormControl>
                 <TextField
-                margin="dense"
-                fullWidth
+                    fullWidth
                     error
                     id="standard-error-helper-text"
                     label="Error"
                     defaultValue="Hello World"
                     helperText="Incorrect entry."
+                    className={classes.margin}
                 />
-            <div>
-                <TextField
-                    error
-                    id="filled-error-helper-text"
-                    label="Error"
-                    defaultValue="Hello World"
-                    helperText="Incorrect entry."
-                    variant="filled"
-                />
-            </div>
-            <div>
-                <TextField
-                    error
-                    id="outlined-error-helper-text"
-                    label="Error"
-                    defaultValue="Hello World"
-                    helperText="Incorrect entry."
-                    variant="outlined"
-                />
-            </div>
-        </form>
+
+
+            </form>
         </Container>
     );
 }
