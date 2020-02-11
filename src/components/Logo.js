@@ -27,11 +27,22 @@ function Logo(props) {
         }
     }`;
 
-    const variables = { variables: { idlogo: props.id, width: props.width, height: props.height }, }
-    const { loading, error, data } = useQuery(GET_LOGO, variables);
-    if (loading) return <Image/>;
-    if (error) return ErrorLink(error);
-    return <Image image={data.logo.foto} title={data.logo.titulo} />;
+    const variables = { variables: { idlogo: props.id, width: props.width, height: props.height }, };
+
+    const url_cache = 'get_logo_id_' + props.id + '_width_' + props.width + '_height_' + props.height;
+    const cache = { image: '', title: '' };
+    cache = Local_storage.get(url_cache, cache);
+
+    if (cache['image'] == '' || cache['title'] == '') {
+        const { loading, error, data } = useQuery(GET_LOGO, variables);
+        if (loading) return <Image />;
+        if (error) return ErrorLink(error);
+        cache['image'] = data.logo.foto;
+        cache['title'] = data.logo.titulo;
+        Local_storage.set(url_cache, cache);
+    }
+
+    return <Image image={cache['image']} title={cache['title']} />;
 }
 
 
