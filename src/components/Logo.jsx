@@ -38,8 +38,11 @@ function Logo_cache(props, cache, url_cache) {
 }
 
 function Logo(props) {
+
     const url_cache = 'get_logo_id_' + props.id + '_width_' + props.width + '_height_' + props.height;
     var cache = Local_storage.get(url_cache, { image: '', title: '' });
+
+    console.log(cache);
 
     if (cache['image'] !== '' && cache['title'] !== '') {
         return <Image image={cache['image']} title={cache['title']} />;

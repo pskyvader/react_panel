@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     drawerPaper: {
         width: drawerWidth,
     },
+    
     drawerHeader: {
         display: 'flex',
         alignItems: 'center',
@@ -32,7 +33,7 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             marginLeft: -drawerWidth,
         },
     },
@@ -41,7 +42,7 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             marginLeft: 0,
         },
     },

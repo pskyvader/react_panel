@@ -19,6 +19,9 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
 
+import Hidden from '@material-ui/core/Hidden';
+
+
 import Logo from './Logo';
 import useStyles from './Styles';
 
@@ -36,45 +39,43 @@ export default function PersistentDrawerLeft(props) {
     }
     const toggleDrawer = (side, open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-          return;
+            return;
         }
-    
+
         setOpen(open);
-      };
+    };
 
 
-      const sideList = () => (
+    const sideList = () => (
         <div
-          className={classes.list}
-          role="presentation"
+            className={classes.list}
+            role="presentation"
         >
             <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawer}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                    </IconButton>
-                </div>
-          <Divider />
-          <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
+                <IconButton onClick={handleDrawer}>
+                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                </IconButton>
+            </div>
+            <Divider />
+            <List>
+                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
         </div>
-      );
-
-    console.log(theme.breakpoints.up('sm'));
+    );
 
     return (
         <div className={classes.root}>
@@ -88,10 +89,17 @@ export default function PersistentDrawerLeft(props) {
                     <Typography variant="h6" noWrap> Persistent drawer </Typography>
                 </Toolbar>
             </AppBar>
+            <Hidden smDown>
+                <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
+                    {sideList('left')}
+                </Drawer>
+            </Hidden>
 
-            <Drawer className={classes.drawer} variant={clsx([theme.breakpoints.up('sm')] && "persistent")} open={open} classes={{ paper: classes.drawerPaper, }}  onClose={toggleDrawer(false)}>
-                {sideList('left')}
-            </Drawer>
+            <Hidden mdUp>
+                <Drawer className={classes.drawer} variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
+                    {sideList('left')}
+                </Drawer>
+            </Hidden>
 
             <main className={clsx(classes.content, { [classes.contentShift]: open, })} >
                 <div className={classes.drawerHeader} />
