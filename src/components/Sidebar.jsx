@@ -10,42 +10,67 @@ import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import IconButton from '@material-ui/core/IconButton';
 import { useTheme } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
+import Drawer from '@material-ui/core/Drawer';
 
 
-function Sidebar(props){
-    const classes=props.classes;
-    const handleDrawer=props.handleDrawer;
+import useStyles from './Styles';
+import { Fragment } from 'react';
+
+
+
+const sideList = () => (
+    <div
+        className={classes.list}
+        role="presentation"
+    >
+        <div className={classes.drawerHeader}>
+            <IconButton onClick={handleDrawer}>
+                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+        </div>
+        <Divider />
+        <List>
+            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                <ListItem button key={text}>
+                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                    <ListItemText primary={text} />
+                </ListItem>
+            ))}
+        </List>
+        <Divider />
+        <List>
+            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                <ListItem button key={text}>
+                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                    <ListItemText primary={text} />
+                </ListItem>
+            ))}
+        </List>
+    </div>
+)
+
+
+function Sidebar(props) {
+    const handleDrawer = props.handleDrawer;
+    const open = props.open;
     const theme = useTheme();
+    const classes = useStyles();
 
     return (
-        <div
-            className={classes.list}
-            role="presentation"
-        >
-            <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawer}>
-                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton>
-            </div>
-            <Divider />
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-        </div>
+        <Fragment>
+            <Hidden smDown>
+                <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
+                    <Sidebar handleDrawer={handleDrawer} />
+                </Drawer>
+            </Hidden>
+
+            <Hidden mdUp>
+                <Drawer variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
+                    <Sidebar handleDrawer={handleDrawer} />
+                </Drawer>
+            </Hidden>
+        </Fragment>
     );
 }
 
