@@ -74,6 +74,7 @@ export default function PersistentDrawerLeft(props) {
         </div>
       );
 
+    console.log(theme.breakpoints.up('sm'));
 
     return (
         <div className={classes.root}>
@@ -88,7 +89,7 @@ export default function PersistentDrawerLeft(props) {
                 </Toolbar>
             </AppBar>
 
-            <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}  onClose={toggleDrawer(false)}>
+            <Drawer className={classes.drawer} variant={clsx([theme.breakpoints.up('sm')] && "persistent")} open={open} classes={{ paper: classes.drawerPaper, }}  onClose={toggleDrawer(false)}>
                 {sideList('left')}
             </Drawer>
 
