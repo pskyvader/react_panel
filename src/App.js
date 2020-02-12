@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,
 });
@@ -27,7 +29,13 @@ const App = ({ classes }) => (
       <CssBaseline />
       <Header />
       <main className={classes.main}>
+      <Route exact path="/">
         <Home />
+      </Route>
+      <Route path="/home">
+        <Home />
+      </Route>
+      
       </main>
     </Fragment>
   </ApolloProvider>
