@@ -34,12 +34,13 @@ export default function Header(props) {
                     <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawer} edge="start" className={classes.menuButton} >
                         <MenuIcon />
                     </IconButton>
-                    <Logo id='1' width="40" height="40" className={classes.menuButton} />
+                    <div className={classes.menuButton} >
+                    <Logo id='1' width="40" height="40"/></div>
                     <Typography variant="h6" noWrap> Persistent drawer </Typography>
                 </Toolbar>
             </AppBar>
             
-            <Sidebar handleDrawer={handleDrawer} open={open}/>
+            <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer}/>
 
 
             <main className={clsx(classes.content, { [classes.contentShift]: open, })} >

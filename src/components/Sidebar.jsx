@@ -19,7 +19,7 @@ import { Fragment } from 'react';
 
 
 
-const sideList = () => (
+const sideList = (classes,handleDrawer,theme) => (
     <div
         className={classes.list}
         role="presentation"
@@ -53,6 +53,7 @@ const sideList = () => (
 
 function Sidebar(props) {
     const handleDrawer = props.handleDrawer;
+    const toggleDrawer = props.toggleDrawer;
     const open = props.open;
     const theme = useTheme();
     const classes = useStyles();
@@ -61,13 +62,13 @@ function Sidebar(props) {
         <Fragment>
             <Hidden smDown>
                 <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
-                    <Sidebar handleDrawer={handleDrawer} />
+                    {sideList(classes,handleDrawer,theme)}
                 </Drawer>
             </Hidden>
 
             <Hidden mdUp>
                 <Drawer variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
-                    <Sidebar handleDrawer={handleDrawer} />
+                {sideList(classes,handleDrawer,theme)}
                 </Drawer>
             </Hidden>
         </Fragment>
