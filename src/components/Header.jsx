@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import {useTheme} from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -31,24 +31,16 @@ export default function PersistentDrawerLeft(props) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
-    const handleDrawer=()=>{
+    const handleDrawer = () => {
         setOpen(!open);
     }
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
 
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="fixed" className={clsx(classes.appBar, { [classes.appBarShift]: open, })} >
+            <AppBar position="fixed" className={classes.appBar} >
                 <Toolbar>
-                    <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawer} edge="start" className={clsx(classes.menuButton, open && classes.hide)} >
+                    <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawer} edge="start" className={classes.menuButton} >
                         <MenuIcon />
                     </IconButton>
                     <Logo id='2' width="100" height="40" />
@@ -56,10 +48,14 @@ export default function PersistentDrawerLeft(props) {
                 </Toolbar>
             </AppBar>
 
+            <Drawer className={classes.drawer}  open={open} classes={{ paper: classes.drawerPaper, }}>
 
-
-            <Drawer className={classes.drawer} variant="persistent" anchor="left" open={open} classes={{ paper: classes.drawerPaper, }} >
-                <div className={classes.drawerHeader}/>
+            {/* <Drawer className={classes.drawer} variant="persistent" anchor="left" open={open} classes={{ paper: classes.drawerPaper, }} > */}
+                <div className={classes.drawerHeader}>
+                    <IconButton onClick={handleDrawer}>
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                    </IconButton>
+                </div>
                 <List>
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                         <ListItem button key={text}>
