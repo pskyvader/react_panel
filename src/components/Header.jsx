@@ -34,6 +34,13 @@ export default function PersistentDrawerLeft(props) {
     const handleDrawer = () => {
         setOpen(!open);
     }
+    const toggleDrawer = (side, open) => event => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+    
+        setOpen(open);
+      };
 
     return (
         <div className={classes.root}>
@@ -48,7 +55,7 @@ export default function PersistentDrawerLeft(props) {
                 </Toolbar>
             </AppBar>
 
-            <Drawer className={classes.drawer}  open={open} classes={{ paper: classes.drawerPaper, }}>
+            <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}  onClose={toggleDrawer(false)}>
 
             {/* <Drawer className={classes.drawer} variant="persistent" anchor="left" open={open} classes={{ paper: classes.drawerPaper, }} > */}
                 <div className={classes.drawerHeader}>
