@@ -27,40 +27,24 @@ const styles = theme => ({
 
 
 
-const App = ({ classes }) => (
+const App = () => (
     <ApolloProvider client={client}>
         <Fragment>
-            <CssBaseline />
             <Header>
-                <main className={classes.main}>
-                    <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-                        <Route path="/home">
-                            <Home />
-                        </Route>
-                        <Route path="*">
-                            <NoMatch />
-                        </Route>
-                    </Switch>
-                </main>
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/home">
+                        <Home />
+                    </Route>
+                    <Route path="*">
+                        404 not found
+                    </Route>
+                </Switch>
             </Header>
         </Fragment>
     </ApolloProvider>
 );
-
-
-function NoMatch() {
-    let location = useLocation();
-
-    return (
-        <div>
-            <h3>
-                No match for <code>{location.pathname}</code>
-            </h3>
-        </div>
-    );
-}
-
-export default withStyles(styles)(App);
+// export default withStyles(styles)(App);
+export default App;
