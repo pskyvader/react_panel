@@ -85,19 +85,19 @@ export default function PersistentDrawerLeft(props) {
                     <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawer} edge="start" className={classes.menuButton} >
                         <MenuIcon />
                     </IconButton>
-                    <Logo id='2' width="100" height="40" />
+                    <Logo id='1' width="40" height="40" className={classes.menuButton} />
                     <Typography variant="h6" noWrap> Persistent drawer </Typography>
                 </Toolbar>
             </AppBar>
             <Hidden smDown>
-                <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
-                    {sideList('left')}
+                <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
+                    <sideList/>
                 </Drawer>
             </Hidden>
 
             <Hidden mdUp>
-                <Drawer className={classes.drawer} variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
-                    {sideList('left')}
+                <Drawer variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
+                <sideList/>
                 </Drawer>
             </Hidden>
 
