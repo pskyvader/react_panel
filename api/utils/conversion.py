@@ -1,5 +1,6 @@
 import json
 from os.path import join, dirname, isfile
+from os import listdir
 import sys
 
 current_dir = dirname(__file__)
@@ -316,8 +317,6 @@ def get_file(file_name):
 
 
 def file_list(directory):
-    from os import listdir
-
     files = [f for f in listdir(directory) if isfile(join(directory, f))]
     return files
 

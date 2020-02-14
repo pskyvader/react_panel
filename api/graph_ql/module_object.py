@@ -1,8 +1,16 @@
 import graphene
-from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
-
-from os.path import join
 from graph_ql.schemas.administrador_schema import resolve_administrador
+
+from os.path import join, dirname
+
+
+
+current_dir = dirname(__file__)
+
+module_dir = join(current_dir, "..", "config", "modules")
+module_list=[]
+
+
 
 
 class menu_object(graphene.ObjectType):
@@ -72,8 +80,11 @@ class module_object(graphene.ObjectType):
     
 def resolve_all_module(args, info, idadministrador):
     administrador=resolve_administrador(args, info,idadministrador)
+    if administrador==None:
+        return []
+    print(administrador)
     print(administrador.tipo)
-    return administrador
+    return [module_object()]
 
 
 all_module = graphene.List( module_object, idadministrador=graphene.Int() )
