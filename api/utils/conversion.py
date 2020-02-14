@@ -129,7 +129,7 @@ def json_to_module():
         table = json.loads(get_file(join(module_dir, f)))
         for k,v in new_module.items():
             if new_module[k]!=[]:
-                new_module[k]=table[k] if k!='aside' else bool(table[k])
+                new_module[k]=table[k] if not isinstance(new_module[k],bool) else bool(table[k])
             elif k!="hijo" and k!="menu":
                 new_array=[]
                 for e in table[k]:
@@ -154,7 +154,7 @@ def json_to_module():
                 new_h=hijo.copy()
                 for k,v in new_h.items():
                     if k!='permisos' and k!='estado':
-                        new_h[k]=table_hijo[k] if k!='aside' else bool(table_hijo[k])
+                        new_h[k]=table_hijo[k] if not isinstance(new_h[k],bool) else bool(table_hijo[k])
 
                 new_permisos={}
                 new_estado={}

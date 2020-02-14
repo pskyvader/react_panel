@@ -23,9 +23,9 @@
     ],
     "detalle": [],
     "orden": 2,
-    "estado": 1,
+    "estado": true,
     "aside": true,
-    "tipos": 1,
+    "tipos": true,
     "hijo": [
         {
             "tipo": 1,
@@ -50,7 +50,7 @@
             "orden": 1,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         },
         {
             "tipo": 2,
@@ -75,7 +75,7 @@
             "orden": 2,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         },
         {
             "tipo": 3,
@@ -100,7 +100,7 @@
             "orden": 3,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         },
         {
             "tipo": 4,
@@ -125,7 +125,7 @@
             "orden": 4,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         },
         {
             "tipo": 5,
@@ -150,7 +150,7 @@
             "orden": 5,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         },
         {
             "tipo": 6,
@@ -175,7 +175,7 @@
             "orden": 6,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         },
         {
             "tipo": 7,
@@ -200,7 +200,7 @@
             "orden": 7,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         },
         {
             "tipo": 8,
@@ -225,7 +225,7 @@
             "orden": 8,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         },
         {
             "tipo": 9,
@@ -250,7 +250,7 @@
             "orden": 9,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         }
     ]
 }

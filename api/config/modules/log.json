@@ -22,9 +22,9 @@
         {"field": "fecha", "titulo": "Fecha", "tipo": "text"}
     ],
     "orden": 23,
-    "estado": 1,
+    "estado": true,
     "aside": true,
-    "tipos": 0,
+    "tipos": false,
     "hijo": [
         {
             "tipo": 0,
@@ -49,7 +49,7 @@
             "orden": 1,
             "estado": {"1": true, "2": true, "3": false},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         }
     ]
 }

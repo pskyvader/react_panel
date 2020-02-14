@@ -8,8 +8,8 @@
     "mostrar": [],
     "detalle": [],
     "orden": 12,
-    "estado": 0,
+    "estado": false,
     "aside": true,
-    "tipos": 0,
+    "tipos": false,
     "hijo": []
 }

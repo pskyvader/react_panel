@@ -12,9 +12,9 @@
     "mostrar": [],
     "detalle": [],
     "orden": 27,
-    "estado": 0,
+    "estado": false,
     "aside": true,
-    "tipos": 0,
+    "tipos": false,
     "hijo": [
         {
             "tipo": 0,
@@ -39,7 +39,7 @@
             "orden": 1,
             "estado": {"1": true, "2": true, "3": false},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         }
     ]
 }

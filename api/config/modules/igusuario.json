@@ -23,9 +23,9 @@
         {"tipo": "active", "titulo": "Estado", "field": "estado"}
     ],
     "orden": 1,
-    "estado": 1,
+    "estado": true,
     "aside": true,
-    "tipos": 0,
+    "tipos": false,
     "hijo": [
         {
             "tipo": 0,
@@ -50,7 +50,7 @@
             "orden": 1,
             "estado": {"1": true, "2": true, "3": true},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         }
     ]
 }

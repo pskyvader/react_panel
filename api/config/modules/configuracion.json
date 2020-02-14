@@ -21,9 +21,9 @@
         {"tipo": "textarea", "titulo": "Valor", "field": "valor"}
     ],
     "orden": 29,
-    "estado": 1,
+    "estado": true,
     "aside": true,
-    "tipos": 0,
+    "tipos": false,
     "hijo": [
         {
             "tipo": 0,
@@ -48,7 +48,7 @@
             "orden": 1,
             "estado": {"1": true, "2": false, "3": false},
             "aside": true,
-            "hijos": 0
+            "hijos": false
         }
     ]
 }
