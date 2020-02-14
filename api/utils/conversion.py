@@ -53,10 +53,7 @@ types = {
         "graphene_type": "graphene.JSONString()",
         "alchemy_type": "Column(JSON)",
     },
-    "image": {
-        "text": "Campo imagenes",
-        "value": "image"
-    },
+    "image": {"text": "Campo imagenes", "value": "image"},
     "id": {
         "text": "Campo primario",
         "value": "int(11)",
@@ -72,20 +69,21 @@ file_cache = {}
 
 
 def bdd_to_folder():
-    file_str = join(bdd_dir,"bdd.json")
+    file_str = join(bdd_dir, "bdd.json")
     try:
         with open(file_str, "r") as file1:
             tables = json.loads(file1.read())
             for t in tables:
-                tablename = join(bdd_dir , t["tablename"] + ".json")
+                tablename = join(bdd_dir, t["tablename"] + ".json")
                 with open(tablename, "w") as table:
                     table.write(json.dumps(t))
                     print("table", tablename, "created")
     except FileNotFoundError as e:
         print("archivo", file_str, "no existe", e)
 
+
 def module_to_folder():
-    file_str = join(module_dir, "moduloconfiguracion.json")
+    file_str = join(module_dir,"..", "moduloconfiguracion.json")
     try:
         with open(file_str, "r") as file1:
             tables = json.loads(file1.read())
@@ -97,12 +95,79 @@ def module_to_folder():
     except FileNotFoundError as e:
         print("archivo", file_str, "no existe", e)
 
+
 def json_to_module():
+    module = {
+        "icono": "",
+        "module": "",
+        "titulo": "",
+        "sub": "",
+        "padre": "",
+        "menu": [],
+        "mostrar": [],
+        "detalle": [],
+        "orden": 0,
+        "estado": False,
+        "aside": False,
+        "tipos": False,
+        "hijo": [],
+    }
+
+    menu = {"field": "", "titulo": ""}
+    hijo = { "tipo": 0, "titulo": "","permisos":{} , "orden": 0, "estado": {}, "aside": False, "hijos": False, }
+
     json_files = file_list(module_dir)
     for f in json_files:
+        new_module=module
         table = json.loads(get_file(join(module_dir, f)))
-        print(table)
+        for k,v in new_module.items():
+            if k!="hijo" and  k!="menu":
+                new_module[k]=table[k]
+        
+        new_menus=[]
+        for hijo_menu in table['hijo'][0]['menu']:
+            new_menu=menu
+            for k,v in new_menu.items():
+                print(k,v)
+                new_menu[k]=hijo_menu[k]
+            new_menus.append(new_menu)
+        new_module['menu']=new_menus
 
+        new_hijos=[]
+        for table_hijo in table['hijo']:
+            new_h=hijo
+            for k,v in new_h.items():
+                if k!='permisos':
+                    new_menu[k]=table_hijo[k]
+
+            new_permisos={}
+            for tipo in range(1,2,3):
+                new_permiso={"menu":{},"mostrar":{},"detalle":{}}
+                for menu_hijo in table_hijo['menu']:
+                    new_permiso['menu'][menu_hijo['field']]= True if menu_hijo['estado'][str(tipo)]=='true' else False
+
+                for mostrar_hijo in table_hijo['mostrar']:
+                    new_permiso['mostrar'][mostrar_hijo['field']]= True if mostrar_hijo['estado'][str(tipo)]=='true' else False
+
+                for detalle_hijo in table_hijo['detalle']:
+                    new_permiso['detalle'][detalle_hijo['field']]= True if detalle_hijo['estado'][str(tipo)]=='true' else False
+                new_permisos[tipo]=new_permiso
+            new_h['permisos']=new_permisos
+
+            new_hijos.append(new_h)
+        
+        new_module['hijo']=new_hijos
+
+        if create_file(join(module_dir, f), json.dumps(new_module), True):
+            print("modelo creado correctamente!", f)
+        else:
+            print("Error al crear el modelo!", f)
+
+
+                
+
+
+            
 
 
 def json_to_class(tablename, return_class=True):
@@ -149,7 +214,7 @@ def json_to_schema(force=False):
         f = f.replace(".json", "")
         template = template.replace("TABLENAME", f)
 
-        image_fields=[]
+        image_fields = []
 
         fields_str = ""
         fields_read_only = ""
@@ -158,38 +223,52 @@ def json_to_schema(force=False):
         for field in table["fields"]:
             if field["tipo"] in types and "alchemy_type" in types[field["tipo"]]:
                 if field["titulo"] not in black_list:
-                    fields_str += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
+                    fields_str += (
+                        field["titulo"]
+                        + "="
+                        + types[field["tipo"]]["graphene_type"]
+                        + ",\n    "
+                    )
                 else:
-                    fields_black_list += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
+                    fields_black_list += (
+                        field["titulo"]
+                        + "="
+                        + types[field["tipo"]]["graphene_type"]
+                        + ",\n    "
+                    )
             else:
-                if field["tipo"]!='image':
-                    fields_read_only += ( field["titulo"] + "=" + types[field["tipo"]]["graphene_type"] + ",\n    " )
+                if field["tipo"] != "image":
+                    fields_read_only += (
+                        field["titulo"]
+                        + "="
+                        + types[field["tipo"]]["graphene_type"]
+                        + ",\n    "
+                    )
                 else:
-                    image_fields.append(field['titulo'])
-
-
+                    image_fields.append(field["titulo"])
 
         template = template.replace("EXTRA_FIELDS", fields_str.rstrip()[:-1])
         template = template.replace("READ_ONLY_FIELDS", fields_read_only.rstrip()[:-1])
-        template = template.replace( "BLACK_LIST_FIELDS", fields_black_list.rstrip()[:-1] )
+        template = template.replace(
+            "BLACK_LIST_FIELDS", fields_black_list.rstrip()[:-1]
+        )
 
-        extra_import=""
-        extra_schema=""
+        extra_import = ""
+        extra_schema = ""
 
-        if f=='image':
-            extra_import="from .. import url_object"
+        if f == "image":
+            extra_import = "from .. import url_object"
             extra_schema = "url=url_object.url\n    resolve_url=url_object.resolve_url"
-        elif len(image_fields)>0:
-            extra_import="from .image_schema import all_image,resolve_all_image"
+        elif len(image_fields) > 0:
+            extra_import = "from .image_schema import all_image,resolve_all_image"
 
             for image in image_fields:
-                extra_schema+= template_file_image.replace('FIELD',image).replace('TABLENAME',f)
-
-
+                extra_schema += template_file_image.replace("FIELD", image).replace(
+                    "TABLENAME", f
+                )
 
         template = template.replace("EXTRA_IMPORT", extra_import)
         template = template.replace("EXTRA_SCHEMA", extra_schema)
-
 
         schema_file = join(schemas_dir, f + "_schema.py")
         if not force and isfile(schema_file):
@@ -248,7 +327,8 @@ def create_file(file_name, content, force=False):
             return True
     return False
 
-# module_to_folder()
+
+module_to_folder()
 # bdd_to_folder()
 # json_to_model()
 # json_to_schema(force=True)
