@@ -149,15 +149,16 @@ def current_time(formato:str="%Y-%m-%d %H:%M:%S", as_string:bool=True):
 class CompactJSONEncoder(json.JSONEncoder):
     """A JSON Encoder that puts small lists on single lines."""
 
-    MAX_WIDTH = 60
+    MAX_WIDTH = 600
     """Maximum width of a Single Line List (SLL)."""
 
-    MAX_ITEMS = 2
+    MAX_ITEMS = 100
     """Maximum number of items of a Single Line List (SLL)."""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.indentation_level = 0
+        self.indent = 4
 
     def encode(self, o):
         """Encode JSON object *o* with respect to single line lists."""

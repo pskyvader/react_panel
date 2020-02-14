@@ -1,1 +1,115 @@
-{"icono": "folder_open", "module": "backup", "titulo": "Respaldos", "sub": "", "padre": "", "mostrar": [], "detalle": [], "orden": 28, "estado": 1, "aside": 1, "tipos": 0, "hijo": [{"idmoduloconfiguracion": 14, "tipo": 0, "titulo": "Respaldos", "menu": [{"field": "new", "titulo": "Nuevo", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "excel", "titulo": "Exportar a excel", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "regenerar", "titulo": "Regenerar imagenes", "estado": {"1": "false", "2": "false", "3": "false"}}], "mostrar": [], "detalle": [], "recortes": [], "orden": 1, "estado": [{"estado": {"1": "true", "2": "false", "3": "false"}}], "aside": 1, "hijos": 0}]}
+{
+    "icono": "folder_open",
+    "module": "backup",
+    "titulo": "Respaldos",
+    "sub": "",
+    "padre": "",
+    "menu": [
+        {
+            "field": "new",
+            "titulo": "Nuevo"
+        },
+        {
+            "field": "excel",
+            "titulo": "Exportar a excel"
+        },
+        {
+            "field": "regenerar",
+            "titulo": "Regenerar imagenes"
+        }
+    ],
+    "mostrar": [],
+    "detalle": [],
+    "orden": 28,
+    "estado": 1,
+    "aside": true,
+    "tipos": 0,
+    "hijo": [
+        {
+            "tipo": 0,
+            "titulo": "Respaldos",
+            "permisos": {
+                1: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": true,
+                        "nombre": true,
+                        "email": true,
+                        "estado": true,
+                        "foto": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true
+                    }
+                },
+                2: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": true,
+                        "nombre": true,
+                        "email": true,
+                        "estado": true,
+                        "foto": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true
+                    }
+                },
+                3: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": true,
+                        "nombre": true,
+                        "email": true,
+                        "estado": true,
+                        "foto": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true
+                    }
+                }
+            },
+            "orden": 1,
+            "estado": {
+                1: true,
+                2: false,
+                3: false
+            },
+            "aside": 1,
+            "hijos": 0
+        }
+    ]
+}

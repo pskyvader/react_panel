@@ -1,1 +1,331 @@
-{"icono": "image", "module": "banner", "titulo": "Banner", "sub": "", "padre": "", "mostrar": [{"field": "0", "titulo": "ID", "tipo": "text"}, {"field": "orden", "titulo": "Orden", "tipo": "text"}, {"field": "titulo", "titulo": "Titulo", "tipo": "text"}, {"field": "foto", "titulo": "Foto", "tipo": "image"}, {"field": "estado", "titulo": "Estado", "tipo": "active"}, {"field": "copy", "titulo": "Copiar", "tipo": "action"}, {"field": "url_detalle", "titulo": "Editar", "tipo": "link"}, {"field": "delete", "titulo": "Eliminar", "tipo": "delete"}], "detalle": [{"field": "titulo", "titulo": "Titulo", "tipo": "text"}, {"field": "foto", "titulo": "Foto", "tipo": "image"}, {"field": "texto1", "titulo": "Texto 1", "tipo": "text"}, {"field": "texto2", "titulo": "Texto 2", "tipo": "text"}, {"field": "texto", "titulo": "Texto", "tipo": "editor"}, {"field": "link", "titulo": "Link", "tipo": "url"}, {"field": "orden", "titulo": "Orden", "tipo": "number"}, {"field": "estado", "titulo": "Estado", "tipo": "active"}], "orden": 6, "estado": 0, "aside": 1, "tipos": 1, "hijo": [{"idmoduloconfiguracion": 9, "tipo": 1, "titulo": "Banner principal", "menu": [{"estado": {"1": "true", "3": "true", "2": "true"}, "field": "new", "titulo": "Nuevo"}, {"estado": {"2": "false", "1": "false", "3": "false"}, "field": "excel", "titulo": "Exportar a excel"}, {"estado": {"1": "true", "3": "false", "2": "true"}, "field": "regenerar", "titulo": "Regenerar imagenes"}], "mostrar": [{"estado": {"1": "false", "2": "false", "3": "false"}, "tipo": "text", "titulo": "ID", "field": "0"}, {"estado": {"3": "true", "2": "true", "1": "true"}, "tipo": "text", "titulo": "Orden", "field": "orden"}, {"estado": {"2": "true", "1": "true", "3": "true"}, "tipo": "text", "titulo": "Titulo", "field": "titulo"}, {"estado": {"1": "true", "2": "true", "3": "true"}, "tipo": "image", "titulo": "Foto", "field": "foto"}, {"estado": {"2": "true", "3": "true", "1": "true"}, "tipo": "active", "titulo": "Estado", "field": "estado"}, {"estado": {"3": "false", "2": "false", "1": "false"}, "tipo": "action", "titulo": "Copiar", "field": "copy"}, {"estado": {"3": "true", "1": "true", "2": "true"}, "tipo": "link", "titulo": "Editar", "field": "url_detalle"}, {"estado": {"1": "true", "3": "true", "2": "true"}, "tipo": "delete", "titulo": "Eliminar", "field": "delete"}], "detalle": [{"tipo": "text", "estado": {"3": "true", "2": "true", "1": "true"}, "required": "true", "field": "titulo", "titulo": "Titulo", "texto_ayuda": ""}, {"tipo": "image", "estado": {"3": "true", "2": "true", "1": "true"}, "required": "true", "field": "foto", "titulo": "Foto", "texto_ayuda": "Imagen 1920x700 px, formato jpg o png"}, {"tipo": "text", "estado": {"3": "true", "1": "true", "2": "true"}, "required": "false", "field": "texto1", "titulo": "Texto 1", "texto_ayuda": ""}, {"tipo": "text", "estado": {"3": "true", "2": "true", "1": "true"}, "required": "false", "field": "texto2", "titulo": "Texto 2", "texto_ayuda": ""}, {"tipo": "editor", "estado": {"1": "false", "3": "false", "2": "false"}, "required": "false", "field": "texto", "titulo": "Texto", "texto_ayuda": ""}, {"tipo": "url", "estado": {"1": "true", "2": "true", "3": "true"}, "required": "false", "field": "link", "titulo": "Link", "texto_ayuda": ""}, {"tipo": "number", "estado": {"1": "true", "2": "true", "3": "true"}, "required": "true", "field": "orden", "titulo": "Orden", "texto_ayuda": ""}, {"tipo": "active", "estado": {"1": "true", "3": "true", "2": "true"}, "required": "true", "field": "estado", "titulo": "Estado", "texto_ayuda": ""}], "recortes": [{"alto": "700", "tag": "foto1", "titulo": "Foto 1", "tipo": "centrar", "calidad": "90", "ancho": "1900"}, {"alto": "600", "tag": "foto2", "titulo": "Foto 2", "tipo": "centrar", "calidad": "90", "ancho": "1200"}, {"alto": "500", "tag": "foto3", "titulo": "Foto 3", "tipo": "centrar", "calidad": "90", "ancho": "768"}, {"alto": "400", "tag": "foto4", "titulo": "Foto 4", "tipo": "centrar", "calidad": "90", "ancho": "556"}], "orden": 1, "estado": [{"estado": {"2": "true", "1": "true", "3": "true"}}], "aside": 1, "hijos": 0}, {"idmoduloconfiguracion": 9, "tipo": 2, "titulo": "Banner No encontrado", "menu": [{"field": "new", "titulo": "Nuevo", "estado": {"1": "true", "2": "false", "3": "false"}}, {"field": "excel", "titulo": "Exportar a excel", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "regenerar", "titulo": "Regenerar imagenes", "estado": {"1": "true", "2": "false", "3": "false"}}], "mostrar": [{"field": "0", "tipo": "text", "titulo": "ID", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "orden", "tipo": "text", "titulo": "Orden", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "titulo", "tipo": "text", "titulo": "Titulo", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "foto", "tipo": "image", "titulo": "Foto", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "estado", "tipo": "active", "titulo": "Estado", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "copy", "tipo": "action", "titulo": "Copiar", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "url_detalle", "tipo": "link", "titulo": "Editar", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "delete", "tipo": "delete", "titulo": "Eliminar", "estado": {"1": "false", "2": "false", "3": "false"}}], "detalle": [{"field": "titulo", "tipo": "text", "titulo": "Titulo", "texto_ayuda": "", "required": "true", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "foto", "tipo": "image", "titulo": "Foto", "texto_ayuda": "Imagen  formato jpg o png", "required": "true", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "texto1", "tipo": "text", "titulo": "Texto 1", "texto_ayuda": "", "required": "", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "texto2", "tipo": "text", "titulo": "Texto 2", "texto_ayuda": "", "required": "", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "texto", "tipo": "editor", "titulo": "Texto", "texto_ayuda": "", "required": "", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "link", "tipo": "url", "titulo": "Link", "texto_ayuda": "", "required": "", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "orden", "tipo": "number", "titulo": "Orden", "texto_ayuda": "", "required": "", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "estado", "tipo": "active", "titulo": "Estado", "texto_ayuda": "", "required": "true", "estado": {"1": "true", "2": "true", "3": "true"}}], "recortes": [], "orden": 2, "estado": [{"estado": {"1": "false", "2": "false", "3": "false"}}], "aside": 0, "hijos": 0}]}
+{
+    "icono": "image",
+    "module": "banner",
+    "titulo": "Banner",
+    "sub": "",
+    "padre": "",
+    "menu": [
+        {
+            "field": "new",
+            "titulo": "Nuevo"
+        },
+        {
+            "field": "excel",
+            "titulo": "Exportar a excel"
+        },
+        {
+            "field": "regenerar",
+            "titulo": "Regenerar imagenes"
+        }
+    ],
+    "mostrar": [
+        {
+            "field": "0",
+            "titulo": "ID",
+            "tipo": "text"
+        },
+        {
+            "field": "orden",
+            "titulo": "Orden",
+            "tipo": "text"
+        },
+        {
+            "field": "titulo",
+            "titulo": "Titulo",
+            "tipo": "text"
+        },
+        {
+            "field": "foto",
+            "titulo": "Foto",
+            "tipo": "image"
+        },
+        {
+            "field": "estado",
+            "titulo": "Estado",
+            "tipo": "active"
+        },
+        {
+            "field": "copy",
+            "titulo": "Copiar",
+            "tipo": "action"
+        },
+        {
+            "field": "url_detalle",
+            "titulo": "Editar",
+            "tipo": "link"
+        },
+        {
+            "field": "delete",
+            "titulo": "Eliminar",
+            "tipo": "delete"
+        }
+    ],
+    "detalle": [
+        {
+            "field": "titulo",
+            "titulo": "Titulo",
+            "tipo": "text"
+        },
+        {
+            "field": "foto",
+            "titulo": "Foto",
+            "tipo": "image"
+        },
+        {
+            "field": "texto1",
+            "titulo": "Texto 1",
+            "tipo": "text"
+        },
+        {
+            "field": "texto2",
+            "titulo": "Texto 2",
+            "tipo": "text"
+        },
+        {
+            "field": "texto",
+            "titulo": "Texto",
+            "tipo": "editor"
+        },
+        {
+            "field": "link",
+            "titulo": "Link",
+            "tipo": "url"
+        },
+        {
+            "field": "orden",
+            "titulo": "Orden",
+            "tipo": "number"
+        },
+        {
+            "field": "estado",
+            "titulo": "Estado",
+            "tipo": "active"
+        }
+    ],
+    "orden": 6,
+    "estado": 0,
+    "aside": true,
+    "tipos": 1,
+    "hijo": [
+        {
+            "tipo": 1,
+            "titulo": "Banner principal",
+            "permisos": {
+                1: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": false,
+                        "nombre": true,
+                        "email": true,
+                        "estado": false,
+                        "foto": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": false,
+                        "orden": false,
+                        "titulo": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true,
+                        "titulo": true,
+                        "texto1": false,
+                        "texto2": false,
+                        "texto": false,
+                        "link": false,
+                        "orden": false
+                    }
+                },
+                2: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": false,
+                        "nombre": true,
+                        "email": true,
+                        "estado": false,
+                        "foto": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": false,
+                        "orden": false,
+                        "titulo": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true,
+                        "titulo": true,
+                        "texto1": false,
+                        "texto2": false,
+                        "texto": false,
+                        "link": false,
+                        "orden": false
+                    }
+                },
+                3: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": false,
+                        "nombre": true,
+                        "email": true,
+                        "estado": false,
+                        "foto": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": false,
+                        "orden": false,
+                        "titulo": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true,
+                        "titulo": true,
+                        "texto1": false,
+                        "texto2": false,
+                        "texto": false,
+                        "link": false,
+                        "orden": false
+                    }
+                }
+            },
+            "orden": 1,
+            "estado": {
+                1: true,
+                2: true,
+                3: true
+            },
+            "aside": 1,
+            "hijos": 0
+        },
+        {
+            "tipo": 2,
+            "titulo": "Banner No encontrado",
+            "permisos": {
+                1: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": false,
+                        "nombre": true,
+                        "email": true,
+                        "estado": false,
+                        "foto": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": false,
+                        "orden": false,
+                        "titulo": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true,
+                        "titulo": true,
+                        "texto1": false,
+                        "texto2": false,
+                        "texto": false,
+                        "link": false,
+                        "orden": false
+                    }
+                },
+                2: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": false,
+                        "nombre": true,
+                        "email": true,
+                        "estado": false,
+                        "foto": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": false,
+                        "orden": false,
+                        "titulo": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true,
+                        "titulo": true,
+                        "texto1": false,
+                        "texto2": false,
+                        "texto": false,
+                        "link": false,
+                        "orden": false
+                    }
+                },
+                3: {
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "0": false,
+                        "nombre": true,
+                        "email": true,
+                        "estado": false,
+                        "foto": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": false,
+                        "orden": false,
+                        "titulo": true
+                    },
+                    "detalle": {
+                        "foto": true,
+                        "nombre": true,
+                        "email": true,
+                        "password": true,
+                        "estado": true,
+                        "titulo": true,
+                        "texto1": false,
+                        "texto2": false,
+                        "texto": false,
+                        "link": false,
+                        "orden": false
+                    }
+                }
+            },
+            "orden": 2,
+            "estado": {
+                1: false,
+                2: false,
+                3: false
+            },
+            "aside": 0,
+            "hijos": 0
+        }
+    ]
+}
