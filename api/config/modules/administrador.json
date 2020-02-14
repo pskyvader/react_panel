@@ -96,7 +96,7 @@
             "tipo": 1,
             "titulo": "Super Admin",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -120,7 +120,7 @@
                         "estado": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -144,7 +144,7 @@
                         "estado": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -171,9 +171,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: false,
-                3: false
+                "1": true,
+                "2": false,
+                "3": false
             },
             "aside": 1,
             "hijos": 0
@@ -182,7 +182,7 @@
             "tipo": 2,
             "titulo": "Administradores",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -206,7 +206,7 @@
                         "estado": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -230,7 +230,7 @@
                         "estado": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -257,9 +257,9 @@
             },
             "orden": 2,
             "estado": {
-                1: true,
-                2: true,
-                3: false
+                "1": true,
+                "2": true,
+                "3": false
             },
             "aside": 1,
             "hijos": 0
@@ -268,7 +268,7 @@
             "tipo": 3,
             "titulo": "Admin Limitado",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -292,7 +292,7 @@
                         "estado": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -316,7 +316,7 @@
                         "estado": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -343,9 +343,9 @@
             },
             "orden": 3,
             "estado": {
-                1: true,
-                2: true,
-                3: false
+                "1": true,
+                "2": true,
+                "3": false
             },
             "aside": 1,
             "hijos": 0

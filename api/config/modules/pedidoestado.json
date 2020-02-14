@@ -96,7 +96,7 @@
             "tipo": 1,
             "titulo": "Estados del pedido",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -186,7 +186,7 @@
                         "color": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -276,7 +276,7 @@
                         "color": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -369,9 +369,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: false,
-                3: false
+                "1": true,
+                "2": false,
+                "3": false
             },
             "aside": 1,
             "hijos": 0
@@ -380,7 +380,7 @@
             "tipo": 2,
             "titulo": "Estados de envio",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -470,7 +470,7 @@
                         "color": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -560,7 +560,7 @@
                         "color": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -653,9 +653,9 @@
             },
             "orden": 2,
             "estado": {
-                1: true,
-                2: false,
-                3: false
+                "1": true,
+                "2": false,
+                "3": false
             },
             "aside": 1,
             "hijos": 0

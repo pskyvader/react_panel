@@ -76,7 +76,7 @@
             "tipo": 0,
             "titulo": "Totales diarios instagram",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": false,
                         "excel": true,
@@ -143,7 +143,7 @@
                         "cantidad": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": false,
                         "excel": true,
@@ -210,7 +210,7 @@
                         "cantidad": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": false,
                         "excel": true,
@@ -280,9 +280,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0

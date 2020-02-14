@@ -141,7 +141,7 @@
             "tipo": 1,
             "titulo": "Servicios",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -244,7 +244,7 @@
                         "idseccioncategoria": false
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -347,7 +347,7 @@
                         "idseccioncategoria": false
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -453,9 +453,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 0,
             "hijos": 0
@@ -464,7 +464,7 @@
             "tipo": 2,
             "titulo": "Quienes Somos",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -567,7 +567,7 @@
                         "idseccioncategoria": false
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -670,7 +670,7 @@
                         "idseccioncategoria": false
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -776,9 +776,9 @@
             },
             "orden": 2,
             "estado": {
-                1: false,
-                2: false,
-                3: false
+                "1": false,
+                "2": false,
+                "3": false
             },
             "aside": 0,
             "hijos": 0
@@ -787,7 +787,7 @@
             "tipo": 3,
             "titulo": "Secciones",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -890,7 +890,7 @@
                         "idseccioncategoria": false
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -993,7 +993,7 @@
                         "idseccioncategoria": false
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -1099,9 +1099,9 @@
             },
             "orden": 3,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0

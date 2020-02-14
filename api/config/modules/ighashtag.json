@@ -111,7 +111,7 @@
             "tipo": 0,
             "titulo": "Hashtags Instagram",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -172,7 +172,7 @@
                         "total": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -233,7 +233,7 @@
                         "total": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -297,9 +297,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0

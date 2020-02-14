@@ -91,7 +91,7 @@
             "tipo": 0,
             "titulo": "Medios de pago",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -166,7 +166,7 @@
                         "descripcion": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -241,7 +241,7 @@
                         "descripcion": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -319,9 +319,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: false
+                "1": true,
+                "2": true,
+                "3": false
             },
             "aside": 1,
             "hijos": 0

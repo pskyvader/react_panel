@@ -96,7 +96,7 @@
             "tipo": 1,
             "titulo": "Datos de contacto",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -212,7 +212,7 @@
                         "mapa": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -328,7 +328,7 @@
                         "mapa": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -447,9 +447,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0
@@ -458,7 +458,7 @@
             "tipo": 2,
             "titulo": "Redes sociales",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -574,7 +574,7 @@
                         "mapa": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -690,7 +690,7 @@
                         "mapa": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -809,9 +809,9 @@
             },
             "orden": 2,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0
@@ -820,7 +820,7 @@
             "tipo": 3,
             "titulo": "Textos administrables",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -936,7 +936,7 @@
                         "mapa": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -1052,7 +1052,7 @@
                         "mapa": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -1171,9 +1171,9 @@
             },
             "orden": 3,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0
@@ -1182,7 +1182,7 @@
             "tipo": 4,
             "titulo": "Mapas",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -1298,7 +1298,7 @@
                         "mapa": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -1414,7 +1414,7 @@
                         "mapa": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": false,
@@ -1533,9 +1533,9 @@
             },
             "orden": 4,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0

@@ -141,7 +141,7 @@
             "tipo": 1,
             "titulo": "Categoria de servicios",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -244,7 +244,7 @@
                         "idseccioncategoria": false
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -347,7 +347,7 @@
                         "idseccioncategoria": false
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -453,9 +453,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 1

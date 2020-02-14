@@ -71,7 +71,7 @@
             "tipo": 0,
             "titulo": "Logs",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -145,7 +145,7 @@
                         "accion": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -219,7 +219,7 @@
                         "accion": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": false,
                         "excel": false,
@@ -296,9 +296,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: false
+                "1": true,
+                "2": true,
+                "3": false
             },
             "aside": 1,
             "hijos": 0

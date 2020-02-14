@@ -151,7 +151,7 @@
             "tipo": 1,
             "titulo": "Categorias de productos",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -252,7 +252,7 @@
                         "idpadre": true
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -353,7 +353,7 @@
                         "idpadre": true
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -457,9 +457,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 1

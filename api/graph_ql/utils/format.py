@@ -1,5 +1,6 @@
 from graph_ql.database import config
 import json
+import uuid
 
 def parse_post(environ, buffer):
     from cgi import FieldStorage
@@ -122,8 +123,8 @@ def replaceMultiple(mainString, toBeReplaces, newString):
     return mainString
 
 
-def current_time(formato:str="%Y-%m-%d %H:%M:%S", as_string:bool=True):
-        """ fecha actual en zona horaria santiago, formato opcional
+def current_time(formato: str = "%Y-%m-%d %H:%M:%S", as_string: bool = True):
+    """ fecha actual en zona horaria santiago, formato opcional
         :type formato:str:
         :param formato:str:
     
@@ -135,63 +136,40 @@ def current_time(formato:str="%Y-%m-%d %H:%M:%S", as_string:bool=True):
         :rtype: datetime.timestamp() or str
         """
 
-        import datetime
-        import pytz
-        fecha = datetime.datetime.now(pytz.timezone(config["timezone"]))
-        if as_string:
-            return fecha.strftime(formato)
-        else:
-            return fecha.timestamp()
+    import datetime
+    import pytz
+
+    fecha = datetime.datetime.now(pytz.timezone(config["timezone"]))
+    if as_string:
+        return fecha.strftime(formato)
+    else:
+        return fecha.timestamp()
 
 
-# https://gist.github.com/e96666ca4f059c3e5bc28abb711b5c92.git
 
-class CompactJSONEncoder(json.JSONEncoder):
-    """A JSON Encoder that puts small lists on single lines."""
 
-    MAX_WIDTH = 600
-    """Maximum width of a Single Line List (SLL)."""
+class NoIndent(object):
+    def __init__(self, value):
+        self.value = value
 
-    MAX_ITEMS = 100
-    """Maximum number of items of a Single Line List (SLL)."""
 
+class NoIndentEncoder(json.JSONEncoder):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.indentation_level = 0
-        self.indent = 4
+        super(NoIndentEncoder, self).__init__(*args, **kwargs)
+        self.kwargs = dict(kwargs)
+        del self.kwargs['indent']
+        self._replacement_map = {}
+
+    def default(self, o):
+        if isinstance(o, NoIndent):
+            key = uuid.uuid4().hex
+            self._replacement_map[key] = json.dumps(o.value, **self.kwargs)
+            return "@@%s@@" % (key,)
+        else:
+            return super(NoIndentEncoder, self).default(o)
 
     def encode(self, o):
-        """Encode JSON object *o* with respect to single line lists."""
-        if isinstance(o, (list, tuple)):
-            if self._is_single_line_list(o):
-                return "[" + ", ".join(json.dumps(el) for el in o) + "]"
-            else:
-                self.indentation_level += 1
-                output = [self.indent_str + self.encode(el) for el in o]
-                self.indentation_level -= 1
-                return "[\n" + ",\n".join(output) + "\n" + self.indent_str + "]"
-        elif isinstance(o, dict):
-            self.indentation_level += 1
-            output = [
-                self.indent_str + f"{json.dumps(k)}: {self.encode(v)}"
-                for k, v in o.items()
-            ]
-            self.indentation_level -= 1
-            return "{\n" + ",\n".join(output) + "\n" + self.indent_str + "}"
-        else:
-            return json.dumps(o)
-
-    def _is_single_line_list(self, o):
-        return (
-            self._primitives_only(o)
-            and len(o) <= self.MAX_ITEMS
-            and len(str(o)) - 2 <= self.MAX_WIDTH
-        )
-
-    def _primitives_only(self, o):
-        if isinstance(o, (list, tuple)):
-            return not any(isinstance(el, (list, tuple, dict)) for el in o)
-
-    @property
-    def indent_str(self) -> str:
-        return " " * self.indentation_level * self.indent
+        result = super(NoIndentEncoder, self).encode(o)
+        for k, v in self._replacement_map.items():
+            result = result.replace('"@@%s@@"' % (k,), v)
+        return result

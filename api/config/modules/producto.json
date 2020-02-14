@@ -161,7 +161,7 @@
             "tipo": 1,
             "titulo": "Productos",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -259,7 +259,7 @@
                         "destacado": false
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -357,7 +357,7 @@
                         "destacado": false
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -458,9 +458,9 @@
             },
             "orden": 1,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0
@@ -469,7 +469,7 @@
             "tipo": 2,
             "titulo": "Atributos",
             "permisos": {
-                1: {
+                "1": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -567,7 +567,7 @@
                         "destacado": false
                     }
                 },
-                2: {
+                "2": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -665,7 +665,7 @@
                         "destacado": false
                     }
                 },
-                3: {
+                "3": {
                     "menu": {
                         "new": true,
                         "excel": true,
@@ -766,9 +766,9 @@
             },
             "orden": 2,
             "estado": {
-                1: true,
-                2: true,
-                3: true
+                "1": true,
+                "2": true,
+                "3": true
             },
             "aside": 1,
             "hijos": 0
