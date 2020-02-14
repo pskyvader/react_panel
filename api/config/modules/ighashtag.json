@@ -1,0 +1,326 @@
+{
+    "icono": "add_to_photos",
+    "module": "ighashtag",
+    "titulo": "Hashtags Instagram",
+    "sub": "",
+    "padre": "",
+    "mostrar": [
+        {
+            "tipo": "text",
+            "field": "0",
+            "titulo": "ID"
+        },
+        {
+            "tipo": "text",
+            "field": "orden",
+            "titulo": "Orden"
+        },
+        {
+            "tipo": "text",
+            "field": "hashtag",
+            "titulo": "Hashtag"
+        },
+        {
+            "tipo": "active",
+            "field": "estado",
+            "titulo": "Estado"
+        },
+        {
+            "tipo": "action",
+            "field": "copy",
+            "titulo": "Copiar"
+        },
+        {
+            "tipo": "link",
+            "field": "url_detalle",
+            "titulo": "Editar"
+        },
+        {
+            "tipo": "delete",
+            "field": "delete",
+            "titulo": "Eliminar"
+        }
+    ],
+    "detalle": [
+        {
+            "tipo": "text",
+            "titulo": "Hashtag",
+            "field": "hashtag"
+        },
+        {
+            "tipo": "number",
+            "titulo": "Siguiendo",
+            "field": "following"
+        },
+        {
+            "tipo": "number",
+            "titulo": "Seguidores",
+            "field": "follower"
+        },
+        {
+            "tipo": "number",
+            "titulo": "Eliminados",
+            "field": "removed"
+        },
+        {
+            "tipo": "number",
+            "titulo": "Eficiencia",
+            "field": "eficiencia"
+        },
+        {
+            "tipo": "number",
+            "titulo": "Eficiencia 2",
+            "field": "eficiencia2"
+        },
+        {
+            "tipo": "number",
+            "titulo": "Total",
+            "field": "total"
+        },
+        {
+            "tipo": "number",
+            "titulo": "Orden",
+            "field": "orden"
+        },
+        {
+            "tipo": "active",
+            "titulo": "Estado",
+            "field": "estado"
+        }
+    ],
+    "orden": 3,
+    "estado": 1,
+    "aside": 1,
+    "tipos": 0,
+    "hijo": [
+        {
+            "idmoduloconfiguracion": 30,
+            "tipo": 0,
+            "titulo": "Hashtags Instagram",
+            "menu": [
+                {
+                    "estado": {
+                        "2": "true",
+                        "1": "true",
+                        "3": "true"
+                    },
+                    "field": "new",
+                    "titulo": "Nuevo"
+                },
+                {
+                    "estado": {
+                        "3": "true",
+                        "1": "true",
+                        "2": "true"
+                    },
+                    "field": "excel",
+                    "titulo": "Exportar a excel"
+                },
+                {
+                    "estado": {
+                        "3": "false",
+                        "2": "false",
+                        "1": "false"
+                    },
+                    "field": "regenerar",
+                    "titulo": "Regenerar imagenes"
+                }
+            ],
+            "mostrar": [
+                {
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    },
+                    "tipo": "text",
+                    "titulo": "ID",
+                    "field": "0"
+                },
+                {
+                    "estado": {
+                        "2": "true",
+                        "3": "true",
+                        "1": "true"
+                    },
+                    "tipo": "text",
+                    "titulo": "Orden",
+                    "field": "orden"
+                },
+                {
+                    "estado": {
+                        "2": "true",
+                        "3": "true",
+                        "1": "true"
+                    },
+                    "tipo": "text",
+                    "titulo": "Hashtag",
+                    "field": "hashtag"
+                },
+                {
+                    "estado": {
+                        "2": "true",
+                        "3": "true",
+                        "1": "true"
+                    },
+                    "tipo": "active",
+                    "titulo": "Estado",
+                    "field": "estado"
+                },
+                {
+                    "estado": {
+                        "2": "true",
+                        "1": "true",
+                        "3": "true"
+                    },
+                    "tipo": "action",
+                    "titulo": "Copiar",
+                    "field": "copy"
+                },
+                {
+                    "estado": {
+                        "2": "true",
+                        "1": "true",
+                        "3": "true"
+                    },
+                    "tipo": "link",
+                    "titulo": "Editar",
+                    "field": "url_detalle"
+                },
+                {
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    },
+                    "tipo": "delete",
+                    "titulo": "Eliminar",
+                    "field": "delete"
+                }
+            ],
+            "detalle": [
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "3": "true",
+                        "2": "true",
+                        "1": "true"
+                    },
+                    "required": "true",
+                    "titulo": "Hashtag",
+                    "field": "hashtag",
+                    "tipo": "text"
+                },
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "3": "true",
+                        "2": "true",
+                        "1": "true"
+                    },
+                    "required": "",
+                    "titulo": "Siguiendo",
+                    "field": "following",
+                    "tipo": "number"
+                },
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "2": "true",
+                        "3": "true",
+                        "1": "true"
+                    },
+                    "required": "",
+                    "titulo": "Seguidores",
+                    "field": "follower",
+                    "tipo": "number"
+                },
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "2": "true",
+                        "3": "true",
+                        "1": "true"
+                    },
+                    "required": "",
+                    "titulo": "Eliminados",
+                    "field": "removed",
+                    "tipo": "number"
+                },
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "2": "true",
+                        "1": "true",
+                        "3": "true"
+                    },
+                    "required": "",
+                    "titulo": "Eficiencia",
+                    "field": "eficiencia",
+                    "tipo": "number"
+                },
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "3": "true",
+                        "1": "true",
+                        "2": "true"
+                    },
+                    "required": "",
+                    "titulo": "Eficiencia 2",
+                    "field": "eficiencia2",
+                    "tipo": "number"
+                },
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "2": "true",
+                        "1": "true",
+                        "3": "true"
+                    },
+                    "required": "",
+                    "titulo": "Total",
+                    "field": "total",
+                    "tipo": "number"
+                },
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    },
+                    "required": "true",
+                    "titulo": "Orden",
+                    "field": "orden",
+                    "tipo": "number"
+                },
+                {
+                    "texto_ayuda": "",
+                    "estado": {
+                        "1": "true",
+                        "3": "true",
+                        "2": "true"
+                    },
+                    "required": "true",
+                    "titulo": "Estado",
+                    "field": "estado",
+                    "tipo": "active"
+                }
+            ],
+            "recortes": [],
+            "orden": 1,
+            "estado": [
+                {
+                    "estado": {
+                        "2": "true",
+                        "3": "true",
+                        "1": "true"
+                    }
+                }
+            ],
+            "aside": 1,
+            "hijos": 0
+        }
+    ]
+}

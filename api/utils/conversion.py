@@ -77,7 +77,7 @@ def bdd_to_folder():
         with open(file_str, "r") as file1:
             tables = json.loads(file1.read())
             for t in tables:
-                tablename = bdd_dir + t["tablename"] + ".json"
+                tablename = join(bdd_dir , t["tablename"] + ".json")
                 with open(tablename, "w") as table:
                     table.write(json.dumps(t))
                     print("table", tablename, "created")
@@ -90,12 +90,20 @@ def module_to_folder():
         with open(file_str, "r") as file1:
             tables = json.loads(file1.read())
             for t in tables:
-                module = module_dir + t["module"] + ".json"
+                module = join(module_dir, t["module"] + ".json")
                 with open(module, "w") as table:
                     table.write(json.dumps(t))
                     print("modulo", module, "created")
     except FileNotFoundError as e:
         print("archivo", file_str, "no existe", e)
+
+def json_to_module():
+    json_files = file_list(module_dir)
+    for f in json_files:
+        table = json.loads(get_file(join(module_dir, f)))
+        print(table)
+
+
 
 def json_to_class(tablename, return_class=True):
     template = get_file(join(current_dir, "template_graphene.py"))
@@ -240,7 +248,10 @@ def create_file(file_name, content, force=False):
             return True
     return False
 
-module_to_folder()
-bdd_to_folder()
-json_to_model()
-json_to_schema(force=True)
+# module_to_folder()
+# bdd_to_folder()
+# json_to_model()
+# json_to_schema(force=True)
+
+
+json_to_module()

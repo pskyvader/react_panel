@@ -1,91 +1,91 @@
 {
-    "icono": "accessibility",
-    "module": "igusuario",
-    "titulo": "Usuarios instagram",
+    "icono": "filter_9_plus",
+    "module": "igtotal",
+    "titulo": "Totales Diarios Instagram",
     "sub": "",
     "padre": "",
     "mostrar": [
         {
-            "field": "0",
             "titulo": "ID",
+            "field": "0",
             "tipo": "text"
         },
         {
-            "field": "usuario",
-            "titulo": "Usuario",
+            "titulo": "Fecha",
+            "field": "fecha",
             "tipo": "text"
         },
         {
-            "field": "estado",
-            "titulo": "Estado",
-            "tipo": "active"
+            "titulo": "Tag",
+            "field": "tag",
+            "tipo": "text"
         },
         {
-            "field": "copy",
-            "titulo": "Copiar",
-            "tipo": "action"
+            "titulo": "Cantidad",
+            "field": "cantidad",
+            "tipo": "text"
         },
         {
-            "field": "url_detalle",
             "titulo": "Editar",
+            "field": "url_detalle",
             "tipo": "link"
         },
         {
-            "field": "delete",
             "titulo": "Eliminar",
+            "field": "delete",
             "tipo": "delete"
         }
     ],
     "detalle": [
         {
             "tipo": "text",
-            "titulo": "Usuario",
-            "field": "usuario"
+            "titulo": "Tag",
+            "field": "tag"
         },
         {
-            "tipo": "password",
-            "titulo": "Contrase\u00c3\u0192\u00c2\u00b1a",
-            "field": "password"
+            "tipo": "text",
+            "titulo": "Fecha",
+            "field": "fecha"
         },
         {
-            "tipo": "active",
-            "titulo": "Estado",
-            "field": "estado"
+            "tipo": "text",
+            "titulo": "Cantidad",
+            "field": "cantidad"
         }
     ],
-    "orden": 1,
+    "orden": 5,
     "estado": 1,
     "aside": 1,
     "tipos": 0,
     "hijo": [
         {
-            "idmoduloconfiguracion": 28,
+            "idmoduloconfiguracion": 32,
             "tipo": 0,
-            "titulo": "Usuarios Instagram",
+            "titulo": "Totales diarios instagram",
             "menu": [
                 {
                     "estado": {
-                        "1": "true",
-                        "3": "true",
-                        "2": "true"
+                        "1": "false",
+                        "3": "false",
+                        "2": "false"
                     },
                     "titulo": "Nuevo",
                     "field": "new"
                 },
                 {
                     "estado": {
-                        "2": "true",
                         "1": "true",
-                        "3": "true"
+                        "3": "true",
+                        "2": "true"
                     },
                     "titulo": "Exportar a excel",
                     "field": "excel"
                 },
                 {
                     "estado": {
-                        "3": "false",
                         "1": "false",
-                        "2": "false"
+                        "2": "false",
+                        "3": "false"
                     },
                     "titulo": "Regenerar imagenes",
                     "field": "regenerar"
@@ -93,92 +93,102 @@
             ],
             "mostrar": [
                 {
-                    "field": "usuario",
+                    "titulo": "ID",
                     "estado": {
-                        "2": "true",
-                        "3": "true",
-                        "1": "true"
+                        "3": "false",
+                        "1": "false",
+                        "2": "false"
                     },
-                    "titulo": "Usuario",
+                    "field": "0",
                     "tipo": "text"
                 },
                 {
-                    "field": "estado",
-                    "estado": {
-                        "3": "true",
-                        "2": "true",
-                        "1": "true"
-                    },
-                    "titulo": "Estado",
-                    "tipo": "active"
-                },
-                {
-                    "field": "copy",
+                    "titulo": "Fecha",
                     "estado": {
                         "1": "true",
                         "3": "true",
                         "2": "true"
                     },
-                    "titulo": "Copiar",
-                    "tipo": "action"
+                    "field": "fecha",
+                    "tipo": "text"
                 },
                 {
-                    "field": "url_detalle",
+                    "titulo": "Tag",
                     "estado": {
                         "2": "true",
                         "3": "true",
                         "1": "true"
                     },
+                    "field": "tag",
+                    "tipo": "text"
+                },
+                {
+                    "titulo": "Cantidad",
+                    "estado": {
+                        "1": "true",
+                        "3": "true",
+                        "2": "true"
+                    },
+                    "field": "cantidad",
+                    "tipo": "text"
+                },
+                {
                     "titulo": "Editar",
+                    "estado": {
+                        "3": "true",
+                        "1": "true",
+                        "2": "true"
+                    },
+                    "field": "url_detalle",
                     "tipo": "link"
                 },
                 {
-                    "field": "delete",
+                    "titulo": "Eliminar",
                     "estado": {
                         "2": "true",
                         "3": "true",
                         "1": "true"
                     },
-                    "titulo": "Eliminar",
+                    "field": "delete",
                     "tipo": "delete"
                 }
             ],
             "detalle": [
                 {
-                    "tipo": "text",
                     "estado": {
                         "3": "true",
-                        "2": "true",
-                        "1": "true"
+                        "1": "true",
+                        "2": "true"
                     },
-                    "field": "usuario",
+                    "tipo": "text",
                     "required": "true",
-                    "titulo": "Usuario",
-                    "texto_ayuda": ""
+                    "titulo": "Tag",
+                    "texto_ayuda": "No modificar",
+                    "field": "tag"
                 },
                 {
-                    "tipo": "password",
                     "estado": {
                         "1": "true",
                         "2": "true",
                         "3": "true"
                     },
-                    "field": "password",
+                    "tipo": "text",
                     "required": "true",
-                    "titulo": "Contrase\u00c3\u0192\u00c2\u00b1a",
-                    "texto_ayuda": ""
+                    "titulo": "Fecha",
+                    "texto_ayuda": "No modificar",
+                    "field": "fecha"
                 },
                 {
-                    "tipo": "active",
                     "estado": {
+                        "1": "true",
                         "3": "true",
-                        "2": "true",
-                        "1": "true"
+                        "2": "true"
                     },
-                    "field": "estado",
+                    "tipo": "text",
                     "required": "true",
-                    "titulo": "Estado",
-                    "texto_ayuda": ""
+                    "titulo": "Cantidad",
+                    "texto_ayuda": "",
+                    "field": "cantidad"
                 }
             ],
             "recortes": [],
@@ -186,9 +196,9 @@
             "estado": [
                 {
                     "estado": {
+                        "3": "true",
                         "1": "true",
-                        "2": "true",
-                        "3": "true"
+                        "2": "true"
                     }
                 }
             ],

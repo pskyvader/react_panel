@@ -1,0 +1,273 @@
+{
+    "icono": "place",
+    "module": "comuna",
+    "titulo": "Comuna",
+    "sub": "",
+    "padre": "region",
+    "mostrar": [
+        {
+            "field": "0",
+            "titulo": "ID",
+            "tipo": "text"
+        },
+        {
+            "field": "orden",
+            "titulo": "Orden",
+            "tipo": "text"
+        },
+        {
+            "field": "titulo",
+            "titulo": "Titulo",
+            "tipo": "text"
+        },
+        {
+            "field": "precio",
+            "titulo": "Precio",
+            "tipo": "text"
+        },
+        {
+            "field": "estado",
+            "titulo": "Estado",
+            "tipo": "active"
+        },
+        {
+            "field": "copy",
+            "titulo": "Copiar",
+            "tipo": "action"
+        },
+        {
+            "field": "url_detalle",
+            "titulo": "Editar",
+            "tipo": "link"
+        },
+        {
+            "field": "delete",
+            "titulo": "Eliminar",
+            "tipo": "delete"
+        }
+    ],
+    "detalle": [
+        {
+            "field": "titulo",
+            "titulo": "Titulo",
+            "tipo": "text"
+        },
+        {
+            "field": "precio",
+            "titulo": "Precio",
+            "tipo": "number"
+        },
+        {
+            "field": "idregion",
+            "titulo": "Region",
+            "tipo": "select"
+        },
+        {
+            "field": "orden",
+            "titulo": "Orden",
+            "tipo": "number"
+        },
+        {
+            "field": "estado",
+            "titulo": "Estado",
+            "tipo": "active"
+        }
+    ],
+    "orden": 16,
+    "estado": 0,
+    "aside": 0,
+    "tipos": 0,
+    "hijo": [
+        {
+            "idmoduloconfiguracion": 23,
+            "tipo": 0,
+            "titulo": "Comunas",
+            "menu": [
+                {
+                    "field": "new",
+                    "titulo": "Nuevo",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "excel",
+                    "titulo": "Exportar a excel",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "regenerar",
+                    "titulo": "Regenerar imagenes",
+                    "estado": {
+                        "1": "false",
+                        "2": "false",
+                        "3": "false"
+                    }
+                }
+            ],
+            "mostrar": [
+                {
+                    "field": "0",
+                    "tipo": "text",
+                    "titulo": "ID",
+                    "estado": {
+                        "1": "false",
+                        "2": "false",
+                        "3": "false"
+                    }
+                },
+                {
+                    "field": "orden",
+                    "tipo": "text",
+                    "titulo": "Orden",
+                    "estado": {
+                        "1": "false",
+                        "2": "false",
+                        "3": "false"
+                    }
+                },
+                {
+                    "field": "titulo",
+                    "tipo": "text",
+                    "titulo": "Titulo",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "precio",
+                    "tipo": "text",
+                    "titulo": "Precio",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "estado",
+                    "tipo": "active",
+                    "titulo": "Estado",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "copy",
+                    "tipo": "action",
+                    "titulo": "Copiar",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "url_detalle",
+                    "tipo": "link",
+                    "titulo": "Editar",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "delete",
+                    "tipo": "delete",
+                    "titulo": "Eliminar",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                }
+            ],
+            "detalle": [
+                {
+                    "field": "titulo",
+                    "tipo": "text",
+                    "titulo": "Titulo",
+                    "texto_ayuda": "",
+                    "required": "true",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "precio",
+                    "tipo": "number",
+                    "titulo": "Precio",
+                    "texto_ayuda": "Si el precio es 0 (cero) se utilizaru00e1 el precio de la regiu00f3n",
+                    "required": "true",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "idregion",
+                    "tipo": "select",
+                    "titulo": "Region",
+                    "texto_ayuda": "",
+                    "required": "true",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                },
+                {
+                    "field": "orden",
+                    "tipo": "number",
+                    "titulo": "Orden",
+                    "texto_ayuda": "",
+                    "required": "false",
+                    "estado": {
+                        "1": "false",
+                        "2": "false",
+                        "3": "false"
+                    }
+                },
+                {
+                    "field": "estado",
+                    "tipo": "active",
+                    "titulo": "Estado",
+                    "texto_ayuda": "",
+                    "required": "true",
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                }
+            ],
+            "recortes": [],
+            "orden": 1,
+            "estado": [
+                {
+                    "estado": {
+                        "1": "true",
+                        "2": "true",
+                        "3": "true"
+                    }
+                }
+            ],
+            "aside": 1,
+            "hijos": 0
+        }
+    ]
+}
