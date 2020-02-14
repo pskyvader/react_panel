@@ -40,144 +40,23 @@
             "titulo": "Portafolio",
             "permisos": {
                 "1": {
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": true,
-                        "orden": true,
-                        "titulo": true,
-                        "precio": true,
-                        "variable": false,
-                        "valor": false
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": true,
-                        "precio": true,
-                        "idregion": true,
-                        "variable": false,
-                        "valor": false,
-                        "url": true,
-                        "subtitulo": true,
-                        "resumen": true,
-                        "keywords": true,
-                        "metadescripcion": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": true},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": true,
-                        "orden": true,
-                        "titulo": true,
-                        "precio": true,
-                        "variable": false,
-                        "valor": false
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": true,
-                        "precio": true,
-                        "idregion": true,
-                        "variable": false,
-                        "valor": false,
-                        "url": true,
-                        "subtitulo": true,
-                        "resumen": true,
-                        "keywords": true,
-                        "metadescripcion": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": true},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": true,
-                        "orden": true,
-                        "titulo": true,
-                        "precio": true,
-                        "variable": false,
-                        "valor": false
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": true,
-                        "precio": true,
-                        "idregion": true,
-                        "variable": false,
-                        "valor": false,
-                        "url": true,
-                        "subtitulo": true,
-                        "resumen": true,
-                        "keywords": true,
-                        "metadescripcion": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": true},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 1,
-            "estado": {
-                "1": true,
-                "2": true,
-                "3": true
-            },
+            "estado": {"1": true, "2": true, "3": true},
             "aside": 1,
             "hijos": 0
         }

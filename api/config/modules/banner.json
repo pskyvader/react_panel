@@ -39,108 +39,23 @@
             "titulo": "Banner principal",
             "permisos": {
                 "1": {
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": false,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false,
-                        "orden": false,
-                        "titulo": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "orden": false, "titulo": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 },
                 "2": {
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": false,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false,
-                        "orden": false,
-                        "titulo": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "orden": false, "titulo": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 },
                 "3": {
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": false,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false,
-                        "orden": false,
-                        "titulo": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "orden": false, "titulo": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 }
             },
             "orden": 1,
-            "estado": {
-                "1": true,
-                "2": true,
-                "3": true
-            },
+            "estado": {"1": true, "2": true, "3": true},
             "aside": 1,
             "hijos": 0
         },
@@ -149,108 +64,23 @@
             "titulo": "Banner No encontrado",
             "permisos": {
                 "1": {
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": false,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false,
-                        "orden": false,
-                        "titulo": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "orden": false, "titulo": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 },
                 "2": {
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": false,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false,
-                        "orden": false,
-                        "titulo": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "orden": false, "titulo": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 },
                 "3": {
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": false,
-                        "foto": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false,
-                        "orden": false,
-                        "titulo": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "orden": false, "titulo": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 }
             },
             "orden": 2,
-            "estado": {
-                "1": false,
-                "2": false,
-                "3": false
-            },
+            "estado": {"1": false, "2": false, "3": false},
             "aside": 0,
             "hijos": 0
         }

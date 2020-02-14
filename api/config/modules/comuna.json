@@ -36,117 +36,23 @@
             "titulo": "Comunas",
             "permisos": {
                 "1": {
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true,
-                        "orden": false,
-                        "titulo": true,
-                        "precio": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false,
-                        "precio": true,
-                        "idregion": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "orden": false, "titulo": true, "precio": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false, "precio": true, "idregion": true}
                 },
                 "2": {
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true,
-                        "orden": false,
-                        "titulo": true,
-                        "precio": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false,
-                        "precio": true,
-                        "idregion": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "orden": false, "titulo": true, "precio": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false, "precio": true, "idregion": true}
                 },
                 "3": {
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "0": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true,
-                        "orden": false,
-                        "titulo": true,
-                        "precio": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true,
-                        "titulo": true,
-                        "texto1": false,
-                        "texto2": false,
-                        "texto": false,
-                        "link": false,
-                        "orden": false,
-                        "precio": true,
-                        "idregion": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "orden": false, "titulo": true, "precio": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false, "precio": true, "idregion": true}
                 }
             },
             "orden": 1,
-            "estado": {
-                "1": true,
-                "2": true,
-                "3": true
-            },
+            "estado": {"1": true, "2": true, "3": true},
             "aside": 1,
             "hijos": 0
         }
