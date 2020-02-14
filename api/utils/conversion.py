@@ -88,6 +88,7 @@ def module_to_folder():
         with open(file_str, "r") as file1:
             tables = json.loads(file1.read())
             for t in tables:
+                print(t['module'])
                 number=0
                 if t['module']=='separador':
                     number+=1
@@ -346,4 +347,4 @@ module_to_folder()
 # json_to_schema(force=True)
 
 
-json_to_module()
+# json_to_module()
