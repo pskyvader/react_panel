@@ -39,23 +39,25 @@
             "titulo": "Banner principal",
             "permisos": {
                 "1": {
+                    "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
                     "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": false, "titulo": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 },
                 "2": {
+                    "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
                     "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": false, "titulo": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 },
                 "3": {
+                    "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
                     "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": false, "titulo": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 }
             },
             "orden": 1,
-            "estado": {"1": true, "2": true, "3": true},
             "aside": true,
             "hijos": false
         },
@@ -64,23 +66,25 @@
             "titulo": "Banner No encontrado",
             "permisos": {
                 "1": {
+                    "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
                     "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": false, "titulo": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 },
                 "2": {
+                    "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
                     "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": false, "titulo": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 },
                 "3": {
+                    "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
                     "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": false, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": false, "titulo": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false}
                 }
             },
             "orden": 2,
-            "estado": {"1": false, "2": false, "3": false},
             "aside": false,
             "hijos": false
         }

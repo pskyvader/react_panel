@@ -120,8 +120,8 @@ def json_to_module():
     }
 
     menu = {"field": "", "titulo": ""}
-    hijo = { "tipo": 0, "titulo": "","permisos":{} , "orden": 0, "estado": {}, "aside": False, "hijos": False, }
-    permiso={"menu":{},"mostrar":{},"detalle":{}}
+    hijo = { "tipo": 0, "titulo": "","permisos":{} , "orden": 0, "aside": False, "hijos": False, }
+    permiso={"estado":False,"menu":{},"mostrar":{},"detalle":{}}
 
     json_files = file_list(module_dir)
     for f in json_files:
@@ -157,10 +157,10 @@ def json_to_module():
                         new_h[k]=table_hijo[k] if not isinstance(new_h[k],bool) else bool(table_hijo[k])
 
                 new_permisos={}
-                new_estado={}
                 for tipo in range(1,4):
-                    new_estado[tipo]=True if table_hijo['estado'][0]['estado'][str(tipo)]=='true' else False
                     new_permiso=permiso.copy()
+                    new_permiso['estado']=True if table_hijo['estado'][0]['estado'][str(tipo)]=='true' else False
+
                     for menu_hijo in table_hijo['menu']:
                         new_permiso['menu'][menu_hijo['field']]= True if menu_hijo['estado'][str(tipo)]=='true' else False
                     new_permiso['menu']=NoIndent(new_permiso['menu'])
@@ -177,7 +177,6 @@ def json_to_module():
 
                     new_permisos[tipo]=new_permiso
                     
-                new_h['estado']=NoIndent(new_estado)
                 new_h['permisos']=new_permisos
 
                 new_hijos.append(new_h)

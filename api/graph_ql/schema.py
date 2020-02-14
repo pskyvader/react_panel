@@ -4,6 +4,8 @@ from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
 import sys, inspect
 
+from . import module_object
+
 # Add schemas to list
 clsmembers = inspect.getmembers(sys.modules["graph_ql.schemas"])
 schema_list = []
@@ -36,6 +38,7 @@ for title, sc in schema_list:
 
 class Query(graphene.ObjectType, attributes_query):
     node = relay.Node.Field()
+    all_module=module_object.all_module
 
 
 class Mutation(graphene.ObjectType, attributes_mutation):
