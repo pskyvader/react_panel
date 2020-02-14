@@ -19,11 +19,8 @@ import { Fragment } from 'react';
 
 
 
-const sideList = (classes,handleDrawer,theme) => (
-    <div
-        className={classes.list}
-        role="presentation"
-    >
+const sideList = (classes, handleDrawer, theme) => (
+    <div className={classes.list} role="presentation" >
         <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawer}>
                 {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
@@ -62,13 +59,13 @@ function Sidebar(props) {
         <Fragment>
             <Hidden smDown>
                 <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
-                    {sideList(classes,handleDrawer,theme)}
+                    {sideList(classes, handleDrawer, theme)}
                 </Drawer>
             </Hidden>
 
             <Hidden mdUp>
                 <Drawer variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
-                {sideList(classes,handleDrawer,theme)}
+                    {sideList(classes, handleDrawer, theme)}
                 </Drawer>
             </Hidden>
         </Fragment>
