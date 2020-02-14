@@ -1,0 +1,57 @@
+{
+    "icono": "accessibility",
+    "module": "igusuario",
+    "titulo": "Usuarios instagram",
+    "sub": "",
+    "padre": "",
+    "menu": [
+        {"field": "new","titulo": "Nuevo" },
+        { "field": "excel","titulo": "Exportar a excel"  },
+        { "field": "regenerar","titulo": "Regenerar imagenes" }
+    ],
+    "mostrar": [
+        { "field": "0", "titulo": "ID", "tipo": "text" },
+        { "field": "usuario", "titulo": "Usuario", "tipo": "text" },
+        { "field": "estado", "titulo": "Estado", "tipo": "active" },
+        { "field": "copy", "titulo": "Copiar", "tipo": "action" },
+        { "field": "url_detalle", "titulo": "Editar", "tipo": "link" },
+        { "field": "delete", "titulo": "Eliminar", "tipo": "delete" }
+    ],
+    "detalle": [
+        { "field": "usuario","tipo": "text", "titulo": "Usuario"  },
+        { "field": "password","tipo": "password", "titulo": "Contraseña"  },
+        { "field": "estado","tipo": "active", "titulo": "Estado"  }
+    ],
+    "orden": 1,
+    "estado": 1,
+    "aside": 1,
+    "tipos": 0,
+    "hijo": [
+        {
+            "tipo": 0,
+            "titulo": "Usuarios Instagram",
+            "permisos":{
+                "1":{
+                    "menu": { "new": true, "excel": true, "regenerar": true },
+                   "mostrar": { "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true },
+                   "detalle": { "usuario": true, "password": true, "estado": true }
+                },
+                "2":{
+                    "menu": { "new": true, "excel": true, "regenerar": true },
+                   "mostrar": { "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true },
+                   "detalle": { "usuario": true, "password": true, "estado": true }
+                },
+                "3":{
+                    "menu": { "new": true, "excel": true, "regenerar": true },
+                   "mostrar": { "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true },
+                   "detalle": { "usuario": true, "password": true, "estado": true }
+                }
+            },
+            "recortes": [],
+            "orden": 1,
+            "estado": { "1": true, "2": true, "3": true },
+            "aside": 1,
+            "hijos": 0
+        }
+    ]
+}
