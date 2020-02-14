@@ -133,6 +133,8 @@ def json_to_module():
             elif k!="hijo" and k!="menu":
                 new_array=[]
                 for e in table[k]:
+                    if e['field']=='0':
+                        e['field']='id'+table["module"]
                     new_array.append(NoIndent(e))
                 new_module[k]=new_array
 
@@ -152,7 +154,7 @@ def json_to_module():
                 new_h=hijo.copy()
                 for k,v in new_h.items():
                     if k!='permisos' and k!='estado':
-                        new_h[k]=table_hijo[k]
+                        new_h[k]=table_hijo[k] if k!='aside' else bool(table_hijo[k])
 
                 new_permisos={}
                 new_estado={}
@@ -164,6 +166,8 @@ def json_to_module():
                     new_permiso['menu']=NoIndent(new_permiso['menu'])
 
                     for mostrar_hijo in table_hijo['mostrar']:
+                        if mostrar_hijo['field']=='0':
+                            mostrar_hijo['field']='id'+table["module"]
                         new_permiso['mostrar'][mostrar_hijo['field']]= True if mostrar_hijo['estado'][str(tipo)]=='true' else False
                     new_permiso['mostrar']=NoIndent(new_permiso['mostrar'])
 

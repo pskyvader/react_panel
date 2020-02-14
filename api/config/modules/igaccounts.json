@@ -33,23 +33,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 1,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         },
         {
@@ -58,23 +58,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 2,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         },
         {
@@ -83,23 +83,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 3,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         },
         {
@@ -108,23 +108,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 4,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         },
         {
@@ -133,23 +133,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 5,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         },
         {
@@ -158,23 +158,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 6,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         },
         {
@@ -183,23 +183,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 7,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         },
         {
@@ -208,23 +208,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 8,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         },
         {
@@ -233,23 +233,23 @@
             "permisos": {
                 "1": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "2": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 },
                 "3": {
                     "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"0": false, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "orden": true, "titulo": true, "precio": true, "variable": false, "valor": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true},
                     "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true}
                 }
             },
             "orden": 9,
             "estado": {"1": true, "2": true, "3": true},
-            "aside": 1,
+            "aside": true,
             "hijos": 0
         }
     ]
