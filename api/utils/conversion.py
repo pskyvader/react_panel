@@ -4,6 +4,7 @@ import sys
 
 current_dir = dirname(__file__)
 sys.path.append(join(current_dir, ".."))
+from graph_ql.utils.format import CompactJSONEncoder
 
 
 config_file = join(current_dir, "..", "config", "config.json")
@@ -170,7 +171,7 @@ def json_to_module():
             
             new_module['hijo']=new_hijos
 
-        if create_file(join(module_dir, f), json.dumps(new_module), True):
+        if create_file(join(module_dir, f), CompactJSONEncoder.encode(CompactJSONEncoder(),new_module), True):
             print("modulo creado correctamente!", f)
         else:
             print("Error al crear el modulo!", f)

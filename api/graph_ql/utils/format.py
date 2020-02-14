@@ -1,4 +1,5 @@
 from graph_ql.database import config
+import json
 
 def parse_post(environ, buffer):
     from cgi import FieldStorage
@@ -141,3 +142,55 @@ def current_time(formato:str="%Y-%m-%d %H:%M:%S", as_string:bool=True):
             return fecha.strftime(formato)
         else:
             return fecha.timestamp()
+
+
+# https://gist.github.com/e96666ca4f059c3e5bc28abb711b5c92.git
+
+class CompactJSONEncoder(json.JSONEncoder):
+    """A JSON Encoder that puts small lists on single lines."""
+
+    MAX_WIDTH = 60
+    """Maximum width of a Single Line List (SLL)."""
+
+    MAX_ITEMS = 2
+    """Maximum number of items of a Single Line List (SLL)."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.indentation_level = 0
+
+    def encode(self, o):
+        """Encode JSON object *o* with respect to single line lists."""
+        if isinstance(o, (list, tuple)):
+            if self._is_single_line_list(o):
+                return "[" + ", ".join(json.dumps(el) for el in o) + "]"
+            else:
+                self.indentation_level += 1
+                output = [self.indent_str + self.encode(el) for el in o]
+                self.indentation_level -= 1
+                return "[\n" + ",\n".join(output) + "\n" + self.indent_str + "]"
+        elif isinstance(o, dict):
+            self.indentation_level += 1
+            output = [
+                self.indent_str + f"{json.dumps(k)}: {self.encode(v)}"
+                for k, v in o.items()
+            ]
+            self.indentation_level -= 1
+            return "{\n" + ",\n".join(output) + "\n" + self.indent_str + "}"
+        else:
+            return json.dumps(o)
+
+    def _is_single_line_list(self, o):
+        return (
+            self._primitives_only(o)
+            and len(o) <= self.MAX_ITEMS
+            and len(str(o)) - 2 <= self.MAX_WIDTH
+        )
+
+    def _primitives_only(self, o):
+        if isinstance(o, (list, tuple)):
+            return not any(isinstance(el, (list, tuple, dict)) for el in o)
+
+    @property
+    def indent_str(self) -> str:
+        return " " * self.indentation_level * self.indent
