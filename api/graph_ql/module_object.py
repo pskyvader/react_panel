@@ -53,6 +53,12 @@ class permisos_object(graphene.ObjectType):
     mostrar=graphene.List(permisos_detail_object)
     detalle=graphene.List(permisos_detail_object)
 
+    def resolve_menu(parent,info,*args, **kwargs):
+        list_menu=[]
+        for k,m in parent['menu'].items():
+            list_menu.append(permisos_detail_object(field=k,estado=m))
+        return list_menu
+
 
 
 
@@ -81,9 +87,6 @@ class module_object(graphene.ObjectType):
     detalle=graphene.List(detalle_object)
     hijo=graphene.List(module_configuration_object)
 
-    def resolve_hijo(parent,info,*args, **kwargs):
-        print(parent,info,*args, **kwargs)
-
 
 
 def check_permisos(hijos,tipo):
@@ -98,15 +101,15 @@ def filter_permissions(list,tipo):
 
     for k,v in list.items():
         c_module=v.copy()
-        c_module['hijo']=None
+        c_module['hijo']=[]
         for hijo in v['hijo']:
             c_hijo=hijo.copy()
             c_hijo['permisos']={}
             if str(tipo) in hijo['permisos'] and hijo['permisos'][str(tipo)]['estado']:
                 c_hijo['permisos']=hijo['permisos'][str(tipo)]
             if c_hijo['permisos']!={}:
-                c_module['hijo']=c_hijo
-        if c_module['hijo']!=None:
+                c_module['hijo'].append(c_hijo)
+        if c_module['hijo']!=[]:
             module_list_final[c_module['orden']]=c_module
 
     return [v for k, v in sorted(module_list_final.items(), key=lambda item: item[0])]
@@ -125,17 +128,7 @@ def resolve_all_module(args, info, idadministrador):
     for m in filtered_module:
         m_o=module_object()
         for k, v in m.items():
-            if k!='hijo':
-                setattr(m_o, k, v)
-            else:
-                list_hijos=[]
-                for hijo in v:
-                    h_o=module_configuration_object()
-                    for k2,h in hijo.items():
-                        setattr(h_o, k2, h)
-                    list_hijos.append(h_o)
-                
-                setattr(m_o, k, list_hijos)
+            setattr(m_o, k, v)
                     
 
         final_list.append(m_o)
