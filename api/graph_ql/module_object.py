@@ -47,6 +47,7 @@ class permisos_detail_object(graphene.ObjectType):
     
 
 class permisos_object(graphene.ObjectType):
+    estado=graphene.Boolean()
     menu=graphene.List(permisos_detail_object)
     mostrar=graphene.List(permisos_detail_object)
     detalle=graphene.List(permisos_detail_object)
@@ -60,8 +61,6 @@ class module_configuration_object(graphene.ObjectType):
     orden=graphene.Int()
     aside=graphene.Boolean()
     hijos=graphene.Boolean()
-    estado=graphene.Boolean()
-
     permisos=graphene.Field(permisos_object)
 
 
@@ -83,14 +82,12 @@ class module_object(graphene.ObjectType):
 
 
 
-def check_permisos(hijo,tipo):
-    if not hijo['aside']:
-        return False
+def check_permisos(hijos,tipo):
+    for hijo in hijos:
+        if hijo['aside'] and str(tipo) in hijo['permisos'] and hijo['permisos'][str(tipo)]['estado']:
+            return True
     
-    if not str(tipo) in hijo['permisos']:
-        return False
-    
-    return hijo['permisos'][tipo]['estado']
+    return False
 
 
 def resolve_all_module(args, info, idadministrador):
@@ -98,8 +95,10 @@ def resolve_all_module(args, info, idadministrador):
     if administrador==None:
         return []
     
-    filtered_module_list={x for x in module_list if x['estado'] and x['aside'] and len(x['hijo'])>0}
-    filtered_child_list={x for x in filtered_module_list if check_permisos(x['hijo'],administrador.tipo)}
+
+    
+    filtered_module_list={x:v for x,v in module_list.items() if v['estado'] and v['aside'] and len(v['hijo'])>0 }
+    filtered_child_list={x:v for x,v in filtered_module_list.items() if check_permisos(v['hijo'],administrador.tipo)}
 
 
     print(len(filtered_child_list))
