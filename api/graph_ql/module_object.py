@@ -81,6 +81,9 @@ class module_object(graphene.ObjectType):
     detalle=graphene.List(detalle_object)
     hijo=graphene.List(module_configuration_object)
 
+    def resolve_hijo(parent,info,*args, **kwargs):
+        print(parent,info,*args, **kwargs)
+
 
 
 def check_permisos(hijos,tipo):
@@ -122,7 +125,19 @@ def resolve_all_module(args, info, idadministrador):
     for m in filtered_module:
         m_o=module_object()
         for k, v in m.items():
-            setattr(m_o, k, v)
+            if k!='hijo':
+                setattr(m_o, k, v)
+            else:
+                list_hijos=[]
+                for hijo in v:
+                    h_o=module_configuration_object()
+                    for k2,h in hijo.items():
+                        setattr(h_o, k2, h)
+                    list_hijos.append(h_o)
+                
+                setattr(m_o, k, list_hijos)
+                    
+
         final_list.append(m_o)
 
     cache_module_permissions[administrador.tipo]=final_list
