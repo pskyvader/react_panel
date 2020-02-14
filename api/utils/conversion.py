@@ -141,16 +141,17 @@ def json_to_module():
                 
             new_module['menu']=new_menus
 
-            print(new_module['menu'])
             new_hijos=[]
             for table_hijo in table['hijo']:
                 new_h=hijo.copy()
                 for k,v in new_h.items():
-                    if k!='permisos':
-                        new_menu[k]=table_hijo[k]
+                    if k!='permisos' and k!='estado':
+                        new_h[k]=table_hijo[k]
 
                 new_permisos={}
-                for tipo in range(1,2,3):
+                new_estado={}
+                for tipo in range(1,4):
+                    new_estado[tipo]=True if table_hijo['estado'][0]['estado'][str(tipo)]=='true' else False
                     new_permiso=permiso.copy()
                     for menu_hijo in table_hijo['menu']:
                         new_permiso['menu'][menu_hijo['field']]= True if menu_hijo['estado'][str(tipo)]=='true' else False
@@ -161,11 +162,12 @@ def json_to_module():
                     for detalle_hijo in table_hijo['detalle']:
                         new_permiso['detalle'][detalle_hijo['field']]= True if detalle_hijo['estado'][str(tipo)]=='true' else False
                     new_permisos[tipo]=new_permiso
+                    
+                new_h['estado']=new_estado
                 new_h['permisos']=new_permisos
 
                 new_hijos.append(new_h)
             
-            print(new_module['menu'])
             new_module['hijo']=new_hijos
 
         if create_file(join(module_dir, f), json.dumps(new_module), True):

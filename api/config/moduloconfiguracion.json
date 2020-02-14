@@ -6988,7 +6988,7 @@
         "tipo": "email",
         "titulo": "Email"
     }, {
-        "field": "pass",
+        "field": "password",
         "tipo": "password",
         "titulo": "Contraseu00f1a"
     }, {
@@ -7165,7 +7165,7 @@
             "tipo": "password",
             "required": "true",
             "texto_ayuda": "",
-            "field": "pass"
+            "field": "password"
         }, {
             "estado": {
                 "1": "true",
@@ -9130,7 +9130,7 @@
         "tipo": "email"
     }, {
         "titulo": "Contrase\u00c3\u0192\u00c2\u00b1a",
-        "field": "pass",
+        "field": "password",
         "tipo": "password"
     }, {
         "titulo": "Estado",
@@ -9283,7 +9283,7 @@
                 "2": "true"
             },
             "required": "true",
-            "field": "pass",
+            "field": "password",
             "tipo": "password",
             "titulo": "Contrase\u00c3\u0192\u00c2\u00b1a",
             "texto_ayuda": ""
@@ -9459,7 +9459,7 @@
                 "2": "true"
             },
             "required": "true",
-            "field": "pass",
+            "field": "password",
             "tipo": "password",
             "titulo": "Contrase\u00c3\u0192\u00c2\u00b1a",
             "texto_ayuda": ""
@@ -9629,7 +9629,7 @@
                 "3": "true"
             }
         }, {
-            "field": "pass",
+            "field": "password",
             "tipo": "password",
             "titulo": "Contraseu00f1a",
             "texto_ayuda": "",
