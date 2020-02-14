@@ -352,10 +352,11 @@ def create_file(file_name, content, force=False):
     return False
 
 
-module_to_folder()
-# bdd_to_folder()
-# json_to_model()
-# json_to_schema(force=True)
+if __name__ == "__main__":
+    module_to_folder()
+    # bdd_to_folder()
+    # json_to_model()
+    # json_to_schema(force=True)
 
 
-json_to_module()
+    json_to_module()

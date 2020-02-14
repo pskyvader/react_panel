@@ -1,15 +1,21 @@
 import graphene
 from graph_ql.schemas.administrador_schema import resolve_administrador
 
+import json
 from os.path import join, dirname
-
+from utils.conversion import file_list,get_file
 
 
 current_dir = dirname(__file__)
 
 module_dir = join(current_dir, "..", "config", "modules")
-module_list=[]
+module_list={}
 
+
+json_files = file_list(module_dir)
+for f in json_files:
+    module_file = json.loads(get_file(join(module_dir, f)))
+    module_list[module_file['module']]=module_file
 
 
 
@@ -77,12 +83,27 @@ class module_object(graphene.ObjectType):
 
 
 
+def check_permisos(hijo,tipo):
+    if not hijo['aside']:
+        return False
     
+    if not str(tipo) in hijo['permisos']:
+        return False
+    
+    return hijo['permisos'][tipo]['estado']
+
+
 def resolve_all_module(args, info, idadministrador):
     administrador=resolve_administrador(args, info,idadministrador)
     if administrador==None:
         return []
-    print(administrador)
+    
+    filtered_module_list={x for x in module_list if x['estado'] and x['aside'] and len(x['hijo'])>0}
+    filtered_child_list={x for x in filtered_module_list if check_permisos(x['hijo'],administrador.tipo)}
+
+
+    print(len(filtered_child_list))
+    print(filtered_child_list)
     print(administrador.tipo)
     return [module_object()]
 
