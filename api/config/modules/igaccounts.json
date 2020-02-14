@@ -5,70 +5,21 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "tipo": "text",
-            "titulo": "ID usuario",
-            "field": "pk"
-        },
-        {
-            "tipo": "text",
-            "titulo": "Usuario",
-            "field": "username"
-        },
-        {
-            "tipo": "text",
-            "titulo": "Nombre",
-            "field": "full_name"
-        },
-        {
-            "tipo": "link",
-            "titulo": "Perfil",
-            "field": "profile_url"
-        },
-        {
-            "tipo": "image",
-            "titulo": "Imagen",
-            "field": "profile_pic_url"
-        },
-        {
-            "tipo": "text",
-            "titulo": "Me sigue",
-            "field": "follower"
-        },
-        {
-            "tipo": "active",
-            "titulo": "Siguiendo",
-            "field": "following"
-        },
-        {
-            "tipo": "active",
-            "titulo": "Favorito",
-            "field": "favorito"
-        },
-        {
-            "tipo": "action",
-            "titulo": "Actualizar",
-            "field": "update"
-        },
-        {
-            "tipo": "delete",
-            "titulo": "Eliminar",
-            "field": "delete"
-        }
+        {"tipo": "text", "titulo": "ID usuario", "field": "pk"},
+        {"tipo": "text", "titulo": "Usuario", "field": "username"},
+        {"tipo": "text", "titulo": "Nombre", "field": "full_name"},
+        {"tipo": "link", "titulo": "Perfil", "field": "profile_url"},
+        {"tipo": "image", "titulo": "Imagen", "field": "profile_pic_url"},
+        {"tipo": "text", "titulo": "Me sigue", "field": "follower"},
+        {"tipo": "active", "titulo": "Siguiendo", "field": "following"},
+        {"tipo": "active", "titulo": "Favorito", "field": "favorito"},
+        {"tipo": "action", "titulo": "Actualizar", "field": "update"},
+        {"tipo": "delete", "titulo": "Eliminar", "field": "delete"}
     ],
     "detalle": [],
     "orden": 2,

@@ -5,57 +5,20 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "field": "variable",
-            "tipo": "text",
-            "titulo": "Configuracion"
-        },
-        {
-            "field": "valor",
-            "tipo": "text",
-            "titulo": "Valor"
-        },
-        {
-            "field": "copy",
-            "tipo": "action",
-            "titulo": "Copiar"
-        },
-        {
-            "field": "url_detalle",
-            "tipo": "link",
-            "titulo": "Editar"
-        },
-        {
-            "field": "delete",
-            "tipo": "delete",
-            "titulo": "Eliminar"
-        }
+        {"field": "variable", "tipo": "text", "titulo": "Configuracion"},
+        {"field": "valor", "tipo": "text", "titulo": "Valor"},
+        {"field": "copy", "tipo": "action", "titulo": "Copiar"},
+        {"field": "url_detalle", "tipo": "link", "titulo": "Editar"},
+        {"field": "delete", "tipo": "delete", "titulo": "Eliminar"}
     ],
     "detalle": [
-        {
-            "tipo": "text",
-            "titulo": "Configuracion",
-            "field": "variable"
-        },
-        {
-            "tipo": "textarea",
-            "titulo": "Valor",
-            "field": "valor"
-        }
+        {"tipo": "text", "titulo": "Configuracion", "field": "variable"},
+        {"tipo": "textarea", "titulo": "Valor", "field": "valor"}
     ],
     "orden": 29,
     "estado": 1,

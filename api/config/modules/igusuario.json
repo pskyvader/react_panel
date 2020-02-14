@@ -5,67 +5,22 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "field": "0",
-            "titulo": "ID",
-            "tipo": "text"
-        },
-        {
-            "field": "usuario",
-            "titulo": "Usuario",
-            "tipo": "text"
-        },
-        {
-            "field": "estado",
-            "titulo": "Estado",
-            "tipo": "active"
-        },
-        {
-            "field": "copy",
-            "titulo": "Copiar",
-            "tipo": "action"
-        },
-        {
-            "field": "url_detalle",
-            "titulo": "Editar",
-            "tipo": "link"
-        },
-        {
-            "field": "delete",
-            "titulo": "Eliminar",
-            "tipo": "delete"
-        }
+        {"field": "0", "titulo": "ID", "tipo": "text"},
+        {"field": "usuario", "titulo": "Usuario", "tipo": "text"},
+        {"field": "estado", "titulo": "Estado", "tipo": "active"},
+        {"field": "copy", "titulo": "Copiar", "tipo": "action"},
+        {"field": "url_detalle", "titulo": "Editar", "tipo": "link"},
+        {"field": "delete", "titulo": "Eliminar", "tipo": "delete"}
     ],
     "detalle": [
-        {
-            "tipo": "text",
-            "titulo": "Usuario",
-            "field": "usuario"
-        },
-        {
-            "tipo": "password",
-            "titulo": "Contrase\u00c3\u0192\u00c2\u00b1a",
-            "field": "password"
-        },
-        {
-            "tipo": "active",
-            "titulo": "Estado",
-            "field": "estado"
-        }
+        {"tipo": "text", "titulo": "Usuario", "field": "usuario"},
+        {"tipo": "password", "titulo": "Contrase\u00c3\u0192\u00c2\u00b1a", "field": "password"},
+        {"tipo": "active", "titulo": "Estado", "field": "estado"}
     ],
     "orden": 1,
     "estado": 1,

@@ -5,18 +5,9 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [],
     "detalle": [],

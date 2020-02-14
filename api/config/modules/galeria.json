@@ -5,107 +5,30 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "field": "0",
-            "titulo": "ID",
-            "tipo": "text"
-        },
-        {
-            "field": "orden",
-            "titulo": "Orden",
-            "tipo": "text"
-        },
-        {
-            "field": "titulo",
-            "titulo": "Titulo",
-            "tipo": "text"
-        },
-        {
-            "field": "foto",
-            "titulo": "Foto",
-            "tipo": "image"
-        },
-        {
-            "field": "estado",
-            "titulo": "Estado",
-            "tipo": "active"
-        },
-        {
-            "field": "copy",
-            "titulo": "Copiar",
-            "tipo": "action"
-        },
-        {
-            "field": "url_detalle",
-            "titulo": "Editar",
-            "tipo": "link"
-        },
-        {
-            "field": "delete",
-            "titulo": "Eliminar",
-            "tipo": "delete"
-        }
+        {"field": "0", "titulo": "ID", "tipo": "text"},
+        {"field": "orden", "titulo": "Orden", "tipo": "text"},
+        {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
+        {"field": "foto", "titulo": "Foto", "tipo": "image"},
+        {"field": "estado", "titulo": "Estado", "tipo": "active"},
+        {"field": "copy", "titulo": "Copiar", "tipo": "action"},
+        {"field": "url_detalle", "titulo": "Editar", "tipo": "link"},
+        {"field": "delete", "titulo": "Eliminar", "tipo": "delete"}
     ],
     "detalle": [
-        {
-            "field": "titulo",
-            "titulo": "Titulo",
-            "tipo": "text"
-        },
-        {
-            "field": "url",
-            "titulo": "URL",
-            "tipo": "url"
-        },
-        {
-            "field": "subtitulo",
-            "titulo": "Subtitulo",
-            "tipo": "text"
-        },
-        {
-            "field": "foto",
-            "titulo": "Foto",
-            "tipo": "multiple_image"
-        },
-        {
-            "field": "resumen",
-            "titulo": "Resumen",
-            "tipo": "editor"
-        },
-        {
-            "field": "keywords",
-            "titulo": "Palabras Clave",
-            "tipo": "token"
-        },
-        {
-            "field": "metadescripcion",
-            "titulo": "Meta Descripciu00f3n",
-            "tipo": "textarea"
-        },
-        {
-            "field": "orden",
-            "titulo": "Orden",
-            "tipo": "number"
-        },
-        {
-            "field": "estado",
-            "titulo": "Estado",
-            "tipo": "active"
-        }
+        {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
+        {"field": "url", "titulo": "URL", "tipo": "url"},
+        {"field": "subtitulo", "titulo": "Subtitulo", "tipo": "text"},
+        {"field": "foto", "titulo": "Foto", "tipo": "multiple_image"},
+        {"field": "resumen", "titulo": "Resumen", "tipo": "editor"},
+        {"field": "keywords", "titulo": "Palabras Clave", "tipo": "token"},
+        {"field": "metadescripcion", "titulo": "Meta Descripciu00f3n", "tipo": "textarea"},
+        {"field": "orden", "titulo": "Orden", "tipo": "number"},
+        {"field": "estado", "titulo": "Estado", "tipo": "active"}
     ],
     "orden": 7,
     "estado": 0,

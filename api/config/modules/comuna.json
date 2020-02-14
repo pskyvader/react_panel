@@ -5,87 +5,26 @@
     "sub": "",
     "padre": "region",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "field": "0",
-            "titulo": "ID",
-            "tipo": "text"
-        },
-        {
-            "field": "orden",
-            "titulo": "Orden",
-            "tipo": "text"
-        },
-        {
-            "field": "titulo",
-            "titulo": "Titulo",
-            "tipo": "text"
-        },
-        {
-            "field": "precio",
-            "titulo": "Precio",
-            "tipo": "text"
-        },
-        {
-            "field": "estado",
-            "titulo": "Estado",
-            "tipo": "active"
-        },
-        {
-            "field": "copy",
-            "titulo": "Copiar",
-            "tipo": "action"
-        },
-        {
-            "field": "url_detalle",
-            "titulo": "Editar",
-            "tipo": "link"
-        },
-        {
-            "field": "delete",
-            "titulo": "Eliminar",
-            "tipo": "delete"
-        }
+        {"field": "0", "titulo": "ID", "tipo": "text"},
+        {"field": "orden", "titulo": "Orden", "tipo": "text"},
+        {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
+        {"field": "precio", "titulo": "Precio", "tipo": "text"},
+        {"field": "estado", "titulo": "Estado", "tipo": "active"},
+        {"field": "copy", "titulo": "Copiar", "tipo": "action"},
+        {"field": "url_detalle", "titulo": "Editar", "tipo": "link"},
+        {"field": "delete", "titulo": "Eliminar", "tipo": "delete"}
     ],
     "detalle": [
-        {
-            "field": "titulo",
-            "titulo": "Titulo",
-            "tipo": "text"
-        },
-        {
-            "field": "precio",
-            "titulo": "Precio",
-            "tipo": "number"
-        },
-        {
-            "field": "idregion",
-            "titulo": "Region",
-            "tipo": "select"
-        },
-        {
-            "field": "orden",
-            "titulo": "Orden",
-            "tipo": "number"
-        },
-        {
-            "field": "estado",
-            "titulo": "Estado",
-            "tipo": "active"
-        }
+        {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
+        {"field": "precio", "titulo": "Precio", "tipo": "number"},
+        {"field": "idregion", "titulo": "Region", "tipo": "select"},
+        {"field": "orden", "titulo": "Orden", "tipo": "number"},
+        {"field": "estado", "titulo": "Estado", "tipo": "active"}
     ],
     "orden": 16,
     "estado": 0,

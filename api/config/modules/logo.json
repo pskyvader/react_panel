@@ -5,57 +5,20 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "field": "orden",
-            "titulo": "Orden",
-            "tipo": "text"
-        },
-        {
-            "field": "titulo",
-            "titulo": "Titulo",
-            "tipo": "text"
-        },
-        {
-            "field": "foto",
-            "titulo": "Foto",
-            "tipo": "image"
-        },
-        {
-            "field": "url_detalle",
-            "titulo": "Editar",
-            "tipo": "link"
-        }
+        {"field": "orden", "titulo": "Orden", "tipo": "text"},
+        {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
+        {"field": "foto", "titulo": "Foto", "tipo": "image"},
+        {"field": "url_detalle", "titulo": "Editar", "tipo": "link"}
     ],
     "detalle": [
-        {
-            "field": "titulo",
-            "titulo": "Titulo",
-            "tipo": "text"
-        },
-        {
-            "field": "foto",
-            "titulo": "Foto",
-            "tipo": "image"
-        },
-        {
-            "field": "orden",
-            "titulo": "Orden",
-            "tipo": "number"
-        }
+        {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
+        {"field": "foto", "titulo": "Foto", "tipo": "image"},
+        {"field": "orden", "titulo": "Orden", "tipo": "number"}
     ],
     "orden": 24,
     "estado": 1,

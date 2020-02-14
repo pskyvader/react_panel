@@ -4,7 +4,7 @@ import sys
 
 current_dir = dirname(__file__)
 sys.path.append(join(current_dir, ".."))
-from graph_ql.utils.format import NoIndentEncoder
+from graph_ql.utils.format import MyEncoder,NoIndent
 
 
 config_file = join(current_dir, "..", "config", "config.json")
@@ -128,8 +128,13 @@ def json_to_module():
         new_module=module.copy()
         table = json.loads(get_file(join(module_dir, f)))
         for k,v in new_module.items():
-            if k!="hijo" and k!="menu":
+            if new_module[k]!=[]:
                 new_module[k]=table[k] if k!='aside' else bool(table[k])
+            elif k!="hijo" and k!="menu":
+                new_array=[]
+                for e in table[k]:
+                    new_array.append(NoIndent(e))
+                new_module[k]=new_array
 
 
         if table['module']!='separador':
@@ -138,7 +143,7 @@ def json_to_module():
                 new_menu=menu.copy()
                 for k,v in new_menu.items():
                     new_menu[k]=hijo_menu[k]
-                new_menus.append(new_menu)
+                new_menus.append(NoIndent(new_menu))
                 
             new_module['menu']=new_menus
 
@@ -171,7 +176,7 @@ def json_to_module():
             
             new_module['hijo']=new_hijos
 
-        if create_file(join(module_dir, f), json.dumps(new_module, cls=NoIndentEncoder, sort_keys=False, indent=4), True):
+        if create_file(join(module_dir, f), json.dumps(new_module, cls=MyEncoder, sort_keys=False, indent=4), True):
             print("modulo creado correctamente!", f)
         else:
             print("Error al crear el modulo!", f)

@@ -5,122 +5,33 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "field": "0",
-            "titulo": "ID",
-            "tipo": "text"
-        },
-        {
-            "field": "cookie_pedido",
-            "titulo": "Codigo de pedido",
-            "tipo": "text"
-        },
-        {
-            "field": "fecha_pago",
-            "titulo": "Fecha de pago",
-            "tipo": "text"
-        },
-        {
-            "field": "nombre",
-            "titulo": "Usuario",
-            "tipo": "text"
-        },
-        {
-            "field": "email",
-            "titulo": "Email",
-            "tipo": "text"
-        },
-        {
-            "field": "idpedidoestado",
-            "titulo": "Estado",
-            "tipo": "color"
-        },
-        {
-            "field": "idmediopago",
-            "titulo": "Medio de pago",
-            "tipo": "text"
-        },
-        {
-            "field": "total",
-            "titulo": "Total",
-            "tipo": "text"
-        },
-        {
-            "field": "url_detalle",
-            "titulo": "Editar",
-            "tipo": "link"
-        }
+        {"field": "0", "titulo": "ID", "tipo": "text"},
+        {"field": "cookie_pedido", "titulo": "Codigo de pedido", "tipo": "text"},
+        {"field": "fecha_pago", "titulo": "Fecha de pago", "tipo": "text"},
+        {"field": "nombre", "titulo": "Usuario", "tipo": "text"},
+        {"field": "email", "titulo": "Email", "tipo": "text"},
+        {"field": "idpedidoestado", "titulo": "Estado", "tipo": "color"},
+        {"field": "idmediopago", "titulo": "Medio de pago", "tipo": "text"},
+        {"field": "total", "titulo": "Total", "tipo": "text"},
+        {"field": "url_detalle", "titulo": "Editar", "tipo": "link"}
     ],
     "detalle": [
-        {
-            "field": "idusuario",
-            "titulo": "Usuario",
-            "tipo": "select"
-        },
-        {
-            "field": "nombre",
-            "titulo": "Nombre",
-            "tipo": "text"
-        },
-        {
-            "field": "email",
-            "titulo": "Email",
-            "tipo": "email"
-        },
-        {
-            "field": "telefono",
-            "titulo": "Telu00e9fono",
-            "tipo": "text"
-        },
-        {
-            "field": "cookie_pedido",
-            "titulo": "Codigo de pedido",
-            "tipo": "password"
-        },
-        {
-            "field": "fecha_pago",
-            "titulo": "Fecha de pago",
-            "tipo": "date"
-        },
-        {
-            "field": "idpedidoestado",
-            "titulo": "Estado",
-            "tipo": "select"
-        },
-        {
-            "field": "idmediopago",
-            "titulo": "Medio de pago",
-            "tipo": "select"
-        },
-        {
-            "field": "comentarios",
-            "titulo": "Comentarios",
-            "tipo": "textarea"
-        },
-        {
-            "field": "direcciones",
-            "titulo": "Direcciones",
-            "tipo": "grupo_pedido"
-        },
-        {
-            "field": "total",
-            "titulo": "Total",
-            "tipo": "number"
-        }
+        {"field": "idusuario", "titulo": "Usuario", "tipo": "select"},
+        {"field": "nombre", "titulo": "Nombre", "tipo": "text"},
+        {"field": "email", "titulo": "Email", "tipo": "email"},
+        {"field": "telefono", "titulo": "Telu00e9fono", "tipo": "text"},
+        {"field": "cookie_pedido", "titulo": "Codigo de pedido", "tipo": "password"},
+        {"field": "fecha_pago", "titulo": "Fecha de pago", "tipo": "date"},
+        {"field": "idpedidoestado", "titulo": "Estado", "tipo": "select"},
+        {"field": "idmediopago", "titulo": "Medio de pago", "tipo": "select"},
+        {"field": "comentarios", "titulo": "Comentarios", "tipo": "textarea"},
+        {"field": "direcciones", "titulo": "Direcciones", "tipo": "grupo_pedido"},
+        {"field": "total", "titulo": "Total", "tipo": "number"}
     ],
     "orden": 19,
     "estado": 0,

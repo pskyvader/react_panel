@@ -5,62 +5,21 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "field": "0",
-            "titulo": "ID",
-            "tipo": "text"
-        },
-        {
-            "field": "tabla",
-            "titulo": "Tabla",
-            "tipo": "text"
-        },
-        {
-            "field": "accion",
-            "titulo": "Accion",
-            "tipo": "text"
-        },
-        {
-            "field": "administrador",
-            "titulo": "Administrador",
-            "tipo": "text"
-        },
-        {
-            "field": "fecha",
-            "titulo": "Fecha",
-            "tipo": "text"
-        }
+        {"field": "0", "titulo": "ID", "tipo": "text"},
+        {"field": "tabla", "titulo": "Tabla", "tipo": "text"},
+        {"field": "accion", "titulo": "Accion", "tipo": "text"},
+        {"field": "administrador", "titulo": "Administrador", "tipo": "text"},
+        {"field": "fecha", "titulo": "Fecha", "tipo": "text"}
     ],
     "detalle": [
-        {
-            "field": "tabla",
-            "titulo": "Tabla",
-            "tipo": "text"
-        },
-        {
-            "field": "accion",
-            "titulo": "Accion",
-            "tipo": "text"
-        },
-        {
-            "field": "fecha",
-            "titulo": "Fecha",
-            "tipo": "text"
-        }
+        {"field": "tabla", "titulo": "Tabla", "tipo": "text"},
+        {"field": "accion", "titulo": "Accion", "tipo": "text"},
+        {"field": "fecha", "titulo": "Fecha", "tipo": "text"}
     ],
     "orden": 23,
     "estado": 1,

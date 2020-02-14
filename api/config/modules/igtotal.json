@@ -5,67 +5,22 @@
     "sub": "",
     "padre": "",
     "menu": [
-        {
-            "field": "new",
-            "titulo": "Nuevo"
-        },
-        {
-            "field": "excel",
-            "titulo": "Exportar a excel"
-        },
-        {
-            "field": "regenerar",
-            "titulo": "Regenerar imagenes"
-        }
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
     ],
     "mostrar": [
-        {
-            "titulo": "ID",
-            "field": "0",
-            "tipo": "text"
-        },
-        {
-            "titulo": "Fecha",
-            "field": "fecha",
-            "tipo": "text"
-        },
-        {
-            "titulo": "Tag",
-            "field": "tag",
-            "tipo": "text"
-        },
-        {
-            "titulo": "Cantidad",
-            "field": "cantidad",
-            "tipo": "text"
-        },
-        {
-            "titulo": "Editar",
-            "field": "url_detalle",
-            "tipo": "link"
-        },
-        {
-            "titulo": "Eliminar",
-            "field": "delete",
-            "tipo": "delete"
-        }
+        {"titulo": "ID", "field": "0", "tipo": "text"},
+        {"titulo": "Fecha", "field": "fecha", "tipo": "text"},
+        {"titulo": "Tag", "field": "tag", "tipo": "text"},
+        {"titulo": "Cantidad", "field": "cantidad", "tipo": "text"},
+        {"titulo": "Editar", "field": "url_detalle", "tipo": "link"},
+        {"titulo": "Eliminar", "field": "delete", "tipo": "delete"}
     ],
     "detalle": [
-        {
-            "tipo": "text",
-            "titulo": "Tag",
-            "field": "tag"
-        },
-        {
-            "tipo": "text",
-            "titulo": "Fecha",
-            "field": "fecha"
-        },
-        {
-            "tipo": "text",
-            "titulo": "Cantidad",
-            "field": "cantidad"
-        }
+        {"tipo": "text", "titulo": "Tag", "field": "tag"},
+        {"tipo": "text", "titulo": "Fecha", "field": "fecha"},
+        {"tipo": "text", "titulo": "Cantidad", "field": "cantidad"}
     ],
     "orden": 5,
     "estado": 1,
