@@ -25,8 +25,6 @@ class menu_object(graphene.ObjectType):
     titulo=graphene.String()
 
 
-
-
 class mostrar_object(graphene.ObjectType):
     field=graphene.String()
     titulo=graphene.String()
@@ -53,12 +51,23 @@ class permisos_object(graphene.ObjectType):
     mostrar=graphene.List(permisos_detail_object)
     detalle=graphene.List(permisos_detail_object)
 
-    def resolve_menu(parent,info,*args, **kwargs):
+    def resolve_menu(parent,info):
         list_menu=[]
         for k,m in parent['menu'].items():
             list_menu.append(permisos_detail_object(field=k,estado=m))
         return list_menu
+    
+    def resolve_mostrar(parent,info):
+        list_mostrar=[]
+        for k,m in parent['mostrar'].items():
+            list_mostrar.append(permisos_detail_object(field=k,estado=m))
+        return list_mostrar
 
+    def resolve_detalle(parent,info):
+        list_detalle=[]
+        for k,m in parent['detalle'].items():
+            list_detalle.append(permisos_detail_object(field=k,estado=m))
+        return list_detalle
 
 
 
@@ -118,21 +127,20 @@ def filter_permissions(list,tipo):
 def resolve_all_module(args, info, idadministrador):
     administrador=resolve_administrador(args, info,idadministrador)
     if administrador==None:
-        return []
+        return None
     
+    if administrador.tipo in cache_module_permissions:
+        return cache_module_permissions[administrador.tipo]
+
     filtered_module_list={x:v for x,v in module_list.items() if v['estado'] and v['aside'] and len(v['hijo'])>0 and check_permisos(v['hijo'],administrador.tipo) }
     filtered_module=filter_permissions(filtered_module_list,administrador.tipo)
-
 
     final_list=[]
     for m in filtered_module:
         m_o=module_object()
         for k, v in m.items():
             setattr(m_o, k, v)
-                    
-
         final_list.append(m_o)
-
     cache_module_permissions[administrador.tipo]=final_list
 
     return final_list
