@@ -104,9 +104,9 @@ def filter_permissions(list,tipo):
             if c_hijo['permisos']!={}:
                 c_module['hijo']=c_hijo
         if c_module['hijo']!=None:
-            module_list_final[k]=c_module
-    
-    return module_list_final
+            module_list_final[c_module['orden']]=c_module
+
+    return [v for k, v in sorted(module_list_final.items(), key=lambda item: item[0])]
 
 
 def resolve_all_module(args, info, idadministrador):
@@ -117,13 +117,17 @@ def resolve_all_module(args, info, idadministrador):
     filtered_module_list={x:v for x,v in module_list.items() if v['estado'] and v['aside'] and len(v['hijo'])>0 and check_permisos(v['hijo'],administrador.tipo) }
     filtered_module=filter_permissions(filtered_module_list,administrador.tipo)
 
-    print(filtered_module)
 
-    cache_module_permissions[administrador.tipo]=filtered_module
+    final_list=[]
+    for m in filtered_module:
+        m_o=module_object()
+        for k, v in m.items():
+            setattr(m_o, k, v)
+        final_list.append(m_o)
 
+    cache_module_permissions[administrador.tipo]=final_list
 
-    print(administrador.tipo)
-    return [module_object()]
+    return final_list
 
 
 all_module = graphene.List( module_object, idadministrador=graphene.Int() )
