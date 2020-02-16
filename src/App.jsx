@@ -12,18 +12,28 @@ const client = new ApolloClient({
 
 function repeticiones(turno=1,posibilidades=18){
     var count=0;
+    var turno_final=0;
     do {
-        var turno_final=Math.round(Math.random()*posibilidades);
-        console.log(turno_final);
+        turno_final=Math.round(Math.random()*posibilidades);
         count++;
-    } while (turno_final===turno);
-
+    } while (turno_final!==turno);
     return count;
 }
 
-for (let index = 0; index < 100; index++) {
-    console.log(repeticiones(1,18));
+var totales=[];
+for (let index = 0; index < 5; index++) {
+    totales.push(repeticiones(1,18));
 }
+
+var suma=0;
+totales.forEach(element => {
+    suma+=element;
+});
+
+var final=suma/totales.length;
+console.log(final);
+
+
 
 
 const App = () => (
