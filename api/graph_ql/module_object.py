@@ -97,29 +97,25 @@ class module_object(graphene.ObjectType):
     hijo=graphene.List(module_configuration_object)
 
 
-
-def check_permisos(hijos,tipo):
-    for hijo in hijos:
-        if hijo['aside'] and str(tipo) in hijo['permisos'] and hijo['permisos'][str(tipo)]['estado']:
-            return True
-    
-    return False
-
 def filter_permissions(list,tipo):
     module_list_final={}
 
     for k,v in list.items():
         c_module=v.copy()
-        c_module['hijo']=[]
-        for hijo in v['hijo']:
-            c_hijo=hijo.copy()
-            c_hijo['permisos']={}
-            if str(tipo) in hijo['permisos'] and hijo['permisos'][str(tipo)]['estado']:
-                c_hijo['permisos']=hijo['permisos'][str(tipo)]
-            if c_hijo['permisos']!={}:
-                c_module['hijo'].append(c_hijo)
-        if c_module['hijo']!=[]:
-            module_list_final[c_module['orden']]=c_module
+        if c_module['module']=='separador':
+            if str(tipo) in  c_module['estado'] and c_module['estado'][str(tipo)]:
+                module_list_final[c_module['orden']]=c_module
+        else:
+            c_module['hijo']=[]
+            for hijo in v['hijo']:
+                c_hijo=hijo.copy()
+                c_hijo['permisos']={}
+                if str(tipo) in hijo['permisos'] and hijo['permisos'][str(tipo)]['estado']:
+                    c_hijo['permisos']=hijo['permisos'][str(tipo)]
+                if c_hijo['permisos']!={}:
+                    c_module['hijo'].append(c_hijo)
+            if c_module['hijo']!=[]:
+                module_list_final[c_module['orden']]=c_module
 
     return [v for k, v in sorted(module_list_final.items(), key=lambda item: item[0])]
 
@@ -132,8 +128,7 @@ def resolve_all_module(args, info, idadministrador):
     if administrador.tipo in cache_module_permissions:
         return cache_module_permissions[administrador.tipo]
 
-    filtered_module_list={x:v for x,v in module_list.items() if v['estado'] and v['aside'] and len(v['hijo'])>0 and check_permisos(v['hijo'],administrador.tipo) }
-    filtered_module=filter_permissions(filtered_module_list,administrador.tipo)
+    filtered_module=filter_permissions(module_list,administrador.tipo)
 
     final_list=[]
     for m in filtered_module:

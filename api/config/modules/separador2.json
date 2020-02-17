@@ -8,7 +8,7 @@
     "mostrar": [],
     "detalle": [],
     "orden": 22,
-    "estado": true,
+    "estado": { "1": true, "2": true, "3": false },
     "aside": true,
     "tipos": false,
     "hijo": []
