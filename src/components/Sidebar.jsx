@@ -3,6 +3,7 @@ import Local_storage from './Local_storage';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import ErrorLink from './ErrorLink';
+import { Link } from "react-router-dom";
 
 import { CircularProgress, ListItem, ListItemIcon, ListItemText, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveToInbox as InboxIcon, Mail as MailIcon } from '@material-ui/icons';
@@ -31,10 +32,12 @@ const sideList = (classes, handleDrawer, theme, final_list) => (
                             )
                         }else{
                             return (
-                                <ListItem button key={element.module + element.orden}>
+                                <Link to={"/"+element.module} key={element.module + element.orden}  className={classes.link}>
+                                <ListItem button component={Link} to={"/"+element.module}>
                                     <ListItemIcon>{element.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                                     <ListItemText primary={element.titulo} />
                                 </ListItem>
+                                </Link>
                             );
 
                         }
