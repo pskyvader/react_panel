@@ -1,4 +1,4 @@
-import React, {Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Local_storage from './Local_storage';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -19,38 +19,32 @@ const sideList = (classes, handleDrawer, theme, final_list) => (
         </div>
         <Divider />
         {console.log(final_list)}
-        {final_list.map((sublist,index)=>(
-            <Fragment>
-            <List key={index}>
-                {sublist.map((element) => (
-                    <ListItem button key={element.module+element.orden}>
-                        <ListItemIcon>{element.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={element.titulo} />
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
+        {final_list.map((sublist, index) => (
+            <Fragment key={'sidebar_list' + index}>
+                <List>
+                    {sublist.map((element) => {
+                        if (element.module==='separador'){
+                            return (
+                                <ListItem key={element.module + element.orden}>
+                                    <ListItemText primary={element.titulo} />
+                                </ListItem>
+                            )
+                        }else{
+                            return (
+                                <ListItem button key={element.module + element.orden}>
+                                    <ListItemIcon>{element.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                                    <ListItemText primary={element.titulo} />
+                                </ListItem>
+                            );
+
+                        }
+                    }
+                    )}
+                </List>
+                <Divider />
             </Fragment>
         ))}
 
-        <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                </ListItem>
-            ))}
-        </List>
-
-        <Divider />
-        <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                </ListItem>
-            ))}
-        </List>
     </div>
 
 )
