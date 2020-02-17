@@ -59,7 +59,7 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
             <Fragment key={'sidebar_list' + index}>
                 <List subheader={
                     sublist[0].module === 'separador' ?
-                        <ListSubheader component="div" id="nested-list-subheader" key={"separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
+                        <ListSubheader component="div" key={"separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
                         ""}
                 >
 
