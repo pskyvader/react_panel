@@ -1,5 +1,4 @@
 import React from 'react';
-import LazyLoad from 'react-lazy-load';
 
 const static_folder = 'images'
 function Image(props) {
@@ -28,11 +27,9 @@ function single_image(image, title, id = '') {
         id = image.node.idimage;
         image = [static_folder, image.node.url.url].join("/");
     }
-    return (
-        <LazyLoad>
-            <img className="" src={image} alt={title} key={id.toString()} />
-        </LazyLoad>
-    )
+
+    return <img className="" src={image} alt={title} key={id.toString()} />
 }
+
 
 export default Image;

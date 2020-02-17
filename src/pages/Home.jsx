@@ -4,7 +4,6 @@ import {
 } from '@material-ui/core';
 import List from '../components/List';
 import Form from '../components/Form';
-import Box from '@material-ui/core/Box';
 
 export default () => (
     <React.Fragment>

@@ -23,7 +23,7 @@ function List(props) {
         }
     }
     `.replace('$table', table_query).replace('$fields', props.fields));
-    
+
     const columns = [];
     props.fields.forEach(element => {
         columns.push(
@@ -36,21 +36,20 @@ function List(props) {
     });
 
 
-    const { items, loading, loadMore, hasNextPage,error } = Resolve({query: GET_LIST,table:table_query,vars:vars});
-    if (error){
+    const { items, loading, loadMore, hasNextPage, error } = Resolve({ query: GET_LIST, table: table_query, vars: vars });
+    if (error) {
         return error;
     }
     return (
-        
         <Container fixed>
-        <InfiniteTable
-            items={items}
-            moreItemsLoading={loading}
-            loadMore={loadMore}
-            hasNextPage={hasNextPage}
-            columns={columns}
-            height={700}
-        />
+            <InfiniteTable
+                items={items}
+                moreItemsLoading={loading}
+                loadMore={loadMore}
+                hasNextPage={hasNextPage}
+                columns={columns}
+                height={700}
+            />
         </Container>
     );
 }
