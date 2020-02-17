@@ -16,6 +16,7 @@ const allIcons = Object.keys(mui)
   .sort()
   .map(key => {
     let tag;
+    // console.log(key);
     if (key.indexOf('Outlined') !== -1) {
       tag = 'Outlined';
     } else if (key.indexOf('TwoTone') !== -1) {
@@ -38,7 +39,8 @@ const allIcons = Object.keys(mui)
     return icon;
   });
 
-  console.log(allIconsMap);
+console.log(allIcons);
+console.log(allIconsMap['AcUnit']);
 
 function NestedList(element, url, classes) {
     const [open, setOpen] = React.useState(false);
@@ -51,8 +53,8 @@ function NestedList(element, url, classes) {
         <Fragment key={element.module + '-' + element.orden}>
             <ListItem button onClick={handleClick}>
                 <ListItemIcon>
-                    {/* {mui['InboxIcon']} */}
-                    <InboxIcon />
+                    {allIconsMap['AcUnit']}
+                    {/* <InboxIcon /> */}
                     </ListItemIcon>
                 <ListItemText primary={element.titulo} />
                 {open ? <ExpandLess /> : <ExpandMore />}
