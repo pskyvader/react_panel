@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazy-load';
 
 const static_folder = 'images'
 function Image(props) {
@@ -22,14 +23,16 @@ function Image_multiple(images, title) {
     return image_list;
 }
 
-function single_image(image, title,id='') {
-    if (typeof (image) == 'object'){
-        id=image.node.idimage;
+function single_image(image, title, id = '') {
+    if (typeof (image) == 'object') {
+        id = image.node.idimage;
         image = [static_folder, image.node.url.url].join("/");
     }
-
-    return <img className="" src={image} alt={title} key={id.toString()} />
+    return (
+        <LazyLoad>
+            <img className="" src={image} alt={title} key={id.toString()} />
+        </LazyLoad>
+    )
 }
-
 
 export default Image;
