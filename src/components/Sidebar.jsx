@@ -5,15 +5,22 @@ import { gql } from 'apollo-boost';
 import ErrorLink from './ErrorLink';
 import { Link, useRouteMatch } from "react-router-dom";
 
-import { CircularProgress, ListItem, ListItemIcon, ListItemText, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
+import { CircularProgress, ListItem, ListItemIcon, ListItemText,ListSubheader, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveToInbox as InboxIcon, Mail as MailIcon } from '@material-ui/icons';
+
+
 
 
 
 
 const child_button = (element, hijo, url) => (
     <ListItem button component={Link} to={`${url}/${element.module}`} key={element.module + element.orden + hijo.tipo}>
-        
+        {hijo.tipo === 0 ?
+            <ListItemIcon>
+                {element.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            : ''
+        }
 
         <ListItemText primary={hijo.titulo} />
     </ListItem>
@@ -29,8 +36,8 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
         <Divider />
         {final_list.map((sublist, index) => (
             <Fragment key={'sidebar_list' + index}>
-                <List>
-                    {sublist.forEach((element) => {
+                <List subheader={sublist[0].module==='separador'? <ListSubheader component="div" id="nested-list-subheader"> {sublist[0].module.titulo} </ListSubheader>:'' }  >
+                    {sublist.map((element) => {
                         if (element.module === 'separador') {
                             return (
                                 <ListItem key={element.module + element.orden}>
@@ -39,9 +46,18 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                             )
                         } else {
                             if (element.hijo.length === 1) {
-                                return child_button(element, element.hijo, url);
-                            }else{
-                                
+                                return child_button(element, element.hijo[0], url);
+                            } else {
+                                let children = [];
+                                element.hijo.forEach(hijo => {
+                                    children.push(child_button(element, hijo, url));
+                                });
+                                return (
+                                    <List>
+                                        {children}
+                                    </List>
+                                )
+
                             }
                         }
                     }
