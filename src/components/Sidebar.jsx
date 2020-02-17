@@ -21,7 +21,7 @@ function NestedList(element, url, classes) {
             <ListItem button onClick={handleClick}>
                 <ListItemIcon>
                     <InboxIcon />
-                </ListItemIcon>
+                    </ListItemIcon>
                 <ListItemText primary={element.titulo} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -39,8 +39,7 @@ function NestedList(element, url, classes) {
 
 const child_button = (element, hijo, url, unique, classes) => (
     <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
-        {unique ? <ListItemIcon> {hijo.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />} </ListItemIcon> : ""}
-
+        {unique ? <ListItemIcon>{hijo.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> : ""}
         <ListItemText primary={hijo.titulo} />
     </ListItem>
 )
@@ -63,10 +62,8 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
 
 
                     {sublist.map((element) => (
-                        (element.module !== 'separador') ? 
-                        (element.hijo.length === 1)? child_button(element, element.hijo[0], url, true, classes): NestedList(element, url, classes)
-                        :""
-                        )
+                        (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes) : NestedList(element, url, classes) : ""
+                    )
                     )}
 
                 </List>
