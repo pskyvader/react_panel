@@ -9,7 +9,7 @@ import { CircularProgress, ListItem, ListItemIcon, ListItemText, ListSubheader, 
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveToInbox as InboxIcon, Mail as MailIcon, ExpandLess, ExpandMore } from '@material-ui/icons';
 
 
-function NestedList(children_list, element) {
+function NestedList(element, url, classes) {
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
@@ -26,7 +26,10 @@ function NestedList(children_list, element) {
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={open} timeout="auto" unmountOnExit>
-                {children_list}
+                {element.hijo.map(hijo => (
+                    child_button(element, hijo, url, false, classes)
+                ))
+                }
             </Collapse>
         </Fragment>
     );
@@ -34,14 +37,9 @@ function NestedList(children_list, element) {
 
 
 
-const child_button = (element, hijo, url,unique,classes) => (
-    <ListItem className={!unique?classes.nested:''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
-        {unique ?
-            <ListItemIcon>
-                {element.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            : ''
-        }
+const child_button = (element, hijo, url, unique, classes) => (
+    <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
+        {unique ? <ListItemIcon> {hijo.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />} </ListItemIcon> : ""}
 
         <ListItemText primary={hijo.titulo} />
     </ListItem>
@@ -63,22 +61,14 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                         ""}
                 >
 
-                    {sublist.map((element) => {
-                        if (element.module !== 'separador') {
-                            if (element.hijo.length === 1) {
-                                return child_button(element, element.hijo[0], url,true,classes);
-                            } else {
-                                let children = [];
-                                element.hijo.forEach(hijo => {
-                                    children.push(child_button(element, hijo, url,false,classes));
-                                });
-                                return NestedList(children, element)
-                            }
-                        } else {
-                            return "";
-                        }
-                    }
+
+                    {sublist.map((element) => (
+                        (element.module !== 'separador') ? 
+                        (element.hijo.length === 1)? child_button(element, element.hijo[0], url, true, classes): NestedList(element, url, classes)
+                        :""
+                        )
                     )}
+
                 </List>
                 <Divider />
             </Fragment>
