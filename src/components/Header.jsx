@@ -44,7 +44,6 @@ export default function Header(props) {
             
             <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer} idadministrador="1" theme={theme} classes={classes}/>
 
-
             <main className={clsx(classes.content, { [classes.contentShift]: open, })} >
                 <div className={classes.drawerHeader} />
                 {props.children}

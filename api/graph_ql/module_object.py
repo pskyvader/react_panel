@@ -103,6 +103,7 @@ def filter_permissions(list,tipo):
     for k,v in list.items():
         c_module=v.copy()
         if c_module['module']=='separador':
+            print(c_module)
             if str(tipo) in  c_module['estado'] and c_module['estado'][str(tipo)]:
                 module_list_final[c_module['orden']]=c_module
         else:

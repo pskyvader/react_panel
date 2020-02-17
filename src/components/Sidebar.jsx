@@ -1,4 +1,4 @@
-import { React, Fragment } from 'react';
+import React, {Fragment } from 'react';
 import Local_storage from './Local_storage';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -11,7 +11,6 @@ import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveT
 
 
 const sideList = (classes, handleDrawer, theme, list) => (
-
     <div className={classes.list} role="presentation" >
         <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawer}>
@@ -20,7 +19,6 @@ const sideList = (classes, handleDrawer, theme, list) => (
         </div>
         <Divider />
         {console.log(list)}
-
 
         <List>
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -107,7 +105,9 @@ function Sidebar_cache(props, cache, url_cache) {
 
     const variables = { variables: { idadministrador: props.idadministrador }, };
     const { loading, error, data } = useQuery(GET_MODULES, variables);
-    if (loading) return (<CircularProgress />);
+    if (loading) {
+        return <CircularProgress />
+    }
     if (error) return ErrorLink(error);
     cache['allModule'] = data.allModule;
     Local_storage.set(url_cache, cache);
