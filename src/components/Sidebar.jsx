@@ -1,17 +1,16 @@
 import React from 'react';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import IconButton from '@material-ui/core/IconButton';
 import { useTheme } from '@material-ui/core/styles';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
+
+import {ChevronLeftIcon,ChevronRightIcon,InboxIcon,MailIcon} from '@material-ui/icons';
+
 
 
 import useStyles from './Styles';
