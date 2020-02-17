@@ -9,6 +9,37 @@ import { CircularProgress, ListItem, ListItemIcon, ListItemText, ListSubheader, 
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveToInbox as InboxIcon, Mail as MailIcon, ExpandLess, ExpandMore } from '@material-ui/icons';
 
 
+import * as mui from '@material-ui/icons';
+
+const allIconsMap = {};
+const allIcons = Object.keys(mui)
+  .sort()
+  .map(key => {
+    let tag;
+    if (key.indexOf('Outlined') !== -1) {
+      tag = 'Outlined';
+    } else if (key.indexOf('TwoTone') !== -1) {
+      tag = 'Two tone';
+    } else if (key.indexOf('Rounded') !== -1) {
+      tag = 'Rounded';
+    } else if (key.indexOf('Sharp') !== -1) {
+      tag = 'Sharp';
+    } else {
+      tag = 'Filled';
+    }
+
+
+    const icon = {
+      key,
+      tag,
+      Icon: mui[key],
+    };
+    allIconsMap[key] = icon;
+    return icon;
+  });
+
+  console.log(allIconsMap);
+
 function NestedList(element, url, classes) {
     const [open, setOpen] = React.useState(false);
 
@@ -20,6 +51,7 @@ function NestedList(element, url, classes) {
         <Fragment key={element.module + '-' + element.orden}>
             <ListItem button onClick={handleClick}>
                 <ListItemIcon>
+                    {/* {mui['InboxIcon']} */}
                     <InboxIcon />
                     </ListItemIcon>
                 <ListItemText primary={element.titulo} />
