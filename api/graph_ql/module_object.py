@@ -9,13 +9,13 @@ from utils.conversion import file_list,get_file
 current_dir = dirname(__file__)
 
 module_dir = join(current_dir, "..", "config", "modules")
-module_list={}
+module_list=[]
 
 
 json_files = file_list(module_dir)
 for f in json_files:
     module_file = json.loads(get_file(join(module_dir, f)))
-    module_list[module_file['module']]=module_file
+    module_list.append(module_file)
 
 cache_module_permissions={}
 
@@ -97,13 +97,13 @@ class module_object(graphene.ObjectType):
     hijo=graphene.List(module_configuration_object)
 
 
-def filter_permissions(list,tipo):
+def filter_permissions(list_modules,tipo):
     module_list_final={}
 
-    for k,v in list.items():
+    for v in list_modules:
         c_module=v.copy()
         if c_module['module']=='separador':
-            print(c_module)
+            print(c_module['titulo'],c_module['estado'])
             if str(tipo) in  c_module['estado'] and c_module['estado'][str(tipo)]:
                 module_list_final[c_module['orden']]=c_module
         else:

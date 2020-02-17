@@ -10,7 +10,7 @@ import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveT
 
 
 
-const sideList = (classes, handleDrawer, theme, list) => (
+const sideList = (classes, handleDrawer, theme, final_list) => (
     <div className={classes.list} role="presentation" >
         <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawer}>
@@ -18,7 +18,20 @@ const sideList = (classes, handleDrawer, theme, list) => (
             </IconButton>
         </div>
         <Divider />
-        {console.log(list)}
+        {console.log(final_list)}
+        {final_list.map((sublist,index)=>(
+            <Fragment>
+            <List key={index}>
+                {sublist.map((element) => (
+                    <ListItem button key={element.module+element.orden}>
+                        <ListItemIcon>{element.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={element.titulo} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            </Fragment>
+        ))}
 
         <List>
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
