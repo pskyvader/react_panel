@@ -40,7 +40,7 @@ export default function Header(props) {
                 </Toolbar>
             </AppBar>
             
-            <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer}/>
+            <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer} idadministrador="1"/>
 
 
             <main className={clsx(classes.content, { [classes.contentShift]: open, })} >
