@@ -13,6 +13,8 @@ import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveT
 
 
 
+
+
 const child_button = (element, hijo, url) => (
     <ListItem button component={Link} to={`${url}/${element.module}`} key={element.module + element.orden + hijo.tipo}>
         {hijo.tipo === 0 ?
@@ -36,15 +38,14 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
         <Divider />
         {final_list.map((sublist, index) => (
             <Fragment key={'sidebar_list' + index}>
-                <List subheader={sublist[0].module==='separador'? <ListSubheader component="div" id="nested-list-subheader"> {sublist[0].module.titulo} </ListSubheader>:'' }  >
+                <List subheader={
+                    sublist[0].module==='separador'? 
+                    <ListSubheader component="div" id="nested-list-subheader" key={"separador"+sublist[0].orden}> {sublist[0].titulo} </ListSubheader>:
+                    ""}  
+                    >
+
                     {sublist.map((element) => {
-                        if (element.module === 'separador') {
-                            return (
-                                <ListItem key={element.module + element.orden}>
-                                    <ListItemText primary={element.titulo} />
-                                </ListItem>
-                            )
-                        } else {
+                        if (element.module !== 'separador') {
                             if (element.hijo.length === 1) {
                                 return child_button(element, element.hijo[0], url);
                             } else {
@@ -53,12 +54,14 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                                     children.push(child_button(element, hijo, url));
                                 });
                                 return (
-                                    <List>
+                                    <List key={element.module + element.orden}>
                                         {children}
                                     </List>
                                 )
 
                             }
+                        }else{
+                            return "";
                         }
                     }
                     )}
