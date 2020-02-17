@@ -1,43 +1,42 @@
 {
-  "name": "react_panel",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@apollo/react-hooks": "^3.1.3",
-    "@material-ui/core": "^4.8.0",
-    "@material-ui/icons": "^4.5.1",
-    "apollo-boost": "^0.4.7",
-    "chokidar": "^3.3.1",
-    "graphql": "^14.5.8",
-    "material-ui-image": "^3.2.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-lazy-load": "^3.0.13",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
-    "react-virtualized": "^9.21.2",
-    "react-window-infinite-loader": "^1.0.5",
-    "typescript": "^3.7.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "react_panel",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@apollo/react-hooks": "^3.1.3",
+        "@material-ui/core": "^4.8.0",
+        "@material-ui/icons": "^4.9.1",
+        "apollo-boost": "^0.4.7",
+        "chokidar": "^3.3.1",
+        "graphql": "^14.5.8",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0",
+        "react-lazy-load": "^3.0.13",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "^3.3.0",
+        "react-virtualized": "^9.21.2",
+        "react-window-infinite-loader": "^1.0.5",
+        "typescript": "^3.7.5"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }

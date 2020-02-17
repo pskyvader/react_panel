@@ -22,7 +22,7 @@ const App = () => (
                 </Route>
                 <Route path="*">
                     404 not found
-                    </Route>
+                </Route>
             </Switch>
         </Header>
     </ApolloProvider>
