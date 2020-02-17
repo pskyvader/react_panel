@@ -5,19 +5,38 @@ import { gql } from 'apollo-boost';
 import ErrorLink from './ErrorLink';
 import { Link, useRouteMatch } from "react-router-dom";
 
-import { CircularProgress, ListItem, ListItemIcon, ListItemText,ListSubheader, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
-import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveToInbox as InboxIcon, Mail as MailIcon } from '@material-ui/icons';
+import { CircularProgress, ListItem, ListItemIcon, ListItemText, ListSubheader, Collapse, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveToInbox as InboxIcon, Mail as MailIcon, ExpandLess, ExpandMore } from '@material-ui/icons';
+
+
+function NestedList(children_list, element) {
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(!open);
+    };
+
+    return (
+        <Fragment key={element.module + '-' + element.orden}>
+            <ListItem button onClick={handleClick}>
+                <ListItemIcon>
+                    <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary={element.titulo} />
+                {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+                {children_list}
+            </Collapse>
+        </Fragment>
+    );
+}
 
 
 
-
-
-
-
-
-const child_button = (element, hijo, url) => (
-    <ListItem button component={Link} to={`${url}/${element.module}`} key={element.module + element.orden + hijo.tipo}>
-        {hijo.tipo === 0 ?
+const child_button = (element, hijo, url,unique,classes) => (
+    <ListItem className={!unique?classes.nested:''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
+        {unique ?
             <ListItemIcon>
                 {element.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>
@@ -39,28 +58,23 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
         {final_list.map((sublist, index) => (
             <Fragment key={'sidebar_list' + index}>
                 <List subheader={
-                    sublist[0].module==='separador'? 
-                    <ListSubheader component="div" id="nested-list-subheader" key={"separador"+sublist[0].orden}> {sublist[0].titulo} </ListSubheader>:
-                    ""}  
-                    >
+                    sublist[0].module === 'separador' ?
+                        <ListSubheader component="div" id="nested-list-subheader" key={"separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
+                        ""}
+                >
 
                     {sublist.map((element) => {
                         if (element.module !== 'separador') {
                             if (element.hijo.length === 1) {
-                                return child_button(element, element.hijo[0], url);
+                                return child_button(element, element.hijo[0], url,true,classes);
                             } else {
                                 let children = [];
                                 element.hijo.forEach(hijo => {
-                                    children.push(child_button(element, hijo, url));
+                                    children.push(child_button(element, hijo, url,false,classes));
                                 });
-                                return (
-                                    <List key={element.module + element.orden}>
-                                        {children}
-                                    </List>
-                                )
-
+                                return NestedList(children, element)
                             }
-                        }else{
+                        } else {
                             return "";
                         }
                     }

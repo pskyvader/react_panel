@@ -1,4 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import {
+    makeStyles
+} from '@material-ui/core/styles';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -18,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     drawerPaper: {
         width: drawerWidth,
     },
-    
+
     drawerHeader: {
         display: 'flex',
         alignItems: 'center',
@@ -46,9 +48,12 @@ const useStyles = makeStyles(theme => ({
             marginLeft: 0,
         },
     },
-    link:{
-        textDecoration:'none'
-    }
+    link: {
+        textDecoration: 'none'
+    },
+    nested: {
+        paddingLeft: theme.spacing(4),
+    },
 }));
 
 export default useStyles;
