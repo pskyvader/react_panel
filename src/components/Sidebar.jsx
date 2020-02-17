@@ -67,17 +67,30 @@ const SidebarMenu = (props, list) => {
     const theme = useTheme();
     const classes = useStyles();
 
+    const super_list=[];
+    let new_list=[];
+    list.forEach(element => {
+        if (element['module']==='separador'){
+            super_list.push(new_list);
+            new_list=[];
+        }
+        new_list.push(element);
+    });
+    if (new_list.length>0){
+        super_list.push(new_list);
+    }
+
     return (
         <Fragment>
             <Hidden smDown>
                 <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
-                    {sideList(classes, handleDrawer, theme, list)}
+                    {sideList(classes, handleDrawer, theme, super_list)}
                 </Drawer>
             </Hidden>
 
             <Hidden mdUp>
                 <Drawer variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
-                    {sideList(classes, handleDrawer, theme, list)}
+                    {sideList(classes, handleDrawer, theme, super_list)}
                 </Drawer>
             </Hidden>
         </Fragment>
@@ -111,14 +124,15 @@ function Sidebar_cache(props, cache, url_cache) {
     if (loading) return <CircularProgress />;
     if (error) return ErrorLink(error);
     cache['allModule'] = data.allModule;
-    Local_storage.set(url_cache, cache);
+    // Local_storage.set(url_cache, cache);
     return SidebarMenu(props,cache['allModule']);
 }
 
 
 function Sidebar(props) {
     const url_cache = 'get_all_module_id_' + props.idadministrador;
-    var cache = Local_storage.get(url_cache, { 'allModule': [] });
+    // var cache = Local_storage.get(url_cache, { 'allModule': [] });
+    var cache={ 'allModule': [] };
     if (cache['allModule'].length > 0) {
         return SidebarMenu(props,cache['allModule'])
     } else {
