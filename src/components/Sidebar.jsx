@@ -48,12 +48,15 @@ function NestedList(element, url, classes) {
     const handleClick = () => {
         setOpen(!open);
     };
+    const icon=allIconsMap['AcUnit'].Icon;
 
     return (
         <Fragment key={element.module + '-' + element.orden}>
             <ListItem button onClick={handleClick}>
                 <ListItemIcon>
-                    {allIconsMap['AcUnit']}
+                    <this.icon/>
+                    
+
                     {/* <InboxIcon /> */}
                     </ListItemIcon>
                 <ListItemText primary={element.titulo} />
