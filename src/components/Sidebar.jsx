@@ -6,7 +6,7 @@ import ErrorLink from './ErrorLink';
 import { Link, useRouteMatch } from "react-router-dom";
 
 import { CircularProgress, ListItem, ListItemIcon, ListItemText, ListSubheader, Collapse, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
-import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MoveToInbox as InboxIcon, Mail as MailIcon, ExpandLess, ExpandMore } from '@material-ui/icons';
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, ExpandLess, ExpandMore } from '@material-ui/icons';
 
 
 import * as mui from '@material-ui/icons';
@@ -16,7 +16,6 @@ const allIcons = Object.keys(mui)
   .sort()
   .map(key => {
     let tag;
-    // console.log(key);
     if (key.indexOf('Outlined') !== -1) {
       tag = 'Outlined';
     } else if (key.indexOf('TwoTone') !== -1) {
@@ -39,32 +38,26 @@ const allIcons = Object.keys(mui)
     return icon;
   });
 
-console.log(allIcons);
-console.log(allIconsMap['AcUnit']);
-
 function NestedList(element, url, classes) {
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
         setOpen(!open);
     };
-    const icon=allIconsMap['AcUnit'].Icon;
+    const icon=allIconsMap[element['icono']];
 
     return (
         <Fragment key={element.module + '-' + element.orden}>
             <ListItem button onClick={handleClick}>
                 <ListItemIcon>
-                    <this.icon/>
-                    
-
-                    {/* <InboxIcon /> */}
+                    <icon.Icon/>
                     </ListItemIcon>
                 <ListItemText primary={element.titulo} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 {element.hijo.map(hijo => (
-                    child_button(element, hijo, url, false, classes)
+                    child_button(element, hijo, url, false, classes,icon)
                 ))
                 }
             </Collapse>
@@ -74,9 +67,9 @@ function NestedList(element, url, classes) {
 
 
 
-const child_button = (element, hijo, url, unique, classes) => (
+const child_button = (element, hijo, url, unique, classes,icon) => (
     <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
-        {unique ? <ListItemIcon>{hijo.orden % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> : ""}
+        {unique ? <ListItemIcon><icon.Icon/></ListItemIcon> : ""}
         <ListItemText primary={hijo.titulo} />
     </ListItem>
 )
@@ -97,9 +90,9 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                         ""}
                 >
 
-
-                    {sublist.map((element) => (
-                        (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes) : NestedList(element, url, classes) : ""
+                    {
+                    sublist.map((element) => (
+                        (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes,allIconsMap[element['icono']]) : NestedList(element, url, classes) : ""
                     )
                     )}
 
@@ -115,11 +108,8 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
 
 
 const SidebarMenu = (props, list) => {
-    const handleDrawer = props.handleDrawer;
-    const toggleDrawer = props.toggleDrawer;
-    const open = props.open;
-    const classes = props.classes;
-    const theme = props.theme;
+    const { handleDrawer, toggleDrawer, open,classes,theme } = props;
+
     let { path, url } = useRouteMatch();
     if (url === '/') url = '';
 
