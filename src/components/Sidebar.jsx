@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -9,10 +11,7 @@ import { useTheme } from '@material-ui/core/styles';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 
-import {ChevronLeftIcon,ChevronRightIcon,InboxIcon,MailIcon} from '@material-ui/icons';
-
-
-
+import {ChevronLeft as ChevronLeftIcon,ChevronRight as ChevronRightIcon,MoveToInbox as InboxIcon,Mail as MailIcon} from '@material-ui/icons';
 
 import useStyles from './Styles';
 import { Fragment } from 'react';
