@@ -10,32 +10,53 @@ import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, Expan
 
 import allIconsMap from "./IconList";
 
-function NestedList(element, url, classes) {
-    const [open, setOpen] = React.useState(false);
+class NestedList extends React.Component  {
+    constructor(props){
+        super(props);
+        this.element=props.element;
+        this.url=props.url;
+        this.classes=props.classes;
+        this.state={open:false};
+        this.icon = allIconsMap[this.element['icono']];
+    }
+    componentDidMount() {
 
-    const handleClick = () => {
-        setOpen(!open);
+    }
+  
+    componentWillUnmount() {
+    }
+
+    handleClick = () => {
+        this.setOpen(!this.state.open);
     };
-    const icon = allIconsMap[element['icono']];
-    // console.log('icono',icon);
 
-    return (
-        <Fragment key={element.module + '-' + element.orden}>
-            <ListItem button onClick={handleClick}>
-                <ListItemIcon>
-                    <icon.Icon />
-                </ListItemIcon>
-                <ListItemText primary={element.titulo} />
-                {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                {element.hijo.map(hijo => (
-                    child_button(element, hijo, url, false, classes, icon)
-                ))
-                }
-            </Collapse>
-        </Fragment>
-    );
+    setOpen=(o)=>{
+        this.setState({
+            open: o
+          });
+    }
+    
+    // console.log('icono',icon);
+    render(){
+        return (
+            <Fragment key={this.element.module + '-' + this.element.orden}>
+                <ListItem button onClick={this.handleClick}>
+                    <ListItemIcon>
+                        <this.icon.Icon />
+                    </ListItemIcon>
+                    <ListItemText primary={this.element.titulo} />
+                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+                <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                    {this.element.hijo.map(hijo => (
+                        child_button(this.element, hijo, this.url, false, this.classes, this.icon)
+                    ))
+                    }
+                </Collapse>
+            </Fragment>
+        );
+    }
+
 }
 
 
@@ -65,7 +86,7 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                 >
 
                 {sublist.map((element) => (
-                    (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes, allIconsMap[element['icono']]) : NestedList(element, url, classes) : ""
+                    (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes, allIconsMap[element['icono']]) : <NestedList element={element} url={url} classes={classes}/>: ""
                     )
                 )}
 
