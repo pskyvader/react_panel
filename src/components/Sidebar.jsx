@@ -56,7 +56,7 @@ function NestedList(element, url, classes) {
                 <ListItemText primary={element.titulo} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={open} timeout="auto">
+            <Collapse in={open} timeout="auto" unmountOnExit>
                 {element.hijo.map(hijo => (
                     child_button(element, hijo, url, false, classes, icon)
                 ))
@@ -170,7 +170,7 @@ function Sidebar_cache(props, cache, url_cache) {
 
     const variables = { variables: { idadministrador: props.idadministrador }, };
     const { loading, error, data } = useQuery(GET_MODULES, variables);
-    if (loading) return <CircularProgress />
+    // if (loading) return <CircularProgress />
     if (error) return ErrorLink(error);
     cache['allModule'] = data.allModule;
     // Local_storage.set(url_cache, cache);
