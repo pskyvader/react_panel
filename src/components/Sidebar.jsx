@@ -10,19 +10,18 @@ import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, Expan
 
 import allIconsMap from "./IconList";
 
-class NestedList extends React.Component  {
-    constructor(props){
+class NestedList extends React.Component {
+    constructor(props) {
         super(props);
-        this.element=props.element;
-        this.url=props.url;
-        this.classes=props.classes;
-        this.state={open:false};
+        this.element = props.element;
+        this.url = props.url;
+        this.classes = props.classes;
+        this.state = { open: false };
         this.icon = allIconsMap[this.element['icono']];
     }
     componentDidMount() {
-
     }
-  
+
     componentWillUnmount() {
     }
 
@@ -30,14 +29,14 @@ class NestedList extends React.Component  {
         this.setOpen(!this.state.open);
     };
 
-    setOpen=(o)=>{
+    setOpen = (o) => {
         this.setState({
             open: o
-          });
+        });
     }
-    
+
     // console.log('icono',icon);
-    render(){
+    render() {
         return (
             <Fragment key={this.element.module + '-' + this.element.orden}>
                 <ListItem button onClick={this.handleClick}>
@@ -85,10 +84,12 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                         ""}
                 >
 
-                {sublist.map((element) => (
-                    (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes, allIconsMap[element['icono']]) : <NestedList element={element} url={url} classes={classes}/>: ""
+                    {sublist.map((element) => (
+                        (element.module !== 'separador') ? (element.hijo.length === 1) ?
+                            child_button(element, element.hijo[0], url, true, classes, allIconsMap[element['icono']]) :
+                            <NestedList key={'sidebar-list' + element['orden']} element={element} url={url} classes={classes} /> : ""
                     )
-                )}
+                    )}
 
                 </List>
                 <Divider />
@@ -119,6 +120,7 @@ const SidebarMenu = (props, list) => {
     if (new_list.length > 0) {
         super_list.push(new_list);
     }
+    return null;
 
     return (
         <Fragment>
@@ -164,7 +166,7 @@ function Sidebar_cache(props, cache, url_cache) {
     if (loading) return <CircularProgress />
     if (error) return ErrorLink(error);
     cache['allModule'] = data.allModule;
-                        
+
     // Local_storage.set(url_cache, cache);
     return SidebarMenu(props, cache['allModule']);
 }
