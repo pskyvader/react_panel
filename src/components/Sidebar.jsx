@@ -45,6 +45,7 @@ function NestedList(element, url, classes) {
         setOpen(!open);
     };
     const icon=allIconsMap[element['icono']];
+    console.log('icono',icon);
 
     return (
         <Fragment key={element.module + '-' + element.orden}>
@@ -69,6 +70,7 @@ function NestedList(element, url, classes) {
 
 const child_button = (element, hijo, url, unique, classes,icon) => (
     <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
+        {console.log(allIconsMap[element['icono']],element['icono'])}
         {unique ? <ListItemIcon><icon.Icon/></ListItemIcon> : ""}
         <ListItemText primary={hijo.titulo} />
     </ListItem>
@@ -89,6 +91,7 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                         <ListSubheader component="div" key={"separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
                         ""}
                 >
+                    
 
                     {
                     sublist.map((element) => (

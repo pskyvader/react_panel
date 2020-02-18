@@ -131,6 +131,12 @@ def json_to_module():
         for k,v in new_module.items():
             if new_module[k]!=[]:
                 new_module[k]=table[k] if not isinstance(new_module[k],bool) else bool(table[k])
+                if k=='icono':
+                    icono=str(table[k]).split('_')
+                    if (len(icono)>1):
+                        icono=''.join([icono[0],str(icono[1]).capitalize()])
+                    new_module[k]=icono.capitalize()
+                    
             elif k!="hijo" and k!="menu":
                 new_array=[]
                 for e in table[k]:
