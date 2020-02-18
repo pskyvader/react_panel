@@ -12,7 +12,7 @@ import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, Expan
 import * as mui from '@material-ui/icons';
 
 const allIconsMap = {};
-const allIcons = Object.keys(mui)
+Object.keys(mui)
   .sort()
   .map(key => {
     let tag;
@@ -45,7 +45,7 @@ function NestedList(element, url, classes) {
         setOpen(!open);
     };
     const icon=allIconsMap[element['icono']];
-    console.log('icono',icon);
+    // console.log('icono',icon);
 
     return (
         <Fragment key={element.module + '-' + element.orden}>
@@ -70,7 +70,7 @@ function NestedList(element, url, classes) {
 
 const child_button = (element, hijo, url, unique, classes,icon) => (
     <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
-        {console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])}
+        {/* {console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])} */}
         {unique ? <ListItemIcon><icon.Icon/></ListItemIcon> : ""}
         <ListItemText primary={hijo.titulo} />
     </ListItem>
@@ -170,12 +170,10 @@ function Sidebar_cache(props, cache, url_cache) {
 
     const variables = { variables: { idadministrador: props.idadministrador }, };
     const { loading, error, data } = useQuery(GET_MODULES, variables);
-    if (loading) {
-        return <CircularProgress />
-    }
+    if (loading) return <CircularProgress />
     if (error) return ErrorLink(error);
     cache['allModule'] = data.allModule;
-    Local_storage.set(url_cache, cache);
+    // Local_storage.set(url_cache, cache);
     return SidebarMenu(props, cache['allModule']);
 }
 
