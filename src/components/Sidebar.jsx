@@ -8,35 +8,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import { CircularProgress, ListItem, ListItemIcon, ListItemText, ListSubheader, Collapse, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, ExpandLess, ExpandMore } from '@material-ui/icons';
 
-
-import * as mui from '@material-ui/icons';
-
-const allIconsMap = {};
-Object.keys(mui)
-    .sort()
-    .map(key => {
-        let tag;
-        if (key.indexOf('Outlined') !== -1) {
-            tag = 'Outlined';
-        } else if (key.indexOf('TwoTone') !== -1) {
-            tag = 'Two tone';
-        } else if (key.indexOf('Rounded') !== -1) {
-            tag = 'Rounded';
-        } else if (key.indexOf('Sharp') !== -1) {
-            tag = 'Sharp';
-        } else {
-            tag = 'Filled';
-        }
-
-
-        const icon = {
-            key,
-            tag,
-            Icon: mui[key],
-        };
-        allIconsMap[key] = icon;
-        return icon;
-    });
+import allIconsMap from "./IconList";
 
 function NestedList(element, url, classes) {
     const [open, setOpen] = React.useState(false);
@@ -92,12 +64,10 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                         ""}
                 >
 
-
-                    {
-                        sublist.map((element) => (
-                            (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes, allIconsMap[element['icono']]) : NestedList(element, url, classes) : ""
-                        )
-                        )}
+                {sublist.map((element) => (
+                    (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes, allIconsMap[element['icono']]) : NestedList(element, url, classes) : ""
+                    )
+                )}
 
                 </List>
                 <Divider />
@@ -170,9 +140,10 @@ function Sidebar_cache(props, cache, url_cache) {
 
     const variables = { variables: { idadministrador: props.idadministrador }, };
     const { loading, error, data } = useQuery(GET_MODULES, variables);
-    // if (loading) return <CircularProgress />
+    if (loading) return <CircularProgress />
     if (error) return ErrorLink(error);
     cache['allModule'] = data.allModule;
+                        
     // Local_storage.set(url_cache, cache);
     return SidebarMenu(props, cache['allModule']);
 }
