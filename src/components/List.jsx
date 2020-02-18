@@ -1,56 +1,60 @@
-import React from 'react';
-import { gql } from 'apollo-boost';
-import InfiniteTable from './InfiniteTable';
-import Resolve from './Resolve';
-import Container from '@material-ui/core/Container';
+import React, { Fragment } from 'react';
+import { Link, useRouteMatch } from "react-router-dom";
 
 
-function List(props) {
-    const vars = { first: 10, after: '' }
-    const table_query = 'all' + props.table;
-    const GET_LIST = gql(`
-    query get_list($first:Int!,$after:String){
-        $table(first:$first,after:$after){
-            pageInfo{
-                endCursor
-                hasNextPage
-            }
-            edges{
-                node{
-                    $fields
-                }
-            }
-        }
+import { CircularProgress, ListItem, ListItemIcon, ListItemText, ListSubheader, Collapse, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, ExpandLess, ExpandMore } from '@material-ui/icons';
+
+import allIconsMap from "./IconList";
+
+class NestedList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.element = props.element;
+        this.url = props.url;
+        this.classes = props.classes;
+        this.state = { open: false };
+        this.icon = allIconsMap[this.element['icono']];
+        // console.log('icono',this.icon);
     }
-    `.replace('$table', table_query).replace('$fields', props.fields));
+    handleClick = () => {
+        this.setOpen(!this.state.open);
+    };
 
-    const columns = [];
-    props.fields.forEach(element => {
-        columns.push(
-            {
-                width: 500,
-                label: element,
-                dataKey: element,
-            }
+    setOpen = (o) => {
+        this.setState({
+            open: o
+        });
+    }
+
+    render() {
+        return (
+            <Fragment key={this.element.module + '-' + this.element.orden}>
+                <ListItem button onClick={this.handleClick}>
+                    <ListItemIcon>
+                        <this.icon.Icon />
+                    </ListItemIcon>
+                    <ListItemText primary={this.element.titulo} />
+                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+                <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                    {this.element.hijo.map(hijo => (
+                        child_button(this.element, hijo, this.url, false, this.classes, this.icon)
+                    ))
+                    }
+                </Collapse>
+            </Fragment>
         );
-    });
-
-
-    const { items, loading, loadMore, hasNextPage, error } = Resolve({ query: GET_LIST, table: table_query, vars: vars });
-    if (error) {
-        return error;
     }
-    return (
-        <Container fixed>
-            <InfiniteTable
-                items={items}
-                moreItemsLoading={loading}
-                loadMore={loadMore}
-                hasNextPage={hasNextPage}
-                columns={columns}
-                height={700}
-            />
-        </Container>
-    );
+
 }
-export default List;
+
+
+
+const child_button = (element, hijo, url, unique, classes, icon) => (
+    <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
+        {/* {console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])} */}
+        {unique ? <ListItemIcon><icon.Icon /></ListItemIcon> : ""}
+        <ListItemText primary={hijo.titulo} />
+    </ListItem>
+)

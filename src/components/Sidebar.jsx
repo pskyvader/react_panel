@@ -102,10 +102,9 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
 
 
 
-const SidebarMenu = (props, list) => {
+const SidebarMenu = (props, list, path, url) => {
     const { handleDrawer, toggleDrawer, open, classes, theme } = props;
 
-    let { path, url } = useRouteMatch();
     if (url === '/') url = '';
 
     const super_list = [];
@@ -120,7 +119,6 @@ const SidebarMenu = (props, list) => {
     if (new_list.length > 0) {
         super_list.push(new_list);
     }
-    return null;
 
     return (
         <Fragment>
@@ -141,7 +139,7 @@ const SidebarMenu = (props, list) => {
 
 
 
-function Sidebar_cache(props, cache, url_cache) {
+function Sidebar_cache(props, cache, url_cache, path, url) {
     const GET_MODULES = gql`
     query get_all_module ($idadministrador:Int!){
         allModule(idadministrador:$idadministrador){
@@ -168,17 +166,18 @@ function Sidebar_cache(props, cache, url_cache) {
     cache['allModule'] = data.allModule;
 
     // Local_storage.set(url_cache, cache);
-    return SidebarMenu(props, cache['allModule']);
+    return SidebarMenu(props, cache['allModule'], path, url);
 }
 
 
 function Sidebar(props) {
+    let { path, url } = useRouteMatch();
     const url_cache = 'get_all_module_id_' + props.idadministrador;
     var cache = Local_storage.get(url_cache, { 'allModule': [] });
     if (cache['allModule'].length > 0) {
-        return SidebarMenu(props, cache['allModule'])
+        return SidebarMenu(props, cache['allModule'], path, url)
     } else {
-        return Sidebar_cache(props, cache, url_cache);
+        return Sidebar_cache(props, cache, url_cache, path, url);
     }
 }
 
