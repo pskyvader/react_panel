@@ -13,30 +13,30 @@ import * as mui from '@material-ui/icons';
 
 const allIconsMap = {};
 Object.keys(mui)
-  .sort()
-  .map(key => {
-    let tag;
-    if (key.indexOf('Outlined') !== -1) {
-      tag = 'Outlined';
-    } else if (key.indexOf('TwoTone') !== -1) {
-      tag = 'Two tone';
-    } else if (key.indexOf('Rounded') !== -1) {
-      tag = 'Rounded';
-    } else if (key.indexOf('Sharp') !== -1) {
-      tag = 'Sharp';
-    } else {
-      tag = 'Filled';
-    }
+    .sort()
+    .map(key => {
+        let tag;
+        if (key.indexOf('Outlined') !== -1) {
+            tag = 'Outlined';
+        } else if (key.indexOf('TwoTone') !== -1) {
+            tag = 'Two tone';
+        } else if (key.indexOf('Rounded') !== -1) {
+            tag = 'Rounded';
+        } else if (key.indexOf('Sharp') !== -1) {
+            tag = 'Sharp';
+        } else {
+            tag = 'Filled';
+        }
 
 
-    const icon = {
-      key,
-      tag,
-      Icon: mui[key],
-    };
-    allIconsMap[key] = icon;
-    return icon;
-  });
+        const icon = {
+            key,
+            tag,
+            Icon: mui[key],
+        };
+        allIconsMap[key] = icon;
+        return icon;
+    });
 
 function NestedList(element, url, classes) {
     const [open, setOpen] = React.useState(false);
@@ -44,21 +44,21 @@ function NestedList(element, url, classes) {
     const handleClick = () => {
         setOpen(!open);
     };
-    const icon=allIconsMap[element['icono']];
+    const icon = allIconsMap[element['icono']];
     // console.log('icono',icon);
 
     return (
         <Fragment key={element.module + '-' + element.orden}>
             <ListItem button onClick={handleClick}>
                 <ListItemIcon>
-                    <icon.Icon/>
-                    </ListItemIcon>
+                    <icon.Icon />
+                </ListItemIcon>
                 <ListItemText primary={element.titulo} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={open} timeout="auto">
                 {element.hijo.map(hijo => (
-                    child_button(element, hijo, url, false, classes,icon)
+                    child_button(element, hijo, url, false, classes, icon)
                 ))
                 }
             </Collapse>
@@ -68,10 +68,10 @@ function NestedList(element, url, classes) {
 
 
 
-const child_button = (element, hijo, url, unique, classes,icon) => (
+const child_button = (element, hijo, url, unique, classes, icon) => (
     <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
         {/* {console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])} */}
-        {unique ? <ListItemIcon><icon.Icon/></ListItemIcon> : ""}
+        {unique ? <ListItemIcon><icon.Icon /></ListItemIcon> : ""}
         <ListItemText primary={hijo.titulo} />
     </ListItem>
 )
@@ -91,13 +91,13 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
                         <ListSubheader component="div" key={"separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
                         ""}
                 >
-                    
+
 
                     {
-                    sublist.map((element) => (
-                        (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes,allIconsMap[element['icono']]) : NestedList(element, url, classes) : ""
-                    )
-                    )}
+                        sublist.map((element) => (
+                            (element.module !== 'separador') ? (element.hijo.length === 1) ? child_button(element, element.hijo[0], url, true, classes, allIconsMap[element['icono']]) : NestedList(element, url, classes) : ""
+                        )
+                        )}
 
                 </List>
                 <Divider />
@@ -111,7 +111,7 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
 
 
 const SidebarMenu = (props, list) => {
-    const { handleDrawer, toggleDrawer, open,classes,theme } = props;
+    const { handleDrawer, toggleDrawer, open, classes, theme } = props;
 
     let { path, url } = useRouteMatch();
     if (url === '/') url = '';
