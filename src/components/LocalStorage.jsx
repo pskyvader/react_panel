@@ -1,4 +1,4 @@
-class Local_storage {
+class LocalStorage {
     // 1 day default 
     static get(key, default_value = null, expiration_time = 1) {
         var value = JSON.parse(localStorage.getItem(key));
@@ -26,4 +26,4 @@ class Local_storage {
 
 }
 
-export default Local_storage;
+export default LocalStorage;

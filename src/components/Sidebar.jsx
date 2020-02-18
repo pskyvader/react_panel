@@ -1,74 +1,19 @@
 import React, { Fragment } from 'react';
-import Local_storage from './Local_storage';
+import LocalStorage from './LocalStorage';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import ErrorLink from './ErrorLink';
-import { Link, useRouteMatch } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 
-import { CircularProgress, ListItem, ListItemIcon, ListItemText, ListSubheader, Collapse, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
-import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, ExpandLess, ExpandMore } from '@material-ui/icons';
+import { CircularProgress, ListSubheader, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@material-ui/icons';
 
-import allIconsMap from "./IconList";
-
-class NestedList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.element = props.element;
-        this.url = props.url;
-        this.classes = props.classes;
-        this.state = { open: false };
-        this.icon = allIconsMap[this.element['icono']];
-    }
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
-    }
-
-    handleClick = () => {
-        this.setOpen(!this.state.open);
-    };
-
-    setOpen = (o) => {
-        this.setState({
-            open: o
-        });
-    }
-
-    // console.log('icono',icon);
-    render() {
-        return (
-            <Fragment key={this.element.module + '-' + this.element.orden}>
-                <ListItem button onClick={this.handleClick}>
-                    <ListItemIcon>
-                        <this.icon.Icon />
-                    </ListItemIcon>
-                    <ListItemText primary={this.element.titulo} />
-                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
-                <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-                    {this.element.hijo.map(hijo => (
-                        child_button(this.element, hijo, this.url, false, this.classes, this.icon)
-                    ))
-                    }
-                </Collapse>
-            </Fragment>
-        );
-    }
-
-}
+import {NestedList,ChildButton} from "./List";
 
 
-
-const child_button = (element, hijo, url, unique, classes, icon) => (
-    <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
-        {/* {console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])} */}
-        {unique ? <ListItemIcon><icon.Icon /></ListItemIcon> : ""}
-        <ListItemText primary={hijo.titulo} />
-    </ListItem>
-)
-
-const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
+const SideList = (props) =>{
+ const {classes, handleDrawer, theme, final_list}=props;
+return (
     <div className={classes.list} role="presentation" >
         <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawer}>
@@ -80,14 +25,16 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
             <Fragment key={'sidebar_list' + index}>
                 <List subheader={
                     sublist[0].module === 'separador' ?
-                        <ListSubheader component="div" key={"separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
+                        <ListSubheader component="div" key={"sidebar-separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
                         ""}
                 >
 
                     {sublist.map((element) => (
-                        (element.module !== 'separador') ? (element.hijo.length === 1) ?
-                            child_button(element, element.hijo[0], url, true, classes, allIconsMap[element['icono']]) :
-                            <NestedList key={'sidebar-list' + element['orden']} element={element} url={url} classes={classes} /> : ""
+                        (element.module !== 'separador') ? (
+                            (element.hijo.length === 1) ?
+                            <ChildButton {...props} key={element.module + '-' + element.orden + '-' + element.hijo[0].tipo} element={element} hijo={element.hijo[0]} unique={true} /> :
+                            <NestedList  {...props} key={element.module + '-' + element.orden} element={element}/> 
+                        ): ""
                     )
                     )}
 
@@ -99,11 +46,13 @@ const sideList = (classes, handleDrawer, theme, final_list, path, url) => (
     </div>
 
 )
+} 
 
 
 
-const SidebarMenu = (props, list, path, url) => {
-    const { handleDrawer, toggleDrawer, open, classes, theme } = props;
+const SidebarMenu = (props) => {
+    const { toggleDrawer, open, classes, list} = props;
+    let {url}=props;
 
     if (url === '/') url = '';
 
@@ -124,13 +73,13 @@ const SidebarMenu = (props, list, path, url) => {
         <Fragment>
             <Hidden smDown>
                 <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
-                    {sideList(classes, handleDrawer, theme, super_list, path, url)}
+                    <SideList  {...props} final_list={super_list} url={url}/>
                 </Drawer>
             </Hidden>
 
             <Hidden mdUp>
                 <Drawer variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
-                    {sideList(classes, handleDrawer, theme, super_list, path, url)}
+                    <SideList {...props} final_list={super_list} url={url} />
                 </Drawer>
             </Hidden>
         </Fragment>
@@ -139,7 +88,8 @@ const SidebarMenu = (props, list, path, url) => {
 
 
 
-function Sidebar_cache(props, cache, url_cache, path, url) {
+function SidebarCache(props) {
+    const {cache, url_cache}=props;
     const GET_MODULES = gql`
     query get_all_module ($idadministrador:Int!){
         allModule(idadministrador:$idadministrador){
@@ -164,20 +114,19 @@ function Sidebar_cache(props, cache, url_cache, path, url) {
     if (loading) return <CircularProgress />
     if (error) return ErrorLink(error);
     cache['allModule'] = data.allModule;
-
-    // Local_storage.set(url_cache, cache);
-    return SidebarMenu(props, cache['allModule'], path, url);
+    LocalStorage.set(url_cache, cache);
+    return <SidebarMenu {...props} list={cache['allModule']}/>
 }
 
 
 function Sidebar(props) {
     let { path, url } = useRouteMatch();
     const url_cache = 'get_all_module_id_' + props.idadministrador;
-    var cache = Local_storage.get(url_cache, { 'allModule': [] });
+    var cache = LocalStorage.get(url_cache, { 'allModule': [] });
     if (cache['allModule'].length > 0) {
-        return SidebarMenu(props, cache['allModule'], path, url)
+        return <SidebarMenu {...props} list={cache['allModule']} path={path} url={url}/>
     } else {
-        return Sidebar_cache(props, cache, url_cache, path, url);
+        return <SidebarCache {...props} cache={cache} url_cache={url_cache} path={path} url={url}/>
     }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from './Image';
-import Local_storage from './Local_storage';
+import LocalStorage from './LocalStorage';
 
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -32,14 +32,14 @@ function Logo_cache(props, cache, url_cache) {
     if (error) return ErrorLink(error);
     cache['image'] = data.logo.foto;
     cache['title'] = data.logo.titulo;
-    Local_storage.set(url_cache, cache);
+    LocalStorage.set(url_cache, cache);
 
     return <Image image={cache['image']} title={cache['title']} />;
 }
 
 function Logo(props) {
     const url_cache = 'get_logo_id_' + props.id + '_width_' + props.width + '_height_' + props.height;
-    var cache = Local_storage.get(url_cache, { image: '', title: '' });
+    var cache = LocalStorage.get(url_cache, { image: '', title: '' });
     if (cache['image'] !== '' && cache['title'] !== '') {
         return <Image image={cache['image']} title={cache['title']} />;
     } else {

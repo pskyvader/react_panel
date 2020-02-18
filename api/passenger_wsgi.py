@@ -26,7 +26,7 @@ def application2(environ, start_response):
         b = datetime.datetime.now()
         c = b - a
         
-        print('END',c.total_seconds()*1000,' ms')
+        print('END',c.total_seconds()*1000,'ms')
     else:
         app_web = app(os.path.dirname(__file__))
         main_data = app_web.init(environ)

@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Typography,
 } from '@material-ui/core';
-import List from '../components/List';
+import Table from '../components/Table';
 import Form from '../components/Form';
 
 export default () => (
@@ -10,7 +10,7 @@ export default () => (
         <Typography variant="h3">Welcome Home!</Typography>
             <Form/>
 
-            <List table="Igaccounts" fields={['idigaccounts', 'fullName', 'username', 'profilePicUrl', 'followerCount', 'followingCount', 'fecha', 'following', 'follower', 'favorito', 'hashtag']}></List>
+            <Table table="Igaccounts" fields={['idigaccounts', 'fullName', 'username', 'profilePicUrl', 'followerCount', 'followingCount', 'fecha', 'following', 'follower', 'favorito', 'hashtag']}/>
 
 
 

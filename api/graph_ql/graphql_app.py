@@ -21,6 +21,7 @@ def init(environ):
     status_code = 200
     if environ["REQUEST_METHOD"] == "POST":
         data = parse_body(environ)
+        print(data['operationName'])
         class Context:
             FILES=None
         context= Context()
