@@ -133,9 +133,7 @@ def json_to_module():
                 new_module[k]=table[k] if not isinstance(new_module[k],bool) else bool(table[k])
                 if k=='icono':
                     icono=str(table[k]).split('_')
-                    if (len(icono)>1):
-                        icono=''.join([icono[0],str(icono[1]).capitalize()])
-                    new_module[k]=icono.capitalize()
+                    new_module[k]=''.join([i.capitalize() for i in icono])
                     
             elif k!="hijo" and k!="menu":
                 new_array=[]
@@ -145,8 +143,9 @@ def json_to_module():
                     new_array.append(NoIndent(e))
                 new_module[k]=new_array
 
-
-        if table['module']!='separador':
+        if table['module']=='separador':
+            new_module['estado']={ "1": True, "2": True, "3": False }
+        else:
             new_menus=[]
             for hijo_menu in table['hijo'][0]['menu']:
                 new_menu=menu.copy()

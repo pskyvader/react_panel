@@ -70,7 +70,7 @@ function NestedList(element, url, classes) {
 
 const child_button = (element, hijo, url, unique, classes,icon) => (
     <ListItem className={!unique ? classes.nested : ''} button component={Link} to={`${url}/${element.module}`} key={element.module + '-' + element.orden + '-' + hijo.tipo}>
-        {console.log(allIconsMap[element['icono']],element['icono'])}
+        {console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])}
         {unique ? <ListItemIcon><icon.Icon/></ListItemIcon> : ""}
         <ListItemText primary={hijo.titulo} />
     </ListItem>
