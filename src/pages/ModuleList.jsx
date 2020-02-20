@@ -32,12 +32,12 @@ export default () => {
     <Grid
   container
   direction="row"
-  justify="flex-start"
-  alignItems="flex-start" spacing={4}
+  justify="space-between"
+  alignItems="flex-start" spacing={3}
 >
     {array.map((element,index) => {
         return (
-            <Grid item >
+            <Grid item xs>
                 <ModuleCard key={index}/>
                 </Grid>
         )    })}
