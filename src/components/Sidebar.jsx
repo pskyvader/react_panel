@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import clsx from 'clsx';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { useRouteMatch } from "react-router-dom";
@@ -25,13 +24,15 @@ const useStyles = makeStyles(theme => ({
         width: drawerWidth,
         marginTop:theme.spacing(8)
     },
-
     drawerHeader: {
         display: 'flex',
         alignItems: 'center',
         padding: theme.spacing(0, 1),
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
+    },
+    subHeader:{
+        backgroundColor: theme.palette.background.paper,
     }
 }));
 
@@ -57,7 +58,7 @@ const SideList = (props) => {
                 <Fragment key={'sidebar_list' + index}>
                     <List subheader={
                         sublist[0].module === 'separador' ?
-                            <ListSubheader component="div" key={"sidebar-separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
+                            <ListSubheader className={classes.subHeader} component="div" key={"sidebar-separador-" + sublist[0].orden}> {sublist[0].titulo} </ListSubheader> :
                             ""}
                     >
 

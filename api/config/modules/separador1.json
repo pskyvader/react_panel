@@ -1,5 +1,5 @@
 {
-    "icono": "3dRotation",
+    "icono": "Home",
     "module": "separador",
     "titulo": "Home",
     "sub": "",
@@ -7,7 +7,7 @@
     "menu": [],
     "mostrar": [],
     "detalle": [],
-    "orden": 1,
+    "orden": 0,
     "estado": {
         "1": true,
         "2": true,
