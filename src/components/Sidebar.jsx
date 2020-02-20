@@ -1,17 +1,15 @@
 import React, { Fragment } from 'react';
-import LocalStorage from './LocalStorage';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import ErrorLink from './ErrorLink';
 import { useRouteMatch } from "react-router-dom";
-import { useTheme } from '@material-ui/core/styles';
-
+import { useTheme ,makeStyles} from '@material-ui/core/styles';
 import { CircularProgress, ListSubheader, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@material-ui/icons';
 
 import { NestedList, ChildButton } from "./List";
+import ErrorLink from './ErrorLink';
+import LocalStorage from './LocalStorage';
 
-import { makeStyles } from '@material-ui/core/styles';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -34,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const SideList = (props) => {
-    const { handleDrawer, final_list } = props;
+    const { handleDrawer, list } = props;
     const classes = useStyles();
     const theme = useTheme();
     return (
@@ -45,7 +43,7 @@ const SideList = (props) => {
                 </IconButton>
             </div>
             <Divider />
-            {final_list.map((sublist, index) => (
+            {list.map((sublist, index) => (
                 <Fragment key={'sidebar_list' + index}>
                     <List subheader={
                         sublist[0].module === 'separador' ?
@@ -81,30 +79,18 @@ const SidebarMenu = (props) => {
 
     if (url === '/') url = '';
 
-    const super_list = [];
-    let new_list = [];
-    list.forEach(element => {
-        if (element['module'] === 'separador') {
-            super_list.push(new_list);
-            new_list = [];
-        }
-        new_list.push(element);
-    });
-    if (new_list.length > 0) {
-        super_list.push(new_list);
-    }
 
     return (
         <Fragment>
             <Hidden smDown>
                 <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
-                    <SideList  {...props} final_list={super_list} url={url} />
+                    <SideList  {...props} list={list} url={url} />
                 </Drawer>
             </Hidden>
 
             <Hidden mdUp>
                 <Drawer variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
-                    <SideList {...props} final_list={super_list} url={url} />
+                    <SideList {...props} list={list} url={url} />
                 </Drawer>
             </Hidden>
         </Fragment>
@@ -114,7 +100,7 @@ const SidebarMenu = (props) => {
 
 
 function SidebarCache(props) {
-    const { cache, url_cache } = props;
+    const { url_cache } = props;
     const GET_MODULES = gql`
     query get_all_module ($idadministrador:Int!){
         allModule(idadministrador:$idadministrador){
@@ -138,20 +124,33 @@ function SidebarCache(props) {
     const { loading, error, data } = useQuery(GET_MODULES, variables);
     if (loading) return <CircularProgress />
     if (error) return ErrorLink(error);
-    cache['allModule'] = data.allModule;
-    LocalStorage.set(url_cache, cache);
-    return <SidebarMenu {...props} list={cache['allModule']} />
+
+    const super_list = [];
+    let new_list = [];
+    data.allModule.forEach(element => {
+        if (element['module'] === 'separador') {
+            super_list.push(new_list);
+            new_list = [];
+        }
+        new_list.push(element);
+    });
+    if (new_list.length > 0) {
+        super_list.push(new_list);
+    }
+    LocalStorage.set(url_cache, super_list);
+
+    return <SidebarMenu {...props} list={super_list} />
 }
 
 
 function Sidebar(props) {
     let { path, url } = useRouteMatch();
     const url_cache = 'get_all_module_id_' + props.idadministrador;
-    var cache = LocalStorage.get(url_cache, { 'allModule': [] });
-    if (cache['allModule'].length > 0) {
-        return <SidebarMenu {...props} list={cache['allModule']} path={path} url={url} />
+    var cache = LocalStorage.get(url_cache, []);
+    if (cache.length > 0) {
+        return <SidebarMenu {...props} list={cache} path={path} url={url} />
     } else {
-        return <SidebarCache {...props} cache={cache} url_cache={url_cache} path={path} url={url} />
+        return <SidebarCache {...props} url_cache={url_cache} path={path} url={url} />
     }
 }
 

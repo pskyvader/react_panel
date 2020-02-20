@@ -68,7 +68,7 @@ export const ChildButton = ({ element, hijo, url, unique }) => {
     // console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])
     return (
         <ListItem className={!unique ? classes.nested : ''} button component={Link} to={to}>
-            {unique ? <ListItemIcon><icon.icon /></ListItemIcon> : ""}
+            {(unique||true) ? <ListItemIcon><icon.icon /></ListItemIcon> : ""}
             <ListItemText primary={hijo.titulo} />
         </ListItem>
     );
