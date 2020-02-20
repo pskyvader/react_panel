@@ -13,7 +13,6 @@ export class NestedList extends React.Component {
         super(props);
         this.element = props.element;
         this.url = props.url;
-        this.classes = props.classes;
         this.state = { open: false };
         this.icon = mui[this.element['icono']];
     }

@@ -4,15 +4,19 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import ErrorLink from './ErrorLink';
 import { useRouteMatch } from "react-router-dom";
+import { useTheme } from '@material-ui/core/styles';
 
 import { CircularProgress, ListSubheader, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@material-ui/icons';
 
 import {NestedList,ChildButton} from "./List";
+import useStyles from './Styles';
 
 
 const SideList = (props) =>{
- const {classes, handleDrawer, theme, final_list}=props;
+ const { handleDrawer, final_list}=props;
+ const classes = useStyles();
+ const theme = useTheme();
 return (
     <div className={classes.list} role="presentation" >
         <div className={classes.drawerHeader}>
@@ -51,7 +55,8 @@ return (
 
 
 const SidebarMenu = (props) => {
-    const { toggleDrawer, open, classes, list} = props;
+    const { toggleDrawer, open, list} = props;
+    const classes = useStyles();
     let {url}=props;
 
     if (url === '/') url = '';

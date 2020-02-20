@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { useTheme } from '@material-ui/core/styles';
 
 import Logo from './Logo';
 import useStyles from './Styles';
@@ -15,7 +14,6 @@ import Sidebar from './Sidebar';
 
 export default function Header(props) {
     const classes = useStyles();
-    const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const handleDrawer = () => {
         setOpen(!open);
@@ -43,7 +41,7 @@ export default function Header(props) {
                 </Toolbar>
             </AppBar>
             
-            <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer} idadministrador="1" theme={theme} classes={classes}/>
+            <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer} idadministrador="1"/>
 
             <main className={clsx(classes.content, { [classes.contentShift]: open, })} >
                 <div className={classes.drawerHeader} />
