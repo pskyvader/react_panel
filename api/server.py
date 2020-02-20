@@ -38,7 +38,7 @@ def make_server(host, port, app, thread_count=None, handler_class=WSGIRequestHan
 
 
 port = 8080
-srv = make_server("", port, passenger_wsgi.application, thread_count=40)
+srv = make_server("", port, passenger_wsgi.application, thread_count=4)
 
 print("En port {}... ctrl-c to quit server.".format(port))
 
