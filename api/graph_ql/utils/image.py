@@ -5,7 +5,7 @@ import sys
 from .format import url_amigable, current_time
 
 
-production=True
+production=False
 
 
 current_dir = dirname(__file__)

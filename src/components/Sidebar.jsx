@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
     drawerPaperPersistent: {
         width: drawerWidth,
-        marginTop:theme.spacing(8)
+        marginTop: theme.spacing(8)
     },
     drawerHeader: {
         display: 'flex',
@@ -31,9 +31,9 @@ const useStyles = makeStyles(theme => ({
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
     },
-    subHeader:{
+    subHeader: {
         backgroundColor: theme.palette.secondary.main,
-        color:theme.palette.secondary.contrastText
+        color: theme.palette.secondary.contrastText
     }
 }));
 
@@ -43,15 +43,15 @@ const SideList = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     return (
-        <div  role="presentation" >
-            {persistent ?"":
-            <Fragment>
-                <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawer}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                    </IconButton>
-                </div>
-                <Divider />
+        <div role="presentation" >
+            {persistent ? "" :
+                <Fragment>
+                    <div className={classes.drawerHeader}>
+                        <IconButton onClick={handleDrawer}>
+                            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        </IconButton>
+                    </div>
+                    <Divider />
                 </Fragment>}
 
             {list.map((sublist, index) => (
