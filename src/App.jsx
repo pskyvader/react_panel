@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 
 import Header from './components/Header';
 import Home from './pages/Home';
+import ModuleList from './pages/ModuleList';
 
 const client = new ApolloClient({
     uri: process.env.REACT_APP_API_URL,
@@ -20,6 +21,9 @@ const App = () => (
                 </Route>
                 <Route path="/home">
                     <Home />
+                </Route>
+                <Route path="/:module?tipo=:tipo">
+                    <ModuleList />
                 </Route>
                 <Route path="*">
                     404 not found
