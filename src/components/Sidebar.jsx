@@ -32,7 +32,8 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'flex-end',
     },
     subHeader:{
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.primary.main,
+        color:theme.pallete.primary.contrastText
     }
 }));
 
@@ -52,7 +53,6 @@ const SideList = (props) => {
                 </div>
                 <Divider />
                 </Fragment>}
-
 
             {list.map((sublist, index) => (
                 <Fragment key={'sidebar_list' + index}>
