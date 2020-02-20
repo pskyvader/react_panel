@@ -62,10 +62,12 @@ export class NestedList extends React.Component {
 
 
 export const ChildButton = ({ element, hijo, url, unique }) => {
-    const to = `${url}/${element.module}?tipo=${element.tipo}`;
+    let to = `${url}/${element.module}`;
+    if (!unique) {
+        to += `?tipo=${hijo.tipo}`;
+    }
     const icon = { 'icon': mui[element.icono] };
     const classes = useStyles();
-    // console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])
     return (
         <ListItem className={!unique ? classes.nested : ''} button component={Link} to={to}>
             {(unique) ? <ListItemIcon><icon.icon /></ListItemIcon> : ""}
