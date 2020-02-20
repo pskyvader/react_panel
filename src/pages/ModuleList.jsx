@@ -8,11 +8,16 @@ import {
   } from "react-router-dom";
 
 export default () => {
-    let { module } = useParams();
+    let { module,tipo } = useParams();
+    console.log(useParams());
+    let array=new Array(10);
     return (
 <div>
-    <Typography variant="h3">Module {module}</Typography>
-        <ModuleCard/>
+    <Typography variant="h3">Module {module} {tipo? `tipo ${tipo}`:'' } </Typography>
+    {array.map(element => {
+        return <ModuleCard/>
+    })}
+        
     </div>
     )
 };
