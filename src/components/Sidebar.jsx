@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import clsx from 'clsx';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { useRouteMatch } from "react-router-dom";
@@ -20,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     drawerPaper: {
         width: drawerWidth,
     },
+    drawerPaperPersistent: {
+        width: drawerWidth,
+        marginTop:theme.spacing(8)
+    },
 
     drawerHeader: {
         display: 'flex',
@@ -27,9 +32,6 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(0, 1),
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
-    },
-    list:{
-        marginTop:theme.spacing(8)
     }
 }));
 
@@ -39,7 +41,7 @@ const SideList = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     return (
-        <div className={persistent?classes.list:""} role="presentation" >
+        <div  role="presentation" >
             {persistent ?"":
             <Fragment>
                 <div className={classes.drawerHeader}>
@@ -91,7 +93,7 @@ const SidebarMenu = (props) => {
     return (
         <Fragment>
             <Hidden smDown>
-                <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
+                <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaperPersistent, }}>
                     <SideList {...props} list={list} url={url} persistent={true} />
                 </Drawer>
             </Hidden>
