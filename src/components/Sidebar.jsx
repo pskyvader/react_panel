@@ -28,6 +28,9 @@ const useStyles = makeStyles(theme => ({
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
     },
+    list:{
+        marginTop:theme.spacing(8)
+    }
 }));
 
 
@@ -36,7 +39,7 @@ const SideList = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     return (
-        <div role="presentation" >
+        <div className={persistent?classes.list:""} role="presentation" >
             {persistent ?"":
             <Fragment>
                 <div className={classes.drawerHeader}>
@@ -89,7 +92,7 @@ const SidebarMenu = (props) => {
         <Fragment>
             <Hidden smDown>
                 <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
-                    <SideList  {...props} list={list} url={url} persistent={true} />
+                    <SideList {...props} list={list} url={url} persistent={true} />
                 </Drawer>
             </Hidden>
 
