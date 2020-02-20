@@ -1,7 +1,7 @@
 import React,{Fragment} from 'react';
 import ModuleCard from '../components/ModuleCard';
 import {
-    Typography,Grid
+    Typography,Grid,Container
 } from '@material-ui/core';
 import {
     useParams
@@ -12,7 +12,7 @@ export default () => {
     console.log(useParams());
     let array=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
     return (
-        <Fragment>
+            <Container maxWidth="xl" fixed>
     <Typography variant="h3">Module {module} {tipo? `tipo ${tipo}`:'' } </Typography>
     <Grid
   container
@@ -27,6 +27,6 @@ export default () => {
                 </Grid>
         )    })}
         </Grid>
-        </Fragment>
+        </Container>
     )
 };
