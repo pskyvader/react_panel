@@ -98,14 +98,14 @@ class module_object(graphene.ObjectType):
 
 
 def filter_permissions(list_modules,tipo):
-    module_list_final={}
+    module_list_final=[]
 
     for v in list_modules:
         c_module=v.copy()
         if c_module['module']=='separador':
-            print(c_module['titulo'],c_module['estado'])
             if str(tipo) in  c_module['estado'] and c_module['estado'][str(tipo)]:
-                module_list_final[c_module['orden']]=c_module
+                # module_list_final[str(c_module['orden'])+str(c_module['module'])]=c_module
+                module_list_final.append(c_module)
         else:
             c_module['hijo']=[]
             for hijo in v['hijo']:
@@ -116,9 +116,9 @@ def filter_permissions(list_modules,tipo):
                 if c_hijo['permisos']!={}:
                     c_module['hijo'].append(c_hijo)
             if c_module['hijo']!=[]:
-                module_list_final[c_module['orden']]=c_module
+                module_list_final.append(c_module)
 
-    return [v for k, v in sorted(module_list_final.items(), key=lambda item: item[0])]
+    return [v for v in sorted(module_list_final, key=lambda item: item['orden'])]
 
 
 def resolve_all_module(args, info, idadministrador):
