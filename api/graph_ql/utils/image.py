@@ -4,6 +4,10 @@ import sys
 
 from .format import url_amigable, current_time
 
+
+production=True
+
+
 current_dir = dirname(__file__)
 
 types = [
@@ -16,7 +20,14 @@ types = [
     "image/png",
 ]
 extensions = [".webp", ".bmp", ".ico", ".gif", ".jpeg", ".jpg", ".svg", ".xml", ".png"]
-upload_dir = join(current_dir, "..", "..", "..", "public", "images")
+
+
+upload_dir_production = join(current_dir, "..", "..", "..", "build", "images")
+upload_dir_dev = join(current_dir, "..", "..", "..", "public", "images")
+
+upload_dir=upload_dir_production if production else upload_dir_dev
+
+
 
 
 def move(file_move, folder, subfolder, name_final, folder_tmp="tmp"):
