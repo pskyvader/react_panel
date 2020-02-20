@@ -1,6 +1,6 @@
 import React from 'react';
 
-const static_folder = 'images'
+const static_folder = '/images';
 function Image(props) {
     if (typeof (props.image) == 'object') {
         var image = props.image.edges;

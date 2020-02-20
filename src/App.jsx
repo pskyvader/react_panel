@@ -22,7 +22,7 @@ const App = () => (
                 <Route path="/home">
                     <Home />
                 </Route>
-                <Route path="/:module?tipo=:tipo">
+                <Route path="/:module/tipo/:tipo">
                     <ModuleList />
                 </Route>
                 <Route path="*">
