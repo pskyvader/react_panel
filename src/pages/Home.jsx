@@ -9,10 +9,6 @@ export default () => (
     <React.Fragment>
         <Typography variant="h3">Welcome Home!</Typography>
             <Form/>
-
             <Table table="Igaccounts" fields={['idigaccounts', 'fullName', 'username', 'profilePicUrl', 'followerCount', 'followingCount', 'fecha', 'following', 'follower', 'favorito', 'hashtag']}/>
-
-
-
     </React.Fragment>
 );
