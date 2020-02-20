@@ -1,4 +1,5 @@
-import React,{Fragment} from 'react';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import ModuleCard from '../components/ModuleCard';
 import {
     Typography,Grid,Container
@@ -7,9 +8,23 @@ import {
     useParams
   } from "react-router-dom";
 
+
+
+  const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing(2),
+    },
+  }));
+
 export default () => {
     let { module,tipo } = useParams();
-    console.log(useParams());
     let array=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
     return (
             <Container maxWidth="xl" fixed>
@@ -18,11 +33,11 @@ export default () => {
   container
   direction="row"
   justify="flex-start"
-  alignItems="flex-start" spacing={3}
+  alignItems="flex-start" spacing={4}
 >
     {array.map((element,index) => {
         return (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+            <Grid item >
                 <ModuleCard key={index}/>
                 </Grid>
         )    })}
