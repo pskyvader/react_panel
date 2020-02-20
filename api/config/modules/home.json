@@ -1,0 +1,31 @@
+{
+    "icono": "Equalizer",
+    "module": "home",
+    "titulo": "Home",
+    "sub": "",
+    "padre": "",
+    "menu": [],
+    "mostrar": [],
+    "detalle": [],
+    "orden": 2,
+    "estado": false,
+    "aside": true,
+    "tipos": false,
+    "hijo": [
+        {
+            "tipo": 0,
+            "titulo": "Home",
+            "permisos": {
+                "1": {
+                    "estado": true},
+                "2": {
+                    "estado": true},
+                "3": {
+                    "estado": false}
+            },
+            "orden": 1,
+            "aside": true,
+            "hijos": false
+        }
+    ]
+}

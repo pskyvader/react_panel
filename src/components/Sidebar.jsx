@@ -43,6 +43,7 @@ const SideList = (props) => {
                 </IconButton>
             </div>
             <Divider />
+            {console.log(list)}
             {list.map((sublist, index) => (
                 <Fragment key={'sidebar_list' + index}>
                     <List subheader={
@@ -129,7 +130,9 @@ function SidebarCache(props) {
     let new_list = [];
     data.allModule.forEach(element => {
         if (element['module'] === 'separador') {
-            super_list.push(new_list);
+            if (new_list.length > 0) {
+                super_list.push(new_list);
+            }
             new_list = [];
         }
         new_list.push(element);
