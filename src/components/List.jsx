@@ -13,7 +13,7 @@ import {
 
 const useStyles = makeStyles(theme => ({
     nested: {
-        paddingLeft: theme.spacing(4),
+        paddingLeft: theme.spacing(9),
     },
 }));
 
@@ -68,7 +68,7 @@ export const ChildButton = ({ element, hijo, url, unique }) => {
     // console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])
     return (
         <ListItem className={!unique ? classes.nested : ''} button component={Link} to={to}>
-            {(unique||true) ? <ListItemIcon><icon.icon /></ListItemIcon> : ""}
+            {(unique) ? <ListItemIcon><icon.icon /></ListItemIcon> : ""}
             <ListItemText primary={hijo.titulo} />
         </ListItem>
     );

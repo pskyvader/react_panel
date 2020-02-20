@@ -1,13 +1,13 @@
 {
     "icono": "3dRotation",
     "module": "separador",
-    "titulo": "Administrador",
+    "titulo": "Tienda",
     "sub": "",
     "padre": "",
     "menu": [],
     "mostrar": [],
     "detalle": [],
-    "orden": 22,
+    "orden": 12,
     "estado": {
         "1": true,
         "2": true,

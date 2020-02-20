@@ -1,17 +1,17 @@
 {
     "icono": "3dRotation",
     "module": "separador",
-    "titulo": "Home",
+    "titulo": "Administrador",
     "sub": "",
     "padre": "",
     "menu": [],
     "mostrar": [],
     "detalle": [],
-    "orden": 1,
+    "orden": 22,
     "estado": {
         "1": true,
         "2": true,
-        "3": true
+        "3": false
     },
     "aside": true,
     "tipos": false,
