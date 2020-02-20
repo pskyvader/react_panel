@@ -22,9 +22,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
         minWidth: 290
     },
-    [theme.breakpoints.up('sm')]: {
-        maxWidth: 345
-    }
+    maxWidth: 345
   },
   media: {
     height: 0,
