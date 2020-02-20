@@ -31,9 +31,6 @@ function Logo_cache(props, cache, url_cache) {
     if (loading) return <Image />;
     if (error) return ErrorLink(error);
 
-    console.log(data);
-
-
     cache['image'] = data.logo.foto;
     cache['title'] = data.logo.titulo;
     LocalStorage.set(url_cache, cache);

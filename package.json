@@ -15,6 +15,7 @@
         "react-scripts": "^3.4.0",
         "react-virtualized": "^9.21.2",
         "react-window-infinite-loader": "^1.0.5",
+        "serve": "^11.3.0",
         "typescript": "^3.7.5"
     },
     "scripts": {
