@@ -38,7 +38,7 @@ export class NestedList extends React.Component {
                     <ListItemText primary={this.element.titulo} />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
-                <Collapse in={this.state.open} timeout="auto" unmountOnExit className={this.classes.nested}>
+                <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                     {this.element.hijo.map(hijo => (
                         <ChildButton key={this.element.module + '-' + this.element.orden + '-' + hijo.tipo} element={this.element} hijo={hijo} unique={false}  {...this.props}/>
                     ))
