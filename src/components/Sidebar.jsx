@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { useRouteMatch } from "react-router-dom";
-import { useTheme ,makeStyles} from '@material-ui/core/styles';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 import { CircularProgress, ListSubheader, Divider, List, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@material-ui/icons';
 
@@ -32,18 +32,22 @@ const useStyles = makeStyles(theme => ({
 
 
 const SideList = (props) => {
-    const { handleDrawer, list } = props;
+    const { handleDrawer, list, persistent } = props;
     const classes = useStyles();
     const theme = useTheme();
     return (
-        <div className={classes.list} role="presentation" >
-            <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawer}>
-                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton>
-            </div>
-            <Divider />
-            {console.log(list)}
+        <div role="presentation" >
+            {persistent ?"":
+            <Fragment>
+                <div className={classes.drawerHeader}>
+                    <IconButton onClick={handleDrawer}>
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                    </IconButton>
+                </div>
+                <Divider />
+                </Fragment>}
+
+
             {list.map((sublist, index) => (
                 <Fragment key={'sidebar_list' + index}>
                     <List subheader={
@@ -85,13 +89,13 @@ const SidebarMenu = (props) => {
         <Fragment>
             <Hidden smDown>
                 <Drawer className={classes.drawer} variant="persistent" open={open} classes={{ paper: classes.drawerPaper, }}>
-                    <SideList  {...props} list={list} url={url} />
+                    <SideList  {...props} list={list} url={url} persistent={true} />
                 </Drawer>
             </Hidden>
 
             <Hidden mdUp>
                 <Drawer variant="temporary" open={open} classes={{ paper: classes.drawerPaper, }} onClose={toggleDrawer(false)}>
-                    <SideList {...props} list={list} url={url} />
+                    <SideList {...props} list={list} url={url} persistent={false} />
                 </Drawer>
             </Hidden>
         </Fragment>
