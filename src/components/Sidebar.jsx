@@ -32,8 +32,8 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'flex-end',
     },
     subHeader:{
-        backgroundColor: theme.palette.primary.main,
-        color:theme.pallete.primary.contrastText
+        backgroundColor: theme.palette.secondary.main,
+        color:theme.palette.secondary.contrastText
     }
 }));
 
