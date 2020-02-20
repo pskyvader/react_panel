@@ -10,24 +10,6 @@ const useStyles = makeStyles(theme => ({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
     },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.spacing(0, 1),
-        ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
-    },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
@@ -47,6 +29,24 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('md')]: {
             marginLeft: 0,
         },
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+    },
+
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(0, 1),
+        ...theme.mixins.toolbar,
+        justifyContent: 'flex-end',
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
     },
     nested: {
         paddingLeft: theme.spacing(4),

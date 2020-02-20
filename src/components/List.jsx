@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core';
 import {ExpandLess, ExpandMore } from '@material-ui/icons';
 
-import allIconsMap from "./IconList";
 import * as mui from '@material-ui/icons';
 
 export class NestedList extends React.Component {
@@ -16,7 +15,6 @@ export class NestedList extends React.Component {
         this.classes = props.classes;
         this.state = { open: false };
         this.icon = mui[this.element['icono']];
-        // console.log('icono',this.icon);
     }
     handleClick = () => {
         this.setOpen(!this.state.open);
