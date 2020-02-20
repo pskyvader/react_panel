@@ -48,9 +48,6 @@ const useStyles = makeStyles(theme => ({
             marginLeft: 0,
         },
     },
-    link: {
-        textDecoration: 'none'
-    },
     nested: {
         paddingLeft: theme.spacing(4),
     },
