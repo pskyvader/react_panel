@@ -37,7 +37,8 @@ export default function Header(props) {
                         <MenuIcon />
                     </IconButton>
                     <div className={classes.menuButton} >
-                    <Logo id='1' width="40" height="40"/></div>
+                    <Logo id='1' width="40" height="40"/>
+                    </div>
                     <Typography variant="h6" noWrap> Persistent drawer </Typography>
                 </Toolbar>
             </AppBar>

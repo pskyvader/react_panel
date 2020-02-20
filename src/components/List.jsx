@@ -6,6 +6,7 @@ import { ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/cor
 import {ExpandLess, ExpandMore } from '@material-ui/icons';
 
 import * as mui from '@material-ui/icons';
+import useStyles from './Styles';
 
 export class NestedList extends React.Component {
     constructor(props) {
@@ -50,9 +51,10 @@ export class NestedList extends React.Component {
 
 
 
-export const ChildButton = ({element, hijo, url, unique, classes}) =>{
+export const ChildButton = ({element, hijo, url, unique}) =>{
     const to=`${url}/${element.module}`;
     const icon={'icon':mui[element.icono]};
+    const classes = useStyles();
     // console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])
     return (
         <ListItem className={!unique ? classes.nested : ''} button component={Link} to={to}>
