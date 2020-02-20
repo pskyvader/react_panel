@@ -6,10 +6,51 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Logo from './Logo';
-import useStyles from './Styles';
 import Sidebar from './Sidebar';
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        [theme.breakpoints.up('md')]: {
+            marginLeft: -drawerWidth,
+        },
+    },
+    contentShift: {
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        [theme.breakpoints.up('md')]: {
+            marginLeft: 0,
+        },
+    },
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(0, 1),
+        ...theme.mixins.toolbar,
+        justifyContent: 'flex-end',
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    }
+}));
 
 
 export default function Header(props) {
