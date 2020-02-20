@@ -37,7 +37,7 @@ export default () => {
 >
     {array.map((element,index) => {
         return (
-            <Grid item xs>
+            <Grid item xs={12} sm>
                 <ModuleCard key={index}/>
                 </Grid>
         )    })}
