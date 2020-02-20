@@ -3,10 +3,21 @@ import { Link } from "react-router-dom";
 
 
 import { ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core';
-import {ExpandLess, ExpandMore } from '@material-ui/icons';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 import * as mui from '@material-ui/icons';
-import useStyles from './Styles';
+import {
+    makeStyles
+} from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles(theme => ({
+    nested: {
+        paddingLeft: theme.spacing(4),
+    },
+}));
+
+export default useStyles;
 
 export class NestedList extends React.Component {
     constructor(props) {
@@ -38,7 +49,7 @@ export class NestedList extends React.Component {
                 </ListItem>
                 <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                     {this.element.hijo.map(hijo => (
-                        <ChildButton key={this.element.module + '-' + this.element.orden + '-' + hijo.tipo} element={this.element} hijo={hijo} unique={false}  {...this.props}/>
+                        <ChildButton key={this.element.module + '-' + this.element.orden + '-' + hijo.tipo} element={this.element} hijo={hijo} unique={false}  {...this.props} />
                     ))
                     }
                 </Collapse>
@@ -50,9 +61,9 @@ export class NestedList extends React.Component {
 
 
 
-export const ChildButton = ({element, hijo, url, unique}) =>{
-    const to=`${url}/${element.module}`;
-    const icon={'icon':mui[element.icono]};
+export const ChildButton = ({ element, hijo, url, unique }) => {
+    const to = `${url}/${element.module}`;
+    const icon = { 'icon': mui[element.icono] };
     const classes = useStyles();
     // console.log(allIconsMap[element['icono']],element['icono'],element['titulo'])
     return (
