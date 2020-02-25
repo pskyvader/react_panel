@@ -99,6 +99,7 @@ class module_object(graphene.ObjectType):
         else:
             for i in parent.hijo:
                 if tipo == i["tipo"]:
+                    print(parent.menu,parent.mostrar,parent.detalle)
                     return [module_configuration_object(**i)]
             return None
 
