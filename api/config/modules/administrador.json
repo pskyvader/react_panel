@@ -38,20 +38,20 @@
                 "1": {
                     "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 }
             },
             "orden": 1,
@@ -65,20 +65,20 @@
                 "1": {
                     "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 }
             },
             "orden": 2,
@@ -92,20 +92,20 @@
                 "1": {
                     "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true, "idmediopago": false, "orden": true, "titulo": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "idadministrador": true, "nombre": true, "email": true, "foto": true},
-                    "detalle": {"usuario": true, "password": true, "estado": true, "titulo": true, "resumen": true, "descripcion": true, "orden": true, "tag": true, "fecha": true, "cantidad": true, "foto": true, "nombre": true, "email": true}
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 }
             },
             "orden": 3,

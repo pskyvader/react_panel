@@ -142,7 +142,7 @@ def json_to_module():
                         e['field']='id'+table["module"]
                     new_array.append(NoIndent(e))
                 new_module[k]=new_array
-
+        print(table['module'])
         if table['module']=='separador':
             new_module['estado']={ "1": True, "2": True, "3": False }
         else:
@@ -172,6 +172,7 @@ def json_to_module():
                     new_permiso['menu']=NoIndent(new_permiso['menu'])
 
                     for mostrar_hijo in table_hijo['mostrar']:
+                        print(mostrar_hijo['field'])
                         if mostrar_hijo['field']=='0':
                             mostrar_hijo['field']='id'+table["module"]
                         new_permiso['mostrar'][mostrar_hijo['field']]= True if mostrar_hijo['estado'][str(tipo)]=='true' else False
