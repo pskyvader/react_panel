@@ -30,13 +30,10 @@ export default () => {
     }
     const configuracion=ModuleConfiguration({module:module,tipo:tipo,idadministrador:1});
     console.log(configuracion);
-    if (configuracion!=null){
-        return null;
-    }
     let array = [1, 1, 1, 1, 1,1,1,1,1,1,1,1];
     return (
         <Container maxWidth="xl" fixed>
-            {}
+            {(configuracion!=null)?configuracion:null}
             <Typography variant="h3" gutterBottom >Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
             <Grid
                 container
