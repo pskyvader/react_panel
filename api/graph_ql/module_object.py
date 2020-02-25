@@ -52,6 +52,15 @@ class permisos_object(graphene.ObjectType):
     def resolve_menu(parent, info):
         list_menu = []
         print(parent['parent']['menu'],parent['menu'])
+        temp_list={}
+        for k, m in parent["menu"].items():
+            temp_list[k]=m
+        print(temp_list)
+        for m in parent['parent']['menu']:
+            temp_list[m['field']]=m
+        print(temp_list)
+
+
         for k, m in parent["menu"].items():
             list_menu.append(permisos_detail_object(field=k, estado=m))
         return list_menu
