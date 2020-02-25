@@ -173,11 +173,13 @@ def json_to_module():
                             new_permiso['menu'][menu_hijo['field']]= True if menu_hijo['estado'][str(tipo)]=='true' else False
                         new_permiso['menu']=NoIndent(new_permiso['menu'])
 
-                        for mostrar_hijo in table_hijo['mostrar']:
+                        for mostrar_hijo in table_hijo['mostrar'].copy():
                             print(mostrar_hijo['field'])
                             if mostrar_hijo['field']=='0':
                                 mostrar_hijo['field']='id'+table["module"]
                             new_permiso['mostrar'][mostrar_hijo['field']]= True if mostrar_hijo['estado'][str(tipo)]=='true' else False
+                        
+                        print(new_permiso['mostrar'])
                         new_permiso['mostrar']=NoIndent(new_permiso['mostrar'])
 
                         for detalle_hijo in table_hijo['detalle']:
