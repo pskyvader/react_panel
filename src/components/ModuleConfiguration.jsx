@@ -1,3 +1,7 @@
+import React from 'react';
+import ModuleCard from '../components/ModuleCard';import {
+    Grid,
+} from '@material-ui/core';
 import {
     useQuery
 } from '@apollo/react-hooks';
@@ -15,7 +19,7 @@ function ModuleConfigurationCache(props) {
         module,
         tipo
     } = props;
-    const GET_MODULES = gql`
+    const GET_MODULES = gql `
     query get_all_module ($idadministrador:Int!,$module:String!,$tipo:Int){
         module(idadministrador:$idadministrador,module:$module){
             titulo
@@ -44,9 +48,19 @@ function ModuleConfigurationCache(props) {
         }
     }`;
 
-    const variables = { variables: { idadministrador: idadministrador, module: module, tipo: tipo }, };
+    const variables = {
+        variables: {
+            idadministrador: idadministrador,
+            module: module,
+            tipo: tipo
+        },
+    };
 
-    const { loading, error, data } = useQuery(GET_MODULES, variables);
+    const {
+        loading,
+        error,
+        data
+    } = useQuery(GET_MODULES, variables);
     if (loading) return null;
     if (error) return ErrorLink(error);
     LocalStorage.set(url_cache, data.module);
@@ -58,11 +72,37 @@ function ModuleConfigurationCache(props) {
 function ModuleConfiguration(props) {
     const url_cache = 'get_module_id_' + props.idadministrador + '_module_' + props.module + '_tipo_' + props.tipo;
     var cache = LocalStorage.get(url_cache, []);
-    if (cache.length > 0) {
-        return cache;
-    } else {
-        return ModuleConfigurationCache(props, url_cache);
+    if (cache.length == 0) {
+        return cache = ModuleConfigurationCache(props, url_cache);
     }
-}
 
-export default ModuleConfiguration;
+    return ( <
+        Grid container direction = "row"
+        justify = "flex-start"
+        alignItems = "flex-start"
+        spacing = {
+            3
+        } >
+        {
+            array.map((element, index) => {
+                return ( <
+                    Grid item xs = {
+                        12
+                    }
+                    sm className = {
+                        classes.grid
+                    }
+                    key = {
+                        index
+                    } >
+                    <
+                    ModuleCard / >
+                    <
+                    /Grid>
+                )
+            })
+        } <
+        /Grid>)
+    }
+
+    export default ModuleConfiguration;
