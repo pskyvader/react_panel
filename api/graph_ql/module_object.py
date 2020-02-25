@@ -78,6 +78,7 @@ class permisos_object(graphene.ObjectType):
     def resolve_detalle(parent, info):
         list_detalle = []
         temp_list={}
+        print(parent['parent']['detalle'],parent["detalle"])
         for m in parent['parent']['detalle']:
             temp_list[m['field']]=m
         for k, m in parent["detalle"].items():
