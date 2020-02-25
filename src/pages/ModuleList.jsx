@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ModuleCard from '../components/ModuleCard';
+import ModuleConfiguration from '../components/ModuleConfiguration';
 import {
     Typography, Grid, Container
 } from '@material-ui/core';
@@ -24,10 +25,13 @@ const useStyles = makeStyles(theme => ({
 export default () => {
     const classes = useStyles();
     let { module, tipo } = useParams();
-    
+    if (typeof(tipo)=='undefined'){
+        tipo=0;
+    }
     let array = [1, 1, 1, 1, 1,1,1,1,1,1,1,1];
     return (
         <Container maxWidth="xl" fixed>
+            {console.log(ModuleConfiguration({module:module,tipo:tipo}))}
             <Typography variant="h3" gutterBottom >Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
             <Grid
                 container
