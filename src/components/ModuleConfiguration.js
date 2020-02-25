@@ -17,18 +17,17 @@ function ModuleConfigurationCache(props) {
     } = props;
     const GET_MODULES = gql`
     query get_all_module ($idadministrador:Int!,$module:String!,$tipo:Int){
-        query{
-            module(idadministrador:$idadministrador,module:$module){
-              titulo
-              estado
-              hijo(tipo:$tipo){
+        module(idadministrador:$idadministrador,module:$module){
+            titulo
+            estado
+            hijo(tipo:$tipo){
                 titulo
                 orden
                 permisos{
                     estado
                     menu(estado:true){
-                    field
-                    titulo
+                        field
+                        titulo
                     }  
                     mostrar(estado:true){
                         field
@@ -57,7 +56,7 @@ function ModuleConfigurationCache(props) {
         error,
         data
     } = useQuery(GET_MODULES, variables);
-    console.log(loading,error,data);
+    console.log(loading, error, data);
     if (loading) return null;
     if (error) return ErrorLink(error);
     LocalStorage.set(url_cache, data.module);
