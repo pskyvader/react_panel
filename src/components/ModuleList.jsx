@@ -5,9 +5,6 @@ import ModuleConfiguration from '../components/ModuleConfiguration';
 import {
     Typography, Grid, Container
 } from '@material-ui/core';
-import {
-    useParams
-} from "react-router-dom";
 
 
 
@@ -25,7 +22,12 @@ const useStyles = makeStyles(theme => ({
 function ModuleList(props) {
     const {module,tipo,config}=props;
     const classes = useStyles();
-    
+    return "asdf";
+    console.log(config);
+    if (config==null){
+        return "";
+    }
+
     let array = [1, 1, 1, 1, 1,1,1,1,1,1,1,1];
     return (
         <Container maxWidth="xl" fixed>
