@@ -18,6 +18,7 @@ for f in json_files:
     module_list.append(module_file)
 
 cache_module_permissions={}
+cache_module_permissions_detail={}
 
 
 class menu_object(graphene.ObjectType):
@@ -142,4 +143,31 @@ def resolve_all_module(args, info, idadministrador):
     return final_list
 
 
+def resolve_module(args, info, idadministrador,module,tipo=0):
+    administrador=resolve_administrador(args, info,idadministrador)
+    if administrador==None:
+        return None
+        
+    if administrador.tipo in cache_module_permissions_detail and module in cache_module_permissions_detail[administrador.tipo] and tipo in cache_module_permissions_detail[administrador.tipo][module]:
+        return cache_module_permissions_detail[administrador.tipo][module][tipo]
+
+    filtered_module=filter_permissions(module_list,administrador.tipo)
+    module_detail=next(item for item in filtered_module if item["module"] == module)
+
+    m_o=module_object()
+    for k, v in module_detail.items():
+        setattr(m_o, k, v)
+
+    if administrador.tipo not in cache_module_permissions_detail:
+        cache_module_permissions_detail[administrador.tipo]={}
+
+    if module not in cache_module_permissions_detail[administrador.tipo]:
+        cache_module_permissions_detail[administrador.tipo][module]={}
+
+    cache_module_permissions_detail[administrador.tipo][module][tipo]=m_o
+
+    return m_o
+
+
 all_module = graphene.List( module_object, idadministrador=graphene.Int() )
+module= graphene.Field(module_object, idadministrador=graphene.Int(),module=graphene.String(required=True),tipo=graphene.Int())

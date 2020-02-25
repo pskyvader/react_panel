@@ -40,6 +40,8 @@ class Query(graphene.ObjectType, attributes_query):
     node = relay.Node.Field()
     all_module=module_object.all_module
     resolve_all_module=module_object.resolve_all_module
+    module=module_object.module
+    resolve_module=module_object.resolve_module
 
 
 class Mutation(graphene.ObjectType, attributes_mutation):
