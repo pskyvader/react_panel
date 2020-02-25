@@ -1,1 +1,47 @@
-{"icono": "input", "module": "instagram", "titulo": "instagram", "sub": "", "padre": "", "mostrar": [], "detalle": [], "orden": 4, "estado": 1, "aside": 1, "tipos": 0, "hijo": [{"idmoduloconfiguracion": 31, "tipo": 0, "titulo": "Instagram", "menu": [{"estado": {"3": "false", "1": "false", "2": "false"}, "titulo": "Nuevo", "field": "new"}, {"estado": {"3": "false", "2": "false", "1": "false"}, "titulo": "Exportar a excel", "field": "excel"}, {"estado": {"2": "false", "1": "false", "3": "false"}, "titulo": "Regenerar imagenes", "field": "regenerar"}], "mostrar": [], "detalle": [], "recortes": [], "orden": 1, "estado": [{"estado": {"3": "true", "2": "true", "1": "true"}}], "aside": 1, "hijos": 0}]}
+{
+    "icono": "Input",
+    "module": "instagram",
+    "titulo": "instagram",
+    "sub": "",
+    "padre": "",
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
+    "mostrar": [],
+    "detalle": [],
+    "orden": 4,
+    "estado": true,
+    "aside": true,
+    "tipos": false,
+    "hijo": [
+        {
+            "tipo": 0,
+            "titulo": "Instagram",
+            "permisos": {
+                "1": {
+                    "estado": true,
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true}
+                },
+                "2": {
+                    "estado": true,
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true}
+                },
+                "3": {
+                    "estado": true,
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true}
+                }
+            },
+            "orden": 1,
+            "aside": true,
+            "hijos": false
+        }
+    ]
+}

@@ -1,1 +1,57 @@
-{"icono": "history", "module": "log", "titulo": "Logs", "sub": "", "padre": "", "mostrar": [{"field": "0", "titulo": "ID", "tipo": "text"}, {"field": "tabla", "titulo": "Tabla", "tipo": "text"}, {"field": "accion", "titulo": "Accion", "tipo": "text"}, {"field": "administrador", "titulo": "Administrador", "tipo": "text"}, {"field": "fecha", "titulo": "Fecha", "tipo": "text"}], "detalle": [{"field": "tabla", "titulo": "Tabla", "tipo": "text"}, {"field": "accion", "titulo": "Accion", "tipo": "text"}, {"field": "fecha", "titulo": "Fecha", "tipo": "text"}], "orden": 23, "estado": 1, "aside": 1, "tipos": 0, "hijo": [{"idmoduloconfiguracion": 7, "tipo": 0, "titulo": "Logs", "menu": [{"field": "new", "titulo": "Nuevo", "estado": {"1": "false", "2": "false", "3": "false"}}, {"field": "excel", "titulo": "Exportar a excel", "estado": {"1": "true", "2": "true", "3": "false"}}, {"field": "regenerar", "titulo": "Regenerar imagenes", "estado": {"1": "false", "2": "false", "3": "false"}}], "mostrar": [{"field": "0", "tipo": "text", "titulo": "ID", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "tabla", "tipo": "text", "titulo": "Tabla", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "accion", "tipo": "text", "titulo": "Accion", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "administrador", "tipo": "text", "titulo": "Administrador", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "fecha", "tipo": "text", "titulo": "Fecha", "estado": {"1": "true", "2": "true", "3": "true"}}], "detalle": [{"field": "tabla", "tipo": "text", "titulo": "Tabla", "texto_ayuda": "", "required": "true", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "accion", "tipo": "text", "titulo": "Accion", "texto_ayuda": "", "required": "true", "estado": {"1": "true", "2": "true", "3": "true"}}, {"field": "fecha", "tipo": "text", "titulo": "Fecha", "texto_ayuda": "", "required": "true", "estado": {"1": "true", "2": "true", "3": "true"}}], "recortes": [], "orden": 1, "estado": [{"estado": {"1": "true", "2": "true", "3": "false"}}], "aside": 1, "hijos": 0}]}
+{
+    "icono": "History",
+    "module": "log",
+    "titulo": "Logs",
+    "sub": "",
+    "padre": "",
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
+    "mostrar": [
+        {"field": "idlog", "titulo": "ID", "tipo": "text"},
+        {"field": "tabla", "titulo": "Tabla", "tipo": "text"},
+        {"field": "accion", "titulo": "Accion", "tipo": "text"},
+        {"field": "administrador", "titulo": "Administrador", "tipo": "text"},
+        {"field": "fecha", "titulo": "Fecha", "tipo": "text"}
+    ],
+    "detalle": [
+        {"field": "tabla", "titulo": "Tabla", "tipo": "text"},
+        {"field": "accion", "titulo": "Accion", "tipo": "text"},
+        {"field": "fecha", "titulo": "Fecha", "tipo": "text"}
+    ],
+    "orden": 23,
+    "estado": true,
+    "aside": true,
+    "tipos": false,
+    "hijo": [
+        {
+            "tipo": 0,
+            "titulo": "Logs",
+            "permisos": {
+                "1": {
+                    "estado": true,
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true, "idlog": true, "tabla": true, "accion": true, "administrador": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true, "tabla": true, "accion": true}
+                },
+                "2": {
+                    "estado": true,
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true, "idlog": true, "tabla": true, "accion": true, "administrador": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true, "tabla": true, "accion": true}
+                },
+                "3": {
+                    "estado": false,
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true, "idlog": true, "tabla": true, "accion": true, "administrador": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true, "tabla": true, "accion": true}
+                }
+            },
+            "orden": 1,
+            "aside": true,
+            "hijos": false
+        }
+    ]
+}

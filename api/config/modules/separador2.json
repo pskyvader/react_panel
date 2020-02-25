@@ -1,1 +1,19 @@
-{"icono": "3d_rotation", "module": "separador", "titulo": "Administrador", "sub": "", "padre": "", "mostrar": [], "detalle": [], "orden": 22, "estado": 1, "aside": 1, "tipos": 0, "hijo": []}
+{
+    "icono": "3dRotation",
+    "module": "separador",
+    "titulo": "Administrador",
+    "sub": "",
+    "padre": "",
+    "menu": [],
+    "mostrar": [],
+    "detalle": [],
+    "orden": 22,
+    "estado": {
+        "1": true,
+        "2": true,
+        "3": false
+    },
+    "aside": true,
+    "tipos": false,
+    "hijo": []
+}

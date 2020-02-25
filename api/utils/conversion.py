@@ -147,13 +147,14 @@ def json_to_module():
             new_module['estado']={ "1": True, "2": True, "3": False }
         else:
             new_menus=[]
-            for hijo_menu in table['hijo'][0]['menu']:
-                new_menu=menu.copy()
-                for k,v in new_menu.items():
-                    new_menu[k]=hijo_menu[k]
-                new_menus.append(NoIndent(new_menu))
-                
-            new_module['menu']=new_menus
+            if 'menu' in table['hijo'][0]:
+                for hijo_menu in table['hijo'][0]['menu']:
+                    new_menu=menu.copy()
+                    for k,v in new_menu.items():
+                        new_menu[k]=hijo_menu[k]
+                    new_menus.append(NoIndent(new_menu))
+                    
+                new_module['menu']=new_menus
 
             new_hijos=[]
             for table_hijo in table['hijo']:
@@ -163,28 +164,32 @@ def json_to_module():
                         new_h[k]=table_hijo[k] if not isinstance(new_h[k],bool) else bool(table_hijo[k])
 
                 new_permisos={}
-                for tipo in range(1,4):
-                    new_permiso=permiso.copy()
-                    new_permiso['estado']=True if table_hijo['estado'][0]['estado'][str(tipo)]=='true' else False
+                if 'estado' in table_hijo:
+                    for tipo in range(1,4):
+                        new_permiso=permiso.copy()
+                        new_permiso['estado']=True if table_hijo['estado'][0]['estado'][str(tipo)]=='true' else False
 
-                    for menu_hijo in table_hijo['menu']:
-                        new_permiso['menu'][menu_hijo['field']]= True if menu_hijo['estado'][str(tipo)]=='true' else False
-                    new_permiso['menu']=NoIndent(new_permiso['menu'])
+                        for menu_hijo in table_hijo['menu']:
+                            new_permiso['menu'][menu_hijo['field']]= True if menu_hijo['estado'][str(tipo)]=='true' else False
+                        new_permiso['menu']=NoIndent(new_permiso['menu'])
 
-                    for mostrar_hijo in table_hijo['mostrar']:
-                        print(mostrar_hijo['field'])
-                        if mostrar_hijo['field']=='0':
-                            mostrar_hijo['field']='id'+table["module"]
-                        new_permiso['mostrar'][mostrar_hijo['field']]= True if mostrar_hijo['estado'][str(tipo)]=='true' else False
-                    new_permiso['mostrar']=NoIndent(new_permiso['mostrar'])
+                        for mostrar_hijo in table_hijo['mostrar']:
+                            print(mostrar_hijo['field'])
+                            if mostrar_hijo['field']=='0':
+                                mostrar_hijo['field']='id'+table["module"]
+                            new_permiso['mostrar'][mostrar_hijo['field']]= True if mostrar_hijo['estado'][str(tipo)]=='true' else False
+                        new_permiso['mostrar']=NoIndent(new_permiso['mostrar'])
 
-                    for detalle_hijo in table_hijo['detalle']:
-                        new_permiso['detalle'][detalle_hijo['field']]= True if detalle_hijo['estado'][str(tipo)]=='true' else False
-                    new_permiso['detalle']=NoIndent(new_permiso['detalle'])
+                        for detalle_hijo in table_hijo['detalle']:
+                            new_permiso['detalle'][detalle_hijo['field']]= True if detalle_hijo['estado'][str(tipo)]=='true' else False
+                        new_permiso['detalle']=NoIndent(new_permiso['detalle'])
 
-                    new_permisos[tipo]=new_permiso
-                    
-                new_h['permisos']=new_permisos
+                        new_permisos[tipo]=new_permiso
+                        
+                    new_h['permisos']=new_permisos
+                else:
+                    new_h['permisos']=table_hijo['permisos']
+
 
                 new_hijos.append(new_h)
             

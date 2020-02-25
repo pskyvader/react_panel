@@ -17,11 +17,14 @@
             "titulo": "Home",
             "permisos": {
                 "1": {
-                    "estado": true},
+                    "estado": true
+                },
                 "2": {
-                    "estado": true},
+                    "estado": true
+                },
                 "3": {
-                    "estado": false}
+                    "estado": false
+                }
             },
             "orden": 1,
             "aside": true,
