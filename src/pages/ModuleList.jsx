@@ -27,7 +27,7 @@ export default () => {
     let array = [1, 1, 1, 1, 1,1,1,1,1,1,1,1];
     return (
         <Container maxWidth="xl" fixed>
-            <Typography variant="h3">Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
+            <Typography variant="h3" gutterBottom >Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
             <Grid
                 container
                 direction="row"
