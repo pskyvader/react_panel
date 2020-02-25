@@ -23,20 +23,20 @@
                 "1": {
                     "estado": true,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
+                    "mostrar": {},
+                    "detalle": {}
                 },
                 "2": {
                     "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
+                    "mostrar": {},
+                    "detalle": {}
                 },
                 "3": {
                     "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
+                    "mostrar": {},
+                    "detalle": {}
                 }
             },
             "orden": 1,

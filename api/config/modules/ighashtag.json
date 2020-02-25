@@ -41,20 +41,20 @@
                 "1": {
                     "estado": true,
                     "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true}
+                    "mostrar": {"idighashtag": true, "orden": true, "hashtag": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "orden": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
                     "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true}
+                    "mostrar": {"idighashtag": true, "orden": true, "hashtag": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "orden": true, "estado": true}
                 },
                 "3": {
                     "estado": true,
                     "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true}
+                    "mostrar": {"idighashtag": true, "orden": true, "hashtag": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "orden": true, "estado": true}
                 }
             },
             "orden": 1,

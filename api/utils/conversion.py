@@ -122,7 +122,6 @@ def json_to_module():
 
     menu = {"field": "", "titulo": ""}
     hijo = { "tipo": 0, "titulo": "","permisos":{} , "orden": 0, "aside": False, "hijos": False, }
-    permiso={"estado":False,"menu":{},"mostrar":{},"detalle":{}}
 
     json_files = file_list(module_dir)
     for f in json_files:
@@ -142,7 +141,6 @@ def json_to_module():
                         e['field']='id'+table["module"]
                     new_array.append(NoIndent(e))
                 new_module[k]=new_array
-        print(table['module'])
         if table['module']=='separador':
             new_module['estado']={ "1": True, "2": True, "3": False }
         else:
@@ -166,7 +164,7 @@ def json_to_module():
                 new_permisos={}
                 if 'estado' in table_hijo:
                     for tipo in range(1,4):
-                        new_permiso=permiso.copy()
+                        new_permiso={"estado":False,"menu":{},"mostrar":{},"detalle":{}}
                         new_permiso['estado']=True if table_hijo['estado'][0]['estado'][str(tipo)]=='true' else False
 
                         for menu_hijo in table_hijo['menu']:
@@ -174,12 +172,10 @@ def json_to_module():
                         new_permiso['menu']=NoIndent(new_permiso['menu'])
 
                         for mostrar_hijo in table_hijo['mostrar'].copy():
-                            print(mostrar_hijo['field'])
                             if mostrar_hijo['field']=='0':
                                 mostrar_hijo['field']='id'+table["module"]
                             new_permiso['mostrar'][mostrar_hijo['field']]= True if mostrar_hijo['estado'][str(tipo)]=='true' else False
                         
-                        print(new_permiso['mostrar'])
                         new_permiso['mostrar']=NoIndent(new_permiso['mostrar'])
 
                         for detalle_hijo in table_hijo['detalle']:

@@ -47,11 +47,11 @@ class permisos_detail_object(graphene.ObjectType):
 
 class permisos_object(graphene.ObjectType):
     estado = graphene.Boolean()
-    menu = graphene.List(permisos_detail_object)
-    mostrar = graphene.List(permisos_detail_object)
-    detalle = graphene.List(permisos_detail_object)
+    menu = graphene.List(permisos_detail_object,estado=graphene.Boolean())
+    mostrar = graphene.List(permisos_detail_object,estado=graphene.Boolean())
+    detalle = graphene.List(permisos_detail_object,estado=graphene.Boolean())
 
-    def resolve_menu(parent, info):
+    def resolve_menu(parent, info,estado=None):
         list_menu = []
         temp_list={}
         for m in parent['parent']['menu']:
@@ -60,10 +60,11 @@ class permisos_object(graphene.ObjectType):
             temp_list[k]['estado']=m
 
         for k, m in temp_list.items():
-            list_menu.append(permisos_detail_object(field=m['field'],titulo=m['titulo'], estado=m['estado']))
+            if estado==None or m['estado']==estado:
+                list_menu.append(permisos_detail_object(**m))
         return list_menu
 
-    def resolve_mostrar(parent, info):
+    def resolve_mostrar(parent, info,estado=None):
         list_mostrar = []
         temp_list={}
         for m in parent['parent']['mostrar']:
@@ -72,20 +73,21 @@ class permisos_object(graphene.ObjectType):
             temp_list[k]['estado']=m
 
         for k, m in temp_list.items():
-            list_mostrar.append(permisos_detail_object(field=m['field'],titulo=m['titulo'],tipo=m['tipo'], estado=m['estado']))
+            if estado==None or m['estado']==estado:
+                list_mostrar.append(permisos_detail_object(**m))
         return list_mostrar
 
-    def resolve_detalle(parent, info):
+    def resolve_detalle(parent, info,estado=None):
         list_detalle = []
         temp_list={}
-        print(parent['parent']['detalle'],parent["detalle"])
         for m in parent['parent']['detalle']:
             temp_list[m['field']]=m
         for k, m in parent["detalle"].items():
             temp_list[k]['estado']=m
 
         for k, m in temp_list.items():
-            list_detalle.append(permisos_detail_object(field=m['field'],titulo=m['titulo'],tipo=m['tipo'], estado=m['estado']))
+            if estado==None or m['estado']==estado:
+                list_detalle.append(permisos_detail_object(**m))
         return list_detalle
 
 

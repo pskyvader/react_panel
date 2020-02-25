@@ -31,21 +31,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": false, "delete": false, "idbanner": false, "orden": false, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false, "precio": true, "idregion": true, "variable": false, "valor": false}
+                    "menu": {"new": true, "excel": false, "regenerar": false},
+                    "mostrar": {"variable": true, "valor": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"variable": true, "valor": true}
                 },
                 "2": {
                     "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": false, "delete": false, "idbanner": false, "orden": false, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false, "precio": true, "idregion": true, "variable": false, "valor": false}
+                    "mostrar": {"variable": true, "valor": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"variable": true, "valor": true}
                 },
                 "3": {
                     "estado": false,
                     "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": false, "delete": false, "idbanner": false, "orden": false, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": false, "precio": true, "idregion": true, "variable": false, "valor": false}
+                    "mostrar": {"variable": false, "valor": false, "copy": false, "url_detalle": false, "delete": false},
+                    "detalle": {"variable": false, "valor": false}
                 }
             },
             "orden": 1,

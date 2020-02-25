@@ -37,20 +37,20 @@
                 "1": {
                     "estado": true,
                     "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true, "idlog": true, "tabla": true, "accion": true, "administrador": true, "idmediopago": false},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true, "tabla": true, "accion": true, "descripcion": true}
+                    "mostrar": {"idmediopago": false, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "descripcion": true, "orden": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
                     "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true, "idlog": true, "tabla": true, "accion": true, "administrador": true, "idmediopago": false},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true, "tabla": true, "accion": true, "descripcion": true}
+                    "mostrar": {"idmediopago": false, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "descripcion": true, "orden": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
                     "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": false, "url_detalle": true, "delete": false, "idbanner": false, "orden": true, "titulo": true, "idcomuna": false, "precio": true, "variable": false, "valor": false, "idgaleria": false, "pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "idighashtag": true, "hashtag": true, "idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "usuario": true, "idlog": true, "tabla": true, "accion": true, "administrador": true, "idmediopago": false},
-                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true, "titulo": true, "texto1": false, "texto2": false, "texto": false, "link": false, "orden": true, "precio": true, "idregion": true, "variable": false, "valor": false, "url": true, "subtitulo": true, "resumen": true, "keywords": true, "metadescripcion": true, "hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "tag": true, "fecha": true, "cantidad": true, "usuario": true, "tabla": true, "accion": true, "descripcion": true}
+                    "mostrar": {"idmediopago": false, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "descripcion": true, "orden": true, "estado": true}
                 }
             },
             "orden": 1,
