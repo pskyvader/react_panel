@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-    useQuery
-} from '@apollo/react-hooks';
-import {
-    gql
-} from 'apollo-boost';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
 import ErrorLink from './ErrorLink';
 import LocalStorage from './LocalStorage';
