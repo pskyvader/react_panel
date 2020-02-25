@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 export default () => {
     const classes = useStyles();
     let { module, tipo } = useParams();
-    let array = [1, 1, 1, 1, 1];
+    let array = [1, 1, 1, 1, 1,1,1,1,1,1,1,1];
     return (
         <Container maxWidth="xl" fixed>
             <Typography variant="h3">Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
@@ -36,8 +36,8 @@ export default () => {
             >
                 {array.map((element, index) => {
                     return (
-                        <Grid item xs={12} sm className={classes.grid}>
-                            <ModuleCard key={index} />
+                        <Grid item xs={12} sm className={classes.grid2} key={index}>
+                            <ModuleCard />
                         </Grid>
                     )
                 })}
