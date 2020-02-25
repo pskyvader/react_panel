@@ -103,8 +103,7 @@ class module_object(graphene.ObjectType):
         else:
             for i in parent.hijo:
                 if tipo==i['tipo']:
-                    print(parent.hijo)
-                    return i
+                    return [module_configuration_object(**i)]
             return None
 
 
@@ -144,9 +143,9 @@ def resolve_all_module(args, info, idadministrador):
 
     final_list=[]
     for m in filtered_module:
-        m_o=module_object()
-        for k, v in m.items():
-            setattr(m_o, k, v)
+        m_o=module_object(**m)
+        # for k, v in m.items():
+        #     setattr(m_o, k, v)
         final_list.append(m_o)
     cache_module_permissions[administrador.tipo]=final_list
 
