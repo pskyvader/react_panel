@@ -34,19 +34,19 @@
                 "1": {
                     "estado": true,
                     "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "mostrar": {"idigusuario": false, "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
                     "detalle": {"usuario": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
                     "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "mostrar": {"idigusuario": false, "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
                     "detalle": {"usuario": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": true,
                     "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "mostrar": {"idigusuario": false, "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
                     "detalle": {"usuario": true, "password": true, "estado": true}
                 }
             },

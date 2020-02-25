@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
 export default () => {
     const classes = useStyles();
     let { module, tipo } = useParams();
+    
     let array = [1, 1, 1, 1, 1,1,1,1,1,1,1,1];
     return (
         <Container maxWidth="xl" fixed>

@@ -76,6 +76,16 @@
             "field": "regenerar"
         }],
         "mostrar": [{
+            "estado": {
+                "1": "false",
+                "2": "false",
+                "3": "false"
+            },
+            "tipo": "text",
+            "titulo": "ID",
+            "field": "0"
+        },
+            {
             "field": "usuario",
             "estado": {
                 "2": "true",

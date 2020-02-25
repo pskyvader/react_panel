@@ -123,11 +123,7 @@ class module_object(graphene.ObjectType):
         else:
             for i in parent.hijo:
                 if tipo == i["tipo"]:
-                    i['permisos']['parent']={
-                        'menu':parent.menu,
-                        'mostrar':parent.mostrar,
-                        'detalle':parent.detalle
-                    }
+                    i['permisos']['parent']={ 'menu':parent.menu, 'mostrar':parent.mostrar, 'detalle':parent.detalle }
                     return [module_configuration_object(**i)]
             return None
 
@@ -145,10 +141,7 @@ def filter_permissions(list_modules, tipo):
             for hijo in v["hijo"]:
                 c_hijo = hijo.copy()
                 c_hijo["permisos"] = {}
-                if (
-                    str(tipo) in hijo["permisos"]
-                    and hijo["permisos"][str(tipo)]["estado"]
-                ):
+                if ( str(tipo) in hijo["permisos"] and hijo["permisos"][str(tipo)]["estado"] ):
                     c_hijo["permisos"] = hijo["permisos"][str(tipo)]
                 if c_hijo["permisos"] != {}:
                     c_module["hijo"].append(c_hijo)
@@ -188,9 +181,9 @@ def resolve_module(args, info, idadministrador, module):
     filtered_module = filter_permissions(module_list, administrador.tipo)
     module_detail = next(item for item in filtered_module if item["module"] == module)
 
-    m_o = module_object()
-    for k, v in module_detail.items():
-        setattr(m_o, k, v)
+    m_o = module_object(**module_detail)
+    # for k, v in module_detail.items():
+    #     setattr(m_o, k, v)
 
     if administrador.tipo not in cache_detail:
         cache_detail[administrador.tipo] = {}
