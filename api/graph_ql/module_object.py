@@ -40,6 +40,8 @@ class detalle_object(graphene.ObjectType):
 
 class permisos_detail_object(graphene.ObjectType):
     field = graphene.String()
+    titulo = graphene.String()
+    tipo = graphene.String()
     estado = graphene.Boolean()
 
 
@@ -51,30 +53,38 @@ class permisos_object(graphene.ObjectType):
 
     def resolve_menu(parent, info):
         list_menu = []
-        print(parent['parent']['menu'],parent['menu'])
         temp_list={}
-        for k, m in parent["menu"].items():
-            temp_list[k]=m
-        print(temp_list)
         for m in parent['parent']['menu']:
             temp_list[m['field']]=m
-        print(temp_list)
-
-
         for k, m in parent["menu"].items():
-            list_menu.append(permisos_detail_object(field=k, estado=m))
+            temp_list[k]['estado']=m
+
+        for k, m in temp_list.items():
+            list_menu.append(permisos_detail_object(field=m['field'],titulo=m['titulo'], estado=m['estado']))
         return list_menu
 
     def resolve_mostrar(parent, info):
         list_mostrar = []
+        temp_list={}
+        for m in parent['parent']['mostrar']:
+            temp_list[m['field']]=m
         for k, m in parent["mostrar"].items():
-            list_mostrar.append(permisos_detail_object(field=k, estado=m))
+            temp_list[k]['estado']=m
+
+        for k, m in temp_list.items():
+            list_mostrar.append(permisos_detail_object(field=m['field'],titulo=m['titulo'],tipo=m['tipo'], estado=m['estado']))
         return list_mostrar
 
     def resolve_detalle(parent, info):
         list_detalle = []
+        temp_list={}
+        for m in parent['parent']['detalle']:
+            temp_list[m['field']]=m
         for k, m in parent["detalle"].items():
-            list_detalle.append(permisos_detail_object(field=k, estado=m))
+            temp_list[k]['estado']=m
+
+        for k, m in temp_list.items():
+            list_detalle.append(permisos_detail_object(field=m['field'],titulo=m['titulo'],tipo=m['tipo'], estado=m['estado']))
         return list_detalle
 
 
