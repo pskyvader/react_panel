@@ -95,7 +95,17 @@ class module_object(graphene.ObjectType):
     menu=graphene.List(menu_object)
     mostrar=graphene.List(mostrar_object)
     detalle=graphene.List(detalle_object)
-    hijo=graphene.List(module_configuration_object)
+    hijo=graphene.List(module_configuration_object,tipo=graphene.Int())
+
+    def resolve_hijo(parent,info,tipo=None):
+        if tipo==None:
+            return parent.hijo
+        else:
+            for i in parent.hijo:
+                if tipo==i['tipo']:
+                    print(parent.hijo)
+                    return i
+            return None
 
 
 def filter_permissions(list_modules,tipo):
