@@ -23,14 +23,13 @@ const useStyles = makeStyles(theme => ({
 function ModuleList(props) {
     const { module, tipo, config } = props;
     const classes = useStyles();
-    if (config === null) {
-        return "Loading...";
-    } else if (!config) {
-        return "Module " + module + " not allowed for this user";
+    let fields=['estado'];
+    if (config !== null && config!=false) {
+        const module_data = config.hijo[0];
+        const fields_filter = module_data.permisos.mostrar.filter(x => (x['tipo'] === 'active' || x['tipo'] === 'text'));
+        fields = fields_filter.map(x => x['field']);
     }
-    const module_data = config.hijo[0];
-    const fields_filter = module_data.permisos.mostrar.filter(x => (x['tipo'] === 'active' || x['tipo'] === 'text'));
-    const fields = fields_filter.map(x => x['field']);
+    
 
 
 
@@ -40,7 +39,7 @@ function ModuleList(props) {
     }
 
     const table_query = 'all' + module;
-    const GET_LIST = gql(`
+    const GET_LIST = gql`
     query get_list($first:Int!,$after:String,$tipo:Int){
         $table(first:$first,after:$after,tipo:$tipo){
             pageInfo{
@@ -54,14 +53,22 @@ function ModuleList(props) {
             }
         }
     }
-    `.replace('$table', table_query).replace('$fields', fields));
+    `.replace('$table', table_query).replace('$fields', fields);
 
     const { items, loading, loadMore, hasNextPage, error } = Resolve({ query: GET_LIST, table: table_query, vars: vars });
 
     if (error){
         return error;
     }
+    
+    if (config === null) {
+        return "Loading...";
+    } else if (!config) {
+        return "Module " + module + " not allowed for this user";
+    }
 
+
+    // let items = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
     return (
         <Grid
             container
