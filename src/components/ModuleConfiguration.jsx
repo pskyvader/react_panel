@@ -18,7 +18,7 @@ function ModuleConfigurationCache(props) {
         tipo
     } = props;
     const GET_MODULES = gql`
-    query get_all_module ($idadministrador:Int!,$module:String!,$tipo:Int){
+    query get_module ($idadministrador:Int!,$module:String!,$tipo:Int){
         module(idadministrador:$idadministrador,module:$module){
             titulo
             estado
@@ -51,8 +51,11 @@ function ModuleConfigurationCache(props) {
     const { loading, error, data } = useQuery(GET_MODULES, variables);
     if (loading) return null;
     if (error) return ErrorLink(error);
+
+    if(data.module===null){
+        return false;
+    }
     
-    console.log('set',data.module);
     LocalStorage.set(url_cache, data.module);
 
     return data.module;
@@ -62,12 +65,9 @@ function ModuleConfigurationCache(props) {
 function ModuleConfiguration(props) {
     const url_cache = 'get_module_id_' + props.idadministrador + '_module_' + props.module + '_tipo_' + props.tipo;
     var config = LocalStorage.get(url_cache, null);
-    console.log('before');
     if (config===null) {
-        console.log('null',config);
         config= ModuleConfigurationCache(props, url_cache);
     }
-    console.log('after',config);
     return(
         <ModuleList config={config} module={props.module} tipo={props.tipo}/>
     )
