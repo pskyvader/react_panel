@@ -51,6 +51,7 @@ class permisos_object(graphene.ObjectType):
 
     def resolve_menu(parent, info):
         list_menu = []
+        print(parent['parent']['menu'],parent['menu'])
         for k, m in parent["menu"].items():
             list_menu.append(permisos_detail_object(field=k, estado=m))
         return list_menu
@@ -93,13 +94,18 @@ class module_object(graphene.ObjectType):
     detalle = graphene.List(detalle_object)
     hijo = graphene.List(module_configuration_object, tipo=graphene.Int())
 
+
     def resolve_hijo(parent, info, tipo=None):
         if tipo == None:
             return parent.hijo
         else:
             for i in parent.hijo:
                 if tipo == i["tipo"]:
-                    print(parent.menu,parent.mostrar,parent.detalle)
+                    i['permisos']['parent']={
+                        'menu':parent.menu,
+                        'mostrar':parent.mostrar,
+                        'detalle':parent.detalle
+                    }
                     return [module_configuration_object(**i)]
             return None
 
