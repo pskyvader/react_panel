@@ -1,7 +1,4 @@
 import React from 'react';
-import ModuleCard from '../components/ModuleCard';import {
-    Grid,
-} from '@material-ui/core';
 import {
     useQuery
 } from '@apollo/react-hooks';
@@ -11,6 +8,7 @@ import {
 
 import ErrorLink from './ErrorLink';
 import LocalStorage from './LocalStorage';
+import ModuleList from './ModuleList';
 
 function ModuleConfigurationCache(props) {
     const {
@@ -19,7 +17,7 @@ function ModuleConfigurationCache(props) {
         module,
         tipo
     } = props;
-    const GET_MODULES = gql `
+    const GET_MODULES = gql`
     query get_all_module ($idadministrador:Int!,$module:String!,$tipo:Int){
         module(idadministrador:$idadministrador,module:$module){
             titulo
@@ -48,19 +46,9 @@ function ModuleConfigurationCache(props) {
         }
     }`;
 
-    const variables = {
-        variables: {
-            idadministrador: idadministrador,
-            module: module,
-            tipo: tipo
-        },
-    };
+    const variables = { variables: { idadministrador: idadministrador, module: module, tipo: tipo }, };
 
-    const {
-        loading,
-        error,
-        data
-    } = useQuery(GET_MODULES, variables);
+    const { loading, error, data } = useQuery(GET_MODULES, variables);
     if (loading) return null;
     if (error) return ErrorLink(error);
     LocalStorage.set(url_cache, data.module);
@@ -71,38 +59,13 @@ function ModuleConfigurationCache(props) {
 
 function ModuleConfiguration(props) {
     const url_cache = 'get_module_id_' + props.idadministrador + '_module_' + props.module + '_tipo_' + props.tipo;
-    var cache = LocalStorage.get(url_cache, []);
-    if (cache.length == 0) {
-        return cache = ModuleConfigurationCache(props, url_cache);
+    var config = LocalStorage.get(url_cache, null);
+    if (config===null) {
+        config= ModuleConfigurationCache(props, url_cache);
     }
+    return(
+        <ModuleList config={config} module={props.module} tipo={props.tipo}/>
+    )
+}
 
-    return ( <
-        Grid container direction = "row"
-        justify = "flex-start"
-        alignItems = "flex-start"
-        spacing = {
-            3
-        } >
-        {
-            array.map((element, index) => {
-                return ( <
-                    Grid item xs = {
-                        12
-                    }
-                    sm className = {
-                        classes.grid
-                    }
-                    key = {
-                        index
-                    } >
-                    <
-                    ModuleCard / >
-                    <
-                    /Grid>
-                )
-            })
-        } <
-        /Grid>)
-    }
-
-    export default ModuleConfiguration;
+export default ModuleConfiguration;
