@@ -44,19 +44,9 @@ function ModuleConfigurationCache(props) {
         }
     }`;
 
-    const variables = {
-        variables: {
-            idadministrador: idadministrador,
-            module: module,
-            tipo: tipo
-        },
-    };
-    const {
-        loading,
-        error,
-        data
-    } = useQuery(GET_MODULES, variables);
-    console.log(loading, error, data);
+    const variables = { variables: { idadministrador: idadministrador, module: module, tipo: tipo }, };
+
+    const { loading, error, data } = useQuery(GET_MODULES, variables);
     if (loading) return null;
     if (error) return ErrorLink(error);
     LocalStorage.set(url_cache, data.module);
