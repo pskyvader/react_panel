@@ -145,7 +145,9 @@ function SidebarCache(props) {
             }
             new_list = [];
         }
-        new_list.push(element);
+        if (element['estado'] && element['aside']){
+            new_list.push(element);
+        }
     });
     if (new_list.length > 0) {
         super_list.push(new_list);
