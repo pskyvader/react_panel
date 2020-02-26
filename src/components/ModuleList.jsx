@@ -25,6 +25,7 @@ function ModuleList(props) {
     const classes = useStyles();
     let fields=['id'];
     if (config !== null && config!==false) {
+        console.log(config);
         const module_data = config.hijo[0];
         const fields_filter = module_data.permisos.mostrar.filter(x => (x['tipo'] === 'active' || x['tipo'] === 'text'));
         fields = fields_filter.map(x => x['field']);
@@ -80,7 +81,7 @@ function ModuleList(props) {
             {items.map((element, index) => {
                 return (
                     <Grid item xs={12} sm className={classes.grid} key={index}>
-                        <ModuleCard usuarios={element.usuarios} />
+                        <ModuleCard {...element} />
                     </Grid>
                 )
             })}

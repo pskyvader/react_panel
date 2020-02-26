@@ -63,7 +63,7 @@ export class NestedList extends React.Component {
 
 export const ChildButton = ({ element, hijo, url, unique }) => {
     let to = `${url}/${element.module}`;
-    if (!unique) {
+    if (!unique || hijo.tipo!==0) {
         to += `/${hijo.tipo}`;
     }
     const icon = { 'icon': mui[element.icono] };
