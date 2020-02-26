@@ -141,7 +141,9 @@ function SidebarCache(props) {
     data.allModule.forEach(element => {
         if (element['module'] === 'separador') {
             if (new_list.length > 0) {
-                super_list.push(new_list);
+                if (new_list.length>1 || new_list[0]['module']!=='separador'){
+                    super_list.push(new_list);
+                }
             }
             new_list = [];
         }
@@ -150,7 +152,9 @@ function SidebarCache(props) {
         }
     });
     if (new_list.length > 0) {
-        super_list.push(new_list);
+        if (new_list.length>1 || new_list[0]['module']!=='separador'){
+            super_list.push(new_list);
+        }
     }
     LocalStorage.set(url_cache, super_list);
 
