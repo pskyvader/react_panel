@@ -17,9 +17,11 @@ const useStyles = makeStyles(theme => ({
     nested: {
         paddingLeft: theme.spacing(9),
     },
-    ActiveLink: {
-        color: theme.palette.primary.dark,
-        fontWeight:"bold"
+    ActiveLink: { 
+        color: theme.palette.primary.dark, 
+        '& span': { 
+            fontWeight: theme.typography.fontWeightMedium 
+        } 
     }
 }));
 
@@ -29,8 +31,11 @@ export class NestedList extends React.Component {
     constructor(props) {
         super(props);
         this.element = props.element;
-        this.state = { open: false };
+        this.url=props.url;
         this.icon = mui[this.element['icono']];
+        this.to = `${this.url}/${this.element.module}`;
+        let match = useRouteMatch({ path: this.to, exact: false });
+        this.state = { open: match };
     }
     handleClick = () => {
         this.setOpen(!this.state.open);
@@ -68,7 +73,7 @@ export class NestedList extends React.Component {
 
 export const ChildButton = ({ element, hijo, url, unique }) => {
     let to = `${url}/${element.module}`;
-    if (!unique || hijo.tipo!==0) {
+    if (!unique || hijo.tipo !== 0) {
         to += `/${hijo.tipo}`;
     }
     const icon = { 'icon': mui[element.icono] };
@@ -76,25 +81,24 @@ export const ChildButton = ({ element, hijo, url, unique }) => {
     return <ActiveLink label={hijo.titulo} to={to} unique={unique} icon={icon} activeOnlyWhenExact={false} />
 }
 
-function ActiveLink({ label, to, unique,icon, activeOnlyWhenExact }) {
-    
+function ActiveLink({ label, to, unique, icon, activeOnlyWhenExact }) {
+
     let match = useRouteMatch({
-      path: to,
-      exact: activeOnlyWhenExact
+        path: to,
+        exact: activeOnlyWhenExact
     });
     const classes = useStyles();
-    let active=(match ? classes.ActiveLink : "");
-    console.log(icon.icon);
-  
+    let active = (match ? classes.ActiveLink : "");
+
     return (
-        <ListItem className={!unique ? classes.nested +active : active} button component={Link} to={to}>
+        <ListItem className={!unique ? classes.nested+' ' + active : active} button component={Link} to={to}>
             {(unique) ? <ListItemIcon><icon.icon className={active} /></ListItemIcon> : ""}
             <ListItemText primary={label} />
         </ListItem>
     );
 
-  }
-  
+}
+
 
 
 
