@@ -42,6 +42,7 @@ const SideList = (props) => {
     const { handleDrawer, list, persistent } = props;
     const classes = useStyles();
     const theme = useTheme();
+    
     return (
         <div role="presentation" >
             {persistent ? "" :

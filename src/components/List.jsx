@@ -31,12 +31,12 @@ export class NestedList extends React.Component {
     constructor(props) {
         super(props);
         this.element = props.element;
-        this.url=props.url;
         this.icon = mui[this.element['icono']];
+        this.state = { open: false };
+        this.url=props.url;
         this.to = `${this.url}/${this.element.module}`;
-        let match = useRouteMatch({ path: this.to, exact: false });
-        this.state = { open: match };
     }
+
     handleClick = () => {
         this.setOpen(!this.state.open);
     };
@@ -48,6 +48,8 @@ export class NestedList extends React.Component {
     }
 
     render() {
+        
+        let match = MatchLink(this.to, false);
         return (
             <Fragment>
                 <ListItem button onClick={this.handleClick}>
@@ -83,10 +85,7 @@ export const ChildButton = ({ element, hijo, url, unique }) => {
 
 function ActiveLink({ label, to, unique, icon, activeOnlyWhenExact }) {
 
-    let match = useRouteMatch({
-        path: to,
-        exact: activeOnlyWhenExact
-    });
+    let match = MatchLink(to, activeOnlyWhenExact);
     const classes = useStyles();
     let active = (match ? classes.ActiveLink : "");
 
@@ -96,7 +95,13 @@ function ActiveLink({ label, to, unique, icon, activeOnlyWhenExact }) {
             <ListItemText primary={label} />
         </ListItem>
     );
+}
 
+function MatchLink(to, activeOnlyWhenExact){
+    return useRouteMatch({
+        path: to,
+        exact: activeOnlyWhenExact
+    });
 }
 
 
