@@ -25,7 +25,7 @@ function ModuleList(props) {
     const classes = useStyles();
     let fields=['id'];
     if (config !== null && config!==false) {
-        console.log(config);
+        console.log("config",config);
         const module_data = config.hijo[0];
         const fields_filter = module_data.permisos.mostrar.filter(x => (x['tipo'] === 'active' || x['tipo'] === 'text'));
         fields = fields_filter.map(x => x['field']);
@@ -67,7 +67,7 @@ function ModuleList(props) {
     } else if (!config) {
         return "Module " + module + " not allowed for this user";
     }
-    console.log(items);
+    console.log("items",items);
 
 
     // let items = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];

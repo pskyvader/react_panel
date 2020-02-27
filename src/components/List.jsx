@@ -9,6 +9,7 @@ import * as mui from '@material-ui/icons';
 import {
     makeStyles
 } from '@material-ui/core/styles';
+import { useRouteMatch } from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
@@ -17,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default useStyles;
 
 export class NestedList extends React.Component {
     constructor(props) {
@@ -75,6 +75,22 @@ export const ChildButton = ({ element, hijo, url, unique }) => {
         </ListItem>
     );
 }
+
+
+function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }) {
+    let match = useRouteMatch({
+      path: to,
+      exact: activeOnlyWhenExact
+    });
+  
+    return (
+      <div className={match ? "active" : ""}>
+        {match && "> "}
+        <Link to={to}>{label}</Link>
+      </div>
+    );
+  }
+  
 
 
 
