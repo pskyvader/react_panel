@@ -23,7 +23,6 @@ export class NestedList extends React.Component {
     constructor(props) {
         super(props);
         this.element = props.element;
-        this.url = props.url;
         this.state = { open: false };
         this.icon = mui[this.element['icono']];
     }
@@ -67,28 +66,26 @@ export const ChildButton = ({ element, hijo, url, unique }) => {
         to += `/${hijo.tipo}`;
     }
     const icon = { 'icon': mui[element.icono] };
-    const classes = useStyles();
-    return (
-        <ListItem className={!unique ? classes.nested : ''} button component={Link} to={to}>
-            {(unique) ? <ListItemIcon><icon.icon /></ListItemIcon> : ""}
-            <ListItemText primary={hijo.titulo} />
-        </ListItem>
-    );
+
+    return <ActiveLink label={hijo.titulo} to={to} unique={unique} icon={icon} activeOnlyWhenExact={false} />
 }
 
 
-function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }) {
+function ActiveLink({ label, to, unique,icon, activeOnlyWhenExact }) {
     let match = useRouteMatch({
       path: to,
       exact: activeOnlyWhenExact
     });
+    let active=(match ? " active " : "");
+    const classes = useStyles();
   
     return (
-      <div className={match ? "active" : ""}>
-        {match && "> "}
-        <Link to={to}>{label}</Link>
-      </div>
+        <ListItem className={!unique ? classes.nested +active : active} button component={Link} to={to}>
+            {(unique) ? <ListItemIcon><icon.icon /></ListItemIcon> : ""}
+            <ListItemText primary={label} />
+        </ListItem>
     );
+
   }
   
 
