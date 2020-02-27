@@ -2,7 +2,10 @@ import React from 'react';
 import InfiniteLoader from "react-window-infinite-loader";
 import { makeStyles } from '@material-ui/core/styles';
 import VirtualizedList from './VirtualizedList';
+import { AutoSizer, List  } from 'react-virtualized';
 
+const STATUS_LOADING = 1;
+const STATUS_LOADED = 2;
 
 const useStyles = makeStyles(theme => ({
     grid: {
@@ -15,6 +18,28 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+
+const rowRenderer=({index, key, style}) =>{
+    const {list} = this.context;
+    const {loadedRowsMap} = this.state;
+
+    const row = list.get(index);
+    let content;
+
+    if (loadedRowsMap[index] === STATUS_LOADED) {
+      content = row.name;
+    } else {
+      content = (
+        <div  style={{width: row.size}} />
+      );
+    }
+
+    return (
+      <div  key={key} style={style}>
+        {content}
+      </div>
+    );
+  }
 
 const InfiniteList = ({ items, moreItemsLoading, loadMore, hasNextPage, columns, height }) => {
     const isItemLoaded = index => !hasNextPage || index < items.length;
@@ -35,6 +60,29 @@ const InfiniteList = ({ items, moreItemsLoading, loadMore, hasNextPage, columns,
         } else return height;
     }
 
+    return (
+              <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={itemCount}
+            loadMoreItems={loadMore}
+        >
+          {({onRowsRendered, registerChild}) => (
+            <AutoSizer disableHeight>
+              {({width}) => (
+                <List
+                  ref={registerChild}
+                  height={200}
+                  onRowsRendered={onRowsRendered}
+                  rowCount={items.length}
+                  rowHeight={30}
+                  rowRenderer={rowRenderer}
+                  width={width}
+                />
+              )}
+            </AutoSizer>
+          )}
+        </InfiniteLoader>
+    )
 
     return (
         <InfiniteLoader
@@ -44,16 +92,17 @@ const InfiniteList = ({ items, moreItemsLoading, loadMore, hasNextPage, columns,
         >
             {({ onRowsRendered, registerChild }) => (
                 <VirtualizedList
-                rowCount={items.length}
-                rowGetter={({ index }) => items[index]}
-                columns={columns}
-                ref={registerChild}
-                onRowsRendered={onRowsRendered}
-                onScroll={onScroll}
-                loading={moreItemsLoading}
-            />
+                    rowCount={items.length}
+                    rowGetter={({ index }) => items[index]}
+                    columns={columns}
+                    ref={registerChild}
+                    onRowsRendered={onRowsRendered}
+                    onScroll={onScroll}
+                    loading={moreItemsLoading}
+                />
             )}
         </InfiniteLoader>
+
     )
 };
 export default InfiniteList;
