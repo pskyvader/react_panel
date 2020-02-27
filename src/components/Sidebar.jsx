@@ -165,7 +165,6 @@ function SidebarCache(props) {
 
 function Sidebar(props) {
     let { path, url } = useRouteMatch();
-    console.log(path,url);
     const url_cache = 'get_all_module_id_' + props.idadministrador;
     var cache = LocalStorage.get(url_cache, []);
     if (cache.length > 0) {

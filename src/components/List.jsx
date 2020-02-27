@@ -26,8 +26,36 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+export function NestedList(props) {
+    const {element,url}=props;
+    const icon = { 'icon': mui[element.icono] };
+    const to = `${url}/${element.module}`;
+    let match = useRouteMatch({ path: to, exact: false });
+    const [open, setOpen] = React.useState(match);
+  
+    const handleClick = () => {
+      setOpen(!open);
+    };
+    return (
+        <Fragment>
+            <ListItem button onClick={handleClick}>
+                <ListItemIcon>
+                    <icon.icon />
+                </ListItemIcon>
+                <ListItemText primary={element.titulo} />
+                {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+                {element.hijo.map(hijo => (
+                    <ChildButton key={element.module + '-' + element.orden + '-' + hijo.tipo} element={element} hijo={hijo} unique={false}  {...props} />
+                ))
+                }
+            </Collapse>
+        </Fragment>
+    );
+}
 
-export class NestedList extends React.Component {
+export class NestedList2 extends React.Component {
     constructor(props) {
         super(props);
         this.element = props.element;
@@ -48,8 +76,6 @@ export class NestedList extends React.Component {
     }
 
     render() {
-        
-        let match = MatchLink(this.to, false);
         return (
             <Fragment>
                 <ListItem button onClick={this.handleClick}>
@@ -68,7 +94,6 @@ export class NestedList extends React.Component {
             </Fragment>
         );
     }
-
 }
 
 
@@ -85,7 +110,10 @@ export const ChildButton = ({ element, hijo, url, unique }) => {
 
 function ActiveLink({ label, to, unique, icon, activeOnlyWhenExact }) {
 
-    let match = MatchLink(to, activeOnlyWhenExact);
+    let match = useRouteMatch({
+        path: to,
+        exact: activeOnlyWhenExact
+    });
     const classes = useStyles();
     let active = (match ? classes.ActiveLink : "");
 
@@ -96,14 +124,3 @@ function ActiveLink({ label, to, unique, icon, activeOnlyWhenExact }) {
         </ListItem>
     );
 }
-
-function MatchLink(to, activeOnlyWhenExact){
-    return useRouteMatch({
-        path: to,
-        exact: activeOnlyWhenExact
-    });
-}
-
-
-
-

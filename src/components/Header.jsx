@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Logo from './Logo';
 import Sidebar from './Sidebar';
+import LocalStorage from './LocalStorage';
 
 const drawerWidth = 240;
 
@@ -54,16 +55,19 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function Header(props) {
+    var sidebar_open = LocalStorage.get('sidebar_open', false);
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(sidebar_open);
     const handleDrawer = () => {
         setOpen(!open);
+        LocalStorage.set('sidebar_open', !open);
     }
     const toggleDrawer = (open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
         setOpen(open);
+        LocalStorage.set('sidebar_open', open);
     };
 
     return (
