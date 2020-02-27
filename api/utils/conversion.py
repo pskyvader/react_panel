@@ -362,10 +362,8 @@ def create_file(file_name, content, force=False):
 
 
 if __name__ == "__main__":
-    module_to_folder()
+    # module_to_folder()
     # bdd_to_folder()
-    # json_to_model()
-    # json_to_schema(force=True)
-
-
+    json_to_model()
+    json_to_schema(force=False)
     json_to_module()
