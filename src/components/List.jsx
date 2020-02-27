@@ -12,15 +12,17 @@ import {
 import { useRouteMatch } from "react-router-dom";
 
 
+
 const useStyles = makeStyles(theme => ({
     nested: {
         paddingLeft: theme.spacing(9),
     },
     ActiveLink: {
-        backgroundColor: theme.palette.secondary.light,
-        color: theme.palette.secondary.contrastText
+        color: theme.palette.primary.dark,
+        fontWeight:"bold"
     }
 }));
+
 
 
 export class NestedList extends React.Component {
@@ -74,18 +76,19 @@ export const ChildButton = ({ element, hijo, url, unique }) => {
     return <ActiveLink label={hijo.titulo} to={to} unique={unique} icon={icon} activeOnlyWhenExact={false} />
 }
 
-
 function ActiveLink({ label, to, unique,icon, activeOnlyWhenExact }) {
+    
     let match = useRouteMatch({
       path: to,
       exact: activeOnlyWhenExact
     });
     const classes = useStyles();
     let active=(match ? classes.ActiveLink : "");
+    console.log(icon.icon);
   
     return (
         <ListItem className={!unique ? classes.nested +active : active} button component={Link} to={to}>
-            {(unique) ? <ListItemIcon><icon.icon /></ListItemIcon> : ""}
+            {(unique) ? <ListItemIcon><icon.icon className={active} /></ListItemIcon> : ""}
             <ListItemText primary={label} />
         </ListItem>
     );
