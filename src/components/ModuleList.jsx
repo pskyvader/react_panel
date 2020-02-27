@@ -44,7 +44,11 @@ function ModuleList(props) {
         return "Loading...";
     } else if (!config) {
         return "Module " + module + " not allowed for this user";
+    }else if(items.length===0){
+        return "";
     }
+
+    console.log(items);
 
     return (
         <InfiniteList
