@@ -1,9 +1,7 @@
 import React from 'react';
 import InfiniteLoader from "react-window-infinite-loader";
-import Paper from '@material-ui/core/Paper';
-import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import ModuleCard from '../components/ModuleCard';
+import VirtualizedList from './VirtualizedList';
 
 
 const useStyles = makeStyles(theme => ({
@@ -45,20 +43,15 @@ const InfiniteList = ({ items, moreItemsLoading, loadMore, hasNextPage, columns,
             loadMoreItems={loadMore}
         >
             {({ onRowsRendered, registerChild }) => (
-                    <Grid
-                        container
-                        direction="row"
-                        justify="flex-start"
-                        alignItems="flex-start" spacing={3}
-                    >
-                        {items.map((element, index) => {
-                            return (
-                                <Grid item xs={12} sm className={classes.grid} key={index}>
-                                    <ModuleCard {...element} />
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
+                <VirtualizedList
+                rowCount={items.length}
+                rowGetter={({ index }) => items[index]}
+                columns={columns}
+                ref={registerChild}
+                onRowsRendered={onRowsRendered}
+                onScroll={onScroll}
+                loading={moreItemsLoading}
+            />
             )}
         </InfiniteLoader>
     )
