@@ -16,6 +16,10 @@ const useStyles = makeStyles(theme => ({
     nested: {
         paddingLeft: theme.spacing(9),
     },
+    ActiveLink: {
+        backgroundColor: theme.palette.secondary.light,
+        color: theme.palette.secondary.contrastText
+    }
 }));
 
 
@@ -76,8 +80,8 @@ function ActiveLink({ label, to, unique,icon, activeOnlyWhenExact }) {
       path: to,
       exact: activeOnlyWhenExact
     });
-    let active=(match ? " active " : "");
     const classes = useStyles();
+    let active=(match ? classes.ActiveLink : "");
   
     return (
         <ListItem className={!unique ? classes.nested +active : active} button component={Link} to={to}>
