@@ -3,6 +3,8 @@ import * as React from 'react';
 // import Immutable from 'immutable';
 import InfiniteLoader from "react-window-infinite-loader";
 import { AutoSizer, List } from 'react-virtualized';
+import { Grid } from '@material-ui/core';
+import ModuleCard from './ModuleCard';
 
 
 const STATUS_LOADING = 1;
@@ -25,7 +27,6 @@ export default class InfiniteList extends React.PureComponent {
         this._timeoutIdMap = {};
 
         this._rowRenderer = this._rowRenderer.bind(this);
-        console.log(props);
         this.items = props.items;
         this.moreItemsLoading = props.moreItemsLoading;
         this.loadMore = props.loadMore;
@@ -41,7 +42,6 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     render() {
-        console.log(this.items,this.isItemLoaded);
         return (
             <InfiniteLoader
                 isItemLoaded={this.isItemLoaded}
@@ -68,25 +68,17 @@ export default class InfiniteList extends React.PureComponent {
 
 
     _rowRenderer({ index, key, style }) {
-        const { loadedRowsMap } = this.state;
-
         console.log(index, key, style,this.items);
-        const row = this.items.get(index);
+        let element=this.items[index];
 
-        let content;
-
-        if (loadedRowsMap[index] === STATUS_LOADED) {
-            content = row.name;
-        } else {
-            content = (
-                <div style={{ width: row.size }} />
-            );
-        }
+        let content = (
+            <ModuleCard {...element} />
+        );
 
         return (
-            <div key={key} style={style}>
+            <Grid item xs={12} sm key={key}>
                 {content}
-            </div>
+                </Grid>
         );
     }
 }
