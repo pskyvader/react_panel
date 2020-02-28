@@ -40,7 +40,7 @@ export default class InfiniteList extends React.PureComponent {
         this._renderAutoSizer = this._renderAutoSizer.bind(this);
         this._renderMasonry = this._renderMasonry.bind(this);
         this._setMasonryRef = this._setMasonryRef.bind(this);
-        this.columnWidth = 290;    
+        this.columnWidth = this.cellwidth(true);    
         this._cache = new CellMeasurerCache({
             defaultHeight: 250,
             defaultWidth: this.columnWidth,
@@ -58,7 +58,7 @@ export default class InfiniteList extends React.PureComponent {
         const { gutterSize } = this.state;
         let width=0;
         if (this._width!==0 && this._columnCount!==0){
-            width= Math.floor((this._width/this._columnCount)-gutterSize)-20;
+            width= Math.floor((this._width/this._columnCount)-gutterSize);
         }
         let final_column=(this._width / (this.columnWidth + gutterSize));
         console.log(this._width,width,final_column);
@@ -121,7 +121,6 @@ export default class InfiniteList extends React.PureComponent {
         if (typeof this._cellPositioner === 'undefined') {
             const { gutterSize } = this.state;
             let columnWidth=this.columnWidth;
-
             this._cellPositioner = createCellPositioner({
                 cellMeasurerCache: this._cache,
                 columnCount: this._columnCount,
@@ -133,9 +132,9 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
-        // this.columnWidth=this.getMinwidth();
+        this.columnWidth=this.getMinwidth();
         this._calculateColumnCount();
-        // this.cellwidth();
+        this.cellwidth();
 
         this._resetCellPositioner();
         this._masonry.recomputeCellPositions();
@@ -161,9 +160,9 @@ export default class InfiniteList extends React.PureComponent {
 
     _renderMasonry({ width }) {
         this._width = width;
-        // this.columnWidth=this.getMinwidth();
+        this.columnWidth=this.getMinwidth();
         this._calculateColumnCount();
-        // this.cellwidth();
+        this.cellwidth();
 
         this._initCellPositioner();
 
