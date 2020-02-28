@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function RecipeReviewCard(props) {
+  const element=props.element;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -64,8 +65,8 @@ export default function RecipeReviewCard(props) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={props.hashtag}
-        subheader={props.orden}
+        title={element.hashtag}
+        subheader={element.orden}
       />
       <CardMedia
         className={classes.media}

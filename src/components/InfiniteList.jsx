@@ -89,8 +89,11 @@ export default class InfiniteList extends React.PureComponent {
 
     _calculateColumnCount() {
         const { columnWidth, gutterSize } = this.state;
-
         this._columnCount = Math.floor(this._width / (columnWidth + gutterSize));
+        if (this._width!==0 && this._columnCount!==0){
+            let new_width=(this._width/this._columnCount);
+            console.log(new_width);
+        }
     }
 
     _cellRenderer({ index, key, parent, style }) {
@@ -169,20 +172,6 @@ export default class InfiniteList extends React.PureComponent {
             />
         );
     }
-
-    // This is a bit of a hack to simulate newly loaded cells
-    _resetList = () => {
-        const ROW_HEIGHTS = [25, 50, 75, 100];
-
-        const { list } = this.context;
-        list.forEach(datum => {
-            datum.size = ROW_HEIGHTS[Math.floor(Math.random() * ROW_HEIGHTS.length)];
-        });
-
-        this._cache.clearAll();
-        this._resetCellPositioner();
-        this._masonry.clearCellPositions();
-    };
 
     _resetCellPositioner() {
         const { columnWidth, gutterSize } = this.state;
