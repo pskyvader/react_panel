@@ -46,7 +46,7 @@ function ModuleConfigurationCache(props) {
 
     const { loading, error, data } = useQuery(GET_MODULES, variables);
     if (loading) return null;
-    if (error) return ErrorLink(error);
+    if (error) return {'error':error};
 
     if(data.module===null){
         return false;
@@ -64,6 +64,10 @@ function ModuleConfiguration(props) {
     if (config===null) {
         config= ModuleConfigurationCache(props, url_cache);
     }
+    if(typeof(config)==='object' && config!==null && config.hasOwnProperty("error")){
+        return ErrorLink(config['error']);
+    }
+
     return(
         <ModuleList config={config} module={props.module} tipo={props.tipo}/>
     )
