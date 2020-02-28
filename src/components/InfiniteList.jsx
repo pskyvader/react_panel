@@ -61,7 +61,7 @@ export default class InfiniteList extends React.PureComponent {
         const { gutterSize } = this.state;
         let width=0;
         if (this._width!==0 && this._columnCount!==0){
-            width=(this._width/this._columnCount)-gutterSize;
+            width= Math.floor((this._width/this._columnCount)-gutterSize);
         }
         console.log(width,this._width,this._columnCount);
         if (width<this.minWidth){
@@ -133,8 +133,7 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
-        this._columnCount=100;
-        this.cellwidth();
+        this.columnWidth=this.minWidth;
         this._calculateColumnCount();
         this.cellwidth();
 
@@ -162,11 +161,10 @@ export default class InfiniteList extends React.PureComponent {
 
     _renderMasonry({ width }) {
         this._width = width;
-        this._columnCount=100;
-        this.cellwidth();
+        this.columnWidth=this.minWidth;
         this._calculateColumnCount();
         this.cellwidth();
-        
+
         this._initCellPositioner();
 
         const { height, overscanByPixels, windowScrollerEnabled } = this.state;
