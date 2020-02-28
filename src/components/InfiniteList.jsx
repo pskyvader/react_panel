@@ -7,14 +7,15 @@ import { WindowScroller } from 'react-virtualized';
 import { Grid } from '@material-ui/core';
 import ModuleCard from './ModuleCard';
 import {CellMeasurer, CellMeasurerCache} from 'react-virtualized';
+import {createCellPositioner} from 'react-virtualized/dist/commonjs';
 import {Masonry} from 'react-virtualized';
-import {createCellPositioner} from 'react-virtualized/dist/commonjs/Masonry/createCellPositioner';
+
+
 
 export default class InfiniteList extends React.PureComponent {
 
     constructor(props) {
         super(props);
-
         this.items = props.items;
         this.moreItemsLoading = props.moreItemsLoading;
         this.loadMore = props.loadMore;
@@ -49,16 +50,16 @@ export default class InfiniteList extends React.PureComponent {
 
 
     render() {
-        const { overscanByPixels } = this.state;
+        const overscanByPixels=100;
         return (
             <InfiniteLoader
                 isItemLoaded={this.isItemLoaded}
                 itemCount={this.itemCount}
                 loadMoreItems={this.loadMore}>
                 {({ onRowsRendered }) => (
-                    <WindowScroller overscanByPixels={overscanByPixels}>
-                    {this._renderAutoSizer({onRowsRendered})}
-                  </WindowScroller>
+                //     <WindowScroller overscanByPixels={overscanByPixels} scrollElement={window}>
+                //     {this._renderAutoSizer({onRowsRendered})}
+                //   </WindowScroller>
                 )}
             </InfiniteLoader>
         )
@@ -109,7 +110,7 @@ export default class InfiniteList extends React.PureComponent {
         this._masonry.recomputeCellPositions();
       }
     
-      _renderAutoSizer({onRowsRendered,height, scrollTop}) {
+      _renderAutoSizer({height, scrollTop}) {
         this._height = height;
         this._scrollTop = scrollTop;
     
