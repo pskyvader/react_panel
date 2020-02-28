@@ -7,7 +7,7 @@ import { WindowScroller } from 'react-virtualized';
 import { Grid } from '@material-ui/core';
 import ModuleCard from './ModuleCard';
 import {CellMeasurer, CellMeasurerCache} from 'react-virtualized';
-import {createCellPositioner} from 'react-virtualized/dist/commonjs';
+import {createCellPositioner} from 'react-virtualized/dist/commonjs/Masonry';
 import {Masonry} from 'react-virtualized';
 
 
@@ -60,6 +60,7 @@ export default class InfiniteList extends React.PureComponent {
                 //     <WindowScroller overscanByPixels={overscanByPixels} scrollElement={window}>
                 //     {this._renderAutoSizer({onRowsRendered})}
                 //   </WindowScroller>
+                this._renderAutoSizer({onRowsRendered})
                 )}
             </InfiniteLoader>
         )
@@ -72,18 +73,18 @@ export default class InfiniteList extends React.PureComponent {
       }
     
       _cellRenderer({index, key, parent, style}) {
-        const {list} = this.context;
+            console.log(index, key, parent, style);
         const {columnWidth} = this.state;
     
-        const datum = list.get(index % list.size);
+        const cell =this.items[index];
     
         return (
           <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
-            <div>
-              <div>
-                {index}
-              </div>
-              {datum.random}
+            <div style={{
+            width: columnWidth,
+          }}>>
+              <div> {index} </div>
+              {cell[0]}
             </div>
           </CellMeasurer>
         );
