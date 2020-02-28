@@ -7,8 +7,8 @@ import { WindowScroller } from 'react-virtualized';
 import { Grid } from '@material-ui/core';
 import ModuleCard from './ModuleCard';
 import {CellMeasurer, CellMeasurerCache} from 'react-virtualized';
-import createCellPositioner from './createCellPositioner';
 import {Masonry} from 'react-virtualized';
+import {createCellPositioner} from 'react-virtualized/dist/commonjs/Masonry/createCellPositioner';
 
 export default class InfiniteList extends React.PureComponent {
 
@@ -49,7 +49,7 @@ export default class InfiniteList extends React.PureComponent {
 
 
     render() {
-        const overscanByPixels=100;
+        const { overscanByPixels } = this.state;
         return (
             <InfiniteLoader
                 isItemLoaded={this.isItemLoaded}
