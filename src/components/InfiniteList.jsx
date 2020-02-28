@@ -30,7 +30,7 @@ export default class InfiniteList extends React.PureComponent {
 
         this.state = {
             height: 300,
-            gutterSize: 30,
+            gutterSize: 10,
             overscanByPixels: 0,
             windowScrollerEnabled: true,
         };
@@ -55,6 +55,7 @@ export default class InfiniteList extends React.PureComponent {
     getMinwidth=()=> this._width<1280?this.minWidth :this.minWidthlg;
 
     cellwidth(return_value = false) {
+        return 290;
         const { gutterSize } = this.state;
         let width=0;
         if (this._width!==0 && this._columnCount!==0){
