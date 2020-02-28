@@ -55,47 +55,6 @@ export function NestedList(props) {
     );
 }
 
-export class NestedList2 extends React.Component {
-    constructor(props) {
-        super(props);
-        this.element = props.element;
-        this.icon = mui[this.element['icono']];
-        this.state = { open: false };
-        this.url=props.url;
-        this.to = `${this.url}/${this.element.module}`;
-    }
-
-    handleClick = () => {
-        this.setOpen(!this.state.open);
-    };
-
-    setOpen = (o) => {
-        this.setState({
-            open: o
-        });
-    }
-
-    render() {
-        return (
-            <Fragment>
-                <ListItem button onClick={this.handleClick}>
-                    <ListItemIcon>
-                        <this.icon />
-                    </ListItemIcon>
-                    <ListItemText primary={this.element.titulo} />
-                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
-                <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-                    {this.element.hijo.map(hijo => (
-                        <ChildButton key={this.element.module + '-' + this.element.orden + '-' + hijo.tipo} element={this.element} hijo={hijo} unique={false}  {...this.props} />
-                    ))
-                    }
-                </Collapse>
-            </Fragment>
-        );
-    }
-}
-
 
 
 export const ChildButton = ({ element, hijo, url, unique }) => {

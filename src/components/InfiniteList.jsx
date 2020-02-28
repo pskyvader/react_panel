@@ -14,11 +14,15 @@ export default class InfiniteList extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        this.items = props.items;
-        this.moreItemsLoading = props.moreItemsLoading;
-        this.loadMore = props.loadMore;
-        this.hasNextPage = props.hasNextPage;
-        this.itemCount = this.hasNextPage ? this.items.length + 1 : this.items.length;
+
+        this.state={
+            items : props.items,
+            moreItemsLoading : props.moreItemsLoading,
+            loadMore : props.loadMore,
+            hasNextPage : props.hasNextPage,
+            itemCount : props.hasNextPage ? props.items.length + 1 : props.items.length
+        }
+        
 
 
         this._columnCount = 0;
@@ -44,12 +48,9 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        console.log('onscroll');
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
-            console.log('scrolltop');
-            if (!this.moreItemsLoading && this.hasNextPage) {
-                console.log('loadmore',this.moreItemsLoading, this.hasNextPage);
-                this.loadMore();
+            if (!this.state.moreItemsLoading && this.state.hasNextPage) {
+                this.state.loadMore();
             }
         }
     };
@@ -171,7 +172,7 @@ export default class InfiniteList extends React.PureComponent {
         return (
             <Masonry
                 autoHeight={true}
-                cellCount={this.items.length}
+                cellCount={this.state.items.length}
                 cellMeasurerCache={this._cache}
                 cellPositioner={this._cellPositioner}
                 cellRenderer={this._cellRenderer}
