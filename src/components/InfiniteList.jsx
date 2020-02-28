@@ -73,18 +73,26 @@ export default class InfiniteList extends React.PureComponent {
       }
     
       _cellRenderer({index, key, parent, style}) {
-            console.log(index, key, parent, style);
         const {columnWidth} = this.state;
     
         const cell =this.items[index];
     
         return (
           <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
-            <div style={{
-            width: columnWidth,
-          }}>>
-              <div> {index} </div>
-              {cell[0]}
+            <div style={{ width: columnWidth, display:'flex',flexDirection: "column"}}>
+              <div style={{
+              backgroundColor: "#ff00ff",
+              borderRadius: '0.5rem',
+              height: 50 * 3,
+              marginBottom: '0.5rem',
+              width: '100%',
+              fontSize: 20,
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}> {index} </div>
+              {cell.hashtag}
             </div>
           </CellMeasurer>
         );
@@ -140,7 +148,7 @@ export default class InfiniteList extends React.PureComponent {
         return (
           <Masonry
             autoHeight={windowScrollerEnabled}
-            cellCount={1000}
+            cellCount={this.items.length}
             cellMeasurerCache={this._cache}
             cellPositioner={this._cellPositioner}
             cellRenderer={this._cellRenderer}
