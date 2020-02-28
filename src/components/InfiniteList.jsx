@@ -28,7 +28,7 @@ export default class InfiniteList extends React.PureComponent {
         this._cache = new CellMeasurerCache({
             defaultHeight: 250,
             defaultWidth: 200,
-            fixedWidth: true,
+            fixedWidth: false,
         });
 
         this.state = {
@@ -52,9 +52,10 @@ export default class InfiniteList extends React.PureComponent {
 
 
     componentDidMount(){
-        this.setState({
-            columnWidth:500
-        });
+        this.setState({ columnWidth:300 });
+        this._calculateColumnCount();
+        this._resetCellPositioner();
+        this._masonry.recomputeCellPositions();
     }
     
 
@@ -93,7 +94,7 @@ export default class InfiniteList extends React.PureComponent {
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
                 <div style={{
-                    ...style
+                    ...style,width:columnWidth
                 }}>
 
                     <ModuleCard />
@@ -130,7 +131,6 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
-
         this._calculateColumnCount();
         this._resetCellPositioner();
         this._masonry.recomputeCellPositions();
