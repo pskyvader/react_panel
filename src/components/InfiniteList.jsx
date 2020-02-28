@@ -25,6 +25,7 @@ export default class InfiniteList extends React.PureComponent {
 
         this._columnCount = 0;
         this.minWidth=245;
+        this.minWidthlg=290;
         this.maxWidth=345;
 
         this.state = {
@@ -49,13 +50,9 @@ export default class InfiniteList extends React.PureComponent {
 
     }
 
-
     isItemLoaded = index => !this.hasNextPage || index < this.items.length;
 
-
-    componentDidMount() {
-        this.cellwidth();
-    }
+    getMinwidth=()=> this._width<1280?this.minWidth :this.minWidthlg;
 
     cellwidth(return_value = false) {
         const { gutterSize } = this.state;
@@ -63,9 +60,12 @@ export default class InfiniteList extends React.PureComponent {
         if (this._width!==0 && this._columnCount!==0){
             width= Math.floor((this._width/this._columnCount)-gutterSize);
         }
-        console.log(width,this._width,this._columnCount);
-        if (width<this.minWidth){
-            width=this.minWidth;
+        let final_column=(this._width / (this.columnWidth + gutterSize));
+        console.log(this._width,width,final_column);
+
+
+        if (width<this.getMinwidth()){
+            width=this.getMinwidth();
         }else if(width>this.maxWidth){
             width=this.maxWidth;
         }
@@ -133,7 +133,7 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
-        this.columnWidth=this.minWidth;
+        this.columnWidth=this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
 
@@ -161,7 +161,7 @@ export default class InfiniteList extends React.PureComponent {
 
     _renderMasonry({ width }) {
         this._width = width;
-        this.columnWidth=this.minWidth;
+        this.columnWidth=this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
 
