@@ -39,10 +39,10 @@ export default class InfiniteList extends React.PureComponent {
         this._renderAutoSizer = this._renderAutoSizer.bind(this);
         this._renderMasonry = this._renderMasonry.bind(this);
         this._setMasonryRef = this._setMasonryRef.bind(this);
-        this.state.columnWidth = this.cellwidth(true);
+        this.columnWidth = this.cellwidth(true);
         this._cache = new CellMeasurerCache({
             defaultHeight: 250,
-            defaultWidth: this.state.columnWidth,
+            defaultWidth: this.columnWidth,
             fixedWidth: true,
         });
 
@@ -63,16 +63,18 @@ export default class InfiniteList extends React.PureComponent {
         if (this._width!==0 && this._columnCount!==0){
             width=(this._width/this._columnCount)-gutterSize;
         }
+        console.log(width,this._width,this._columnCount);
         if (width<this.minWidth){
             width=this.minWidth;
         }else if(width>this.maxWidth){
             width=this.maxWidth;
         }
+        console.log(width);
 
         if (return_value) {
             return width;
         }
-        this.setState({ columnWidth: width });
+        this.columnWidth= width;
     }
 
 
@@ -98,18 +100,17 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _calculateColumnCount() {
-        const { columnWidth, gutterSize } = this.state;
-        this._columnCount = Math.floor(this._width / (columnWidth + gutterSize));
+        const { gutterSize } = this.state;
+        this._columnCount = Math.floor(this._width / (this.columnWidth + gutterSize));
     }
 
     _cellRenderer({ index, key, parent, style }) {
-        const { columnWidth } = this.state;
 
         const cell = this.items[index];
 
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
-                <div style={{ ...style, width: columnWidth }}>
+                <div style={{ ...style, width: this.columnWidth }}>
                     <ModuleCard element={cell} />
                 </div>
             </CellMeasurer>
@@ -118,7 +119,8 @@ export default class InfiniteList extends React.PureComponent {
 
     _initCellPositioner() {
         if (typeof this._cellPositioner === 'undefined') {
-            const { columnWidth, gutterSize } = this.state;
+            const { gutterSize } = this.state;
+            let columnWidth=this.columnWidth;
 
             this._cellPositioner = createCellPositioner({
                 cellMeasurerCache: this._cache,
@@ -133,8 +135,9 @@ export default class InfiniteList extends React.PureComponent {
         this._width = width;
         this._columnCount=100;
         this.cellwidth();
-
         this._calculateColumnCount();
+        this.cellwidth();
+        
         this._resetCellPositioner();
         this._masonry.recomputeCellPositions();
     }
@@ -182,7 +185,8 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _resetCellPositioner() {
-        const { columnWidth, gutterSize } = this.state;
+        const { gutterSize } = this.state;
+        let columnWidth=this.columnWidth;
 
         this._cellPositioner.reset({
             columnCount: this._columnCount,
