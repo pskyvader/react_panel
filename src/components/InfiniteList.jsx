@@ -9,6 +9,7 @@ import ModuleCard from './ModuleCard';
 import { CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import { createCellPositioner } from 'react-virtualized/dist/commonjs/Masonry';
 import { Masonry } from 'react-virtualized';
+import { makeStyles } from '@material-ui/core/styles';
 
 
 
@@ -46,11 +47,22 @@ export default class InfiniteList extends React.PureComponent {
         this._setMasonryRef = this._setMasonryRef.bind(this);
 
     }
+    useStyles = makeStyles(theme => ({
+        root: {
+            minWidth: 245,
+            [theme.breakpoints.up('lg')]: {
+                minWidth: 290
+            },
+            maxWidth: 345
+        }
+    }));
+
+
     isItemLoaded = index => !this.hasNextPage || index < this.items.length;
 
 
     render() {
-        const {overscanByPixels} = this.state;
+        const { overscanByPixels } = this.state;
         return (
             <InfiniteLoader
                 isItemLoaded={this.isItemLoaded}
@@ -82,7 +94,25 @@ export default class InfiniteList extends React.PureComponent {
 
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
-                <ModuleCard></ModuleCard>
+                <div style={{
+                    ...style
+                }}>
+
+                    <ModuleCard />
+                    {/* <div style={{
+                        backgroundColor: "#ff00ff",
+                        borderRadius: '0.5rem',
+                        height: 50 * 3,
+                        marginBottom: '0.5rem',
+                        width: '100%',
+                        fontSize: 20,
+                        color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}> {index} </div>
+                    {cell.hashtag} */}
+                </div>
             </CellMeasurer>
         );
     }
@@ -102,6 +132,8 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
+        const classes = this.useStyles();
+        console.log(classes.root);
 
         this._calculateColumnCount();
         this._resetCellPositioner();
