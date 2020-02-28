@@ -3,7 +3,7 @@ import * as React from 'react';
 // import Immutable from 'immutable';
 import InfiniteLoader from "react-window-infinite-loader";
 import { AutoSizer, List } from 'react-virtualized';
-import WindowScroller from 'react-virtualized';
+import { WindowScroller } from 'react-virtualized';
 import { Grid } from '@material-ui/core';
 import ModuleCard from './ModuleCard';
 
@@ -23,6 +23,7 @@ export default class InfiniteList extends React.PureComponent {
             loadedRowCount: 0,
             loadedRowsMap: {},
             loadingRowCount: 0,
+            scrollToIndex: -1,
         };
 
         this._timeoutIdMap = {};
@@ -41,6 +42,51 @@ export default class InfiniteList extends React.PureComponent {
             clearTimeout(timeoutId);
         });
     }
+
+    render() {
+        const { scrollToIndex } = this.state;
+        return (
+
+            <InfiniteLoader
+                isItemLoaded={this.isItemLoaded}
+                itemCount={this.itemCount}
+                loadMoreItems={this.loadMore}>
+                {({ onRowsRendered, registerChild }) => (
+                    <WindowScroller
+                        ref={this._setRef}
+                        scrollElement={window}>
+                        {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
+                            <div >
+
+                                <AutoSizer disableHeight>
+                                    {({ width }) => (
+                                        <div ref={registerChild}>
+                                            <List
+                                                ref={el => { window.listEl = el; }}
+                                                autoHeight
+                                                height={height}
+                                                isScrolling={isScrolling}
+                                                onScroll={onChildScroll}
+                                                overscanRowCount={2}
+                                                onRowsRendered={onRowsRendered}
+                                                rowCount={this.items.length}
+                                                rowHeight={30}
+                                                rowRenderer={this._rowRenderer}
+                                                scrollToIndex={scrollToIndex}
+                                                scrollTop={scrollTop}
+                                                width={width}
+                                            />
+                                        </div>
+                                    )}
+                                </AutoSizer>
+                            </div>
+                        )}
+                    </WindowScroller>
+                )}
+            </InfiniteLoader>
+        )
+    }
+
 
     render() {
         return (
