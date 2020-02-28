@@ -62,7 +62,7 @@ function ModuleConfiguration(props) {
     const url_cache = 'get_module_id_' + props.idadministrador + '_module_' + props.module + '_tipo_' + props.tipo;
     var config = LocalStorage.get(url_cache, null);
     if (config===null) {
-        config= ModuleConfigurationCache(props, url_cache);
+        config= ModuleConfigurationCache({...props, url_cache});
     }
     if(typeof(config)==='object' && config!==null && config.hasOwnProperty("error")){
         return ErrorLink(config['error']);

@@ -28,7 +28,7 @@ export default class InfiniteList extends React.PureComponent {
         this.state = {
             columnWidth: 100,
             height: 300,
-            gutterSize: 10,
+            gutterSize: 30,
             overscanByPixels: 0,
             windowScrollerEnabled: true,
         };
@@ -38,7 +38,7 @@ export default class InfiniteList extends React.PureComponent {
         this._renderAutoSizer = this._renderAutoSizer.bind(this);
         this._renderMasonry = this._renderMasonry.bind(this);
         this._setMasonryRef = this._setMasonryRef.bind(this);
-        this.state.columnWidth=this.cellwidth(true);
+        this.state.columnWidth = this.cellwidth(true);
         this._cache = new CellMeasurerCache({
             defaultHeight: 250,
             defaultWidth: this.state.columnWidth,
@@ -52,19 +52,19 @@ export default class InfiniteList extends React.PureComponent {
     isItemLoaded = index => !this.hasNextPage || index < this.items.length;
 
 
-    componentDidMount(){
+    componentDidMount() {
         this.cellwidth();
     }
 
-    cellwidth(return_value=false){
-        let width=300;
+    cellwidth(return_value = false) {
+        let width = 290;
 
-        if (return_value){
+        if (return_value) {
             return width;
         }
-        this.setState({ columnWidth:width });
+        this.setState({ columnWidth: width });
     }
-    
+
 
 
     render() {
@@ -100,24 +100,8 @@ export default class InfiniteList extends React.PureComponent {
 
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
-                <div style={{
-                    ...style,width:columnWidth
-                }}>
-
-                    <ModuleCard />
-                    {/* <div style={{
-                        backgroundColor: "#ff00ff",
-                        borderRadius: '0.5rem',
-                        height: 50 * 3,
-                        marginBottom: '0.5rem',
-                        width: '100%',
-                        fontSize: 20,
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}> {index} </div>
-                    {cell.hashtag} */}
+                <div style={{ ...style, width: columnWidth }}>
+                    <ModuleCard element={cell} />
                 </div>
             </CellMeasurer>
         );
