@@ -48,8 +48,6 @@ function ModuleList(props) {
         return "";
     }
 
-    console.log(items);
-
     return (
         <InfiniteList
             items={items}

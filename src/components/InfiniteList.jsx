@@ -1,10 +1,7 @@
 import * as React from 'react';
-// import PropTypes from 'prop-types';
-// import Immutable from 'immutable';
 import InfiniteLoader from "react-window-infinite-loader";
-import { AutoSizer, List } from 'react-virtualized';
+import { AutoSizer } from 'react-virtualized';
 import { WindowScroller } from 'react-virtualized';
-import { Grid } from '@material-ui/core';
 import ModuleCard from './ModuleCard';
 import { CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import { createCellPositioner } from 'react-virtualized/dist/commonjs/Masonry';
@@ -30,7 +27,7 @@ export default class InfiniteList extends React.PureComponent {
 
         this.state = {
             height: 300,
-            gutterSize: 10,
+            gutterSize: 30,
             overscanByPixels: 0,
             windowScrollerEnabled: true,
         };
@@ -55,7 +52,7 @@ export default class InfiniteList extends React.PureComponent {
     getMinwidth=()=> this._width<1280?this.minWidth :this.minWidthlg;
 
     cellwidth(return_value = false) {
-        return 290;
+        // return 290;
         const { gutterSize } = this.state;
         let width=0;
         if (this._width!==0 && this._columnCount!==0){
