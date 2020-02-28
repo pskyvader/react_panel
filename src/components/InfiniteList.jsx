@@ -133,7 +133,7 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
-        this.getMinwidth();
+        this.columnWidth=this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
 
@@ -161,7 +161,7 @@ export default class InfiniteList extends React.PureComponent {
 
     _renderMasonry({ width }) {
         this._width = width;
-        this.columnWidth=this.getMinwidth(true);
+        this.columnWidth=this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
 
