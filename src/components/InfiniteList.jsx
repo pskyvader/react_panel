@@ -25,12 +25,6 @@ export default class InfiniteList extends React.PureComponent {
 
         this._columnCount = 0;
 
-        this._cache = new CellMeasurerCache({
-            defaultHeight: 250,
-            defaultWidth: 200,
-            fixedWidth: false,
-        });
-
         this.state = {
             columnWidth: 100,
             height: 300,
@@ -44,6 +38,13 @@ export default class InfiniteList extends React.PureComponent {
         this._renderAutoSizer = this._renderAutoSizer.bind(this);
         this._renderMasonry = this._renderMasonry.bind(this);
         this._setMasonryRef = this._setMasonryRef.bind(this);
+        this.state.columnWidth=this.cellwidth(true);
+        this._cache = new CellMeasurerCache({
+            defaultHeight: 250,
+            defaultWidth: this.state.columnWidth,
+            fixedWidth: true,
+        });
+
 
     }
 
@@ -52,10 +53,16 @@ export default class InfiniteList extends React.PureComponent {
 
 
     componentDidMount(){
-        this.setState({ columnWidth:300 });
-        this._calculateColumnCount();
-        this._resetCellPositioner();
-        this._masonry.recomputeCellPositions();
+        this.cellwidth();
+    }
+
+    cellwidth(return_value=false){
+        let width=300;
+
+        if (return_value){
+            return width;
+        }
+        this.setState({ columnWidth:width });
     }
     
 
@@ -131,6 +138,7 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
+
         this._calculateColumnCount();
         this._resetCellPositioner();
         this._masonry.recomputeCellPositions();
