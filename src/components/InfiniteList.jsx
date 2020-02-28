@@ -3,6 +3,7 @@ import * as React from 'react';
 // import Immutable from 'immutable';
 import InfiniteLoader from "react-window-infinite-loader";
 import { AutoSizer, List } from 'react-virtualized';
+import WindowScroller from 'react-virtualized';
 import { Grid } from '@material-ui/core';
 import ModuleCard from './ModuleCard';
 
@@ -55,7 +56,7 @@ export default class InfiniteList extends React.PureComponent {
                                 height={200}
                                 onRowsRendered={onRowsRendered}
                                 rowCount={this.items.length}
-                                rowHeight={30}
+                                rowHeight={300}
                                 rowRenderer={this._rowRenderer}
                                 width={width}
                             />
@@ -67,9 +68,8 @@ export default class InfiniteList extends React.PureComponent {
     }
 
 
-    _rowRenderer({ index, key, style }) {
-        console.log(index, key, style,this.items);
-        let element=this.items[index];
+    _rowRenderer({ index, key }) {
+        let element = this.items[index];
 
         let content = (
             <ModuleCard {...element} />
@@ -78,7 +78,7 @@ export default class InfiniteList extends React.PureComponent {
         return (
             <Grid item xs={12} sm key={key}>
                 {content}
-                </Grid>
+            </Grid>
         );
     }
 }

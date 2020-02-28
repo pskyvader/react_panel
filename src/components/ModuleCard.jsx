@@ -64,8 +64,8 @@ export default function RecipeReviewCard(props) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={props.usuario}
-        subheader="September 14, 2016"
+        title={props.hashtag}
+        subheader={props.orden}
       />
       <CardMedia
         className={classes.media}
