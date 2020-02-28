@@ -57,12 +57,18 @@ export default class InfiniteList extends React.PureComponent {
         this.cellwidth();
     }
 
-    cellwidth(return_value = false,width=0) {
+    cellwidth(return_value = false) {
+        const { gutterSize } = this.state;
+        let width=0;
+        if (this._width!==0 && this._columnCount!==0){
+            width=(this._width/this._columnCount)-gutterSize;
+        }
         if (width<this.minWidth){
             width=this.minWidth;
         }else if(width>this.maxWidth){
             width=this.maxWidth;
         }
+
         if (return_value) {
             return width;
         }
@@ -94,13 +100,6 @@ export default class InfiniteList extends React.PureComponent {
     _calculateColumnCount() {
         const { columnWidth, gutterSize } = this.state;
         this._columnCount = Math.floor(this._width / (columnWidth + gutterSize));
-        if (this._width!==0 && this._columnCount!==0){
-            let new_width=(this._width/this._columnCount)-gutterSize;
-            if (new_width!==columnWidth){
-                console.log(new_width);
-                this.cellwidth(false,new_width);
-            }
-        }
     }
 
     _cellRenderer({ index, key, parent, style }) {
@@ -132,6 +131,8 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
+        this._columnCount=100;
+        this.cellwidth();
 
         this._calculateColumnCount();
         this._resetCellPositioner();
