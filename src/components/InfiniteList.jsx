@@ -9,7 +9,6 @@ import ModuleCard from './ModuleCard';
 import { CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import { createCellPositioner } from 'react-virtualized/dist/commonjs/Masonry';
 import { Masonry } from 'react-virtualized';
-import { makeStyles } from '@material-ui/core/styles';
 
 
 
@@ -33,7 +32,7 @@ export default class InfiniteList extends React.PureComponent {
         });
 
         this.state = {
-            columnWidth: 200,
+            columnWidth: 100,
             height: 300,
             gutterSize: 10,
             overscanByPixels: 0,
@@ -47,18 +46,17 @@ export default class InfiniteList extends React.PureComponent {
         this._setMasonryRef = this._setMasonryRef.bind(this);
 
     }
-    useStyles = makeStyles(theme => ({
-        root: {
-            minWidth: 245,
-            [theme.breakpoints.up('lg')]: {
-                minWidth: 290
-            },
-            maxWidth: 345
-        }
-    }));
 
 
     isItemLoaded = index => !this.hasNextPage || index < this.items.length;
+
+
+    componentDidMount(){
+        this.setState({
+            columnWidth:500
+        });
+    }
+    
 
 
     render() {
@@ -132,8 +130,6 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width }) {
         this._width = width;
-        const classes = this.useStyles();
-        console.log(classes.root);
 
         this._calculateColumnCount();
         this._resetCellPositioner();
