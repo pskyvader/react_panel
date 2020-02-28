@@ -137,7 +137,7 @@ export default class InfiniteList extends React.PureComponent {
         this.cellwidth();
         this._calculateColumnCount();
         this.cellwidth();
-        
+
         this._resetCellPositioner();
         this._masonry.recomputeCellPositions();
     }
@@ -162,8 +162,11 @@ export default class InfiniteList extends React.PureComponent {
 
     _renderMasonry({ width }) {
         this._width = width;
-
+        this._columnCount=100;
+        this.cellwidth();
         this._calculateColumnCount();
+        this.cellwidth();
+        
         this._initCellPositioner();
 
         const { height, overscanByPixels, windowScrollerEnabled } = this.state;
