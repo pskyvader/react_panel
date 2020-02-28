@@ -6,6 +6,7 @@ import ModuleCard from './ModuleCard';
 import { CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import { createCellPositioner } from 'react-virtualized/dist/commonjs/Masonry';
 import { Masonry } from 'react-virtualized';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 
@@ -42,6 +43,17 @@ export default class InfiniteList extends React.PureComponent {
 
     }
 
+    onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+        console.log('onscroll');
+        if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
+            console.log('scrolltop');
+            if (!this.moreItemsLoading && this.hasNextPage) {
+                console.log('loadmore');
+                this.loadMore();
+            }
+        }
+    };
+
     isItemLoaded = index => !this.hasNextPage || index < this.items.length;
 
     getMinwidth = () => this._width < 1280 ? this.minWidth : this.minWidthlg;
@@ -63,7 +75,7 @@ export default class InfiniteList extends React.PureComponent {
         this.columnWidth = width;
     }
 
-
+    render_progress=()=>{ return this.props.loading?<LinearProgress/>:<div></div> }
 
     render() {
         return (
@@ -73,14 +85,16 @@ export default class InfiniteList extends React.PureComponent {
                 loadMoreItems={this.loadMore}>
                 {
                 ({ onRowsRendered }) => {
-                    console.log(onRowsRendered);
                         return (
+                            <React.Fragment>
+                            {this.render_progress()}
                             <WindowScroller overscanByPixels={this.overscanByPixels} scrollElement={window}>
                                 {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
                                     this._renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
                                 )}
 
                             </WindowScroller>
+                            </React.Fragment>
                         )
 
                     }
@@ -129,7 +143,6 @@ export default class InfiniteList extends React.PureComponent {
     _renderAutoSizer({ height, scrollTop, onRowsRendered }) {
         this._height = height;
         this._scrollTop = scrollTop;
-        console.log(onRowsRendered);
 
 
         return (
@@ -165,6 +178,7 @@ export default class InfiniteList extends React.PureComponent {
                 ref={this._setMasonryRef}
                 scrollTop={this._scrollTop}
                 width={width}
+                onScroll={this.onScroll}
             />
         );
     }
