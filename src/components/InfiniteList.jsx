@@ -21,23 +21,18 @@ export default class InfiniteList extends React.PureComponent {
 
 
         this._columnCount = 0;
-        this.minWidth=245;
-        this.minWidthlg=290;
-        this.maxWidth=345;
-
-        this.state = {
-            height: 300,
-            gutterSize: 30,
-            overscanByPixels: 0,
-            windowScrollerEnabled: true,
-        };
+        this.minWidth = 245;
+        this.minWidthlg = 290;
+        this.maxWidth = 345;
+        this.gutterSize = 30;
+        this.overscanByPixels = 0;
 
         this._cellRenderer = this._cellRenderer.bind(this);
         this._onResize = this._onResize.bind(this);
         this._renderAutoSizer = this._renderAutoSizer.bind(this);
         this._renderMasonry = this._renderMasonry.bind(this);
         this._setMasonryRef = this._setMasonryRef.bind(this);
-        this.columnWidth = this.cellwidth(true);    
+        this.columnWidth = this.cellwidth(true);
         this._cache = new CellMeasurerCache({
             defaultHeight: 250,
             defaultWidth: this.columnWidth,
@@ -49,63 +44,57 @@ export default class InfiniteList extends React.PureComponent {
 
     isItemLoaded = index => !this.hasNextPage || index < this.items.length;
 
-    getMinwidth=()=> this._width<1280?this.minWidth :this.minWidthlg;
+    getMinwidth = () => this._width < 1280 ? this.minWidth : this.minWidthlg;
 
     cellwidth(return_value = false) {
-        // return 290;
-        const { gutterSize } = this.state;
-        let width=0;
-        if (this._width!==0 && this._columnCount!==0){
-            width= Math.floor((this._width/this._columnCount)-gutterSize);
+        let width = 0;
+        if (this._width !== 0 && this._columnCount !== 0) {
+            width = Math.floor((this._width / this._columnCount) - this.gutterSize);
         }
-        let final_column=(this._width / (this.columnWidth + gutterSize));
-        console.log(this._width,width,final_column);
-
-
-        if (width<this.getMinwidth()){
-            width=this.getMinwidth();
-        }else if(width>this.maxWidth){
-            width=this.maxWidth;
+        if (width < this.getMinwidth()) {
+            width = this.getMinwidth();
+        } else if (width > this.maxWidth) {
+            width = this.maxWidth;
         }
-        console.log(width);
 
         if (return_value) {
             return width;
         }
-        this.columnWidth= width;
+        this.columnWidth = width;
     }
 
 
 
     render() {
-        const { overscanByPixels } = this.state;
         return (
             <InfiniteLoader
                 isItemLoaded={this.isItemLoaded}
                 itemCount={this.itemCount}
                 loadMoreItems={this.loadMore}>
-                {({ onRowsRendered }) => (
-                    <WindowScroller overscanByPixels={overscanByPixels} scrollElement={window}>
-                        {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
-                            this._renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
-                        )}
+                {
+                ({ onRowsRendered }) => {
+                    console.log(onRowsRendered);
+                        return (
+                            <WindowScroller overscanByPixels={this.overscanByPixels} scrollElement={window}>
+                                {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
+                                    this._renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
+                                )}
 
-                    </WindowScroller>
-                    // this._renderAutoSizer({onRowsRendered})
-                )}
+                            </WindowScroller>
+                        )
+
+                    }
+                }
             </InfiniteLoader>
         )
     }
 
     _calculateColumnCount() {
-        const { gutterSize } = this.state;
-        this._columnCount = Math.floor(this._width / (this.columnWidth + gutterSize));
+        this._columnCount = Math.floor(this._width / (this.columnWidth + this.gutterSize));
     }
 
     _cellRenderer({ index, key, parent, style }) {
-
         const cell = this.items[index];
-
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
                 <div style={{ ...style, width: this.columnWidth }}>
@@ -117,20 +106,19 @@ export default class InfiniteList extends React.PureComponent {
 
     _initCellPositioner() {
         if (typeof this._cellPositioner === 'undefined') {
-            const { gutterSize } = this.state;
-            let columnWidth=this.columnWidth;
+            let columnWidth = this.columnWidth;
             this._cellPositioner = createCellPositioner({
                 cellMeasurerCache: this._cache,
                 columnCount: this._columnCount,
                 columnWidth,
-                spacer: gutterSize,
+                spacer: this.gutterSize,
             });
         }
     }
 
     _onResize({ width }) {
         this._width = width;
-        this.columnWidth=this.getMinwidth();
+        this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
 
@@ -138,18 +126,18 @@ export default class InfiniteList extends React.PureComponent {
         this._masonry.recomputeCellPositions();
     }
 
-    _renderAutoSizer({ height, scrollTop }) {
+    _renderAutoSizer({ height, scrollTop, onRowsRendered }) {
         this._height = height;
         this._scrollTop = scrollTop;
+        console.log(onRowsRendered);
 
-        const { overscanByPixels } = this.state;
 
         return (
             <AutoSizer
                 disableHeight
                 height={height}
                 onResize={this._onResize}
-                overscanByPixels={overscanByPixels}
+                overscanByPixels={this.overscanByPixels}
                 scrollTop={this._scrollTop}>
                 {this._renderMasonry}
             </AutoSizer>
@@ -158,23 +146,22 @@ export default class InfiniteList extends React.PureComponent {
 
     _renderMasonry({ width }) {
         this._width = width;
-        this.columnWidth=this.getMinwidth();
+        this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
 
         this._initCellPositioner();
 
-        const { height, overscanByPixels, windowScrollerEnabled } = this.state;
 
         return (
             <Masonry
-                autoHeight={windowScrollerEnabled}
+                autoHeight={true}
                 cellCount={this.items.length}
                 cellMeasurerCache={this._cache}
                 cellPositioner={this._cellPositioner}
                 cellRenderer={this._cellRenderer}
-                height={windowScrollerEnabled ? this._height : height}
-                overscanByPixels={overscanByPixels}
+                height={this._height}
+                overscanByPixels={this.overscanByPixels}
                 ref={this._setMasonryRef}
                 scrollTop={this._scrollTop}
                 width={width}
@@ -183,13 +170,12 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _resetCellPositioner() {
-        const { gutterSize } = this.state;
-        let columnWidth=this.columnWidth;
+        let columnWidth = this.columnWidth;
 
         this._cellPositioner.reset({
             columnCount: this._columnCount,
             columnWidth,
-            spacer: gutterSize,
+            spacer: this.gutterSize,
         });
     }
 
