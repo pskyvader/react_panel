@@ -54,7 +54,7 @@ export default class InfiniteList extends React.PureComponent {
                                                     overscanRowCount={2}
                                                     onRowsRendered={onRowsRendered}
                                                     rowCount={this.items.length}
-                                                    rowHeight={300}
+                                                    rowHeight={442}
                                                     rowRenderer={this._rowRenderer}
                                                     scrollToIndex={scrollToIndex}
                                                     scrollTop={scrollTop}
