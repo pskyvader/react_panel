@@ -4,7 +4,7 @@ import Resolve from './Resolve';
 import InfiniteList from './InfiniteList';
 
 function ModuleList(props) {
-    const { module, tipo, config } = props;
+    let { module, tipo, config } = props;
     let fields = ['id'];
     if (config !== null && config !== false) {
         const module_data = config.hijo[0];
@@ -16,6 +16,7 @@ function ModuleList(props) {
     if (tipo > 0) {
         vars['tipo'] = tipo;
     }
+    tipo=0;
 
     const table_query = 'all' + module.charAt(0).toUpperCase() + module.slice(1);
     const GET_LIST = gql(`

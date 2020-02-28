@@ -48,7 +48,7 @@ export default class InfiniteList extends React.PureComponent {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
             console.log('scrolltop');
             if (!this.moreItemsLoading && this.hasNextPage) {
-                console.log('loadmore');
+                console.log('loadmore',this.moreItemsLoading, this.hasNextPage);
                 this.loadMore();
             }
         }
@@ -75,7 +75,7 @@ export default class InfiniteList extends React.PureComponent {
         this.columnWidth = width;
     }
 
-    render_progress=()=>{ return this.props.loading?<LinearProgress/>:<div></div> }
+    render_progress = () => { return this.props.loading ? <LinearProgress /> : <div></div> }
 
     render() {
         return (
@@ -84,16 +84,16 @@ export default class InfiniteList extends React.PureComponent {
                 itemCount={this.itemCount}
                 loadMoreItems={this.loadMore}>
                 {
-                ({ onRowsRendered }) => {
+                    ({ onRowsRendered }) => {
                         return (
                             <React.Fragment>
-                            {this.render_progress()}
-                            <WindowScroller overscanByPixels={this.overscanByPixels} scrollElement={window}>
-                                {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
-                                    this._renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
-                                )}
+                                {this.render_progress()}
+                                <WindowScroller overscanByPixels={this.overscanByPixels} scrollElement={window}>
+                                    {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
+                                        this._renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
+                                    )}
 
-                            </WindowScroller>
+                                </WindowScroller>
                             </React.Fragment>
                         )
 
@@ -152,12 +152,14 @@ export default class InfiniteList extends React.PureComponent {
                 onResize={this._onResize}
                 overscanByPixels={this.overscanByPixels}
                 scrollTop={this._scrollTop}>
-                {this._renderMasonry}
+                {({width}) => (
+                    this._renderMasonry({ width, onRowsRendered })
+                )}
             </AutoSizer>
         );
     }
 
-    _renderMasonry({ width }) {
+    _renderMasonry({ width,onRowsRendered }) {
         this._width = width;
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
@@ -173,6 +175,7 @@ export default class InfiniteList extends React.PureComponent {
                 cellMeasurerCache={this._cache}
                 cellPositioner={this._cellPositioner}
                 cellRenderer={this._cellRenderer}
+                onCellsRendered={onRowsRendered}
                 height={this._height}
                 overscanByPixels={this.overscanByPixels}
                 ref={this._setMasonryRef}
