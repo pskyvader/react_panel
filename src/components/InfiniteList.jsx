@@ -24,9 +24,10 @@ export default class InfiniteList extends React.PureComponent {
 
 
         this._columnCount = 0;
+        this.minWidth=245;
+        this.maxWidth=345;
 
         this.state = {
-            columnWidth: 100,
             height: 300,
             gutterSize: 30,
             overscanByPixels: 0,
@@ -56,9 +57,12 @@ export default class InfiniteList extends React.PureComponent {
         this.cellwidth();
     }
 
-    cellwidth(return_value = false) {
-        let width = 290;
-
+    cellwidth(return_value = false,width=0) {
+        if (width<this.minWidth){
+            width=this.minWidth;
+        }else if(width>this.maxWidth){
+            width=this.maxWidth;
+        }
         if (return_value) {
             return width;
         }
@@ -91,8 +95,11 @@ export default class InfiniteList extends React.PureComponent {
         const { columnWidth, gutterSize } = this.state;
         this._columnCount = Math.floor(this._width / (columnWidth + gutterSize));
         if (this._width!==0 && this._columnCount!==0){
-            let new_width=(this._width/this._columnCount);
-            console.log(new_width);
+            let new_width=(this._width/this._columnCount)-gutterSize;
+            if (new_width!==columnWidth){
+                console.log(new_width);
+                this.cellwidth(false,new_width);
+            }
         }
     }
 
