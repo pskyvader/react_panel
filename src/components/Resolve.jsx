@@ -9,6 +9,7 @@ function Resolve(props) {
 
     if (loading && (!data || !data[table])) return { loading, items: [] };
     var items = data[table].edges.map(({ node }) => node);
+    console.log('items',items.length,data);
 
 
     const loadMore = (callback) => {
@@ -30,11 +31,13 @@ function Resolve(props) {
                     pageInfo,
                 };
 
+                console.log("new query",newquery);
+
                 return newEdges.length ? newquery : previousResult;
             },
         }).then(function(val){
             console.log("val",val);
-            callback(val);
+            // callback(val);
         });
     };
 
