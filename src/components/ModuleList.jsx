@@ -17,7 +17,7 @@ function ModuleList(props) {
         });
     }
 
-    const vars = { first: 10, after: '' }
+    const vars = { first: 3, after: '' }
     if (tipo > 0) {
         vars['tipo'] = tipo;
     }

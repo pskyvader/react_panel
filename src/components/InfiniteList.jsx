@@ -48,7 +48,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
+        if (scrollTop >= (scrollHeight - clientHeight) * 0.8) {
             if (!this.state.moreItemsLoading && this.state.hasNextPage) {
                 let t=this;
                 this.state.loadMore(function(val){
