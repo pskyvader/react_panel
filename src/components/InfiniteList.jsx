@@ -51,21 +51,20 @@ export default class InfiniteList extends React.PureComponent {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.8) {
             if (!this.state.moreItemsLoading && this.state.hasNextPage) {
                 let t=this;
+                t.setState({
+                    moreItemsLoading : true
+                });
                 this.state.loadMore(function(val){
                     if(t.props.items.length!==t.state.items.length){
-                        console.log(t.props.items.length,t.state.items.length);
-                        console.log(t.props.items,t.state.items);
-                        // t.setState({
-                        //     items : t.props.items,
-                        //     moreItemsLoading : t.props.moreItemsLoading,
-                        //     loadMore : t.props.loadMore,
-                        //     hasNextPage : t.props.hasNextPage,
-                        //     itemCount : t.props.hasNextPage ? t.props.items.length + 1 : t.props.items.length
-                        // });
-                        console.log(val,t.props,t.state);
+                        t.setState({
+                            items : t.props.items,
+                            moreItemsLoading : t.props.moreItemsLoading,
+                            loadMore : t.props.loadMore,
+                            hasNextPage : t.props.hasNextPage,
+                            itemCount : t.props.hasNextPage ? t.props.items.length + 1 : t.props.items.length
+                        });
                     }
                 });
-               
             }
         }
     };
@@ -97,7 +96,8 @@ export default class InfiniteList extends React.PureComponent {
         return (
             <InfiniteLoader
                 isItemLoaded={this.state.isItemLoaded}
-                itemCount={this.state.itemCount}>
+                itemCount={this.state.itemCount}
+                loadMoreItems={this.state.loadMore}>
                 {
                     ({ onRowsRendered }) => {
                         return (
