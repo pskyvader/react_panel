@@ -11,7 +11,7 @@ function Resolve(props) {
     var items = data[table].edges.map(({ node }) => node);
 
 
-    const loadMore = () => {
+    const loadMore = (callback) => {
         props.vars['after'] = data[table].pageInfo.endCursor;
         props.vars['first'] = items.length * 2;
         props.vars['first'] = (props.vars['first'] < 10) ? 10 : (props.vars['first'] > 1000 ? 1000 : props.vars['first']);
@@ -33,7 +33,7 @@ function Resolve(props) {
                 return newEdges.length ? newquery : previousResult;
             },
         }).then(function(val){
-            console.log("val",val);
+            callback(val);
         });
     };
 
