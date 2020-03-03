@@ -50,12 +50,13 @@ export default class InfiniteList extends React.PureComponent {
     onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
             if (!this.state.moreItemsLoading && this.state.hasNextPage) {
+                // this.setState({loadMore:this.state.loadMore()});
                 this.state.loadMore();
             }
         }
     };
 
-    isItemLoaded = index => !this.hasNextPage || index < this.items.length;
+    isItemLoaded = index => !this.state.hasNextPage || index < this.state.items.length;
 
     getMinwidth = () => this._width < 1280 ? this.minWidth : this.minWidthlg;
 
@@ -81,9 +82,9 @@ export default class InfiniteList extends React.PureComponent {
     render() {
         return (
             <InfiniteLoader
-                isItemLoaded={this.isItemLoaded}
-                itemCount={this.itemCount}
-                loadMoreItems={this.loadMore}>
+                isItemLoaded={this.state.isItemLoaded}
+                itemCount={this.state.itemCount}
+                loadMoreItems={this.state.loadMore}>
                 {
                     ({ onRowsRendered }) => {
                         return (
@@ -109,7 +110,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _cellRenderer({ index, key, parent, style }) {
-        const cell = this.items[index];
+        const cell = this.state.items[index];
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
                 <div style={{ ...style, width: this.columnWidth }}>
