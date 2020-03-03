@@ -48,6 +48,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+        console.log("onScroll",this._width);
         if (scrollTop >= (scrollHeight - clientHeight) * 0.8) {
             if (!this.state.moreItemsLoading && this.state.hasNextPage) {
                 let t=this;
@@ -74,6 +75,7 @@ export default class InfiniteList extends React.PureComponent {
     getMinwidth = () => this._width < 1280 ? this.minWidth : this.minWidthlg;
 
     cellwidth(return_value = false) {
+        console.log("cellwidth",this._width);
         let width = 0;
         if (this._width !== 0 && this._columnCount !== 0) {
             width = Math.floor((this._width / this._columnCount) - this.gutterSize);
@@ -90,9 +92,13 @@ export default class InfiniteList extends React.PureComponent {
         this.columnWidth = width;
     }
 
-    render_progress = () => { return this.props.loading ? <LinearProgress /> : <div></div> }
+    render_progress = () => {
+        console.log("render_progress",this._width);
+         return this.props.loading ? <LinearProgress /> : <div></div> 
+        }
 
     render() {
+        console.log("render",this._width);
         return (
             <InfiniteLoader
                 isItemLoaded={this.state.isItemLoaded}
@@ -119,10 +125,12 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _calculateColumnCount() {
+        console.log("calculate column count",this._width);
         this._columnCount = Math.floor(this._width / (this.columnWidth + this.gutterSize));
     }
 
     _cellRenderer({ index, key, parent, style }) {
+        console.log("_cellRenderer",this._width);
         const cell = this.state.items[index];
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
@@ -134,6 +142,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _initCellPositioner() {
+        console.log("_initCellPositioner",this._width);
         if (typeof this._cellPositioner === 'undefined') {
             let columnWidth = this.columnWidth;
             this._cellPositioner = createCellPositioner({
@@ -146,6 +155,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _onResize({ width }) {
+        console.log("_onResize",this._width);
         this._width = width;
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
@@ -156,6 +166,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _renderAutoSizer({ height, scrollTop, onRowsRendered }) {
+        console.log("_renderAutoSizer",this._width);
         this._height = height;
         this._scrollTop = scrollTop;
 
@@ -175,13 +186,13 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _renderMasonry({ width,onRowsRendered }) {
+        console.log("_renderMasonry",this._width);
         this._width = width;
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
 
         this._initCellPositioner();
-
 
         return (
             <Masonry
@@ -202,6 +213,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _resetCellPositioner() {
+        console.log("_resetCellPositioner",this._width);
         let columnWidth = this.columnWidth;
 
         this._cellPositioner.reset({
@@ -212,6 +224,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _setMasonryRef(ref) {
+        console.log("_setMasonryRef",this._width);
         this._masonry = ref;
     }
 }
