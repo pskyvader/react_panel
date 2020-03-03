@@ -54,13 +54,14 @@ export default class InfiniteList extends React.PureComponent {
                 this.state.loadMore(function(val){
                     if(t.props.items.length!==t.state.items.length){
                         console.log(t.props.items.length,t.state.items.length);
-                        t.setState({
-                            items : t.props.items,
-                            moreItemsLoading : t.props.moreItemsLoading,
-                            loadMore : t.props.loadMore,
-                            hasNextPage : t.props.hasNextPage,
-                            itemCount : t.props.hasNextPage ? t.props.items.length + 1 : t.props.items.length
-                        });
+                        console.log(t.props.items,t.state.items);
+                        // t.setState({
+                        //     items : t.props.items,
+                        //     moreItemsLoading : t.props.moreItemsLoading,
+                        //     loadMore : t.props.loadMore,
+                        //     hasNextPage : t.props.hasNextPage,
+                        //     itemCount : t.props.hasNextPage ? t.props.items.length + 1 : t.props.items.length
+                        // });
                         console.log(val,t.props,t.state);
                     }
                 });
@@ -96,8 +97,7 @@ export default class InfiniteList extends React.PureComponent {
         return (
             <InfiniteLoader
                 isItemLoaded={this.state.isItemLoaded}
-                itemCount={this.state.itemCount}
-                loadMoreItems={this.state.loadMore}>
+                itemCount={this.state.itemCount}>
                 {
                     ({ onRowsRendered }) => {
                         return (
