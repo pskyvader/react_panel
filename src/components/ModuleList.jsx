@@ -17,16 +17,20 @@ function ModuleList(props) {
         });
     }
 
-    const vars = { first: 10, after: '' }
+    const vars = { first: 10, after: ''}
     if (tipo > 0) {
         vars['tipo'] = tipo;
     }
+    if (fields.includes("orden")){
+        vars['sort'] = "orden ASC";
+    }
+
     tipo=0;
 
     const table_query = 'all' + module.charAt(0).toUpperCase() + module.slice(1);
     const GET_LIST = gql(`
-    query get_list($first:Int!,$after:String){
-        $table(first:$first,after:$after,$tipo){
+    query get_list($first:Int!,$after:String,$sort:String){
+        $table(first:$first,after:$after,sort:$sort,$tipo){
             pageInfo{
                 endCursor
                 hasNextPage

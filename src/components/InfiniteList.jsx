@@ -59,7 +59,6 @@ const InfiniteList = (props) => {
 
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
         const startIndex = rowIndex * columnCount + columnIndex;
-        console.log(columnIndex, key, rowIndex, style,startIndex);
         const cell = items[startIndex];
         return (
             <div key={key} style={style}>
@@ -135,12 +134,9 @@ const InfiniteList = (props) => {
                 onScroll={onScroll}
                 onSectionRendered={
                     ({ columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex }) => {
-                        const startIndex = rowStartIndex * columnCount + columnStartIndex
-                        const stopIndex = rowStopIndex * columnCount + columnStopIndex
-                        onRowsRendered({
-                            startIndex,
-                            stopIndex
-                        })
+                        const startIndex = rowStartIndex * columnCount + columnStartIndex;
+                        const stopIndex = rowStopIndex * columnCount + columnStopIndex;
+                        return onRowsRendered({ startIndex, stopIndex });
                     }
                 }
             />

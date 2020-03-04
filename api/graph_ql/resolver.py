@@ -11,7 +11,12 @@ def resolve(args, info, table_schema, table_model, **kwargs):
 
     sort_value = kwargs.get("sort", None)
     if sort_value != None:
-        value, pos = sort_value.split(" ")
+        parts = sort_value.split(" ")
+        if len(parts)!=2:
+            raise NameError("Invalid sort", parts,"valid: ASC|DESC")
+        else:
+            value, pos=parts
+
         if value in model:
             if pos.lower() in ["asc", "desc"]:
                 query = query.order_by(getattr(model[value], pos.lower())())
