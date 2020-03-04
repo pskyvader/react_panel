@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useRef } from 'react'
 
 
-export default () => {
+export default (props) => {
     const TypographyRef = useRef();
     let { module, tipo } = useParams();
     if (typeof (tipo) == 'undefined') {
@@ -14,7 +14,7 @@ export default () => {
     return (
         <Container maxWidth="xl" fixed>
             <Typography ref={TypographyRef}  variant="h3" gutterBottom >Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
-            <ModuleConfiguration module={module} tipo={tipo} idadministrador="1" TypographyRef={TypographyRef} />
+            <ModuleConfiguration module={module} tipo={tipo} idadministrador="1" TypographyRef={TypographyRef} {...props} />
         </Container>
     )
 };

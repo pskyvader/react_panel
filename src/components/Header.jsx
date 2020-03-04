@@ -59,6 +59,7 @@ export default function Header(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(sidebar_open);
     const mainRef = useRef();
+    const drawerHeaderRef = useRef();
     const handleDrawer = () => {
         setOpen(!open);
         LocalStorage.set('sidebar_open', !open);
@@ -90,8 +91,8 @@ export default function Header(props) {
             <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer} idadministrador="1"/>
 
             <main ref={mainRef} className={clsx(classes.content, { [classes.contentShift]: open, })} >
-                <div className={classes.drawerHeader} />
-                {props.children({mainRef:mainRef})}
+                <div ref={drawerHeaderRef} className={classes.drawerHeader} />
+                {props.children({mainRef:mainRef, drawerHeaderRef:drawerHeaderRef})}
             </main>
         </div>
     );

@@ -15,7 +15,7 @@ const client = new ApolloClient({
 const App = () => (
     <ApolloProvider client={client}>
         <Header>
-            {(variable) => (
+            {(props) => (
                 <Switch>
                     <Route exact path="/">
                         <Home />
@@ -24,7 +24,7 @@ const App = () => (
                         <Home />
                     </Route>
                     <Route path="/:module/:tipo?">
-                        <ModuleList {...variable}/>
+                        <ModuleList {...props}/>
                     </Route>
                     <Route path="*">
                         404 not found

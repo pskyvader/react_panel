@@ -23,7 +23,6 @@ export default class InfiniteList extends React.PureComponent {
             hasNextPage : props.hasNextPage,
             itemCount : props.hasNextPage ? props.items.length + 1 : props.items.length,
         }
-        this.TypographyRef=props.TypographyRef;
         
 
 
@@ -208,7 +207,6 @@ export default class InfiniteList extends React.PureComponent {
         if(gridHeight<300){
             gridHeight=300;
         }
-        console.log(this.TypographyRef.current.offsetHeight)
         console.log(this.props)
 
 
