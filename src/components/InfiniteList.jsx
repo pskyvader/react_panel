@@ -75,7 +75,6 @@ export default class InfiniteList extends React.PureComponent {
     getMinwidth = () => this._width < 1280 ? this.minWidth : this.minWidthlg;
 
     cellwidth(return_value = false) {
-        console.log("cellwidth",this._width);
         let width = 0;
         if (this._width !== 0 && this._columnCount !== 0) {
             width = Math.floor((this._width / this._columnCount) - this.gutterSize);
@@ -86,6 +85,7 @@ export default class InfiniteList extends React.PureComponent {
             width = this.maxWidth;
         }
 
+        console.log("cellwidth",this._width,width);
         if (return_value) {
             return width;
         }
@@ -125,8 +125,8 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _calculateColumnCount() {
-        console.log("calculate column count",this._width);
         this._columnCount = Math.floor(this._width / (this.columnWidth + this.gutterSize));
+        console.log("calculate column count",this._width,this._columnCount,this.columnWidth);
     }
 
     _cellRenderer({ index, key, parent, style }) {
@@ -145,6 +145,7 @@ export default class InfiniteList extends React.PureComponent {
         console.log("_initCellPositioner",this._width);
         if (typeof this._cellPositioner === 'undefined') {
             let columnWidth = this.columnWidth;
+            console.log("_initCellPositioner",this._width,columnWidth,this._columnCount,this.gutterSize);
             this._cellPositioner = createCellPositioner({
                 cellMeasurerCache: this._cache,
                 columnCount: this._columnCount,
