@@ -172,7 +172,7 @@ export default class InfiniteList extends React.PureComponent {
         // this._masonry.recomputeCellPositions();
     }
 
-    _renderAutoSizer({ height, scrollTop, onRowsRendered }) {
+    _renderAutoSizer({ height, scrollTop, onRowsRendered ,onChildScroll}) {
         this._height = height;
         this._scrollTop = scrollTop;
 
@@ -208,7 +208,7 @@ export default class InfiniteList extends React.PureComponent {
               cellRenderer={this._cellRenderer}
               columnWidth={this.columnWidth}
               columnCount={this._columnCount}
-              height={1000}
+              height={300}
               noContentRenderer={this._noContentRenderer}
               overscanColumnCount={0}
               overscanRowCount={0}
