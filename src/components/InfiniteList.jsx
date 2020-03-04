@@ -205,7 +205,6 @@ export default class InfiniteList extends React.PureComponent {
 
         return(
             <Grid
-            autoHeight={true}
               cellRenderer={this._cellRenderer}
               columnWidth={this.columnWidth}
               columnCount={this._columnCount}
