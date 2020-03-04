@@ -15,20 +15,23 @@ const client = new ApolloClient({
 const App = () => (
     <ApolloProvider client={client}>
         <Header>
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route path="/home">
-                    <Home />
-                </Route>
-                <Route path="/:module/:tipo?">
-                    <ModuleList />
-                </Route>
-                <Route path="*">
-                    404 not found
-                </Route>
-            </Switch>
+            {(variable) => (
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/home">
+                        <Home />
+                    </Route>
+                    <Route path="/:module/:tipo?">
+                        <ModuleList {...variable}/>
+                    </Route>
+                    <Route path="*">
+                        404 not found
+                    </Route>
+                </Switch>
+            )}
+
         </Header>
     </ApolloProvider>
 );

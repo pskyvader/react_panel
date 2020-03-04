@@ -209,6 +209,7 @@ export default class InfiniteList extends React.PureComponent {
             gridHeight=300;
         }
         console.log(this.TypographyRef.current.offsetHeight)
+        console.log(this.props)
 
 
 

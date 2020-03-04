@@ -69,7 +69,7 @@ function ModuleConfiguration(props) {
     }
 
     return(
-        <ModuleList config={config} module={props.module} tipo={props.tipo} offsetTop={props.offsetTop}/>
+        <ModuleList config={config} module={props.module} tipo={props.tipo} {...props}/>
     )
 }
 

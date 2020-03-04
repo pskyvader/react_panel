@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useRef } from 'react';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -58,6 +58,7 @@ export default function Header(props) {
     var sidebar_open = LocalStorage.get('sidebar_open', false);
     const classes = useStyles();
     const [open, setOpen] = React.useState(sidebar_open);
+    const mainRef = useRef();
     const handleDrawer = () => {
         setOpen(!open);
         LocalStorage.set('sidebar_open', !open);
@@ -88,9 +89,9 @@ export default function Header(props) {
             
             <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer} idadministrador="1"/>
 
-            <main className={clsx(classes.content, { [classes.contentShift]: open, })} >
+            <main ref={mainRef} className={clsx(classes.content, { [classes.contentShift]: open, })} >
                 <div className={classes.drawerHeader} />
-                {props.children}
+                {props.children({mainRef:mainRef})}
             </main>
         </div>
     );
