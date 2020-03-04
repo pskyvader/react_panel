@@ -142,7 +142,6 @@ export default class InfiniteList extends React.PureComponent {
         );
     }
     _cellRenderer({columnIndex, key, rowIndex, style}) {
-        console.log(columnIndex,key,rowIndex);
         const cell=this.state.items[rowIndex];
         return (
           <div key={key} style={style}>
@@ -197,6 +196,7 @@ export default class InfiniteList extends React.PureComponent {
     _renderMasonry({ width,onRowsRendered }) {
         console.log('_renderMasonry');
         this._width = width;
+        console.log(this._width);
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
@@ -205,13 +205,15 @@ export default class InfiniteList extends React.PureComponent {
 
         return (
             <Grid
+            autoHeight={true}
     cellRenderer={this._cellRenderer}
     columnCount={this._columnCount}
-    columnWidth={100}
+    columnWidth={this.columnWidth}
     height={300}
     rowCount={this.state.items.length}
-    rowHeight={30}
-    width={300}
+    rowHeight={300}
+    width={this._width}
+    onScroll={this.onScroll}
   />
         )
 
