@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import InfiniteLoader from "react-window-infinite-loader";
 import { AutoSizer } from 'react-virtualized';
 import { WindowScroller } from 'react-virtualized';
+import { InfiniteLoader } from 'react-virtualized';
 import ModuleCard from './ModuleCard';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Grid } from 'react-virtualized';
@@ -129,8 +129,8 @@ const InfiniteList = (props) => {
         const height4 = 4; //loader
 
         let gridHeight = height - (height1 + height2 + height3 + height4);
-        if (gridHeight < 300) {
-            gridHeight = 300;
+        if (gridHeight < 250) {
+            gridHeight = 250;
         }
 
         // return null;
@@ -157,18 +157,21 @@ const InfiniteList = (props) => {
 
     return (
         <InfiniteLoader
-            isItemLoaded={isItemLoaded}
-            itemCount={itemCount}
-            loadMoreItems={loadMore}
+            isRowLoaded={isItemLoaded}
+            loadMoreRows={loadMore}
+            rowCount={itemCount}
         >
             {
-                ({ onRowsRendered, ref }) => {
+                (props) => {
+                    console.log(props);
+                    const { onItemsRendered, ref }=props;
+
                     return (
                         <React.Fragment >
                             {render_progress()}
                             <WindowScroller scrollElement={window} ref={ref}>
                                 {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
-                                    _renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
+                                    _renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onItemsRendered })
                                 )}
 
                             </WindowScroller>
