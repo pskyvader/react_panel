@@ -66,7 +66,7 @@ export default class InfiniteList extends React.PureComponent {
                             itemCount : t.props.hasNextPage ? t.props.items.length + 1 : t.props.items.length
                         });
                     }
-                    console.log('load more');
+                    console.log('load more',t.props.items.length);
                 });
             }
         }
@@ -142,6 +142,7 @@ export default class InfiniteList extends React.PureComponent {
     }
     _cellRenderer({columnIndex, key, rowIndex, style}) {
         const cell=this.state.items[rowIndex];
+        console.log();
         return (
           <div key={key} style={style}>
             <ModuleCard element={cell} />
@@ -201,6 +202,23 @@ export default class InfiniteList extends React.PureComponent {
         rowCount=(this._columnCount>0)? Math.floor(this.state.items.length/this._columnCount):1;
         rowCount=(rowCount<1)?1:rowCount;
 
+
+        return(
+            <Grid
+              cellRenderer={this._cellRenderer}
+              columnWidth={this.columnWidth}
+              columnCount={this._columnCount}
+              height={1000}
+              noContentRenderer={this._noContentRenderer}
+              overscanColumnCount={0}
+              overscanRowCount={0}
+              rowHeight={300}
+              rowCount={rowCount}
+              width={width}
+              onScroll={this.onScroll}
+            />
+        )
+        
         return (
             <Grid
             autoHeight={true}
