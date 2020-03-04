@@ -17,7 +17,6 @@ const InfiniteList = (props) => {
     const { items, moreItemsLoading, loadMore, hasNextPage } = props;
     const [columnCount, SetcolumnCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
-    const [width, Setwidth] = useState(0);
 
 
     // const onScroll2 = ({ clientHeight, scrollHeight, scrollTop }) => {
@@ -53,32 +52,30 @@ const InfiniteList = (props) => {
         }
     };
 
-    const getMinwidth = () => {
+    const getMinwidth = (width) => {
         return width < 1280 ? minWidth : minWidthlg;
     }
 
-    const cellwidth = (return_value = false) => {
+    const cellwidth = (width) => {
         let cell_width = 0;
         if (width !== 0 && columnCount !== 0) {
             cell_width = Math.floor(width / columnCount);
         }
-        if (cell_width < getMinwidth()) {
-            cell_width = getMinwidth();
+        if (cell_width < getMinwidth(width)) {
+            cell_width = getMinwidth(width);
         } else if (cell_width > maxWidth) {
             cell_width = maxWidth;
         }
 
-        if (return_value) {
-            return cell_width;
-        }
         SetcolumnWidth(cell_width);
     }
 
     const render_progress = () => {
         return props.moreItemsLoading ? <LinearProgress /> : <div></div>
     }
-    const _calculateColumnCount = () => {
-        SetcolumnCount(Math.floor(width / columnWidth ));
+    const _calculateColumnCount = (width) => {
+        const minColumnWidth=getMinwidth(width)
+        SetcolumnCount(Math.floor(width / minColumnWidth ));
     }
 
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
@@ -92,10 +89,8 @@ const InfiniteList = (props) => {
 
 
     const _onResize = ({ width }) => {
-        Setwidth(width);
-        SetcolumnWidth(getMinwidth());
-        _calculateColumnCount();
-        cellwidth();
+        _calculateColumnCount(width);
+        cellwidth(width);
     }
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
@@ -114,10 +109,8 @@ const InfiniteList = (props) => {
 
 
     const _renderMasonry = ({ width, height }) => {
-        Setwidth(width);
-        SetcolumnWidth(getMinwidth());
-        _calculateColumnCount();
-        cellwidth();
+        _calculateColumnCount(width);
+        cellwidth(width);
 
         let rowCount = 1;
         rowCount = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
