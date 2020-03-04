@@ -129,7 +129,6 @@ export default class InfiniteList extends React.PureComponent {
 
     _cellRenderer222({ index, key, parent, style }) {
         const cell = this.state.items[index];
-        console.log()
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
                 <div style={{ ...style, width: this.columnWidth }}>
@@ -140,7 +139,6 @@ export default class InfiniteList extends React.PureComponent {
     }
     _cellRenderer({columnIndex, key, rowIndex, style}) {
         const cell=this.state.items[rowIndex];
-        console.log();
         return (
           <div key={key} style={style}>
             <ModuleCard element={cell} />
@@ -194,8 +192,6 @@ export default class InfiniteList extends React.PureComponent {
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
-        // var rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
-        // console.log(rect);
 
         this._initCellPositioner();
         let rowCount=1;
@@ -270,7 +266,6 @@ export default class InfiniteList extends React.PureComponent {
 
     _resetCellPositioner() {
         let columnWidth = this.columnWidth;
-        console.log("_resetCellPositioner",this._width,columnWidth,this._columnCount,this.gutterSize);
 
         this._cellPositioner.reset({
             columnCount: this._columnCount,
@@ -280,7 +275,6 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _setMasonryRef(ref) {
-        console.log("_setMasonryRef",this._width);
         this._masonry = ref;
     }
 }
