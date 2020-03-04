@@ -41,13 +41,15 @@ const InfiniteList = (props) => {
     //     }
     // };
 
-    const isItemLoaded = index => !hasNextPage || index < items.length;
+    const isItemLoaded = ({ index }) => {
+        return !hasNextPage || index < items.length
+    };
     const itemCount = hasNextPage ? items.length + 1 : items.length;
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
             if (!moreItemsLoading && hasNextPage) {
-                // loadMore();
+                loadMore();
             }
         }
     };
@@ -147,7 +149,20 @@ const InfiniteList = (props) => {
                 rowCount={rowCount}
                 width={width}
                 onScroll={onScroll}
-                onSectionRendered={onRowsRendered}
+                onSectionRendered={
+                    ({ columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex }) =>{
+                    const startIndex = rowStartIndex * columnCount + columnStartIndex
+                    const stopIndex = rowStopIndex * columnCount + columnStopIndex
+                    console.log(columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex,startIndex,stopIndex )
+                
+                    onRowsRendered({
+                      startIndex,
+                      stopIndex
+                    })
+                  }
+                    
+
+                }
             />
         )
 
