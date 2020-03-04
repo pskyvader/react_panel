@@ -3,6 +3,9 @@ import InfiniteLoader from "react-window-infinite-loader";
 import { AutoSizer } from 'react-virtualized';
 import { WindowScroller } from 'react-virtualized';
 import ModuleCard from './ModuleCard';
+import { CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import { createCellPositioner } from 'react-virtualized/dist/commonjs/Masonry';
+// import { Masonry } from 'react-virtualized';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import {Grid} from 'react-virtualized';
 
@@ -33,7 +36,15 @@ export default class InfiniteList extends React.PureComponent {
         this._onResize = this._onResize.bind(this);
         this._renderAutoSizer = this._renderAutoSizer.bind(this);
         this._renderMasonry = this._renderMasonry.bind(this);
+        this._setMasonryRef = this._setMasonryRef.bind(this);
         this.columnWidth = this.cellwidth(true);
+        this._cache = new CellMeasurerCache({
+            defaultHeight: 250,
+            defaultWidth: this.columnWidth,
+            fixedWidth: true,
+        });
+
+
     }
 
     onScroll = ({ clientHeight, clientWidth, scrollHeight, scrollLeft, scrollTop, scrollWidth }) => {
@@ -116,6 +127,16 @@ export default class InfiniteList extends React.PureComponent {
         this._columnCount = Math.floor(this._width / (this.columnWidth + this.gutterSize));
     }
 
+    _cellRenderer222({ index, key, parent, style }) {
+        const cell = this.state.items[index];
+        return (
+            <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
+                <div style={{ ...style, width: this.columnWidth }}>
+                    <ModuleCard element={cell} />
+                </div>
+            </CellMeasurer>
+        );
+    }
     _cellRenderer({columnIndex, key, rowIndex, style}) {
         const cell=this.state.items[rowIndex];
         return (
@@ -125,12 +146,26 @@ export default class InfiniteList extends React.PureComponent {
         );
       }
 
+    _initCellPositioner() {
+        if (typeof this._cellPositioner === 'undefined') {
+            let columnWidth = this.columnWidth;
+            this._cellPositioner = createCellPositioner({
+                cellMeasurerCache: this._cache,
+                columnCount: this._columnCount,
+                columnWidth,
+                spacer: this.gutterSize,
+            });
+        }
+    }
 
     _onResize({ width }) {
         this._width = width;
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
+
+        this._resetCellPositioner();
+        // this._masonry.recomputeCellPositions();
     }
 
     _renderAutoSizer({ height, scrollTop, onRowsRendered ,onChildScroll}) {
@@ -157,7 +192,8 @@ export default class InfiniteList extends React.PureComponent {
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
-        
+
+        this._initCellPositioner();
         let rowCount=1;
         rowCount=(this._columnCount>0)? Math.floor(this.state.items.length/this._columnCount):1;
         rowCount=(rowCount<1)?1:rowCount;
@@ -196,6 +232,49 @@ export default class InfiniteList extends React.PureComponent {
             />
         )
         
+//         return (
+//             <Grid
+//             autoHeight={true}
+//     cellRenderer={this._cellRenderer}
+//     columnCount={this._columnCount}
+//     columnWidth={this.columnWidth}
+//     height={1000}
+//     rowCount={rowCount}
+//     rowHeight={300}
+//     width={this._width}
+//     onScroll={this.onScroll}
+//   />
+//         )
+
+//         return (
+//             <Masonry
+//                 autoHeight={true}
+//                 cellCount={this.state.items.length}
+//                 cellMeasurerCache={this._cache}
+//                 cellPositioner={this._cellPositioner}
+//                 cellRenderer={this._cellRenderer}
+//                 onCellsRendered={onRowsRendered}
+//                 height={this._height}
+//                 overscanByPixels={this.overscanByPixels}
+//                 ref={this._setMasonryRef}
+//                 scrollTop={this._scrollTop}
+//                 width={width}
+//                 onScroll={this.onScroll}
+//             />
+//         );
     }
 
+    _resetCellPositioner() {
+        let columnWidth = this.columnWidth;
+
+        this._cellPositioner.reset({
+            columnCount: this._columnCount,
+            columnWidth,
+            spacer: this.gutterSize,
+        });
+    }
+
+    _setMasonryRef(ref) {
+        this._masonry = ref;
+    }
 }
