@@ -191,7 +191,7 @@ export default class InfiniteList extends React.PureComponent {
         this.cellwidth();
 
         this._initCellPositioner();
-        // this._resetCellPositioner();
+        console.log(this.props,...props);
 
         return (
             <Masonry
