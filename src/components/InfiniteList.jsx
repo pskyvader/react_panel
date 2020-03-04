@@ -1,14 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import InfiniteLoader from "react-window-infinite-loader";
 import { AutoSizer } from 'react-virtualized';
 import { WindowScroller } from 'react-virtualized';
 import ModuleCard from './ModuleCard';
 import { CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import { createCellPositioner } from 'react-virtualized/dist/commonjs/Masonry';
-import { Masonry } from 'react-virtualized';
+// import { Masonry } from 'react-virtualized';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import {Grid} from 'react-virtualized';
-import ReactDOM from 'react-dom';
 
 
 export default class InfiniteList extends React.PureComponent {
@@ -49,7 +48,6 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     onScroll = ({ clientHeight, clientWidth, scrollHeight, scrollLeft, scrollTop, scrollWidth }) => {
-        console.log('on scroll',clientHeight, clientWidth, scrollHeight, scrollLeft, scrollTop, scrollWidth );
         if (scrollTop >= (scrollHeight - clientHeight) * 0.8) {
             if (!this.state.moreItemsLoading && this.state.hasNextPage) {
                 let t=this;
@@ -66,7 +64,6 @@ export default class InfiniteList extends React.PureComponent {
                             itemCount : t.props.hasNextPage ? t.props.items.length + 1 : t.props.items.length
                         });
                     }
-                    console.log('load more',t.props.items.length);
                 });
             }
         }
@@ -96,7 +93,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     render_progress = () => {
-         return this.props.loading ? <LinearProgress /> : <div>asdfajdfavsjfdavhjdfg</div> 
+         return this.props.moreItemsLoading ? <LinearProgress /> : <div></div> 
         }
 
     render() {
@@ -104,13 +101,14 @@ export default class InfiniteList extends React.PureComponent {
             <InfiniteLoader
                 isItemLoaded={this.state.isItemLoaded}
                 itemCount={this.state.itemCount}
-                loadMoreItems={this.state.loadMore}>
+                loadMoreItems={this.state.loadMore}
+                >
                 {
-                    ({ onRowsRendered }) => {
+                    ({ onRowsRendered, ref }) => {
                         return (
-                            <React.Fragment>
+                            <React.Fragment >
                                 {this.render_progress()}
-                                <WindowScroller overscanByPixels={this.overscanByPixels} scrollElement={window}>
+                                <WindowScroller overscanByPixels={this.overscanByPixels} scrollElement={window} ref={ref}>
                                     {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
                                         this._renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
                                     )}
@@ -214,8 +212,9 @@ export default class InfiniteList extends React.PureComponent {
         let slideMarginRight = nodeStyle.getPropertyValue('padding-top');
 
         const height3=parseInt(slideMarginRight)*2;
+        const height4=4; //loader
         
-        let gridHeight=height-(height1+height2+height3);
+        let gridHeight=height-(height1+height2+height3+height4);
         if(gridHeight<300){
             gridHeight=300;
         }
@@ -237,36 +236,36 @@ export default class InfiniteList extends React.PureComponent {
             />
         )
         
-        return (
-            <Grid
-            autoHeight={true}
-    cellRenderer={this._cellRenderer}
-    columnCount={this._columnCount}
-    columnWidth={this.columnWidth}
-    height={1000}
-    rowCount={rowCount}
-    rowHeight={300}
-    width={this._width}
-    onScroll={this.onScroll}
-  />
-        )
+//         return (
+//             <Grid
+//             autoHeight={true}
+//     cellRenderer={this._cellRenderer}
+//     columnCount={this._columnCount}
+//     columnWidth={this.columnWidth}
+//     height={1000}
+//     rowCount={rowCount}
+//     rowHeight={300}
+//     width={this._width}
+//     onScroll={this.onScroll}
+//   />
+//         )
 
-        return (
-            <Masonry
-                autoHeight={true}
-                cellCount={this.state.items.length}
-                cellMeasurerCache={this._cache}
-                cellPositioner={this._cellPositioner}
-                cellRenderer={this._cellRenderer}
-                onCellsRendered={onRowsRendered}
-                height={this._height}
-                overscanByPixels={this.overscanByPixels}
-                ref={this._setMasonryRef}
-                scrollTop={this._scrollTop}
-                width={width}
-                onScroll={this.onScroll}
-            />
-        );
+//         return (
+//             <Masonry
+//                 autoHeight={true}
+//                 cellCount={this.state.items.length}
+//                 cellMeasurerCache={this._cache}
+//                 cellPositioner={this._cellPositioner}
+//                 cellRenderer={this._cellRenderer}
+//                 onCellsRendered={onRowsRendered}
+//                 height={this._height}
+//                 overscanByPixels={this.overscanByPixels}
+//                 ref={this._setMasonryRef}
+//                 scrollTop={this._scrollTop}
+//                 width={width}
+//                 onScroll={this.onScroll}
+//             />
+//         );
     }
 
     _resetCellPositioner() {

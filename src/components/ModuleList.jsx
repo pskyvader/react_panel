@@ -4,7 +4,7 @@ import Resolve from './Resolve';
 import InfiniteList from './InfiniteList';
 
 function ModuleList(props) {
-    let { module, tipo, config,offsetTop } = props;
+    let { module, tipo, config } = props;
     let fields = ['id'];
     if (config !== null && config !== false) {
         const module_data = config.hijo[0];
