@@ -141,6 +141,7 @@ export default class InfiniteList extends React.PureComponent {
         );
     }
     _cellRenderer({columnIndex, key, rowIndex, style}) {
+        console.log(columnIndex,key,rowIndex);
         const cell=this.state.items[rowIndex];
         return (
           <div key={key} style={style}>
@@ -152,7 +153,6 @@ export default class InfiniteList extends React.PureComponent {
     _initCellPositioner() {
         if (typeof this._cellPositioner === 'undefined') {
             let columnWidth = this.columnWidth;
-            console.log("_initCellPositioner",this._width,columnWidth,this._columnCount,this.gutterSize);
             this._cellPositioner = createCellPositioner({
                 cellMeasurerCache: this._cache,
                 columnCount: this._columnCount,
@@ -199,7 +199,7 @@ export default class InfiniteList extends React.PureComponent {
 
         this._initCellPositioner();
         let rowCount=1;
-        rowCount=(this._columnCount>0)?this.state.items.length/this._columnCount:1;
+        rowCount=(this._columnCount>0)? Math.floor(this.state.items.length/this._columnCount):1;
         rowCount=(rowCount<1)?1:rowCount;
 
         return (
@@ -208,7 +208,7 @@ export default class InfiniteList extends React.PureComponent {
     cellRenderer={this._cellRenderer}
     columnCount={this._columnCount}
     columnWidth={this.columnWidth}
-    height={300}
+    height={1000}
     rowCount={rowCount}
     rowHeight={300}
     width={this._width}
