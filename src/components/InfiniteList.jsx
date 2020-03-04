@@ -49,6 +49,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+        console.log('on scroll');
         if (scrollTop >= (scrollHeight - clientHeight) * 0.8) {
             if (!this.state.moreItemsLoading && this.state.hasNextPage) {
                 let t=this;
@@ -65,6 +66,7 @@ export default class InfiniteList extends React.PureComponent {
                             itemCount : t.props.hasNextPage ? t.props.items.length + 1 : t.props.items.length
                         });
                     }
+                    console.log('load more');
                 });
             }
         }
@@ -73,7 +75,6 @@ export default class InfiniteList extends React.PureComponent {
     isItemLoaded = index => !this.state.hasNextPage || index < this.state.items.length;
 
     getMinwidth = () =>{
-        console.log('getMinwidth');
         return this._width < 1280 ? this.minWidth : this.minWidthlg;
     } 
 
@@ -92,7 +93,6 @@ export default class InfiniteList extends React.PureComponent {
             return width;
         }
         this.columnWidth = width;
-        console.log("cellwidth",this._width,width,this.columnWidth);
     }
 
     render_progress = () => {
@@ -127,7 +127,6 @@ export default class InfiniteList extends React.PureComponent {
 
     _calculateColumnCount() {
         this._columnCount = Math.floor(this._width / (this.columnWidth + this.gutterSize));
-        console.log("calculate column count",this._width,this._columnCount,this.columnWidth);
     }
 
     _cellRenderer222({ index, key, parent, style }) {
@@ -151,7 +150,6 @@ export default class InfiniteList extends React.PureComponent {
       }
 
     _initCellPositioner() {
-        console.log("_initCellPositioner",this._width,this.columnWidth);
         if (typeof this._cellPositioner === 'undefined') {
             let columnWidth = this.columnWidth;
             console.log("_initCellPositioner",this._width,columnWidth,this._columnCount,this.gutterSize);
@@ -194,14 +192,15 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     _renderMasonry({ width,onRowsRendered }) {
-        console.log('_renderMasonry');
         this._width = width;
-        console.log(this._width);
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
 
         this._initCellPositioner();
+        let rowCount=1;
+        rowCount=(this._columnCount>0)?this.state.items.length/this._columnCount:1;
+        rowCount=(rowCount<1)?1:rowCount;
 
         return (
             <Grid
@@ -210,7 +209,7 @@ export default class InfiniteList extends React.PureComponent {
     columnCount={this._columnCount}
     columnWidth={this.columnWidth}
     height={300}
-    rowCount={this.state.items.length}
+    rowCount={rowCount}
     rowHeight={300}
     width={this._width}
     onScroll={this.onScroll}
