@@ -18,6 +18,7 @@ const InfiniteList = (props) => {
     const { items, moreItemsLoading, loadMore, hasNextPage } = props;
     const [columnCount, SetcolumnCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
+    const [rowHeight, SetrowHeight] = useState(300);
 
     const isItemLoaded = ({ index }) => {
         return !hasNextPage || index < items.length
@@ -43,7 +44,7 @@ const InfiniteList = (props) => {
         }
         if (cell_width < getMinwidth(width)) {
             cell_width = getMinwidth(width);
-        } else if (cell_width > maxWidth) {
+        } else if (cell_width > maxWidth && width>=768) {
             cell_width = maxWidth;
         }
 
@@ -63,7 +64,7 @@ const InfiniteList = (props) => {
         const cell = items[startIndex];
         return (
             <div key={key} style={style}>
-                <ModuleCard element={cell} />
+                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight}  />
             </div>
         );
     }
@@ -129,7 +130,7 @@ const InfiniteList = (props) => {
                 height={gridHeight}
                 overscanColumnCount={0}
                 overscanRowCount={0}
-                rowHeight={500}
+                rowHeight={rowHeight}
                 rowCount={rowCount}
                 width={width}
                 onScroll={onScroll}

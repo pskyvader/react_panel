@@ -18,12 +18,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin:15
-    // minWidth: 245,
-    // [theme.breakpoints.up('lg')]: {
-    //     minWidth: 290
-    // },
-    // maxWidth: 345
+    margin: 15
   },
   media: {
     height: 0,
@@ -45,9 +40,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function RecipeReviewCard(props) {
-  const element=props.element;
+  const element = props.element;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const {Height,setHeight} = props;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
