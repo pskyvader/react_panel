@@ -22,7 +22,6 @@ export default class InfiniteList extends React.PureComponent {
             loadMore : props.loadMore,
             hasNextPage : props.hasNextPage,
             itemCount : props.hasNextPage ? props.items.length + 1 : props.items.length,
-            _height:300
         }
         
 
@@ -163,11 +162,8 @@ export default class InfiniteList extends React.PureComponent {
         }
     }
 
-    _onResize({ width,height }) {
+    _onResize({ width }) {
         this._width = width;
-        this.setState({
-            _height:height
-        })
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
@@ -179,7 +175,6 @@ export default class InfiniteList extends React.PureComponent {
     _renderAutoSizer({ height, scrollTop, onRowsRendered ,onChildScroll}) {
         this._height = height;
         this._scrollTop = scrollTop;
-        console.log(height);
 
 
         return (
@@ -189,8 +184,8 @@ export default class InfiniteList extends React.PureComponent {
                 onResize={this._onResize}
                 overscanByPixels={this.overscanByPixels}
                 scrollTop={this._scrollTop}>
-                {({height, width}) => (
-                    this._renderMasonry({ width,height, onRowsRendered })
+                {({width}) => (
+                    this._renderMasonry({ width,height,onRowsRendered })
                 )}
             </AutoSizer>
         );
@@ -210,10 +205,11 @@ export default class InfiniteList extends React.PureComponent {
 
         return(
             <Grid
+            autoHeight={true}
               cellRenderer={this._cellRenderer}
               columnWidth={this.columnWidth}
               columnCount={this._columnCount}
-              height={this.state._height}
+              height={height}
               noContentRenderer={this._noContentRenderer}
               overscanColumnCount={0}
               overscanRowCount={0}
