@@ -101,14 +101,14 @@ const InfiniteList = (props) => {
                 onResize={_onResize}
                 scrollTop={scrollTop}>
                 {({ width }) => (
-                    _renderMasonry({ width, height, onRowsRendered })
+                    RenderGrid({ width, height, onRowsRendered })
                 )}
             </AutoSizer>
         );
     }
 
 
-    const _renderMasonry = ({ width, height }) => {
+    const RenderGrid = ({ width, height,onRowsRendered }) => {
         _calculateColumnCount(width);
         cellwidth(width);
 
@@ -133,7 +133,7 @@ const InfiniteList = (props) => {
             gridHeight = 300;
         }
 
-        return null;
+        // return null;
 
         return (
             <Grid
@@ -147,6 +147,7 @@ const InfiniteList = (props) => {
                 rowCount={rowCount}
                 width={width}
                 onScroll={onScroll}
+                onSectionRendered={onRowsRendered}
             />
         )
 
