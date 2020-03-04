@@ -162,8 +162,9 @@ export default class InfiniteList extends React.PureComponent {
         }
     }
 
-    _onResize({ width }) {
+    _onResize({ width,height }) {
         this._width = width;
+        this._height = height;
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
@@ -184,15 +185,16 @@ export default class InfiniteList extends React.PureComponent {
                 onResize={this._onResize}
                 overscanByPixels={this.overscanByPixels}
                 scrollTop={this._scrollTop}>
-                {({width}) => (
-                    this._renderMasonry({ width, onRowsRendered })
+                {({width,height}) => (
+                    this._renderMasonry({ width,height, onRowsRendered })
                 )}
             </AutoSizer>
         );
     }
 
-    _renderMasonry({ width,onRowsRendered }) {
+    _renderMasonry({ width,height,onRowsRendered }) {
         this._width = width;
+        this._height = height|| 300;
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
@@ -208,13 +210,13 @@ export default class InfiniteList extends React.PureComponent {
               cellRenderer={this._cellRenderer}
               columnWidth={this.columnWidth}
               columnCount={this._columnCount}
-              height={300}
+              height={this._height}
               noContentRenderer={this._noContentRenderer}
               overscanColumnCount={0}
               overscanRowCount={0}
               rowHeight={300}
               rowCount={rowCount}
-              width={width}
+              width={this._width}
               onScroll={this.onScroll}
             />
         )
