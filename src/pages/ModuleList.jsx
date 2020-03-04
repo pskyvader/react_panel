@@ -12,8 +12,8 @@ export default (props) => {
         tipo = 0;
     }
     return (
-        <Container maxWidth="xl" fixed>
-            <Typography ref={TypographyRef}  variant="h3" gutterBottom >Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
+        <Container maxWidth="xl">
+            <Typography ref={TypographyRef}  variant="h4" gutterBottom >Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
             <ModuleConfiguration module={module} tipo={tipo} idadministrador="1" TypographyRef={TypographyRef} {...props} />
         </Container>
     )

@@ -13,6 +13,7 @@ const InfiniteList = (props) => {
     const minWidth = 275;
     const minWidthlg = 320;
     const maxWidth = 375;
+    const scrollbarSize = 20;
 
     const { items, moreItemsLoading, loadMore, hasNextPage } = props;
     const [columnCount, SetcolumnCount] = useState(0);
@@ -38,7 +39,7 @@ const InfiniteList = (props) => {
     const cellwidth = (width) => {
         let cell_width = 0;
         if (width !== 0 && columnCount !== 0) {
-            cell_width = Math.floor((width-20) / columnCount);
+            cell_width = Math.floor((width-scrollbarSize) / columnCount);
         }
         if (cell_width < getMinwidth(width)) {
             cell_width = getMinwidth(width);
@@ -54,7 +55,7 @@ const InfiniteList = (props) => {
     }
     const calculateColumnCount = (width) => {
         const minColumnWidth = getMinwidth(width)
-        SetcolumnCount(Math.floor(width / minColumnWidth));
+        SetcolumnCount(Math.floor((width-scrollbarSize) / minColumnWidth));
     }
 
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {

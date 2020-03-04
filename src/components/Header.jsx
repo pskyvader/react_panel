@@ -1,4 +1,4 @@
-import React,{ useRef } from 'react';
+import React, { useRef } from 'react';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -31,6 +31,11 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('md')]: {
             marginLeft: -drawerWidth,
         },
+        [theme.breakpoints.down('md')]: {
+            paddingLeft: 0,
+            paddingRight: 0
+        },
+
     },
     contentShift: {
         transition: theme.transitions.create('margin', {
@@ -82,17 +87,17 @@ export default function Header(props) {
                         <MenuIcon />
                     </IconButton>
                     <div className={classes.menuButton} >
-                    <Logo id='1' width="40" height="40"/>
+                        <Logo id='1' width="40" height="40" />
                     </div>
                     <Typography variant="h6" noWrap> Persistent drawer </Typography>
                 </Toolbar>
             </AppBar>
-            
-            <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer} idadministrador="1"/>
+
+            <Sidebar handleDrawer={handleDrawer} open={open} toggleDrawer={toggleDrawer} idadministrador="1" />
 
             <main ref={mainRef} className={clsx(classes.content, { [classes.contentShift]: open, })} >
                 <div ref={drawerHeaderRef} className={classes.drawerHeader} />
-                {props.children({mainRef:mainRef, drawerHeaderRef:drawerHeaderRef})}
+                {props.children({ mainRef: mainRef, drawerHeaderRef: drawerHeaderRef })}
             </main>
         </div>
     );
