@@ -23,6 +23,7 @@ export default class InfiniteList extends React.PureComponent {
             hasNextPage : props.hasNextPage,
             itemCount : props.hasNextPage ? props.items.length + 1 : props.items.length,
         }
+        this.offsetTop=props.offsetTop;
         
 
 
@@ -203,6 +204,8 @@ export default class InfiniteList extends React.PureComponent {
         let rowCount=1;
         rowCount=(this._columnCount>0)? Math.floor(this.state.items.length/this._columnCount):1;
         rowCount=(rowCount<1)?1:rowCount;
+
+        console.log('offsetTop',this.offsetTop);
 
 
         return(
