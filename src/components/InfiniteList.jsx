@@ -7,6 +7,7 @@ import { CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import { createCellPositioner } from 'react-virtualized/dist/commonjs/Masonry';
 import { Masonry } from 'react-virtualized';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import {Grid} from 'react-virtualized';
 
 
 
@@ -129,8 +130,9 @@ export default class InfiniteList extends React.PureComponent {
         console.log("calculate column count",this._width,this._columnCount,this.columnWidth);
     }
 
-    _cellRenderer({ index, key, parent, style }) {
+    _cellRenderer222({ index, key, parent, style }) {
         const cell = this.state.items[index];
+        console.log()
         return (
             <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
                 <div style={{ ...style, width: this.columnWidth }}>
@@ -139,6 +141,15 @@ export default class InfiniteList extends React.PureComponent {
             </CellMeasurer>
         );
     }
+    _cellRenderer({columnIndex, key, rowIndex, style}) {
+        console.log(columnIndex,key,rowIndex);
+        const cell=this.state.items[rowIndex];
+        return (
+          <div key={key} style={style}>
+            <ModuleCard element={cell} />
+          </div>
+        );
+      }
 
     _initCellPositioner() {
         console.log("_initCellPositioner",this._width,this.columnWidth);
@@ -161,7 +172,7 @@ export default class InfiniteList extends React.PureComponent {
         this.cellwidth();
 
         this._resetCellPositioner();
-        this._masonry.recomputeCellPositions();
+        // this._masonry.recomputeCellPositions();
     }
 
     _renderAutoSizer({ height, scrollTop, onRowsRendered }) {
@@ -191,7 +202,18 @@ export default class InfiniteList extends React.PureComponent {
         this.cellwidth();
 
         this._initCellPositioner();
-        console.log(this.props,...props);
+
+        return (
+            <Grid
+    cellRenderer={this._cellRenderer}
+    columnCount={this._columnCount}
+    columnWidth={100}
+    height={300}
+    rowCount={this.state.items.length}
+    rowHeight={30}
+    width={300}
+  />
+        )
 
         return (
             <Masonry
