@@ -7,8 +7,6 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import ModuleList from './pages/ModuleList';
 
-console.log(process);
-
 const client = new ApolloClient({
     uri: process.env.REACT_APP_API_URL,
 });

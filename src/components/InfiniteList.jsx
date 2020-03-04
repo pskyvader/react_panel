@@ -10,9 +10,9 @@ import { Grid } from 'react-virtualized';
 
 
 const InfiniteList = (props) => {
-    const minWidth = 245;
-    const minWidthlg = 290;
-    const maxWidth = 345;
+    const minWidth = 275;
+    const minWidthlg = 320;
+    const maxWidth = 375;
 
     const { items, moreItemsLoading, loadMore, hasNextPage } = props;
     const [columnCount, SetcolumnCount] = useState(0);
@@ -38,7 +38,7 @@ const InfiniteList = (props) => {
     const cellwidth = (width) => {
         let cell_width = 0;
         if (width !== 0 && columnCount !== 0) {
-            cell_width = Math.floor(width / columnCount);
+            cell_width = Math.floor((width-20) / columnCount);
         }
         if (cell_width < getMinwidth(width)) {
             cell_width = getMinwidth(width);
@@ -52,7 +52,7 @@ const InfiniteList = (props) => {
     const render_progress = () => {
         return moreItemsLoading ? <LinearProgress /> : <div></div>
     }
-    const _calculateColumnCount = (width) => {
+    const calculateColumnCount = (width) => {
         const minColumnWidth = getMinwidth(width)
         SetcolumnCount(Math.floor(width / minColumnWidth));
     }
@@ -69,7 +69,7 @@ const InfiniteList = (props) => {
 
 
     const _onResize = ({ width }) => {
-        _calculateColumnCount(width);
+        calculateColumnCount(width);
         cellwidth(width);
     }
 
@@ -110,7 +110,7 @@ const InfiniteList = (props) => {
 
 
     const RenderGrid = ({ width, height, onRowsRendered }) => {
-        _calculateColumnCount(width);
+        calculateColumnCount(width);
         cellwidth(width);
 
         let rowCount = 1;

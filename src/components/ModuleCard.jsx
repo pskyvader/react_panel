@@ -18,6 +18,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    margin:15
     // minWidth: 245,
     // [theme.breakpoints.up('lg')]: {
     //     minWidth: 290
