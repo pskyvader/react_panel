@@ -207,8 +207,15 @@ export default class InfiniteList extends React.PureComponent {
         if(gridHeight<300){
             gridHeight=300;
         }
-        console.log(this.props)
+        const height1=this.props.TypographyRef.current.offsetHeight;
+        const height2=this.props.mainRef.current.offsetHeight;
+        const height3=this.props.drawerHeaderRef.current.offsetHeight;
+        console.log('total',height1+height2+height3);
 
+        let node = this.props.mainRef.current //assuming this as your target node
+        let nodeStyle = window.getComputedStyle(node)
+        let slideMarginRight = nodeStyle.getPropertyValue('padding-top')
+        console.log(slideMarginRight, this.props.mainRef);
 
 
         return(
