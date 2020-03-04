@@ -18,29 +18,6 @@ const InfiniteList = (props) => {
     const [columnCount, SetcolumnCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
 
-
-    // const onScroll2 = ({ clientHeight, scrollHeight, scrollTop }) => {
-    //     if (scrollTop >= (scrollHeight - clientHeight) * 0.8) {
-    //         if (!state.moreItemsLoading && state.hasNextPage) {
-    //             let t = this;
-    //             t.setState({
-    //                 moreItemsLoading: true
-    //             });
-    //             state.loadMore(function (val) {
-    //                 if (t.props.items.length !== t.state.items.length) {
-    //                     t.setState({
-    //                         items: t.props.items,
-    //                         moreItemsLoading: t.props.moreItemsLoading,
-    //                         loadMore: t.props.loadMore,
-    //                         hasNextPage: t.props.hasNextPage,
-    //                         itemCount: t.props.hasNextPage ? t.props.items.length + 1 : t.props.items.length
-    //                     });
-    //                 }
-    //             });
-    //         }
-    //     }
-    // };
-
     const isItemLoaded = ({ index }) => {
         return !hasNextPage || index < items.length
     };
@@ -76,12 +53,14 @@ const InfiniteList = (props) => {
         return moreItemsLoading ? <LinearProgress /> : <div></div>
     }
     const _calculateColumnCount = (width) => {
-        const minColumnWidth=getMinwidth(width)
-        SetcolumnCount(Math.floor(width / minColumnWidth ));
+        const minColumnWidth = getMinwidth(width)
+        SetcolumnCount(Math.floor(width / minColumnWidth));
     }
 
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
-        const cell = items[rowIndex];
+        const startIndex = rowIndex * columnCount + columnIndex;
+        console.log(columnIndex, key, rowIndex, style,startIndex);
+        const cell = items[startIndex];
         return (
             <div key={key} style={style}>
                 <ModuleCard element={cell} />
@@ -109,14 +88,7 @@ const InfiniteList = (props) => {
         );
     }
 
-
-    const RenderGrid = ({ width, height,onRowsRendered }) => {
-        _calculateColumnCount(width);
-        cellwidth(width);
-
-        let rowCount = 1;
-        rowCount = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
-        rowCount = (rowCount < 1) ? 1 : rowCount;
+    const getHeight = (height) => {
         let height1 = props.TypographyRef.current.offsetHeight;
         const height2 = props.drawerHeaderRef.current.offsetHeight;
 
@@ -134,8 +106,20 @@ const InfiniteList = (props) => {
         if (gridHeight < 250) {
             gridHeight = 250;
         }
+        return gridHeight;
+    }
 
-        // return null;
+
+    const RenderGrid = ({ width, height, onRowsRendered }) => {
+        _calculateColumnCount(width);
+        cellwidth(width);
+
+        let rowCount = 1;
+        rowCount = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
+        rowCount = (rowCount < 1) ? 1 : rowCount;
+
+        const gridHeight = getHeight(height);
+
 
         return (
             <Grid
@@ -145,23 +129,19 @@ const InfiniteList = (props) => {
                 height={gridHeight}
                 overscanColumnCount={0}
                 overscanRowCount={0}
-                rowHeight={300}
+                rowHeight={500}
                 rowCount={rowCount}
                 width={width}
                 onScroll={onScroll}
                 onSectionRendered={
-                    ({ columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex }) =>{
-                    const startIndex = rowStartIndex * columnCount + columnStartIndex
-                    const stopIndex = rowStopIndex * columnCount + columnStopIndex
-                    console.log(columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex,startIndex,stopIndex )
-                
-                    onRowsRendered({
-                      startIndex,
-                      stopIndex
-                    })
-                  }
-                    
-
+                    ({ columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex }) => {
+                        const startIndex = rowStartIndex * columnCount + columnStartIndex
+                        const stopIndex = rowStopIndex * columnCount + columnStopIndex
+                        onRowsRendered({
+                            startIndex,
+                            stopIndex
+                        })
+                    }
                 }
             />
         )
