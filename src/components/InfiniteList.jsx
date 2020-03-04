@@ -96,7 +96,7 @@ export default class InfiniteList extends React.PureComponent {
     }
 
     render_progress = () => {
-         return this.props.loading ? <LinearProgress /> : <div></div> 
+         return this.props.loading ? <LinearProgress /> : <div>asdfajdfavsjfdavhjdfg</div> 
         }
 
     render() {
@@ -203,19 +203,22 @@ export default class InfiniteList extends React.PureComponent {
         let rowCount=1;
         rowCount=(this._columnCount>0)? Math.floor(this.state.items.length/this._columnCount):1;
         rowCount=(rowCount<1)?1:rowCount;
-        let gridHeight=height*0.75;
+        let height1=this.props.TypographyRef.current.offsetHeight;
+        const height2=this.props.drawerHeaderRef.current.offsetHeight;
+
+        let nodeStyle1 = window.getComputedStyle(this.props.TypographyRef.current);
+        let slideMarginRight1 = nodeStyle1.getPropertyValue('margin-bottom');
+        height1+=parseFloat(slideMarginRight1);
+
+        let nodeStyle = window.getComputedStyle(this.props.mainRef.current);
+        let slideMarginRight = nodeStyle.getPropertyValue('padding-top');
+
+        const height3=parseInt(slideMarginRight)*2;
+        
+        let gridHeight=height-(height1+height2+height3);
         if(gridHeight<300){
             gridHeight=300;
         }
-        const height1=this.props.TypographyRef.current.offsetHeight;
-        const height2=this.props.mainRef.current.offsetHeight;
-        const height3=this.props.drawerHeaderRef.current.offsetHeight;
-        console.log('total',height1+height2+height3);
-
-        let node = this.props.mainRef.current //assuming this as your target node
-        let nodeStyle = window.getComputedStyle(node)
-        let slideMarginRight = nodeStyle.getPropertyValue('padding-top')
-        console.log(slideMarginRight, this.props.mainRef);
 
 
         return(
