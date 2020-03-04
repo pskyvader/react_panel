@@ -31,9 +31,8 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('md')]: {
             marginLeft: -drawerWidth,
         },
-        [theme.breakpoints.down('md')]: {
-            paddingLeft: 0,
-            paddingRight: 0
+        [theme.breakpoints.down('sm')]: {
+            padding: theme.spacing(3,0)
         },
 
     },

@@ -103,8 +103,8 @@ const InfiniteList = (props) => {
         const height4 = 4; //loader
 
         let gridHeight = height - (height1 + height2 + height3 + height4);
-        if (gridHeight < 250) {
-            gridHeight = 250;
+        if (gridHeight < 350) {
+            gridHeight = 350;
         }
         return gridHeight;
     }
