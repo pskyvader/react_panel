@@ -23,6 +23,7 @@ export default class InfiniteList extends React.PureComponent {
             hasNextPage : props.hasNextPage,
             itemCount : props.hasNextPage ? props.items.length + 1 : props.items.length,
         }
+        this.offsetTop=props.offsetTop;
         
 
 
@@ -203,6 +204,12 @@ export default class InfiniteList extends React.PureComponent {
         let rowCount=1;
         rowCount=(this._columnCount>0)? Math.floor(this.state.items.length/this._columnCount):1;
         rowCount=(rowCount<1)?1:rowCount;
+        let gridHeight=height*0.75;
+        if(gridHeight<300){
+            gridHeight=300;
+        }
+        console.log(this.offsetTop.current)
+
 
 
         return(
@@ -210,7 +217,7 @@ export default class InfiniteList extends React.PureComponent {
               cellRenderer={this._cellRenderer}
               columnWidth={this.columnWidth}
               columnCount={this._columnCount}
-              height={height}
+              height={gridHeight}
               noContentRenderer={this._noContentRenderer}
               overscanColumnCount={0}
               overscanRowCount={0}
