@@ -140,6 +140,7 @@ const InfiniteList = (props) => {
             gridHeight = 300;
         }
 
+        return null;
 
         return (
             <Grid
