@@ -48,8 +48,8 @@ export default class InfiniteList extends React.PureComponent {
 
     }
 
-    onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        console.log('on scroll');
+    onScroll = ({ clientHeight, clientWidth, scrollHeight, scrollLeft, scrollTop, scrollWidth }) => {
+        console.log('on scroll',clientHeight, clientWidth, scrollHeight, scrollLeft, scrollTop, scrollWidth );
         if (scrollTop >= (scrollHeight - clientHeight) * 0.8) {
             if (!this.state.moreItemsLoading && this.state.hasNextPage) {
                 let t=this;
@@ -141,7 +141,6 @@ export default class InfiniteList extends React.PureComponent {
         );
     }
     _cellRenderer({columnIndex, key, rowIndex, style}) {
-        console.log(columnIndex,key,rowIndex);
         const cell=this.state.items[rowIndex];
         return (
           <div key={key} style={style}>

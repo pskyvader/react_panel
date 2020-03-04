@@ -23,7 +23,7 @@ def init(environ):
         data = parse_body(environ)
         if 'operationName'in data:
             print(data['operationName'])
-            print(data)
+            # print(data)
         class Context:
             FILES=None
         context= Context()
