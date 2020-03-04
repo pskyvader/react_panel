@@ -60,7 +60,7 @@ function ModuleList(props) {
             moreItemsLoading={loading}
             loadMore={loadMore}
             hasNextPage={hasNextPage}
-            offsetTop={offsetTop}
+            {...props}
         />
     )
 

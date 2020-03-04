@@ -6,16 +6,15 @@ import { useRef } from 'react'
 
 
 export default () => {
-    const inputRef = useRef();
+    const TypographyRef = useRef();
     let { module, tipo } = useParams();
     if (typeof (tipo) == 'undefined') {
         tipo = 0;
     }
-    console.log(inputRef);
     return (
         <Container maxWidth="xl" fixed>
-            <Typography ref={inputRef}  variant="h3" gutterBottom >Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
-            <ModuleConfiguration module={module} tipo={tipo} idadministrador="1" offsetTop={inputRef} />
+            <Typography ref={TypographyRef}  variant="h3" gutterBottom >Module {module} {tipo ? `tipo ${tipo}` : ''} </Typography>
+            <ModuleConfiguration module={module} tipo={tipo} idadministrador="1" TypographyRef={TypographyRef} />
         </Container>
     )
 };
