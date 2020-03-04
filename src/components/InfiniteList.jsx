@@ -8,7 +8,7 @@ import { createCellPositioner } from 'react-virtualized/dist/commonjs/Masonry';
 import { Masonry } from 'react-virtualized';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import {Grid} from 'react-virtualized';
-
+import ReactDOM from 'react-dom';
 
 
 export default class InfiniteList extends React.PureComponent {
@@ -196,6 +196,8 @@ export default class InfiniteList extends React.PureComponent {
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
+        // var rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
+        // console.log(rect);
 
         this._initCellPositioner();
         let rowCount=1;
