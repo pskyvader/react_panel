@@ -21,7 +21,8 @@ export default class InfiniteList extends React.PureComponent {
             moreItemsLoading : props.moreItemsLoading,
             loadMore : props.loadMore,
             hasNextPage : props.hasNextPage,
-            itemCount : props.hasNextPage ? props.items.length + 1 : props.items.length
+            itemCount : props.hasNextPage ? props.items.length + 1 : props.items.length,
+            _height:300
         }
         
 
@@ -164,7 +165,9 @@ export default class InfiniteList extends React.PureComponent {
 
     _onResize({ width,height }) {
         this._width = width;
-        this._height = height;
+        this.setState({
+            _height:height
+        })
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
@@ -176,6 +179,7 @@ export default class InfiniteList extends React.PureComponent {
     _renderAutoSizer({ height, scrollTop, onRowsRendered ,onChildScroll}) {
         this._height = height;
         this._scrollTop = scrollTop;
+        console.log(height);
 
 
         return (
@@ -185,7 +189,7 @@ export default class InfiniteList extends React.PureComponent {
                 onResize={this._onResize}
                 overscanByPixels={this.overscanByPixels}
                 scrollTop={this._scrollTop}>
-                {({width,height}) => (
+                {({height, width}) => (
                     this._renderMasonry({ width,height, onRowsRendered })
                 )}
             </AutoSizer>
@@ -194,7 +198,6 @@ export default class InfiniteList extends React.PureComponent {
 
     _renderMasonry({ width,height,onRowsRendered }) {
         this._width = width;
-        this._height = height|| 300;
         this.columnWidth = this.getMinwidth();
         this._calculateColumnCount();
         this.cellwidth();
@@ -210,7 +213,7 @@ export default class InfiniteList extends React.PureComponent {
               cellRenderer={this._cellRenderer}
               columnWidth={this.columnWidth}
               columnCount={this._columnCount}
-              height={this._height}
+              height={this.state._height}
               noContentRenderer={this._noContentRenderer}
               overscanColumnCount={0}
               overscanRowCount={0}
