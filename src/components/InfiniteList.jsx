@@ -47,7 +47,7 @@ const InfiniteList = (props) => {
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
             if (!moreItemsLoading && hasNextPage) {
-                loadMore();
+                // loadMore();
             }
         }
     };
@@ -71,7 +71,7 @@ const InfiniteList = (props) => {
     }
 
     const render_progress = () => {
-        return props.moreItemsLoading ? <LinearProgress /> : <div></div>
+        return moreItemsLoading ? <LinearProgress /> : <div></div>
     }
     const _calculateColumnCount = (width) => {
         const minColumnWidth=getMinwidth(width)
@@ -162,16 +162,13 @@ const InfiniteList = (props) => {
             rowCount={itemCount}
         >
             {
-                (props) => {
-                    console.log(props);
-                    const { onItemsRendered, ref }=props;
-
+                ({ onRowsRendered, registerChild }) => {
                     return (
                         <React.Fragment >
                             {render_progress()}
-                            <WindowScroller scrollElement={window} ref={ref}>
+                            <WindowScroller scrollElement={window} ref={registerChild}>
                                 {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
-                                    _renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onItemsRendered })
+                                    _renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
                                 )}
 
                             </WindowScroller>
