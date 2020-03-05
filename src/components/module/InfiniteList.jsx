@@ -3,6 +3,7 @@ import { AutoSizer,Grid ,WindowScroller,InfiniteLoader} from 'react-virtualized'
 import ModuleCard from './ModuleCard';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import {sortableContainer, sortableElement} from 'react-sortable-hoc';
+import arrayMove from 'array-move';
 
 
 
@@ -86,7 +87,34 @@ const InfiniteList = (props) => {
         cellwidth(width);
     }
 
+    const onSortEnd = ({oldIndex, newIndex}) => {
+        if (oldIndex === newIndex) {
+          return;
+        }
+    
+        const {items} = this.state;
+    
+        this.setState({
+          items: arrayMove(items, oldIndex, newIndex),
+        });
+    
+        // We need to inform React Virtualized that the items have changed heights
+        // This can either be done by imperatively calling the recomputeRowHeights and
+        // forceUpdate instance methods on the `List` ref, or by passing an additional prop
+        // to List that changes whenever the order changes to force it to re-render
+        props.List.recomputeRowHeights();
+        props.List.forceUpdate();
+      };
+
+      
+      const registerListRef = (listInstance) => {
+        props.List = listInstance;
+      };
+
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
+
+
+
         return (
             <AutoSizer
                 disableHeight
@@ -94,7 +122,12 @@ const InfiniteList = (props) => {
                 onResize={_onResize}
                 scrollTop={scrollTop}>
                 {({ width }) => {
-                    return  RenderGrid({ width, height, onRowsRendered })
+                    // return  RenderGrid({ width, height, onRowsRendered })
+                    return <SortableVirtualList
+                    getRef={registerListRef}
+                    items={items}
+                    onSortEnd={onSortEnd}
+                  />
                 
                     }
                 
@@ -156,6 +189,10 @@ const InfiniteList = (props) => {
         )
 
     }
+
+    
+    const SortableVirtualList = sortableContainer(RenderGrid);
+
 
 
 
