@@ -23,11 +23,6 @@ const InfiniteList = (props) => {
 
     let list=null;
 
-    const isItemLoaded = ({ index }) => {
-        return !hasNextPage || index < items.length
-    };
-    const itemCount = hasNextPage ? items.length + 1 : items.length;
-
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
             if (!moreItemsLoading && hasNextPage) {
@@ -36,9 +31,9 @@ const InfiniteList = (props) => {
         }
     };
 
-    const getMinwidth = (width) => {
-        return width < 1280 ? minWidth : minWidthlg;
-    }
+    const isItemLoaded = ({ index }) => !hasNextPage || index < items.length ;
+    const itemCount = hasNextPage ? items.length + 1 : items.length;
+    const getMinwidth = (width) => width < 1280 ? minWidth : minWidthlg;
 
     const cellwidth = (width) => {
         let cell_width = 0;
@@ -54,9 +49,6 @@ const InfiniteList = (props) => {
         SetcolumnWidth(cell_width);
     }
 
-    const render_progress = () => {
-        return moreItemsLoading ? <LinearProgress /> : <div></div>
-    }
     const calculateColumnCount = (width) => {
         const minColumnWidth = getMinwidth(width)
         SetcolumnCount(Math.floor((width - scrollbarSize) / minColumnWidth));
@@ -158,7 +150,6 @@ const InfiniteList = (props) => {
 
 
     const _onResize = ({ width }) => {
-        // SetrowHeight(100);
         calculateColumnCount(width);
         cellwidth(width);
     }
@@ -169,7 +160,6 @@ const InfiniteList = (props) => {
         if (oldIndex === newIndex) {
             return;
         }
-        console.log(oldIndex,newIndex);
         items = arrayMove(items, oldIndex, newIndex);
         if(list!==null){
             list.recomputeGridSize();
@@ -214,7 +204,7 @@ const InfiniteList = (props) => {
                 ({ onRowsRendered, registerChild }) => {
                     return (
                         <React.Fragment >
-                            {render_progress()}
+                            {moreItemsLoading ? <LinearProgress /> : <div></div>}
                             <WindowScroller scrollElement={window} ref={registerChild}>
                                 {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
                                     _renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
