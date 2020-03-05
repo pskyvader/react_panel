@@ -128,10 +128,12 @@ export default function RecipeReviewCard(props) {
     );
 
     if (typeof CardRef.current !== "undefined" ) {
-        const heightCard = CardRef.current.offsetHeight;
+        const nodeStyle1 = window.getComputedStyle(CardRef.current);
+        let margin = nodeStyle1.getPropertyValue('margin-bottom');
+        const heightCard = CardRef.current.offsetHeight+ parseFloat(margin)*2;
 
         
-        if (Height < heightCard && heightCard<=350) {
+        if (Height < heightCard && heightCard<=600) {
             setHeight(heightCard);
         }
     }
