@@ -161,7 +161,7 @@ const InfiniteList = (props) => {
                         height={height}
                         onRowsRendered={onRowsRendered}
                         axis="xy"
-                        pressDelay={200}
+                        pressDelay={100}
                     />
                 }}
             </AutoSizer>
