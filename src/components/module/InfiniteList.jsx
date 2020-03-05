@@ -13,27 +13,25 @@ const InfiniteList = (props) => {
     const minWidthlg = 320;
     const maxWidth = 375;
     const scrollbarSize = 20;
-
-    const { moreItemsLoading, loadMore, hasNextPage } = props;
-    let {items}=props;
     const [columnCount, SetcolumnCount] = useState(0);
     const [rowCount, SetrowCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
 
-    let list=null;
+    const { moreItemsLoading, loadMore, hasNextPage } = props;
+    let { items } = props;
+    let list = null;
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
-            if (!moreItemsLoading && hasNextPage) {
-                loadMore();
-            }
+        if (scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
+            loadMore();
         }
     };
 
-    const isItemLoaded = ({ index }) => !hasNextPage || index < items.length ;
+    const isItemLoaded = ({ index }) => !hasNextPage || index < items.length;
     const itemCount = hasNextPage ? items.length + 1 : items.length;
     const getMinwidth = (width) => width < 1280 ? minWidth : minWidthlg;
+    const calculateColumnCount = (width) => SetcolumnCount(Math.floor((width - scrollbarSize) / getMinwidth(width)));
 
     const cellwidth = (width) => {
         let cell_width = 0;
@@ -49,10 +47,6 @@ const InfiniteList = (props) => {
         SetcolumnWidth(cell_width);
     }
 
-    const calculateColumnCount = (width) => {
-        const minColumnWidth = getMinwidth(width)
-        SetcolumnCount(Math.floor((width - scrollbarSize) / minColumnWidth));
-    }
     const calculateRowCount = () => {
         let rowCount = 1;
         rowCount = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
@@ -72,12 +66,8 @@ const InfiniteList = (props) => {
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
         const startIndex = rowIndex * columnCount + columnIndex;
         const zindex = rowCount * columnCount - startIndex;
-
         const cell = items[startIndex];
-        if (cell === undefined) {
-            return null;
-        }
-
+        if (cell === undefined) { return null; }
         return <SortableItem index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
     }
 
@@ -108,7 +98,7 @@ const InfiniteList = (props) => {
 
 
     const RenderGrid = (props) => {
-        const { width, height, onRowsRendered,getRef } = props;
+        const { width, height, onRowsRendered, getRef } = props;
         calculateColumnCount(width);
         cellwidth(width);
         calculateRowCount();
@@ -141,34 +131,21 @@ const InfiniteList = (props) => {
 
     }
 
-    const registerListRef = (listInstance) => {
-        list=listInstance;
-    };
-
-
+    const registerListRef = (listInstance) => { list = listInstance };
     const SortableVirtualList = sortableContainer(RenderGrid);
+    const _onResize = ({ width }) => { calculateColumnCount(width); cellwidth(width); }
 
-
-    const _onResize = ({ width }) => {
-        calculateColumnCount(width);
-        cellwidth(width);
-    }
-
-    
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
-        if (oldIndex === newIndex) {
-            return;
-        }
+        if (oldIndex === newIndex) { return; }
         items = arrayMove(items, oldIndex, newIndex);
-        if(list!==null){
+        if (list !== null) {
             list.recomputeGridSize();
             list.forceUpdate();
         }
     };
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
-
         return (
             <AutoSizer
                 disableHeight
@@ -176,7 +153,6 @@ const InfiniteList = (props) => {
                 onResize={_onResize}
                 scrollTop={scrollTop}>
                 {({ width }) => {
-                    // return  RenderGrid({ width, height, onRowsRendered })
                     return <SortableVirtualList
                         getRef={registerListRef}
                         items={items}
@@ -185,11 +161,9 @@ const InfiniteList = (props) => {
                         height={height}
                         onRowsRendered={onRowsRendered}
                         axis="xy"
+                        pressDelay={200}
                     />
-
-                }
-
-                }
+                }}
             </AutoSizer>
         );
     }
@@ -209,7 +183,6 @@ const InfiniteList = (props) => {
                                 {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
                                     _renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
                                 )}
-
                             </WindowScroller>
                         </React.Fragment>
                     )
@@ -220,16 +193,4 @@ const InfiniteList = (props) => {
     )
 
 }
-
-
-
 export default InfiniteList;
-
-
-
-
-
-
-
-
-
