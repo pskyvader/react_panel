@@ -17,6 +17,7 @@ const InfiniteList = (props) => {
 
     const { items, moreItemsLoading, loadMore, hasNextPage } = props;
     const [columnCount, SetcolumnCount] = useState(0);
+    const [rowCount, SetrowCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
 
@@ -58,12 +59,21 @@ const InfiniteList = (props) => {
         const minColumnWidth = getMinwidth(width)
         SetcolumnCount(Math.floor((width-scrollbarSize) / minColumnWidth));
     }
+    const calculateRowCount = () => {
+        let rowCount = 1;
+        rowCount = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
+        rowCount = (rowCount < 1) ? 1 : rowCount;
+        SetrowCount(rowCount);
+    }
 
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
         const startIndex = rowIndex * columnCount + columnIndex;
+        const zindex=rowCount*columnCount-startIndex;
+
         const cell = items[startIndex];
+        console.log(startIndex,items.length,cell);
         return (
-            <div key={key} style={{...style,zIndex:-startIndex}}>
+            <div key={key} style={{...style,zIndex:zindex}}>
                 <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight}  />
             </div>
         );
@@ -115,16 +125,14 @@ const InfiniteList = (props) => {
     const RenderGrid = ({ width, height, onRowsRendered }) => {
         calculateColumnCount(width);
         cellwidth(width);
-
-        let rowCount = 1;
-        rowCount = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
-        rowCount = (rowCount < 1) ? 1 : rowCount;
+        calculateRowCount();
 
         const gridHeight = getHeight(height);
 
 
         return (
             <Grid
+                style={{overflow:'visible'}}
                 cellRenderer={_cellRenderer}
                 columnWidth={columnWidth}
                 columnCount={columnCount}
