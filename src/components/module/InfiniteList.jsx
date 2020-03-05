@@ -113,7 +113,8 @@ const InfiniteList = (props) => {
         // This can either be done by imperatively calling the recomputeRowHeights and
         // forceUpdate instance methods on the `List` ref, or by passing an additional prop
         // to List that changes whenever the order changes to force it to re-render
-        list.recomputeRowHeights();
+        // list.recomputeRowHeights();
+        list.recomputeGridSize();
         list.forceUpdate();
     };
 
