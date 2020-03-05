@@ -31,7 +31,7 @@ const InfiniteList = (props) => {
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
             if (!moreItemsLoading && hasNextPage) {
-                // loadMore();
+                loadMore();
             }
         }
     };
@@ -68,6 +68,15 @@ const InfiniteList = (props) => {
         SetrowCount(rowCount);
     }
 
+
+    const SortableItem = sortableElement(({ cell, style }) => {
+        return (
+            <div style={style}>
+                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight} />
+            </div>
+        );
+    });
+    
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
         const startIndex = rowIndex * columnCount + columnIndex;
         const zindex = rowCount * columnCount - startIndex;
@@ -78,78 +87,11 @@ const InfiniteList = (props) => {
         }
 
         return <SortableItem index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
-
-        return (
-            <div key={key} style={{ ...style, zIndex: zindex }}>
-                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight} />
-            </div>
-        );
     }
 
-    const SortableItem = sortableElement(({ cell, style }) => {
-        return (
-            <div style={style}>
-                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight} />
-            </div>
-        );
-    });
 
 
-    const _onResize = ({ width }) => {
-        // SetrowHeight(100);
-        calculateColumnCount(width);
-        cellwidth(width);
-    }
 
-    const onSortEnd = ({ oldIndex, newIndex }) => {
-        if (oldIndex === newIndex) {
-            return;
-        }
-
-        console.log('on sort end');
-
-        items = arrayMove(items, oldIndex, newIndex);
-
-        // We need to inform React Virtualized that the items have changed heights
-        // This can either be done by imperatively calling the recomputeRowHeights and
-        // forceUpdate instance methods on the `List` ref, or by passing an additional prop
-        // to List that changes whenever the order changes to force it to re-render
-        // list.recomputeRowHeights();
-        list.recomputeGridSize();
-        list.forceUpdate();
-    };
-
-
-    const registerListRef = (listInstance) => {
-        list=listInstance;
-    };
-
-    const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
-
-        return (
-            <AutoSizer
-                disableHeight
-                height={height}
-                onResize={_onResize}
-                scrollTop={scrollTop}>
-                {({ width }) => {
-                    // return  RenderGrid({ width, height, onRowsRendered })
-                    return <SortableVirtualList
-                        getRef={registerListRef}
-                        items={items}
-                        onSortEnd={onSortEnd}
-                        width={width}
-                        height={height}
-                        onRowsRendered={onRowsRendered}
-                        axis="xy"
-                    />
-
-                }
-
-                }
-            </AutoSizer>
-        );
-    }
 
     const getHeight = (height) => {
         let height1 = props.TypographyRef.current.offsetHeight;
@@ -207,11 +149,63 @@ const InfiniteList = (props) => {
 
     }
 
+    const registerListRef = (listInstance) => {
+        list=listInstance;
+    };
+
 
     const SortableVirtualList = sortableContainer(RenderGrid);
 
 
+    const _onResize = ({ width }) => {
+        // SetrowHeight(100);
+        calculateColumnCount(width);
+        cellwidth(width);
+    }
 
+    
+
+    const onSortEnd = ({ oldIndex, newIndex }) => {
+        if (oldIndex === newIndex) {
+            return;
+        }
+        items = arrayMove(items, oldIndex, newIndex);
+
+        // We need to inform React Virtualized that the items have changed heights
+        // This can either be done by imperatively calling the recomputeRowHeights and
+        // forceUpdate instance methods on the `List` ref, or by passing an additional prop
+        // to List that changes whenever the order changes to force it to re-render
+        // list.recomputeRowHeights();
+        list.recomputeGridSize();
+        list.forceUpdate();
+    };
+
+    const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
+
+        return (
+            <AutoSizer
+                disableHeight
+                height={height}
+                onResize={_onResize}
+                scrollTop={scrollTop}>
+                {({ width }) => {
+                    // return  RenderGrid({ width, height, onRowsRendered })
+                    return <SortableVirtualList
+                        getRef={registerListRef}
+                        items={items}
+                        onSortEnd={onSortEnd}
+                        width={width}
+                        height={height}
+                        onRowsRendered={onRowsRendered}
+                        axis="xy"
+                    />
+
+                }
+
+                }
+            </AutoSizer>
+        );
+    }
 
     return (
         <InfiniteLoader
