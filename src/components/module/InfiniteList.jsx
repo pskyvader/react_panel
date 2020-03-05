@@ -73,12 +73,19 @@ const InfiniteList = (props) => {
         if (cell===undefined){
             return null;
         }
+        
+        return <SortableItem index={startIndex} value={cell} />;
+
         return (
             <div key={key} style={{...style,zIndex:zindex}}>
                 <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight}  />
             </div>
         );
     }
+
+    const SortableItem = sortableElement(({value}) => {
+        return <li>{value}</li>;
+      });
 
 
     const _onResize = ({ width }) => {
@@ -127,6 +134,9 @@ const InfiniteList = (props) => {
                     getRef={registerListRef}
                     items={items}
                     onSortEnd={onSortEnd}
+                    width={width}
+                    height={height}
+                    onRowsRendered={onRowsRendered}
                   />
                 
                     }
@@ -158,7 +168,8 @@ const InfiniteList = (props) => {
     }
 
 
-    const RenderGrid = ({ width, height, onRowsRendered }) => {
+    const RenderGrid = (props) => {
+        const { width, height, onRowsRendered }=props;
         calculateColumnCount(width);
         cellwidth(width);
         calculateRowCount();
