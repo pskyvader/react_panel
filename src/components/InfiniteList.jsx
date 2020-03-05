@@ -18,7 +18,7 @@ const InfiniteList = (props) => {
     const { items, moreItemsLoading, loadMore, hasNextPage } = props;
     const [columnCount, SetcolumnCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
-    const [rowHeight, SetrowHeight] = useState(300);
+    const [rowHeight, SetrowHeight] = useState(100);
 
     const isItemLoaded = ({ index }) => {
         return !hasNextPage || index < items.length
@@ -71,6 +71,7 @@ const InfiniteList = (props) => {
 
 
     const _onResize = ({ width }) => {
+        SetrowHeight(100);
         calculateColumnCount(width);
         cellwidth(width);
     }

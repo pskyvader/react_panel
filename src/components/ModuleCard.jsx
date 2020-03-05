@@ -18,7 +18,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        margin: 15
+        margin: theme.spacing(2)
     },
     media: {
         height: 0,
@@ -127,10 +127,11 @@ export default function RecipeReviewCard(props) {
         </Card>
     );
 
-    console.log(CardRef,typeof(CardRef),typeof(CardRef.current),typeof CardRef !== "undefined");
-    if (typeof CardRef !== "undefined" && typeof CardRef.current !== "undefined") {
-        const heightCard = props.CardRef.current.offsetHeight;
-        if (Height !== heightCard) {
+    if (typeof CardRef.current !== "undefined" ) {
+        const heightCard = CardRef.current.offsetHeight;
+
+        
+        if (Height < heightCard && heightCard<=350) {
             setHeight(heightCard);
         }
     }
