@@ -63,7 +63,7 @@ const InfiniteList = (props) => {
         const startIndex = rowIndex * columnCount + columnIndex;
         const cell = items[startIndex];
         return (
-            <div key={key} style={style}>
+            <div key={key} style={{...style,zIndex:-startIndex}}>
                 <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight}  />
             </div>
         );
