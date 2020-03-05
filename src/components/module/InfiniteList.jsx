@@ -14,7 +14,8 @@ const InfiniteList = (props) => {
     const maxWidth = 375;
     const scrollbarSize = 20;
 
-    const { items, moreItemsLoading, loadMore, hasNextPage } = props;
+    const { moreItemsLoading, loadMore, hasNextPage } = props;
+    let {items}=props;
     const [columnCount, SetcolumnCount] = useState(0);
     const [rowCount, SetrowCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
@@ -30,7 +31,7 @@ const InfiniteList = (props) => {
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7) {
             if (!moreItemsLoading && hasNextPage) {
-                loadMore();
+                // loadMore();
             }
         }
     };
@@ -105,7 +106,7 @@ const InfiniteList = (props) => {
             return;
         }
 
-        let { items } = props;
+        console.log('on sort end');
 
         items = arrayMove(items, oldIndex, newIndex);
 
@@ -124,8 +125,6 @@ const InfiniteList = (props) => {
     };
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
-
-
 
         return (
             <AutoSizer
