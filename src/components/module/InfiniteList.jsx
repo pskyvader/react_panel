@@ -21,6 +21,7 @@ const InfiniteList = (props) => {
     const { moreItemsLoading, loadMore, hasNextPage } = props;
     let { items } = props;
     let list = null;
+    let currentNode=null;
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
@@ -136,9 +137,11 @@ const InfiniteList = (props) => {
     const _onResize = ({ width }) => { calculateColumnCount(width); cellwidth(width); }
 
 
-    const onSortEnd = (props) => {
-        console.log(props);
-        const { oldIndex, newIndex }=props;
+    const onSortEnd = ({ oldIndex, newIndex }) => {
+        if (currentNode!==null){
+            currentNode.style.background='none';
+            currentNode=null;
+        }
         if (oldIndex === newIndex) { return; }
         items = arrayMove(items, oldIndex, newIndex);
         if (list !== null) {
@@ -146,9 +149,9 @@ const InfiniteList = (props) => {
             list.forceUpdate();
         }
     };
-    const onSortStart=({node})=>{
-        console.log(node);
-        node.style.background='red'
+    const updateBeforeSortStart=({node})=>{
+        currentNode=node;
+        currentNode.style.background='red';
     }
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
@@ -168,7 +171,7 @@ const InfiniteList = (props) => {
                         onRowsRendered={onRowsRendered}
                         axis="xy"
                         pressDelay={100}
-                        onSortStart={onSortStart}
+                        updateBeforeSortStart={updateBeforeSortStart}
                     />
                 }}
             </AutoSizer>
