@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { AutoSizer,Grid ,WindowScroller,InfiniteLoader} from 'react-virtualized';
+import { AutoSizer, Grid, WindowScroller, InfiniteLoader } from 'react-virtualized';
 import ModuleCard from './ModuleCard';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import {sortableContainer, sortableElement} from 'react-sortable-hoc';
+import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 
 
@@ -19,7 +19,8 @@ const InfiniteList = (props) => {
     const [rowCount, SetrowCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
-    const [list, Setlist] = useState(null);
+
+    let list=null;
 
     const isItemLoaded = ({ index }) => {
         return !hasNextPage || index < items.length
@@ -41,11 +42,11 @@ const InfiniteList = (props) => {
     const cellwidth = (width) => {
         let cell_width = 0;
         if (width !== 0 && columnCount !== 0) {
-            cell_width = Math.floor((width-scrollbarSize) / columnCount);
+            cell_width = Math.floor((width - scrollbarSize) / columnCount);
         }
         if (cell_width < getMinwidth(width)) {
             cell_width = getMinwidth(width);
-        } else if (cell_width > maxWidth && width>=768) {
+        } else if (cell_width > maxWidth && width >= 768) {
             cell_width = maxWidth;
         }
 
@@ -57,7 +58,7 @@ const InfiniteList = (props) => {
     }
     const calculateColumnCount = (width) => {
         const minColumnWidth = getMinwidth(width)
-        SetcolumnCount(Math.floor((width-scrollbarSize) / minColumnWidth));
+        SetcolumnCount(Math.floor((width - scrollbarSize) / minColumnWidth));
     }
     const calculateRowCount = () => {
         let rowCount = 1;
@@ -68,29 +69,29 @@ const InfiniteList = (props) => {
 
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
         const startIndex = rowIndex * columnCount + columnIndex;
-        const zindex=rowCount*columnCount-startIndex;
+        const zindex = rowCount * columnCount - startIndex;
 
         const cell = items[startIndex];
-        if (cell===undefined){
+        if (cell === undefined) {
             return null;
         }
-        
-        return <SortableItem index={startIndex} cell={cell} key={key} style={{...style,zIndex:zindex}}/>;
+
+        return <SortableItem index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
 
         return (
-            <div key={key} style={{...style,zIndex:zindex}}>
-                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight}  />
+            <div key={key} style={{ ...style, zIndex: zindex }}>
+                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight} />
             </div>
         );
     }
 
-    const SortableItem = sortableElement(({cell,style}) => {
+    const SortableItem = sortableElement(({ cell, style }) => {
         return (
             <div style={style}>
-                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight}  />
+                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight} />
             </div>
         );
-      });
+    });
 
 
     const _onResize = ({ width }) => {
@@ -99,27 +100,27 @@ const InfiniteList = (props) => {
         cellwidth(width);
     }
 
-    const onSortEnd = ({oldIndex, newIndex}) => {
+    const onSortEnd = ({ oldIndex, newIndex }) => {
         if (oldIndex === newIndex) {
-          return;
+            return;
         }
-    
-        let {items} = props;
-    
-          items= arrayMove(items, oldIndex, newIndex);
-    
+
+        let { items } = props;
+
+        items = arrayMove(items, oldIndex, newIndex);
+
         // We need to inform React Virtualized that the items have changed heights
         // This can either be done by imperatively calling the recomputeRowHeights and
         // forceUpdate instance methods on the `List` ref, or by passing an additional prop
         // to List that changes whenever the order changes to force it to re-render
         list.recomputeRowHeights();
         list.forceUpdate();
-      };
+    };
 
-      
-      const registerListRef = (listInstance) => {
-        Setlist(listInstance);
-      };
+
+    const registerListRef = (listInstance) => {
+        list=listInstance;
+    };
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
 
@@ -134,16 +135,17 @@ const InfiniteList = (props) => {
                 {({ width }) => {
                     // return  RenderGrid({ width, height, onRowsRendered })
                     return <SortableVirtualList
-                    getRef={registerListRef}
-                    items={items}
-                    onSortEnd={onSortEnd}
-                    width={width}
-                    height={height}
-                    onRowsRendered={onRowsRendered}
-                  />
-                
-                    }
-                
+                        getRef={registerListRef}
+                        items={items}
+                        onSortEnd={onSortEnd}
+                        width={width}
+                        height={height}
+                        onRowsRendered={onRowsRendered}
+                        axis="xy"
+                    />
+
+                }
+
                 }
             </AutoSizer>
         );
@@ -172,7 +174,7 @@ const InfiniteList = (props) => {
 
 
     const RenderGrid = (props) => {
-        const { width, height, onRowsRendered }=props;
+        const { width, height, onRowsRendered,getRef } = props;
         calculateColumnCount(width);
         cellwidth(width);
         calculateRowCount();
@@ -182,6 +184,7 @@ const InfiniteList = (props) => {
 
         return (
             <Grid
+                ref={getRef}
                 cellRenderer={_cellRenderer}
                 columnWidth={columnWidth}
                 columnCount={columnCount}
@@ -204,7 +207,7 @@ const InfiniteList = (props) => {
 
     }
 
-    
+
     const SortableVirtualList = sortableContainer(RenderGrid);
 
 
