@@ -7,8 +7,8 @@ import { CircularProgress, ListSubheader, Divider, List, IconButton, Hidden, Dra
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@material-ui/icons';
 
 import { NestedList, ChildButton } from "./List";
-import ErrorLink from './ErrorLink';
-import LocalStorage from './LocalStorage';
+import ErrorLink from '../ErrorLink';
+import LocalStorage from '../LocalStorage';
 
 const drawerWidth = 240;
 

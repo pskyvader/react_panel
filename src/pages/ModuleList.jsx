@@ -3,7 +3,7 @@ import { Typography, Container } from '@material-ui/core';
 import { useParams } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
-import ModuleConfiguration from '../components/ModuleConfiguration';
+import ModuleConfiguration from '../components/module/ModuleConfiguration';
 
 const useStyles = makeStyles(theme => (
     {
