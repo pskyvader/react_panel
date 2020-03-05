@@ -19,6 +19,7 @@ const InfiniteList = (props) => {
     const [rowCount, SetrowCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
+    const [list, Setlist] = useState(null);
 
     const isItemLoaded = ({ index }) => {
         return !hasNextPage || index < items.length
@@ -74,7 +75,7 @@ const InfiniteList = (props) => {
             return null;
         }
         
-        return <SortableItem index={startIndex} value={cell} />;
+        return <SortableItem index={startIndex} cell={cell} key={key} style={{...style,zIndex:zindex}}/>;
 
         return (
             <div key={key} style={{...style,zIndex:zindex}}>
@@ -83,8 +84,12 @@ const InfiniteList = (props) => {
         );
     }
 
-    const SortableItem = sortableElement(({value}) => {
-        return <li>{value}</li>;
+    const SortableItem = sortableElement(({cell,style}) => {
+        return (
+            <div style={style}>
+                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight}  />
+            </div>
+        );
       });
 
 
@@ -99,23 +104,21 @@ const InfiniteList = (props) => {
           return;
         }
     
-        const {items} = this.state;
+        let {items} = props;
     
-        this.setState({
-          items: arrayMove(items, oldIndex, newIndex),
-        });
+          items= arrayMove(items, oldIndex, newIndex);
     
         // We need to inform React Virtualized that the items have changed heights
         // This can either be done by imperatively calling the recomputeRowHeights and
         // forceUpdate instance methods on the `List` ref, or by passing an additional prop
         // to List that changes whenever the order changes to force it to re-render
-        props.List.recomputeRowHeights();
-        props.List.forceUpdate();
+        list.recomputeRowHeights();
+        list.forceUpdate();
       };
 
       
       const registerListRef = (listInstance) => {
-        props.List = listInstance;
+        Setlist(listInstance);
       };
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
