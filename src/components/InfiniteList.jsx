@@ -91,13 +91,16 @@ const InfiniteList = (props) => {
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
         return (
             <AutoSizer
-                disableHeight
-                height={height}
                 onResize={_onResize}
                 scrollTop={scrollTop}>
-                {({ width }) => (
-                    RenderGrid({ width, height, onRowsRendered })
-                )}
+                {(props) => {
+                    console.log(props);
+                    const { width,height }=props;
+                    return  RenderGrid({ width, height, onRowsRendered })
+                
+                    }
+                
+                }
             </AutoSizer>
         );
     }
