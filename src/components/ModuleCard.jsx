@@ -133,7 +133,7 @@ export default function RecipeReviewCard(props) {
         const heightCard = CardRef.current.offsetHeight+ parseFloat(margin)*2;
 
         
-        if (Height < heightCard && heightCard<=600) {
+        if (Height !== heightCard && heightCard<=600) {
             setHeight(heightCard);
         }
     }

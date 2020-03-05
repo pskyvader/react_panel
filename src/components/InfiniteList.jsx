@@ -71,7 +71,9 @@ const InfiniteList = (props) => {
         const zindex=rowCount*columnCount-startIndex;
 
         const cell = items[startIndex];
-        console.log(startIndex,items.length,cell);
+        if (cell===undefined){
+            return null;
+        }
         return (
             <div key={key} style={{...style,zIndex:zindex}}>
                 <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight}  />
@@ -81,7 +83,7 @@ const InfiniteList = (props) => {
 
 
     const _onResize = ({ width }) => {
-        SetrowHeight(100);
+        // SetrowHeight(100);
         calculateColumnCount(width);
         cellwidth(width);
     }
@@ -132,7 +134,6 @@ const InfiniteList = (props) => {
 
         return (
             <Grid
-                style={{overflow:'visible'}}
                 cellRenderer={_cellRenderer}
                 columnWidth={columnWidth}
                 columnCount={columnCount}
