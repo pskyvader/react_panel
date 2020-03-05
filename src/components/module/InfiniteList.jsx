@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { AutoSizer } from 'react-virtualized';
-import { WindowScroller } from 'react-virtualized';
-import { InfiniteLoader } from 'react-virtualized';
+import { AutoSizer,Grid ,WindowScroller,InfiniteLoader} from 'react-virtualized';
 import ModuleCard from './ModuleCard';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { Grid } from 'react-virtualized';
+import {sortableContainer, sortableElement} from 'react-sortable-hoc';
 
 
 
