@@ -139,7 +139,7 @@ const InfiniteList = (props) => {
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
         if (currentNode!==null){
-            currentNode.style.background='none';
+            currentNode.style.opacity='1';
             currentNode=null;
         }
         if (oldIndex === newIndex) { return; }
@@ -149,9 +149,10 @@ const InfiniteList = (props) => {
             list.forceUpdate();
         }
     };
-    const updateBeforeSortStart=({node})=>{
+    const updateBeforeSortStart=({node, index, collection, isKeySorting})=>{
         currentNode=node;
-        currentNode.style.background='red';
+        console.log(node, index, collection, isKeySorting);
+        currentNode.style.opacity='0.7';
     }
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
