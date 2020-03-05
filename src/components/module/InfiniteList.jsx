@@ -76,7 +76,7 @@ const InfiniteList = (props) => {
             </div>
         );
     });
-    
+
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
         const startIndex = rowIndex * columnCount + columnIndex;
         const zindex = rowCount * columnCount - startIndex;
@@ -169,15 +169,12 @@ const InfiniteList = (props) => {
         if (oldIndex === newIndex) {
             return;
         }
+        console.log(oldIndex,newIndex);
         items = arrayMove(items, oldIndex, newIndex);
-
-        // We need to inform React Virtualized that the items have changed heights
-        // This can either be done by imperatively calling the recomputeRowHeights and
-        // forceUpdate instance methods on the `List` ref, or by passing an additional prop
-        // to List that changes whenever the order changes to force it to re-render
-        // list.recomputeRowHeights();
-        list.recomputeGridSize();
-        list.forceUpdate();
+        if(list!==null){
+            list.recomputeGridSize();
+            list.forceUpdate();
+        }
     };
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
