@@ -136,7 +136,9 @@ const InfiniteList = (props) => {
     const _onResize = ({ width }) => { calculateColumnCount(width); cellwidth(width); }
 
 
-    const onSortEnd = ({ oldIndex, newIndex }) => {
+    const onSortEnd = (props) => {
+        console.log(props);
+        const { oldIndex, newIndex }=props;
         if (oldIndex === newIndex) { return; }
         items = arrayMove(items, oldIndex, newIndex);
         if (list !== null) {
@@ -144,6 +146,10 @@ const InfiniteList = (props) => {
             list.forceUpdate();
         }
     };
+    const onSortStart=({node})=>{
+        console.log(node);
+        node.style.background='red'
+    }
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
         return (
@@ -162,6 +168,7 @@ const InfiniteList = (props) => {
                         onRowsRendered={onRowsRendered}
                         axis="xy"
                         pressDelay={100}
+                        onSortStart={onSortStart}
                     />
                 }}
             </AutoSizer>
