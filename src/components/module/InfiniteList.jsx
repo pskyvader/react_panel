@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         boxShadow: theme.shadows[12],
         transition:theme.transitions.create('', {
-            duration: theme.transitions.duration.shortest,
+            duration: theme.transitions.duration.short,
         })
     }
 }));
