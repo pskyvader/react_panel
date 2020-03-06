@@ -18,7 +18,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        margin: theme.spacing(2)
+        margin: theme.spacing(2),
+        transition: 'none',
     },
     media: {
         height: 0,
@@ -27,9 +28,9 @@ const useStyles = makeStyles(theme => ({
     expand: {
         transform: 'rotate(0deg)',
         marginLeft: 'auto',
-        // transition: theme.transitions.create('transform', {
-        //     duration: theme.transitions.duration.shortest,
-        // }),
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest,
+        }),
     },
     expandOpen: {
         transform: 'rotate(180deg)',

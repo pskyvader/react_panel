@@ -8,11 +8,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        boxShadow: theme.shadows[24],
-    },
-    none:{
-        transition: 'none',
-
+        boxShadow: theme.shadows[12],
+        transition:theme.transitions.create('', {
+            duration: theme.transitions.duration.shortest,
+        })
     }
 }));
 
@@ -152,7 +151,6 @@ const InfiniteList = (props) => {
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
         if (currentNode !== null) {
-            currentNode.className =currentNode.classtmp+ " " + classes.none;
             currentNode.className = currentNode.classtmp;
             currentNode = null;
         }
@@ -166,7 +164,7 @@ const InfiniteList = (props) => {
     const updateBeforeSortStart = ({ node }) => {
         currentNode = node.children[0];
         currentNode.classtmp = currentNode.className;
-        currentNode.className += " " + classes.none +" " + classes.root;
+        currentNode.className += " " + classes.root;
     }
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
