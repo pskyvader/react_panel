@@ -64,6 +64,7 @@ function ModuleList(props) {
             moreItemsLoading={loading}
             loadMore={loadMore}
             hasNextPage={hasNextPage}
+            enableDrag={fields.includes("orden")}
             {...props}
         />
     )

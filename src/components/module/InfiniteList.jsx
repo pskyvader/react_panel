@@ -30,7 +30,7 @@ const InfiniteList = (props) => {
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
 
-    const { moreItemsLoading, loadMore, hasNextPage } = props;
+    const { moreItemsLoading, loadMore, hasNextPage,enableDrag } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
@@ -81,7 +81,7 @@ const InfiniteList = (props) => {
         const zindex = rowCount * columnCount - startIndex;
         const cell = items[startIndex];
         if (cell === undefined) { return null; }
-        return <SortableItem index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
+        return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
     }
 
 
@@ -183,7 +183,7 @@ const InfiniteList = (props) => {
                         height={height}
                         onRowsRendered={onRowsRendered}
                         axis="xy"
-                        pressDelay={0}
+                        pressDelay={100}
                         updateBeforeSortStart={updateBeforeSortStart}
                     />
                 }}
