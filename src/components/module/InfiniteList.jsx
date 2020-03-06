@@ -183,7 +183,7 @@ const InfiniteList = (props) => {
                         height={height}
                         onRowsRendered={onRowsRendered}
                         axis="xy"
-                        pressDelay={100}
+                        pressDelay={0}
                         updateBeforeSortStart={updateBeforeSortStart}
                     />
                 }}
