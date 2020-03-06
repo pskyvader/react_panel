@@ -7,9 +7,13 @@ import arrayMove from 'array-move';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-      background:'red'
-  }
+    root: {
+        boxShadow: theme.shadows[24],
+    },
+    none:{
+        transition: 'none',
+
+    }
 }));
 
 
@@ -30,7 +34,7 @@ const InfiniteList = (props) => {
     const { moreItemsLoading, loadMore, hasNextPage } = props;
     let { items } = props;
     let list = null;
-    let currentNode=null;
+    let currentNode = null;
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
@@ -147,9 +151,10 @@ const InfiniteList = (props) => {
 
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
-        if (currentNode!==null){
-            currentNode.style.boxShadow='0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)';
-            currentNode=null;
+        if (currentNode !== null) {
+            currentNode.className =currentNode.classtmp+ " " + classes.none;
+            currentNode.className = currentNode.classtmp;
+            currentNode = null;
         }
         if (oldIndex === newIndex) { return; }
         items = arrayMove(items, oldIndex, newIndex);
@@ -158,11 +163,10 @@ const InfiniteList = (props) => {
             list.forceUpdate();
         }
     };
-    const updateBeforeSortStart=({node})=>{
-        currentNode=node.children[0];
-        // currentNode.className( classes.root);
-        console.log(classes,node.children[0].className+=" "+classes.root);
-        // currentNode.style.boxShadow='0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12)';
+    const updateBeforeSortStart = ({ node }) => {
+        currentNode = node.children[0];
+        currentNode.classtmp = currentNode.className;
+        currentNode.className += " " + classes.none +" " + classes.root;
     }
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
