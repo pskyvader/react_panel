@@ -4,11 +4,20 @@ import ModuleCard from './ModuleCard';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+      background:'red'
+  }
+}));
+
 
 
 
 
 const InfiniteList = (props) => {
+    const classes = useStyles();
     const minWidth = 275;
     const minWidthlg = 320;
     const maxWidth = 375;
@@ -139,7 +148,7 @@ const InfiniteList = (props) => {
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
         if (currentNode!==null){
-            currentNode.style.opacity='1';
+            currentNode.style.boxShadow='0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)';
             currentNode=null;
         }
         if (oldIndex === newIndex) { return; }
@@ -149,10 +158,11 @@ const InfiniteList = (props) => {
             list.forceUpdate();
         }
     };
-    const updateBeforeSortStart=({node, index, collection, isKeySorting})=>{
-        currentNode=node;
-        console.log(node, index, collection, isKeySorting);
-        currentNode.style.opacity='0.7';
+    const updateBeforeSortStart=({node})=>{
+        currentNode=node.children[0];
+        // currentNode.className( classes.root);
+        console.log(classes,node.children[0].className+=" "+classes.root);
+        // currentNode.style.boxShadow='0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12)';
     }
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
