@@ -31,14 +31,16 @@ const InfiniteList = (props) => {
     const [rowHeight, SetrowHeight] = useState(100);
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag } = props;
-    let { items,scroll_top } = props;
+    let { items } = props;
     let list = null;
     let currentNode = null;
+    const [scroll_top, Setscroll_top] = useState(300);
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
             loadMore();
         }
+        return true;
     };
 
     const isItemLoaded = ({ index }) => !hasNextPage || index < items.length;
@@ -127,6 +129,8 @@ const InfiniteList = (props) => {
         calculateRowCount();
 
         const gridHeight = getHeight(height);
+
+        console.log(list);
         return (
             <Grid
                 ref={getRef}
@@ -140,6 +144,7 @@ const InfiniteList = (props) => {
                 rowCount={rowCount}
                 width={width}
                 onScroll={onScroll}
+                scrollTop={scroll_top}
                 onSectionRendered={
                     ({ columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex }) => {
                         const startIndex = rowStartIndex * columnCount + columnStartIndex;
@@ -153,22 +158,21 @@ const InfiniteList = (props) => {
     }
 
     const registerListRef = (listInstance) => {
-        if (list!==null){
-            if(list.state.scrollTop!==0){
-                scroll_top=list.state.scrollTop;
-                console.log('scroll top',scroll_top,list.state.scrollTop);
-            }
-        }
-        console.log('current value',scroll_top);
-        if (listInstance!==null){
-            if (scroll_top!==0){
-               list.setState({scrollTop:scroll_top});
-               console.log('scroll top set ',scroll_top,list.state.scrollTop);
+        if (list !== null) {
+            if (list.state.scrollTop !== 0) {
+                Setscroll_top(list.state.scrollTop);
+                console.log('scroll top', scroll_top,list);
             }
         }
 
-         list = listInstance;
-        };
+        list = listInstance;
+        // if (list !== null) {
+        //     if (scroll_top !== 0) {
+        //         list.setState({ scrollTop: scroll_top });
+        //         console.log('scroll top set ', scroll_top, list.state.scrollTop);
+        //     }
+        // }
+    };
     const SortableVirtualList = sortableContainer(RenderGrid);
     const _onResize = ({ width }) => { calculateColumnCount(width); cellwidth(width); }
 
@@ -222,8 +226,6 @@ const InfiniteList = (props) => {
         >
             {
                 ({ onRowsRendered, registerChild }) => {
-                    
-                    console.log(window.pageYOffset,list);
                     return (
                         <React.Fragment >
                             {moreItemsLoading ? <LinearProgress /> : <div></div>}
