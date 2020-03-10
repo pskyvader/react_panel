@@ -33,7 +33,9 @@ function Resolve(props) {
                 return newEdges.length ? newquery : previousResult;
             },
         }).then(function(val){
-            // callback(val);
+            if (typeof callback==='function'){
+                callback(val);
+            }
         });
     };
 

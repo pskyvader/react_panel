@@ -37,12 +37,20 @@ const InfiniteList = (props) => {
     const [scroll_row, Setscroll_row] = useState(0);
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        let current_row=parseInt(rowCount-((scrollHeight-scrollTop)/rowHeight));
-        if (current_row!==scroll_row){
-            // Setscroll_row(current_row);
-        }
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
-            loadMore();
+            let current_row=parseInt(rowCount-((scrollHeight-scrollTop)/rowHeight));
+                if (current_row!==scroll_row){
+                    console.log(current_row,scroll_row);
+                    Setscroll_row(current_row);
+                }
+                
+            loadMore(function(val){
+                let current_row=parseInt(rowCount-((scrollHeight-scrollTop)/rowHeight));
+                if (current_row!==scroll_row){
+                    console.log(current_row,scroll_row);
+                    Setscroll_row(current_row);
+                }
+            });
         }
     };
 
