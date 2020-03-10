@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     root: {
         boxShadow: theme.shadows[12],
-        transition:theme.transitions.create('', {
+        transition: theme.transitions.create('', {
             duration: theme.transitions.duration.short,
         })
     }
@@ -30,13 +30,13 @@ const InfiniteList = (props) => {
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
 
-    const { moreItemsLoading, loadMore, hasNextPage,enableDrag } = props;
+    const { moreItemsLoading, loadMore, hasNextPage, enableDrag } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        if (scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
+        if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
             loadMore();
         }
     };
@@ -44,12 +44,12 @@ const InfiniteList = (props) => {
     const isItemLoaded = ({ index }) => !hasNextPage || index < items.length;
     const itemCount = hasNextPage ? items.length + 1 : items.length;
     const getMinwidth = (width) => width < 1280 ? minWidth : minWidthlg;
-    const calculateColumnCount = (width) =>{
-        let column_count=Math.floor((width - scrollbarSize) / getMinwidth(width));
-        if (column_count!==columnCount){
+    const calculateColumnCount = (width) => {
+        let column_count = Math.floor((width - scrollbarSize) / getMinwidth(width));
+        if (column_count !== columnCount) {
             SetcolumnCount(column_count);
         }
-    } 
+    }
 
     const cellwidth = (width) => {
         let cell_width = 0;
@@ -62,7 +62,7 @@ const InfiniteList = (props) => {
             cell_width = maxWidth;
         }
 
-        if (cell_width!==columnWidth){
+        if (cell_width !== columnWidth) {
             SetcolumnWidth(cell_width);
         }
     }
@@ -71,7 +71,7 @@ const InfiniteList = (props) => {
         let row_count = 1;
         row_count = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
         row_count = (row_count < 1) ? 1 : row_count;
-        if (row_count!==rowCount){
+        if (row_count !== rowCount) {
             SetrowCount(row_count);
         }
     }
@@ -127,10 +127,11 @@ const InfiniteList = (props) => {
         calculateRowCount();
 
         const gridHeight = getHeight(height);
-        if(width===0 || moreItemsLoading || columnCount*(rowCount+1)<items.length){
-        // return <div>width {width} columnWidth {columnWidth} rowHeight {rowHeight}  moreItemsLoading {moreItemsLoading.toString()} columnCount*(rowCount+1) {columnCount*(rowCount+1)} items.length {items.length} </div>;
+        if (width === 0 || moreItemsLoading || columnCount * (rowCount + 1) < items.length) {
+            // return <div>width {width} columnWidth {columnWidth} rowHeight {rowHeight}  moreItemsLoading {moreItemsLoading.toString()} columnCount*(rowCount+1) {columnCount*(rowCount+1)} items.length {items.length} </div>;
         }
-        console.log('numbers',columnCount,rowCount,columnWidth,rowHeight,items.length);
+        console.log(window.pageYOffset,list);
+        console.log('numbers', columnCount, rowCount, columnWidth, rowHeight, items.length);
 
 
         return (
@@ -182,7 +183,7 @@ const InfiniteList = (props) => {
     }
 
     const _renderAutoSizer = ({ height, onRowsRendered }) => {
-        
+
         return (
             <AutoSizer
                 disableHeight
@@ -217,7 +218,7 @@ const InfiniteList = (props) => {
                         <React.Fragment >
                             {moreItemsLoading ? <LinearProgress /> : <div></div>}
                             <WindowScroller scrollElement={window} ref={registerChild}>
-                                {({ height}) => ( _renderAutoSizer({ height, onRowsRendered }) )}
+                                {({ height }) => (_renderAutoSizer({ height, onRowsRendered }))}
                             </WindowScroller>
                         </React.Fragment>
                     )
