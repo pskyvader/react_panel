@@ -29,10 +29,9 @@ const InfiniteList = (props) => {
     const [rowCount, SetrowCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
-    let scrolltop=0;
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag } = props;
-    let { items } = props;
+    let { items,scroll_top } = props;
     let list = null;
     let currentNode = null;
 
@@ -155,14 +154,20 @@ const InfiniteList = (props) => {
 
     const registerListRef = (listInstance) => {
         if (list!==null){
-            scrolltop=list.state.scrollTop;
-            console.log('scroll top',scrolltop,list.state,listInstance);
+            if(list.state.scrollTop!==0){
+                scroll_top=list.state.scrollTop;
+                console.log('scroll top',scroll_top,list.state.scrollTop);
+            }
         }
+        console.log('current value',scroll_top);
+        if (listInstance!==null){
+            if (scroll_top!==0){
+               list.setState({scrollTop:scroll_top});
+               console.log('scroll top set ',scroll_top,list.state.scrollTop);
+            }
+        }
+
          list = listInstance;
-         if (list!==null){
-             list.setState({scrollTop:scrolltop});
-             console.log('scroll top set ',list.state.scrollTop);
-         }
         };
     const SortableVirtualList = sortableContainer(RenderGrid);
     const _onResize = ({ width }) => { calculateColumnCount(width); cellwidth(width); }
