@@ -29,6 +29,7 @@ const InfiniteList = (props) => {
     const [rowCount, SetrowCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
+    let scrolltop=0;
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag } = props;
     let { items } = props;
@@ -127,13 +128,6 @@ const InfiniteList = (props) => {
         calculateRowCount();
 
         const gridHeight = getHeight(height);
-        if (width === 0 || moreItemsLoading || columnCount * (rowCount + 1) < items.length) {
-            // return <div>width {width} columnWidth {columnWidth} rowHeight {rowHeight}  moreItemsLoading {moreItemsLoading.toString()} columnCount*(rowCount+1) {columnCount*(rowCount+1)} items.length {items.length} </div>;
-        }
-        console.log(window.pageYOffset,list);
-        console.log('numbers', columnCount, rowCount, columnWidth, rowHeight, items.length);
-
-
         return (
             <Grid
                 ref={getRef}
@@ -159,7 +153,17 @@ const InfiniteList = (props) => {
 
     }
 
-    const registerListRef = (listInstance) => { list = listInstance };
+    const registerListRef = (listInstance) => {
+        if (list!==null){
+            scrolltop=list.state.scrollTop;
+            console.log('scroll top',scrolltop,list.state,listInstance);
+        }
+         list = listInstance;
+         if (list!==null){
+             list.setState({scrollTop:scrolltop});
+             console.log('scroll top set ',list.state.scrollTop);
+         }
+        };
     const SortableVirtualList = sortableContainer(RenderGrid);
     const _onResize = ({ width }) => { calculateColumnCount(width); cellwidth(width); }
 
@@ -183,7 +187,6 @@ const InfiniteList = (props) => {
     }
 
     const _renderAutoSizer = ({ height, onRowsRendered }) => {
-
         return (
             <AutoSizer
                 disableHeight
@@ -214,6 +217,8 @@ const InfiniteList = (props) => {
         >
             {
                 ({ onRowsRendered, registerChild }) => {
+                    
+                    console.log(window.pageYOffset,list);
                     return (
                         <React.Fragment >
                             {moreItemsLoading ? <LinearProgress /> : <div></div>}
