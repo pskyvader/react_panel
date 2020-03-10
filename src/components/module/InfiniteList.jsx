@@ -80,8 +80,7 @@ const InfiniteList = (props) => {
     const SortableItem = sortableElement(({ cell, style }) => {
         return (
             <div style={style}>
-                <div>asdfafds</div>
-                {/* <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight} /> */}
+                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight} />
             </div>
         );
     });
@@ -127,7 +126,12 @@ const InfiniteList = (props) => {
         calculateRowCount();
 
         const gridHeight = getHeight(height);
-        console.log('render grid',items.length);
+        if(width===0){
+            return <div></div>;
+        }
+        console.log('render grid',props);
+        console.log('numbers',columnCount,rowCount,columnWidth,rowHeight);
+        console.log('items',moreItemsLoading, hasNextPage,items.length);
 
 
         return (
