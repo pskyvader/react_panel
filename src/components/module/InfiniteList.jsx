@@ -90,6 +90,7 @@ const InfiniteList = (props) => {
         const zindex = rowCount * columnCount - startIndex;
         const cell = items[startIndex];
         if (cell === undefined) { return null; }
+        return <div key={key} style={{ ...style, zIndex: zindex }}>asdfasdf</div>
         return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
     }
 
@@ -127,7 +128,7 @@ const InfiniteList = (props) => {
 
         const gridHeight = getHeight(height);
         if(width===0 || moreItemsLoading || columnCount*(rowCount+1)<items.length){
-        return <div>width {width} columnWidth {columnWidth} rowHeight {rowHeight}  moreItemsLoading {moreItemsLoading.toString()} columnCount*(rowCount+1) {columnCount*(rowCount+1)} items.length {items.length} </div>;
+        // return <div>width {width} columnWidth {columnWidth} rowHeight {rowHeight}  moreItemsLoading {moreItemsLoading.toString()} columnCount*(rowCount+1) {columnCount*(rowCount+1)} items.length {items.length} </div>;
         }
         console.log('numbers',columnCount,rowCount,columnWidth,rowHeight,items.length);
 
@@ -187,6 +188,9 @@ const InfiniteList = (props) => {
                 height={height}
                 onResize={_onResize}>
                 {({ width }) => {
+
+                    return SortableVirtualList({ getRef:registerListRef, items, onSortEnd, width, height, onRowsRendered, axis:"xy", pressDelay:100, updateBeforeSortStart })
+                    
                     return <SortableVirtualList
                         getRef={registerListRef}
                         items={items}
