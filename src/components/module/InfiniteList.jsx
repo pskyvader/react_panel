@@ -182,14 +182,18 @@ const InfiniteList = (props) => {
     }
 
     const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
+        height=1000;
         return (
             <AutoSizer
-                disableHeight
+                
                 height={height}
-                onResize={_onResize}>
-                {({ width }) => {
-
-                    return SortableVirtualList({ getRef:registerListRef, items, onSortEnd, width, height, onRowsRendered, axis:"xy", pressDelay:100, updateBeforeSortStart })
+                onResize={_onResize}
+                scrollTop={scrollTop}>
+                {(props) => {
+                    const { width }=props;
+                    console.log(props);
+                    console.log(width,height,scrollTop);
+                    // return SortableVirtualList({ getRef:registerListRef, items, onSortEnd, width, height, onRowsRendered, axis:"xy", pressDelay:100, updateBeforeSortStart })
                     
                     return <SortableVirtualList
                         getRef={registerListRef}
@@ -218,11 +222,12 @@ const InfiniteList = (props) => {
                     return (
                         <React.Fragment >
                             {moreItemsLoading ? <LinearProgress /> : <div></div>}
-                            <WindowScroller scrollElement={window} ref={registerChild}>
+                            {/* <WindowScroller scrollElement={window} ref={registerChild}>
                                 {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
                                     _renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
                                 )}
-                            </WindowScroller>
+                            </WindowScroller> */}
+                            {_renderAutoSizer({ registerChild, onRowsRendered })}
                         </React.Fragment>
                     )
 
