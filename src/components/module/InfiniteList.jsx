@@ -126,10 +126,10 @@ const InfiniteList = (props) => {
         calculateRowCount();
 
         const gridHeight = getHeight(height);
-        if(width===0 || moreItemsLoading){
-            return <div></div>;
+        if(width===0 || moreItemsLoading || columnCount*(rowCount+1)<items.length){
+        return <div>width {width} columnWidth {columnWidth} rowHeight {rowHeight}  moreItemsLoading {moreItemsLoading.toString()} columnCount*(rowCount+1) {columnCount*(rowCount+1)} items.length {items.length} </div>;
         }
-        console.log('numbers',columnCount,rowCount, columnCount*rowCount,columnWidth,rowHeight,items.length);
+        console.log('numbers',columnCount,rowCount,columnWidth,rowHeight,items.length);
 
 
         return (
