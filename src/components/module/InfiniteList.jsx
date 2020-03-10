@@ -34,11 +34,13 @@ const InfiniteList = (props) => {
     let { items } = props;
     let list = null;
     let currentNode = null;
-    const [scroll_top, Setscroll_top] = useState(300);
+    const [scroll_row, Setscroll_row] = useState(0);
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        console.log(scrollHeight/scrollTop);
-        // Setscroll_top(scrollTop);
+        let current_row=parseInt(rowCount-((scrollHeight-scrollTop)/rowHeight));
+        if (current_row!==scroll_row){
+            // Setscroll_row(current_row);
+        }
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
             loadMore();
         }
@@ -143,7 +145,7 @@ const InfiniteList = (props) => {
                 rowCount={rowCount}
                 width={width}
                 onScroll={onScroll}
-                scrollToRow={0}
+                scrollToRow={scroll_row}
                 onSectionRendered={
                     ({ columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex }) => {
                         const startIndex = rowStartIndex * columnCount + columnStartIndex;
@@ -159,16 +161,16 @@ const InfiniteList = (props) => {
     const registerListRef = (listInstance) => {
         if (list !== null) {
             if (list.state.scrollTop !== 0) {
-                Setscroll_top(list.state.scrollTop);
-                console.log('scroll top', scroll_top,list);
+                // Setscroll_row(list.state.scrollTop);
+                console.log('scroll top', scroll_row,list);
             }
         }
 
         list = listInstance;
         // if (list !== null) {
-        //     if (scroll_top !== 0) {
-        //         list.setState({ scrollTop: scroll_top });
-        //         console.log('scroll top set ', scroll_top, list.state.scrollTop);
+        //     if (scroll_row !== 0) {
+        //         list.setState({ scrollTop: scroll_row });
+        //         console.log('scroll top set ', scroll_row, list.state.scrollTop);
         //     }
         // }
     };
