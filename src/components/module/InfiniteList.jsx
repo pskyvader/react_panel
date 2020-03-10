@@ -172,8 +172,7 @@ const InfiniteList = (props) => {
             <AutoSizer
                 disableHeight
                 height={height}
-                onResize={_onResize}
-                scrollTop={scrollTop}>
+                onResize={_onResize}>
                 {({ width }) => {
                     return <SortableVirtualList
                         getRef={registerListRef}
