@@ -90,7 +90,7 @@ const InfiniteList = (props) => {
         const zindex = rowCount * columnCount - startIndex;
         const cell = items[startIndex];
         if (cell === undefined) { return null; }
-        return <div key={key} style={{ ...style, zIndex: zindex }}>asdfasdf</div>
+        // return <div key={key} style={{ ...style, zIndex: zindex }}>asdfasdf</div>
         return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
     }
 
@@ -181,20 +181,13 @@ const InfiniteList = (props) => {
         currentNode.className += " " + classes.root;
     }
 
-    const _renderAutoSizer = ({ height, scrollTop, onRowsRendered }) => {
+    const _renderAutoSizer = ({ height, onRowsRendered }) => {
         return (
             <AutoSizer
                 disableHeight
                 height={height}
                 onResize={_onResize}>
                 {({ width }) => {
-                    const a=new SortableVirtualList({ getRef:registerListRef, items, onSortEnd, width, height, onRowsRendered, axis:"xy", pressDelay:100, updateBeforeSortStart });
-                    return a;
-
-                    
-
-                    // return SortableVirtualList({ getRef:registerListRef, items, onSortEnd, width, height, onRowsRendered, axis:"xy", pressDelay:100, updateBeforeSortStart })
-                    
                     return <SortableVirtualList
                         getRef={registerListRef}
                         items={items}
@@ -223,9 +216,7 @@ const InfiniteList = (props) => {
                         <React.Fragment >
                             {moreItemsLoading ? <LinearProgress /> : <div></div>}
                             <WindowScroller scrollElement={window} ref={registerChild}>
-                                {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
-                                    _renderAutoSizer({ height, isScrolling, registerChild, onChildScroll, scrollTop, onRowsRendered })
-                                )}
+                                {({ height}) => ( _renderAutoSizer({ height, onRowsRendered }) )}
                             </WindowScroller>
                         </React.Fragment>
                     )
