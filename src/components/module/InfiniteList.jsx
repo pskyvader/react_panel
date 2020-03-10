@@ -37,10 +37,11 @@ const InfiniteList = (props) => {
     const [scroll_top, Setscroll_top] = useState(300);
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+        console.log(scrollTop);
+        // Setscroll_top(scrollTop);
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
             loadMore();
         }
-        return true;
     };
 
     const isItemLoaded = ({ index }) => !hasNextPage || index < items.length;
@@ -129,8 +130,6 @@ const InfiniteList = (props) => {
         calculateRowCount();
 
         const gridHeight = getHeight(height);
-
-        console.log(list);
         return (
             <Grid
                 ref={getRef}
@@ -144,7 +143,7 @@ const InfiniteList = (props) => {
                 rowCount={rowCount}
                 width={width}
                 onScroll={onScroll}
-                scrollTop={scroll_top}
+                scrollToRow={2}
                 onSectionRendered={
                     ({ columnStartIndex, columnStopIndex, rowStartIndex, rowStopIndex }) => {
                         const startIndex = rowStartIndex * columnCount + columnStartIndex;
