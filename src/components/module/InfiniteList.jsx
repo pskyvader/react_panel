@@ -182,6 +182,7 @@ const InfiniteList = (props) => {
     }
 
     const _renderAutoSizer = ({ height, onRowsRendered }) => {
+        
         return (
             <AutoSizer
                 disableHeight

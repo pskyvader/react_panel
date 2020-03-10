@@ -40,6 +40,8 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+
+
 export default function RecipeReviewCard(props) {
     const element = props.element;
     const classes = useStyles();
@@ -50,6 +52,19 @@ export default function RecipeReviewCard(props) {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const set_height=()=>{
+        if (CardRef.current !== undefined && CardRef.current !== null) {
+            const nodeStyle1 = window.getComputedStyle(CardRef.current);
+            let margin = nodeStyle1.getPropertyValue('margin-bottom');
+            const heightCard = CardRef.current.offsetHeight+ parseFloat(margin)*2;
+            if (Height !== heightCard && heightCard<=600) {
+                setHeight(heightCard);
+            }
+        }else if (Height===100){
+            setTimeout(set_height, 100);
+        }
+    }
 
 
 
@@ -128,19 +143,6 @@ export default function RecipeReviewCard(props) {
         </Card>
     );
 
-    console.log(CardRef);
-
-    // if (typeof CardRef.current !== "undefined" ) {
-    if (CardRef.current !== null ) {
-        const nodeStyle1 = window.getComputedStyle(CardRef.current);
-        let margin = nodeStyle1.getPropertyValue('margin-bottom');
-        const heightCard = CardRef.current.offsetHeight+ parseFloat(margin)*2;
-
-        
-        if (Height !== heightCard && heightCard<=600) {
-            setHeight(heightCard);
-        }
-    }
-
+    set_height();
     return return_element;
 }
