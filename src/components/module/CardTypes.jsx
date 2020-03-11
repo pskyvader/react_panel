@@ -6,6 +6,25 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CancelIcon from '@material-ui/icons/Cancel';
+
+
+
+export const active = (key, value, classes) => (
+    <Typography noWrap variant="body2" color="textSecondary" component="p">
+        <IconButton aria-label={key}> 
+        {(value)?<CheckBoxIcon /> :<CancelIcon/>}
+        </IconButton>
+        {value.toString()}
+        {key}
+    </Typography>
+
+)
+
+export const image = (key, value, classes) => (
+    <CardMedia className={classes.media} image={value} title={key} />
+)
 
 export const text = (key, value, classes) => (
     <Typography noWrap variant="body2" color="textSecondary" component="p">
@@ -14,14 +33,10 @@ export const text = (key, value, classes) => (
 )
 export const title = (key, value, classes) => (
     <CardHeader noWrap
-        titleTypographyProps={{noWrap:true}}
+        titleTypographyProps={{ noWrap: true }}
         className={classes.header}
         // avatar={<Avatar aria-label="recipe" className={classes.avatar}> R </Avatar>}
         // action={<IconButton aria-label="settings"> <MoreVertIcon /> </IconButton>}
         title={key + ': ' + value}
     />
-)
-
-export const image = (key, value, classes) => (
-    <CardMedia className={classes.media} image={value} title={key} />
 )
