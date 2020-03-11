@@ -16,6 +16,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+import * as types from './CardTypes';
+
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(2),
@@ -42,6 +44,21 @@ const useStyles = makeStyles(theme => ({
 
 
 
+
+
+function setElement(element,position){
+    if (element['tipo']==='text' && position===0){
+        element['tipo']='title';
+    }
+    const current_element=types[element['tipo']];
+    return current_element(element['value']);
+}
+
+
+
+
+
+
 export default function RecipeReviewCard(props) {
     const { element, config_mostrar } = props;
     const classes = useStyles();
@@ -49,8 +66,7 @@ export default function RecipeReviewCard(props) {
     const { Height, setHeight } = props;
     const CardRef = useRef();
 
-    const final_element = config_mostrar.map((x,v) => {
-        console.log(x,v);
+    const final_element = config_mostrar.map(x => {
         let value = element[x['field']];
         if (value !== undefined) {
             x['value'] = value;
@@ -81,6 +97,7 @@ export default function RecipeReviewCard(props) {
 
     const return_element = (
         <Card className={classes.root} ref={CardRef}>
+            {final_element.map((x,i)=>setElement(x,i))}
             <CardHeader
                 avatar={<Avatar aria-label="recipe" className={classes.avatar}> R </Avatar>}
                 action={<IconButton aria-label="settings"> <MoreVertIcon /> </IconButton>}
