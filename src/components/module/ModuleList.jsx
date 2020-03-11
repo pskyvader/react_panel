@@ -23,6 +23,7 @@ function ModuleList(props) {
     if (config !== null && config !== false) {
         const module_data = config.hijo[0];
         const fields_filter = module_data.permisos.mostrar.filter(x =>(!action_list.includes(x['tipo']) && !action_names.includes(x['field']))  );
+        console.log(fields_filter);
         fields = fields_filter.map(x => formatField(x['field']));
         config_mostrar=module_data.permisos.mostrar.map(x => {
             x['field']=formatField(x['field']);
