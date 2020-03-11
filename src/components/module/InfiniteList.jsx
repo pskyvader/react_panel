@@ -36,21 +36,10 @@ const InfiniteList = (props) => {
     let currentNode = null;
     const [scroll_row, Setscroll_row] = useState(0);
 
+    
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
-            let current_row=parseInt(rowCount-((scrollHeight-scrollTop)/rowHeight));
-                if (current_row!==scroll_row){
-                    console.log(current_row,scroll_row);
-                    Setscroll_row(current_row);
-                }
-                
-            loadMore(function(val){
-                let current_row=parseInt(rowCount-((scrollHeight-scrollTop)/rowHeight));
-                if (current_row!==scroll_row){
-                    console.log(current_row,scroll_row);
-                    Setscroll_row(current_row);
-                }
-            });
+            loadMore();
         }
     };
 
@@ -169,18 +158,13 @@ const InfiniteList = (props) => {
     const registerListRef = (listInstance) => {
         if (list !== null) {
             if (list.state.scrollTop !== 0) {
-                // Setscroll_row(list.state.scrollTop);
-                console.log('scroll top', scroll_row,list);
+                let current_row=Math.round(rowCount-(((rowHeight*rowCount)-list.state.scrollTop)/rowHeight));
+                Setscroll_row(current_row);
+                console.log('scroll top',current_row, scroll_row,list);
             }
         }
 
         list = listInstance;
-        // if (list !== null) {
-        //     if (scroll_row !== 0) {
-        //         list.setState({ scrollTop: scroll_row });
-        //         console.log('scroll top set ', scroll_row, list.state.scrollTop);
-        //     }
-        // }
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
     const _onResize = ({ width }) => { calculateColumnCount(width); cellwidth(width); }
