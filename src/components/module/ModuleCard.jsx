@@ -40,11 +40,15 @@ const useStyles = makeStyles(theme => ({
     avatar: {
         backgroundColor: red[500],
     },
+    header:{
+        padding:theme.spacing(2,0)
+    }
 }));
 
 
 
 
+const action_list=['link','active','action','delete'];
 
 
 
@@ -56,7 +60,7 @@ export default function RecipeReviewCard(props) {
     const { Height, setHeight } = props;
     const CardRef = useRef();
 
-    const final_element = config_mostrar.map(x => {
+    config_mostrar.map(x => {
         let value = element[x['field']];
         if (value !== undefined) {
             x['value'] = value;
@@ -64,6 +68,10 @@ export default function RecipeReviewCard(props) {
         delete x.__typename;
         return x;
     });
+    const element_actions = config_mostrar.filter(x =>(action_list.includes(x['tipo'])));
+    const element_fields = config_mostrar.filter(x =>(!action_list.includes(x['tipo'])));
+    
+
 
 
     const handleExpandClick = () => {
@@ -93,7 +101,7 @@ export default function RecipeReviewCard(props) {
         if (current_element===undefined){
             return element['tipo'];
         }
-        return current_element(element['value'], classes);
+        return current_element(element['titulo'],element['value'], classes);
     }
 
 
@@ -102,18 +110,11 @@ export default function RecipeReviewCard(props) {
 
     const return_element = (
         <Card className={classes.root} ref={CardRef}>
-            {final_element.map((x, i) => setElement(x, i))}
-            <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="Paella dish" />
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
-                </Typography>
+            {element_fields.map((x, i) => setElement(x, i))}
             </CardContent>
-            <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
-                </Typography>
-            </CardContent>
+            
+            
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites"> <FavoriteIcon /> </IconButton>
                 <IconButton aria-label="share"> <ShareIcon /> </IconButton>
