@@ -61,6 +61,7 @@ function ModuleList(props) {
     return (
         <InfiniteList
             items={items}
+            config={config}
             moreItemsLoading={loading}
             loadMore={loadMore}
             hasNextPage={hasNextPage}

@@ -43,11 +43,14 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function RecipeReviewCard(props) {
-    const element = props.element;
+    const {element,config_mostrar}=props;
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const { Height, setHeight } = props;
     const CardRef = useRef();
+
+    console.log(element);
+    console.log(config_mostrar);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);

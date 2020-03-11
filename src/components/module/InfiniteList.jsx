@@ -31,7 +31,7 @@ const InfiniteList = (props) => {
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
 
-    const { moreItemsLoading, loadMore, hasNextPage, enableDrag } = props;
+    const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
@@ -87,7 +87,7 @@ const InfiniteList = (props) => {
     const SortableItem = sortableElement(({ cell, style }) => {
         return (
             <div style={style}>
-                <ModuleCard element={cell} Height={rowHeight} setHeight={SetrowHeight} />
+                <ModuleCard element={cell} config_mostrar={config_mostrar} Height={rowHeight} setHeight={SetrowHeight} />
             </div>
         );
     });
