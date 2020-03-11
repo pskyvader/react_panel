@@ -39,7 +39,12 @@ const InfiniteList = (props) => {
     
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
-            loadMore();
+            loadMore(function(val){
+                let current_row=Math.round(rowCount-((scrollHeight-scrollTop)/rowHeight));
+                if (current_row!==scroll_row){
+                    Setscroll_row(current_row);
+                }
+            });
         }
     };
 
@@ -160,7 +165,6 @@ const InfiniteList = (props) => {
             if (list.state.scrollTop !== 0) {
                 let current_row=Math.round(rowCount-(((rowHeight*rowCount)-list.state.scrollTop)/rowHeight));
                 Setscroll_row(current_row);
-                console.log('scroll top',current_row, scroll_row,list);
             }
         }
 
@@ -227,7 +231,6 @@ const InfiniteList = (props) => {
                             </WindowScroller>
                         </React.Fragment>
                     )
-
                 }
             }
         </InfiniteLoader>
