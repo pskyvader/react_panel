@@ -46,16 +46,6 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function setElement(element,position){
-    if (element['tipo']==='text' && position===0){
-        element['tipo']='title';
-    }
-    const current_element=types[element['tipo']];
-    return current_element(element['value']);
-}
-
-
-
 
 
 
@@ -95,15 +85,30 @@ export default function RecipeReviewCard(props) {
 
 
 
+    const setElement = (element, position) => {
+        if (element['tipo'] === 'text' && position === 0) {
+            element['tipo'] = 'title';
+        }
+        const current_element = types[element['tipo']];
+        if (current_element===undefined){
+            return element['tipo'];
+        }
+        return current_element(element['value'], classes);
+    }
+
+
+
+
+
     const return_element = (
         <Card className={classes.root} ref={CardRef}>
-            {final_element.map((x,i)=>setElement(x,i))}
-            <CardHeader
-                avatar={<Avatar aria-label="recipe" className={classes.avatar}> R </Avatar>}
-                action={<IconButton aria-label="settings"> <MoreVertIcon /> </IconButton>}
-                title={element.hashtag} subheader={element.orden}
-            />
+            {final_element.map((x, i) => setElement(x, i))}
             <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="Paella dish" />
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                </Typography>
+            </CardContent>
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                     This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
