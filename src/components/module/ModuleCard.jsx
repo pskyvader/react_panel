@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(2),
         transition: 'none',
     },
+    button: {
+        margin: theme.spacing(1),
+      },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
@@ -60,6 +63,7 @@ export default function RecipeReviewCard(props) {
     const [expanded, setExpanded] = React.useState(false);
     const { Height, setHeight } = props;
     const CardRef = useRef();
+    console.log(element);
 
     config_mostrar.map(x => {
         let value = element[x['field']];

@@ -4,21 +4,23 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CancelIcon from '@material-ui/icons/Cancel';
+import Box from '@material-ui/core/Box';
 
 
 
 export const active = (key, value, classes) => (
-    <Typography noWrap variant="body2" color="textSecondary" component="p">
-        <IconButton aria-label={key}> 
-        {(value)?<CheckBoxIcon /> :<CancelIcon/>}
-        </IconButton>
-        {value.toString()}
+    <Button
+        color={(value)?"primary" :"secondary"}
+        className={classes.button}
+        startIcon={(value)?<CheckBoxIcon /> :<CancelIcon/>}
+      >
         {key}
-    </Typography>
+      </Button>
 
 )
 

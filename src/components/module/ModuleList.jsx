@@ -13,7 +13,7 @@ const formatField=(field)=>{
 }
 
 
-const action_list=['link','active','action','delete'];
+const action_list=['link','action','delete'];
 
 function ModuleList(props) {
     let { module, tipo, config } = props;
