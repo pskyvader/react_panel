@@ -43,37 +43,36 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function RecipeReviewCard(props) {
-    const {element,config_mostrar}=props;
+    const { element, config_mostrar } = props;
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const { Height, setHeight } = props;
     const CardRef = useRef();
 
-    config_mostrar.map(x=>{
-        let value=element[x['field']];
-        if (value!==undefined){
-            x['value']=value;
+    const final_element = config_mostrar.map((x,v) => {
+        console.log(x,v);
+        let value = element[x['field']];
+        if (value !== undefined) {
+            x['value'] = value;
         }
         delete x.__typename;
         return x;
     });
 
-    console.log(element);
-    console.log(config_mostrar);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
-    const set_height=()=>{
+    const set_height = () => {
         if (CardRef.current !== undefined && CardRef.current !== null) {
             const nodeStyle1 = window.getComputedStyle(CardRef.current);
             let margin = nodeStyle1.getPropertyValue('margin-bottom');
-            const heightCard = CardRef.current.offsetHeight+ parseFloat(margin)*2;
-            if (Height !== heightCard && heightCard<=600) {
+            const heightCard = CardRef.current.offsetHeight + parseFloat(margin) * 2;
+            if (Height !== heightCard && heightCard <= 600) {
                 setHeight(heightCard);
             }
-        }else if (Height===100){
+        } else if (Height === 100) {
             setTimeout(set_height, 100);
         }
     }
@@ -83,45 +82,20 @@ export default function RecipeReviewCard(props) {
     const return_element = (
         <Card className={classes.root} ref={CardRef}>
             <CardHeader
-                avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-          </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                }
-                title={element.hashtag}
-                subheader={element.orden}
+                avatar={<Avatar aria-label="recipe" className={classes.avatar}> R </Avatar>}
+                action={<IconButton aria-label="settings"> <MoreVertIcon /> </IconButton>}
+                title={element.hashtag} subheader={element.orden}
             />
-            <CardMedia
-                className={classes.media}
-                image="/static/images/cards/paella.jpg"
-                title="Paella dish"
-            />
+            <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="Paella dish" />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    This impressive paella is a perfect party dish and a fun meal to cook together with your
-                    guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
+                    This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
-                <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                >
+                <IconButton aria-label="add to favorites"> <FavoriteIcon /> </IconButton>
+                <IconButton aria-label="share"> <ShareIcon /> </IconButton>
+                <IconButton className={clsx(classes.expand, { [classes.expandOpen]: expanded, })} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more" >
                     <ExpandMoreIcon />
                 </IconButton>
             </CardActions>
@@ -131,7 +105,7 @@ export default function RecipeReviewCard(props) {
                     <Typography paragraph>
                         Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
                         minutes.
-          </Typography>
+                    </Typography>
                     <Typography paragraph>
                         Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
                         heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
@@ -139,17 +113,17 @@ export default function RecipeReviewCard(props) {
                         and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
                         pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
                         saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-          </Typography>
+                    </Typography>
                     <Typography paragraph>
                         Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
                         without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
                         medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
                         again without stirring, until mussels have opened and rice is just tender, 5 to 7
                         minutes more. (Discard any mussels that don’t open.)
-          </Typography>
+                    </Typography>
                     <Typography>
                         Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
+                    </Typography>
                 </CardContent>
             </Collapse>
         </Card>
