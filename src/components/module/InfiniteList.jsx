@@ -29,12 +29,12 @@ const InfiniteList = (props) => {
     const [rowCount, SetrowCount] = useState(0);
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
+    const [scroll_row, Setscroll_row] = useState(0);
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
-    const [scroll_row, Setscroll_row] = useState(0);
 
     
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
