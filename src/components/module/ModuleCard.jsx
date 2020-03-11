@@ -46,6 +46,9 @@ const useStyles = makeStyles(theme => ({
     header:{
         padding:theme.spacing(2,0),
         display:'block'
+    },
+    actions:{
+        display:'block'
     }
 }));
 
@@ -120,7 +123,7 @@ export default function RecipeReviewCard(props) {
             </CardContent>
             
 
-            <CardActions disableSpacing>
+            <CardActions disableSpacing className={classes.actions}>
                 {element_actions.map((x, i) => setElement(x, i))}
                 <IconButton aria-label="add to favorites"> <FavoriteIcon /> </IconButton>
                 <IconButton aria-label="share"> <ShareIcon /> </IconButton>
