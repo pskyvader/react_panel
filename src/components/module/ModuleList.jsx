@@ -13,7 +13,8 @@ const formatField=(field)=>{
 }
 
 
-const action_list=['link','action','delete'];
+const action_list=['action','delete'];
+const action_names=['url_detalle'];
 
 function ModuleList(props) {
     let { module, tipo, config } = props;
@@ -21,7 +22,7 @@ function ModuleList(props) {
     let fields = ['id'];
     if (config !== null && config !== false) {
         const module_data = config.hijo[0];
-        const fields_filter = module_data.permisos.mostrar.filter(x =>(!action_list.includes(x['tipo']))  );
+        const fields_filter = module_data.permisos.mostrar.filter(x =>(!action_list.includes(x['tipo']) && !action_names.includes(x['field']))  );
         fields = fields_filter.map(x => formatField(x['field']));
         config_mostrar=module_data.permisos.mostrar.map(x => {
             x['field']=formatField(x['field']);

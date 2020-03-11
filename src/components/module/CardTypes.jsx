@@ -15,14 +15,21 @@ import Box from '@material-ui/core/Box';
 
 export const active = (key, value, classes) => (
     <Button
-        variant="contained"
-        color={(value)?"primary" :"secondary"}
+        size="small"
+        variant="outlined"
+        color={(value) ? "primary" : "secondary"}
         className={classes.button}
-        startIcon={(value)?<CheckBoxIcon /> :<CancelIcon/>}
-      >
+        startIcon={(value) ? <CheckBoxIcon /> : <CancelIcon />}
+    >
         {key}
-      </Button>
+    </Button>
+)
 
+
+export const link = (key, value, classes) => (
+    <Button href={value}>
+        {key}
+    </Button>
 )
 
 export const image = (key, value, classes) => (
