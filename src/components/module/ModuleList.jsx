@@ -14,11 +14,16 @@ const formatField=(field)=>{
 
 function ModuleList(props) {
     let { module, tipo, config } = props;
+    let config_mostrar=null;
     let fields = ['id'];
     if (config !== null && config !== false) {
         const module_data = config.hijo[0];
         const fields_filter = module_data.permisos.mostrar.filter(x => (x['tipo'] !== 'action' && x['tipo'] !== 'delete'));
         fields = fields_filter.map(x => formatField(x['field']));
+        config_mostrar=module_data.permisos.mostrar.map(x => {
+            x['field']=formatField(x['field']);
+            return x;
+    });
     }
 
     const vars = { first: 100, after: ''}
@@ -65,7 +70,7 @@ function ModuleList(props) {
     return (
         <InfiniteList
             items={items}
-            config={config}
+            config_mostrar={config_mostrar}
             moreItemsLoading={loading}
             loadMore={loadMore}
             hasNextPage={hasNextPage}

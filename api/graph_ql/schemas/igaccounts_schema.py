@@ -39,6 +39,11 @@ class igaccounts_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idigaccounts"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+
+    profile_url=graphene.String()
+    def resolve_profile_url(parent,info, **kwargs):
+        return 'https://www.instagram.com/'+parent.username
+
     
     
 
