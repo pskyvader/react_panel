@@ -49,6 +49,15 @@ export default function RecipeReviewCard(props) {
     const { Height, setHeight } = props;
     const CardRef = useRef();
 
+    config_mostrar.map(x=>{
+        let value=element[x['field']];
+        if (value!==undefined){
+            x['value']=value;
+        }
+        delete x.__typename;
+        return x;
+    });
+
     console.log(element);
     console.log(config_mostrar);
 
