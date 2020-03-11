@@ -41,7 +41,8 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: red[500],
     },
     header:{
-        padding:theme.spacing(2,0)
+        padding:theme.spacing(2,0),
+        display:'block'
     }
 }));
 

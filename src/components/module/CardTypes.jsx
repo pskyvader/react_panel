@@ -14,7 +14,7 @@ export const text = (key, value, classes) => (
 )
 export const title = (key, value, classes) => (
     <CardHeader noWrap
-        titleTypographyProps={<Typography noWrap variant="body2" color="textSecondary" component="p"/>}
+        titleTypographyProps={{noWrap:true}}
         className={classes.header}
         // avatar={<Avatar aria-label="recipe" className={classes.avatar}> R </Avatar>}
         // action={<IconButton aria-label="settings"> <MoreVertIcon /> </IconButton>}
