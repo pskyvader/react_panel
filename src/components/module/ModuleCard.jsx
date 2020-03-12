@@ -22,7 +22,8 @@ import * as types from './CardTypes';
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(2),
-        // transition: 'none',
+        transition: 'none',
+        userSelect:'none'
     },
     button: {
         margin: theme.spacing(1),

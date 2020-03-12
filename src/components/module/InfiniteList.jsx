@@ -183,7 +183,7 @@ const InfiniteList = (props) => {
         if (oldIndex === newIndex) { return; }
         items = arrayMove(items, oldIndex, newIndex);
         if (list !== null) {
-            list.recomputeGridSize();
+            // list.recomputeGridSize();
             list.forceUpdate();
         }
     };
@@ -208,7 +208,7 @@ const InfiniteList = (props) => {
                         height={height}
                         onRowsRendered={onRowsRendered}
                         axis="xy"
-                        pressDelay={100}
+                        pressDelay={0}
                         updateBeforeSortStart={updateBeforeSortStart}
                     />
                 }}
