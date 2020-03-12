@@ -14,7 +14,7 @@ const formatField=(field)=>{
 
 
 const action_list=['action','delete'];
-const action_names=['url_detalle'];
+const action_names=['url_detalle','urlDetalle'];
 
 function ModuleList(props) {
     let { module, tipo, config } = props;
@@ -22,13 +22,15 @@ function ModuleList(props) {
     let fields = ['id'];
     if (config !== null && config !== false) {
         const module_data = config.hijo[0];
+        console.log(module_data.permisos.mostrar);
         const fields_filter = module_data.permisos.mostrar.filter(x =>(!action_list.includes(x['tipo']) && !action_names.includes(x['field']))  );
-        console.log(fields_filter);
-        fields = fields_filter.map(x => formatField(x['field']));
+        // fields = fields_filter.map(x => formatField(x['field']));
+        fields = fields_filter.map(x => x['field']);
         config_mostrar=module_data.permisos.mostrar.map(x => {
             x['field']=formatField(x['field']);
             return x;
-    });
+        });
+        console.log(fields);
     }
 
     const vars = { first: 100, after: ''}
