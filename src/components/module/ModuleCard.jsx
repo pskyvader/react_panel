@@ -15,13 +15,14 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 import * as types from './CardTypes';
 
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(2),
-        transition: 'none',
+        // transition: 'none',
     },
     button: {
         margin: theme.spacing(1),
@@ -120,10 +121,13 @@ export default function RecipeReviewCard(props) {
 
 
     const return_element = (
-        <Card className={classes.root+' '+ (drag?classes.draggable:'')} ref={CardRef}>
-            <CardContent>
+        <Card className={classes.root} ref={CardRef}>
+            
+      <CardActionArea focusRipple>
+            <CardContent >
             {element_fields.map((x, i) => setElement(x, i))}
             </CardContent>
+            </CardActionArea>
             
 
             <CardActions disableSpacing className={classes.actions}>
