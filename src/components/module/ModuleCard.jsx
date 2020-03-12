@@ -16,7 +16,9 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import {sortableHandle } from 'react-sortable-hoc';
+import { sortableHandle } from 'react-sortable-hoc';
+import OpenWithIcon from '@material-ui/icons/OpenWith';
+import Box from '@material-ui/core/Box';
 
 import * as types from './CardTypes';
 
@@ -26,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
     button: {
         margin: theme.spacing(1),
-      },
+    },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
@@ -44,32 +46,38 @@ const useStyles = makeStyles(theme => ({
     avatar: {
         backgroundColor: red[500],
     },
-    header:{
-        padding:theme.spacing(2,0),
-        display:'block'
+    header: {
+        padding: theme.spacing(2, 0),
+        display: 'block'
     },
-    actions:{
-        display:'block'
+    actions: {
+        display: 'block'
     }
 }));
 
 
 
 
-const action_list=['link','active','action','delete'];
+const action_list = ['link', 'active', 'action', 'delete'];
 
 
 
 
 export default function RecipeReviewCard(props) {
-    const { element, config_mostrar,drag } = props;
+    const { element, config_mostrar, drag } = props;
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const { Height, setHeight } = props;
     const CardRef = useRef();
 
-    
-    const DragHandle = sortableHandle(() => <span>::</span>);
+
+    const DragHandle = sortableHandle(() =>
+<Box color="text.primary" alignContent="end">
+        <IconButton aria-label="Move" edge="end" >  
+        <OpenWithIcon />
+        </IconButton>
+</Box>
+    );
 
     config_mostrar.map(x => {
         let value = element[x['field']];
@@ -79,9 +87,9 @@ export default function RecipeReviewCard(props) {
         delete x.__typename;
         return x;
     });
-    const element_actions = config_mostrar.filter(x =>(action_list.includes(x['tipo'])));
-    const element_fields = config_mostrar.filter(x =>(!action_list.includes(x['tipo'])));
-    
+    const element_actions = config_mostrar.filter(x => (action_list.includes(x['tipo'])));
+    const element_fields = config_mostrar.filter(x => (!action_list.includes(x['tipo'])));
+
 
 
 
@@ -109,10 +117,10 @@ export default function RecipeReviewCard(props) {
             element['tipo'] = 'title';
         }
         const current_element = types[element['tipo']];
-        if (current_element===undefined){
+        if (current_element === undefined) {
             return element['tipo'];
         }
-        return current_element(element['titulo'],element['value'], classes);
+        return current_element(element['titulo'], element['value'], classes);
     }
 
 
@@ -121,14 +129,14 @@ export default function RecipeReviewCard(props) {
 
     const return_element = (
         <Card className={classes.root} ref={CardRef}>
-            
-      <CardActionArea focusRipple>
-        <DragHandle />
-            <CardContent >
-            {element_fields.map((x, i) => setElement(x, i))}
-            </CardContent>
+            <DragHandle />
+
+            <CardActionArea focusRipple>
+                <CardContent >
+                    {element_fields.map((x, i) => setElement(x, i))}
+                </CardContent>
             </CardActionArea>
-            
+
 
             <CardActions disableSpacing className={classes.actions}>
                 {element_actions.map((x, i) => setElement(x, i))}
@@ -141,7 +149,7 @@ export default function RecipeReviewCard(props) {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography paragraph>Method:</Typography>
-                    
+
                 </CardContent>
             </Collapse>
         </Card>
