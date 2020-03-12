@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AutoSizer, Grid, WindowScroller, InfiniteLoader } from 'react-virtualized';
 import ModuleCard from './ModuleCard';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { sortableContainer, sortableElement } from 'react-sortable-hoc';
+import { sortableContainer, sortableElement,sortableHandle } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -11,8 +11,7 @@ const useStyles = makeStyles(theme => ({
         boxShadow: theme.shadows[12],
         transition: theme.transitions.create('', {
             duration: theme.transitions.duration.short,
-        }),
-        cursor:'grabbing'
+        })
     }
 }));
 
@@ -87,7 +86,7 @@ const InfiniteList = (props) => {
 
     const SortableItem = sortableElement(({ cell, style }) => {
         return (
-            <div style={style}>
+            <div style={style} tabIndex={0}>
                 <ModuleCard element={cell} drag={enableDrag} config_mostrar={config_mostrar} Height={rowHeight} setHeight={SetrowHeight} />
             </div>
         );
@@ -210,6 +209,7 @@ const InfiniteList = (props) => {
                         axis="xy"
                         pressDelay={0}
                         updateBeforeSortStart={updateBeforeSortStart}
+                        useDragHandle
                     />
                 }}
             </AutoSizer>

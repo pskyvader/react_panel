@@ -16,14 +16,13 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import {sortableHandle } from 'react-sortable-hoc';
 
 import * as types from './CardTypes';
 
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(2),
-        transition: 'none',
-        userSelect:'none'
     },
     button: {
         margin: theme.spacing(1),
@@ -51,9 +50,6 @@ const useStyles = makeStyles(theme => ({
     },
     actions:{
         display:'block'
-    },
-    draggable:{
-        cursor:'grab'
     }
 }));
 
@@ -71,7 +67,9 @@ export default function RecipeReviewCard(props) {
     const [expanded, setExpanded] = React.useState(false);
     const { Height, setHeight } = props;
     const CardRef = useRef();
-    console.log(element);
+
+    
+    const DragHandle = sortableHandle(() => <span>::</span>);
 
     config_mostrar.map(x => {
         let value = element[x['field']];
@@ -122,9 +120,10 @@ export default function RecipeReviewCard(props) {
 
 
     const return_element = (
-        <Card className={[classes.root, (drag)?classes.draggable:''].join(' ')} ref={CardRef}>
+        <Card className={classes.root} ref={CardRef}>
             
       <CardActionArea focusRipple>
+        <DragHandle />
             <CardContent >
             {element_fields.map((x, i) => setElement(x, i))}
             </CardContent>
