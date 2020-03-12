@@ -64,7 +64,7 @@ const action_list = ['link', 'active', 'action', 'delete'];
 
 
 export default function RecipeReviewCard(props) {
-    const { element, config_mostrar, drag } = props;
+    const { element, config_mostrar } = props;
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const { Height, setHeight } = props;
@@ -72,11 +72,9 @@ export default function RecipeReviewCard(props) {
 
 
     const DragHandle = sortableHandle(() =>
-<Box color="text.primary" alignContent="end">
-        <IconButton aria-label="Move" edge="end" >  
+        <IconButton aria-label="Move">  
         <OpenWithIcon />
         </IconButton>
-</Box>
     );
 
     config_mostrar.map(x => {
