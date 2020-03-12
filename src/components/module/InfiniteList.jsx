@@ -6,13 +6,23 @@ import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { makeStyles } from '@material-ui/core/styles';
 
+import IconButton from '@material-ui/core/IconButton';
+import { sortableHandle } from 'react-sortable-hoc';
+import OpenWithIcon from '@material-ui/icons/OpenWith';
+
 const useStyles = makeStyles(theme => ({
     root: {
         boxShadow: theme.shadows[12],
         transition: theme.transitions.create('', {
             duration: theme.transitions.duration.short,
         })
-    }
+    },
+    movebutton:{
+        position:'absolute',
+        right:theme.spacing(3),
+        top:theme.spacing(3),
+        zIndex:theme.zIndex.mobileStepper
+    },
 }));
 
 
@@ -35,6 +45,14 @@ const InfiniteList = (props) => {
     let { items } = props;
     let list = null;
     let currentNode = null;
+
+    
+    const DragHandle = sortableHandle(() =>
+        <IconButton aria-label="Move" className={classes.movebutton} >  
+        <OpenWithIcon />
+        </IconButton>
+    );
+
 
     
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
@@ -87,6 +105,7 @@ const InfiniteList = (props) => {
     const SortableItem = sortableElement(({ cell, style }) => {
         return (
             <div style={style} tabIndex={0}>
+                <DragHandle />
                 <ModuleCard element={cell} config_mostrar={config_mostrar} Height={rowHeight} setHeight={SetrowHeight} />
             </div>
         );
@@ -209,7 +228,7 @@ const InfiniteList = (props) => {
                         axis="xy"
                         pressDelay={0}
                         updateBeforeSortStart={updateBeforeSortStart}
-                        useDragHandle
+                        useDragHandle={true}
                     />
                 }}
             </AutoSizer>

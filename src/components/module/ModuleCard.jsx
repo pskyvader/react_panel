@@ -26,11 +26,6 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(2),
         transition:'none'
     },
-    movebutton:{
-        position:'absolute',
-        right:theme.spacing(2),
-        zIndex:theme.zIndex.mobileStepper
-    },
     button: {
         margin: theme.spacing(1),
     },
@@ -76,11 +71,6 @@ export default function RecipeReviewCard(props) {
     const CardRef = useRef();
 
 
-    const DragHandle = sortableHandle(() =>
-        <IconButton aria-label="Move" className={classes.movebutton} >  
-        <OpenWithIcon />
-        </IconButton>
-    );
 
     config_mostrar.map(x => {
         let value = element[x['field']];
@@ -132,7 +122,6 @@ export default function RecipeReviewCard(props) {
 
     const return_element = (
         <Card className={classes.root} ref={CardRef}>
-            <DragHandle />
 
             <CardActionArea focusRipple>
                 <CardContent >
