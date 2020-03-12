@@ -22,7 +22,6 @@ function ModuleList(props) {
     let fields = ['id'];
     if (config !== null && config !== false) {
         const module_data = config.hijo[0];
-        console.log(module_data.permisos.mostrar);
         const fields_filter = module_data.permisos.mostrar.filter(x =>(!action_list.includes(x['tipo']) && !action_names.includes(x['field']))  );
         // fields = fields_filter.map(x => formatField(x['field']));
         fields = fields_filter.map(x => x['field']);
@@ -30,7 +29,6 @@ function ModuleList(props) {
             x['field']=formatField(x['field']);
             return x;
         });
-        console.log(fields);
     }
 
     const vars = { first: 100, after: ''}

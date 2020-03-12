@@ -49,6 +49,9 @@ const useStyles = makeStyles(theme => ({
     },
     actions:{
         display:'block'
+    },
+    draggable:{
+        cursor:'grab'
     }
 }));
 
@@ -61,7 +64,7 @@ const action_list=['link','active','action','delete'];
 
 
 export default function RecipeReviewCard(props) {
-    const { element, config_mostrar } = props;
+    const { element, config_mostrar,drag } = props;
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const { Height, setHeight } = props;
@@ -117,7 +120,7 @@ export default function RecipeReviewCard(props) {
 
 
     const return_element = (
-        <Card className={classes.root} ref={CardRef}>
+        <Card className={classes.root+' '+ (drag?classes.draggable:'')} ref={CardRef}>
             <CardContent>
             {element_fields.map((x, i) => setElement(x, i))}
             </CardContent>

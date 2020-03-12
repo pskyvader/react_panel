@@ -11,7 +11,8 @@ const useStyles = makeStyles(theme => ({
         boxShadow: theme.shadows[12],
         transition: theme.transitions.create('', {
             duration: theme.transitions.duration.short,
-        })
+        }),
+        cursor:'grabbing'
     }
 }));
 
@@ -87,7 +88,7 @@ const InfiniteList = (props) => {
     const SortableItem = sortableElement(({ cell, style }) => {
         return (
             <div style={style}>
-                <ModuleCard element={cell} config_mostrar={config_mostrar} Height={rowHeight} setHeight={SetrowHeight} />
+                <ModuleCard element={cell} drag={enableDrag} config_mostrar={config_mostrar} Height={rowHeight} setHeight={SetrowHeight} />
             </div>
         );
     });
@@ -98,7 +99,7 @@ const InfiniteList = (props) => {
         const cell = items[startIndex];
         if (cell === undefined) { return null; }
         // return <div key={key} style={{ ...style, zIndex: zindex }}>asdfasdf</div>
-        return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
+        return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex}} />;
     }
 
 
