@@ -121,7 +121,7 @@ export default function RecipeReviewCard(props) {
 
 
     const return_element = (
-        <Card className={classes.root} ref={CardRef}>
+        <Card className={[classes.root, (drag)?classes.draggable:''].join(' ')} ref={CardRef}>
             
       <CardActionArea focusRipple>
             <CardContent >
