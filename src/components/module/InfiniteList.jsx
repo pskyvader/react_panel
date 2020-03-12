@@ -86,7 +86,7 @@ const InfiniteList = (props) => {
 
     const SortableItem = sortableElement(({ cell, style }) => {
         return (
-            <div style={style}>
+            <div style={style} tabIndex={0}>
                 <ModuleCard element={cell} config_mostrar={config_mostrar} Height={rowHeight} setHeight={SetrowHeight} />
             </div>
         );

@@ -18,13 +18,18 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { sortableHandle } from 'react-sortable-hoc';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
-import Box from '@material-ui/core/Box';
 
 import * as types from './CardTypes';
 
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(2),
+        transition:'none'
+    },
+    movebutton:{
+        position:'absolute',
+        right:theme.spacing(2),
+        zIndex:theme.zIndex.mobileStepper
     },
     button: {
         margin: theme.spacing(1),
@@ -72,7 +77,7 @@ export default function RecipeReviewCard(props) {
 
 
     const DragHandle = sortableHandle(() =>
-        <IconButton aria-label="Move">  
+        <IconButton aria-label="Move" className={classes.movebutton} >  
         <OpenWithIcon />
         </IconButton>
     );
