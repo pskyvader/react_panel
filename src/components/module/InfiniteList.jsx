@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import { sortableHandle } from 'react-sortable-hoc';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
-import Mutation from '../Mutation';
+import {CreateMutation,Mutation} from '../Mutation';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -44,6 +44,9 @@ const InfiniteList = (props) => {
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
+    const [update_mutations, Setupdate_mutations] = useState(null);
+    
+    Mutation({update_mutations});
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module } = props;
     let { items } = props;
@@ -222,9 +225,8 @@ const InfiniteList = (props) => {
             update_inputs.push(input);
             minposition++;
         });
-        const update_mutations=Mutation({table:module,multiple_inputs:update_inputs});
-        console.log(tmpitems,minposition,update_mutations);
 
+        Setupdate_mutations(CreateMutation({table:module,multiple_inputs:update_inputs}));
 
         if (list !== null) {
             // list.recomputeGridSize();
