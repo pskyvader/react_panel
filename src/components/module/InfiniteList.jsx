@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import { sortableHandle } from 'react-sortable-hoc';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
+import Mutation from '../Mutation';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -44,7 +45,7 @@ const InfiniteList = (props) => {
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
 
-    const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar } = props;
+    const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
@@ -119,7 +120,6 @@ const InfiniteList = (props) => {
         const zindex = rowCount * columnCount - startIndex;
         const cell = items[startIndex];
         if (cell === undefined) { return null; }
-        // return <div key={key} style={{ ...style, zIndex: zindex }}>asdfasdf</div>
         return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex}} />;
     }
 
@@ -214,7 +214,16 @@ const InfiniteList = (props) => {
                 tmpitems.push(items[index]);
             }
         }
-        console.log(tmpitems,minposition);
+        let update_mutations=[];
+        const idtable='id'+module;
+        tmpitems.forEach(element => {
+            let input={'orden':minposition};
+            input[idtable]=element[idtable];
+            let mutation=Mutation({table:module,input});
+            update_mutations.push(mutation);
+            minposition++;
+        });
+        console.log(tmpitems,minposition,update_mutations);
 
 
         if (list !== null) {
