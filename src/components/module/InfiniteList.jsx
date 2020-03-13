@@ -53,7 +53,6 @@ const InfiniteList = (props) => {
 
     const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
     const [update_order,data_update_order]= Mutation({ mutation_list:OrderMutation });
-    console.log(update_order,data_update_order);
 
 
     
@@ -217,18 +216,21 @@ const InfiniteList = (props) => {
                 minposition=0;
             }else{
                 minposition=(minposition===0 || items[index]['orden']<minposition)?items[index]['orden']:minposition;
-                tmpitems.push(items[index]);
+                tmpitems.push(index);
             }
         }
         let update_inputs=[];
         const idtable='id'+module;
         tmpitems.forEach(element => {
-            let input={'orden':minposition,'hashtag':element['hashtag']};
-            input[idtable]=element[idtable];
+            items[element]['orden']=minposition;
+            let input={'orden':minposition,'id':items[element][idtable]};
             update_inputs.push(input);
             minposition++;
         });
         console.log(update_inputs);
+        update_inputs.forEach(element => {
+            update_order({ variables: element });
+        });
 
         if (list !== null) {
             // list.recomputeGridSize();

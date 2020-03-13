@@ -28,6 +28,5 @@ export const CreateMutation = ({ table,fields, input }) => {
 
 export const Mutation = ({ mutation_list }) => {
     const [addTodo, { data }] = useMutation(mutation_list);
-    console.log(addTodo,data);
     return [addTodo,  data ];
 }

@@ -57,7 +57,7 @@ function ModuleList(props) {
     }
     `.replace('$table', table_query).replace('$fields', fields).replace('$tipo', (tipo > 0) ? 'tipo:' + tipo : ''));
 
-    const { items, loading, loadMore, hasNextPage, error } = Resolve({ query: GET_LIST, table: table_query, vars: vars });
+    let { items, loading, loadMore, hasNextPage, error } = Resolve({ query: GET_LIST, table: table_query, vars: vars });
 
     if (error) {
         return error;
