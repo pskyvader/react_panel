@@ -1,9 +1,5 @@
 import React from 'react';
 import CardHeader from '@material-ui/core/CardHeader';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -13,7 +9,8 @@ import CancelIcon from '@material-ui/icons/Cancel';
 
 
 export const active = (key, value, classes) => (
-    <Button
+    <Button 
+    key={key}
         size="small"
         variant="outlined"
         color={(value) ? "primary" : "secondary"}
@@ -26,22 +23,23 @@ export const active = (key, value, classes) => (
 
 
 export const link = (key, value, classes) => (
-    <Button href={value}>
+    <Button key={key} href={value}>
         {key}
     </Button>
 )
 
 export const image = (key, value, classes) => (
-    <CardMedia className={classes.media} image={value} title={key} />
+    <CardMedia key={key} className={classes.media} image={value} title={key} />
 )
 
 export const text = (key, value, classes) => (
-    <Typography noWrap variant="body2" color="textSecondary" component="p">
+    <Typography key={key} noWrap variant="body2" color="textSecondary" component="p">
         {key + ': ' + value}
     </Typography>
 )
 export const title = (key, value, classes) => (
-    <CardHeader noWrap
+    <CardHeader
+        key={key}
         titleTypographyProps={{ noWrap: true }}
         className={classes.header}
         // avatar={<Avatar aria-label="recipe" className={classes.avatar}> R </Avatar>}

@@ -21,9 +21,11 @@ const useStyles = makeStyles(theme => ({
         position:'absolute',
         right:theme.spacing(3),
         top:theme.spacing(3),
-        padding:theme.spacing(2),
         zIndex:1,
     },
+    moveicon:{
+        fontSize:'1.75rem'
+    }
 }));
 
 
@@ -50,7 +52,7 @@ const InfiniteList = (props) => {
     
     const DragHandle = sortableHandle(() =>
         <IconButton aria-label="Move" className={classes.movebutton} >  
-        <OpenWithIcon />
+        <OpenWithIcon  className={classes.moveicon}/>
         </IconButton>
     );
 
