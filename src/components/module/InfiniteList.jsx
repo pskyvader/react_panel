@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import { sortableHandle } from 'react-sortable-hoc';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
-import {CreateMutation,Mutation} from '../Mutation';
+import {CreateMutation} from '../Mutation';
 import { useMutation } from '@apollo/react-hooks';
 
 const useStyles = makeStyles(theme => ({
@@ -52,7 +52,8 @@ const InfiniteList = (props) => {
     let currentNode = null;
 
     const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
-    const [update_order,data_update_order]= Mutation({ mutation_list:OrderMutation });
+    const [update_order,data_update_order]= useMutation(OrderMutation);
+    
 
 
     
@@ -230,6 +231,7 @@ const InfiniteList = (props) => {
         console.log(update_inputs);
         update_inputs.forEach(element => {
             update_order({ variables: element });
+            console.log(data_update_order);
         });
 
         if (list !== null) {
