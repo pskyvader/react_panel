@@ -214,15 +214,15 @@ const InfiniteList = (props) => {
                 tmpitems.push(items[index]);
             }
         }
-        let update_mutations=[];
+        let update_inputs=[];
         const idtable='id'+module;
         tmpitems.forEach(element => {
             let input={'orden':minposition};
             input[idtable]=element[idtable];
-            let mutation=Mutation({table:module,input});
-            update_mutations.push(mutation);
+            update_inputs.push(input);
             minposition++;
         });
+        const update_mutations=Mutation({table:module,update_inputs});
         console.log(tmpitems,minposition,update_mutations);
 
 
