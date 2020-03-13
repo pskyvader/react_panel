@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { sortableHandle } from 'react-sortable-hoc';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
 import {CreateMutation,Mutation} from '../Mutation';
+import { useMutation } from '@apollo/react-hooks';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -49,6 +50,11 @@ const InfiniteList = (props) => {
     let { items } = props;
     let list = null;
     let currentNode = null;
+
+    const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
+    const [update_order,data_update_order]= Mutation({ mutation_list:OrderMutation });
+    console.log(update_order,data_update_order);
+
 
     
     const DragHandle = sortableHandle(() =>
@@ -222,10 +228,7 @@ const InfiniteList = (props) => {
             update_inputs.push(input);
             minposition++;
         });
-
-        const update_mutations=CreateMutation({table:module,multiple_inputs:update_inputs});
-    
-        Mutation({update_mutations});
+        console.log(update_inputs);
 
         if (list !== null) {
             // list.recomputeGridSize();
