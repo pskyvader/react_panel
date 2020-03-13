@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
         position:'absolute',
         right:theme.spacing(3),
         top:theme.spacing(3),
-        zIndex:theme.zIndex.mobileStepper
+        padding:theme.spacing(2),
+        zIndex:1,
     },
 }));
 
