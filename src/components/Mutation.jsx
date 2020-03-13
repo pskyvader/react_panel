@@ -3,13 +3,13 @@ import { gql } from 'apollo-boost';
 import ErrorLink from './ErrorLink';
 
 function Mutation(props) {
-    const {table,input}=props;
+    const { table, input } = props;
 
-    let input_final=input.map((k,v)=>{
-        return k+v;
-    });
+    let input_final = "{"+ Object.keys(input).map((key, index) => {
+        return key +":"+ input[key];
+    }) +"}";
 
-    console.log(input_final);
+    console.log(input, input_final);
     const table_update = 'update' + table.charAt(0).toUpperCase() + table.slice(1);
     const UPDATE_LIST = gql(`
     mutation update_list{
@@ -19,7 +19,7 @@ function Mutation(props) {
             }
         }
     }
-    `.replace('$table', table).replace('$table_update', table_update).replace('$input', input.toString()));
+    `.replace('$table_update', table_update).replace('$table', table).replace('$input', input_final));
     return UPDATE_LIST;
 }
 
