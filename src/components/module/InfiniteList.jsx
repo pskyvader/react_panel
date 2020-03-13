@@ -222,7 +222,7 @@ const InfiniteList = (props) => {
             update_inputs.push(input);
             minposition++;
         });
-        const update_mutations=Mutation({table:module,update_inputs});
+        const update_mutations=Mutation({table:module,multiple_inputs:update_inputs});
         console.log(tmpitems,minposition,update_mutations);
 
 
