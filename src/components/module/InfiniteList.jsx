@@ -44,9 +44,6 @@ const InfiniteList = (props) => {
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
-    const [update_mutations, Setupdate_mutations] = useState(null);
-    
-    Mutation({update_mutations});
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module } = props;
     let { items } = props;
@@ -226,7 +223,9 @@ const InfiniteList = (props) => {
             minposition++;
         });
 
-        Setupdate_mutations(CreateMutation({table:module,multiple_inputs:update_inputs}));
+        const update_mutations=CreateMutation({table:module,multiple_inputs:update_inputs});
+    
+        Mutation({update_mutations});
 
         if (list !== null) {
             // list.recomputeGridSize();

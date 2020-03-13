@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import ErrorLink from './ErrorLink';
 
@@ -41,10 +41,6 @@ export const CreateMutation = ({ table, multiple_inputs }) => {
 }
 
 export const Mutation = ({ mutation_list }) => {
-    const { loading, error, data } = useQuery(mutation_list);
-    if (loading) return null;
-    if (error) return { 'error': error };
-    if (data.module === null) {
-        return false;
-    }
+    const props = useMutation(mutation_list);
+    console.log(props);
 }
