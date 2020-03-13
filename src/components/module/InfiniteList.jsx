@@ -217,7 +217,7 @@ const InfiniteList = (props) => {
         let update_inputs=[];
         const idtable='id'+module;
         tmpitems.forEach(element => {
-            let input={'orden':minposition};
+            let input={'orden':minposition,'hashtag':element['hashtag']};
             input[idtable]=element[idtable];
             update_inputs.push(input);
             minposition++;

@@ -8,14 +8,6 @@ function Mutation(props) {
     multiple_inputs.forEach((input,index) => {
         query_list += unitquery(input,index, table);
     });
-
-
-    // let query = `
-    // mutation update_list{
-    //     $unitquery
-    // }
-    // `.replace('$unitquery', query_list);
-
     console.log(query_list);
 
     const UPDATE_LIST = gql(query_list);
@@ -24,17 +16,13 @@ function Mutation(props) {
 
 
 const unitquery=(input,index, table) =>{
-    let input_final = "{" + Object.keys(input).map(key =>  key + ':"' + input[key]+'"' ) + "}";
-
-
     const table_update = 'update' + table.charAt(0).toUpperCase() + table.slice(1);
     let unitquery = `
-        $table_update(input:$input){
-            $table{
-                id
-            }
+    $table_update(input:$input){
+        $table{
+            id
         }
-    `.replace('$table_update', table_update).replace('$table', table).replace('$input', input_final);
+    }`.replace('$table_update', table_update).replace('$table', table).replace('$input', stringify(input));
     let query = `
     mutation update_list_$index{
         $unitquery
@@ -44,6 +32,14 @@ const unitquery=(input,index, table) =>{
 }
 
 
+
+function stringify(obj_from_json) {
+    if (typeof obj_from_json !== "object" || Array.isArray(obj_from_json)){
+        return JSON.stringify(obj_from_json);
+    }
+    let props = Object.keys(obj_from_json).map(key => `${key}:${stringify(obj_from_json[key])}`).join(",");
+    return `{${props}}`;
+}
 
 
 
