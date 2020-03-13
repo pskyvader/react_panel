@@ -4,7 +4,12 @@ import ErrorLink from './ErrorLink';
 
 function Mutation(props) {
     const {table,input}=props;
-    console.log(input);
+
+    let input_final=input.map((k,v)=>{
+        return k+v;
+    });
+
+    console.log(input_final);
     const table_update = 'update' + table.charAt(0).toUpperCase() + table.slice(1);
     const UPDATE_LIST = gql(`
     mutation update_list{
@@ -14,7 +19,7 @@ function Mutation(props) {
             }
         }
     }
-    `.replace('$table', table).replace('$table_update', table_update).replace('$input', JSON.stringify(input)));
+    `.replace('$table', table).replace('$table_update', table_update).replace('$input', input.toString()));
     return UPDATE_LIST;
 }
 
