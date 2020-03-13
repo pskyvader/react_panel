@@ -202,14 +202,17 @@ const InfiniteList = (props) => {
             currentNode = null;
         }
         if (oldIndex === newIndex) { return; }
+        console.log(oldIndex,newIndex);
+        console.log(items[oldIndex],items[newIndex]);
         items = arrayMove(items, oldIndex, newIndex);
+        console.log(items[oldIndex],items[newIndex]);
         if (list !== null) {
             // list.recomputeGridSize();
             list.forceUpdate();
         }
     };
     const updateBeforeSortStart = ({ node }) => {
-        currentNode = node.children[0];
+        currentNode = node.children[1];
         currentNode.classtmp = currentNode.className;
         currentNode.className += " " + classes.root;
     }
