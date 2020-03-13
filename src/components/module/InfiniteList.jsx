@@ -228,16 +228,16 @@ const InfiniteList = (props) => {
             update_inputs.push(input);
             minposition++;
         });
-        console.log(update_inputs);
-        update_inputs.forEach(element => {
-            update_order({ variables: element });
-            console.log(data_update_order);
-        });
 
         if (list !== null) {
             // list.recomputeGridSize();
             list.forceUpdate();
         }
+        console.log(update_inputs);
+        update_inputs.forEach(element => {
+            console.log(update_order({ variables: element }));
+            console.log(data_update_order);
+        });
     };
     const updateBeforeSortStart = ({ node }) => {
         currentNode = node.children[1];
