@@ -202,10 +202,21 @@ const InfiniteList = (props) => {
             currentNode = null;
         }
         if (oldIndex === newIndex) { return; }
-        console.log(oldIndex,newIndex);
-        console.log(items[oldIndex],items[newIndex]);
         items = arrayMove(items, oldIndex, newIndex);
-        console.log(items[oldIndex],items[newIndex]);
+
+        let tmpitems=[];
+        let minposition=0;
+        for (let index = Math.min(oldIndex,newIndex)-1; index <  Math.max(oldIndex,newIndex)+1; index++) {
+            if (index<0){
+                minposition=0;
+            }else{
+                minposition=(minposition===0 || items[index]['orden']<minposition)?items[index]['orden']:minposition;
+                tmpitems.push(items[index]);
+            }
+        }
+        console.log(tmpitems,minposition);
+
+
         if (list !== null) {
             // list.recomputeGridSize();
             list.forceUpdate();
