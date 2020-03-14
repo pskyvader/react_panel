@@ -243,10 +243,10 @@ const InfiniteList = (props) => {
             // list.recomputeGridSize();
             list.forceUpdate();
         }
-        // update_inputs.forEach(element => {
-        //     update_order({ variables: element });
-        //     console.log(data_update_order);
-        // });
+        update_inputs.forEach(element => {
+            update_order({ variables: element });
+            console.log(data_update_order);
+        });
     };
     const updateBeforeSortStart = ({ node }) => {
         currentNode = node.children[1];
