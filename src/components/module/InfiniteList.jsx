@@ -55,12 +55,12 @@ const InfiniteList = (props) => {
     const [update_order,data_update_order]= useMutation(OrderMutation,{
         update(cache, { data: { update_order } }) {
             console.log(cache,update_order);
-          const { todos } = cache.readQuery({ query: query,variables:variables });
+          const { todos } = cache.readQuery({ query: query});
           console.log(todos);
-          cache.writeQuery({
-            query: query,
-            data: { todos: todos.concat([update_order]) },
-          });
+        //   cache.writeQuery({
+        //     query: query,
+        //     data: { todos: todos.concat([update_order]) },
+        //   });
         }
       });
     
@@ -171,8 +171,6 @@ const InfiniteList = (props) => {
         cellwidth(width);
         calculateRowCount();
 
-        console.log('grid');
-
         const gridHeight = getHeight(height);
         return (
             <Grid
@@ -245,9 +243,10 @@ const InfiniteList = (props) => {
             // list.recomputeGridSize();
             list.forceUpdate();
         }
-        update_inputs.forEach(element => {
-            update_order({ variables: element });
-        });
+        // update_inputs.forEach(element => {
+        //     update_order({ variables: element });
+        //     console.log(data_update_order);
+        // });
     };
     const updateBeforeSortStart = ({ node }) => {
         currentNode = node.children[1];
