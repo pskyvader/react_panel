@@ -9,7 +9,6 @@ import { useMutation } from '@apollo/react-hooks';
 //     return `{${props}}`;
 // }
 
-let count=0;
 
 export const CreateMutation = ({ table, fields, input }) => {
     const table_update = 'update' + table.charAt(0).toUpperCase() + table.slice(1);
@@ -25,31 +24,49 @@ export const CreateMutation = ({ table, fields, input }) => {
     return UPDATE_LIST;
 }
 
+let count=0;
+
 export const Mutation = ({ mutationquery, query, variables, mutation = "" }) => {
     let extrafunction = {};
     if (mutation === "order") {
         extrafunction = {
+            onError(data){
+                count--;
+                if (count<0){
+                    count=0;
+                }
+                console.log(data,count);
+            },
             update(cache, { data: mf }) {
-                const querycache = cache.readQuery({ query: query, variables: variables });
-                const querykey = Object.keys(querycache)[0];
-                const elementcache = querycache[querykey];
+                count--;
+                if (count<0){
+                    count=0;
+                }
+                if (count===0){
+                    const querycache = cache.readQuery({ query: query, variables: variables });
+                    const querykey = Object.keys(querycache)[0];
+                    const elementcache = querycache[querykey];
+    
+                    console.log(elementcache.edges,count);
+    
+                    let finaldata = {};
+                    finaldata[querykey] = elementcache;
+    
+                    cache.writeQuery({
+                        query: query,
+                        variables: variables,
+                        data: finaldata,
+                    });
 
-                console.log(elementcache.edges);
-
-                let finaldata = {};
-                finaldata[querykey] = elementcache;
-
-                cache.writeQuery({
-                    query: query,
-                    variables: variables,
-                    data: finaldata,
-                });
-            }
+                }
+            },
         }
     }
 
     const [mutation_function, data] = useMutation(mutationquery, extrafunction);
     const count_mutations=(props)=>{
+        count++;
+        console.log(count);
         return mutation_function(props);
     }
     return count_mutations;

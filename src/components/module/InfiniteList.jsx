@@ -159,6 +159,7 @@ const InfiniteList = (props) => {
         calculateColumnCount(width);
         cellwidth(width);
         calculateRowCount();
+        console.log('grid');
 
         const gridHeight = getHeight(height);
         return (
