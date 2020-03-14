@@ -227,14 +227,14 @@ const InfiniteList = (props) => {
             update_inputs.push(input);
             minposition++;
         });
+        update_inputs.forEach(element => {
+            update_order({ variables: element });
+        });
 
         if (list !== null) {
             // list.recomputeGridSize();
             list.forceUpdate();
         }
-        update_inputs.forEach(element => {
-            update_order({ variables: element });
-        });
     };
     const updateBeforeSortStart = ({ node }) => {
         currentNode = node.children[1];

@@ -9,6 +9,8 @@ import { useMutation } from '@apollo/react-hooks';
 //     return `{${props}}`;
 // }
 
+let count=0;
+
 export const CreateMutation = ({ table, fields, input }) => {
     const table_update = 'update' + table.charAt(0).toUpperCase() + table.slice(1);
     let query_list = `
@@ -47,5 +49,8 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "" }) => 
     }
 
     const [mutation_function, data] = useMutation(mutationquery, extrafunction);
-    return mutation_function;
+    const count_mutations=(props)=>{
+        return mutation_function(props);
+    }
+    return count_mutations;
 }
