@@ -9,7 +9,7 @@ import { useMutation } from '@apollo/react-hooks';
 //     return `{${props}}`;
 // }
 
-export const CreateMutation = ({ table,fields, input }) => {
+export const CreateMutation = ({ table, fields, input }) => {
     const table_update = 'update' + table.charAt(0).toUpperCase() + table.slice(1);
     let query_list = `
     mutation update_element(${fields}){
@@ -23,23 +23,29 @@ export const CreateMutation = ({ table,fields, input }) => {
     return UPDATE_LIST;
 }
 
-export const Mutation=({mutationquery,query,variables})=>{
-    const [mutation_function,data]= useMutation(mutationquery,{
-        update(cache, { data: { mutation_function } } ) {
-            console.log(cache,mutation_function,query,variables);
-          const querycache = cache.readQuery({ query: query,variables:variables});
-          const querykey=Object.keys(querycache)[0];
-          const elementcache=querycache[querykey];
-          
-          console.log(querycache,querykey,elementcache);
-          let finaldata={};
-          finaldata[querykey]=elementcache;
-          cache.writeQuery({
-            query: query,
-            variables:variables,
-            data: finaldata,
-          });
+export const Mutation = ({ mutationquery, query, variables, mutation = "" }) => {
+    let extrafunction = {};
+    if (mutation === "order") {
+        extrafunction = {
+            update(cache, { data: mf }) {
+                const querycache = cache.readQuery({ query: query, variables: variables });
+                const querykey = Object.keys(querycache)[0];
+                const elementcache = querycache[querykey];
+
+                console.log(elementcache.edges);
+
+                let finaldata = {};
+                finaldata[querykey] = elementcache;
+
+                cache.writeQuery({
+                    query: query,
+                    variables: variables,
+                    data: finaldata,
+                });
+            }
         }
-      });
+    }
+
+    const [mutation_function, data] = useMutation(mutationquery, extrafunction);
     return mutation_function;
 }
