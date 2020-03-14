@@ -46,13 +46,23 @@ const InfiniteList = (props) => {
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
 
-    const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module } = props;
+    const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module,query } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
 
     const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
-    const [update_order,data_update_order]= useMutation(OrderMutation);
+    const [update_order,data_update_order]= useMutation(OrderMutation,{
+        update(cache, { data: { update_order } }) {
+            console.log(cache,update_order);
+          const { todos } = cache.readQuery(query);
+          console.log(todos);
+          cache.writeQuery({
+            query: query.query,
+            data: { todos: todos.concat([update_order]) },
+          });
+        }
+      });
     
 
 
@@ -233,10 +243,8 @@ const InfiniteList = (props) => {
             // list.recomputeGridSize();
             list.forceUpdate();
         }
-        console.log(update_inputs);
         update_inputs.forEach(element => {
-            console.log(update_order({ variables: element }));
-            console.log(data_update_order);
+            update_order({ variables: element });
         });
     };
     const updateBeforeSortStart = ({ node }) => {

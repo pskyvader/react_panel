@@ -79,6 +79,7 @@ function ModuleList(props) {
             loadMore={loadMore}
             hasNextPage={hasNextPage}
             enableDrag={fields.includes("orden")}
+            query={{ query: GET_LIST, table: table_query, vars: vars }}
             {...props}
         />
     )
