@@ -26,7 +26,7 @@ export const CreateMutation = ({ table, fields, input }) => {
 
 let count=0;
 
-export const Mutation = ({ mutationquery, query, variables, mutation = "" }) => {
+export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsorting }) => {
     let extrafunction = {};
     if (mutation === "order") {
         extrafunction = {
@@ -43,6 +43,7 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "" }) => 
                     count=0;
                 }
                 if (count===0){
+                    Setsorting(false);
                     const querycache = cache.readQuery({ query: query, variables: variables });
                     const querykey = Object.keys(querycache)[0];
                     const elementcache = querycache[querykey];
@@ -66,8 +67,11 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "" }) => 
     const [mutation_function, data] = useMutation(mutationquery, extrafunction);
     const count_mutations=(props)=>{
         count++;
+        if (count===1){
+            Setsorting(true);
+        }
         console.log(count);
         return mutation_function(props);
     }
-    return count_mutations;
+    return [count_mutations,count];
 }

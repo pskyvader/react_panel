@@ -44,6 +44,7 @@ const InfiniteList = (props) => {
     const [columnWidth, SetcolumnWidth] = useState(0);
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
+    const [sorting, Setsorting] = useState(false);
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module,query,variables } = props;
     let { items } = props;
@@ -51,7 +52,7 @@ const InfiniteList = (props) => {
     let currentNode = null;
 
     const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
-    const update_order= Mutation({mutationquery:OrderMutation,query,variables,mutation:'order'});
+    let update_order= Mutation({mutationquery:OrderMutation,query,variables,mutation:'order',Setsorting});
     
 
 
@@ -159,6 +160,10 @@ const InfiniteList = (props) => {
         calculateColumnCount(width);
         cellwidth(width);
         calculateRowCount();
+        console.log('sorting',sorting);
+        if (sorting){
+            return '';
+        }
         console.log('grid');
 
         const gridHeight = getHeight(height);
