@@ -35,7 +35,9 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                 if (count<0){
                     count=0;
                 }
-                console.log(data,count);
+                if (count===0){
+                    Setsorting(false);
+                }
             },
             update(cache, { data: mf }) {
                 count--;
@@ -43,7 +45,6 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                     count=0;
                 }
                 if (count===0){
-                    Setsorting(false);
                     const querycache = cache.readQuery({ query: query, variables: variables });
                     const querykey = Object.keys(querycache)[0];
                     const elementcache = querycache[querykey];
@@ -58,6 +59,7 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                         variables: variables,
                         data: finaldata,
                     });
+                    Setsorting(false);
 
                 }
             },
@@ -70,8 +72,7 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
         if (count===1){
             Setsorting(true);
         }
-        console.log(count);
         return mutation_function(props);
     }
-    return [count_mutations,count];
+    return count_mutations;
 }
