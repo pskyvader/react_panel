@@ -9,7 +9,7 @@ import arrayMove from 'array-move';
 import { sortableHandle } from 'react-sortable-hoc';
 
 import ModuleCard from './ModuleCard';
-import {CreateMutation,Mutation} from '../Mutation';
+import { CreateMutation, Mutation } from '../Mutation';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -18,14 +18,14 @@ const useStyles = makeStyles(theme => ({
             duration: theme.transitions.duration.short,
         })
     },
-    movebutton:{
-        position:'absolute',
-        right:theme.spacing(3),
-        top:theme.spacing(3),
-        zIndex:1,
+    movebutton: {
+        position: 'absolute',
+        right: theme.spacing(3),
+        top: theme.spacing(3),
+        zIndex: 1,
     },
-    moveicon:{
-        fontSize:'1.75rem'
+    moveicon: {
+        fontSize: '1.75rem'
     }
 }));
 
@@ -46,38 +46,37 @@ const InfiniteList = (props) => {
     const [scroll_row, Setscroll_row] = useState(0);
     const [sorting, Setsorting] = useState(false);
 
-    const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module,query,variables } = props;
+    const { moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
 
-    const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
-    let update_order= Mutation({mutationquery:OrderMutation,query,variables,mutation:'order',Setsorting});
-    
+    const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
+    let update_order = Mutation({ mutationquery: OrderMutation, query, variables, mutation: 'order', Setsorting });
 
 
-    
+
+
     const DragHandle = sortableHandle(() =>
-        <IconButton aria-label="Move" className={classes.movebutton} >  
-        <OpenWithIcon  className={classes.moveicon}/>
+        <IconButton aria-label="Move" className={classes.movebutton} >
+            <OpenWithIcon className={classes.moveicon} />
         </IconButton>
     );
 
-    const stop_render=(width=1)=>{
-        console.log(sorting , moreItemsLoading , columnCount , rowCount , columnWidth , width);
-        if (sorting || moreItemsLoading || columnCount===0 || rowCount===0 || columnWidth===0 || width===0){
+    const stop_render = (width = 1) => {
+        if (sorting || moreItemsLoading || columnCount === 0 || rowCount === 0 || columnWidth === 0 || width === 0) {
             return true;
         }
         return false;
     }
 
 
-    
+
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
-            loadMore(function(val){
-                let current_row=Math.round(rowCount-((scrollHeight-scrollTop)/rowHeight));
-                if (current_row!==scroll_row){
+            loadMore(function (val) {
+                let current_row = Math.round(rowCount - ((scrollHeight - scrollTop) / rowHeight));
+                if (current_row !== scroll_row) {
                     Setscroll_row(current_row);
                 }
             });
@@ -134,7 +133,7 @@ const InfiniteList = (props) => {
         const zindex = rowCount * columnCount - startIndex;
         const cell = items[startIndex];
         if (cell === undefined) { return null; }
-        return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex}} />;
+        return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
     }
 
 
@@ -165,14 +164,6 @@ const InfiniteList = (props) => {
 
     const RenderGrid = (props) => {
         const { width, height, onRowsRendered, getRef } = props;
-        calculateColumnCount(width);
-        cellwidth(width);
-        calculateRowCount();
-        
-        if (stop_render(width)){
-            return ''
-        }
-        console.log('grid');
 
         const gridHeight = getHeight(height);
         return (
@@ -204,7 +195,7 @@ const InfiniteList = (props) => {
     const registerListRef = (listInstance) => {
         if (list !== null) {
             if (list.state.scrollTop !== 0) {
-                let current_row=Math.round(rowCount-(((rowHeight*rowCount)-list.state.scrollTop)/rowHeight));
+                let current_row = Math.round(rowCount - (((rowHeight * rowCount) - list.state.scrollTop) / rowHeight));
                 Setscroll_row(current_row);
             }
         }
@@ -212,7 +203,17 @@ const InfiniteList = (props) => {
         list = listInstance;
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
-    const _onResize = ({ width }) => {console.log(width); calculateColumnCount(width); cellwidth(width); }
+    let tmpwidth=0;
+    const _onResize = ({ width }) => { 
+        console.log('start width',width,tmpwidth);
+        tmpwidth=width;
+        setTimeout(() => {
+            console.log(width,tmpwidth,width===tmpwidth);
+        }, 200);
+
+        calculateColumnCount(width); 
+        cellwidth(width); 
+    }
 
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
@@ -223,21 +224,21 @@ const InfiniteList = (props) => {
         if (oldIndex === newIndex) { return; }
         items = arrayMove(items, oldIndex, newIndex);
 
-        let tmpitems=[];
-        let minposition=0;
-        for (let index = Math.min(oldIndex,newIndex)-1; index <  Math.max(oldIndex,newIndex)+1; index++) {
-            if (index<0){
-                minposition=0;
-            }else{
-                minposition=(minposition===0 || items[index]['orden']<minposition)?items[index]['orden']:minposition;
+        let tmpitems = [];
+        let minposition = 0;
+        for (let index = Math.min(oldIndex, newIndex) - 1; index < Math.max(oldIndex, newIndex) + 1; index++) {
+            if (index < 0) {
+                minposition = 0;
+            } else {
+                minposition = (minposition === 0 || items[index]['orden'] < minposition) ? items[index]['orden'] : minposition;
                 tmpitems.push(index);
             }
         }
-        let update_inputs=[];
-        const idtable='id'+module;
+        let update_inputs = [];
+        const idtable = 'id' + module;
         tmpitems.forEach(element => {
-            items[element]['orden']=minposition;
-            let input={'orden':minposition,'id':items[element][idtable]};
+            items[element]['orden'] = minposition;
+            let input = { 'orden': minposition, 'id': items[element][idtable] };
             update_inputs.push(input);
             minposition++;
         });
@@ -263,7 +264,10 @@ const InfiniteList = (props) => {
                 height={height}
                 onResize={_onResize}>
                 {({ width }) => {
-                    if (stop_render(width)){
+                    calculateColumnCount(width);
+                    cellwidth(width);
+                    calculateRowCount();
+                    if (stop_render(width)) {
                         return ''
                     }
                     return <SortableVirtualList
