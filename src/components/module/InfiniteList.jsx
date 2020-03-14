@@ -160,8 +160,9 @@ const InfiniteList = (props) => {
         calculateColumnCount(width);
         cellwidth(width);
         calculateRowCount();
-        console.log('sorting',sorting);
-        if (sorting){
+        
+        console.log('sorting',rowHeight,scroll_row);
+        if (sorting || moreItemsLoading || columnCount===0 || rowCount===0 || columnWidth===0){
             return '';
         }
         console.log('grid');
@@ -204,7 +205,7 @@ const InfiniteList = (props) => {
         list = listInstance;
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
-    const _onResize = ({ width }) => { calculateColumnCount(width); cellwidth(width); }
+    const _onResize = ({ width }) => { SetcolumnCount(0); calculateColumnCount(width); cellwidth(width); }
 
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
