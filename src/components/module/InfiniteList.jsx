@@ -216,8 +216,8 @@ const InfiniteList = (props) => {
     }
     const get_width=(width)=>{
             console.log(width,basewidth,width===basewidth);
-            calculateColumnCount(width); 
-            cellwidth(width); 
+            // calculateColumnCount(width); 
+            // cellwidth(width); 
     };
 
 
