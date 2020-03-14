@@ -63,6 +63,14 @@ const InfiniteList = (props) => {
         </IconButton>
     );
 
+    const stop_render=(width=1)=>{
+        console.log(sorting , moreItemsLoading , columnCount , rowCount , columnWidth , width);
+        if (sorting || moreItemsLoading || columnCount===0 || rowCount===0 || columnWidth===0 || width===0){
+            return true;
+        }
+        return false;
+    }
+
 
     
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
@@ -161,9 +169,8 @@ const InfiniteList = (props) => {
         cellwidth(width);
         calculateRowCount();
         
-        console.log('sorting',rowHeight,scroll_row);
-        if (sorting || moreItemsLoading || columnCount===0 || rowCount===0 || columnWidth===0){
-            return '';
+        if (stop_render(width)){
+            return ''
         }
         console.log('grid');
 
@@ -205,7 +212,7 @@ const InfiniteList = (props) => {
         list = listInstance;
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
-    const _onResize = ({ width }) => { SetcolumnCount(0); calculateColumnCount(width); cellwidth(width); }
+    const _onResize = ({ width }) => {console.log(width); calculateColumnCount(width); cellwidth(width); }
 
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
@@ -256,6 +263,9 @@ const InfiniteList = (props) => {
                 height={height}
                 onResize={_onResize}>
                 {({ width }) => {
+                    if (stop_render(width)){
+                        return ''
+                    }
                     return <SortableVirtualList
                         getRef={registerListRef}
                         items={items}
