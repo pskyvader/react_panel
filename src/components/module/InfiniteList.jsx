@@ -206,20 +206,19 @@ const InfiniteList = (props) => {
     const SortableVirtualList = sortableContainer(RenderGrid);
     const _onResize = ({ width }) => {
         console.log('start width',width,basewidth);
+
+        setTimeout(get_width, 1000,width);
         Setbasewidth(width);
 
-        setTimeout(() => {
+        if (width>0 && columnCount===0){
+            calculateColumnCount(width); 
+        }
+    }
+    const get_width=(width)=>{
             console.log(width,basewidth,width===basewidth);
             calculateColumnCount(width); 
             cellwidth(width); 
-        }, 100);
-        if (width!==0){
-            
-            calculateColumnCount(width); 
-            cellwidth(width); 
-        }
-
-    }
+    };
 
 
 
