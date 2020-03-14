@@ -53,10 +53,13 @@ const InfiniteList = (props) => {
 
     const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
     const [update_order,data_update_order]= useMutation(OrderMutation,{
-        update(cache, { data: { uo } } ) {
-            console.log(cache,uo,query);
-          const { todos } = cache.readQuery({ query: query});
-          console.log(todos);
+        update(cache, { data: { update_order } } ) {
+            console.log(cache,update_order,query,variables);
+          const querycache = cache.readQuery({ query: query,variables:variables});
+          const querykey=Object.keys(querycache)[0];
+          const elementcache=querycache[querykey];
+          
+          console.log(querycache,querykey,elementcache);
         //   cache.writeQuery({
         //     query: query,
         //     data: { todos: todos.concat([update_order]) },
@@ -245,7 +248,6 @@ const InfiniteList = (props) => {
         }
         update_inputs.forEach(element => {
             update_order({ variables: element });
-            console.log(data_update_order);
         });
     };
     const updateBeforeSortStart = ({ node }) => {
