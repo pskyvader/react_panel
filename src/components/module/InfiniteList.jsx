@@ -210,12 +210,17 @@ const InfiniteList = (props) => {
 
         setTimeout(() => {
             console.log(width,basewidth,width===basewidth);
-            Setbasewidth(width);
-        }, 50);
+            calculateColumnCount(width); 
+            cellwidth(width); 
+        }, 100);
+        if (width!==0){
+            
+            calculateColumnCount(width); 
+            cellwidth(width); 
+        }
 
-        calculateColumnCount(width); 
-        cellwidth(width); 
     }
+
 
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
