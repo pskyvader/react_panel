@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { AutoSizer, Grid, WindowScroller, InfiniteLoader } from 'react-virtualized';
-import ModuleCard from './ModuleCard';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import OpenWithIcon from '@material-ui/icons/OpenWith';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
-import { makeStyles } from '@material-ui/core/styles';
-
-import IconButton from '@material-ui/core/IconButton';
 import { sortableHandle } from 'react-sortable-hoc';
-import OpenWithIcon from '@material-ui/icons/OpenWith';
-import {CreateMutation} from '../Mutation';
-import { useMutation } from '@apollo/react-hooks';
+
+import ModuleCard from './ModuleCard';
+import {CreateMutation,Mutation} from '../Mutation';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -52,20 +51,7 @@ const InfiniteList = (props) => {
     let currentNode = null;
 
     const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
-    const [update_order,data_update_order]= useMutation(OrderMutation,{
-        update(cache, { data: { update_order } } ) {
-            console.log(cache,update_order,query,variables);
-          const querycache = cache.readQuery({ query: query,variables:variables});
-          const querykey=Object.keys(querycache)[0];
-          const elementcache=querycache[querykey];
-          
-          console.log(querycache,querykey,elementcache);
-        //   cache.writeQuery({
-        //     query: query,
-        //     data: { todos: todos.concat([update_order]) },
-        //   });
-        }
-      });
+    const update_order= Mutation({mutationquery:OrderMutation,query,variables,mutation:'order'});
     
 
 

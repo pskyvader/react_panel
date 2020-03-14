@@ -1,4 +1,5 @@
 import { gql } from 'apollo-boost';
+import { useMutation } from '@apollo/react-hooks';
 
 // const stringify = (obj_from_json) => {
 //     if (typeof obj_from_json !== "object" || Array.isArray(obj_from_json)) {
@@ -20,4 +21,25 @@ export const CreateMutation = ({ table,fields, input }) => {
       }`;
     const UPDATE_LIST = gql(query_list);
     return UPDATE_LIST;
+}
+
+export const Mutation=({mutationquery,query,variables})=>{
+    const [mutation_function,data]= useMutation(mutationquery,{
+        update(cache, { data: { mutation_function } } ) {
+            console.log(cache,mutation_function,query,variables);
+          const querycache = cache.readQuery({ query: query,variables:variables});
+          const querykey=Object.keys(querycache)[0];
+          const elementcache=querycache[querykey];
+          
+          console.log(querycache,querykey,elementcache);
+          let finaldata={};
+          finaldata[querykey]=elementcache;
+          cache.writeQuery({
+            query: query,
+            variables:variables,
+            data: finaldata,
+          });
+        }
+      });
+    return mutation_function;
 }
