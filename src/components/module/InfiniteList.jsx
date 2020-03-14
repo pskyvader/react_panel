@@ -45,6 +45,7 @@ const InfiniteList = (props) => {
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
     const [sorting, Setsorting] = useState(false);
+    const [basewidth, Setbasewidth] = useState(0);
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables } = props;
     let { items } = props;
@@ -203,13 +204,14 @@ const InfiniteList = (props) => {
         list = listInstance;
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
-    let tmpwidth=0;
-    const _onResize = ({ width }) => { 
-        console.log('start width',width,tmpwidth);
-        tmpwidth=width;
+    const _onResize = ({ width }) => {
+        console.log('start width',width,basewidth);
+        Setbasewidth(width);
+
         setTimeout(() => {
-            console.log(width,tmpwidth,width===tmpwidth);
-        }, 200);
+            console.log(width,basewidth,width===basewidth);
+            Setbasewidth(width);
+        }, 50);
 
         calculateColumnCount(width); 
         cellwidth(width); 
