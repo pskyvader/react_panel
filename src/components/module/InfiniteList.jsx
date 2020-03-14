@@ -53,8 +53,8 @@ const InfiniteList = (props) => {
 
     const  OrderMutation= CreateMutation({ table:module,fields:'$id:ID!,$orden:Int!', input:`{id${module}:$id,orden:$orden}` });
     const [update_order,data_update_order]= useMutation(OrderMutation,{
-        update(cache, { data: { update_order } }) {
-            console.log(cache,update_order,query);
+        update(cache, { data: { uo } } ) {
+            console.log(cache,uo,query);
           const { todos } = cache.readQuery({ query: query});
           console.log(todos);
         //   cache.writeQuery({
