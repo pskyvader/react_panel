@@ -43,19 +43,18 @@ function ModuleList(props) {
     const table_query = 'all' + module.charAt(0).toUpperCase() + module.slice(1);
     const GET_LIST = gql(`
     query get_list($first:Int!,$after:String,$sort:String){
-        $table(first:$first,after:$after,sort:$sort,$tipo){
+        ${table_query}(first:$first,after:$after,sort:$sort,${(tipo > 0) ? 'tipo:' + tipo : ''}){
             pageInfo{
                 endCursor
                 hasNextPage
             }
             edges{
                 node{
-                    $fields
+                    ${fields}
                 }
             }
         }
-    }
-    `.replace('$table', table_query).replace('$fields', fields).replace('$tipo', (tipo > 0) ? 'tipo:' + tipo : ''));
+    }`);
 
     let { items, loading, loadMore, hasNextPage, error } = Resolve({ query: GET_LIST, table: table_query, vars: vars });
 
@@ -79,7 +78,8 @@ function ModuleList(props) {
             loadMore={loadMore}
             hasNextPage={hasNextPage}
             enableDrag={fields.includes("orden")}
-            query={{ query: GET_LIST, table: table_query, vars: vars }}
+            query={GET_LIST}
+            variables={vars}
             {...props}
         />
     )

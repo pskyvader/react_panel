@@ -46,7 +46,7 @@ const InfiniteList = (props) => {
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
 
-    const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module,query } = props;
+    const { moreItemsLoading, loadMore, hasNextPage, enableDrag,config_mostrar,module,query,variables } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
@@ -55,10 +55,10 @@ const InfiniteList = (props) => {
     const [update_order,data_update_order]= useMutation(OrderMutation,{
         update(cache, { data: { update_order } }) {
             console.log(cache,update_order);
-          const { todos } = cache.readQuery(query);
+          const { todos } = cache.readQuery({ query: query,variables:variables });
           console.log(todos);
           cache.writeQuery({
-            query: query.query,
+            query: query,
             data: { todos: todos.concat([update_order]) },
           });
         }
@@ -170,6 +170,8 @@ const InfiniteList = (props) => {
         calculateColumnCount(width);
         cellwidth(width);
         calculateRowCount();
+
+        console.log('grid');
 
         const gridHeight = getHeight(height);
         return (
