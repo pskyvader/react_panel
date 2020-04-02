@@ -390,7 +390,7 @@ def create_file(file_name, content, force=False):
 import time
 
 if __name__ == "__main__":
-    # module_to_folder()
+    module_to_folder()
     # bdd_to_folder()
     json_to_model()
     json_to_schema(force=False)

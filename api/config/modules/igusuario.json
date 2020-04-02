@@ -4,7 +4,11 @@
     "titulo": "Usuarios instagram",
     "sub": "",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"field": "idigusuario", "titulo": "ID", "tipo": "text"},
         {"field": "usuario", "titulo": "Usuario", "tipo": "text"},
@@ -29,66 +33,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idigusuario": false,
-                        "usuario": true,
-                        "estado": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "usuario": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idigusuario": false, "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"usuario": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idigusuario": false,
-                        "usuario": true,
-                        "estado": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "usuario": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idigusuario": false, "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"usuario": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idigusuario": false,
-                        "usuario": true,
-                        "estado": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "usuario": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idigusuario": false, "usuario": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"usuario": true, "password": true, "estado": true}
                 }
             },
             "orden": 1,

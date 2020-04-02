@@ -1,10 +1,14 @@
 {
-    "icono": "Attachmoney",
+    "icono": "AttachMoney",
     "module": "mediopago",
     "titulo": "Medios de pago",
     "sub": "",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"field": "idmediopago", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -32,75 +36,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idmediopago": false,
-                        "orden": true,
-                        "titulo": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "descripcion": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": false},
+                    "mostrar": {"idmediopago": false, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "descripcion": true, "orden": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idmediopago": false,
-                        "orden": true,
-                        "titulo": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "descripcion": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": false},
+                    "mostrar": {"idmediopago": false, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "descripcion": true, "orden": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idmediopago": false,
-                        "orden": true,
-                        "titulo": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "descripcion": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": false},
+                    "mostrar": {"idmediopago": false, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "descripcion": true, "orden": true, "estado": true}
                 }
             },
             "orden": 1,

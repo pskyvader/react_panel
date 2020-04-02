@@ -1,10 +1,14 @@
 {
-    "icono": "Businesscenter",
+    "icono": "BusinessCenter",
     "module": "pedidoestado",
     "titulo": "Estados del pedido",
     "sub": "",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"field": "idpedidoestado", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -33,78 +37,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idpedidoestado": false,
-                        "orden": true,
-                        "titulo": true,
-                        "color": true,
-                        "estado": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "color": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idpedidoestado": false, "orden": true, "titulo": true, "color": true, "estado": true, "copy": true, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "color": true, "orden": true, "estado": true}
                 },
                 "2": {
                     "estado": false,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idpedidoestado": false,
-                        "orden": true,
-                        "titulo": true,
-                        "color": true,
-                        "estado": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "color": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idpedidoestado": false, "orden": true, "titulo": true, "color": true, "estado": true, "copy": true, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "color": true, "orden": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idpedidoestado": false,
-                        "orden": true,
-                        "titulo": true,
-                        "color": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "color": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idpedidoestado": false, "orden": true, "titulo": true, "color": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "color": true, "orden": true, "estado": true}
                 }
             },
             "orden": 1,
@@ -117,78 +64,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idpedidoestado": false,
-                        "orden": true,
-                        "titulo": true,
-                        "color": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "color": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": false},
+                    "mostrar": {"idpedidoestado": false, "orden": true, "titulo": true, "color": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "color": true, "orden": true, "estado": true}
                 },
                 "2": {
                     "estado": false,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idpedidoestado": false,
-                        "orden": true,
-                        "titulo": true,
-                        "color": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "color": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": false},
+                    "mostrar": {"idpedidoestado": false, "orden": true, "titulo": true, "color": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "color": true, "orden": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idpedidoestado": false,
-                        "orden": true,
-                        "titulo": true,
-                        "color": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "resumen": true,
-                        "color": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": false},
+                    "mostrar": {"idpedidoestado": false, "orden": true, "titulo": true, "color": true, "estado": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"titulo": true, "resumen": true, "color": true, "orden": true, "estado": true}
                 }
             },
             "orden": 2,

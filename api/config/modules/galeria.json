@@ -1,10 +1,14 @@
 {
-    "icono": "Photoalbum",
+    "icono": "PhotoAlbum",
     "module": "galeria",
     "titulo": "Galer\u00c3\u0192\u00c2\u00ada",
     "sub": "",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"field": "idgaleria", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -37,90 +41,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idgaleria": false,
-                        "orden": true,
-                        "titulo": true,
-                        "foto": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "url": true,
-                        "subtitulo": true,
-                        "foto": true,
-                        "resumen": true,
-                        "keywords": true,
-                        "metadescripcion": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": true},
+                    "mostrar": {"idgaleria": false, "orden": true, "titulo": true, "foto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
+                    "detalle": {"titulo": true, "url": true, "subtitulo": true, "foto": true, "resumen": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idgaleria": false,
-                        "orden": true,
-                        "titulo": true,
-                        "foto": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "url": true,
-                        "subtitulo": true,
-                        "foto": true,
-                        "resumen": true,
-                        "keywords": true,
-                        "metadescripcion": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": true},
+                    "mostrar": {"idgaleria": false, "orden": true, "titulo": true, "foto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
+                    "detalle": {"titulo": true, "url": true, "subtitulo": true, "foto": true, "resumen": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idgaleria": false,
-                        "orden": true,
-                        "titulo": true,
-                        "foto": true,
-                        "estado": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "titulo": true,
-                        "url": true,
-                        "subtitulo": true,
-                        "foto": true,
-                        "resumen": true,
-                        "keywords": true,
-                        "metadescripcion": true,
-                        "orden": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": true},
+                    "mostrar": {"idgaleria": false, "orden": true, "titulo": true, "foto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
+                    "detalle": {"titulo": true, "url": true, "subtitulo": true, "foto": true, "resumen": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true}
                 }
             },
             "orden": 1,

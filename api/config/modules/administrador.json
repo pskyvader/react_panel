@@ -1,10 +1,14 @@
 {
-    "icono": "Accountbox",
+    "icono": "AccountBox",
     "module": "administrador",
     "titulo": "Administradores",
     "sub": "",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"titulo": "ID", "field": "idadministrador", "tipo": "text"},
         {"titulo": "Nombre", "field": "nombre", "tipo": "text"},
@@ -33,78 +37,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": false,
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 }
             },
             "orden": 1,
@@ -117,78 +64,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 }
             },
             "orden": 2,
@@ -201,78 +91,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": true
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": true},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": false,
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idadministrador": true,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": true,
-                        "nombre": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idadministrador": true, "nombre": true, "email": true, "estado": true, "foto": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"foto": true, "nombre": true, "email": true, "password": true, "estado": true}
                 }
             },
             "orden": 3,

@@ -4,7 +4,11 @@
     "titulo": "Logs",
     "sub": "",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"field": "idlog", "titulo": "ID", "tipo": "text"},
         {"field": "tabla", "titulo": "Tabla", "tipo": "text"},
@@ -28,63 +32,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idlog": true,
-                        "tabla": true,
-                        "accion": true,
-                        "administrador": true,
-                        "fecha": true
-                    },
-                    "detalle": {
-                        "tabla": true,
-                        "accion": true,
-                        "fecha": true
-                    }
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"idlog": true, "tabla": true, "accion": true, "administrador": true, "fecha": true},
+                    "detalle": {"tabla": true, "accion": true, "fecha": true}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idlog": true,
-                        "tabla": true,
-                        "accion": true,
-                        "administrador": true,
-                        "fecha": true
-                    },
-                    "detalle": {
-                        "tabla": true,
-                        "accion": true,
-                        "fecha": true
-                    }
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"idlog": true, "tabla": true, "accion": true, "administrador": true, "fecha": true},
+                    "detalle": {"tabla": true, "accion": true, "fecha": true}
                 },
                 "3": {
                     "estado": false,
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idlog": true,
-                        "tabla": true,
-                        "accion": true,
-                        "administrador": true,
-                        "fecha": true
-                    },
-                    "detalle": {
-                        "tabla": true,
-                        "accion": true,
-                        "fecha": true
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"idlog": true, "tabla": true, "accion": true, "administrador": true, "fecha": true},
+                    "detalle": {"tabla": true, "accion": true, "fecha": true}
                 }
             },
             "orden": 1,

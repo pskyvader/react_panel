@@ -1,10 +1,14 @@
 {
-    "icono": "Accountbox",
+    "icono": "AccountBox",
     "module": "usuario",
     "titulo": "Usuarios",
     "sub": "usuariodireccion",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"titulo": "ID", "field": "idusuario", "tipo": "text"},
         {"titulo": "Nombre", "field": "nombre", "tipo": "text"},
@@ -35,84 +39,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idusuario": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": false,
-                        "copy": false,
-                        "url_detalle": true,
-                        "url_sub": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": false,
-                        "nombre": true,
-                        "telefono": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idusuario": false, "nombre": true, "email": true, "estado": true, "foto": false, "copy": false, "url_detalle": true, "url_sub": true, "delete": true},
+                    "detalle": {"foto": false, "nombre": true, "telefono": true, "email": true, "password": true, "estado": true}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idusuario": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": false,
-                        "copy": false,
-                        "url_detalle": true,
-                        "url_sub": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": false,
-                        "nombre": true,
-                        "telefono": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idusuario": false, "nombre": true, "email": true, "estado": true, "foto": false, "copy": false, "url_detalle": true, "url_sub": true, "delete": true},
+                    "detalle": {"foto": false, "nombre": true, "telefono": true, "email": true, "password": true, "estado": true}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "idusuario": false,
-                        "nombre": true,
-                        "email": true,
-                        "estado": true,
-                        "foto": false,
-                        "copy": false,
-                        "url_detalle": true,
-                        "url_sub": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "foto": false,
-                        "nombre": true,
-                        "telefono": true,
-                        "email": true,
-                        "password": true,
-                        "estado": true
-                    }
+                    "menu": {"new": true, "excel": true, "regenerar": false},
+                    "mostrar": {"idusuario": false, "nombre": true, "email": true, "estado": true, "foto": false, "copy": false, "url_detalle": true, "url_sub": true, "delete": true},
+                    "detalle": {"foto": false, "nombre": true, "telefono": true, "email": true, "password": true, "estado": true}
                 }
             },
             "orden": 1,

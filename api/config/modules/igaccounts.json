@@ -1,10 +1,14 @@
 {
-    "icono": "Accountcircle",
+    "icono": "AccountCircle",
     "module": "igaccounts",
     "titulo": "Cuentas Instagram",
     "sub": "",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"tipo": "text", "titulo": "ID usuario", "field": "pk"},
         {"tipo": "text", "titulo": "Usuario", "field": "username"},
@@ -29,65 +33,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },
@@ -101,65 +60,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },
@@ -173,65 +87,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },
@@ -245,65 +114,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },
@@ -317,65 +141,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },
@@ -389,65 +168,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },
@@ -461,65 +195,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },
@@ -533,65 +222,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },
@@ -605,65 +249,20 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {
-                        "new": false,
-                        "excel": true,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "pk": true,
-                        "username": true,
-                        "full_name": true,
-                        "profile_url": true,
-                        "profile_pic_url": true,
-                        "follower": true,
-                        "following": true,
-                        "favorito": true,
-                        "update": true,
-                        "delete": true
-                    },
+                    "menu": {"new": false, "excel": true, "regenerar": false},
+                    "mostrar": {"pk": true, "username": true, "full_name": true, "profile_url": true, "profile_pic_url": true, "follower": true, "following": true, "favorito": true, "update": true, "delete": true},
                     "detalle": {}
                 }
             },

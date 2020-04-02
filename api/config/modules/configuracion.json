@@ -4,7 +4,11 @@
     "titulo": "Configuracion",
     "sub": "",
     "padre": "",
-    "menu": [],
+    "menu": [
+        {"field": "new", "titulo": "Nuevo"},
+        {"field": "excel", "titulo": "Exportar a excel"},
+        {"field": "regenerar", "titulo": "Regenerar imagenes"}
+    ],
     "mostrar": [
         {"field": "variable", "tipo": "text", "titulo": "Configuracion"},
         {"field": "valor", "tipo": "text", "titulo": "Valor"},
@@ -27,60 +31,21 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {
-                        "new": true,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "variable": true,
-                        "valor": true,
-                        "copy": true,
-                        "url_detalle": true,
-                        "delete": true
-                    },
-                    "detalle": {
-                        "variable": true,
-                        "valor": true
-                    }
+                    "menu": {"new": true, "excel": false, "regenerar": false},
+                    "mostrar": {"variable": true, "valor": true, "copy": true, "url_detalle": true, "delete": true},
+                    "detalle": {"variable": true, "valor": true}
                 },
                 "2": {
                     "estado": false,
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "variable": true,
-                        "valor": true,
-                        "copy": false,
-                        "url_detalle": true,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "variable": true,
-                        "valor": true
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"variable": true, "valor": true, "copy": false, "url_detalle": true, "delete": false},
+                    "detalle": {"variable": true, "valor": true}
                 },
                 "3": {
                     "estado": false,
-                    "menu": {
-                        "new": false,
-                        "excel": false,
-                        "regenerar": false
-                    },
-                    "mostrar": {
-                        "variable": false,
-                        "valor": false,
-                        "copy": false,
-                        "url_detalle": false,
-                        "delete": false
-                    },
-                    "detalle": {
-                        "variable": false,
-                        "valor": false
-                    }
+                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "mostrar": {"variable": false, "valor": false, "copy": false, "url_detalle": false, "delete": false},
+                    "detalle": {"variable": false, "valor": false}
                 }
             },
             "orden": 1,
