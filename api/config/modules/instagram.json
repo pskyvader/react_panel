@@ -4,11 +4,7 @@
     "titulo": "instagram",
     "sub": "",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [],
     "detalle": [],
     "orden": 4,
@@ -22,19 +18,31 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
                     "mostrar": {},
                     "detalle": {}
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
                     "mostrar": {},
                     "detalle": {}
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": false, "excel": false, "regenerar": false},
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
                     "mostrar": {},
                     "detalle": {}
                 }

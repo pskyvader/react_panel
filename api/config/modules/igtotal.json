@@ -1,14 +1,10 @@
 {
-    "icono": "Filter9Plus",
+    "icono": "Filter9plus",
     "module": "igtotal",
     "titulo": "Totales Diarios Instagram",
     "sub": "",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"titulo": "ID", "field": "idigtotal", "tipo": "text"},
         {"titulo": "Fecha", "field": "fecha", "tipo": "text"},
@@ -33,21 +29,66 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "url_detalle": true, "delete": true},
-                    "detalle": {"tag": true, "fecha": true, "cantidad": true}
+                    "menu": {
+                        "new": false,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idigtotal": false,
+                        "fecha": true,
+                        "tag": true,
+                        "cantidad": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "tag": true,
+                        "fecha": true,
+                        "cantidad": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "url_detalle": true, "delete": true},
-                    "detalle": {"tag": true, "fecha": true, "cantidad": true}
+                    "menu": {
+                        "new": false,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idigtotal": false,
+                        "fecha": true,
+                        "tag": true,
+                        "cantidad": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "tag": true,
+                        "fecha": true,
+                        "cantidad": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": false, "excel": true, "regenerar": false},
-                    "mostrar": {"idigtotal": false, "fecha": true, "tag": true, "cantidad": true, "url_detalle": true, "delete": true},
-                    "detalle": {"tag": true, "fecha": true, "cantidad": true}
+                    "menu": {
+                        "new": false,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idigtotal": false,
+                        "fecha": true,
+                        "tag": true,
+                        "cantidad": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "tag": true,
+                        "fecha": true,
+                        "cantidad": true
+                    }
                 }
             },
             "orden": 1,

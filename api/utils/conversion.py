@@ -5,7 +5,7 @@ import sys
 
 current_dir = dirname(__file__)
 sys.path.append(join(current_dir, ".."))
-from graph_ql.utils.format import MyEncoder,NoIndent
+from graph_ql.utils.format import MyEncoder, NoIndent
 
 
 config_file = join(current_dir, "..", "config", "config.json")
@@ -17,6 +17,8 @@ bdd_dir = join(current_dir, "..", "config", "bdd")
 module_dir = join(current_dir, "..", "config", "modules")
 model_dir = join(current_dir, "..", "graph_ql", "model")
 schemas_dir = join(current_dir, "..", "graph_ql", "schemas")
+
+JSONTYPE = ".json"
 
 types = {
     "char(255)": {
@@ -76,7 +78,7 @@ def bdd_to_folder():
         with open(file_str, "r") as file1:
             tables = json.loads(file1.read())
             for t in tables:
-                tablename = join(bdd_dir, t["tablename"] + ".json")
+                tablename = join(bdd_dir, t["tablename"] + JSONTYPE)
                 with open(tablename, "w") as table:
                     table.write(json.dumps(t))
                     print("table", tablename, "created")
@@ -85,17 +87,17 @@ def bdd_to_folder():
 
 
 def module_to_folder():
-    file_str = join(module_dir,"..", "moduloconfiguracion.json")
+    file_str = join(module_dir, "..", "moduloconfiguracion.json")
     try:
         with open(file_str, "r") as file1:
             tables = json.loads(file1.read())
-            number=0
+            number = 0
             for t in tables:
-                if t['module']=='separador':
-                    number+=1
-                    module = join(module_dir, t["module"]+str(number) + ".json")
+                if t["module"] == "separador":
+                    number += 1
+                    module = join(module_dir, t["module"] + str(number) + JSONTYPE)
                 else:
-                    module = join(module_dir, t["module"] + ".json")
+                    module = join(module_dir, t["module"] + JSONTYPE)
                 with open(module, "w") as table:
                     table.write(json.dumps(t))
                     print("modulo", module, "created")
@@ -121,88 +123,119 @@ def json_to_module():
     }
 
     menu = {"field": "", "titulo": ""}
-    hijo = { "tipo": 0, "titulo": "","permisos":{} , "orden": 0, "aside": False, "hijos": False, }
+    hijo = {
+        "tipo": 0,
+        "titulo": "",
+        "permisos": {},
+        "orden": 0,
+        "aside": False,
+        "hijos": False,
+    }
 
     json_files = file_list(module_dir)
     for f in json_files:
-        new_module=module.copy()
+        new_module = module.copy()
         table = json.loads(get_file(join(module_dir, f)))
-        for k,v in new_module.items():
-            if new_module[k]!=[]:
-                new_module[k]=table[k] if not isinstance(new_module[k],bool) else bool(table[k])
-                if k=='icono':
-                    icono=str(table[k]).split('_')
-                    new_module[k]=''.join([i.capitalize() for i in icono])
-                    
-            elif k!="hijo" and k!="menu":
-                new_array=[]
+        for k, v in new_module.items():
+            if new_module[k] != []:
+                new_module[k] = (
+                    table[k] if not isinstance(new_module[k], bool) else bool(table[k])
+                )
+                if k == "icono":
+                    icono = str(table[k]).split("_")
+                    new_module[k] = "".join([i.capitalize() for i in icono])
+
+            elif k != "hijo" and k != "menu":
+                new_array = []
                 for e in table[k]:
-                    if e['field']=='0':
-                        e['field']='id'+table["module"]
+                    if e["field"] == "0":
+                        e["field"] = "id" + table["module"]
                     new_array.append(NoIndent(e))
-                new_module[k]=new_array
-        if table['module']=='separador':
-            new_module['estado']={ "1": True, "2": True, "3": False }
+                new_module[k] = new_array
+        if table["module"] == "separador":
+            new_module["estado"] = {"1": True, "2": True, "3": False}
         else:
-            new_menus=[]
-            if 'menu' in table['hijo'][0]:
-                for hijo_menu in table['hijo'][0]['menu']:
-                    new_menu=menu.copy()
-                    for k,v in new_menu.items():
-                        new_menu[k]=hijo_menu[k]
+            new_menus = []
+            if "menu" in table["hijo"][0]:
+                for hijo_menu in table["hijo"][0]["menu"]:
+                    new_menu = menu.copy()
+                    for k, v in new_menu.items():
+                        new_menu[k] = hijo_menu[k]
                     new_menus.append(NoIndent(new_menu))
-                    
-                new_module['menu']=new_menus
 
-            new_hijos=[]
-            for table_hijo in table['hijo']:
-                new_h=hijo.copy()
-                for k,v in new_h.items():
-                    if k!='permisos' and k!='estado':
-                        new_h[k]=table_hijo[k] if not isinstance(new_h[k],bool) else bool(table_hijo[k])
+                new_module["menu"] = new_menus
 
-                new_permisos={}
-                if 'estado' in table_hijo:
-                    for tipo in range(1,4):
-                        new_permiso={"estado":False,"menu":{},"mostrar":{},"detalle":{}}
-                        new_permiso['estado']=True if table_hijo['estado'][0]['estado'][str(tipo)]=='true' else False
+            new_hijos = []
+            for table_hijo in table["hijo"]:
+                new_h = hijo.copy()
+                for k, v in new_h.items():
+                    if k != "permisos" and k != "estado":
+                        new_h[k] = (
+                            table_hijo[k]
+                            if not isinstance(new_h[k], bool)
+                            else bool(table_hijo[k])
+                        )
 
-                        for menu_hijo in table_hijo['menu']:
-                            new_permiso['menu'][menu_hijo['field']]= True if menu_hijo['estado'][str(tipo)]=='true' else False
-                        new_permiso['menu']=NoIndent(new_permiso['menu'])
+                new_permisos = {}
+                if "estado" in table_hijo:
+                    for tipo in range(1, 4):
+                        new_permiso = {
+                            "estado": False,
+                            "menu": {},
+                            "mostrar": {},
+                            "detalle": {},
+                        }
+                        new_permiso["estado"] = (
+                            True
+                            if table_hijo["estado"][0]["estado"][str(tipo)] == "true"
+                            else False
+                        )
 
-                        for mostrar_hijo in table_hijo['mostrar'].copy():
-                            if mostrar_hijo['field']=='0':
-                                mostrar_hijo['field']='id'+table["module"]
-                            new_permiso['mostrar'][mostrar_hijo['field']]= True if mostrar_hijo['estado'][str(tipo)]=='true' else False
-                        
-                        new_permiso['mostrar']=NoIndent(new_permiso['mostrar'])
+                        for menu_hijo in table_hijo["menu"]:
+                            new_permiso["menu"][menu_hijo["field"]] = (
+                                True
+                                if menu_hijo["estado"][str(tipo)] == "true"
+                                else False
+                            )
+                        new_permiso["menu"] = NoIndent(new_permiso["menu"])
 
-                        for detalle_hijo in table_hijo['detalle']:
-                            new_permiso['detalle'][detalle_hijo['field']]= True if detalle_hijo['estado'][str(tipo)]=='true' else False
-                        new_permiso['detalle']=NoIndent(new_permiso['detalle'])
+                        for mostrar_hijo in table_hijo["mostrar"].copy():
+                            if mostrar_hijo["field"] == "0":
+                                mostrar_hijo["field"] = "id" + table["module"]
+                            new_permiso["mostrar"][mostrar_hijo["field"]] = (
+                                True
+                                if mostrar_hijo["estado"][str(tipo)] == "true"
+                                else False
+                            )
 
-                        new_permisos[tipo]=new_permiso
-                        
-                    new_h['permisos']=new_permisos
+                        new_permiso["mostrar"] = NoIndent(new_permiso["mostrar"])
+
+                        for detalle_hijo in table_hijo["detalle"]:
+                            new_permiso["detalle"][detalle_hijo["field"]] = (
+                                True
+                                if detalle_hijo["estado"][str(tipo)] == "true"
+                                else False
+                            )
+                        new_permiso["detalle"] = NoIndent(new_permiso["detalle"])
+
+                        new_permisos[tipo] = new_permiso
+
+                    new_h["permisos"] = new_permisos
                 else:
-                    new_h['permisos']=table_hijo['permisos']
-
+                    new_h["permisos"] = table_hijo["permisos"]
 
                 new_hijos.append(new_h)
-            
-            new_module['hijo']=new_hijos
 
-        if create_file(join(module_dir, f), json.dumps(new_module, cls=MyEncoder, sort_keys=False, indent=4), True):
+            new_module["hijo"] = new_hijos
+
+        if create_file(
+            join(module_dir, f),
+            json.dumps(new_module, cls=MyEncoder, sort_keys=False, indent=4),
+            True,
+        ):
             print("modulo creado correctamente!", f)
         else:
             print("Error al crear el modulo!", f)
-
-
-                
-
-
-            
 
 
 def json_to_class(tablename, return_class=True):
@@ -215,8 +248,10 @@ def json_to_class(tablename, return_class=True):
     fields = ""
     for field in table["fields"]:
         if field["tipo"] in types and "alchemy_type" in types[field["tipo"]]:
-            str_field = field["titulo"] + " = " + types[field["tipo"]]["alchemy_type"]
-            fields += str_field + "\n    "
+            str_field = "{0}={1}\n    ".format(
+                field["titulo"], types[field["tipo"]]["alchemy_type"]
+            )
+            fields += str_field
 
     template = template.replace("FIELDS", fields)
     if return_class:
@@ -246,7 +281,7 @@ def json_to_schema(force=False):
         template = template_file
         table = json.loads(get_file(join(bdd_dir, f)))
 
-        f = f.replace(".json", "")
+        f = f.replace(JSONTYPE, "")
         template = template.replace("TABLENAME", f)
 
         image_fields = []
@@ -257,28 +292,19 @@ def json_to_schema(force=False):
 
         for field in table["fields"]:
             if field["tipo"] in types and "alchemy_type" in types[field["tipo"]]:
+                field_format = "{0}={1},\n".format(
+                    field["titulo"], types[field["tipo"]]["graphene_type"]
+                )
                 if field["titulo"] not in black_list:
-                    fields_str += (
-                        field["titulo"]
-                        + "="
-                        + types[field["tipo"]]["graphene_type"]
-                        + ",\n    "
-                    )
+                    fields_str += field_format
                 else:
-                    fields_black_list += (
-                        field["titulo"]
-                        + "="
-                        + types[field["tipo"]]["graphene_type"]
-                        + ",\n    "
-                    )
+                    fields_black_list += field_format
             else:
                 if field["tipo"] != "image":
-                    fields_read_only += (
-                        field["titulo"]
-                        + "="
-                        + types[field["tipo"]]["graphene_type"]
-                        + ",\n    "
+                    field_format = "{0}={1},\n".format(
+                        field["titulo"], types[field["tipo"]]["graphene_type"]
                     )
+                    fields_read_only += field_format
                 else:
                     image_fields.append(field["titulo"])
 
@@ -360,6 +386,8 @@ def create_file(file_name, content, force=False):
             return True
     return False
 
+
+import time
 
 if __name__ == "__main__":
     # module_to_folder()

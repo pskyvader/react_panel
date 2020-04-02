@@ -1,14 +1,10 @@
 {
-    "icono": "ShoppingBasket",
+    "icono": "Shoppingbasket",
     "module": "producto",
     "titulo": "Productos",
     "sub": "",
     "padre": "productocategoria",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idproducto", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -50,21 +46,117 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idproducto": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "archivo": true, "resumen": true, "codigo": false, "precio": true, "descuento": true, "descuento_fecha": true, "stock": true, "descripcion": true, "idproductocategoria": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproducto": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "archivo": true,
+                        "resumen": true,
+                        "codigo": false,
+                        "precio": true,
+                        "descuento": true,
+                        "descuento_fecha": true,
+                        "stock": true,
+                        "descripcion": true,
+                        "idproductocategoria": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idproducto": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "archivo": true, "resumen": true, "codigo": false, "precio": true, "descuento": true, "descuento_fecha": true, "stock": true, "descripcion": true, "idproductocategoria": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproducto": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "archivo": true,
+                        "resumen": true,
+                        "codigo": false,
+                        "precio": true,
+                        "descuento": true,
+                        "descuento_fecha": true,
+                        "stock": true,
+                        "descripcion": true,
+                        "idproductocategoria": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idproducto": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "archivo": true, "resumen": true, "codigo": false, "precio": true, "descuento": true, "descuento_fecha": true, "stock": true, "descripcion": true, "idproductocategoria": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproducto": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "archivo": true,
+                        "resumen": true,
+                        "codigo": false,
+                        "precio": true,
+                        "descuento": true,
+                        "descuento_fecha": true,
+                        "stock": true,
+                        "descripcion": true,
+                        "idproductocategoria": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": true
+                    }
                 }
             },
             "orden": 1,
@@ -77,21 +169,117 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idproducto": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "url": false, "foto": true, "archivo": false, "resumen": false, "codigo": false, "precio": false, "descuento": false, "descuento_fecha": false, "stock": false, "descripcion": false, "idproductocategoria": false, "keywords": false, "metadescripcion": false, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproducto": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": false,
+                        "foto": true,
+                        "archivo": false,
+                        "resumen": false,
+                        "codigo": false,
+                        "precio": false,
+                        "descuento": false,
+                        "descuento_fecha": false,
+                        "stock": false,
+                        "descripcion": false,
+                        "idproductocategoria": false,
+                        "keywords": false,
+                        "metadescripcion": false,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idproducto": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "url": false, "foto": true, "archivo": false, "resumen": false, "codigo": false, "precio": false, "descuento": false, "descuento_fecha": false, "stock": false, "descripcion": false, "idproductocategoria": false, "keywords": false, "metadescripcion": false, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproducto": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": false,
+                        "foto": true,
+                        "archivo": false,
+                        "resumen": false,
+                        "codigo": false,
+                        "precio": false,
+                        "descuento": false,
+                        "descuento_fecha": false,
+                        "stock": false,
+                        "descripcion": false,
+                        "idproductocategoria": false,
+                        "keywords": false,
+                        "metadescripcion": false,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idproducto": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "url": false, "foto": true, "archivo": false, "resumen": false, "codigo": false, "precio": false, "descuento": false, "descuento_fecha": false, "stock": false, "descripcion": false, "idproductocategoria": false, "keywords": false, "metadescripcion": false, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproducto": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": false,
+                        "foto": true,
+                        "archivo": false,
+                        "resumen": false,
+                        "codigo": false,
+                        "precio": false,
+                        "descuento": false,
+                        "descuento_fecha": false,
+                        "stock": false,
+                        "descripcion": false,
+                        "idproductocategoria": false,
+                        "keywords": false,
+                        "metadescripcion": false,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 }
             },
             "orden": 2,

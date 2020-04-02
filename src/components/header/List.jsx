@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 export function NestedList(props) {
     const {element,url}=props;
+    console.log(element.icono);
     const icon = { 'icon': mui[element.icono] };
     const to = `${url}/${element.module}`;
     let match = useRouteMatch({ path: to, exact: false });

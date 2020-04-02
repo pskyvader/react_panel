@@ -4,11 +4,7 @@
     "titulo": "Comuna",
     "sub": "",
     "padre": "region",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idcomuna", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -37,21 +33,78 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idcomuna": false, "orden": false, "titulo": true, "precio": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "precio": true, "idregion": true, "orden": false, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idcomuna": false,
+                        "orden": false,
+                        "titulo": true,
+                        "precio": true,
+                        "estado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "precio": true,
+                        "idregion": true,
+                        "orden": false,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idcomuna": false, "orden": false, "titulo": true, "precio": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "precio": true, "idregion": true, "orden": false, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idcomuna": false,
+                        "orden": false,
+                        "titulo": true,
+                        "precio": true,
+                        "estado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "precio": true,
+                        "idregion": true,
+                        "orden": false,
+                        "estado": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idcomuna": false, "orden": false, "titulo": true, "precio": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "precio": true, "idregion": true, "orden": false, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idcomuna": false,
+                        "orden": false,
+                        "titulo": true,
+                        "precio": true,
+                        "estado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "precio": true,
+                        "idregion": true,
+                        "orden": false,
+                        "estado": true
+                    }
                 }
             },
             "orden": 1,

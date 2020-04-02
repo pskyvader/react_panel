@@ -1,14 +1,10 @@
 {
-    "icono": "FormatColorText",
+    "icono": "Formatcolortext",
     "module": "texto",
     "titulo": "Textos",
     "sub": "",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
         {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
@@ -37,21 +33,78 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": true, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": true,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": true, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": true,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": true, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": true,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 }
             },
             "orden": 1,
@@ -64,21 +117,78 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": true, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": true,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": true, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": true,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": true, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": true,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 }
             },
             "orden": 2,
@@ -91,21 +201,78 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": false, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": true, "texto": false, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": false,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": true,
+                        "texto": false,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": false, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": true, "texto": false, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": false,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": true,
+                        "texto": false,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": false, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": true, "texto": false, "mapa": false, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": false,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": true,
+                        "texto": false,
+                        "mapa": false,
+                        "orden": true,
+                        "estado": true
+                    }
                 }
             },
             "orden": 3,
@@ -118,21 +285,78 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": false, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": false, "mapa": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": false,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": false,
+                        "mapa": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": false, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": false, "mapa": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": false,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": false,
+                        "mapa": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "texto": false, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "descripcion": false, "texto": false, "mapa": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "texto": false,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "descripcion": false,
+                        "texto": false,
+                        "mapa": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 }
             },
             "orden": 4,

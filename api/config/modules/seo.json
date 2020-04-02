@@ -4,11 +4,7 @@
     "titulo": "SEO",
     "sub": "",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idseo", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -49,21 +45,114 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": true},
-                    "mostrar": {"idseo": false, "orden": true, "titulo": true, "url": true, "estado": true, "banner": false, "menu": true, "submenu": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "banner": false, "modulo_front": true, "modulo_back": true, "tipo_modulo": true, "link_menu": true, "keywords": true, "metadescripcion": true, "orden": true, "menu": true, "submenu": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idseo": false,
+                        "orden": true,
+                        "titulo": true,
+                        "url": true,
+                        "estado": true,
+                        "banner": false,
+                        "menu": true,
+                        "submenu": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "banner": false,
+                        "modulo_front": true,
+                        "modulo_back": true,
+                        "tipo_modulo": true,
+                        "link_menu": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "menu": true,
+                        "submenu": true,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": false, "excel": false, "regenerar": true},
-                    "mostrar": {"idseo": false, "orden": true, "titulo": true, "url": true, "estado": false, "banner": false, "menu": true, "submenu": true, "copy": false, "url_detalle": true, "delete": false},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "banner": false, "modulo_front": false, "modulo_back": false, "tipo_modulo": false, "link_menu": false, "keywords": true, "metadescripcion": true, "orden": true, "menu": true, "submenu": true, "estado": false}
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idseo": false,
+                        "orden": true,
+                        "titulo": true,
+                        "url": true,
+                        "estado": false,
+                        "banner": false,
+                        "menu": true,
+                        "submenu": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": false
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "banner": false,
+                        "modulo_front": false,
+                        "modulo_back": false,
+                        "tipo_modulo": false,
+                        "link_menu": false,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "menu": true,
+                        "submenu": true,
+                        "estado": false
+                    }
                 },
                 "3": {
                     "estado": false,
-                    "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idseo": false, "orden": false, "titulo": true, "url": true, "estado": false, "banner": false, "menu": false, "submenu": false, "copy": false, "url_detalle": true, "delete": false},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "banner": false, "modulo_front": false, "modulo_back": false, "tipo_modulo": false, "link_menu": false, "keywords": true, "metadescripcion": true, "orden": false, "menu": false, "submenu": false, "estado": false}
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idseo": false,
+                        "orden": false,
+                        "titulo": true,
+                        "url": true,
+                        "estado": false,
+                        "banner": false,
+                        "menu": false,
+                        "submenu": false,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": false
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "banner": false,
+                        "modulo_front": false,
+                        "modulo_back": false,
+                        "tipo_modulo": false,
+                        "link_menu": false,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": false,
+                        "menu": false,
+                        "submenu": false,
+                        "estado": false
+                    }
                 }
             },
             "orden": 1,

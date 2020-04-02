@@ -4,11 +4,7 @@
     "titulo": "Pedidos",
     "sub": "",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idpedido", "titulo": "ID", "tipo": "text"},
         {"field": "cookie_pedido", "titulo": "Codigo de pedido", "tipo": "text"},
@@ -44,21 +40,99 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idpedido": false, "cookie_pedido": true, "fecha_pago": true, "nombre": true, "email": true, "idpedidoestado": true, "idmediopago": true, "total": true, "url_detalle": true},
-                    "detalle": {"idusuario": true, "nombre": true, "email": true, "telefono": true, "cookie_pedido": true, "fecha_pago": true, "idpedidoestado": true, "idmediopago": true, "comentarios": true, "direcciones": true, "total": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idpedido": false,
+                        "cookie_pedido": true,
+                        "fecha_pago": true,
+                        "nombre": true,
+                        "email": true,
+                        "idpedidoestado": true,
+                        "idmediopago": true,
+                        "total": true,
+                        "url_detalle": true
+                    },
+                    "detalle": {
+                        "idusuario": true,
+                        "nombre": true,
+                        "email": true,
+                        "telefono": true,
+                        "cookie_pedido": true,
+                        "fecha_pago": true,
+                        "idpedidoestado": true,
+                        "idmediopago": true,
+                        "comentarios": true,
+                        "direcciones": true,
+                        "total": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idpedido": false, "cookie_pedido": true, "fecha_pago": true, "nombre": true, "email": true, "idpedidoestado": true, "idmediopago": true, "total": true, "url_detalle": true},
-                    "detalle": {"idusuario": true, "nombre": true, "email": true, "telefono": true, "cookie_pedido": true, "fecha_pago": true, "idpedidoestado": true, "idmediopago": true, "comentarios": true, "direcciones": true, "total": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idpedido": false,
+                        "cookie_pedido": true,
+                        "fecha_pago": true,
+                        "nombre": true,
+                        "email": true,
+                        "idpedidoestado": true,
+                        "idmediopago": true,
+                        "total": true,
+                        "url_detalle": true
+                    },
+                    "detalle": {
+                        "idusuario": true,
+                        "nombre": true,
+                        "email": true,
+                        "telefono": true,
+                        "cookie_pedido": true,
+                        "fecha_pago": true,
+                        "idpedidoestado": true,
+                        "idmediopago": true,
+                        "comentarios": true,
+                        "direcciones": true,
+                        "total": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idpedido": false, "cookie_pedido": true, "fecha_pago": true, "nombre": true, "email": true, "idpedidoestado": true, "idmediopago": true, "total": true, "url_detalle": true},
-                    "detalle": {"idusuario": true, "nombre": true, "email": true, "telefono": true, "cookie_pedido": true, "fecha_pago": true, "idpedidoestado": true, "idmediopago": true, "comentarios": true, "direcciones": true, "total": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idpedido": false,
+                        "cookie_pedido": true,
+                        "fecha_pago": true,
+                        "nombre": true,
+                        "email": true,
+                        "idpedidoestado": true,
+                        "idmediopago": true,
+                        "total": true,
+                        "url_detalle": true
+                    },
+                    "detalle": {
+                        "idusuario": true,
+                        "nombre": true,
+                        "email": true,
+                        "telefono": true,
+                        "cookie_pedido": true,
+                        "fecha_pago": true,
+                        "idpedidoestado": true,
+                        "idmediopago": true,
+                        "comentarios": true,
+                        "direcciones": true,
+                        "total": true
+                    }
                 }
             },
             "orden": 1,

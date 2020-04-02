@@ -4,11 +4,7 @@
     "titulo": "Direcciones",
     "sub": "",
     "padre": "usuario",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idusuariodireccion", "titulo": "ID", "tipo": "text"},
         {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
@@ -42,21 +38,93 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"idusuariodireccion": false, "titulo": true, "nombre": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "nombre": true, "direccion": true, "idcomuna": true, "telefono": true, "villa": true, "edificio": true, "departamento": true, "condominio": true, "casa": true, "empresa": true, "referencias": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idusuariodireccion": false,
+                        "titulo": true,
+                        "nombre": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "nombre": true,
+                        "direccion": true,
+                        "idcomuna": true,
+                        "telefono": true,
+                        "villa": true,
+                        "edificio": true,
+                        "departamento": true,
+                        "condominio": true,
+                        "casa": true,
+                        "empresa": true,
+                        "referencias": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"idusuariodireccion": false, "titulo": true, "nombre": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "nombre": true, "direccion": true, "idcomuna": true, "telefono": true, "villa": true, "edificio": true, "departamento": true, "condominio": true, "casa": true, "empresa": true, "referencias": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idusuariodireccion": false,
+                        "titulo": true,
+                        "nombre": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "nombre": true,
+                        "direccion": true,
+                        "idcomuna": true,
+                        "telefono": true,
+                        "villa": true,
+                        "edificio": true,
+                        "departamento": true,
+                        "condominio": true,
+                        "casa": true,
+                        "empresa": true,
+                        "referencias": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"idusuariodireccion": false, "titulo": true, "nombre": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"titulo": true, "nombre": true, "direccion": true, "idcomuna": true, "telefono": true, "villa": true, "edificio": true, "departamento": true, "condominio": true, "casa": true, "empresa": true, "referencias": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idusuariodireccion": false,
+                        "titulo": true,
+                        "nombre": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "nombre": true,
+                        "direccion": true,
+                        "idcomuna": true,
+                        "telefono": true,
+                        "villa": true,
+                        "edificio": true,
+                        "departamento": true,
+                        "condominio": true,
+                        "casa": true,
+                        "empresa": true,
+                        "referencias": true
+                    }
                 }
             },
             "orden": 1,
