@@ -15,7 +15,6 @@ MarkupSafe==1.1.1
 mysql-connector-python==8.0.19
 pathspec==0.7.0
 Pillow==7.0.0
-pkg-resources==0.0.0
 promise==2.3
 protobuf==3.6.1
 python-dateutil==2.8.1
