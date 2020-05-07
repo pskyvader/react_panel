@@ -165,7 +165,6 @@ const InfiniteList = (props) => {
 
     const RenderGrid = (props) => {
         const { width, height, onRowsRendered, getRef } = props;
-
         const gridHeight = getHeight(height);
         return (
             <Grid
@@ -190,7 +189,6 @@ const InfiniteList = (props) => {
                 }
             />
         )
-
     }
 
     const registerListRef = (listInstance) => {
