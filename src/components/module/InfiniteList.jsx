@@ -10,6 +10,7 @@ import { sortableHandle } from 'react-sortable-hoc';
 
 import ModuleCard from './ModuleCard';
 import { CreateMutation, Mutation } from '../Mutation';
+import SortableList from "./SortableList";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,6 +29,14 @@ const useStyles = makeStyles(theme => ({
         fontSize: '1.75rem'
     }
 }));
+
+
+
+
+
+
+
+
 
 
 
@@ -57,10 +66,6 @@ const InfiniteList = (props) => {
 
     const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
     let update_order = Mutation({ mutationquery: OrderMutation, query, variables, mutation: 'order', Setsorting });
-
-
-
-
     const DragHandle = sortableHandle(() =>
         <IconButton aria-label="Move" className={classes.movebutton} >
             <OpenWithIcon className={classes.moveicon} />
@@ -284,6 +289,7 @@ const InfiniteList = (props) => {
                     if (stop_render(width)) {
                         return ''
                     }
+                    return <SortableList width={width} height={height} onRowsRendered={onRowsRendered} {...props}/>
 
                     return <SortableVirtualList
                         getRef={registerListRef}
