@@ -18,7 +18,7 @@ const InfiniteList = (props) => {
     let { items } = props;
 
     const stop_render = (width = 1) => {
-        if (sorting || moreItemsLoading || columnCount === 0 || rowCount === 0 || columnWidth === 0 || width === 0 || resizing) {
+        if (sorting  || columnCount === 0 || rowCount === 0 || columnWidth === 0 || width === 0 || resizing) {
             return true;
         }
         return false;
