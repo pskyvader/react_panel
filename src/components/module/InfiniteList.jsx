@@ -289,7 +289,16 @@ const InfiniteList = (props) => {
                     if (stop_render(width)) {
                         return ''
                     }
-                    return <SortableList Setsorting={Setsorting} width={width} height={height} onRowsRendered={onRowsRendered} {...props}/>
+                    return <SortableList 
+                    columnWidth={columnWidth}
+                    columnCount={columnCount}
+                    rowCount={rowCount}
+                    Setsorting={Setsorting} 
+                    width={width} 
+                    height={height} 
+                    onRowsRendered={onRowsRendered} 
+                    {...props}
+                    />
 
                     // return <SortableVirtualList
                     //     getRef={registerListRef}

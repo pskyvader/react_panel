@@ -32,19 +32,13 @@ const useStyles = makeStyles(theme => ({
 
 const SortableList = (props) => {
 
-    console.log("sortable");
-
     const classes = useStyles();
-    let columnCount = 0;
-    let rowCount = 0;
-    let columnWidth = 0;
-
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
 
 
-    const { Setsorting, moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables, width, height, onRowsRendered } = props;
-    let { items } = props;
+    const { columnCount, rowCount, columnWidth, Setsorting, moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables, width, height, onRowsRendered } = props;
+    let { items, } = props;
     let list = null;
     let currentNode = null;
 
@@ -59,7 +53,6 @@ const SortableList = (props) => {
 
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        console.log("onScroll");
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
             loadMore(function (val) {
                 let current_row = Math.round(rowCount - ((scrollHeight - scrollTop) / rowHeight));
@@ -71,7 +64,6 @@ const SortableList = (props) => {
     };
 
     const SortableItem = sortableElement(({ cell, style }) => {
-        console.log("sortableElement");
         const needheight = (style.top === 0 && style.left === 0);
         return (
             <div style={style} tabIndex={0}>
@@ -82,7 +74,6 @@ const SortableList = (props) => {
     });
 
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
-        console.log("cell");
         const startIndex = rowIndex * columnCount + columnIndex;
         const zindex = rowCount * columnCount - startIndex;
         const cell = items[startIndex];
@@ -95,7 +86,6 @@ const SortableList = (props) => {
 
 
     const getHeight = (height) => {
-        console.log("getHeight");
         let height1 = props.TypographyRef.current.offsetHeight;
         const height2 = props.drawerHeaderRef.current.offsetHeight;
 
@@ -120,7 +110,6 @@ const SortableList = (props) => {
     const RenderGrid = (props) => {
         const { width, height, onRowsRendered, getRef } = props;
         const gridHeight = getHeight(height);
-        console.log("render grid");
         return (
             <Grid
                 ref={getRef}
@@ -147,7 +136,6 @@ const SortableList = (props) => {
     }
 
     const registerListRef = (listInstance) => {
-        console.log("registerListRef");
         if (list !== null) {
             if (list.state.scrollTop !== 0) {
                 let current_row = Math.round(rowCount - (((rowHeight * rowCount) - list.state.scrollTop) / rowHeight));
@@ -203,7 +191,7 @@ const SortableList = (props) => {
     }
 
 
-    return <SortableVirtualList
+    return (<SortableVirtualList
         getRef={registerListRef}
         items={items}
         onSortEnd={onSortEnd}
@@ -214,7 +202,7 @@ const SortableList = (props) => {
         pressDelay={0}
         updateBeforeSortStart={updateBeforeSortStart}
         useDragHandle={true}
-    />
+    />);
 }
 
 export default SortableList;
