@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {  Grid } from 'react-virtualized';
+import { Grid } from 'react-virtualized';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const SortableList=(props)=>{
+const SortableList = (props) => {
 
     console.log("sortable");
 
@@ -38,19 +38,19 @@ const SortableList=(props)=>{
     let columnCount = 0;
     let rowCount = 0;
     let columnWidth = 0;
-    
+
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
-    
 
-    const {Setsorting, moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables,width,height,onRowsRendered } = props;
+
+    const { Setsorting, moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables, width, height, onRowsRendered } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
 
     const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
     let update_order = Mutation({ mutationquery: OrderMutation, query, variables, mutation: 'order', Setsorting });
-    
+
     const DragHandle = sortableHandle(() =>
         <IconButton aria-label="Move" className={classes.movebutton} >
             <OpenWithIcon className={classes.moveicon} />
@@ -59,6 +59,7 @@ const SortableList=(props)=>{
 
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+        console.log("onScroll");
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
             loadMore(function (val) {
                 let current_row = Math.round(rowCount - ((scrollHeight - scrollTop) / rowHeight));
@@ -68,7 +69,7 @@ const SortableList=(props)=>{
             });
         }
     };
-    
+
     const SortableItem = sortableElement(({ cell, style }) => {
         console.log("sortableElement");
         const needheight = (style.top === 0 && style.left === 0);
@@ -94,6 +95,7 @@ const SortableList=(props)=>{
 
 
     const getHeight = (height) => {
+        console.log("getHeight");
         let height1 = props.TypographyRef.current.offsetHeight;
         const height2 = props.drawerHeaderRef.current.offsetHeight;
 
@@ -118,7 +120,7 @@ const SortableList=(props)=>{
     const RenderGrid = (props) => {
         const { width, height, onRowsRendered, getRef } = props;
         const gridHeight = getHeight(height);
-        console.log("render grid");
+        console.log("render grid",items);
         return (
             <Grid
                 ref={getRef}
@@ -145,6 +147,7 @@ const SortableList=(props)=>{
     }
 
     const registerListRef = (listInstance) => {
+        console.log("registerListRef");
         if (list !== null) {
             if (list.state.scrollTop !== 0) {
                 let current_row = Math.round(rowCount - (((rowHeight * rowCount) - list.state.scrollTop) / rowHeight));
@@ -155,7 +158,7 @@ const SortableList=(props)=>{
         list = listInstance;
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
-    
+
 
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
@@ -201,17 +204,17 @@ const SortableList=(props)=>{
 
 
     return <SortableVirtualList
-    getRef={registerListRef}
-    items={items}
-    onSortEnd={onSortEnd}
-    width={width}
-    height={height}
-    onRowsRendered={onRowsRendered}
-    axis="xy"
-    pressDelay={0}
-    updateBeforeSortStart={updateBeforeSortStart}
-    useDragHandle={true}
-/>
+        getRef={registerListRef}
+        items={items}
+        onSortEnd={onSortEnd}
+        width={width}
+        height={height}
+        onRowsRendered={onRowsRendered}
+        axis="xy"
+        pressDelay={0}
+        updateBeforeSortStart={updateBeforeSortStart}
+        useDragHandle={true}
+    />
 }
 
 export default SortableList;
