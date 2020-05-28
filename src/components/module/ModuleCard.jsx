@@ -77,12 +77,7 @@ export default function RecipeReviewCard(props) {
     const element_actions = config_mostrar.filter(x => (action_list.includes(x['tipo'])));
     const element_fields = config_mostrar.filter(x => (!action_list.includes(x['tipo'])));
 
-
-
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+    const handleExpandClick = () => { setExpanded(!expanded); };
 
     const set_height = (timeout=false) => {
         if (CardRef.current !== undefined && CardRef.current !== null) {

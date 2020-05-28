@@ -56,6 +56,8 @@ function ModuleList(props) {
         }
     }`);
 
+    console.log(GET_LIST);
+
     let { items, loading, loadMore, hasNextPage, error } = Resolve({ query: GET_LIST, table: table_query, vars: vars });
 
     if (error) {

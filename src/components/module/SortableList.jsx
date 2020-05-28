@@ -142,7 +142,6 @@ const SortableList = (props) => {
                 }
             }
         }
-
         list = listInstance;
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
