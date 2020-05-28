@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-// import ApolloCacheUpdater from "apollo-cache-updater";
+import ApolloCacheUpdater from "apollo-cache-updater";
 
 // const stringify = (obj_from_json) => {
 //     if (typeof obj_from_json !== "object" || Array.isArray(obj_from_json)) {
@@ -49,31 +49,33 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                     count=0;
                 }
                 if (count===0){
-                    const querycache = cache.readQuery({ query: query, variables: variables });
-                    const querykey = Object.keys(querycache)[0];
-                    const elementcache = querycache[querykey];
+                    // const querycache = cache.readQuery({ query: query, variables: variables });
+                    // const querykey = Object.keys(querycache)[0];
+                    // const elementcache = querycache[querykey];
     
     
-                    let finaldata = {};
-                    finaldata[querykey] = elementcache;
+                    // let finaldata = {};
+                    // finaldata[querykey] = elementcache;
     
-                    cache.writeQuery({
-                        query: query,
-                        variables: variables,
-                        data: finaldata,
-                    });
-                    console.log(query);
+                    // cache.writeQuery({
+                    //     query: query,
+                    //     variables: variables,
+                    //     data: finaldata,
+                    // });
+                    // console.log(query);
 
 
-                    // const mutationResult = mf[Object.keys(mf)[0]]; // mutation result to pass into the updater
-                    // const updates = ApolloCacheUpdater({
-                    //     cache, // apollo proxy
-                    //     queriesToUpdate: [getArticles], // queries you want to automatically update
-                    //     searchVariables: {
-                    //         published: true, // update queries in the cache that have these vars
-                    //     },
-                    //     mutationResult,
-                    // })
+                    const mutationResult = mf[Object.keys(mf)[0]]; // mutation result to pass into the updater
+                    const options={
+                        cache, // apollo proxy
+                        queriesToUpdate: [query,], // queries you want to automatically update
+                        searchVariables: {
+                            //published: true, // update queries in the cache that have these vars
+                        },
+                        mutationResult,
+                    }
+                    console.log(options)
+                    const updates = ApolloCacheUpdater(options);
 
 
 
