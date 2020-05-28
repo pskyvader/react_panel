@@ -91,8 +91,7 @@ const InfiniteList = (props) => {
                     is_resizing(width);
                     if (stop_render(width)) {
                         return ''
-                    }
-                    return <SortableList
+                    } else return <SortableList
                         columnWidth={columnWidth}
                         columnCount={columnCount}
                         rowCount={rowCount}
