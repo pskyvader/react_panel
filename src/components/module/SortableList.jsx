@@ -53,10 +53,12 @@ const SortableList = (props) => {
     const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
     const update_order = Mutation({ mutationquery: OrderMutation, query: props.query, variables: props.variables, mutation: 'order', Setsorting: props.Setsorting });
 
-    const DragHandle = sortableHandle(() => 
-    props.enableDrag?
-    <IconButton aria-label="Move" className={classes.movebutton} > <OpenWithIcon className={classes.moveicon} /> </IconButton>:""
-    );
+    const DragHandle = sortableHandle(() => {
+        if (props.enableDrag) {
+            return (<IconButton aria-label="Move" className={classes.movebutton} > <OpenWithIcon className={classes.moveicon} /> </IconButton>);
+        }
+        else return "";
+    });
 
     const SortableItem = sortableElement(({ cell, style }) => {
         const needheight = (style.top === 0 && style.left === 0);
@@ -103,6 +105,7 @@ const SortableList = (props) => {
 
 
     const RenderGrid = (props) => {
+        console.log("render grid");
         const { width, height, onRowsRendered, getRef } = props;
         const gridHeight = getHeight(height);
         return (
