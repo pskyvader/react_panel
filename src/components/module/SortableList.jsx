@@ -37,13 +37,16 @@ const SortableList = (props) => {
     const [scroll_row, Setscroll_row] = useState(0);
 
 
-    const { columnCount, rowCount, columnWidth, Setsorting, moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables, width, height, onRowsRendered } = props;
-    let { items, } = props;
+    const { columnCount, rowCount, columnWidth, module, query, variables, width, height, onRowsRendered } = props;
+    const {Setsorting,moreItemsLoading,loadMore, hasNextPage, enableDrag}=props;
+    
+    let { items} = props;
+
     let list = null;
     let currentNode = null;
 
     const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
-    let update_order = Mutation({ mutationquery: OrderMutation, query, variables, mutation: 'order', Setsorting });
+    let update_order = Mutation({ mutationquery: OrderMutation, query, variables:props.variables, mutation: 'order', Setsorting });
 
     const DragHandle = sortableHandle(() =>
         <IconButton aria-label="Move" className={classes.movebutton} >
@@ -68,7 +71,7 @@ const SortableList = (props) => {
         return (
             <div style={style} tabIndex={0}>
                 <DragHandle />
-                <ModuleCard element={cell} config_mostrar={config_mostrar} Height={needheight ? rowHeight : null} setHeight={needheight ? SetrowHeight : null} />
+                <ModuleCard element={cell} config_mostrar={props.config_mostrar} Height={needheight ? rowHeight : null} setHeight={needheight ? SetrowHeight : null} />
             </div>
         );
     });
