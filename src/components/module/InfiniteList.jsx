@@ -118,7 +118,13 @@ const InfiniteList = (props) => {
                         <React.Fragment >
                             {moreItemsLoading || sorting ? <LinearProgress /> : <div></div>}
                             <WindowScroller scrollElement={window} ref={registerChild}>
-                                {({ height }) => (_renderAutoSizer({ height, onRowsRendered }))}
+                                {
+                                (props) => {
+                                    console.log(props);
+                                    const { height }=props;
+                                    return _renderAutoSizer({ height, onRowsRendered });
+                                }
+                                }
                             </WindowScroller>
                         </React.Fragment>
                     )
