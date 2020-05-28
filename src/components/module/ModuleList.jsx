@@ -5,45 +5,48 @@ import InfiniteList from './InfiniteList';
 
 
 
-const formatField=(field)=>{
-    field=field.split('_');
-    let field2=field.map((y,i)=> (i>0)? y.charAt(0).toUpperCase() + y.slice(1):y);
-    let field3=field2.join("");
-    return field3; 
+const formatField = (field) => {
+    field = field.split('_');
+    let field2 = field.map((y, i) => (i > 0) ? y.charAt(0).toUpperCase() + y.slice(1) : y);
+    let field3 = field2.join("");
+    return field3;
 }
 
-
-const action_list=['action','delete'];
-const action_names=['url_detalle','urlDetalle'];
+const action_list = ['action', 'delete'];
+const action_names = ['url_detalle', 'urlDetalle'];
 
 function ModuleList(props) {
     let { module, tipo, config } = props;
-    let config_mostrar=null;
+    let config_mostrar = null;
     let fields = ['id'];
     if (config !== null && config !== false) {
         const module_data = config.hijo[0];
-        const fields_filter = module_data.permisos.mostrar.filter(x =>(!action_list.includes(x['tipo']) && !action_names.includes(x['field']))  );
+        const fields_filter = module_data.permisos.mostrar.filter(x => (!action_list.includes(x['tipo']) && !action_names.includes(x['field'])));
         fields = fields_filter.map(x => formatField(x['field']));
-        config_mostrar=module_data.permisos.mostrar.map(x => {
-            x['field']=formatField(x['field']);
+        config_mostrar = module_data.permisos.mostrar.map(x => {
+            x['field'] = formatField(x['field']);
             return x;
         });
     }
 
-    const vars = { first: 100, after: ''}
+    if(fields.length===0){
+        return "Invalid Module " + module;
+    }
+
+    const vars = { first: 100, after: '' }
     if (tipo > 0) {
         vars['tipo'] = tipo;
     }
-    if (fields.includes("orden")){
+    if (fields.includes("orden")) {
         vars['sort'] = "orden ASC";
     }
 
-    tipo=0;
+    tipo = 0;
 
     const table_query = 'all' + module.charAt(0).toUpperCase() + module.slice(1);
-    const GET_LIST = gql(`
+    const list_query = `
     query get_list($first:Int!,$after:String,$sort:String){
-        ${table_query}(first:$first,after:$after,sort:$sort,${(tipo > 0) ? 'tipo:' + tipo : ''}){
+        ${table_query}(first:$first,after:$after,sort:$sort${(tipo > 0) ? ',tipo:' + tipo : ''}){
             pageInfo{
                 endCursor
                 hasNextPage
@@ -54,10 +57,8 @@ function ModuleList(props) {
                 }
             }
         }
-    }`);
-
-    console.log(GET_LIST);
-
+    }`
+    const GET_LIST = gql(list_query);
     let { items, loading, loadMore, hasNextPage, error } = Resolve({ query: GET_LIST, table: table_query, vars: vars });
 
     if (error) {
@@ -68,7 +69,7 @@ function ModuleList(props) {
         return "Loading...";
     } else if (!config) {
         return "Module " + module + " not allowed for this user";
-    }else if(items.length===0){
+    } else if (items.length === 0) {
         return "No elements in this section";
     }
 
