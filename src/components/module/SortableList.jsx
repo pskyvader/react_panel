@@ -1,23 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AutoSizer, Grid, WindowScroller, InfiniteLoader } from 'react-virtualized';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import OpenWithIcon from '@material-ui/icons/OpenWith';
+import { sortableContainer, sortableElement } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
+import { sortableHandle } from 'react-sortable-hoc';
+
+import ModuleCard from './ModuleCard';
+import { CreateMutation, Mutation } from '../Mutation';
+
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        boxShadow: theme.shadows[12],
+        transition: theme.transitions.create('', {
+            duration: theme.transitions.duration.short,
+        })
+    },
+    movebutton: {
+        position: 'absolute',
+        right: theme.spacing(3),
+        top: theme.spacing(3),
+        zIndex: 1,
+    },
+    moveicon: {
+        fontSize: '1.75rem'
+    }
+}));
+
+
 const SortableList=(props)=>{
 
+    console.log("sortable");
+
     const classes = useStyles();
-    const minWidth = 275;
-    const minWidthlg = 320;
-    const maxWidth = 375;
-    const scrollbarSize = 20;
-
-
     let columnCount = 0;
     let rowCount = 0;
     let columnWidth = 0;
-    let current_width = 0;
-    const [resizing, Setresizing] = useState(false);
+    
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
-    const [sorting, Setsorting] = useState(false);
+    
 
-    const { moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables,width,height,onRowsRendered } = props;
+    const {Setsorting, moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables,width,height,onRowsRendered } = props;
     let { items } = props;
     let list = null;
     let currentNode = null;
@@ -30,14 +57,6 @@ const SortableList=(props)=>{
         </IconButton>
     );
 
-    const stop_render = (width = 1) => {
-        if (sorting || moreItemsLoading || columnCount === 0 || rowCount === 0 || columnWidth === 0 || width === 0 || resizing) {
-            return true;
-        }
-        return false;
-    }
-
-
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
@@ -49,43 +68,7 @@ const SortableList=(props)=>{
             });
         }
     };
-
-    const isItemLoaded = ({ index }) => !hasNextPage || index < items.length;
-    const itemCount = hasNextPage ? items.length + 1 : items.length;
-    const getMinwidth = (width) => width < 1280 ? minWidth : minWidthlg;
-    const calculateColumnCount = (width) => {
-        let column_count = Math.floor((width - scrollbarSize) / getMinwidth(width));
-        if (column_count !== columnCount) {
-            columnCount = column_count;
-        }
-    }
-
-    const cellwidth = (width) => {
-        let cell_width = 0;
-        if (width !== 0 && columnCount !== 0) {
-            cell_width = Math.floor((width - scrollbarSize) / columnCount);
-        }
-        if (cell_width < getMinwidth(width)) {
-            cell_width = getMinwidth(width);
-        } else if (cell_width > maxWidth && width >= 768) {
-            cell_width = maxWidth;
-        }
-
-        if (cell_width !== columnWidth) {
-            columnWidth = cell_width;
-        }
-    }
-
-    const calculateRowCount = () => {
-        let row_count = 1;
-        row_count = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
-        row_count = (row_count < 1) ? 1 : row_count;
-        if (row_count !== rowCount) {
-            rowCount = row_count;
-        }
-    }
-
-
+    
     const SortableItem = sortableElement(({ cell, style }) => {
         const needheight = (style.top === 0 && style.left === 0);
         return (
@@ -170,12 +153,7 @@ const SortableList=(props)=>{
         list = listInstance;
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
-    const _onResize = ({ width }) => {
-        if (width > 0 && columnCount === 0) {
-            calculateColumnCount(width);
-        }
-    }
-
+    
 
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
@@ -217,20 +195,6 @@ const SortableList=(props)=>{
         currentNode = node.children[1];
         currentNode.classtmp = currentNode.className;
         currentNode.className += " " + classes.root;
-    }
-    const is_resizing=(width)=>{
-        if (current_width === 0) {
-            current_width = width;
-        } else if (width !== current_width) {
-            current_width = width;
-            if (!resizing) {
-                Setresizing(true);
-                setTimeout(() => {
-                    Setresizing(false);
-                }, 300);
-            }
-        }
-
     }
 
 

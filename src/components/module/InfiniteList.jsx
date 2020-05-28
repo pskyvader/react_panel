@@ -289,20 +289,20 @@ const InfiniteList = (props) => {
                     if (stop_render(width)) {
                         return ''
                     }
-                    return <SortableList width={width} height={height} onRowsRendered={onRowsRendered} {...props}/>
+                    return <SortableList Setsorting={Setsorting} width={width} height={height} onRowsRendered={onRowsRendered} {...props}/>
 
-                    return <SortableVirtualList
-                        getRef={registerListRef}
-                        items={items}
-                        onSortEnd={onSortEnd}
-                        width={width}
-                        height={height}
-                        onRowsRendered={onRowsRendered}
-                        axis="xy"
-                        pressDelay={0}
-                        updateBeforeSortStart={updateBeforeSortStart}
-                        useDragHandle={true}
-                    />
+                    // return <SortableVirtualList
+                    //     getRef={registerListRef}
+                    //     items={items}
+                    //     onSortEnd={onSortEnd}
+                    //     width={width}
+                    //     height={height}
+                    //     onRowsRendered={onRowsRendered}
+                    //     axis="xy"
+                    //     pressDelay={0}
+                    //     updateBeforeSortStart={updateBeforeSortStart}
+                    //     useDragHandle={true}
+                    // />
                 }}
             </AutoSizer>
         );
