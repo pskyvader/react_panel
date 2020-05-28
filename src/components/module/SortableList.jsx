@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { AutoSizer, Grid, WindowScroller, InfiniteLoader } from 'react-virtualized';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import {  Grid } from 'react-virtualized';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
@@ -51,6 +50,7 @@ const SortableList=(props)=>{
 
     const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
     let update_order = Mutation({ mutationquery: OrderMutation, query, variables, mutation: 'order', Setsorting });
+    
     const DragHandle = sortableHandle(() =>
         <IconButton aria-label="Move" className={classes.movebutton} >
             <OpenWithIcon className={classes.moveicon} />
@@ -70,6 +70,7 @@ const SortableList=(props)=>{
     };
     
     const SortableItem = sortableElement(({ cell, style }) => {
+        console.log("sortableElement");
         const needheight = (style.top === 0 && style.left === 0);
         return (
             <div style={style} tabIndex={0}>
@@ -80,6 +81,7 @@ const SortableList=(props)=>{
     });
 
     const _cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
+        console.log("cell");
         const startIndex = rowIndex * columnCount + columnIndex;
         const zindex = rowCount * columnCount - startIndex;
         const cell = items[startIndex];

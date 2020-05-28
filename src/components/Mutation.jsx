@@ -67,7 +67,7 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
     }
 
     const [mutation_function, data] = useMutation(mutationquery, extrafunction);
-    console.log(data);
+    //console.log(data);
     const count_mutations=(props)=>{
         count++;
         if (count===1){
