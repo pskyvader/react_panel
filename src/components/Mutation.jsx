@@ -65,7 +65,8 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                     // console.log(query);
 
 
-                    const mutationResult = mf[Object.keys(mf)[0]]; // mutation result to pass into the updater
+                    //const mutationResult = mf[Object.keys(mf)[0]]; // mutation result to pass into the updater
+                    const mutationResult ={}; // mutation result to pass into the updater
                     const options={
                         cache, // apollo proxy
                         queriesToUpdate: [query,], // queries you want to automatically update
@@ -74,7 +75,7 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                         },
                         mutationResult,
                     }
-                    console.log(options)
+                    console.log(options);
                     const updates = ApolloCacheUpdater(options);
 
 
