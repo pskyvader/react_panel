@@ -36,7 +36,7 @@ const InfiniteList = (props) => {
     }
 
     const cellwidth = (width) => {
-        let cell_width =(width !== 0 && columnCount !== 0)? Math.floor((width - scrollbarSize) / columnCount):0;
+        let cell_width = (width !== 0 && columnCount !== 0) ? Math.floor((width - scrollbarSize) / columnCount) : 0;
         if (cell_width < getMinwidth(width)) {
             cell_width = getMinwidth(width);
         } else if (cell_width > maxWidth && width >= 768) {
@@ -118,13 +118,7 @@ const InfiniteList = (props) => {
                         <React.Fragment >
                             {moreItemsLoading || sorting ? <LinearProgress /> : <div></div>}
                             <WindowScroller scrollElement={window} ref={registerChild}>
-                                {
-                                (props) => {
-                                    console.log(props);
-                                    const { height }=props;
-                                    return _renderAutoSizer({ height, onRowsRendered });
-                                }
-                                }
+                                {({ height }) => _renderAutoSizer({ height, onRowsRendered })}
                             </WindowScroller>
                         </React.Fragment>
                     )

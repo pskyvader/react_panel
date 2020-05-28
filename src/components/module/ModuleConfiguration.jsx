@@ -67,7 +67,6 @@ function ModuleConfiguration(props) {
     if(typeof(config)==='object' && config!==null && config.hasOwnProperty("error")){
         return ErrorLink(config['error']);
     }
-    console.log(config);
 
     return(
         <ModuleList config={config} module={props.module} tipo={props.tipo} {...props}/>
