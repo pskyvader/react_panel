@@ -120,7 +120,7 @@ const SortableList = (props) => {
     const RenderGrid = (props) => {
         const { width, height, onRowsRendered, getRef } = props;
         const gridHeight = getHeight(height);
-        console.log("render grid",items);
+        console.log("render grid");
         return (
             <Grid
                 ref={getRef}
@@ -143,7 +143,7 @@ const SortableList = (props) => {
                     }
                 }
             />
-        )
+        );
     }
 
     const registerListRef = (listInstance) => {
