@@ -31,33 +31,17 @@ const useStyles = makeStyles(theme => ({
 
 
 const SortableList = (props) => {
-
     const classes = useStyles();
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
-
-
-    const { columnCount, rowCount, columnWidth, module, query, variables, width, height, onRowsRendered } = props;
-    const {Setsorting,moreItemsLoading,loadMore, hasNextPage, enableDrag}=props;
-    
-    let { items} = props;
-
+    const { columnCount, rowCount, module, columnWidth } = props;
+    let { items } = props;
     let list = null;
     let currentNode = null;
 
-    const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
-    let update_order = Mutation({ mutationquery: OrderMutation, query, variables:props.variables, mutation: 'order', Setsorting });
-
-    const DragHandle = sortableHandle(() =>
-        <IconButton aria-label="Move" className={classes.movebutton} >
-            <OpenWithIcon className={classes.moveicon} />
-        </IconButton>
-    );
-
-
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !moreItemsLoading && hasNextPage) {
-            loadMore(function (val) {
+        if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !props.moreItemsLoading && props.hasNextPage) {
+            props.loadMore(function (val) {
                 let current_row = Math.round(rowCount - ((scrollHeight - scrollTop) / rowHeight));
                 if (current_row !== scroll_row) {
                     Setscroll_row(current_row);
@@ -65,6 +49,14 @@ const SortableList = (props) => {
             });
         }
     };
+
+    const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
+    const update_order = Mutation({ mutationquery: OrderMutation, query: props.query, variables: props.variables, mutation: 'order', Setsorting: props.Setsorting });
+
+    const DragHandle = sortableHandle(() => 
+    props.enableDrag?
+    <IconButton aria-label="Move" className={classes.movebutton} > <OpenWithIcon className={classes.moveicon} /> </IconButton>:""
+    );
 
     const SortableItem = sortableElement(({ cell, style }) => {
         const needheight = (style.top === 0 && style.left === 0);
@@ -81,7 +73,7 @@ const SortableList = (props) => {
         const zindex = rowCount * columnCount - startIndex;
         const cell = items[startIndex];
         if (cell === undefined) { return null; }
-        return <SortableItem disabled={!enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
+        return <SortableItem disabled={!props.enableDrag} index={startIndex} cell={cell} key={key} style={{ ...style, zIndex: zindex }} />;
     }
 
 
@@ -198,9 +190,9 @@ const SortableList = (props) => {
         getRef={registerListRef}
         items={items}
         onSortEnd={onSortEnd}
-        width={width}
-        height={height}
-        onRowsRendered={onRowsRendered}
+        width={props.width}
+        height={props.height}
+        onRowsRendered={props.onRowsRendered}
         axis="xy"
         pressDelay={0}
         updateBeforeSortStart={updateBeforeSortStart}
