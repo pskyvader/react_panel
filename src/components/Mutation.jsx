@@ -58,7 +58,6 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                         variables: variables,
                         data: finaldata,
                     });
-                    console.log(finaldata,mf,cache,query,variables);
                     Setsorting(false);
                 }
             },
