@@ -84,7 +84,7 @@ export default function RecipeReviewCard(props) {
         setExpanded(!expanded);
     };
 
-    const set_height = () => {
+    const set_height = (timeout=false) => {
         if (CardRef.current !== undefined && CardRef.current !== null) {
             const nodeStyle1 = window.getComputedStyle(CardRef.current);
             let margin = nodeStyle1.getPropertyValue('margin-bottom');
@@ -92,8 +92,8 @@ export default function RecipeReviewCard(props) {
             if (Height !== heightCard && heightCard <= 600) {
                 setHeight(heightCard);
             }
-        } else if (Height === 100) {
-            setTimeout(set_height, 100);
+        } else if (Height === 100 && !timeout) {
+            setTimeout(set_height, 0,true);
         }
     }
 
@@ -139,7 +139,8 @@ export default function RecipeReviewCard(props) {
             </Collapse>
         </Card>
     );
-
-    set_height();
+    if(Height!==null){
+        set_height();
+    }
     return return_element;
 }

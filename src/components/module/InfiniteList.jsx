@@ -39,13 +39,16 @@ const InfiniteList = (props) => {
     const minWidthlg = 320;
     const maxWidth = 375;
     const scrollbarSize = 20;
-    const [columnCount, SetcolumnCount] = useState(0);
-    const [rowCount, SetrowCount] = useState(0);
-    const [columnWidth, SetcolumnWidth] = useState(0);
+
+
+    let columnCount = 0;
+    let rowCount = 0;
+    let columnWidth = 0;
+    let current_width = 0;
+    const [resizing, Setresizing] = useState(false);
     const [rowHeight, SetrowHeight] = useState(100);
     const [scroll_row, Setscroll_row] = useState(0);
     const [sorting, Setsorting] = useState(false);
-    const [basewidth, Setbasewidth] = useState(0);
 
     const { moreItemsLoading, loadMore, hasNextPage, enableDrag, config_mostrar, module, query, variables } = props;
     let { items } = props;
@@ -65,7 +68,7 @@ const InfiniteList = (props) => {
     );
 
     const stop_render = (width = 1) => {
-        if (sorting || moreItemsLoading || columnCount === 0 || rowCount === 0 || columnWidth === 0 || width === 0) {
+        if (sorting || moreItemsLoading || columnCount === 0 || rowCount === 0 || columnWidth === 0 || width === 0 || resizing) {
             return true;
         }
         return false;
@@ -90,7 +93,7 @@ const InfiniteList = (props) => {
     const calculateColumnCount = (width) => {
         let column_count = Math.floor((width - scrollbarSize) / getMinwidth(width));
         if (column_count !== columnCount) {
-            SetcolumnCount(column_count);
+            columnCount = column_count;
         }
     }
 
@@ -106,7 +109,7 @@ const InfiniteList = (props) => {
         }
 
         if (cell_width !== columnWidth) {
-            SetcolumnWidth(cell_width);
+            columnWidth = cell_width;
         }
     }
 
@@ -115,16 +118,17 @@ const InfiniteList = (props) => {
         row_count = (columnCount > 0) ? Math.floor(items.length / columnCount) : 1;
         row_count = (row_count < 1) ? 1 : row_count;
         if (row_count !== rowCount) {
-            SetrowCount(row_count);
+            rowCount = row_count;
         }
     }
 
 
     const SortableItem = sortableElement(({ cell, style }) => {
+        const needheight = (style.top === 0 && style.left === 0);
         return (
             <div style={style} tabIndex={0}>
                 <DragHandle />
-                <ModuleCard element={cell} config_mostrar={config_mostrar} Height={rowHeight} setHeight={SetrowHeight} />
+                <ModuleCard element={cell} config_mostrar={config_mostrar} Height={needheight ? rowHeight : null} setHeight={needheight ? SetrowHeight : null} />
             </div>
         );
     });
@@ -167,6 +171,7 @@ const InfiniteList = (props) => {
         const { width, height, onRowsRendered, getRef } = props;
 
         const gridHeight = getHeight(height);
+        console.log("render grid");
         return (
             <Grid
                 ref={getRef}
@@ -177,7 +182,7 @@ const InfiniteList = (props) => {
                 overscanColumnCount={0}
                 overscanRowCount={0}
                 rowHeight={rowHeight}
-                rowCount={rowCount}
+                rowCount={rowHeight !== 100 ? rowCount : 1}
                 width={width}
                 onScroll={onScroll}
                 scrollToRow={scroll_row}
@@ -205,20 +210,10 @@ const InfiniteList = (props) => {
     };
     const SortableVirtualList = sortableContainer(RenderGrid);
     const _onResize = ({ width }) => {
-        console.log('start width',width,basewidth);
-
-        setTimeout(get_width, 1000,width);
-        Setbasewidth(width);
-
-        if (width>0 && columnCount===0){
-            calculateColumnCount(width); 
+        if (width > 0 && columnCount === 0) {
+            calculateColumnCount(width);
         }
     }
-    const get_width=(width)=>{
-            console.log(width,basewidth,width===basewidth);
-            // calculateColumnCount(width); 
-            // cellwidth(width); 
-    };
 
 
 
@@ -262,6 +257,20 @@ const InfiniteList = (props) => {
         currentNode.classtmp = currentNode.className;
         currentNode.className += " " + classes.root;
     }
+    const is_resizing=(width)=>{
+        if (current_width === 0) {
+            current_width = width;
+        } else if (width !== current_width) {
+            current_width = width;
+            if (!resizing) {
+                Setresizing(true);
+                setTimeout(() => {
+                    Setresizing(false);
+                }, 300);
+            }
+        }
+
+    }
 
     const _renderAutoSizer = ({ height, onRowsRendered }) => {
         return (
@@ -273,9 +282,11 @@ const InfiniteList = (props) => {
                     calculateColumnCount(width);
                     cellwidth(width);
                     calculateRowCount();
+                    is_resizing(width);
                     if (stop_render(width)) {
                         return ''
                     }
+
                     return <SortableVirtualList
                         getRef={registerListRef}
                         items={items}
@@ -303,7 +314,7 @@ const InfiniteList = (props) => {
                 ({ onRowsRendered, registerChild }) => {
                     return (
                         <React.Fragment >
-                            {moreItemsLoading ? <LinearProgress /> : <div></div>}
+                            {moreItemsLoading || sorting ? <LinearProgress /> : <div></div>}
                             <WindowScroller scrollElement={window} ref={registerChild}>
                                 {({ height }) => (_renderAutoSizer({ height, onRowsRendered }))}
                             </WindowScroller>
