@@ -40,52 +40,13 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "", Setso
                     Setsorting(false);
                 }
             },
-            refetchQueries: ["get_list"],
-            awaitRefetchQueries:true,
-
-
-
-            update(cache, { data: mf }) {
-                console.log(table,query,variables);
+            refetchQueries: [{query:query,variables:variables, notifyOnNetworkStatusChange: true}],
+            onCompleted(){
                 count--;
                 if (count < 0) {
                     count = 0;
                 }
                 if (count === 0) {
-                    // const querycache = cache.readQuery({ query: query, variables: variables });
-                    // const querykey = Object.keys(querycache)[0];
-                    // const elementcache = querycache[querykey];
-
-
-                    // let finaldata = {};
-                    // finaldata[querykey] = elementcache;
-
-                    // cache.writeQuery({
-                    //     query: query,
-                    //     variables: variables,
-                    //     data: finaldata,
-                    // });
-                    // console.log(query);
-
-
-                    //const mutationResult = mf[Object.keys(mf)[0]]; // mutation result to pass into the updater
-                    // const mutationResult ={}; // mutation result to pass into the updater
-                    // const options={
-                    //     cache, // apollo proxy
-                    //     queriesToUpdate: [query,], // queries you want to automatically update
-                    //     searchVariables: {
-                    //         //published: true, // update queries in the cache that have these vars
-                    //     },
-                    //     mutationResult,
-                    // }
-                    // console.log(options);
-                    // const updates = ApolloCacheUpdater(options);
-
-
-
-
-
-
                     Setsorting(false);
                 }
             },
