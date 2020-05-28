@@ -41,8 +41,10 @@ const SortableList = (props) => {
 
     const onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
         if (scrollHeight > clientHeight && scrollTop >= (scrollHeight - clientHeight) * 0.7 && !props.moreItemsLoading && props.hasNextPage) {
+            
             props.loadMore(function (val) {
                 let current_row = Math.round(rowCount - ((scrollHeight - scrollTop) / rowHeight));
+                console.log('row',current_row,scroll_row);
                 if (current_row !== scroll_row) {
                     Setscroll_row(current_row);
                 }
@@ -103,7 +105,7 @@ const SortableList = (props) => {
 
 
     const RenderGrid = (props) => {
-        console.log("render grid");
+        console.log("render grid",scroll_row);
         const { width, height, onRowsRendered, getRef } = props;
         const gridHeight = getHeight(height);
         return (
@@ -135,6 +137,7 @@ const SortableList = (props) => {
         if (list !== null) {
             if (list.state.scrollTop !== 0) {
                 let current_row = Math.round(rowCount - (((rowHeight * rowCount) - list.state.scrollTop) / rowHeight));
+                console.log("set row",current_row);
                 Setscroll_row(current_row);
             }
         }
