@@ -42,9 +42,9 @@ function ModuleConfigurationCache(props) {
         }
     }`;
 
-    const variables = { variables: { idadministrador: idadministrador, module: module, tipo: tipo }, };
+    const extra = { variables: { idadministrador: idadministrador, module: module, tipo: tipo }, };
 
-    const { loading, error, data } = useQuery(GET_MODULES, variables);
+    const { loading, error, data } = useQuery(GET_MODULES, extra);
     if (loading) return null;
     if (error) return {'error':error};
 
