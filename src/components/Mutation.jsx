@@ -25,38 +25,41 @@ export const CreateMutation = ({ table, fields, input }) => {
     return UPDATE_LIST;
 }
 
-let count=0;
+let count = 0;
 
-export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsorting }) => {
+export const Mutation = ({ mutationquery, query, variables, mutation = "", Setsorting }) => {
     let extrafunction = {};
     if (mutation === "order") {
         extrafunction = {
-            onError(data){
+            onError(data) {
                 count--;
-                if (count<0){
-                    count=0;
+                if (count < 0) {
+                    count = 0;
                 }
-                if (count===0){
+                if (count === 0) {
                     Setsorting(false);
                 }
             },
+            refetchQueries: [
+                { query: query }
+            ],
 
 
-            
-            update(cache, { data: mf }) { 
+
+            update(cache, { data: mf }) {
                 count--;
-                if (count<0){
-                    count=0;
+                if (count < 0) {
+                    count = 0;
                 }
-                if (count===0){
+                if (count === 0) {
                     // const querycache = cache.readQuery({ query: query, variables: variables });
                     // const querykey = Object.keys(querycache)[0];
                     // const elementcache = querycache[querykey];
-    
-    
+
+
                     // let finaldata = {};
                     // finaldata[querykey] = elementcache;
-    
+
                     // cache.writeQuery({
                     //     query: query,
                     //     variables: variables,
@@ -66,17 +69,17 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
 
 
                     //const mutationResult = mf[Object.keys(mf)[0]]; // mutation result to pass into the updater
-                    const mutationResult ={}; // mutation result to pass into the updater
-                    const options={
-                        cache, // apollo proxy
-                        queriesToUpdate: [query,], // queries you want to automatically update
-                        searchVariables: {
-                            //published: true, // update queries in the cache that have these vars
-                        },
-                        mutationResult,
-                    }
-                    console.log(options);
-                    const updates = ApolloCacheUpdater(options);
+                    // const mutationResult ={}; // mutation result to pass into the updater
+                    // const options={
+                    //     cache, // apollo proxy
+                    //     queriesToUpdate: [query,], // queries you want to automatically update
+                    //     searchVariables: {
+                    //         //published: true, // update queries in the cache that have these vars
+                    //     },
+                    //     mutationResult,
+                    // }
+                    // console.log(options);
+                    // const updates = ApolloCacheUpdater(options);
 
 
 
@@ -91,9 +94,9 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
 
     const [mutation_function] = useMutation(mutationquery, extrafunction);
     //console.log(data);
-    const count_mutations=(props)=>{
+    const count_mutations = (props) => {
         count++;
-        if (count===1){
+        if (count === 1) {
             Setsorting(true);
         }
         return mutation_function(props);

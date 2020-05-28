@@ -42,15 +42,15 @@ def init(environ):
         status_code, http.client.responses[status_code]
     )
     data_return["response_body"] = data
-    try:
-        pass
-    except Exception as e:
-        error_message = "Error {}".format(e)
-        status_code = getattr(e, "status_code", 500)
-        data_return["status"] = "{} {}".format(
-            status_code, http.client.responses[status_code]
-        )
-        data_return["response_body"] = {"errors": [error_message]}
+    # try:
+    #     pass
+    # except Exception as e:
+    #     error_message = "Error {}".format(e)
+    #     status_code = getattr(e, "status_code", 500)
+    #     data_return["status"] = "{} {}".format(
+    #         status_code, http.client.responses[status_code]
+    #     )
+    #     data_return["response_body"] = {"errors": [error_message]}
 
     return data_return
 
