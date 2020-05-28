@@ -67,7 +67,7 @@ function ModuleList(props) {
     } else if (!config) {
         return "Module " + module + " not allowed for this user";
     }else if(items.length===0){
-        return "";
+        return "No elements in this section";
     }
 
     return (
