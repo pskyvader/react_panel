@@ -1,5 +1,6 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
+// import ApolloCacheUpdater from "apollo-cache-updater";
 
 // const stringify = (obj_from_json) => {
 //     if (typeof obj_from_json !== "object" || Array.isArray(obj_from_json)) {
@@ -39,7 +40,10 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                     Setsorting(false);
                 }
             },
-            update(cache, { data: mf }) {
+
+
+            
+            update(cache, { data: mf }) { 
                 count--;
                 if (count<0){
                     count=0;
@@ -58,6 +62,24 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                         variables: variables,
                         data: finaldata,
                     });
+                    console.log(query);
+
+
+                    // const mutationResult = mf[Object.keys(mf)[0]]; // mutation result to pass into the updater
+                    // const updates = ApolloCacheUpdater({
+                    //     cache, // apollo proxy
+                    //     queriesToUpdate: [getArticles], // queries you want to automatically update
+                    //     searchVariables: {
+                    //         published: true, // update queries in the cache that have these vars
+                    //     },
+                    //     mutationResult,
+                    // })
+
+
+
+
+
+
                     Setsorting(false);
                 }
             },
