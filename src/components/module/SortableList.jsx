@@ -137,8 +137,9 @@ const SortableList = (props) => {
         if (list !== null) {
             if (list.state.scrollTop !== 0) {
                 let current_row = Math.round(rowCount - (((rowHeight * rowCount) - list.state.scrollTop) / rowHeight));
-                console.log("set row",current_row);
-                Setscroll_row(current_row);
+                if(scroll_row!==current_row){
+                    Setscroll_row(current_row);
+                }
             }
         }
 
