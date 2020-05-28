@@ -49,7 +49,6 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                     const querykey = Object.keys(querycache)[0];
                     const elementcache = querycache[querykey];
     
-                    console.log(elementcache.edges,count);
     
                     let finaldata = {};
                     finaldata[querykey] = elementcache;
@@ -59,14 +58,14 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "",Setsor
                         variables: variables,
                         data: finaldata,
                     });
+                    console.log(finaldata,mf,cache,query,variables);
                     Setsorting(false);
-
                 }
             },
         }
     }
 
-    const [mutation_function, data] = useMutation(mutationquery, extrafunction);
+    const [mutation_function] = useMutation(mutationquery, extrafunction);
     //console.log(data);
     const count_mutations=(props)=>{
         count++;
