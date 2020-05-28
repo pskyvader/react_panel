@@ -27,7 +27,7 @@ export const CreateMutation = ({ table, fields, input }) => {
 
 let count = 0;
 
-export const Mutation = ({ mutationquery, query, variables, mutation = "", Setsorting }) => {
+export const Mutation = ({ mutationquery, query, variables, mutation = "", Setsorting,table }) => {
     let extrafunction = {};
     if (mutation === "order") {
         extrafunction = {
@@ -40,13 +40,13 @@ export const Mutation = ({ mutationquery, query, variables, mutation = "", Setso
                     Setsorting(false);
                 }
             },
-            refetchQueries: [
-                { query: query }
-            ],
+            refetchQueries: ["get_list"],
+            awaitRefetchQueries:true,
 
 
 
             update(cache, { data: mf }) {
+                console.log(table,query,variables);
                 count--;
                 if (count < 0) {
                     count = 0;
