@@ -4,11 +4,7 @@
     "titulo": "Categorias de seccion",
     "sub": "seccion",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idseccioncategoria", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -46,21 +42,105 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idseccioncategoria": true, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": true, "url_detalle": true, "url_children": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "resumen": true, "descripcion": true, "idpadre": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idseccioncategoria": true,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": true,
+                        "url_detalle": true,
+                        "url_children": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "resumen": true,
+                        "descripcion": true,
+                        "idpadre": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idseccioncategoria": true, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": true, "url_detalle": true, "url_children": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "resumen": true, "descripcion": true, "idpadre": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idseccioncategoria": true,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": true,
+                        "url_detalle": true,
+                        "url_children": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "resumen": true,
+                        "descripcion": true,
+                        "idpadre": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idseccioncategoria": true, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": true, "url_detalle": true, "url_children": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "resumen": true, "descripcion": true, "idpadre": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idseccioncategoria": true,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": true,
+                        "url_detalle": true,
+                        "url_children": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "resumen": true,
+                        "descripcion": true,
+                        "idpadre": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 }
             },
             "orden": 1,

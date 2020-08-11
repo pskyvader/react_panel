@@ -7,19 +7,19 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 attribute = dict(
     tipo=graphene.Int(),
-    cookie_pedido=graphene.String(),
-    fecha_creacion=graphene.types.datetime.DateTime(),
-    fecha_pago=graphene.types.datetime.DateTime(),
-    idusuario=graphene.Int(),
-    idpedidoestado=graphene.Int(),
-    idmediopago=graphene.Int(),
-    nombre=graphene.String(),
-    email=graphene.String(),
-    telefono=graphene.String(),
-    total_original=graphene.Int(),
-    total=graphene.Int(),
-    comentarios=graphene.String(),
-    pedido_manual=graphene.Boolean()
+cookie_pedido=graphene.String(),
+fecha_creacion=graphene.types.datetime.DateTime(),
+fecha_pago=graphene.types.datetime.DateTime(),
+idusuario=graphene.Int(),
+idpedidoestado=graphene.Int(),
+idmediopago=graphene.Int(),
+nombre=graphene.String(),
+email=graphene.String(),
+telefono=graphene.String(),
+total_original=graphene.Int(),
+total=graphene.Int(),
+comentarios=graphene.String(),
+pedido_manual=graphene.Boolean()
     )
 read_only_attribute = dict(
     

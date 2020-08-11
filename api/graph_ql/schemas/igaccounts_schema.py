@@ -7,22 +7,22 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 attribute = dict(
     pk=graphene.String(),
-    username=graphene.String(),
-    full_name=graphene.String(),
-    profile_pic_url=graphene.String(),
-    biography=graphene.String(),
-    follower_count=graphene.Int(),
-    following_count=graphene.Int(),
-    has_anonymous_profile_picture=graphene.Boolean(),
-    is_private=graphene.Boolean(),
-    is_business=graphene.Boolean(),
-    is_verified=graphene.Boolean(),
-    media_count=graphene.Int(),
-    fecha=graphene.types.datetime.DateTime(),
-    following=graphene.Boolean(),
-    follower=graphene.Boolean(),
-    favorito=graphene.Boolean(),
-    hashtag=graphene.String()
+username=graphene.String(),
+full_name=graphene.String(),
+profile_pic_url=graphene.String(),
+biography=graphene.String(),
+follower_count=graphene.Int(),
+following_count=graphene.Int(),
+has_anonymous_profile_picture=graphene.Boolean(),
+is_private=graphene.Boolean(),
+is_business=graphene.Boolean(),
+is_verified=graphene.Boolean(),
+media_count=graphene.Int(),
+fecha=graphene.types.datetime.DateTime(),
+following=graphene.Boolean(),
+follower=graphene.Boolean(),
+favorito=graphene.Boolean(),
+hashtag=graphene.String()
     )
 read_only_attribute = dict(
     
@@ -39,11 +39,6 @@ class igaccounts_schema(SQLAlchemyObjectType):
         only_fields = (
             ["idigaccounts"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
-
-    profile_url=graphene.String()
-    def resolve_profile_url(parent,info, **kwargs):
-        return 'https://www.instagram.com/'+parent.username
-
     
     
 

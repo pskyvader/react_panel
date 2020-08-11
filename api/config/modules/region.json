@@ -4,11 +4,7 @@
     "titulo": "Regiones",
     "sub": "comuna",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idregion", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -37,21 +33,78 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idregion": false, "orden": false, "titulo": true, "precio": true, "estado": true, "copy": false, "url_detalle": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "precio": true, "orden": false, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idregion": false,
+                        "orden": false,
+                        "titulo": true,
+                        "precio": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "precio": true,
+                        "orden": false,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idregion": false, "orden": false, "titulo": true, "precio": true, "estado": true, "copy": false, "url_detalle": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "precio": true, "orden": false, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idregion": false,
+                        "orden": false,
+                        "titulo": true,
+                        "precio": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "precio": true,
+                        "orden": false,
+                        "estado": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idregion": false, "orden": false, "titulo": true, "precio": true, "estado": true, "copy": false, "url_detalle": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "precio": true, "orden": false, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idregion": false,
+                        "orden": false,
+                        "titulo": true,
+                        "precio": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "precio": true,
+                        "orden": false,
+                        "estado": true
+                    }
                 }
             },
             "orden": 1,

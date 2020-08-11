@@ -7,10 +7,10 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 attribute = dict(
     idpadre=graphene.Int(),
-    url=graphene.String(),
-    depth=graphene.Int(),
-    valid=graphene.String(),
-    ready=graphene.Boolean()
+url=graphene.String(),
+depth=graphene.Int(),
+valid=graphene.String(),
+ready=graphene.Boolean()
     )
 read_only_attribute = dict(
     

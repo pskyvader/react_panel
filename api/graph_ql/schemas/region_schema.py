@@ -7,9 +7,9 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 attribute = dict(
     titulo=graphene.String(),
-    precio=graphene.Int(),
-    orden=graphene.Int(),
-    estado=graphene.Boolean()
+precio=graphene.Int(),
+orden=graphene.Int(),
+estado=graphene.Boolean()
     )
 read_only_attribute = dict(
     

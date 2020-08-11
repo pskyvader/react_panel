@@ -4,11 +4,7 @@
     "titulo": "Logos",
     "sub": "",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
         {"field": "titulo", "titulo": "Titulo", "tipo": "text"},
@@ -31,21 +27,60 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": false, "excel": false, "regenerar": true},
-                    "mostrar": {"orden": true, "titulo": true, "foto": true, "url_detalle": true},
-                    "detalle": {"titulo": true, "foto": true, "orden": true}
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "url_detalle": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "foto": true,
+                        "orden": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": false, "excel": false, "regenerar": true},
-                    "mostrar": {"orden": true, "titulo": true, "foto": true, "url_detalle": true},
-                    "detalle": {"titulo": true, "foto": true, "orden": true}
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "url_detalle": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "foto": true,
+                        "orden": true
+                    }
                 },
                 "3": {
                     "estado": false,
-                    "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"orden": true, "titulo": true, "foto": true, "url_detalle": true},
-                    "detalle": {"titulo": true, "foto": true, "orden": true}
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "url_detalle": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "foto": true,
+                        "orden": true
+                    }
                 }
             },
             "orden": 1,

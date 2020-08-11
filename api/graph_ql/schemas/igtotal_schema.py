@@ -7,8 +7,8 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 attribute = dict(
     tag=graphene.String(),
-    fecha=graphene.types.datetime.DateTime(),
-    cantidad=graphene.Int()
+fecha=graphene.types.datetime.DateTime(),
+cantidad=graphene.Int()
     )
 read_only_attribute = dict(
     

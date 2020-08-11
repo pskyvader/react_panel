@@ -1,14 +1,10 @@
 {
-    "icono": "ShoppingCart",
+    "icono": "Shoppingcart",
     "module": "productocategoria",
     "titulo": "Categorias de productos",
     "sub": "producto",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idproductocategoria", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -48,21 +44,111 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": false, "excel": true, "regenerar": true},
-                    "mostrar": {"idproductocategoria": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": false, "url_detalle": true, "url_children": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "descuento": true, "descuento_fecha": true, "resumen": true, "descripcion": true, "idpadre": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": false,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproductocategoria": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": false,
+                        "url_detalle": true,
+                        "url_children": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "descuento": true,
+                        "descuento_fecha": true,
+                        "resumen": true,
+                        "descripcion": true,
+                        "idpadre": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idproductocategoria": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": false, "url_detalle": true, "url_children": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "descuento": true, "descuento_fecha": true, "resumen": true, "descripcion": true, "idpadre": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproductocategoria": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": false,
+                        "url_detalle": true,
+                        "url_children": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "descuento": true,
+                        "descuento_fecha": true,
+                        "resumen": true,
+                        "descripcion": true,
+                        "idpadre": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": true},
-                    "mostrar": {"idproductocategoria": false, "orden": true, "titulo": true, "foto": true, "estado": true, "destacado": false, "copy": false, "url_detalle": true, "url_children": true, "url_sub": true, "delete": true},
-                    "detalle": {"titulo": true, "url": true, "foto": true, "descuento": true, "descuento_fecha": true, "resumen": true, "descripcion": true, "idpadre": true, "keywords": true, "metadescripcion": true, "orden": true, "estado": true, "destacado": false}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": true
+                    },
+                    "mostrar": {
+                        "idproductocategoria": false,
+                        "orden": true,
+                        "titulo": true,
+                        "foto": true,
+                        "estado": true,
+                        "destacado": false,
+                        "copy": false,
+                        "url_detalle": true,
+                        "url_children": true,
+                        "url_sub": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "titulo": true,
+                        "url": true,
+                        "foto": true,
+                        "descuento": true,
+                        "descuento_fecha": true,
+                        "resumen": true,
+                        "descripcion": true,
+                        "idpadre": true,
+                        "keywords": true,
+                        "metadescripcion": true,
+                        "orden": true,
+                        "estado": true,
+                        "destacado": false
+                    }
                 }
             },
             "orden": 1,

@@ -7,11 +7,11 @@ from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     tipo=graphene.Int(),
-    nombre=graphene.String(),
-    telefono=graphene.String(),
-    email=graphene.String(),
-    estado=graphene.Boolean(),
-    cookie=graphene.String()
+nombre=graphene.String(),
+telefono=graphene.String(),
+email=graphene.String(),
+estado=graphene.Boolean(),
+cookie=graphene.String()
     )
 read_only_attribute = dict(
     
@@ -31,8 +31,8 @@ class usuario_schema(SQLAlchemyObjectType):
     
     
     foto=all_image
-    def resolve_foto(parent,info, **kwargs):
-        return resolve_all_image(parent,info,table_name='usuario',idparent=parent.idusuario,field_name='foto',**kwargs)
+    def resolve_foto(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='usuario',idparent=self.idusuario,field_name='foto',**kwargs)
 
 
 

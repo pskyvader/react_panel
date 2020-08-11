@@ -7,18 +7,18 @@ from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     titulo=graphene.String(),
-    url=graphene.String(),
-    subtitulo=graphene.String(),
-    modulo_front=graphene.String(),
-    modulo_back=graphene.String(),
-    tipo_modulo=graphene.Int(),
-    link_menu=graphene.String(),
-    keywords=graphene.String(),
-    metadescripcion=graphene.String(),
-    orden=graphene.Int(),
-    menu=graphene.Boolean(),
-    submenu=graphene.Boolean(),
-    estado=graphene.Boolean()
+url=graphene.String(),
+subtitulo=graphene.String(),
+modulo_front=graphene.String(),
+modulo_back=graphene.String(),
+tipo_modulo=graphene.Int(),
+link_menu=graphene.String(),
+keywords=graphene.String(),
+metadescripcion=graphene.String(),
+orden=graphene.Int(),
+menu=graphene.Boolean(),
+submenu=graphene.Boolean(),
+estado=graphene.Boolean()
     )
 read_only_attribute = dict(
     
@@ -38,12 +38,12 @@ class seo_schema(SQLAlchemyObjectType):
     
     
     foto=all_image
-    def resolve_foto(parent,info, **kwargs):
-        return resolve_all_image(parent,info,table_name='seo',idparent=parent.idseo,field_name='foto',**kwargs)
+    def resolve_foto(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='seo',idparent=self.idseo,field_name='foto',**kwargs)
 
     banner=all_image
-    def resolve_banner(parent,info, **kwargs):
-        return resolve_all_image(parent,info,table_name='seo',idparent=parent.idseo,field_name='banner',**kwargs)
+    def resolve_banner(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='seo',idparent=self.idseo,field_name='banner',**kwargs)
 
 
 

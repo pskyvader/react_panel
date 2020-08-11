@@ -7,14 +7,14 @@ from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     tipo=graphene.Int(),
-    titulo=graphene.String(),
-    url=graphene.String(),
-    subtitulo=graphene.String(),
-    resumen=graphene.String(),
-    keywords=graphene.String(),
-    metadescripcion=graphene.String(),
-    orden=graphene.Int(),
-    estado=graphene.Boolean()
+titulo=graphene.String(),
+url=graphene.String(),
+subtitulo=graphene.String(),
+resumen=graphene.String(),
+keywords=graphene.String(),
+metadescripcion=graphene.String(),
+orden=graphene.Int(),
+estado=graphene.Boolean()
     )
 read_only_attribute = dict(
     
@@ -34,8 +34,8 @@ class galeria_schema(SQLAlchemyObjectType):
     
     
     foto=all_image
-    def resolve_foto(parent,info, **kwargs):
-        return resolve_all_image(parent,info,table_name='galeria',idparent=parent.idgaleria,field_name='foto',**kwargs)
+    def resolve_foto(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='galeria',idparent=self.idgaleria,field_name='foto',**kwargs)
 
 
 

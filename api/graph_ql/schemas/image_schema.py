@@ -7,13 +7,13 @@ from .. import url_object
 
 attribute = dict(
     table_name=graphene.String(),
-    field_name=graphene.String(),
-    idparent=graphene.Int(),
-    name=graphene.String(),
-    extension=graphene.String(),
-    orden=graphene.Int(),
-    estado=graphene.Boolean(),
-    portada=graphene.Boolean()
+field_name=graphene.String(),
+idparent=graphene.Int(),
+name=graphene.String(),
+extension=graphene.String(),
+orden=graphene.Int(),
+estado=graphene.Boolean(),
+portada=graphene.Boolean()
     )
 read_only_attribute = dict(
     

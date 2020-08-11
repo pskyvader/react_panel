@@ -4,11 +4,7 @@
     "titulo": "Perfiles",
     "sub": "",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"field": "idprofile", "titulo": "ID", "tipo": "text"},
         {"field": "orden", "titulo": "Orden", "tipo": "text"},
@@ -35,21 +31,72 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": false, "regenerar": false},
-                    "mostrar": {"idprofile": true, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"tipo": true, "titulo": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idprofile": true,
+                        "orden": true,
+                        "titulo": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "tipo": true,
+                        "titulo": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": false,
-                    "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idprofile": true, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"tipo": true, "titulo": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idprofile": true,
+                        "orden": true,
+                        "titulo": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "tipo": true,
+                        "titulo": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "3": {
                     "estado": false,
-                    "menu": {"new": false, "excel": false, "regenerar": false},
-                    "mostrar": {"idprofile": true, "orden": true, "titulo": true, "estado": true, "copy": false, "url_detalle": true, "delete": true},
-                    "detalle": {"tipo": true, "titulo": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": false,
+                        "excel": false,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idprofile": true,
+                        "orden": true,
+                        "titulo": true,
+                        "estado": true,
+                        "copy": false,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "tipo": true,
+                        "titulo": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 }
             },
             "orden": 1,

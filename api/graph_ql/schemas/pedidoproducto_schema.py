@@ -7,15 +7,15 @@ from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     idpedido=graphene.Int(),
-    idpedidodireccion=graphene.Int(),
-    idproducto=graphene.Int(),
-    titulo=graphene.String(),
-    mensaje=graphene.String(),
-    idproductoatributo=graphene.Int(),
-    titulo_atributo=graphene.String(),
-    precio=graphene.Int(),
-    cantidad=graphene.Int(),
-    total=graphene.Int()
+idpedidodireccion=graphene.Int(),
+idproducto=graphene.Int(),
+titulo=graphene.String(),
+mensaje=graphene.String(),
+idproductoatributo=graphene.Int(),
+titulo_atributo=graphene.String(),
+precio=graphene.Int(),
+cantidad=graphene.Int(),
+total=graphene.Int()
     )
 read_only_attribute = dict(
     
@@ -35,8 +35,8 @@ class pedidoproducto_schema(SQLAlchemyObjectType):
     
     
     foto=all_image
-    def resolve_foto(parent,info, **kwargs):
-        return resolve_all_image(parent,info,table_name='pedidoproducto',idparent=parent.idpedidoproducto,field_name='foto',**kwargs)
+    def resolve_foto(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='pedidoproducto',idparent=self.idpedidoproducto,field_name='foto',**kwargs)
 
 
 

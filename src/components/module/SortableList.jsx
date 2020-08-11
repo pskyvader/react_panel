@@ -52,7 +52,7 @@ const SortableList = (props) => {
     };
 
     const OrderMutation = CreateMutation({ table: module, fields: '$id:ID!,$orden:Int!', input: `{id${module}:$id,orden:$orden}` });
-    const update_order = Mutation({ mutationquery: OrderMutation, query: props.query, variables: props.variables, mutation: 'order', Setsorting: props.Setsorting, table: module });
+    const update_order = Mutation({ mutationquery: OrderMutation, query: props.query,list:props.list, variables: props.variables, mutation: 'order', Setsorting: props.Setsorting, table: module });
 
     const DragHandle = sortableHandle(() => {
         if (props.enableDrag) {
@@ -173,7 +173,8 @@ const SortableList = (props) => {
             minposition++;
         });
         update_inputs.forEach(element => {
-            update_order({ variables: element });
+            console.log(element);
+            update_order({ variables: element,list:list});
         });
 
         if (list !== null) {

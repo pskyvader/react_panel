@@ -1,14 +1,10 @@
 {
-    "icono": "AddToPhotos",
+    "icono": "Addtophotos",
     "module": "ighashtag",
     "titulo": "Hashtags Instagram",
     "sub": "",
     "padre": "",
-    "menu": [
-        {"field": "new", "titulo": "Nuevo"},
-        {"field": "excel", "titulo": "Exportar a excel"},
-        {"field": "regenerar", "titulo": "Regenerar imagenes"}
-    ],
+    "menu": [],
     "mostrar": [
         {"tipo": "text", "field": "idighashtag", "titulo": "ID"},
         {"tipo": "text", "field": "orden", "titulo": "Orden"},
@@ -40,21 +36,87 @@
             "permisos": {
                 "1": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idighashtag": true, "orden": true, "hashtag": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idighashtag": true,
+                        "orden": true,
+                        "hashtag": true,
+                        "estado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "hashtag": true,
+                        "following": true,
+                        "follower": true,
+                        "removed": true,
+                        "eficiencia": true,
+                        "eficiencia2": true,
+                        "total": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "2": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idighashtag": true, "orden": true, "hashtag": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idighashtag": true,
+                        "orden": true,
+                        "hashtag": true,
+                        "estado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "hashtag": true,
+                        "following": true,
+                        "follower": true,
+                        "removed": true,
+                        "eficiencia": true,
+                        "eficiencia2": true,
+                        "total": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 },
                 "3": {
                     "estado": true,
-                    "menu": {"new": true, "excel": true, "regenerar": false},
-                    "mostrar": {"idighashtag": true, "orden": true, "hashtag": true, "estado": true, "copy": true, "url_detalle": true, "delete": true},
-                    "detalle": {"hashtag": true, "following": true, "follower": true, "removed": true, "eficiencia": true, "eficiencia2": true, "total": true, "orden": true, "estado": true}
+                    "menu": {
+                        "new": true,
+                        "excel": true,
+                        "regenerar": false
+                    },
+                    "mostrar": {
+                        "idighashtag": true,
+                        "orden": true,
+                        "hashtag": true,
+                        "estado": true,
+                        "copy": true,
+                        "url_detalle": true,
+                        "delete": true
+                    },
+                    "detalle": {
+                        "hashtag": true,
+                        "following": true,
+                        "follower": true,
+                        "removed": true,
+                        "eficiencia": true,
+                        "eficiencia2": true,
+                        "total": true,
+                        "orden": true,
+                        "estado": true
+                    }
                 }
             },
             "orden": 1,

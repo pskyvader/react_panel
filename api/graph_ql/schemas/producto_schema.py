@@ -7,23 +7,23 @@ from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     idproductocategoria=graphene.String(),
-    tipo=graphene.Int(),
-    titulo=graphene.String(),
-    url=graphene.String(),
-    archivo=graphene.JSONString(),
-    codigo=graphene.String(),
-    precio=graphene.Int(),
-    descuento=graphene.Int(),
-    descuento_fecha=graphene.String(),
-    stock=graphene.Int(),
-    ventas=graphene.Int(),
-    resumen=graphene.String(),
-    descripcion=graphene.String(),
-    keywords=graphene.String(),
-    metadescripcion=graphene.String(),
-    orden=graphene.Int(),
-    estado=graphene.Boolean(),
-    destacado=graphene.Boolean()
+tipo=graphene.Int(),
+titulo=graphene.String(),
+url=graphene.String(),
+archivo=graphene.JSONString(),
+codigo=graphene.String(),
+precio=graphene.Int(),
+descuento=graphene.Int(),
+descuento_fecha=graphene.String(),
+stock=graphene.Int(),
+ventas=graphene.Int(),
+resumen=graphene.String(),
+descripcion=graphene.String(),
+keywords=graphene.String(),
+metadescripcion=graphene.String(),
+orden=graphene.Int(),
+estado=graphene.Boolean(),
+destacado=graphene.Boolean()
     )
 read_only_attribute = dict(
     
@@ -43,8 +43,8 @@ class producto_schema(SQLAlchemyObjectType):
     
     
     foto=all_image
-    def resolve_foto(parent,info, **kwargs):
-        return resolve_all_image(parent,info,table_name='producto',idparent=parent.idproducto,field_name='foto',**kwargs)
+    def resolve_foto(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='producto',idparent=self.idproducto,field_name='foto',**kwargs)
 
 
 

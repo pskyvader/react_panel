@@ -7,7 +7,7 @@ from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     titulo=graphene.String(),
-    orden=graphene.Int()
+orden=graphene.Int()
     )
 read_only_attribute = dict(
     
@@ -27,8 +27,8 @@ class logo_schema(SQLAlchemyObjectType):
     
     
     foto=all_image
-    def resolve_foto(parent,info, **kwargs):
-        return resolve_all_image(parent,info,table_name='logo',idparent=parent.idlogo,field_name='foto',**kwargs)
+    def resolve_foto(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='logo',idparent=self.idlogo,field_name='foto',**kwargs)
 
 
 

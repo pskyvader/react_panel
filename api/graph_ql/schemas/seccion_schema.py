@@ -7,18 +7,18 @@ from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     idseccioncategoria=graphene.String(),
-    tipo=graphene.Int(),
-    titulo=graphene.String(),
-    subtitulo=graphene.String(),
-    url=graphene.String(),
-    archivo=graphene.JSONString(),
-    resumen=graphene.String(),
-    descripcion=graphene.String(),
-    keywords=graphene.String(),
-    metadescripcion=graphene.String(),
-    orden=graphene.Int(),
-    estado=graphene.Boolean(),
-    destacado=graphene.Boolean()
+tipo=graphene.Int(),
+titulo=graphene.String(),
+subtitulo=graphene.String(),
+url=graphene.String(),
+archivo=graphene.JSONString(),
+resumen=graphene.String(),
+descripcion=graphene.String(),
+keywords=graphene.String(),
+metadescripcion=graphene.String(),
+orden=graphene.Int(),
+estado=graphene.Boolean(),
+destacado=graphene.Boolean()
     )
 read_only_attribute = dict(
     
@@ -38,8 +38,8 @@ class seccion_schema(SQLAlchemyObjectType):
     
     
     foto=all_image
-    def resolve_foto(parent,info, **kwargs):
-        return resolve_all_image(parent,info,table_name='seccion',idparent=parent.idseccion,field_name='foto',**kwargs)
+    def resolve_foto(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='seccion',idparent=self.idseccion,field_name='foto',**kwargs)
 
 
 

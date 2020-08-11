@@ -3,17 +3,21 @@ import graphene
 from ..models import administrador_model
 from ..resolver import resolve
 from ..mutator import mutation_create, mutation_update, mutation_delete
-from .image_schema import all_image, resolve_all_image
+from .image_schema import all_image,resolve_all_image
 
 attribute = dict(
     tipo=graphene.Int(),
-    email=graphene.String(),
-    nombre=graphene.String(),
-    estado=graphene.Boolean(),
-    cookie=graphene.String(),
-)
-read_only_attribute = dict()
-black_list_attribute = dict(password=graphene.String())
+email=graphene.String(),
+nombre=graphene.String(),
+estado=graphene.Boolean(),
+cookie=graphene.String()
+    )
+read_only_attribute = dict(
+    
+    )
+black_list_attribute = dict(
+    password=graphene.String()
+    )
 
 
 class administrador_schema(SQLAlchemyObjectType):
@@ -21,32 +25,19 @@ class administrador_schema(SQLAlchemyObjectType):
         model = administrador_model
         interfaces = (graphene.relay.Node,)
         only_fields = (
-            ["idadministrador"]
-            + list(attribute.keys())
-            + list(read_only_attribute.keys())
+            ["idadministrador"] + list(attribute.keys()) + list(read_only_attribute.keys())
         )
+    
+    
+    foto=all_image
+    def resolve_foto(self,info, **kwargs):
+        return resolve_all_image(self,info,table_name='administrador',idparent=self.idadministrador,field_name='foto',**kwargs)
 
-    foto = all_image
-
-    def resolve_foto(parent, info, **kwargs):
-        return resolve_all_image(
-            parent,
-            info,
-            table_name="administrador",
-            idparent=parent.idadministrador,
-            field_name="foto",
-            **kwargs
-        )
 
 
 def resolve_administrador(args, info, idadministrador, **kwargs):
     query = resolve(
-        args,
-        info,
-        administrador_schema,
-        administrador_model,
-        idadministrador=idadministrador,
-        **kwargs
+        args, info, administrador_schema, administrador_model, idadministrador=idadministrador, **kwargs
     )
     return query.first()
 
@@ -56,12 +47,8 @@ def resolve_all_administrador(args, info, **kwargs):
     return query
 
 
-all_administrador = SQLAlchemyConnectionField(
-    administrador_schema, sort=graphene.String(), **attribute
-)
-administrador = graphene.Field(
-    administrador_schema, idadministrador=graphene.Int(), **attribute
-)
+all_administrador = SQLAlchemyConnectionField( administrador_schema, sort=graphene.String(), **attribute )
+administrador = graphene.Field(administrador_schema, idadministrador=graphene.Int(), **attribute)
 
 # Create a generic class to mutualize description of administrador _attributes for both queries and mutations
 class administrador_attribute:
@@ -90,18 +77,14 @@ class create_administrador(graphene.Mutation):
         input = create_administrador_input(required=True)
 
     def mutate(self, info, input):
-        administrador = mutation_create(
-            administrador_model, input, "idadministrador", info
-        )
+        administrador = mutation_create(administrador_model, input, "idadministrador",info)
         return create_administrador(administrador=administrador)
 
 
 class update_administrador_input(graphene.InputObjectType, administrador_attribute):
     """Arguments to update a administrador."""
 
-    idadministrador = graphene.ID(
-        required=True, description="Global Id of the administrador."
-    )
+    idadministrador = graphene.ID(required=True, description="Global Id of the administrador.")
 
 
 class update_administrador(graphene.Mutation):
@@ -115,18 +98,14 @@ class update_administrador(graphene.Mutation):
         input = update_administrador_input(required=True)
 
     def mutate(self, info, input):
-        administrador = mutation_update(
-            administrador_model, input, "idadministrador", info
-        )
+        administrador = mutation_update(administrador_model, input, "idadministrador",info)
         return update_administrador(administrador=administrador)
 
 
 class delete_administrador_input(graphene.InputObjectType, administrador_attribute):
     """Arguments to delete a administrador."""
 
-    idadministrador = graphene.ID(
-        required=True, description="Global Id of the administrador."
-    )
+    idadministrador = graphene.ID(required=True, description="Global Id of the administrador.")
 
 
 class delete_administrador(graphene.Mutation):

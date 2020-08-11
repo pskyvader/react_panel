@@ -7,13 +7,13 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 attribute = dict(
     tipo=graphene.String(),
-    titulo=graphene.String(),
-    url=graphene.String(),
-    descripcion=graphene.String(),
-    texto=graphene.String(),
-    mapa=graphene.String(),
-    orden=graphene.Int(),
-    estado=graphene.Boolean()
+titulo=graphene.String(),
+url=graphene.String(),
+descripcion=graphene.String(),
+texto=graphene.String(),
+mapa=graphene.String(),
+orden=graphene.Int(),
+estado=graphene.Boolean()
     )
 read_only_attribute = dict(
     

@@ -7,14 +7,14 @@ from ..mutator import mutation_create, mutation_update, mutation_delete
 
 attribute = dict(
     hashtag=graphene.String(),
-    following=graphene.Int(),
-    follower=graphene.Int(),
-    removed=graphene.Int(),
-    eficiencia=graphene.Int(),
-    eficiencia2=graphene.Int(),
-    total=graphene.Int(),
-    orden=graphene.Int(),
-    estado=graphene.Boolean()
+following=graphene.Int(),
+follower=graphene.Int(),
+removed=graphene.Int(),
+eficiencia=graphene.Int(),
+eficiencia2=graphene.Int(),
+total=graphene.Int(),
+orden=graphene.Int(),
+estado=graphene.Boolean()
     )
 read_only_attribute = dict(
     

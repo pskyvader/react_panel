@@ -20,7 +20,7 @@ class ThreadPoolWSGIServer(WSGIServer):
         try:
             self.finish_request(request, client_address)
             self.shutdown_request(request)
-        except:
+        except Exception:
             self.handle_error(request, client_address)
             self.shutdown_request(request)
 
@@ -47,6 +47,6 @@ try:
 except KeyboardInterrupt:
     srv.server_close()
     print("Server Stopped")
-except:
+except Exception:
     srv.server_close()
-    print("Server Stopped")
+    print("Server Stopped on Error")
